@@ -465,15 +465,54 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 .thb:hover .ic{transform:rotate(-25deg)}
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
 
-/* light theme: same layout, paper-white panels, deeper ink and accents for contrast */
-:root[data-theme=light]{color-scheme:light;--bg:#f2f4f9;--bg2:#ffffff;--bg3:#eef1f7;--bg4:#dde3ee;--surf:linear-gradient(180deg,#ffffff,#fcfdff);--line:rgba(15,23,42,.08);--line2:rgba(15,23,42,.14);--ink:#0f172a;--ink2:#334155;--mut:#64748b;
-  --gold:#94650f;--gold2:#7a520a;--goldbg:rgba(201,143,43,.13);--goldln:rgba(168,116,26,.42);--up:#08875a;--upbg:rgba(8,135,90,.1);--dn:#d42a48;--dnbg:rgba(212,42,72,.09);--warn:#b45309;--warnbg:rgba(217,119,6,.12);--blue:#2257d6;--bluebg:rgba(34,87,214,.09);--pu:#6d3fd8;--pubg:rgba(109,63,216,.09);
-  --shadow:0 24px 60px -18px rgba(15,23,42,.28);--glass:rgba(255,255,255,.94);--wt:15,23,42;--hi:rgba(255,255,255,.9);--sh1:0 1px 2px rgba(15,23,42,.04),0 14px 32px -20px rgba(15,23,42,.22);--sh2:0 1px 2px rgba(15,23,42,.05),0 12px 30px -18px rgba(15,23,42,.22);
-  --well:rgba(15,23,42,.035);--wellsh:inset 0 1px 2px rgba(15,23,42,.12);--pop:#fff;--mbg:#fff;--tipbg:#fff;--toastbg:#fff;--scrim:rgba(15,23,42,.38);--sbar:linear-gradient(180deg,#ffffff,#f7f9fc);--avbg:linear-gradient(135deg,#e7ecf5,#cfd8e7);
-  --gtxt:linear-gradient(180deg,#d6a03c 0%,#a8741a 48%,#74500d 100%);--note-pu:#5b2bb5;--note-y:#8a4b08;--cash:#d3dbe8;--dotfill:#fff;--grid:rgba(15,23,42,.04);--ch:#b8841f;--ch2:#94650f;--knob:#fff;
-  --bgfx:radial-gradient(1000px 560px at 88% -14%,rgba(235,192,98,.2),transparent 62%),radial-gradient(900px 640px at -12% 112%,rgba(70,110,255,.09),transparent 62%),radial-gradient(700px 420px at 55% 120%,rgba(61,220,151,.06),transparent 65%)}
-:root[data-theme=light] .mbox,:root[data-theme=light] .menu,:root[data-theme=light] .toast{border-color:rgba(15,23,42,.1)}
-:root[data-theme=light] .btn{box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 6px 16px -8px rgba(168,116,26,.55)}
+/* light theme ("soft daylight"): a pastel aurora behind slightly see-through panels, so every panel
+   picks up a little colour; off-white instead of paper-white and softer ink, bright without glare.
+   Each kind of panel gets its own pastel tint (--tint). No blur filters, so it stays fast. */
+:root[data-theme=light]{color-scheme:light;--bg:#e6eaf3;--bg2:#fbfcfe;--bg3:#eef1f8;--bg4:#d8deeb;--surf:linear-gradient(180deg,rgba(255,255,255,.74),rgba(250,251,255,.64));--line:rgba(30,41,82,.08);--line2:rgba(30,41,82,.14);--ink:#1d2536;--ink2:#46526b;--mut:#6b7790;
+  --gold:#a1670f;--gold2:#83530a;--goldbg:rgba(214,150,40,.15);--goldln:rgba(176,118,24,.42);--up:#0a8a63;--upbg:rgba(16,170,120,.13);--dn:#d33a52;--dnbg:rgba(230,70,95,.12);--warn:#b8620b;--warnbg:rgba(240,140,30,.15);--blue:#2f63d6;--bluebg:rgba(60,110,240,.12);--pu:#6b46d6;--pubg:rgba(120,85,240,.12);
+  --shadow:0 24px 60px -18px rgba(40,50,110,.32);--glass:rgba(252,253,255,.76);--wt:30,41,82;--hi:rgba(255,255,255,.85);--sh1:0 1px 2px rgba(30,41,82,.04),0 18px 36px -24px rgba(60,72,150,.4);--sh2:0 1px 2px rgba(30,41,82,.05),0 14px 32px -20px rgba(60,72,150,.34);
+  --well:rgba(255,255,255,.6);--wellsh:inset 0 1px 2px rgba(30,41,82,.12);--pop:#fbfcfe;--mbg:linear-gradient(180deg,#fdfdff,#f4f6fc);--tipbg:#fbfcfe;--toastbg:#fbfcfe;--scrim:rgba(30,38,70,.3);--sbar:linear-gradient(180deg,rgba(255,255,255,.72),rgba(236,240,255,.62));--avbg:linear-gradient(135deg,#e3e8fb,#ccd5f2);
+  --gtxt:linear-gradient(180deg,#d9a03a 0%,#ae7317 48%,#7a4f0b 100%);--note-pu:#5b2bb5;--note-y:#8a4b08;--cash:#d5dbea;--dotfill:#fff;--grid:rgba(30,41,82,.035);--ch:#c0861d;--ch2:#9a6410;--knob:#fff;
+  --t-gold:255,229,186;--t-peach:255,219,203;--t-mint:200,243,225;--t-sky:210,227,255;--t-lav:228,219,255;--t-rose:255,216,230;--tint:var(--t-sky);
+  --bgfx:radial-gradient(900px 620px at 104% -10%,rgba(255,186,135,.55),transparent 60%),radial-gradient(760px 560px at -6% -14%,rgba(186,166,255,.48),transparent 60%),radial-gradient(900px 640px at -8% 114%,rgba(118,172,255,.46),transparent 62%),radial-gradient(780px 540px at 72% 120%,rgba(104,218,182,.42),transparent 62%)}
+:root[data-theme=light] .pnl,:root[data-theme=light] .card{background:radial-gradient(640px 260px at 0% 0%,rgba(var(--tint),.95),transparent 75%),linear-gradient(160deg,rgba(var(--tint),.35),rgba(var(--tint),.08) 60%,rgba(var(--tint),.22)),var(--surf);border-color:rgba(255,255,255,.75)}
+:root[data-theme=light] .kpi{background:linear-gradient(135deg,rgba(var(--tint),.95),rgba(255,255,255,.62) 78%);border-color:rgba(255,255,255,.85);box-shadow:inset 0 1px 0 var(--hi),var(--sh1)}
+:root[data-theme=light] .kstrip>.kpi:nth-child(5n+1){--tint:var(--t-gold)}:root[data-theme=light] .kstrip>.kpi:nth-child(5n+2){--tint:var(--t-mint)}:root[data-theme=light] .kstrip>.kpi:nth-child(5n+3){--tint:var(--t-peach)}:root[data-theme=light] .kstrip>.kpi:nth-child(5n+4){--tint:var(--t-sky)}:root[data-theme=light] .kstrip>.kpi:nth-child(5n){--tint:var(--t-lav)}
+/* client site panels */
+:root[data-theme=light] .hero,:root[data-theme=light] .pdet{--tint:var(--t-gold)}
+:root[data-theme=light] .disc,:root[data-theme=light] .pclosed{--tint:var(--t-mint)}
+:root[data-theme=light] .todo,:root[data-theme=light] .jlist,:root[data-theme=light] .phold{--tint:var(--t-sky)}
+:root[data-theme=light] .hold,:root[data-theme=light] .plist,:root[data-theme=light] .jdet,:root[data-theme=light] .palloc{--tint:var(--t-lav)}
+:root[data-theme=light] .phist{--tint:var(--t-peach)}
+:root[data-theme=light] .hero:before{background:radial-gradient(560px 260px at 8% 0%,rgba(255,214,150,.5),transparent 70%)}
+/* back office panels take turns */
+:root[data-theme=light] .view>.pnl:nth-of-type(4n+1),:root[data-theme=light] .sub>.pnl:nth-of-type(4n+1){--tint:var(--t-sky)}
+:root[data-theme=light] .view>.pnl:nth-of-type(4n+2),:root[data-theme=light] .sub>.pnl:nth-of-type(4n+2){--tint:var(--t-mint)}
+:root[data-theme=light] .view>.pnl:nth-of-type(4n+3),:root[data-theme=light] .sub>.pnl:nth-of-type(4n+3){--tint:var(--t-lav)}
+:root[data-theme=light] .view>.pnl:nth-of-type(4n),:root[data-theme=light] .sub>.pnl:nth-of-type(4n){--tint:var(--t-peach)}
+:root[data-theme=light] .chd,:root[data-theme=light] .ccard:nth-child(5n+1),:root[data-theme=light] .bo-login .card,:root[data-theme=light] .lg-card{--tint:var(--t-gold)}
+:root[data-theme=light] .ccard:nth-child(5n+2){--tint:var(--t-mint)}:root[data-theme=light] .ccard:nth-child(5n+3){--tint:var(--t-sky)}:root[data-theme=light] .ccard:nth-child(5n+4){--tint:var(--t-lav)}:root[data-theme=light] .ccard:nth-child(5n){--tint:var(--t-peach)}
+/* action cards washed in the colour of what they ask for */
+:root[data-theme=light] .oc,:root[data-theme=light] .lo{background:linear-gradient(100deg,rgba(255,255,255,.78),rgba(255,255,255,.5));border-color:rgba(255,255,255,.9);box-shadow:0 10px 24px -18px rgba(60,72,150,.45)}
+:root[data-theme=light] .oc.buy,:root[data-theme=light] .lo.buy{background:linear-gradient(100deg,rgba(var(--t-mint),.85),rgba(255,255,255,.55) 72%)}
+:root[data-theme=light] .oc.sell,:root[data-theme=light] .lo.sell{background:linear-gradient(100deg,rgba(var(--t-rose),.85),rgba(255,255,255,.55) 72%)}
+:root[data-theme=light] .oc.sl,:root[data-theme=light] .lo.sl{background:linear-gradient(100deg,rgba(var(--t-gold),.9),rgba(255,255,255,.55) 72%)}
+:root[data-theme=light] .oc.fix{background:linear-gradient(100deg,rgba(var(--t-peach),.85),rgba(255,255,255,.55) 72%)}
+:root[data-theme=light] .oc.urgent{border-color:rgba(211,58,82,.35)}
+:root[data-theme=light] .prow{background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.85)}
+:root[data-theme=light] .prow:hover{background:rgba(255,255,255,.8)}
+:root[data-theme=light] .prow.on{background:linear-gradient(100deg,rgba(var(--t-gold),.9),rgba(255,255,255,.6));border-color:var(--goldln)}
+:root[data-theme=light] .ptool{background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.9)}
+:root[data-theme=light] .tk-cta{background:linear-gradient(90deg,rgba(var(--t-sky),.95),rgba(255,255,255,.55) 85%)}
+:root[data-theme=light] .seg,:root[data-theme=light] .nav{background:rgba(255,255,255,.5);border-color:rgba(255,255,255,.8)}
+:root[data-theme=light] .seg button.on{background:#fff;box-shadow:0 2px 8px -3px rgba(60,72,150,.35)}
+:root[data-theme=light] .ibtn,:root[data-theme=light] .kbtn,:root[data-theme=light] .mkt{background:rgba(255,255,255,.6);border-color:rgba(255,255,255,.85)}
+:root[data-theme=light] .hdr{border-color:rgba(255,255,255,.85)}
+:root[data-theme=light] .sbar nav button.on{background:linear-gradient(90deg,rgba(var(--t-gold),.95),rgba(255,255,255,.4));box-shadow:inset 0 0 0 1px rgba(176,118,24,.22)}
+:root[data-theme=light] .sbar{border-right-color:rgba(255,255,255,.8)}
+:root[data-theme=light] .mbox:before{background:linear-gradient(90deg,transparent,rgba(214,150,40,.6),transparent)}
+:root[data-theme=light] .mbox,:root[data-theme=light] .menu,:root[data-theme=light] .toast{border-color:rgba(255,255,255,.9)}
+:root[data-theme=light] .btn{box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 6px 16px -8px rgba(190,120,20,.55)}
 :root[data-theme=light] .btn.ghost,:root[data-theme=light] .btn.soft,:root[data-theme=light] .btn.bad{box-shadow:none}
 :root[data-theme=light] .slg.mono{box-shadow:none}
 
