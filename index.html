@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-RIdkgW4bLOkGpGI/5y4iNHlH93eCwA53hEZtE0DwJK0=' 'sha256-HNlBX+8dGa2IXh8UO7RR8R01B0sNXOS846NGyl7dg9k='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-JnaEj661ZFpXVudRpdY92kLxttL+iit66dgMQClFt64=' 'sha256-OuZV1HJ22xjKhacEazAQVklRYsUhTOJkbY+N5FenJkY='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>ปั้นพอร์ต 1 ล้าน · Trading Journal (ต้นแบบ)</title>
 <style>
 /* Port 1M look: midnight navy + champagne gold, glass panels over a soft aurora.
@@ -170,6 +170,42 @@ button.sy:hover .slg{transform:scale(1.08)}
 .slb{flex:none;display:flex;border-radius:12px}
 .slb:hover .slg{transform:scale(1.08)}
 .jm{display:flex;gap:10px;align-items:center;min-width:0}
+/* allocation donut + legend, portfolio heat, weekly results */
+.alloc{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;min-height:0}
+.donut{position:relative;flex:none}
+.donut svg{display:block;transform:rotate(-90deg)}
+.donut circle[data-dk]{transition:opacity .15s,stroke-width .15s}
+.alloc.hov .donut circle[data-dk]:not(.hl){opacity:.28}
+.dc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.2;padding:0 18%}
+.dc b{font-size:22px;letter-spacing:-.01em}
+.dc span{font-size:11.5px;color:var(--mut);margin-top:2px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.alg{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ali{display:grid;grid-template-columns:10px minmax(0,1fr) auto;grid-template-rows:auto 3px;gap:2px 8px;align-items:center;padding:4px 6px;border-radius:9px;font-size:12.5px;cursor:default}
+.ali>i{width:10px;height:10px;border-radius:3px}
+.ali .ab{grid-column:2/-1;height:3px;border-radius:2px;background:rgba(255,255,255,.05);overflow:hidden}
+.ali .ab i{display:block;height:100%;border-radius:inherit}
+.ali.hl{background:rgba(255,255,255,.05)}
+.seg.xsg{padding:2px}.seg.xsg button{padding:3px 10px;font-size:12px}
+.heat{display:flex;flex-direction:column;gap:5px}
+.hbar{position:relative;height:8px;border-radius:999px;background:rgba(255,255,255,.07)}
+.hbar i{position:absolute;inset:0 auto 0 0;border-radius:inherit}
+.hbar i.up{background:linear-gradient(90deg,#1fa970,var(--up))}.hbar i.warn{background:linear-gradient(90deg,#c98a1c,var(--warn))}.hbar i.dn{background:linear-gradient(90deg,#c9374b,var(--dn))}
+.hbar s{position:absolute;left:66.6%;top:-3px;bottom:-3px;width:2px;border-radius:2px;background:rgba(255,255,255,.55)}
+.wk{display:flex;flex-direction:column;gap:6px;flex:none}
+.wbars{display:block;width:100%;height:56px}
+.wks{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--mut)}
+/* the donut and the weekly strip size themselves to the room the panel actually has */
+.palloc .pb,.phist .pb,.pb:has(>.wk){container-type:size}
+.palloc .donut{width:clamp(44px,calc(100cqh - 6px),150px)!important;height:clamp(44px,calc(100cqh - 6px),150px)!important}
+.donut svg{width:100%;height:100%}
+.alg:has(>.ali:nth-child(6)) .ali{padding:2px 6px;grid-template-rows:auto}.alg:has(>.ali:nth-child(6)) .ab{display:none}
+@container (max-height:150px){.ali{padding:1px 6px;grid-template-rows:auto}.ali .ab{display:none}.ali:nth-child(n+5):not(:last-child){display:none}.dc b{font-size:17px}.dc span{font-size:10.5px}}
+@container (max-height:118px){.ali{padding:0 4px;line-height:1.3}.ali:nth-child(n+3):not(:last-child){display:none}.dc span{display:none}}
+@container (max-height:72px){.ali:nth-child(n+2):not(:last-child){display:none}}
+@container (max-height:50px){.alg{display:none}.alloc{grid-template-columns:auto}}
+@container (max-height:230px){.wbars{height:34px}}
+@container (max-height:160px){.wk{display:none}}
+.pfoot{flex:none;padding:10px 18px 14px;border-top:1px solid var(--line);font-size:12.5px;display:flex;flex-direction:column;gap:10px}
 .sline{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid var(--line)}
 .sline .r{display:flex;flex-direction:column;align-items:flex-end;line-height:1.35}
 .stm{padding:20px 22px 18px;display:flex;flex-direction:column;gap:14px}
@@ -442,7 +478,17 @@ button.sy:hover .slg{transform:scale(1.08)}
 .ed-info .tbl td{padding:6px 8px}
 
 /* portfolio */
-.v-port{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(0,.85fr);grid-template-rows:auto auto minmax(0,1fr)}
+.v-port{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1.05fr) minmax(0,1fr)}
+.v-port .phold{grid-area:3/1}.v-port .pclosed{grid-area:4/1}.v-port .palloc{grid-area:3/2}.v-port .phist{grid-area:4/2}
+.ctr{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,.9fr) minmax(0,.9fr);gap:10px;align-items:center;padding:8px 4px;border-bottom:1px solid var(--line)}
+.ctr>.num{text-align:right}
+.pth,.ptr{display:grid;grid-template-columns:minmax(150px,1.5fr) minmax(0,.7fr) minmax(0,.75fr) minmax(0,1fr) minmax(0,.85fr) minmax(0,.95fr);gap:10px;align-items:center}
+.pth{flex:none;padding:0 20px 6px;font-size:11.5px;color:var(--mut);border-bottom:1px solid var(--line)}
+.pth>span:not(:first-child),.ptr>.num{text-align:right}
+.ptr{padding:9px 4px;border-bottom:1px solid var(--line)}
+.ptr b{font-size:14px}
+.ptr .wbar{display:block;height:4px;border-radius:2px;background:rgba(255,255,255,.07);margin:4px 0 2px auto;width:min(100%,90px);overflow:hidden}
+.ptr .wbar i{display:block;height:100%;margin-left:auto;background:var(--btn);border-radius:inherit}
 .srow,.frow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;padding:9px 2px;border-bottom:1px solid var(--line);font-size:13.5px}
 
 /* login + first visit */
@@ -480,6 +526,7 @@ button.sy:hover .slg{transform:scale(1.08)}
   .v-home{grid-template-columns:minmax(0,1fr) 300px}.hero{grid-template-columns:1fr}.hero-c{display:none}
   .v-journal{grid-template-columns:minmax(0,1fr) 360px}.v-orders{grid-template-columns:320px minmax(0,1fr)}
   .cells .opt{display:none}.ed{grid-template-columns:110px minmax(0,1fr);gap:12px}.ed-info .tbl td{padding:5px 6px}
+  .v-port{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}.pth,.ptr{grid-template-columns:minmax(130px,1.4fr) minmax(0,.8fr) minmax(0,1fr) minmax(0,.9fr)}.pth .c2,.ptr .c2,.pth .c3,.ptr .c3{display:none}
   .login{gap:30px}.lg-brand h1{font-size:46px}
 }
 @media (max-width:900px){.hin .mkt{display:none}}
@@ -507,6 +554,7 @@ button.sy:hover .slg{transform:scale(1.08)}
   .kstrip{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.kstrip .opt{display:none}.kpi{padding:8px 12px}.kpi .v{font-size:17px}
   .cells{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px;margin:8px 0}.cells .opt{display:none}
   .oc{padding:10px 12px 10px 14px}.oc-note,.lw{display:none}.oc-f{justify-content:flex-end}.oc-t .l1 b{font-size:16px}
+  .v-port .kstrip .opt2{display:none}.pth{display:none}.pth,.ptr{grid-template-columns:minmax(0,1fr) auto auto}.ptr .c4,.ptr .c6{display:none}.pfoot{padding:8px 14px 10px}
   .tlr{grid-template-columns:48px minmax(0,1fr);gap:4px 10px}.tlr .w{display:none}.tlr .res{grid-column:1/-1}
   .mgrid{grid-template-columns:1fr;gap:10px}.mside{order:-1}
   .ed{grid-template-columns:110px minmax(0,1fr)}
@@ -950,6 +998,101 @@ const openPos = clId => positions(clId).filter(p => p.qty > 0);
 const posValue = clId => openPos(clId).reduce((s, p) => s + p.qty * p.last, 0);
 const heldSym = (clId, sym) => openPos(clId).filter(p => p.sym === sym).reduce((s, p) => s + p.qty, 0);
 
+/* ---------- portfolio analytics (logged trades priced at the latest close) ----------
+   Ideas taken from good portfolio trackers and trading journals: allocation donut + bars,
+   concentration, "portfolio heat" (Elder's 6% rule) and a weekly results strip. */
+const MIX_COLORS = ['#ebc062', '#7ea6ff', '#3ddc97', '#ff8f7a', '#b69cff', '#4fd1c5', '#f59e0b', '#f472b6', '#93a4c4'];
+const CASH_COLOR = '#2d3d63';
+const HEAT_LIMIT = .06;   // total risk if every stop is hit, as a share of the port
+function portBook(c) {
+  return memo('book:' + c.id, () => {
+    const total = eqNow(c);
+    const ps = openPos(c.id).map(p => {
+      const i = stock(p.sym), v = p.qty * p.last;
+      return { ...p, v, w: v / total, sec: i?.sectorTh || 'ไม่ระบุกลุ่ม', name: i?.short || '', risk: p.sl ? Math.max(0, (p.last - p.sl) * p.qty) : null };
+    }).sort((a, b) => b.v - a.v);
+    const inv = ps.reduce((s, p) => s + p.v, 0), risk = ps.reduce((s, p) => s + (p.risk || 0), 0), bySec = {};
+    ps.forEach(p => { bySec[p.sec] = (bySec[p.sec] || 0) + p.v; });
+    return { total, ps, inv, cash: Math.max(0, total - inv), risk, heat: risk / total, noStop: ps.filter(p => p.risk == null), sectors: Object.entries(bySec).sort((a, b) => b[1] - a[1]) };
+  });
+}
+const heatTone = h => h > HEAT_LIMIT ? 'dn' : h > HEAT_LIMIT * .66 ? 'warn' : 'up';
+let ALLOC_MODE = 'sec', HIST_TAB = 'rep';
+function allocParts(c) {
+  const b = portBook(c), items = ALLOC_MODE === 'sym' ? b.ps.map(p => [p.sym, p.v, p.name]) : b.sectors.map(([s, v]) => [s, v, '']);
+  const parts = items.slice(0, 7).map(([l, v, sub], i) => ({ l, sub, f: v / b.total, c: MIX_COLORS[i] }));
+  if (items.length > 7) parts.push({ l: 'อื่น ๆ', sub: '', f: items.slice(7).reduce((s, x) => s + x[1], 0) / b.total, c: MIX_COLORS[8] });
+  parts.push({ l: 'เงินสด (ประมาณการ)', sub: '', f: b.cash / b.total, c: CASH_COLOR });
+  return parts;
+}
+function donut(parts, size, center) {
+  const sw = Math.round(size * .14), r = (size - sw) / 2 - 3, C = 2 * Math.PI * r, cx = size / 2, gap = parts.filter(p => p.f > .002).length > 1 ? 2.5 : 0;
+  let off = 0;
+  const segs = parts.map((p, i) => { const len = p.f * C, s = len > .5 ? `<circle data-dk="${i}" cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${p.c}" stroke-width="${sw}" stroke-dasharray="${Math.max(.1, len - gap).toFixed(1)} ${C.toFixed(1)}" stroke-dashoffset="${(-off).toFixed(1)}"/>` : ''; off += len; return s; }).join('');
+  return `<div class="donut" style="width:${size}px;height:${size}px"><svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" aria-hidden="true"><circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="${sw}"/>${segs}</svg><div class="dc" data-def="${esc(center)}">${center}</div></div>`;
+}
+function allocView(c, size = 150) {
+  const b = portBook(c), parts = allocParts(c);
+  const center = `<b class="num">${fmt(b.inv / b.total * 100, 0)}%</b><span>ลงทุนในหุ้น</span>`;
+  return `<div class="alloc">${donut(parts, size, center)}<div class="alg">${parts.map((p, i) => `<div class="ali" data-dk="${i}" data-l="${esc(p.l)}" data-p="${fmt(p.f * 100, 1)}%"><i style="background:${p.c}"></i><span class="ell">${esc(p.l)}${p.sub ? ` <span class="muted">${esc(p.sub)}</span>` : ''}</span><b class="num">${fmt(p.f * 100, 1)}%</b><span class="ab"><i style="width:${Math.min(100, p.f * 100)}%;background:${p.c}"></i></span></div>`).join('')}</div></div>`;
+}
+const allocSeg = () => `<div class="seg xsg" role="tablist"><button class="${ALLOC_MODE === 'sec' ? 'on' : ''}" data-amode="sec">ตามกลุ่ม</button><button class="${ALLOC_MODE === 'sym' ? 'on' : ''}" data-amode="sym">รายตัว</button></div>`;
+function concLine(c) {
+  const b = portBook(c), top = b.ps[0], sec = b.sectors[0];
+  if (!top) return '<span class="muted">ยังไม่มีหลักทรัพย์ในพอร์ต</span>';
+  const warn = top.w > .3 || sec[1] / b.total > .4;
+  return `<span class="${warn ? 'warn' : 'muted'}">${ic(warn ? 'alert' : 'info', 13)} สัดส่วนสูงสุด: <b class="ink2">${esc(top.sym)} ${fmt(top.w * 100, 1)}%</b> · กลุ่ม<b class="ink2">${esc(sec[0])} ${fmt(sec[1] / b.total * 100, 1)}%</b></span>`;
+}
+function heatView(c) {
+  const b = portBook(c), h = b.heat, t = heatTone(h);
+  return `<div class="heat"><div class="row" style="justify-content:space-between;gap:8px"><span class="xs muted">ความเสี่ยงรวม หากทุกตัวถึงจุดตัดขาดทุน</span><b class="num ${t}">${fmt(h * 100, 1)}%</b></div>
+    <div class="hbar" title="เกณฑ์ไม่เกิน 6% ของพอร์ต"><i class="${t}" style="width:${Math.min(100, h / (HEAT_LIMIT * 1.5) * 100)}%"></i><s></s></div>
+    <div class="xs muted row" style="justify-content:space-between"><span class="num">฿${baht(b.risk)}</span><span>เกณฑ์ไม่เกิน 6%</span></div>${b.noStop.length ? `<div class="xs warn">${ic('alert', 12)} ไม่มีจุดตัดขาดทุน: ${b.noStop.map(p => esc(p.sym)).join(', ')}</div>` : ''}</div>`;
+}
+// result of each reported week, net of deposits and withdrawals
+function weeklyResults(c) {
+  let pv = c.cap, pat = c.joined - 1;
+  return snapsOf(c).map(x => { const flow = netFlowAt(c, x.at) - netFlowAt(c, pat), r = (x.val - pv - flow) / pv; pv = x.val; pat = x.at; return { t: S.days[x.day], r }; });
+}
+function weekStrip(c) {
+  const w = weeklyResults(c);
+  if (!w.length) return '<div class="empty" style="padding:10px">ยังไม่มีรายงาน</div>';
+  const max = Math.max(.01, ...w.map(x => Math.abs(x.r))), bw = 100 / w.length, best = w.reduce((a, b) => b.r > a.r ? b : a), worst = w.reduce((a, b) => b.r < a.r ? b : a), up = w.filter(x => x.r > 0).length;
+  return `<div class="wk"><svg class="wbars" viewBox="0 0 100 40" preserveAspectRatio="none" aria-label="ผลรายสัปดาห์"><line x1="0" x2="100" y1="20" y2="20" stroke="rgba(255,255,255,.14)" stroke-width="1" vector-effect="non-scaling-stroke"/>${w.map((x, i) => { const h = Math.max(.8, Math.abs(x.r) / max * 18); return `<rect x="${(i * bw + bw * .2).toFixed(2)}" width="${(bw * .6).toFixed(2)}" y="${(x.r >= 0 ? 20 - h : 20).toFixed(2)}" height="${h.toFixed(2)}" fill="${x.r >= 0 ? '#3ddc97' : '#ff6b7d'}"><title>สัปดาห์ ${dstr(x.t)} ${pct(x.r)}</title></rect>`; }).join('')}</svg>
+    <div class="wks xs"><span>ดีที่สุด <b class="up num">${pct(best.r)}</b></span><span>แย่ที่สุด <b class="dn num">${pct(worst.r)}</b></span><span>เป็นบวก <b class="num ink2">${up}/${w.length}</b> สัปดาห์</span></div></div>`;
+}
+const histSeg = () => `<div class="seg xsg" role="tablist"><button class="${HIST_TAB === 'rep' ? 'on' : ''}" data-htab="rep">ยอดที่รายงาน</button><button class="${HIST_TAB === 'flow' ? 'on' : ''}" data-htab="flow">ฝาก/ถอน</button></div>`;
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-amode]'), h = e.target.closest('[data-htab]');
+  if (a) { ALLOC_MODE = a.dataset.amode; render(); }
+  if (h) { HIST_TAB = h.dataset.htab; PG.hist = 0; render(); }
+});
+// donut, legend rows and table rows highlight together; the centre shows what you point at
+let allocBox = null;
+document.addEventListener('mouseover', e => {
+  const box = e.target.closest?.('.alloc');
+  if (allocBox && allocBox !== box) { allocBox.classList.remove('hov'); allocBox.querySelectorAll('.hl').forEach(x => x.classList.remove('hl')); const dc = allocBox.querySelector('.dc'); if (dc) dc.innerHTML = dc.dataset.def; }
+  allocBox = box;
+  if (!box) return;
+  const k = e.target.closest('[data-dk]')?.dataset.dk, li = k != null && box.querySelector(`.ali[data-dk="${k}"]`), dc = box.querySelector('.dc');
+  box.classList.toggle('hov', !!li);
+  box.querySelectorAll('[data-dk]').forEach(x => x.classList.toggle('hl', x.dataset.dk === k));
+  dc.innerHTML = li ? `<b class="num">${esc(li.dataset.p)}</b><span>${esc(li.dataset.l)}</span>` : dc.dataset.def;
+});
+// discipline extras, in the spirit of journal "scores" and streaks
+function streak(clId) {
+  const n = now();
+  let k = 0;
+  for (const { o, t } of targetsOf(clId).filter(({ o }) => o.at <= n).sort((a, b) => b.o.at - a.o.at)) {
+    const s = tStatus(o, t, n);
+    if (s === 'pend' || s === 'cancel') continue;
+    const e = t.ex && execOf(t.ex);
+    if (s === 'done' && (!e || allOk(checks(o, t, e)))) k++; else break;
+  }
+  return k;
+}
+const cohortRank = clId => { const me = discipline(clId).score; return 1 + S.clients.filter(c => discipline(c.id).score > me).length; };
+
 function discipline(clId, at) {
   const calc = () => {
     const tnow = at ?? now(), since = tnow - 30 * DAY;
@@ -1027,6 +1170,8 @@ function alerts(at) {
         const diff = (sn.val - c.eq[sn.day]) / c.eq[sn.day];
         if (Math.abs(diff) > .02) out.push({ k: `diff:${c.id}:${sn.id}`, sev: 'mid', aud: 'cs', type: 'diff', cl: c.id, coach: c.coach, at: sn.at, title: `ยอดพอร์ตที่รายงานต่างจากบันทึก ${pct(diff)}`, detail: `รายงาน ${baht(sn.val)} · ตามบันทึก ${baht(c.eq[sn.day])} · อาจมีรายการซื้อขายที่ยังไม่ได้บันทึก` });
       }
+      const bk = portBook(c);
+      if (bk.heat > HEAT_LIMIT) out.push({ k: `heat:${c.id}:${dayKey(tnow)}`, sev: 'mid', aud: 'coach', type: 'heat', cl: c.id, coach: c.coach, at: tnow, title: `ความเสี่ยงรวมของพอร์ต ${fmt(bk.heat * 100, 1)}% เกินเกณฑ์ 6%`, detail: `หากทุกตัวถึงจุดตัดขาดทุน จะขาดทุน ฿${baht(bk.risk)} · ควรลดสัดส่วนหรือปรับจุดตัดขาดทุน` });
       const d = discipline(c.id, at);
       if (d.score < 75) out.push({ k: `score:${c.id}:${dayKey(tnow)}`, sev: d.score < 65 ? 'high' : 'mid', aud: 'cs', type: 'score', cl: c.id, coach: c.coach, at: tnow, title: `คะแนนวินัย ${d.score} ต่ำกว่าเกณฑ์`, detail: `ดำเนินการตามแผน ${Math.round(d.follow * 100)}% · ตรงแผน ${Math.round(d.acc * 100)}% · รายการนอกแผน ${d.off} ครั้ง` });
       const dd = drawdown(c);
@@ -1469,7 +1614,7 @@ function homeView() {
     <div class="hero-c"><div class="hc-h"><span>ยอดพอร์ตรายสัปดาห์ที่รายงาน</span><span class="lgd2"><i></i>ยอดที่รายงาน<i class="e"></i>ประมาณการ</span></div>${chartBox('eq', repSeries(me), { refs: eqRefs() })}</div>
   </section>
   <section class="pnl disc"><div class="ph"><h3>คะแนนวินัย</h3><span class="sub">30 วันล่าสุด</span><button class="lnk sm" style="margin-left:auto" data-act="scoreinfo">เกณฑ์การคำนวณ</button></div>
-    <div class="pb"><div class="dsc">${ring(d.score, narrow() ? 46 : 78, 7)}<div><b class="w ${scoreTone(d.score)}">${scoreWord(d.score)}</b><div class="muted xs">การดำเนินการตามแผน ความตรงตามแผน และความครบถ้วนของหลักฐาน</div>${narrow() ? '<button class="lnk xs" data-act="scoreinfo">ดูรายละเอียด</button>' : ''}</div></div>
+    <div class="pb"><div class="dsc">${ring(d.score, narrow() ? 46 : 78, 7)}<div><b class="w ${scoreTone(d.score)}">${scoreWord(d.score)}</b><div class="xs ink2 dx">${ic('flag', 13)} ตรงแผนติดต่อกัน <b class="gold num">${streak(me.id)}</b> ครั้ง</div><div class="xs muted">อันดับวินัย <b class="ink2 num">${cohortRank(me.id)}</b> จาก ${S.clients.length} รายของรุ่น</div>${narrow() ? '<button class="lnk xs" data-act="scoreinfo">ดูรายละเอียด</button>' : ''}</div></div>
     <div class="mbar">${scoreBars(d)}</div></div></section>
   <section class="pnl todo"><div class="ph"><h3>รายการที่ต้องดำเนินการ</h3><span class="sub">${items.length ? `${items.length} รายการ` : 'ไม่มีรายการค้าง'}</span><div class="pgn" data-pgn="todo"></div></div>
     <div class="pb">${items.length ? `<div class="list" data-pg="todo" style="gap:10px">${items.join('')}</div>` : `<div class="empty">${ic('check', 28)}<b>ไม่มีรายการค้าง</b><div class="xs">แผนใหม่จากโค้ชจะแสดงที่นี่ พร้อมแจ้งเตือนผ่าน LINE</div></div>`}</div></section>
@@ -1609,23 +1754,46 @@ function execDetail(id, inModal) {
 }
 
 /* ---------- portfolio ---------- */
+const asOfTxt = () => STOCK_DATA.asOf ? dstr(Date.parse(STOCK_DATA.asOf + 'T10:00:00Z')) : '';
+// one holding with value, weight, result and the money at risk down to its stop
+function holdLine(p, b) {
+  const pl = (p.last - p.avg) * p.qty, r = (p.last - p.avg) / p.avg, gap = p.sl ? (p.last - p.sl) / p.last : null;
+  return `<div class="ptr"><button class="hl" data-stock="${esc(p.sym)}" title="ข้อมูลหุ้น ${esc(stock(p.sym)?.th || p.sym)}">${slogo(p.sym, 34)}<span style="min-width:0"><b>${esc(p.sym)}</b> ${p.plan ? '' : '<span class="tag pu">นอกแผน</span>'}<span class="xs muted ell" style="display:block">${esc(sname(p.sym) || '—')}</span></span></button>
+    <span class="num c2"><b>${fmt(p.qty)}</b><span class="xs muted" style="display:block">ทุน ${px(p.avg)}</span></span>
+    <span class="num c3"><b>${px(p.last)}</b><span class="xs ${r >= 0 ? 'up' : 'dn'}" style="display:block">${pct(r)}</span></span>
+    <span class="num c4"><b>฿${baht(p.v)}</b><span class="wbar"><i style="width:${Math.min(100, p.w * 100 / .4)}%"></i></span><span class="xs muted">${fmt(p.w * 100, 1)}% ของพอร์ต</span></span>
+    <span class="num c5"><b class="${pl >= 0 ? 'up' : 'dn'}">${signed(pl)}</b><span class="xs muted" style="display:block">ยังไม่รับรู้</span></span>
+    <span class="num c6" title="${gap == null ? 'ไม่มีจุดตัดขาดทุน' : `SL ${px(p.sl)} · ห่าง ${fmt(gap * 100, 1)}%`}">${gap == null ? '<span class="tag warn">ไม่มี SL</span>' : `<b>฿${baht(p.risk)}</b><span class="xs muted" style="display:block">${fmt(p.risk / b.total * 100, 2)}% · SL ${px(p.sl)}</span>`}</span></div>`;
+}
+function closedLine(p) {
+  const r = p.realized / p.bought;
+  return `<div class="ctr"><button class="hl" data-stock="${esc(p.sym)}" title="ข้อมูลหุ้น ${esc(stock(p.sym)?.th || p.sym)}">${slogo(p.sym, 30)}<span style="min-width:0"><b>${esc(p.sym)}</b> ${p.plan ? '' : '<span class="tag pu">นอกแผน</span>'}<span class="xs muted" style="display:block">${dstr(p.first)} – ${dstr(p.lastAt)} · ${Math.max(1, Math.round((p.lastAt - p.first) / DAY))} วัน</span></span></button>
+    <span class="num c4"><span class="xs muted">เงินลงทุน</span><b style="display:block">฿${baht(p.bought)}</b></span>
+    <span class="num"><b class="${p.realized >= 0 ? 'up' : 'dn'}">${signed(p.realized)}</b><span class="xs ${r >= 0 ? 'up' : 'dn'}" style="display:block">${pct(r)}</span></span></div>`;
+}
 function portView() {
-  const me = ME(), v = eqNow(me), pv = posValue(me.id), ps = openPos(me.id), pendF = me.flows.filter(f => f.pend).length, x = lastSnap(me), rv = repVal(me);
+  const me = ME(), pendF = me.flows.filter(f => f.pend).length, x = lastSnap(me), rv = repVal(me), b = portBook(me), ht = heatTone(b.heat);
   const snaps = S.snaps.filter(s => s.cl === me.id).sort((a, b) => b.at - a.at);
+  const closed = positions(me.id).filter(p => p.qty === 0 && p.bought > 0).sort((a, b) => b.lastAt - a.lastAt), realized = closed.reduce((s, p) => s + p.realized, 0);
   return `<div class="vh"><h1>พอร์ต</h1><p>${esc(me.broker)} · บัญชี xxxx-${esc(me.acct)} · ทุนเริ่มต้น ฿${baht(me.cap)}</p><span class="sp"></span><button class="btn ghost sm" data-act="flow">${ic('plus', 15)} แจ้งฝาก/ถอน</button><button class="btn sm" data-act="snap">${ic('wallet', 15)} รายงานยอดพอร์ต</button></div>
   <div class="kstrip">
     <div class="kpi"><div class="k">ยอดพอร์ตที่รายงานล่าสุด</div><div class="v num gold">฿${baht(rv)}</div><div class="s">${x ? dstr(S.days[x.day]) + ' · ' : ''}${fmt(rv / GOAL * 100, 1)}% ของเป้าหมาย</div></div>
-    <div class="kpi"><div class="k">ผลตอบแทนจากเงินทุน</div><div class="v num ${repRet(me) >= 0 ? 'up' : 'dn'}">${pct(repRet(me))}</div><div class="s">ตามยอดที่รายงาน · ไม่นับเงินฝาก/ถอน</div></div>
-    <div class="kpi opt"><div class="k">มูลค่าหุ้นตามบันทึก</div><div class="v num">฿${baht(pv)}</div><div class="s">ราคาปิดล่าสุด · ${Math.round(pv / v * 100)}% ของพอร์ต</div></div>
-    <div class="kpi opt"><div class="k">เงินสดคงเหลือ (ประมาณการ)</div><div class="v num">฿${baht(Math.max(0, v - pv))}</div><div class="s">จากรายการที่บันทึก</div></div>
+    <div class="kpi opt2"><div class="k">ผลตอบแทนจากเงินทุน</div><div class="v num ${repRet(me) >= 0 ? 'up' : 'dn'}">${pct(repRet(me))}</div><div class="s">ตามยอดที่รายงาน · ไม่นับเงินฝาก/ถอน</div></div>
+    <div class="kpi"><div class="k">ความเสี่ยงรวมของพอร์ต</div><div class="v num ${ht}">${fmt(b.heat * 100, 1)}%</div><div class="hbar" style="margin:5px 0 4px;height:5px"><i class="${ht}" style="width:${Math.min(100, b.heat / (HEAT_LIMIT * 1.5) * 100)}%"></i><s></s></div><div class="s">฿${baht(b.risk)} หากถึงจุดตัดขาดทุนทุกตัว · เกณฑ์ ≤ 6%</div></div>
+    <div class="kpi opt"><div class="k">มูลค่าประมาณการ</div><div class="v num">฿${baht(b.total)}</div><div class="s">หุ้น ฿${kb(b.inv)} · เงินสด ฿${kb(b.cash)}</div></div>
     <div class="kpi opt"><div class="k">ฝาก/ถอนสุทธิ</div><div class="v num">${signed(netFlow(me))}</div><div class="s">${pendF ? `รอ CS ตรวจ ${pendF} รายการ` : `${me.flows.length} รายการ`}</div></div>
   </div>
-  <section class="pnl" data-pt="หุ้นที่ถือ"><div class="ph"><h3>หลักทรัพย์ที่ถือครอง</h3><span class="sub">${ps.length} ตัว</span><div class="pgn" data-pgn="ph"></div></div>
-    <div class="pb">${ps.length ? `<div class="list tight" data-pg="ph">${ps.map(holdRow).join('')}</div>` : '<div class="empty">ยังไม่มีหุ้น</div>'}</div></section>
-  <section class="pnl" data-pt="ยอดที่รายงาน"><div class="ph"><h3>ยอดพอร์ตที่รายงาน</h3><span class="sub">เทียบกับบันทึก</span><div class="pgn" data-pgn="snap"></div></div>
-    <div class="pb">${snaps.length ? `<div class="list tight" data-pg="snap">${snaps.map(s => { const c = me.eq[s.day], df = (s.val - c) / c, fri = new Date(S.days[s.day]).getUTCDay() === 5; return `<div class="srow"><span>${wd(S.days[s.day])} ${dstr(S.days[s.day])}${fri ? '' : ' <span class="tag line">ส่งล่วงหน้า</span>'}<span class="xs muted num" style="display:block">รายงาน ${baht(s.val)} · ตามบันทึก ${baht(c)}</span></span><span class="tag ${Math.abs(df) <= .02 ? 'ok' : 'warn'} num">${pct(df, 2)}</span></div>`; }).join('')}</div>` : '<div class="empty">ยังไม่มีรายงาน</div>'}</div></section>
-  <section class="pnl" data-pt="ฝาก/ถอน"><div class="ph"><h3>ฝาก / ถอน</h3><span class="sub">ไม่นับเป็นกำไรขาดทุน</span><div class="pgn" data-pgn="flow"></div></div>
-    <div class="pb">${me.flows.length ? `<div class="list tight" data-pg="flow">${me.flows.slice().reverse().map(f => `<div class="frow"><span><span class="tag ${f.amt > 0 ? 'ok' : 'dn'}">${f.amt > 0 ? 'ฝาก' : 'ถอน'}</span> <b class="num">${baht(Math.abs(f.amt))}</b><span class="xs muted" style="display:block">${dt(f.at)}</span></span>${f.pend ? '<span class="tag blue">รอ CS ตรวจ</span>' : f.rej ? '<span class="tag dn">ไม่อนุมัติ</span>' : '<span class="tag ok">อนุมัติแล้ว</span>'}</div>`).join('')}</div>` : '<div class="empty">ยังไม่มีรายการ<div class="xs">โปรดแจ้งทุกครั้งที่โอนเงินเข้าหรือออกจากพอร์ต</div></div>'}</div></section>`;
+  <section class="pnl phold" data-pt="หลักทรัพย์"><div class="ph"><h3>หลักทรัพย์ที่ถือครอง</h3><span class="sub">${b.ps.length} ตัว · ราคาปิด ณ ${asOfTxt()}</span><div class="pgn" data-pgn="ph"></div></div>
+    ${b.ps.length ? `<div class="pth"><span>หลักทรัพย์</span><span class="c2">จำนวน</span><span class="c3">ราคาล่าสุด</span><span class="c4">มูลค่า · สัดส่วน</span><span class="c5">กำไร/ขาดทุน</span><span class="c6">ความเสี่ยงถึง SL</span></div>` : ''}
+    <div class="pb">${b.ps.length ? `<div class="list tight" data-pg="ph">${b.ps.map(p => holdLine(p, b)).join('')}</div>` : '<div class="empty">ยังไม่มีหลักทรัพย์ในพอร์ต</div>'}</div></section>
+  <section class="pnl pclosed" data-pt="ปิดสถานะแล้ว"><div class="ph"><h3>ปิดสถานะแล้ว</h3><span class="sub">${closed.length ? `กำไร ${closed.filter(p => p.realized > 0).length} จาก ${closed.length} แผน · รับรู้แล้ว <b class="${realized >= 0 ? 'up' : 'dn'} num">${signed(realized)}</b>` : 'ยังไม่มี'}</span><div class="pgn" data-pgn="pcl"></div></div>
+    <div class="pb">${closed.length ? `<div class="list tight" data-pg="pcl">${closed.map(closedLine).join('')}</div>` : '<div class="empty">ยังไม่มีแผนที่ปิดสถานะ</div>'}</div></section>
+  <section class="pnl palloc" data-pt="สัดส่วน"><div class="ph"><h3>สัดส่วนการลงทุน</h3><span class="sp"></span>${allocSeg()}</div>
+    <div class="pb" style="display:flex;align-items:center">${allocView(me, narrow() ? 128 : 150)}</div>
+    <div class="pfoot">${concLine(me)}</div></section>
+  <section class="pnl phist" data-pt="ประวัติ"><div class="ph"><h3>ประวัติ</h3><span class="sp"></span>${histSeg()}<div class="pgn" data-pgn="hist" style="margin-left:6px"></div></div>
+    ${HIST_TAB === 'rep' ? `<div class="pb" style="display:flex;flex-direction:column;gap:8px">${weekStrip(me)}${snaps.length ? `<div class="list tight" data-pg="hist">${snaps.map(s => { const c = me.eq[s.day], df = (s.val - c) / c, fri = new Date(S.days[s.day]).getUTCDay() === 5; return `<div class="srow"><span>${wd(S.days[s.day])} ${dstr(S.days[s.day])}${fri ? '' : ' <span class="tag line">ส่งล่วงหน้า</span>'}<span class="xs muted num" style="display:block">รายงาน ${baht(s.val)} · ตามบันทึก ${baht(c)}</span></span><span class="tag ${Math.abs(df) <= .02 ? 'ok' : 'warn'} num" title="ส่วนต่างระหว่างยอดที่รายงานกับบันทึกการซื้อขาย">ต่างจากบันทึก ${pct(df, 2)}</span></div>`; }).join('')}</div>` : ''}</div>` : `
+    <div class="pb">${me.flows.length ? `<div class="list tight" data-pg="hist">${me.flows.slice().reverse().map(f => `<div class="frow"><span><span class="tag ${f.amt > 0 ? 'ok' : 'dn'}">${f.amt > 0 ? 'ฝาก' : 'ถอน'}</span> <b class="num">${baht(Math.abs(f.amt))}</b><span class="xs muted" style="display:block">${dt(f.at)}</span></span>${f.pend ? '<span class="tag blue">รอ CS ตรวจ</span>' : f.rej ? '<span class="tag dn">ไม่อนุมัติ</span>' : '<span class="tag ok">อนุมัติแล้ว</span>'}</div>`).join('')}</div>` : '<div class="empty">ยังไม่มีรายการ<div class="xs">โปรดแจ้งทุกครั้งที่โอนเงินเข้าหรือออกจากพอร์ต</div></div>'}</div>`}</section>`;
 }
 
 /* ---------- forms ---------- */

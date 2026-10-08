@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-RIdkgW4bLOkGpGI/5y4iNHlH93eCwA53hEZtE0DwJK0=' 'sha256-7YP5zwOfBKcHZngau8IeM+f0hBMplK+F5SxMDzzAxdQ='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-JnaEj661ZFpXVudRpdY92kLxttL+iit66dgMQClFt64=' 'sha256-8chxBH/13dKQJcAMVoDbyJSTjT05NkWZ3qd2SyTsvHU='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>หลังบ้าน · ปั้นพอร์ต 1 ล้าน (ต้นแบบ)</title>
 <style>
 /* Port 1M look: midnight navy + champagne gold, glass panels over a soft aurora.
@@ -170,6 +170,42 @@ button.sy:hover .slg{transform:scale(1.08)}
 .slb{flex:none;display:flex;border-radius:12px}
 .slb:hover .slg{transform:scale(1.08)}
 .jm{display:flex;gap:10px;align-items:center;min-width:0}
+/* allocation donut + legend, portfolio heat, weekly results */
+.alloc{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;min-height:0}
+.donut{position:relative;flex:none}
+.donut svg{display:block;transform:rotate(-90deg)}
+.donut circle[data-dk]{transition:opacity .15s,stroke-width .15s}
+.alloc.hov .donut circle[data-dk]:not(.hl){opacity:.28}
+.dc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.2;padding:0 18%}
+.dc b{font-size:22px;letter-spacing:-.01em}
+.dc span{font-size:11.5px;color:var(--mut);margin-top:2px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.alg{display:flex;flex-direction:column;gap:2px;min-width:0}
+.ali{display:grid;grid-template-columns:10px minmax(0,1fr) auto;grid-template-rows:auto 3px;gap:2px 8px;align-items:center;padding:4px 6px;border-radius:9px;font-size:12.5px;cursor:default}
+.ali>i{width:10px;height:10px;border-radius:3px}
+.ali .ab{grid-column:2/-1;height:3px;border-radius:2px;background:rgba(255,255,255,.05);overflow:hidden}
+.ali .ab i{display:block;height:100%;border-radius:inherit}
+.ali.hl{background:rgba(255,255,255,.05)}
+.seg.xsg{padding:2px}.seg.xsg button{padding:3px 10px;font-size:12px}
+.heat{display:flex;flex-direction:column;gap:5px}
+.hbar{position:relative;height:8px;border-radius:999px;background:rgba(255,255,255,.07)}
+.hbar i{position:absolute;inset:0 auto 0 0;border-radius:inherit}
+.hbar i.up{background:linear-gradient(90deg,#1fa970,var(--up))}.hbar i.warn{background:linear-gradient(90deg,#c98a1c,var(--warn))}.hbar i.dn{background:linear-gradient(90deg,#c9374b,var(--dn))}
+.hbar s{position:absolute;left:66.6%;top:-3px;bottom:-3px;width:2px;border-radius:2px;background:rgba(255,255,255,.55)}
+.wk{display:flex;flex-direction:column;gap:6px;flex:none}
+.wbars{display:block;width:100%;height:56px}
+.wks{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--mut)}
+/* the donut and the weekly strip size themselves to the room the panel actually has */
+.palloc .pb,.phist .pb,.pb:has(>.wk){container-type:size}
+.palloc .donut{width:clamp(44px,calc(100cqh - 6px),150px)!important;height:clamp(44px,calc(100cqh - 6px),150px)!important}
+.donut svg{width:100%;height:100%}
+.alg:has(>.ali:nth-child(6)) .ali{padding:2px 6px;grid-template-rows:auto}.alg:has(>.ali:nth-child(6)) .ab{display:none}
+@container (max-height:150px){.ali{padding:1px 6px;grid-template-rows:auto}.ali .ab{display:none}.ali:nth-child(n+5):not(:last-child){display:none}.dc b{font-size:17px}.dc span{font-size:10.5px}}
+@container (max-height:118px){.ali{padding:0 4px;line-height:1.3}.ali:nth-child(n+3):not(:last-child){display:none}.dc span{display:none}}
+@container (max-height:72px){.ali:nth-child(n+2):not(:last-child){display:none}}
+@container (max-height:50px){.alg{display:none}.alloc{grid-template-columns:auto}}
+@container (max-height:230px){.wbars{height:34px}}
+@container (max-height:160px){.wk{display:none}}
+.pfoot{flex:none;padding:10px 18px 14px;border-top:1px solid var(--line);font-size:12.5px;display:flex;flex-direction:column;gap:10px}
 .sline{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.035);border:1px solid var(--line)}
 .sline .r{display:flex;flex-direction:column;align-items:flex-end;line-height:1.35}
 .stm{padding:20px 22px 18px;display:flex;flex-direction:column;gap:14px}
@@ -432,7 +468,8 @@ button.sy:hover .slg{transform:scale(1.08)}
 .chd h2{font-size:20px}
 .sub{display:grid;gap:14px;min-height:0;min-width:0}
 .c-ov{grid-template-columns:minmax(0,1.45fr) minmax(0,1.05fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
-.c-ord,.c-port{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+.c-ord{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+.c-port{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,.85fr)}
 .c-notes{grid-template-columns:minmax(0,1fr)}
 .stk{display:flex;flex-direction:column;gap:14px;min-height:0}
 .k6{grid-template-columns:repeat(6,minmax(0,1fr))}
@@ -441,7 +478,8 @@ button.sy:hover .slg{transform:scale(1.08)}
 .nrow .h{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--mut);margin-bottom:2px}
 .hr2{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;padding:8px 2px;border-bottom:1px solid var(--line);font-size:13.5px;align-items:center}
 .hr2.wl{grid-template-columns:auto minmax(0,1fr) auto;column-gap:11px}
-.hr2.wl>.slg{grid-row:span 2}
+.hr2.wl>.slg{grid-row:span 3;align-self:start}
+.hr2.wl>:nth-child(4),.hr2.wl>:nth-child(5){grid-column:2/-1;justify-self:start}
 
 /* CS */
 .v-overview{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
@@ -483,6 +521,7 @@ button.sy:hover .slg{transform:scale(1.08)}
 #lastpx{display:flex;align-items:center;gap:6px;min-height:20px}
 
 @media (max-width:1280px){.k6 .kpi .v{font-size:17px}}
+@media (max-width:900px) and (max-height:720px){.palloc .pb{padding-bottom:6px}.palloc .pfoot{padding:8px 14px 10px;gap:6px}.palloc .pfoot>span,.palloc .heat>.row.xs{display:none}}
 @media (max-height:700px){.qchips{display:none}.vd-info{gap:8px}.cmpt td,.cmpt th{padding:4px 8px}.vd{grid-template-columns:190px minmax(0,1fr)}}
 @media (max-width:1020px){.v-clients{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:1180px){.tbl .opt{display:none}}
@@ -955,6 +994,101 @@ const openPos = clId => positions(clId).filter(p => p.qty > 0);
 const posValue = clId => openPos(clId).reduce((s, p) => s + p.qty * p.last, 0);
 const heldSym = (clId, sym) => openPos(clId).filter(p => p.sym === sym).reduce((s, p) => s + p.qty, 0);
 
+/* ---------- portfolio analytics (logged trades priced at the latest close) ----------
+   Ideas taken from good portfolio trackers and trading journals: allocation donut + bars,
+   concentration, "portfolio heat" (Elder's 6% rule) and a weekly results strip. */
+const MIX_COLORS = ['#ebc062', '#7ea6ff', '#3ddc97', '#ff8f7a', '#b69cff', '#4fd1c5', '#f59e0b', '#f472b6', '#93a4c4'];
+const CASH_COLOR = '#2d3d63';
+const HEAT_LIMIT = .06;   // total risk if every stop is hit, as a share of the port
+function portBook(c) {
+  return memo('book:' + c.id, () => {
+    const total = eqNow(c);
+    const ps = openPos(c.id).map(p => {
+      const i = stock(p.sym), v = p.qty * p.last;
+      return { ...p, v, w: v / total, sec: i?.sectorTh || 'ไม่ระบุกลุ่ม', name: i?.short || '', risk: p.sl ? Math.max(0, (p.last - p.sl) * p.qty) : null };
+    }).sort((a, b) => b.v - a.v);
+    const inv = ps.reduce((s, p) => s + p.v, 0), risk = ps.reduce((s, p) => s + (p.risk || 0), 0), bySec = {};
+    ps.forEach(p => { bySec[p.sec] = (bySec[p.sec] || 0) + p.v; });
+    return { total, ps, inv, cash: Math.max(0, total - inv), risk, heat: risk / total, noStop: ps.filter(p => p.risk == null), sectors: Object.entries(bySec).sort((a, b) => b[1] - a[1]) };
+  });
+}
+const heatTone = h => h > HEAT_LIMIT ? 'dn' : h > HEAT_LIMIT * .66 ? 'warn' : 'up';
+let ALLOC_MODE = 'sec', HIST_TAB = 'rep';
+function allocParts(c) {
+  const b = portBook(c), items = ALLOC_MODE === 'sym' ? b.ps.map(p => [p.sym, p.v, p.name]) : b.sectors.map(([s, v]) => [s, v, '']);
+  const parts = items.slice(0, 7).map(([l, v, sub], i) => ({ l, sub, f: v / b.total, c: MIX_COLORS[i] }));
+  if (items.length > 7) parts.push({ l: 'อื่น ๆ', sub: '', f: items.slice(7).reduce((s, x) => s + x[1], 0) / b.total, c: MIX_COLORS[8] });
+  parts.push({ l: 'เงินสด (ประมาณการ)', sub: '', f: b.cash / b.total, c: CASH_COLOR });
+  return parts;
+}
+function donut(parts, size, center) {
+  const sw = Math.round(size * .14), r = (size - sw) / 2 - 3, C = 2 * Math.PI * r, cx = size / 2, gap = parts.filter(p => p.f > .002).length > 1 ? 2.5 : 0;
+  let off = 0;
+  const segs = parts.map((p, i) => { const len = p.f * C, s = len > .5 ? `<circle data-dk="${i}" cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="${p.c}" stroke-width="${sw}" stroke-dasharray="${Math.max(.1, len - gap).toFixed(1)} ${C.toFixed(1)}" stroke-dashoffset="${(-off).toFixed(1)}"/>` : ''; off += len; return s; }).join('');
+  return `<div class="donut" style="width:${size}px;height:${size}px"><svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" aria-hidden="true"><circle cx="${cx}" cy="${cx}" r="${r.toFixed(1)}" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="${sw}"/>${segs}</svg><div class="dc" data-def="${esc(center)}">${center}</div></div>`;
+}
+function allocView(c, size = 150) {
+  const b = portBook(c), parts = allocParts(c);
+  const center = `<b class="num">${fmt(b.inv / b.total * 100, 0)}%</b><span>ลงทุนในหุ้น</span>`;
+  return `<div class="alloc">${donut(parts, size, center)}<div class="alg">${parts.map((p, i) => `<div class="ali" data-dk="${i}" data-l="${esc(p.l)}" data-p="${fmt(p.f * 100, 1)}%"><i style="background:${p.c}"></i><span class="ell">${esc(p.l)}${p.sub ? ` <span class="muted">${esc(p.sub)}</span>` : ''}</span><b class="num">${fmt(p.f * 100, 1)}%</b><span class="ab"><i style="width:${Math.min(100, p.f * 100)}%;background:${p.c}"></i></span></div>`).join('')}</div></div>`;
+}
+const allocSeg = () => `<div class="seg xsg" role="tablist"><button class="${ALLOC_MODE === 'sec' ? 'on' : ''}" data-amode="sec">ตามกลุ่ม</button><button class="${ALLOC_MODE === 'sym' ? 'on' : ''}" data-amode="sym">รายตัว</button></div>`;
+function concLine(c) {
+  const b = portBook(c), top = b.ps[0], sec = b.sectors[0];
+  if (!top) return '<span class="muted">ยังไม่มีหลักทรัพย์ในพอร์ต</span>';
+  const warn = top.w > .3 || sec[1] / b.total > .4;
+  return `<span class="${warn ? 'warn' : 'muted'}">${ic(warn ? 'alert' : 'info', 13)} สัดส่วนสูงสุด: <b class="ink2">${esc(top.sym)} ${fmt(top.w * 100, 1)}%</b> · กลุ่ม<b class="ink2">${esc(sec[0])} ${fmt(sec[1] / b.total * 100, 1)}%</b></span>`;
+}
+function heatView(c) {
+  const b = portBook(c), h = b.heat, t = heatTone(h);
+  return `<div class="heat"><div class="row" style="justify-content:space-between;gap:8px"><span class="xs muted">ความเสี่ยงรวม หากทุกตัวถึงจุดตัดขาดทุน</span><b class="num ${t}">${fmt(h * 100, 1)}%</b></div>
+    <div class="hbar" title="เกณฑ์ไม่เกิน 6% ของพอร์ต"><i class="${t}" style="width:${Math.min(100, h / (HEAT_LIMIT * 1.5) * 100)}%"></i><s></s></div>
+    <div class="xs muted row" style="justify-content:space-between"><span class="num">฿${baht(b.risk)}</span><span>เกณฑ์ไม่เกิน 6%</span></div>${b.noStop.length ? `<div class="xs warn">${ic('alert', 12)} ไม่มีจุดตัดขาดทุน: ${b.noStop.map(p => esc(p.sym)).join(', ')}</div>` : ''}</div>`;
+}
+// result of each reported week, net of deposits and withdrawals
+function weeklyResults(c) {
+  let pv = c.cap, pat = c.joined - 1;
+  return snapsOf(c).map(x => { const flow = netFlowAt(c, x.at) - netFlowAt(c, pat), r = (x.val - pv - flow) / pv; pv = x.val; pat = x.at; return { t: S.days[x.day], r }; });
+}
+function weekStrip(c) {
+  const w = weeklyResults(c);
+  if (!w.length) return '<div class="empty" style="padding:10px">ยังไม่มีรายงาน</div>';
+  const max = Math.max(.01, ...w.map(x => Math.abs(x.r))), bw = 100 / w.length, best = w.reduce((a, b) => b.r > a.r ? b : a), worst = w.reduce((a, b) => b.r < a.r ? b : a), up = w.filter(x => x.r > 0).length;
+  return `<div class="wk"><svg class="wbars" viewBox="0 0 100 40" preserveAspectRatio="none" aria-label="ผลรายสัปดาห์"><line x1="0" x2="100" y1="20" y2="20" stroke="rgba(255,255,255,.14)" stroke-width="1" vector-effect="non-scaling-stroke"/>${w.map((x, i) => { const h = Math.max(.8, Math.abs(x.r) / max * 18); return `<rect x="${(i * bw + bw * .2).toFixed(2)}" width="${(bw * .6).toFixed(2)}" y="${(x.r >= 0 ? 20 - h : 20).toFixed(2)}" height="${h.toFixed(2)}" fill="${x.r >= 0 ? '#3ddc97' : '#ff6b7d'}"><title>สัปดาห์ ${dstr(x.t)} ${pct(x.r)}</title></rect>`; }).join('')}</svg>
+    <div class="wks xs"><span>ดีที่สุด <b class="up num">${pct(best.r)}</b></span><span>แย่ที่สุด <b class="dn num">${pct(worst.r)}</b></span><span>เป็นบวก <b class="num ink2">${up}/${w.length}</b> สัปดาห์</span></div></div>`;
+}
+const histSeg = () => `<div class="seg xsg" role="tablist"><button class="${HIST_TAB === 'rep' ? 'on' : ''}" data-htab="rep">ยอดที่รายงาน</button><button class="${HIST_TAB === 'flow' ? 'on' : ''}" data-htab="flow">ฝาก/ถอน</button></div>`;
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-amode]'), h = e.target.closest('[data-htab]');
+  if (a) { ALLOC_MODE = a.dataset.amode; render(); }
+  if (h) { HIST_TAB = h.dataset.htab; PG.hist = 0; render(); }
+});
+// donut, legend rows and table rows highlight together; the centre shows what you point at
+let allocBox = null;
+document.addEventListener('mouseover', e => {
+  const box = e.target.closest?.('.alloc');
+  if (allocBox && allocBox !== box) { allocBox.classList.remove('hov'); allocBox.querySelectorAll('.hl').forEach(x => x.classList.remove('hl')); const dc = allocBox.querySelector('.dc'); if (dc) dc.innerHTML = dc.dataset.def; }
+  allocBox = box;
+  if (!box) return;
+  const k = e.target.closest('[data-dk]')?.dataset.dk, li = k != null && box.querySelector(`.ali[data-dk="${k}"]`), dc = box.querySelector('.dc');
+  box.classList.toggle('hov', !!li);
+  box.querySelectorAll('[data-dk]').forEach(x => x.classList.toggle('hl', x.dataset.dk === k));
+  dc.innerHTML = li ? `<b class="num">${esc(li.dataset.p)}</b><span>${esc(li.dataset.l)}</span>` : dc.dataset.def;
+});
+// discipline extras, in the spirit of journal "scores" and streaks
+function streak(clId) {
+  const n = now();
+  let k = 0;
+  for (const { o, t } of targetsOf(clId).filter(({ o }) => o.at <= n).sort((a, b) => b.o.at - a.o.at)) {
+    const s = tStatus(o, t, n);
+    if (s === 'pend' || s === 'cancel') continue;
+    const e = t.ex && execOf(t.ex);
+    if (s === 'done' && (!e || allOk(checks(o, t, e)))) k++; else break;
+  }
+  return k;
+}
+const cohortRank = clId => { const me = discipline(clId).score; return 1 + S.clients.filter(c => discipline(c.id).score > me).length; };
+
 function discipline(clId, at) {
   const calc = () => {
     const tnow = at ?? now(), since = tnow - 30 * DAY;
@@ -1032,6 +1166,8 @@ function alerts(at) {
         const diff = (sn.val - c.eq[sn.day]) / c.eq[sn.day];
         if (Math.abs(diff) > .02) out.push({ k: `diff:${c.id}:${sn.id}`, sev: 'mid', aud: 'cs', type: 'diff', cl: c.id, coach: c.coach, at: sn.at, title: `ยอดพอร์ตที่รายงานต่างจากบันทึก ${pct(diff)}`, detail: `รายงาน ${baht(sn.val)} · ตามบันทึก ${baht(c.eq[sn.day])} · อาจมีรายการซื้อขายที่ยังไม่ได้บันทึก` });
       }
+      const bk = portBook(c);
+      if (bk.heat > HEAT_LIMIT) out.push({ k: `heat:${c.id}:${dayKey(tnow)}`, sev: 'mid', aud: 'coach', type: 'heat', cl: c.id, coach: c.coach, at: tnow, title: `ความเสี่ยงรวมของพอร์ต ${fmt(bk.heat * 100, 1)}% เกินเกณฑ์ 6%`, detail: `หากทุกตัวถึงจุดตัดขาดทุน จะขาดทุน ฿${baht(bk.risk)} · ควรลดสัดส่วนหรือปรับจุดตัดขาดทุน` });
       const d = discipline(c.id, at);
       if (d.score < 75) out.push({ k: `score:${c.id}:${dayKey(tnow)}`, sev: d.score < 65 ? 'high' : 'mid', aud: 'cs', type: 'score', cl: c.id, coach: c.coach, at: tnow, title: `คะแนนวินัย ${d.score} ต่ำกว่าเกณฑ์`, detail: `ดำเนินการตามแผน ${Math.round(d.follow * 100)}% · ตรงแผน ${Math.round(d.acc * 100)}% · รายการนอกแผน ${d.off} ครั้ง` });
       const dd = drawdown(c);
@@ -1344,7 +1480,7 @@ const NAV = {
   cs: [['overview', 'ภาพรวม', 'grid'], ['tasks', 'งาน CS', 'phone'], ['clients', 'ลูกค้าทั้งหมด', 'users'], ['team', 'ทีมงานและสิทธิ์', 'shield']],
 };
 const TITLES = { desk: 'ภาพรวม', orders: 'การดำเนินการตามแผน', verify: 'ตรวจหลักฐาน', clients: 'ลูกค้า', overview: 'ภาพรวมทั้งคอร์ส', tasks: 'งาน CS', team: 'ทีมงานและสิทธิ์' };
-const AL_IC = { pend: 'clock', hold: 'alert', sl: 'alert', off: 'flag', idle: 'user', nosnap: 'wallet', diff: 'wallet', score: 'target', dd: 'chart', flow: 'wallet' };
+const AL_IC = { heat: 'shield', pend: 'clock', hold: 'alert', sl: 'alert', off: 'flag', idle: 'user', nosnap: 'wallet', diff: 'wallet', score: 'target', dd: 'chart', flow: 'wallet' };
 
 const verifyQ = () => { const ids = new Set(mine().map(c => c.id)); return S.execs.filter(e => ids.has(e.cl) && e.ver === 'pend').sort((a, b) => a.at - b.at); };
 // CS also sees coach-side "still holding" cases once they are 2+ days old
@@ -1424,13 +1560,13 @@ function loginView() {
 /* ---------- shared bits ---------- */
 const avatar = (c, cls = '') => `<span class="av ${cls}" style="background:${hue(c.id)}">${esc(initial(c.name))}</span>`;
 function hue(id) { const h = ((parseInt(String(id).replace(/\D/g, ''), 10) || 0) * 47) % 360; return `linear-gradient(135deg,hsl(${h} 45% 38%),hsl(${h} 50% 24%))`; }
-const pnl = ({ t, sub = '', key, rows, cls = '', pt, empty = 'ไม่มีรายการ', head = '', gap }) => `<section class="pnl" ${pt ? `data-pt="${esc(pt)}"` : ''}><div class="ph"><h3>${t}</h3><span class="sub">${sub}</span>${head}<div class="pgn" data-pgn="${key}"></div></div><div class="pb">${rows ? `<div class="list ${cls}" data-pg="${key}" ${gap != null ? `style="gap:${gap}px"` : ''}>${rows}</div>` : `<div class="empty">${empty}</div>`}</div></section>`;
+const pnl = ({ t, sub = '', key, rows, cls = '', pt, empty = 'ไม่มีรายการ', head = '', gap, pre = '' }) => `<section class="pnl" ${pt ? `data-pt="${esc(pt)}"` : ''}><div class="ph"><h3>${t}</h3><span class="sub">${sub}</span>${head}<div class="pgn" data-pgn="${key}"></div></div><div class="pb" ${pre ? 'style="display:flex;flex-direction:column;gap:8px"' : ''}>${pre}${rows ? `<div class="list ${cls}" data-pg="${key}" ${gap != null ? `style="gap:${gap}px"` : ''}>${rows}</div>` : `<div class="empty">${empty}</div>`}</div></section>`;
 const kpi = (icn, k, v, s, cls = '') => `<div class="kpi"><div class="k">${ic(icn, 14)} ${k}</div><div class="v num ${cls}">${v}</div><div class="s">${s}</div></div>`;
 function alertRow(a, withCoach) {
   const c = client(a.cl), acts = [];
   if (a.type === 'pend') acts.push(`<button class="btn soft sm" data-act="nudge" data-c="${esc(c.id)}">${ic('chat', 14)} แจ้งเตือน</button>`);
   if (a.type === 'off') acts.push(`<button class="btn soft sm" data-act="toverify" data-id="${esc(a.ex)}">ตรวจสอบ</button>`);
-  if (a.type === 'hold' || a.type === 'sl' || a.type === 'dd') acts.push(`<button class="btn soft sm" data-act="call" data-k="${esc(a.k)}">${ic('phone', 14)} บันทึกการติดต่อ</button>`);
+  if (a.type === 'hold' || a.type === 'sl' || a.type === 'dd') acts.push(`<button class="btn soft sm" data-act="call" data-k="${esc(a.k)}" title="บันทึกการติดต่อ">${ic('phone', 14)} ติดต่อ</button>`);
   acts.push(`<button class="ibtn" data-act="open" data-id="${esc(c.id)}" title="ดูลูกค้า" aria-label="ดูลูกค้า" style="width:30px;height:30px">${ic('chev', 16)}</button>`);
   return `<div class="al ${a.sev}"><span class="sv"></span>${a.sym ? slogo(a.sym, 34) : `<span class="aic">${ic(AL_IC[a.type] || 'alert', 16)}</span>`}
     <div style="min-width:0"><div class="ti ell">${esc(a.title)}</div><div class="de ell" title="${esc(a.detail)}">${esc(cname(c))}${withCoach ? ` · ${coach(c.coach).name}` : ''} · ${esc(a.detail)}</div></div>
@@ -1445,7 +1581,7 @@ function csGroups(list) {
 function groupRow(g, compact) {
   const c = client(g.cl), flow = g.as.find(a => a.type === 'flow'), shown = compact ? g.as.slice(0, 2) : g.as;
   const acts = compact ? `<button class="ibtn" data-act="open" data-id="${esc(c.id)}" title="ดูลูกค้า" aria-label="ดูลูกค้า" style="width:30px;height:30px">${ic('chev', 16)}</button>`
-    : `${flow ? `<button class="btn sm" data-act="flowrev" data-c="${esc(c.id)}" data-f="${esc(flow.flow)}">${ic('wallet', 14)} ตรวจสลิป</button>` : ''}<button class="btn soft sm" data-act="call" data-cl="${esc(c.id)}">${ic('phone', 14)} บันทึกการติดต่อ</button><button class="btn ghost sm" data-act="forward" data-cl="${esc(c.id)}">ส่งต่อโค้ช</button><button class="ibtn" data-act="open" data-id="${esc(c.id)}" title="ดูลูกค้า" aria-label="ดูลูกค้า" style="width:30px;height:30px">${ic('chev', 16)}</button>`;
+    : `${flow ? `<button class="btn sm" data-act="flowrev" data-c="${esc(c.id)}" data-f="${esc(flow.flow)}">${ic('wallet', 14)} ตรวจหลักฐานการโอน</button>` : ''}<button class="btn soft sm" data-act="call" data-cl="${esc(c.id)}">${ic('phone', 14)} บันทึกการติดต่อ</button><button class="btn ghost sm" data-act="forward" data-cl="${esc(c.id)}">ส่งต่อโค้ช</button><button class="ibtn" data-act="open" data-id="${esc(c.id)}" title="ดูลูกค้า" aria-label="ดูลูกค้า" style="width:30px;height:30px">${ic('chev', 16)}</button>`;
   return `<div class="grow ${g.sev}"><span class="sv"></span>${avatar(c, 'sm')}
     <div style="min-width:0"><div class="ti ell">${esc(cname(c))} <span class="muted xs" style="font-weight:400">· ${coach(c.coach).name}${compact ? '' : ` · ${esc(c.phone)}`}</span></div>
       <div class="gchips">${shown.map(a => `<span class="tag ${a.sev === 'high' ? 'dn' : 'warn'}" title="${esc(a.detail)}">${ic(AL_IC[a.type] || 'alert', 12)}${esc(a.title)}</span>`).join('')}${compact && g.as.length > 2 ? `<span class="tag">+${g.as.length - 2}</span>` : ''}</div></div>
@@ -1737,8 +1873,11 @@ function clOrders(c) {
 }
 function clPort(c) {
   const snaps = S.snaps.filter(s => s.cl === c.id).sort((a, b) => b.at - a.at);
-  return `${pnl({ t: 'ยอดพอร์ตที่รายงาน', sub: 'รายงานทุกวันศุกร์ เทียบกับบันทึกการซื้อขาย', key: 'csn', pt: 'ยอดที่รายงาน', cls: 'tight', empty: 'ยังไม่มีรายงาน', rows: snaps.map(s => { const df = (s.val - c.eq[s.day]) / c.eq[s.day]; return `<div class="hr2"><span>${wd(S.days[s.day])} ${dstr(S.days[s.day])} <span class="xs muted">รายงาน ${dt(s.at)}</span></span><span class="tag ${Math.abs(df) > .02 ? 'warn' : 'ok'} num">${pct(df, 2)}</span><span class="xs muted num">รายงาน ${baht(s.val)} · ตามบันทึก ${baht(c.eq[s.day])}</span></div>`; }).join('') })}
-  ${pnl({ t: 'ฝาก / ถอนเงิน', sub: 'CS อนุมัติก่อนนับเข้าพอร์ต', key: 'cfl', pt: 'ฝาก/ถอน', cls: 'tight', empty: 'ยังไม่มีรายการ', rows: c.flows.slice().reverse().map(f => `<div class="hr2"><span><span class="tag ${f.amt > 0 ? 'ok' : 'dn'}">${f.amt > 0 ? 'ฝาก' : 'ถอน'}</span> <b class="num">${baht(Math.abs(f.amt))}</b></span>${f.pend ? (isCS() ? `<button class="btn sm" data-act="flowrev" data-c="${esc(c.id)}" data-f="${esc(f.id)}">ตรวจสลิป</button>` : '<span class="tag blue">รอ CS</span>') : f.rej ? '<span class="tag dn">ไม่อนุมัติ</span>' : '<span class="tag ok">อนุมัติแล้ว</span>'}<span class="xs muted">${dt(f.at)}${f.rej ? ' · ' + esc(f.rej.why) : ''}</span></div>`).join('') })}`;
+  return `<section class="pnl palloc" data-pt="สัดส่วนและความเสี่ยง"><div class="ph"><h3>สัดส่วนและความเสี่ยง</h3><span class="sp"></span>${allocSeg()}</div>
+    <div class="pb" style="display:flex;align-items:center">${allocView(c, narrow() ? 120 : 140)}</div>
+    <div class="pfoot">${heatView(c)}${concLine(c)}</div></section>
+  ${pnl({ pre: weekStrip(c), t: 'ยอดพอร์ตที่รายงาน', sub: 'รายงานทุกวันศุกร์ เทียบกับบันทึกการซื้อขาย', key: 'csn', pt: 'ยอดที่รายงาน', cls: 'tight', empty: 'ยังไม่มีรายงาน', rows: snaps.map(s => { const df = (s.val - c.eq[s.day]) / c.eq[s.day]; return `<div class="hr2"><span>${wd(S.days[s.day])} ${dstr(S.days[s.day])} <span class="xs muted">รายงาน ${dt(s.at)}</span></span><span class="tag ${Math.abs(df) > .02 ? 'warn' : 'ok'} num">${pct(df, 2)}</span><span class="xs muted num">รายงาน ${baht(s.val)} · ตามบันทึก ${baht(c.eq[s.day])}</span></div>`; }).join('') })}
+  ${pnl({ t: 'ฝาก / ถอนเงิน', sub: 'CS อนุมัติก่อนนับเข้าพอร์ต', key: 'cfl', pt: 'ฝาก/ถอน', cls: 'tight', empty: 'ยังไม่มีรายการ', rows: c.flows.slice().reverse().map(f => `<div class="hr2"><span><span class="tag ${f.amt > 0 ? 'ok' : 'dn'}">${f.amt > 0 ? 'ฝาก' : 'ถอน'}</span> <b class="num">${baht(Math.abs(f.amt))}</b></span>${f.pend ? (isCS() ? `<button class="btn sm" data-act="flowrev" data-c="${esc(c.id)}" data-f="${esc(f.id)}">ตรวจหลักฐาน</button>` : '<span class="tag blue">รอ CS</span>') : f.rej ? '<span class="tag dn">ไม่อนุมัติ</span>' : '<span class="tag ok">อนุมัติแล้ว</span>'}<span class="xs muted">${dt(f.at)}${f.rej ? ' · ' + esc(f.rej.why) : ''}</span></div>`).join('') })}`;
 }
 function clNotes(c) {
   const notes = S.notes.filter(x => x.cl === c.id).sort((a, b) => b.at - a.at);
