@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-yL/UqOcWuEfzKLFTcgsUBjJz1FhBBRK1RJm+o9r9CyY=' 'sha256-K/SsflO4+v/4fzWKU1OS7eOsJEciBmlindH9iwHasAI=' 'sha256-kn+laUX9342d5O54/Ms+wN7CpA3YfcYwa7ZA87ITwbY='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-yL/UqOcWuEfzKLFTcgsUBjJz1FhBBRK1RJm+o9r9CyY=' 'sha256-6p0O9rzBsKvSlO3vD7iHLIjvWSPl5AzBLFZ1YT4dvdc=' 'sha256-Yuy81NpVQrM6edmbUmVmdT1UYxQbmfrgy14n4Ol+EPg='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>ปั้นพอร์ต 1 ล้าน · Trading Journal (ต้นแบบ)</title>
@@ -39,7 +39,7 @@ a{color:inherit}
 .ic{flex:none;display:inline-block;vertical-align:middle}
 .num{font-variant-numeric:tabular-nums lining-nums}
 .serif{font-family:Georgia,"Times New Roman",serif}
-.muted{color:var(--mut)}.ink2{color:var(--ink2)}.gold{color:var(--gold)}.up{color:var(--up)}.dn{color:var(--dn)}.warn{color:var(--warn)}.ok{color:var(--up)}
+.muted{color:var(--mut)}.ink2{color:var(--ink2)}.gold{color:var(--gold)}.blue{color:var(--blue)}.up{color:var(--up)}.dn{color:var(--dn)}.warn{color:var(--warn)}.ok{color:var(--up)}
 .gtxt{background:var(--gtxt);-webkit-background-clip:text;background-clip:text;color:transparent}
 .sm{font-size:13.5px}.xs{font-size:12.5px}
 .row{display:flex;align-items:center;gap:10px}
@@ -304,6 +304,30 @@ button.sy:hover .slg{transform:scale(1.08)}
 .drop{border:1.5px dashed var(--line2);border-radius:14px;padding:10px 12px;display:flex;align-items:center;gap:12px;cursor:pointer;color:var(--ink2);background:rgba(var(--wt),.025);font-size:14px}
 .drop:hover{border-color:var(--goldln)}
 .drop.has{border-style:solid;border-color:rgba(61,220,151,.4)}
+/* key-in form: the screenshot is attached beside the fields */
+.f3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.recf{display:grid;grid-template-columns:230px minmax(0,1fr);gap:18px}
+.recf-img{display:flex;flex-direction:column;gap:8px;min-width:0}
+.recf-f{display:flex;flex-direction:column;gap:10px;min-width:0}
+.recf-f .seg.xsg button{padding:4px 10px}
+.recf-f .seg{flex-wrap:wrap;border-radius:16px}
+.kdrop{flex:1;min-height:250px;max-height:min(440px,58dvh);border:1.5px dashed var(--line2);border-radius:16px;background:rgba(var(--wt),.025);display:flex;flex-direction:column;cursor:pointer;overflow:hidden;transition:border-color .15s}
+.kdrop:hover,.kdrop:focus-visible{border-color:var(--goldln)}
+.kdrop.has{border-style:solid;border-color:color-mix(in srgb,var(--up) 45%,transparent)}
+.kd-p{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:10px}
+.kd-i{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:var(--goldbg);color:var(--gold)}
+.kd-t{padding:9px 12px 11px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:2px;font-size:13.5px;min-width:0}
+.kd-t .hint{font-size:11.5px;color:var(--mut)}
+@media (max-width:700px){
+  .recf{grid-template-columns:minmax(0,1fr);gap:10px}
+  .recf-img{flex-direction:row;align-items:center}
+  .kdrop{min-height:0;max-height:none;flex-direction:row;height:92px;flex:1}
+  .kd-p{flex:none;width:68px;padding:6px}
+  .kd-t{border-top:none;justify-content:center}
+  .recf-img>.btn{flex:none}
+  .f3{grid-template-columns:1fr 1fr}.f3 .field:last-child{grid-column:1/-1}
+}
+@media (max-width:700px) and (max-height:820px){.kdrop{height:66px}.kd-p{width:50px}.kd-t .hint{display:none}.recf-f{gap:7px}.recf-f .field{gap:3px}.recf-f .field>label{font-size:12.5px}.recf .cmp .cr{display:none}.recf .cmp .ch{padding:7px 12px}.mbox:has(.recf) .mhd .muted,.recf-f .kopt{display:none}.recf-f .note-box{padding:8px 10px;font-size:13px}.mbox:has(.recf) .mbd{padding:10px 14px 12px}.mbox:has(.recf) .mhd{padding-top:12px;padding-bottom:6px}.recf-f .seg.xsg button{padding:4px 8px}}
 .radio{display:flex;flex-direction:column;gap:6px}
 .radio label{display:flex;gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--line2);border-radius:12px;cursor:pointer;font-size:14.5px}
 .radio label:has(input:checked){border-color:var(--goldln);background:var(--goldbg)}
@@ -542,26 +566,37 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 @keyframes blink{50%{opacity:.4}}
 .tabbar{display:none}
 
-/* home */
-.v-home{grid-template-columns:minmax(0,1fr) 340px;grid-template-rows:auto minmax(0,1fr)}
-.hero{display:grid;grid-template-columns:minmax(300px,.9fr) minmax(0,1.1fr);position:relative}
+/* home: profit toward the 1,000,000 goal, the tuition refund, discipline and the program */
+.v-home{grid-template-columns:minmax(0,1fr) 330px;grid-template-rows:auto minmax(0,1fr)}
+.v-home .hero{grid-row:1/3}
+.hero{display:flex;flex-direction:column;position:relative;min-height:0}
 .hero:before{content:"";position:absolute;inset:0;background:radial-gradient(560px 260px at 8% 0%,rgba(235,192,98,.17),transparent 70%);pointer-events:none}
-.hero-l{padding:18px 22px 16px;position:relative;display:flex;flex-direction:column}
+.hero-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:20px;padding:18px 22px 0;position:relative;align-items:start}
+.hero-l{display:flex;flex-direction:column;min-width:0}
 .big{font-size:48px;line-height:1.05;letter-spacing:-.01em;margin:4px 0 10px;font-weight:700}
 .meta{display:flex;flex-wrap:wrap;gap:6px}
 .meta .tag{font-size:12.5px;padding:3px 10px}
 .meta .est{background:rgba(var(--wt),.06);color:var(--ink2);gap:5px}
 .meta .est:hover{background:rgba(var(--wt),.1);color:var(--ink)}
 .meta .est b{color:var(--ink)}
+.meta .mob{display:none}
 .rl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin-top:6px}
 .rl .tag{font-size:11.5px;padding:1px 8px}
-.hc-h{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--mut);padding:2px 4px 2px 50px;flex:none}
-.lgd2{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-.lgd2 i{width:9px;height:9px;border-radius:50%;border:2px solid var(--gold);margin-left:6px}
-.lgd2 i.e{border-style:dashed;border-color:var(--gold2)}
-.meta .mob{display:none}
-.goal{margin-top:auto;padding-top:26px}
-.gtrack{position:relative;height:10px;border-radius:999px;background:rgba(var(--wt),.07);margin-bottom:26px;box-shadow:var(--wellsh)}
+.refund{display:flex;flex-direction:column;gap:3px;text-align:left;padding:14px 16px 13px;border-radius:18px;background:var(--well);border:1px solid var(--line);min-width:0;position:relative;overflow:hidden;transition:border-color .15s}
+.refund:hover{border-color:var(--goldln)}
+.refund:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue))}
+.refund .k{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.03em}
+.refund .s{font-size:13px;color:var(--ink2)}
+.refund .rv{font-size:30px;line-height:1.15;font-weight:700;letter-spacing:-.01em}
+.rsplit{display:flex;gap:2px;height:8px;border-radius:999px;overflow:hidden;background:rgba(var(--wt),.07);margin:6px 0 3px}
+.rsplit i{background:var(--btn);border-radius:999px}
+.rsplit s{background:color-mix(in srgb,var(--blue) 75%,transparent);border-radius:999px;text-decoration:none}
+.rleg{display:flex;justify-content:space-between;gap:4px 10px;flex-wrap:wrap;font-size:12px;color:var(--ink2)}
+.rleg span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.rleg i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.rleg i.b{background:var(--blue)}
+.goal{padding:30px 22px 0;flex:none;position:relative}
+.gtrack{position:relative;height:10px;border-radius:999px;background:rgba(var(--wt),.07);margin-bottom:31px;box-shadow:var(--wellsh)}
 .gtrack>i{position:absolute;inset:0 auto 0 0;border-radius:inherit;background:linear-gradient(90deg,#7d5414,#ebc062 70%,#fff0c4);box-shadow:0 0 22px rgba(235,192,98,.45)}
 .gtrack>i:after{content:"";position:absolute;right:-8px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:var(--knob);box-shadow:0 0 0 4px rgba(235,192,98,.3),0 0 18px 4px rgba(235,192,98,.6)}
 .gtrack>i:before{content:"";position:absolute;right:-14px;top:50%;width:28px;height:28px;margin-top:-14px;border-radius:50%;border:2px solid rgba(235,192,98,.55);animation:ping 2.4s cubic-bezier(.2,.6,.3,1) infinite;will-change:transform,opacity}
@@ -573,159 +608,57 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 .gm span{font-size:11.5px;color:var(--mut);white-space:nowrap;font-weight:700}
 .gm.hit span{color:var(--gold)}
 .gm:last-child{transform:translateX(-100%);align-items:flex-end}
-.gstart{position:absolute;top:-19px;transform:translateX(-50%);font-size:10.5px;color:var(--mut);white-space:nowrap}
 .glbl{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink2);gap:8px;flex-wrap:wrap}
-.hero-c{display:flex;flex-direction:column;padding:14px 14px 6px 0;min-height:200px;position:relative}
+.hero-c{flex:1;display:flex;flex-direction:column;padding:12px 14px 6px 4px;min-height:140px;position:relative}
+.hc-h{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--mut);padding:2px 4px 2px 50px;flex:none}
+.lgd2{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.lgd2 i{width:9px;height:9px;border-radius:50%;border:2px solid var(--gold);margin-left:6px}
+.lgd2 i.e{border-style:dashed;border-color:var(--gold2)}
 .disc .pb{display:flex;flex-direction:column;gap:14px}
 .dsc{display:flex;gap:16px;align-items:center}
 .dsc .w{font-size:17px}
 .mbar{display:flex;flex-direction:column;gap:10px}
 .mbar .l{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
 .mbar .bar{height:6px}
-/* "to do now" cards: one per coach order */
-.oc{position:relative;border:1px solid var(--line2);border-radius:18px;padding:12px 16px 12px 18px;background:linear-gradient(100deg,rgba(var(--wt),.05),rgba(var(--wt),.012));overflow:hidden}
-.oc:before{content:"";position:absolute;inset:12px auto 12px 0;width:3px;border-radius:0 3px 3px 0;background:var(--blue)}
-.oc.buy:before{background:var(--up);box-shadow:0 0 12px var(--up)}
-.oc.sell:before{background:var(--dn);box-shadow:0 0 12px var(--dn)}
-.oc.sl:before{background:var(--gold);box-shadow:0 0 12px var(--gold)}
-.oc.fix:before{background:var(--warn);box-shadow:0 0 12px var(--warn)}
-.oc.urgent{border-color:rgba(255,107,125,.38);background:linear-gradient(100deg,rgba(255,107,125,.08),rgba(var(--wt),.012))}
-.oc-h{display:flex;gap:12px;align-items:center;min-width:0}
-.oc-lg{flex:none;display:flex;border-radius:12px}
-.oc-lg:hover .slg{transform:scale(1.08)}
+.prog .pb{display:flex;flex-direction:column;gap:12px}
+.ptrack{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:4px;margin:8px 0 6px}
+.ptrack i{height:8px;border-radius:3px;background:rgba(var(--wt),.08)}
+.ptrack i.on{background:var(--btn)}
+.ptrack i.now{background:var(--gold);box-shadow:0 0 0 3px var(--goldbg)}
+.prog .pstrip b{text-align:right;min-width:0}
+.pace{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pace div{padding:9px 12px;border-radius:14px;background:var(--well);border:1px solid var(--line);display:flex;flex-direction:column;gap:2px;min-width:0}
+.pace span{font-size:11.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pace b{font-size:16px;white-space:nowrap}
 .oc-ic{width:40px;height:40px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--goldbg);color:var(--gold)}
-.oc-t{min-width:0;line-height:1.35}
-.oc-t .l1{display:flex;align-items:center;gap:8px;min-width:0}
-.oc-t .l1 b{font-size:17px;letter-spacing:.02em;white-space:nowrap}
-.oc-t .l2{font-size:12.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cd{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13px;color:var(--blue);white-space:nowrap;padding:5px 11px;border-radius:999px;background:var(--bluebg);flex:none}
-.urgent .cd{color:var(--dn);background:var(--dnbg)}
-.cells{display:flex;gap:8px;margin:10px 0}
-.cells>div{flex:1 1 0;background:var(--well);border:1px solid var(--line);border-radius:12px;padding:6px 11px;min-width:0;overflow:hidden}
-.cells .k{font-size:11.5px;color:var(--mut);white-space:nowrap}
-.cells .v{font-size:15px;font-weight:700;white-space:nowrap;line-height:1.4}
-.cells .s{display:none}
-.oc-f{display:flex;gap:8px;align-items:center}
-.oc-note{flex:1;color:var(--ink2);font-size:13.5px}
-.hrow{display:grid;grid-template-columns:minmax(0,1fr) auto 64px;gap:10px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line)}
-.hl{display:flex;gap:11px;align-items:center;min-width:0;text-align:left}
-.hl b{font-size:15px;letter-spacing:.02em}
-.hl:hover b{color:var(--gold2)}
-.hrow .r{text-align:right;display:flex;flex-direction:column}
-.mix{flex:none;padding:10px 18px 14px;border-top:1px solid var(--line);color:var(--ink2)}
-.mixb{height:6px;border-radius:999px;background:rgba(126,166,255,.3);overflow:hidden;margin-top:7px}
-.mixb i{display:block;height:100%;background:var(--btn);box-shadow:0 0 10px rgba(235,192,98,.5)}
-.mix .d{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
-.mix .d.g{background:var(--gold)}.mix .d.c{background:rgba(126,166,255,.75)}
+.tbl tr.me td{background:var(--goldbg)}
 
-/* trading plans */
-.v-trades{grid-template-columns:372px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
-.fr{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--mut);white-space:nowrap}
-.fr b{font-size:19px}
-.fr .xs{margin-left:-2px}
-.prow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:auto auto auto;gap:4px 12px;width:100%;text-align:left;padding:10px 13px;border-radius:16px;border:1px solid var(--line);background:rgba(var(--wt),.02);align-items:center;transition:background .15s,border-color .15s}
-.prow>.slg{grid-row:1/4}
-.prow:hover{background:rgba(var(--wt),.05)}
-.prow.on{background:var(--goldbg);border-color:var(--goldln);box-shadow:inset 3px 0 0 var(--gold)}
-.prow.live:not(.on){border-color:color-mix(in srgb,var(--blue) 45%,transparent)}
-.pr-t{display:flex;align-items:center;gap:6px;min-width:0;overflow:hidden}
-.prow .sym{font-size:16px;letter-spacing:.02em;font-weight:800}
-.pr-v{font-weight:800;font-size:14px;text-align:right}
-.pr-m{grid-column:2/4;padding:3px 0 2px}
-.prow .dots{justify-self:end}
-.tag.lv i{width:6px;height:6px;border-radius:50%;background:currentColor;animation:blink 1.6s infinite}
-.sy.lg b{font-size:20px;color:var(--gold2)}
-.pdet{position:relative}
-.pdet:before{content:"";position:absolute;inset:0 0 auto;height:140px;background:radial-gradient(420px 140px at 0% 0%,var(--goldbg),transparent 75%);pointer-events:none}
-.tk-h{display:flex;align-items:center;gap:14px;padding:14px 18px 12px;flex:none;position:relative;min-width:0}
-.tk-t{min-width:0;flex:1}
-.tk-t>.row{overflow:hidden}
-.tk-sym{font-size:24px;letter-spacing:.02em;line-height:1.2}
-.tk-pl{display:flex;flex-direction:column;align-items:flex-end;line-height:1.25;flex:none}
-.tk-pl>b{font-size:22px}
-.tk{flex:1;min-height:0;container:tk/size;display:grid;gap:12px 16px;padding:0 18px 16px;grid-template-columns:minmax(250px,.95fr) minmax(0,1.2fr);grid-template-rows:auto auto minmax(0,1fr);grid-template-areas:"cta cta" "c i" "c t"}
-.tk:not(.has-cta){grid-template-rows:auto minmax(0,1fr);grid-template-areas:"c i" "c t"}
-.tk-cta{grid-area:cta}.tk-c{grid-area:c}.tk-i{grid-area:i}.tk-tl{grid-area:t}
-.tk-c{display:flex;flex-direction:column;gap:8px;min-height:0;container-type:inline-size}
-.tk-lg{display:flex;align-items:center;gap:12px;color:var(--ink2);flex-wrap:wrap;row-gap:2px}
-.tk-lg span{display:inline-flex;align-items:center;gap:5px}
-.tk-lg i{width:10px;height:10px;border-radius:3px}
-.tk-lg i.rw{background:color-mix(in srgb,var(--up) 60%,transparent)}.tk-lg i.rk{background:color-mix(in srgb,var(--dn) 55%,transparent)}.tk-lg i.en{background:color-mix(in srgb,var(--gold) 60%,transparent)}
-.tk-lg .pm-k{margin-left:auto;color:var(--mut)}.tk-lg .pm-k i{width:12px;height:0;border-top:2px solid var(--ink2);border-radius:0}
-.tk-cta{display:flex;align-items:center;gap:12px;padding:8px 10px 8px 12px;border-radius:16px;background:linear-gradient(90deg,var(--bluebg),rgba(var(--wt),.02) 80%);border:1px solid color-mix(in srgb,var(--blue) 40%,transparent);position:relative;overflow:hidden;min-width:0}
-.tk-cta:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 35%,rgba(var(--wt),.08) 50%,transparent 65%);transform:translateX(-100%);animation:sheen 3.6s ease-in-out infinite;pointer-events:none}
-@keyframes sheen{60%,100%{transform:translateX(100%)}}
-.cta-t{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.35}
-.cta-t b{font-size:14.5px}
-.kvh{font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.04em;margin:0 0 6px;display:flex;align-items:center;gap:8px}
-.kvh .pgn{margin-left:auto}
-.kvs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
-.kvs.k4{grid-template-columns:repeat(4,minmax(0,1fr))}
-.tk-i .kvs+.kvh{margin-top:10px}
-.kv{padding:6px 10px;border-radius:12px;background:var(--well);border:1px solid var(--line);min-width:0;display:flex;flex-direction:column;line-height:1.35}
-.kv .k,.kv .s{font-size:11.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.kv b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tk-note{display:flex;gap:10px;align-items:flex-start;padding:9px 12px;border-radius:14px;background:rgba(var(--wt),.03);border:1px solid var(--line);flex:none}
-.tk-note p{margin:2px 0 0;font-size:13px;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.tk-tl{display:flex;flex-direction:column;min-height:0}
-.tk-app{margin-bottom:12px;padding:9px 12px 10px;border-radius:14px;border:1px dashed var(--line2);display:flex;flex-direction:column;gap:6px;flex:none}
-.tk-app .kvh{margin:0}
-.as{display:flex;gap:10px;align-items:center;font-size:13px;min-width:0}
-.as b{display:block;font-size:12.5px;color:var(--ink2);font-weight:600}
-.as .num{display:block;font-weight:700;letter-spacing:.01em}
-.as-i{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--goldbg);color:var(--gold);flex:none}
-.tk-tl .pb{flex:1;padding:0}
-.tlr{display:grid;grid-template-columns:12px minmax(0,1fr);gap:10px;padding:7px 0 9px;position:relative}
-.tlr:before{content:"";position:absolute;left:5px;top:22px;bottom:-6px;width:2px;border-radius:2px;background:var(--line2)}
-.tlr:last-child:before{display:none}
-.tlr .tn{width:12px;height:12px;border-radius:50%;margin-top:5px;background:var(--bg4);box-shadow:0 0 0 3px color-mix(in srgb,currentColor 0%,transparent)}
-.tlr.ok .tn{background:var(--up)}.tlr.bad .tn,.tlr.skip .tn{background:var(--warn)}.tlr.exp .tn{background:var(--dn)}.tlr.pend .tn{background:var(--blue);box-shadow:0 0 0 4px var(--bluebg)}
-.tl-b{min-width:0;display:flex;flex-direction:column;gap:2px}
-.tl-1{display:flex;align-items:center;gap:8px;min-width:0}
-.tl-1 b{font-size:14px}
-.tl-w{margin-left:auto;font-size:12px;color:var(--mut);white-space:nowrap;padding-left:6px}
-.res{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:13.5px;min-width:0}
-.tlr .slipth{width:24px;height:32px;border-radius:6px}
-.tk-m{display:flex;flex-direction:column;gap:12px}.tk-m .ptool{flex:none;height:230px}.tk-m .kvs{grid-template-columns:repeat(2,minmax(0,1fr))}.tk-m .pb.mtl{padding:0;max-height:calc(100dvh - 300px);overflow:hidden}
-.mtabs{align-self:flex-start}.mtabs button{padding:5px 12px;font-size:13px}
-.tk-m .tk-cta{flex-wrap:wrap;row-gap:8px}.tk-m .cta-t{flex:1 1 calc(100% - 50px)}.tk-m .cta-t b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tk-m .tk-cta .btn{flex:1}
-@media (max-height:700px){.tk-m .ptool{height:180px}.tk-m{gap:9px}.tk-m .kv .s{display:none}}
-@media (max-height:660px){.tk-m .ptool{height:160px}.tk-m .tk-lg{display:none}}
-/* narrow detail panel (tablet portrait): one column */
-.pdet{container:pdet/inline-size}
-@container pdet (max-width:560px){
-  .pdet .tk{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(170px,1fr) auto minmax(0,.9fr);grid-template-areas:"cta" "c" "i" "t"}
-  .pdet .tk:not(.has-cta){grid-template-rows:minmax(170px,1fr) auto minmax(0,.9fr);grid-template-areas:"c" "i" "t"}
-  .kvs{grid-template-columns:repeat(2,minmax(0,1fr))}.kv.opt,.tk-app,.tk-note{display:none}
-  .tk-cta{flex-wrap:wrap;row-gap:8px}.cta-t{flex:1 1 calc(100% - 50px)}.cta-t b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tk-cta .btn{flex:1}
-  .tk-h .tag.line{display:none}
-}
-@container tk (max-width:720px){.kvs.k4{grid-template-columns:repeat(2,minmax(0,1fr))}.kv b{font-size:14px}.tk{gap:10px 12px}}
-@container tk (max-height:470px){.tk-note p{-webkit-line-clamp:1}.kv{padding:4px 9px}.kv .s{display:none}}
-@container tk (max-height:540px){.tk-app .as+.as{display:none}}
-@container tk (max-height:440px){.tk-app{display:none}}
-@container tk (max-height:380px){.tk-note{display:none}}
-
-.shx{display:none}
-.todo .ph .pgn{margin-left:8px}
-.oc.rc{cursor:pointer;transition:border-color .15s}.oc.rc:hover{border-color:var(--goldln)}
-.oc .slipth{width:34px;height:44px}
-.mlad.off{background:repeating-linear-gradient(90deg,rgba(var(--wt),.14) 0 6px,transparent 6px 10px)}
-.tlr.sl .tn{background:var(--gold)}.tlr.pl .tn{background:var(--blue)}
-.tk.offp .tk-c{gap:10px}
-
-/* journal */
+/* journal: every trade the client keyed, with its screenshot and the coach's review */
 .v-journal{grid-template-columns:minmax(0,1fr) 430px;grid-template-rows:auto auto minmax(0,1fr)}
+.jf{display:flex;align-items:center;gap:6px;min-width:0}
+.dw{position:relative;display:flex;min-width:0}
+.jf .in{display:flex;align-items:center;gap:7px;height:36px;padding:0 11px;border-radius:12px;background:rgba(var(--wt),.035);border:1px solid var(--line2);color:var(--mut);font-size:13.5px;white-space:nowrap;min-width:0;transition:border-color .15s,background .15s}
+.jf .in:hover,.jf .in:focus-within,.jf .in:focus-visible{border-color:var(--goldln)}
+.jf .in.set{color:var(--ink);border-color:var(--goldln);background:var(--goldbg)}
+.jf .in.sym input{border:none;background:none;box-shadow:none;padding:0;height:34px;width:140px;font-size:13.5px;text-transform:uppercase}
+.jf .in.sym input::placeholder{text-transform:none}
+.dpick{position:absolute;left:0;bottom:0;width:100%;height:1px;opacity:0;pointer-events:none;padding:0;border:0}
 .jrow{display:grid;grid-template-columns:58px 46px minmax(0,1fr) auto 22px;gap:12px;align-items:center;width:100%;text-align:left;padding:8px 10px;border-radius:14px;border:1px solid transparent;transition:background .15s}
 .jrow:hover{background:rgba(var(--wt),.04)}
 .jrow.on{background:var(--goldbg);border-color:var(--goldln)}
+.jrow.v-fix{box-shadow:inset 3px 0 0 var(--warn)}
+.jm>span{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .jrow .t{font-size:12px;color:var(--mut);line-height:1.3}
 .jrow b{letter-spacing:.02em}
 .jm{display:flex;gap:10px;align-items:center;min-width:0}
-.ed{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;height:100%}
+.jlist .ph .tag{flex:none}
+.ed{display:grid;grid-template-columns:clamp(104px,30%,150px) minmax(0,1fr);gap:16px;height:100%}
 .ed-slip{min-height:0;display:flex;align-items:flex-start}
 .ed-info{display:flex;flex-direction:column;gap:10px;min-height:0;font-size:13.5px}
-.ed-info .tbl td{padding:6px 8px}
+.ed-info .tbl td{padding:6px 7px}.ed-info .tbl td:nth-child(3){white-space:nowrap}
+.ed-info .note-box .btn{margin-top:8px}
+.ed-info .clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cnote{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--gold2);padding-left:2px}.cnote .ic{flex:none;margin-top:2px}
 
 /* portfolio */
 .v-port{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1.05fr) minmax(0,1fr)}
@@ -770,27 +703,36 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 .ob-f{gap:16px}
 .ob .card{max-height:calc(100dvh - 24px);overflow:auto}
 .agree input{width:19px;height:19px;accent-color:var(--gold);flex:none}
+.obt{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:16px;background:var(--goldbg);border:1px solid var(--goldln);margin:0 0 14px}
+.obt b{display:block;font-size:14.5px}
+.obt span span{font-size:13px;color:var(--ink2)}
 
 @media (max-width:1180px){.brand .bt{display:none}.nav button{padding:7px 13px}}
 .nav button{white-space:nowrap}
 @media (max-width:1100px) and (min-width:761px){.hin .mkt{display:none}.nav button .ic{display:none}.nav button{padding:7px 12px}}
 @media (max-width:900px) and (min-width:761px){.hin .demob span,.hin .kb{display:none}.nav button{padding:7px 10px}.hin{gap:8px}}
-@media (max-width:1320px){.v-trades .fr.opt{display:none}}
-@media (max-width:1240px){.gbtn2 span{display:none}.gbtn2{padding:6px 9px}}
 @media (max-width:1100px){
-  .v-home{grid-template-columns:minmax(0,1fr) 300px}.hero{grid-template-columns:1fr}.hero-c{display:none}
-  .v-journal{grid-template-columns:minmax(0,1fr) 360px}.v-trades{grid-template-columns:318px minmax(0,1fr)}.tk{grid-template-columns:minmax(206px,.6fr) minmax(0,1fr)}.kv b{font-size:14px}.kv{padding:5px 9px}.tk-h{padding:12px 16px 10px}.tk{padding:0 16px 14px}
-  .cells .opt{display:none}.ed{grid-template-columns:110px minmax(0,1fr);gap:12px}.ed-info .tbl td{padding:5px 6px}
+  .disc .ph .sub,.jdet .ph .sub{display:none}
+  .v-home{grid-template-columns:minmax(0,1fr) 290px}.hero-top{grid-template-columns:minmax(0,1fr) 240px;gap:14px}.big{font-size:40px}.meta .opt{display:none}
+  .v-journal{grid-template-columns:minmax(0,1fr) 360px}
+  .ed{grid-template-columns:96px minmax(0,1fr);gap:10px}.ed-info .tbl td{padding:5px 6px;white-space:normal}.ed-info .tbl{font-size:12.5px}
   .v-port{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}.pth,.ptr{grid-template-columns:minmax(130px,1.4fr) minmax(0,.8fr) minmax(0,1fr) minmax(0,.9fr)}.pth .c2,.ptr .c2,.pth .c3,.ptr .c3{display:none}
   .login{gap:30px}.lg-brand h1{font-size:46px}
 }
+@media (max-width:900px) and (min-width:761px){
+  .v-home{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}.v-home .hero{grid-row:1;grid-column:1/-1}
+  .kstrip{grid-template-columns:repeat(3,minmax(0,1fr))}.kstrip .opt{display:none}.phold .ph .sub,.pclosed .ph .sub{display:none}
+  .v-journal{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(0,1.1fr) minmax(0,1fr)}.ed-info .clamp{-webkit-line-clamp:2}.ed-info{gap:8px}.jf .in.sym input{width:110px}.v-journal .vh h1{display:none}
+}
 @media (max-width:900px){.hin .mkt{display:none}}
 @media (max-width:420px){.hin .kb{display:none}}
+@media (max-height:800px) and (min-width:761px){.prog .pstrip div:nth-child(n+3){display:none}.prog .pb{gap:9px}.disc .pb{gap:10px}.disc .mbar{gap:7px}}
 @media (max-height:700px) and (min-width:761px){
+  .ob .card{padding:18px 26px}.ob-k{margin:10px 0}.ob-k div{padding:8px 12px}.obt{margin-bottom:10px;padding:9px 12px}.rules{margin:6px 0 10px;gap:8px}.rule{padding:9px 12px}.obl{margin-bottom:10px!important}
+  .pace{display:none}.ed-info .clamp{-webkit-line-clamp:2}.ed-info>.xs.muted{display:none}.ed-info{gap:7px}.ed-info .tbl td,.ed-info .tbl th{padding:4px 6px}.ed-info .note-box{padding:8px 10px;font-size:13px}.disc .mbar{gap:7px}.disc .ph,.prog .ph{min-height:44px;padding-top:11px;padding-bottom:7px}
   .hdr{margin-top:8px}.hin{height:54px}.view{padding-top:10px;gap:12px}
-  .hero-l{padding:12px 20px 12px}.big{font-size:40px;margin:2px 0 8px}.goal{padding-top:24px}.gtrack{margin-bottom:24px}
-  .oc{padding:8px 14px 8px 16px}.cells{margin:6px 0}.cells>div{padding:4px 10px}
-  .tk-h{padding:10px 16px 8px}.tk-sym{font-size:21px}.tk-h .slg{--s:40px!important}.tk{gap:10px 14px}.prow{padding:8px 12px;gap:3px 12px}
+  .hero-top{padding:12px 20px 0}.big{font-size:40px;margin:2px 0 8px}.goal{padding-top:26px}.gtrack{margin-bottom:29px}.refund{padding:11px 14px 10px}.refund .rv{font-size:25px}
+  .disc .pb{gap:10px}.prog .pb{gap:8px}.prog .pstrip{padding:9px 12px;gap:4px}
 }
 @media (max-width:760px){
   input,textarea,select{font-size:16px}
@@ -803,16 +745,19 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
   .tabbar .n{position:absolute;top:1px;left:calc(50% + 6px)}
   .view{padding:10px 8px;gap:10px}
   .vh{gap:8px}.vh h1{font-size:18px}.vh p{display:none}
-  .v-home,.v-trades,.v-journal{display:flex!important;flex-direction:column}
-  .v-home .hold,.pdet,.jdet{display:none!important}
-  .v-home .todo,.plist,.jlist{flex:1 1 0}.v-home .hero{flex:none}
-  .hero-l{padding:14px 16px}.hero-l .eyebrow{display:none}.rl{margin-top:0;font-size:12px}.big{font-size:34px;margin:2px 0 6px}.meta .opt{display:none}.goal{padding-top:24px}.gtrack{margin-bottom:24px}
-  .v-home .disc{display:none!important}.meta .mob{display:inline-flex}.meta .tag{font-size:12px;padding:2px 9px}
+  .v-home,.v-journal{display:flex!important;flex-direction:column}
+  .v-home .disc,.v-home .prog,.jdet{display:none!important}
+  .v-home .hero{flex:1 1 0}.jlist{flex:1 1 0}
+  .hero-top{grid-template-columns:minmax(0,1fr);gap:10px;padding:14px 16px 0}.hero-l .eyebrow{display:none}.rl{margin-top:0;font-size:12px}.big{font-size:34px;margin:2px 0 6px}.meta .opt{display:none}.meta .mob{display:inline-flex}.meta .tag{font-size:12px;padding:2px 9px}
+  .refund{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 10px;padding:9px 12px 10px}.refund:before{display:none}.refund .k,.refund .rleg{display:none}.refund .s{grid-column:1;grid-row:1}.refund .rv{font-size:20px;grid-column:2;grid-row:1}.refund .rsplit{grid-column:1/-1;margin:6px 0 0;height:6px}
+  .goal{padding:26px 16px 0}.gtrack{margin-bottom:30px}.glbl{font-size:12.5px}
+  .hero-c{min-height:110px;padding:6px 8px 4px 0}.hc-h{padding-left:44px}.hc-h .lgd2{display:none}
   .kstrip{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.kstrip .opt{display:none}.kpi{padding:8px 12px}.kpi .v{font-size:17px}
-  .cells{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6px;margin:8px 0}.cells .opt{display:none}
-  .oc{padding:10px 12px 10px 14px}.oc-note,.lw,.lgx{display:none}.shx{display:inline}.oc-f{justify-content:flex-end}.oc-t .l1 b{font-size:16px}
+  .v-journal .vh h1{display:none}.v-journal .vh .sp{display:none}.v-journal .vh>.btn{padding:0;width:40px;height:38px;justify-content:center;flex:none}.v-journal .vh>.btn span{display:none}
+  .jf{flex:1 1 0}.jf .dw{flex:1 1 0}.jf .in{width:100%;padding:0 8px;gap:5px}.jf .in>span{overflow:hidden;text-overflow:ellipsis}.jf .in.sym{flex:1 1 0}.jf .in.sym input{width:100%;font-size:16px}.jf>.muted,.jf .lnk,.jf .dw .ic{display:none}
+  .jrow{grid-template-columns:44px 38px minmax(0,1fr) auto;gap:8px;padding:7px 8px}.jrow>:last-child{display:none}.jrow .t{font-size:11px}.jrow .side{padding:1px 6px;font-size:11px}.jrow .tag{padding:2px 7px;font-size:11.5px}.jm{gap:8px}.jm .slg{--s:24px!important}
+  .jlist .ph .sub,.jlist .ph .tag.blue,.phold .ph .sub,.pclosed .ph .sub{display:none}
   .v-port .kstrip .opt2{display:none}.pth{display:none}.pth,.ptr{grid-template-columns:minmax(0,1fr) auto auto}.ptr .c4,.ptr .c6{display:none}.pfoot{padding:8px 14px 10px}
-  .v-trades .fr:not(.opt){display:none}.prow{padding:9px 11px}
   .mgrid{grid-template-columns:1fr;gap:10px}.mside{order:-1}
   .ed{grid-template-columns:110px minmax(0,1fr)}
   .modal{align-items:flex-end;padding:0}.mbox{border-radius:22px 22px 0 0;max-height:100dvh}
@@ -821,6 +766,7 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
   .lg-card{padding:22px 20px}
   .ob-k{grid-template-columns:1fr 1fr}.ob-k div:last-child{display:none}
   .rules{grid-template-columns:1fr;gap:6px}.rule{padding:8px 12px}.rule span{display:none}.ob-f{flex-wrap:wrap}.ob-f .btn{margin-left:auto}
+  .obt{padding:8px 12px;margin-bottom:10px}.obt .fi,.obt span span,.obl .muted{display:none}.ob-k{margin:10px 0}.rules{margin:6px 0 10px}.rule .fi{width:30px;height:30px}.obl{margin-bottom:10px!important}
   .ob .card{padding:18px}
   #toasts{left:10px;right:10px;bottom:84px}
 }
@@ -837,8 +783,15 @@ const LOGO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYoAAACpCAYAAAA1MXo8
    the client's journal and a screenshot the client sends lands in the coach's queue.
    Everything typed by a user is validated on the way in and escaped on the way out. */
 
-const KEY = 'p1m-mockup-v6';
-const GOAL = 1000000;
+const KEY = 'p1m-mockup-v7';
+// program terms (CEO's announcement): tuition 1,000,000 baht, refund = 1,000,000 - profit (full refund
+// with no profit or a loss), anything above 1,000,000 profit is the client's; ports of 5,000,000+ baht,
+// 6-12 months with a coach; at most 50 clients per intake, chosen by interview
+const TUITION = 1000000, GOAL = 1000000, MIN_PORT = 5000000;
+// markets the program covers; k on a record turns price x quantity into baht (multiplier x exchange rate)
+const MARKETS = { th: ['หุ้นไทย', 'หุ้น'], tfex: ['TFEX', 'สัญญา'], gold: ['ทองคำ', 'หน่วย'], us: ['หุ้นอเมริกา', 'หุ้น'], opt: ['Options', 'สัญญา'], fut: ['Futures', 'สัญญา'] };
+const unitOf = x => MARKETS[x?.mk || 'th'][1];
+const mkName = x => MARKETS[x?.mk || 'th'][0];
 const TZ = 7 * 3600e3, DAY = 86400e3, HR = 3600e3, MIN = 60e3;
 const BASE = Date.UTC(2026, 9, 7, 3, 42);   // พ. 7 ต.ค. 2569 10:42 เวลาไทย = "ตอนนี้" ของเดโม
 const COURSE_START = Date.UTC(2026, 6, 1);  // 1 ก.ค. 2569
@@ -860,7 +813,7 @@ const baht = n => fmt(Math.round(n));
 const sgn = n => (n > 0 ? '+' : n < 0 ? '−' : '');
 const signed = n => sgn(n) + baht(Math.abs(n));
 const pct = (n, d = 1) => sgn(n) + fmt(Math.abs(n * 100), d) + '%';
-const kb = n => n >= 1e6 ? fmt(n / 1e6, n % 1e6 ? 2 : 0) + 'M' : n >= 1e3 ? fmt(n / 1e3, n % 1e3 ? 1 : 0) + 'K' : fmt(n);
+const kb = n => (n = n + 0) < 0 ? '-' + kb(-n) : n >= 1e6 ? fmt(n / 1e6, n % 1e6 ? 2 : 0) + 'M' : n >= 1e3 ? fmt(n / 1e3, n % 1e3 ? 1 : 0) + 'K' : fmt(n);
 const tz = ms => new Date(ms + TZ);
 const dstr = ms => { const d = tz(ms); return d.getUTCDate() + ' ' + TH_M[d.getUTCMonth()]; };
 const tstr = ms => { const d = tz(ms); return pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()); };
@@ -932,6 +885,7 @@ const NAMES = [['ณัฐธิดา', 'natthida'], ['ธนกร', 'thanakor
   ['ศศิธร', 'sasitorn'], ['อภิชาติ', 'apichat'], ['ธัญญารัตน์', 'thanyarat'], ['พงศกร', 'pongsakorn'], ['วิมลรัตน์', 'wimonrat'], ['จักรพันธ์', 'jakkapan'], ['สุนิสา', 'sunisa'], ['เอกชัย', 'ekachai'], ['ปาริชาติ', 'parichat'], ['ธนวัฒน์', 'thanawat'],
   ['อัญชลี', 'anchalee'], ['ชาญวิทย์', 'chanwit'], ['กนกวรรณ', 'kanokwan'], ['ศักดิ์ดา', 'sakda'], ['ลลิตา', 'lalita'], ['ปรเมศวร์', 'poramet'], ['ดวงพร', 'duangporn'], ['ยุทธนา', 'yuttana'], ['สุพัตรา', 'supattra'], ['ณัฐพงศ์', 'nattapong']];
 const INI = 'กขคจชดตทธนบปพมยรลวศสอ';
+const APPLICANTS = [['ปกรณ์', 'ศ.'], ['ชนิดา', 'ว.'], ['ธีรวัฒน์', 'ก.'], ['สุดารัตน์', 'ม.'], ['วิชัย', 'อ.'], ['กัญญารัตน์', 'ส.'], ['ณัฐวุฒิ', 'ท.'], ['พรทิพย์', 'จ.'], ['อนุชา', 'ร.'], ['เบญจวรรณ', 'ช.'], ['ศุภชัย', 'ล.'], ['รัตนา', 'บ.'], ['ประเสริฐ', 'ด.'], ['จิราพร', 'น.'], ['สมศักดิ์', 'พ.'], ['อรวรรณ', 'ต.'], ['ธนพล', 'ย.'], ['มาลัย', 'ค.'], ['กิตติพงษ์', 'ศ.'], ['นภัสสร', 'ว.'], ['ชัยวัฒน์', 'ม.'], ['ปิยนุช', 'ก.'], ['วรเชษฐ์', 'ส.'], ['สิริกร', 'อ.'], ['อดิศร', 'ร.'], ['ทิพวรรณ', 'จ.']];
 const BROKERS = ['บล.กสิกรไทย', 'บล.ไทยพาณิชย์', 'บล.บัวหลวง', 'บล.ยูโอบีเคย์เฮียน', 'บล.หยวนต้า', 'บล.อินโนเวสท์ เอกซ์'];
 const OPEN_NOTES = ['ราคาย่อตัวลงมาทดสอบแนวรับเดิมและเริ่มมีแรงซื้อกลับเข้ามา เข้าซื้อในช่วง Entry ที่กำหนดเท่านั้น หากราคาเปิดสูงกว่าช่วงดังกล่าว ไม่ไล่ราคา',
   'ราคาทะลุแนวต้านของกรอบสะสมพร้อมวอลุ่มที่เพิ่มขึ้น เข้าซื้อในช่วง Entry และตั้ง Stop Order ทันทีหลังได้รับหุ้น',
@@ -941,9 +895,10 @@ const OPEN_NOTES = ['ราคาย่อตัวลงมาทดสอบ�
 const OFF_WHY = ['เห็นข่าวจากกลุ่มสนทนา จึงตัดสินใจซื้อเอง', 'รูปแบบกราฟน่าสนใจ จึงตัดสินใจซื้อเอง', 'คาดว่าราคาจะฟื้นตัวแรง จึงตัดสินใจซื้อเอง', 'มีผู้แนะนำให้ซื้อ'];
 
 /* ---------- generate demo data ----------
-   How the course works: the coach talks to each client by phone or in person, the client buys or
-   sells in their own broker app, sends a screenshot, and the coach records the trade here with the
-   screenshot attached. The coach's plan (Entry, Stop Loss, TP) is kept so every record can be checked
+   How the program works: tuition 1,000,000 baht, ports of 5,000,000+ baht, 6-12 months with a coach.
+   The coach talks to each client by phone or in person, the client trades in their own broker app and
+   keys the trade in here with the screenshot attached (or the coach keys it in for them), and the
+   coach confirms it. The coach's plan (Entry, Stop Loss, TP) is kept so every record can be checked
    against it. The port value is worked out from the recorded trades, so every profit figure agrees. */
 function tradingDays() {
   const out = [];
@@ -958,6 +913,7 @@ function tradingDays() {
 function slAt(p, t) { let sl = p.sl; for (const x of p.sls || []) if (x.at <= t) sl = x.sl; return sl; }
 // one record against its plan: price inside the entry range, size close to plan, exits as planned
 function checkEx(e, p) {
+  // qty units differ by market (shares, contracts); the check is relative, so it works for all
   const r = {};
   if (!p) { r.plan = 'no'; r.proof = e.slip ? 'ok' : 'no'; return r; }
   if (e.side === 'buy') {
@@ -973,8 +929,9 @@ function generate() {
   const at = (i, h, m) => days[Math.max(0, Math.min(T, i))] + (h * 60 + m) * MIN - TZ;
   const dayOf = t => { let i = T; while (i > 0 && days[i] - TZ > t) i--; return i; };
   const coaches = Array.from({ length: 10 }, (_, i) => ({ id: 'c' + (i + 1), no: i + 1, name: 'โค้ช ' + (i + 1), email: `coach${pad(i + 1)}@sptr.example`, seen: BASE - Math.floor(r() * 150) * MIN }));
-  const C1_TRAIT = [.93, .97, .8, .62, .88], C1_CAP = [200000, 300000, 150000, 100000, 250000];
-  const CAPS = [100000, 150000, 200000, 200000, 250000, 300000, 300000, 500000];
+  const C1_TRAIT = [.93, .97, .8, .62, .88], C1_CAP = [5000000, 8000000, 6000000, 5000000, 10000000];
+  const CAPS = [5000000, 5000000, 6000000, 8000000, 10000000, 12000000, 15000000, 20000000];
+  const MK_SETS = [['th'], ['th', 'tfex'], ['th', 'us'], ['th', 'tfex', 'gold'], ['th', 'us', 'opt'], ['th', 'tfex', 'fut']];
   const clients = NAMES.map(([th, en], i) => {
     const first = i < 5, trait = first ? C1_TRAIT[i] : .6 + r() * .38;
     return {
@@ -983,6 +940,7 @@ function generate() {
       phone: `08${Math.floor(r() * 10)}-${100 + Math.floor(r() * 900)}-${1000 + Math.floor(r() * 9000)}`,
       coach: coaches[Math.floor(i / 5)].id, cap: first ? C1_CAP[i] : pick(CAPS), broker: pick(BROKERS),
       acct: String(1000 + Math.floor(r() * 9000)), trait, eq: [], flows: [], ob: i !== 0, line: i !== 0 && (trait > .7 || r() < .5),
+      term: i === 0 ? 12 : pick([6, 12, 12]), type: i === 0 ? 'PT' : pick(['FT', 'PT', 'PT']), mks: i === 0 ? ['th', 'tfex', 'us'] : pick(MK_SETS), paid: { amt: TUITION, at: COURSE_START - TZ - (3 + Math.floor(r() * 20)) * DAY },
       seen: trait > .72 ? BASE - Math.floor(r() * 30 * 60) * MIN : BASE - Math.floor((6 + r() * 110) * 60) * MIN,
       joined: COURSE_START - TZ + 9 * HR,
     };
@@ -991,13 +949,13 @@ function generate() {
   clients[3].seen = BASE - 26 * HR;
   let fid = 0;
   for (const c of clients) {
-    const dep = c.id === 'u05' ? { i: 31, amt: 50000 } : (+c.id.slice(1) > 5 && r() < .18) ? { i: 15 + Math.floor(r() * 35), amt: pick([30000, 50000, 50000, 100000]) } : null;
+    const dep = c.id === 'u05' ? { i: 31, amt: 500000 } : (+c.id.slice(1) > 5 && r() < .18) ? { i: 15 + Math.floor(r() * 35), amt: pick([300000, 500000, 500000, 1000000]) } : null;
     if (dep) c.flows.push({ id: 'fl' + (++fid), at: at(dep.i, 9, 12), amt: dep.amt, note: 'ฝากเงินเพิ่มเข้าพอร์ต', img: null, pend: false, ok: at(dep.i, 14, 0) });
   }
-  clients[6].flows.push({ id: 'fl' + (++fid), at: BASE - 3 * HR, amt: -30000, note: 'ถอนเงินออกจากพอร์ต', img: null, pend: true });
+  clients[6].flows.push({ id: 'fl' + (++fid), at: BASE - 3 * HR, amt: -300000, note: 'ถอนเงินออกจากพอร์ต', img: null, pend: true });
 
-  const prices = { ...SYMS, ...SMALL }, plans = [], execs = [], misses = [], ups = [];
-  let eid = 0, mid = 0, uid = 0;
+  const prices = { ...SYMS, ...SMALL }, plans = [], execs = [], misses = [];
+  let eid = 0, mid = 0;
   const C1SYM = ['PTTEP', 'ADVANC', 'KBANK', 'GULF', 'CPALL', 'PTT', 'AOT', 'BDMS', 'CPN', 'SCB', 'BBL', 'HMPRO', 'MINT', 'CRC'];
   // the coach's recent plans tell the story on the featured client's screens
   const RECENT = [
@@ -1011,30 +969,44 @@ function generate() {
   const OKB = { buy: 'ok', tp1: 'ok', early: false, exit: 'ok', hold: false };
   // coach 1's five clients: one model client, one perfect, and three with different habits
   const C1 = {
-    u01: { P3: { buy: 'px' }, P5: { p5: 'up' } },
+    u01: { P3: { buy: 'px' }, P5: { p5: 'pend' } },
     u02: { P5: { p5: 'rec' } },
     u03: { P1: { buy: 'qty', tp1: 'nosell' }, P2: { buy: 'skip' }, P3: { exit: 'late' }, P5: { buy: 'px', p5: 'fix' } },
     u04: { P1: { buy: 'skip' }, P3: { hold: true }, P4: { buy: 'skip' }, P5: { buy: 'skip' } },
     u05: { P3: { buy: 'skip' }, P5: { p5: 'rec' } },
   };
   const NOTE_FOR = { px: 'ซื้อสูงกว่าช่วง Entry ที่กำหนด (ไล่ราคา) ครั้งต่อไปหากราคาเกินช่วงแล้ว ให้รอจังหวะใหม่และแจ้งโค้ชก่อน', qty: 'จำนวนหุ้นมากกว่า Position Size ของแผน โปรดซื้อตามจำนวนที่โค้ชแจ้ง', late: 'ขายตัดขาดทุนช้ากว่าแผน 1 วัน ทำให้ขาดทุนมากขึ้น โปรดตั้ง Stop Order ในแอปไว้ล่วงหน้า', self: 'ขายเองก่อนถึงเป้าหมายโดยไม่ได้ปรึกษาโค้ช' };
-  // a record made by the coach, with the client's screenshot attached
-  const rec = (x, c, co, cnote) => {
-    const e = { id: 'e' + (++eid), ...x, slip: c.trait < .7 && r() < .08 ? null : { m: 1 }, rec: { by: co.id, at: Math.min(BASE - 6 * MIN, x.at + (25 + Math.floor(r() * 170)) * MIN) } };
+  // a record keyed in by the client with the screenshot attached (sometimes by the coach for them),
+  // then confirmed by the coach
+  const rec = (x, c, co, cnote, ver = 'ok') => {
+    const by = r() < .85 ? c.id : co.id, at0 = Math.min(BASE - 30 * MIN, x.at + (10 + Math.floor(r() * 110)) * MIN);
+    const e = { id: 'e' + (++eid), ...x, slip: c.trait < .7 && r() < .08 ? null : { m: 1 }, rec: { by, at: at0 }, ver };
+    if (ver === 'ok' && by !== co.id) Object.assign(e, { vby: co.id, vat: Math.min(BASE - 6 * MIN, at0 + (20 + Math.floor(r() * 200)) * MIN) });
+    if (ver !== 'ok') e.rec.by = c.id;
     if (cnote) e.cnote = cnote;
     execs.push(e);
     return e;
   };
+  // other markets the program covers: SET50 Index Futures (TFEX, 200 baht per index point) and a US stock
+  // (prices in USD, converted at the rate the client keyed in). Prices are illustrative.
+  const XMK = [{ sym: 'S50Z26', mk: 'tfex', k: 200, ref: 880, sl: .975, tp1: 1.035, tp2: 1.06, day: 10, note: 'ดัชนี SET50 ยืนเหนือแนวรับได้ เปิดสถานะ Long ใน S50 Futures ตามจำนวนสัญญาที่กำหนด' },
+    { sym: 'NVDA', mk: 'us', k: 33, ref: 180, sl: .955, tp1: 1.07, tp2: 1.12, day: 29, note: 'ราคาย่อตัวพักฐานเหนือเส้นค่าเฉลี่ย 50 วัน ซื้อในช่วง Entry ที่กำหนด คิดเป็นเงินบาทตามอัตราแลกเปลี่ยนวันที่ซื้อ' }];
 
   for (const co of coaches) {
     const syms = co.no === 1 ? C1SYM : Object.keys(SYMS).sort(() => r() - .5).slice(0, 14), evs = [];
-    const mk = (key, sym, hi0, d0, h, mi, note, size) => {
-      const hi = rt(hi0), p = { id: `${co.id}-${key}`, key, coach: co.id, sym, lo: rt(hi * .988), hi, sl: rt(hi * .955), tp1: rt(hi * 1.07), tp2: rt(hi * 1.12), size, at: at(d0, h, mi), note, sls: [], end: null };
+    const mk = (key, sym, hi0, d0, h, mi, note, size, x) => {
+      const R = x ? (v => Math.round(v * (x.mk === 'tfex' ? 10 : 100)) / (x.mk === 'tfex' ? 10 : 100)) : rt, hi = R(hi0);
+      const p = { id: `${co.id}-${key}`, key, coach: co.id, sym, lo: R(hi * (x ? .995 : .988)), hi, sl: R(hi * (x?.sl || .955)), tp1: R(hi * (x?.tp1 || 1.07)), tp2: R(hi * (x?.tp2 || 1.12)), size, at: at(d0, h, mi), note, sls: [], end: null };
+      if (x) Object.assign(p, { mk: x.mk, k: x.k });
       plans.push(p); evs.push({ t: p.at, p, type: 'open' });
       return p;
     };
+    XMK.forEach((x, j) => {
+      const d0 = x.day + j, p = mk(`X${j + 1}`, x.sym, x.ref * (.97 + r() * .06), d0, 10, 20, x.note, 10, x), win = r() < .7;
+      evs.push(win ? { t: at(d0 + 4 + Math.floor(r() * 3), 14, 30), p, type: 'tp2' } : { t: at(d0 + 2 + Math.floor(r() * 2), 11, 0), p, type: 'sl' });
+    });
     OLD_D.forEach((d0, j) => {
-      const sym = syms[5 + j], p = mk(`O${j + 1}`, sym, prices[sym] * (.88 + r() * .16), d0, 10, 5 + j * 4, pick(OPEN_NOTES), pick([15, 20, 20, 25]));
+      const sym = syms[5 + j], p = mk(`O${j + 1}`, sym, prices[sym] * (.88 + r() * .16), d0, 10, 5 + j * 4, pick(OPEN_NOTES), pick([8, 10, 10, 12]));
       if (r() < .66) {
         const d1 = d0 + 2 + Math.floor(r() * 3), d2 = d1 + 2 + Math.floor(r() * 3);
         if (r() < .55) evs.push({ t: at(d1, 11, 10), p, type: 'tp1' }, { t: at(d2, 14, 40), p, type: 'tp2' });
@@ -1043,7 +1015,7 @@ function generate() {
     });
     RECENT.forEach((x, j) => {
       const sym = syms[j], last = prices[sym];
-      const p = mk(x.k, sym, x.today ? last * 1.005 : last / x.m, T + x.d, x.h, x.mi, pick(OPEN_NOTES), x.k === 'P4' ? 15 : 20);
+      const p = mk(x.k, sym, x.today ? last * 1.005 : last / x.m, T + x.d, x.h, x.mi, pick(OPEN_NOTES), x.k === 'P4' ? 8 : 10);
       if (x.today) p.lo = rt(last * .99);
       if (co.no === 1 && x.k === 'P5') p.note = `ราคาย่อตัวลงมาทดสอบแนวรับ ${px(p.lo)} พร้อมแรงซื้อกลับเข้ามา เข้าซื้อในช่วง Entry ${px(p.lo)}–${px(p.hi)} เท่านั้น หากราคาเปิดสูงกว่า ${px(p.hi)} ไม่ไล่ราคา`;
       (x.ev || []).forEach(([type, d, h, mi]) => evs.push({ t: at(T + d, h, mi), p, type }));
@@ -1065,11 +1037,11 @@ function generate() {
       // trades the client made without a plan (small caps), recorded once the coach found out
       const offs = [];
       const addOff = (sym, d, h, m, frac, why, sellD) => offs.push({ t: at(d, h, m), type: 'offbuy', sym, frac, why }, ...(sellD != null ? [{ t: at(sellD, 14, 50), type: 'offsell', sym }] : []));
-      if (c.id === 'u04') { addOff('KCE', T - 9, 13, 40, .12, 'คาดว่าราคาจะฟื้นตัวแรง จึงตัดสินใจซื้อเอง'); addOff('BANPU', T - 1, 14, 35, .1, 'เห็นข่าวจากกลุ่มสนทนา จึงตัดสินใจซื้อเอง'); }
-      if (c.id === 'u03') addOff('WHA', T - 3, 10, 12, .1, 'รูปแบบกราฟน่าสนใจ จึงตัดสินใจซื้อเอง', T - 2);
+      if (c.id === 'u04') { addOff('KCE', T - 9, 13, 40, .06, 'คาดว่าราคาจะฟื้นตัวแรง จึงตัดสินใจซื้อเอง'); addOff('BANPU', T - 1, 14, 35, .05, 'เห็นข่าวจากกลุ่มสนทนา จึงตัดสินใจซื้อเอง'); }
+      if (c.id === 'u03') addOff('WHA', T - 3, 10, 12, .05, 'รูปแบบกราฟน่าสนใจ จึงตัดสินใจซื้อเอง', T - 2);
       if (+c.id.slice(1) > 5) {
         const n = c.trait > .88 ? 0 : c.trait > .75 ? (r() < .35 ? 1 : 0) : 1 + (r() < .5 ? 1 : 0);
-        for (let k = 0; k < n; k++) addOff(pick(Object.keys(SMALL)), T - 1 - Math.floor(r() * 24), 10 + Math.floor(r() * 5), Math.floor(r() * 59), .08 + r() * .06, pick(OFF_WHY));
+        for (let k = 0; k < n; k++) addOff(pick(Object.keys(SMALL)), T - 1 - Math.floor(r() * 24), 10 + Math.floor(r() * 5), Math.floor(r() * 59), .04 + r() * .03, pick(OFF_WHY));
       }
       let cash = c.cap;
       const book = () => cash + Object.values(hold).reduce((s, h) => s + h.cost, 0);
@@ -1092,32 +1064,29 @@ function generate() {
         }
         const p = ev.p;
         if (!B.has(p.id)) B.set(p.id, beh(p));
-        const b = B.get(p.id), h = hold[p.id];
+        const b = B.get(p.id), h = hold[p.id], K = p.k || 1, Q = q => p.mk ? Math.max(1, Math.floor(q)) : lot(q);
+        const R = v => p.mk ? Math.round(v * (p.mk === 'tfex' ? 10 : 100)) / (p.mk === 'tfex' ? 10 : 100) : rt(v);
+        const xk = p.mk ? { mk: p.mk, k: p.mk === 'us' ? Math.round((32.6 + r() * .8) * 100) / 100 : K } : {};
         const sell = (qty, price, t, why, cnote) => {
           qty = Math.min(qty, h.qty); if (qty <= 0 || t > BASE - 10 * MIN) return;
           const avg = h.cost / h.qty;
-          rec({ cl: c.id, plan: p.id, sym: p.sym, side: 'sell', px: price, qty, at: t, why }, c, co, cnote);
-          cash += qty * price; h.cost -= avg * qty; h.qty -= qty;
+          const e = rec({ cl: c.id, plan: p.id, sym: p.sym, side: 'sell', px: price, qty, at: t, why, ...xk }, c, co, cnote);
+          cash += qty * price * (e.k || 1); h.cost -= avg * qty; h.qty -= qty;
         };
         if (ev.type === 'open') {
           if (b.buy === 'skip') continue;
-          const pq = lot(book() * p.size / 100 / p.hi);
-          let qty = b.buy === 'qty' ? Math.max(pq + 100, lot(pq * 1.5)) : pq;
-          const price = b.buy === 'px' ? (rt(p.hi * 1.008) > p.hi ? rt(p.hi * 1.008) : p.hi + tick(p.hi)) : rt(p.lo + r() * (p.hi - p.lo));
-          if (qty * price > cash) qty = lot(cash * .97 / price);
-          if (qty * price > cash || qty < 100) continue;
+          const pq = Q(book() * p.size / 100 / (p.hi * K));
+          let qty = b.buy === 'qty' ? Math.max(pq + (p.mk ? 1 : 100), Q(pq * 1.5)) : pq;
+          const price = b.buy === 'px' ? (p.mk ? R(p.hi * 1.008) : rt(p.hi * 1.008) > p.hi ? rt(p.hi * 1.008) : p.hi + tick(p.hi)) : R(p.lo + r() * (p.hi - p.lo));
+          if (qty * price * K > cash) qty = Q(cash * .97 / (price * K));
+          if (qty * price * K > cash || qty < (p.mk ? 1 : 100)) continue;
           const t = ev.t + (6 + Math.floor(r() * 30)) * MIN;
-          if (p.key === 'P5') {
-            const how = b.p5 || (r() < .45 ? 'rec' : r() < .7 ? 'up' : 'none');
-            if (how === 'none') continue;
-            if (how !== 'rec') {
-              // bought this morning and sent the screenshot; the coach has not recorded it yet
-              ups.push({ id: 'up' + (++uid), cl: c.id, at: t + 3 * MIN, m: { sym: p.sym, side: 'buy', px: price, qty, at: t, plan: p.id, pq }, note: '', st: how === 'fix' ? 'fix' : 'pend', ...(how === 'fix' ? { fix: { at: t + 40 * MIN, by: co.id, note: 'ภาพไม่ชัด มองไม่เห็นราคาที่ Matched และเวลา โปรดส่งภาพหน้าสถานะคำสั่ง (Order Status) อีกครั้ง' } } : {}) });
-              continue;
-            }
-          }
-          rec({ cl: c.id, plan: p.id, sym: p.sym, side: 'buy', px: price, qty, pq, at: t }, c, co, b.buy !== 'ok' ? NOTE_FOR[b.buy] : undefined);
-          cash -= qty * price; hold[p.id] = { qty, cost: qty * price };
+          // today's buys: keyed in this morning, some still waiting for the coach to confirm
+          const how = p.key === 'P5' ? b.p5 || (r() < .4 ? 'ok' : r() < .75 ? 'pend' : 'none') : 'ok';
+          if (how === 'none') continue;
+          const e = rec({ cl: c.id, plan: p.id, sym: p.sym, side: 'buy', px: price, qty, pq, at: t, ...xk }, c, co, b.buy !== 'ok' && how === 'ok' ? NOTE_FOR[b.buy] : undefined, how === 'rec' ? 'ok' : how);
+          if (how === 'fix') e.fix = { at: t + 40 * MIN, by: co.id, note: 'ภาพไม่ชัด มองไม่เห็นราคาที่ Matched และเวลา โปรดแนบภาพหน้าสถานะคำสั่ง (Order Status) ใหม่ และตรวจจำนวนหุ้นอีกครั้ง' };
+          cash -= qty * price * (e.k || 1); hold[p.id] = { qty, cost: qty * price * (e.k || 1) };
           continue;
         }
         if (!h || h.qty <= 0) continue;
@@ -1125,22 +1094,24 @@ function generate() {
           // sold everything early, on their own, a day before the target
           b.sold = true;
           const t = at(dayOf(ev.t) - 1, 13, 20);
-          if (t > (execs.find(e => e.cl === c.id && e.plan === p.id)?.at || 0) + DAY) { sell(h.qty, rt(p.hi + (p.tp1 - p.hi) * (.3 + r() * .4)), t, 'self', NOTE_FOR.self); continue; }
+          if (t > (execs.find(e => e.cl === c.id && e.plan === p.id)?.at || 0) + DAY) { sell(h.qty, R(p.hi + (p.tp1 - p.hi) * (.3 + r() * .4)), t, 'self', NOTE_FOR.self); continue; }
         }
         if (ev.type === 'tp1') {
           if (b.tp1 === 'nosell') { misses.push({ id: 'm' + (++mid), cl: c.id, plan: p.id, kind: 'nosell', at: ev.t + 90 * MIN, by: co.id, note: pick(['ลูกค้าแจ้งว่าต้องการถือต่อจนถึง TP2', 'ลูกค้ายังไม่ขาย เพราะคาดว่าราคาจะขึ้นต่อ']) }); continue; }
-          sell(lot(h.qty * .5), rt(p.tp1 * (.997 + r() * .006)), ev.t + (5 + Math.floor(r() * 30)) * MIN, 'tp1');
+          sell(Q(h.qty * .5), R(p.tp1 * (.997 + r() * .006)), ev.t + (5 + Math.floor(r() * 30)) * MIN, 'tp1');
         }
-        if (ev.type === 'tp2') sell(h.qty, rt(p.tp2 * (.997 + r() * .006)), ev.t + (5 + Math.floor(r() * 30)) * MIN, 'tp2');
+        if (ev.type === 'tp2') sell(h.qty, R(p.tp2 * (.997 + r() * .006)), ev.t + (5 + Math.floor(r() * 30)) * MIN, 'tp2');
         if (ev.type === 'sl') {
           if (b.hold && ev.t > BASE - 6 * DAY) { misses.push({ id: 'm' + (++mid), cl: c.id, plan: p.id, kind: 'nocut', at: ev.t + 2 * HR, by: co.id, note: 'ลูกค้าไม่ต้องการขายขณะขาดทุน รอให้ราคาฟื้นตัวก่อน' }); continue; }
           const s = slAt(p, ev.t), late = b.exit === 'late';
-          sell(h.qty, late ? rt(s * (.955 + r() * .012)) : rt(s * (.997 + r() * .004)), late ? at(dayOf(ev.t) + 1, 10, 5 + Math.floor(r() * 40)) : ev.t + (4 + Math.floor(r() * 25)) * MIN, 'cut', late ? NOTE_FOR.late : undefined);
+          sell(h.qty, late ? R(s * (.955 + r() * .012)) : R(s * (.997 + r() * .004)), late ? at(dayOf(ev.t) + 1, 10, 5 + Math.floor(r() * 40)) : ev.t + (4 + Math.floor(r() * 25)) * MIN, 'cut', late ? NOTE_FOR.late : undefined);
         }
       }
     }
   }
   execs.sort((a, b) => a.at - b.at);
+  // some of the latest records the clients keyed in are still waiting for the coach
+  for (const e of execs) if (e.ver === 'ok' && e.rec.at > BASE - 20 * HR && !e.rec.by.startsWith('c') && r() < .5) { e.ver = 'pend'; delete e.vby; delete e.vat; delete e.cnote; }
 
   // port value per day from the records: cash plus each holding marked along its own path
   // (between its recorded prices, ending at the latest close), so charts and profit agree
@@ -1149,7 +1120,7 @@ function generate() {
     const tracks = keys.map(k => {
       const es = ex.filter(e => (e.plan || 'off:' + e.sym) === k), q = es.reduce((s, e) => s + (e.side === 'buy' ? e.qty : -e.qty), 0);
       const pts = es.map(e => [dayOf(e.at), e.px]);
-      if (q > 0) pts.push([T, prices[es[0].sym]]);
+      if (q > 0) pts.push([T, prices[es[0].sym] ?? es[es.length - 1].px]);
       const seed = [...k].reduce((s, ch) => s + ch.charCodeAt(0), 0);
       return { es, pts, seed };
     });
@@ -1165,8 +1136,8 @@ function generate() {
       let v = c.cap + c.flows.reduce((s, f) => s + (!f.pend && f.at < end ? f.amt : 0), 0);
       for (const tr of tracks) {
         let qty = 0;
-        for (const e of tr.es) if (e.at < end) { qty += e.side === 'buy' ? e.qty : -e.qty; v += (e.side === 'buy' ? -1 : 1) * e.qty * e.px; }
-        if (qty > 0) v += qty * (i === T ? prices[tr.es[0].sym] : mark(tr, i));
+        for (const e of tr.es) if (e.at < end) { qty += e.side === 'buy' ? e.qty : -e.qty; v += (e.side === 'buy' ? -1 : 1) * e.qty * e.px * (e.k || 1); }
+        if (qty > 0) v += qty * (tr.es[0].k || 1) * (i === T ? prices[tr.es[0].sym] ?? tr.es[tr.es.length - 1].px : mark(tr, i));
       }
       c.eq.push(Math.round(v));
     }
@@ -1192,7 +1163,7 @@ function generate() {
   for (const e of execs) {
     const ck = checkEx(e, e.plan && planById(e.plan));
     if (Object.values(ck).every(v => v === 'ok') || e.at > BASE - 7 * DAY || (trait(e.cl) < .7 && r() < .5)) continue;
-    done['dev:' + e.id] = { by: e.rec.by, at: e.rec.at + 20 * HR, note: e.cl === 'u01' ? 'โทรคุยแล้ว ครั้งต่อไปหากราคาเกินช่วง Entry จะรอจังหวะใหม่' : 'โทรคุยแล้ว ลูกค้ารับทราบและจะปรับปรุง' };
+    done['dev:' + e.id] = { by: clients.find(c => c.id === e.cl).coach, at: e.rec.at + 20 * HR, note: e.cl === 'u01' ? 'โทรคุยแล้ว ครั้งต่อไปหากราคาเกินช่วง Entry จะรอจังหวะใหม่' : 'โทรคุยแล้ว ลูกค้ารับทราบและจะปรับปรุง' };
   }
   for (const m of misses) if (m.at < BASE - 7 * DAY && trait(m.cl) >= .7) done['miss:' + m.id] = { by: m.by, at: m.at + DAY, note: 'คุยแล้ว ลูกค้ารับทราบ' };
 
@@ -1204,10 +1175,18 @@ function generate() {
   const coachName = id => coaches.find(x => x.id === id).name, clName = id => clients.find(x => x.id === id).name;
   const feed = [{ id: 'f0', at: BASE - 40 * MIN, by: 'cs', who: 'cs', kind: 'login', text: 'ทีม CS เข้าสู่ระบบ' },
     ...coaches.map((co, i) => ({ id: 'fs' + i, at: co.seen, by: 'coach', who: co.id, coach: co.id, kind: 'login', text: `${co.name} เข้าสู่ระบบ` })),
-    ...execs.filter(e => e.rec.at > BASE - 10 * HR).map((e, i) => ({ id: 'fr' + i, at: e.rec.at, by: 'coach', who: e.rec.by, coach: e.rec.by, cl: e.cl, kind: 'rec', text: `${coachName(e.rec.by)} บันทึกรายการ${e.side === 'buy' ? 'ซื้อ' : 'ขาย'} ${e.sym} ของ${clName(e.cl)}` })),
-    ...ups.map((u, i) => ({ id: 'fu' + i, at: u.at, by: 'client', who: u.cl, cl: u.cl, coach: clients.find(c => c.id === u.cl).coach, kind: 'up', text: `${clName(u.cl)} ส่งภาพหลักฐานการซื้อขาย` }))].sort((a, b) => a.at - b.at);
+    ...execs.filter(e => e.rec.at > BASE - 10 * HR).map((e, i) => { const coachBy = e.rec.by.startsWith('c'), co = clients.find(c => c.id === e.cl).coach; return { id: 'fr' + i, at: e.rec.at, by: coachBy ? 'coach' : 'client', who: e.rec.by, coach: co, cl: e.cl, kind: 'key', text: `${coachBy ? coachName(e.rec.by) + ' บันทึกรายการ' : clName(e.cl) + ' บันทึกรายการ'}${e.side === 'buy' ? 'ซื้อ' : 'ขาย'} ${e.sym}${coachBy ? ' ให้' + clName(e.cl) : ''}` }; })].sort((a, b) => a.at - b.at);
 
-  return { v: 3, seededAt: Date.now(), days, coaches, cs: { id: 'cs', name: 'ทีม CS', email: 'cs@sptr.example', seen: BASE - 40 * MIN }, clients, prices, plans, execs, misses, ups, snaps, notes, done, feed, ids: { e: eid, m: mid, up: uid, s: sid, n: 10, f: 20, fl: fid, p: 0 } };
+  const apps = APPLICANTS.map(([nm, ln], i) => {
+    const port = pick([3000000, 5000000, 5500000, 6000000, 8000000, 10000000, 12000000, 15000000, 20000000, 30000000]), stage = i < 6 ? 'new' : i < 13 ? 'sched' : i < 19 ? 'pass' : i < 22 ? 'wait' : 'fail';
+    const a = { id: 'a' + pad(i + 1), name: nm, last: ln, phone: `08${Math.floor(r() * 10)}-${100 + Math.floor(r() * 900)}-${1000 + Math.floor(r() * 9000)}`, port: port < 5000000 && stage !== 'fail' ? 5000000 + pick([0, 1, 3]) * 1000000 : port, type: pick(['FT', 'PT', 'PT']), mks: pick(MK_SETS), exp: pick(['1–3 ปี', '3–5 ปี', 'มากกว่า 5 ปี', 'มากกว่า 10 ปี']), at: BASE - (1 + Math.floor(r() * 20)) * DAY - Math.floor(r() * 8) * HR, stage };
+    if (stage !== 'new') a.iv = { at: stage === 'sched' ? BASE + (1 + Math.floor(r() * 9)) * DAY + (3 + Math.floor(r() * 6)) * HR - (BASE % DAY) : BASE - Math.floor(r() * 10 + 1) * DAY, by: coaches[Math.floor(r() * 10)].id };
+    if (['pass', 'wait', 'fail'].includes(stage)) Object.assign(a.iv, { score: stage === 'pass' ? 80 + Math.floor(r() * 18) : stage === 'wait' ? 70 + Math.floor(r() * 9) : 45 + Math.floor(r() * 20), note: stage === 'pass' ? 'มีระบบเทรดของตัวเอง ยอมรับกติกาการทำตามแผน พร้อมทุ่มเท' : stage === 'wait' ? 'ผ่านเกณฑ์ แต่ยังไม่ชัดเรื่องเวลาที่ใช้ต่อวัน จัดเป็นรายชื่อสำรอง' : port < 5000000 ? 'ขนาดพอร์ตไม่ถึง 5 ล้านบาท' : 'ยังไม่พร้อมทำตามแผนของโค้ช ต้องการเทรดตามความเห็นตัวเอง' });
+    if (port < 5000000 && stage === 'fail') a.port = port;
+    return a;
+  }).sort((a, b) => b.at - a.at);
+
+  return { v: 4, seededAt: Date.now(), days, coaches, cs: { id: 'cs', name: 'ทีม CS', email: 'cs@sptr.example', seen: BASE - 40 * MIN }, clients, prices, plans, execs, misses, snaps, notes, done, feed, apps, intake: { no: 2, seats: 50 }, ids: { e: eid, m: mid, s: sid, n: 10, f: 20, fl: fid, p: 0, a: apps.length } };
 }
 
 /* ---------- store ---------- */
@@ -1215,9 +1194,8 @@ let S = null;
 const isArr = Array.isArray;
 // stored data is untrusted: check its shape and drop anything that is not an image we made
 function validState(s) {
-  if (!s || s.v !== 3 || !isArr(s.days) || !isArr(s.coaches) || !isArr(s.clients) || !isArr(s.plans) || !isArr(s.execs) || !isArr(s.misses) || !isArr(s.ups) || !isArr(s.snaps) || !isArr(s.notes) || !isArr(s.feed) || !s.cs || typeof s.done !== 'object' || !s.ids || typeof s.prices !== 'object') return false;
+  if (!s || s.v !== 4 || !isArr(s.days) || !isArr(s.coaches) || !isArr(s.clients) || !isArr(s.plans) || !isArr(s.execs) || !isArr(s.misses) || !isArr(s.apps) || !isArr(s.snaps) || !isArr(s.notes) || !isArr(s.feed) || !s.cs || typeof s.done !== 'object' || !s.ids || typeof s.prices !== 'object') return false;
   for (const e of s.execs) if (e.slip && e.slip.img && !safeImg(e.slip.img)) e.slip = null;
-  for (const u of s.ups) if (u.img && !safeImg(u.img)) u.img = null;
   for (const x of s.snaps) if (x.img && !safeImg(x.img)) x.img = null;
   for (const c of s.clients) { if (!isArr(c.eq) || !isArr(c.flows)) return false; for (const f of c.flows) if (f.img && !safeImg(f.img)) f.img = null; }
   return true;
@@ -1228,7 +1206,7 @@ function freshCache() { const m = Math.floor(now() / MIN); if (m !== cacheMin) {
 function load() {
   try { const s = JSON.parse(localStorage.getItem(KEY)); if (validState(s)) { clearCache(); return s; } } catch (e) { }
   const s = generate();
-  try { ['p1m-mockup-v2', 'p1m-mockup-v3', 'p1m-mockup-v4', 'p1m-mockup-v5'].forEach(k => localStorage.removeItem(k)); localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { }
+  try { ['p1m-mockup-v2', 'p1m-mockup-v3', 'p1m-mockup-v4', 'p1m-mockup-v5', 'p1m-mockup-v6'].forEach(k => localStorage.removeItem(k)); localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { }
   clearCache();
   return s;
 }
@@ -1255,7 +1233,7 @@ const client = id => S.clients.find(c => c.id === id);
 const coach = id => S.coaches.find(c => c.id === id);
 const execOf = id => S.execs.find(e => e.id === id);
 const planOf = id => id ? S.plans.find(p => p.id === id) || null : null;
-const upOf = id => S.ups.find(u => u.id === id);
+const appOf = id => S.apps.find(a => a.id === id);
 const cname = c => c.name + (c.last ? ' ' + c.last : '');
 const seenTxt = c => c.seen ? when(c.seen, now()) : 'ยังไม่เคยเข้าใช้งาน';
 const initial = s => (String(s).match(/[ก-ฮA-Za-z0-9]/) || ['?'])[0];
@@ -1264,7 +1242,7 @@ const netFlowAt = (c, at) => c.flows.reduce((s, f) => s + (f.pend || f.rej || f.
 const execsOf = clId => memo('ex:' + clId, () => S.execs.filter(e => e.cl === clId).sort((a, b) => a.at - b.at));
 // The records are the main reference ("ยึดบันทึกเป็นหลัก"): port value = cash + holdings at the
 // latest close, both worked out from the trades the coach recorded.
-const cashOf = c => c.cap + netFlow(c) + execsOf(c.id).reduce((s, e) => s + (e.side === 'buy' ? -1 : 1) * e.qty * e.px, 0);
+const cashOf = c => c.cap + netFlow(c) + execsOf(c.id).reduce((s, e) => s + (e.side === 'buy' ? -1 : 1) * e.qty * e.px * (e.k || 1), 0);
 const eqNow = c => memo('eq:' + c.id, () => cashOf(c) + posValue(c.id));
 const profit = c => eqNow(c) - c.cap - netFlow(c);
 const retPct = c => profit(c) / (c.cap + netFlow(c));
@@ -1272,11 +1250,20 @@ const retPct = c => profit(c) / (c.cap + netFlow(c));
 function pnlSum(c) {
   return memo('pnl:' + c.id, () => {
     const ps = positions(c.id), closed = ps.filter(p => p.qty === 0 && p.bought > 0);
-    const realized = ps.reduce((s, p) => s + p.realized, 0), unreal = openPos(c.id).reduce((s, p) => s + (p.last - p.avg) * p.qty, 0);
+    const realized = ps.reduce((s, p) => s + p.realized, 0), unreal = openPos(c.id).reduce((s, p) => s + p.upl, 0);
     const wins = closed.filter(p => p.realized > 0).length;
     return { realized, unreal, total: realized + unreal, closed: closed.length, wins, rate: closed.length ? wins / closed.length : 0, open: ps.length - closed.length };
   });
 }
+// the program's money-back terms, as if the program ended today
+function settle(c) {
+  const pr = profit(c), kept = Math.max(0, Math.min(TUITION, pr));
+  return { pr, kept, refund: TUITION - kept, extra: Math.max(0, pr - TUITION), pct: Math.max(0, Math.min(1, pr / GOAL)) };
+}
+const addMonths = (t, m) => { const d = new Date(t); d.setUTCMonth(d.getUTCMonth() + m); return d.getTime(); };
+const progEnd = c => addMonths(c.joined, c.term);
+const progMonth = c => Math.max(1, Math.min(c.term, Math.floor((now() - c.joined) / (30.44 * DAY)) + 1));
+const TYPE = { FT: 'Full-time', PT: 'Part-time' };
 // weekly reports are still collected, as a check that every trade was recorded
 const snapsOf = c => memo('snaps:' + c.id, () => S.snaps.filter(x => x.cl === c.id).sort((a, b) => a.day - b.day || a.at - b.at));
 const lastSnap = c => snapsOf(c).slice(-1)[0] || null;
@@ -1291,6 +1278,8 @@ function repSeries(c) {
   pts.push({ t: S.days[T_()], v: eqNow(c), est: true, tip: 'วันนี้ · ราคาปิดล่าสุด' });
   return pts;
 }
+// the same weeks as profit (deposits and withdrawals taken out), measured against the 1,000,000 goal
+const profitSeries = c => repSeries(c).map((p, i) => ({ ...p, v: p.est ? profit(c) : i ? p.v - c.cap - netFlowAt(c, p.t + DAY - TZ) : 0, tip: i ? p.tip : 'เริ่มโปรแกรม' }));
 const lastFriday = () => { for (let i = T_() - 1; i >= 0; i--) if (new Date(S.days[i]).getUTCDay() === 5) return i; return 0; };
 function drawdown(c) { const v = [...c.eq.slice(0, -1), eqNow(c)]; let pk = 0, dd = 0; for (const x of v) { pk = Math.max(pk, x); dd = Math.max(dd, (pk - x) / pk); } const hi = Math.max(...v); return { max: dd, now: (hi - eqNow(c)) / hi }; }
 
@@ -1302,6 +1291,10 @@ const allOk = r => Object.values(r).every(v => v === 'ok');
 const CK_LABEL = { plan: 'แผน', px: 'ราคา', qty: 'จำนวน', sell: 'การขาย', proof: 'หลักฐาน' };
 const ckHtml = r => '<span class="checks">' + Object.entries(r).map(([k, v]) => `<span class="ck ${v}">${v === 'ok' ? ic('check', 12) : ic(v === 'no' ? 'x' : 'alert', 12)}${CK_LABEL[k]}</span>`).join('') + '</span>';
 const ckDots = r => '<span class="dots">' + Object.entries(r).map(([k, v]) => `<i class="${v}" title="${CK_LABEL[k]}: ${v === 'ok' ? 'ตรง' : v === 'no' ? 'ไม่มี' : 'ไม่ตรง'}"></i>`).join('') + '</span>';
+// records are keyed by the client (sometimes by the coach for them) and confirmed by the coach
+const byName = id => String(id).startsWith('u') ? cname(client(id)) : coach(id)?.name || 'ทีม CS';
+const VER = { pend: ['blue', 'รอโค้ชตรวจ', 'clock'], fix: ['warn', 'ต้องแก้ไข', 'alert'], ok: ['ok', 'ตรวจแล้ว', 'check'] };
+const verTag = (e, short) => { const [c, l, i] = VER[e.ver] || VER.ok; return `<span class="tag ${c}">${ic(i, 12)}${short && e.ver === 'pend' ? 'รอตรวจ' : l}</span>`; };
 const SELL_WHY = { tp1: 'แบ่งขายทำกำไรที่ TP1', tp2: 'ขายทำกำไรที่ TP2', cut: 'ขายตัดขาดทุนที่ Stop Loss', coach: 'ขายตามคำแนะนำของโค้ช', self: 'ลูกค้าขายเอง (ไม่ตรงแผน)' };
 const MISS = { nocut: 'ไม่ขายตัดขาดทุนตามแผน', nosell: 'ไม่ขายทำกำไรตามแผน' };
 const verbEx = e => e.side === 'buy' ? 'ซื้อ' : ({ tp1: 'แบ่งขายทำกำไร', tp2: 'ขายทำกำไร', cut: 'ขายตัดขาดทุน', coach: 'ขาย', self: 'ขายเอง' })[e.why] || 'ขาย';
@@ -1311,32 +1304,36 @@ function devText(e) {
   const p = planOf(e.plan), r = checkEx(e, p), out = [];
   if (!p) return `ซื้อขายนอกแผน${e.why && e.why !== 'self' ? ` · “${e.why}”` : ''}`;
   if (r.px === 'bad') out.push(e.px > p.hi ? `ซื้อสูงกว่า Entry ${px(e.px - p.hi)} บาท (ไล่ราคา)` : `ซื้อต่ำกว่าช่วง Entry ${px(p.lo - e.px)} บาท`);
-  if (r.qty === 'bad') out.push(`จำนวน ${fmt(e.qty)} หุ้น ${e.qty > e.pq ? 'มากกว่า' : 'น้อยกว่า'}แผน (${fmt(e.pq)} หุ้น)`);
+  if (r.qty === 'bad') out.push(`จำนวน ${fmt(e.qty)} ${unitOf(e)} ${e.qty > e.pq ? 'มากกว่า' : 'น้อยกว่า'}แผน (${fmt(e.pq)} ${unitOf(e)})`);
   if (r.sell === 'bad') out.push(e.why === 'self' ? 'ขายเองก่อนถึงเป้าหมาย' : `ขายตัดขาดทุนช้า ต่ำกว่า Stop Loss ${pct((e.px - slAt(p, e.at)) / slAt(p, e.at))}`);
   if (r.proof === 'no') out.push('ไม่มีภาพหลักฐาน');
   return out.join(' · ');
 }
 
+// one position per plan (or per off-plan symbol). Money is in baht: k = multiplier x exchange rate
+// (1 for Thai stocks); avg and last stay in the market's own price.
 function positions(clId) {
   return memo('pos:' + clId, () => {
     const m = {};
     for (const e of execsOf(clId)) {
-      const k = e.plan || 'off:' + e.sym;
-      const p = m[k] || (m[k] = { key: k, plan: e.plan, sym: e.sym, qty: 0, cost: 0, realized: 0, bought: 0, bq: 0, first: e.at, lastAt: e.at });
-      if (e.side === 'buy') { p.cost += e.px * e.qty; p.qty += e.qty; p.bought += e.px * e.qty; p.bq += e.qty; }
-      else { const q = Math.min(e.qty, p.qty), avg = p.qty ? p.cost / p.qty : e.px; p.realized += (e.px - avg) * q; p.cost -= avg * q; p.qty -= q; }
-      p.lastAt = e.at;
+      const key = e.plan || 'off:' + e.sym, k = e.k || 1;
+      const p = m[key] || (m[key] = { key, plan: e.plan, sym: e.sym, mk: e.mk || 'th', k, qty: 0, cost: 0, cpx: 0, realized: 0, bought: 0, bq: 0, first: e.at, lastAt: e.at, lastPx: e.px });
+      if (e.side === 'buy') { p.cost += e.px * e.qty * k; p.cpx += e.px * e.qty; p.qty += e.qty; p.bought += e.px * e.qty * k; p.bq += e.qty; p.k = k; }
+      else { const q = Math.min(e.qty, p.qty), avgT = p.qty ? p.cost / p.qty : e.px * k, avgP = p.qty ? p.cpx / p.qty : e.px; p.realized += (e.px * k - avgT) * q; p.cost -= avgT * q; p.cpx -= avgP * q; p.qty -= q; }
+      p.lastAt = e.at; p.lastPx = e.px;
     }
     return Object.values(m).map(p => {
-      const op = planOf(p.plan);
-      return { ...p, avg: p.qty ? p.cost / p.qty : 0, last: S.prices[p.sym] || p.cost / (p.qty || 1), sl: op ? planSL(op.id) : null, tp1: op?.tp1, tp2: op?.tp2 };
+      const op = planOf(p.plan), last = S.prices[p.sym] ?? p.lastPx, v = p.qty * last * p.k;
+      return { ...p, avg: p.qty ? p.cpx / p.qty : 0, last, v, upl: p.qty ? v - p.cost : 0, sl: op ? planSL(op.id) : null, tp1: op?.tp1, tp2: op?.tp2 };
     });
   });
 }
 const openPos = clId => positions(clId).filter(p => p.qty > 0);
-const posValue = clId => openPos(clId).reduce((s, p) => s + p.qty * p.last, 0);
+const posValue = clId => openPos(clId).reduce((s, p) => s + p.v, 0);
 const heldSym = (clId, sym) => openPos(clId).filter(p => p.sym === sym).reduce((s, p) => s + p.qty, 0);
-const pendUps = clId => S.ups.filter(u => u.cl === clId && u.st !== 'done').sort((a, b) => b.at - a.at);
+// records the client keyed in that the coach has not confirmed yet, and ones sent back for a fix
+const pendOf = clId => execsOf(clId).filter(e => e.ver === 'pend');
+const fixOf = clId => execsOf(clId).filter(e => e.ver === 'fix');
 
 /* ---------- portfolio analytics (logged trades priced at the latest close) ----------
    Ideas taken from good portfolio trackers and trading journals: allocation donut + bars,
@@ -1348,8 +1345,8 @@ function portBook(c) {
   return memo('book:' + c.id, () => {
     const total = eqNow(c);
     const ps = openPos(c.id).map(p => {
-      const i = stock(p.sym), v = p.qty * p.last;
-      return { ...p, v, w: v / total, sec: i?.sectorTh || 'ไม่ระบุกลุ่ม', name: i?.short || '', risk: p.sl ? Math.max(0, (p.last - p.sl) * p.qty) : null };
+      const i = stock(p.sym);
+      return { ...p, w: p.v / total, sec: i?.sectorTh || (p.mk !== 'th' ? mkName(p) : 'ไม่ระบุกลุ่ม'), name: i?.short || '', risk: p.sl ? Math.max(0, (p.last - p.sl) * p.qty * p.k) : null };
     }).sort((a, b) => b.v - a.v);
     const inv = ps.reduce((s, p) => s + p.v, 0), risk = ps.reduce((s, p) => s + (p.risk || 0), 0), bySec = {};
     ps.forEach(p => { bySec[p.sec] = (bySec[p.sec] || 0) + p.v; });
@@ -1462,7 +1459,7 @@ function alerts(at) {
     const tnow = at ?? now(), out = [], lf = lastFriday();
     for (const c of S.clients) {
       for (const e of execsOf(c.id)) {
-        if (e.at > tnow || allOk(checks(e))) continue;
+        if (e.at > tnow || e.ver !== 'ok' || allOk(checks(e))) continue;
         out.push({ k: `dev:${e.id}`, sev: 'mid', aud: 'coach', type: e.plan ? 'dev' : 'off', cl: c.id, coach: c.coach, at: e.at, ex: e.id, sym: e.sym, title: `${e.plan ? 'ไม่ตรงแผน' : 'นอกแผน'}: ${verbEx(e)} ${e.sym}`, detail: devText(e) });
       }
       for (const m of S.misses) {
@@ -1472,7 +1469,7 @@ function alerts(at) {
       }
       for (const p of openPos(c.id)) {
         if (!p.sl || p.last > p.sl || S.misses.some(m => m.cl === c.id && m.plan === p.plan && m.kind === 'nocut')) continue;
-        out.push({ k: `sl:${p.key}:${c.id}`, sev: 'high', aud: 'coach', type: 'sl', cl: c.id, coach: c.coach, at: tnow, sym: p.sym, title: `${p.sym} หลุด Stop Loss แต่ยังถืออยู่`, detail: `ราคาปิด ${px(p.last)} · Stop Loss ${px(p.sl)} · Unrealized ${pct((p.last - p.avg) / p.avg)}` });
+        out.push({ k: `sl:${p.key}:${c.id}`, sev: 'high', aud: 'coach', type: 'sl', cl: c.id, coach: c.coach, at: tnow, sym: p.sym, title: `${p.sym} หลุด Stop Loss แต่ยังถืออยู่`, detail: `ราคาปิด ${px(p.last)} · Stop Loss ${px(p.sl)} · Unrealized ${signed(p.upl)} บาท` });
       }
       for (const f of c.flows) if (f.pend) out.push({ k: `flow:${f.id}`, sev: 'mid', aud: 'cs', type: 'flow', cl: c.id, coach: c.coach, at: f.at, flow: f.id, title: `แจ้ง${f.amt > 0 ? 'ฝาก' : 'ถอน'}เงิน ${baht(Math.abs(f.amt))} บาท รอการอนุมัติ`, detail: 'ตรวจสอบหลักฐานการโอนก่อนนับเข้าพอร์ต' });
       const seen = c.seen || c.joined;
@@ -1495,6 +1492,9 @@ function alerts(at) {
 
 /* ---------- icons ---------- */
 const IC = {
+  calendar: 'M4 6.5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2V19a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zM4 10h16M8 2.5v4M16 2.5v4',
+  edit: 'M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4',
+  clip: 'M20.5 11.5l-8.3 8.3a5 5 0 0 1-7.1-7.1L13.6 4.2a3.3 3.3 0 0 1 4.7 4.7l-8.5 8.5a1.7 1.7 0 0 1-2.4-2.4l7.8-7.8',
   home: 'M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z',
   target: 'M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18M12 7.5a4.5 4.5 0 1 0 0 9a4.5 4.5 0 1 0 0-9M12 11.2a.8.8 0 1 0 0 1.6a.8.8 0 1 0 0-1.6',
   book: 'M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5zM5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7h6',
@@ -1698,15 +1698,16 @@ function spark(vals, w = 120, h = 34) {
 // port chart drawn at its real pixel size so labels stay readable; x is real time, so weekly
 // reports and a dashed "estimate today" point sit where they belong
 const CHART_PAD = { l: 50, r: 16, t: 14, b: 24 };
-function lineChart(id, pts, { w = 760, h = 240, refs = [] } = {}) {
+function lineChart(id, pts, { w = 760, h = 240, refs = [], kind } = {}) {
   const W = Math.round(w), H = Math.round(h), { l: pl, r: pr, t: pt, b: pb } = CHART_PAD;
-  const vs = pts.map(p => p.v), lo0 = Math.min(...vs), hi0 = Math.max(...vs);
-  const shown = refs.filter(r => r.v >= lo0 * .85 && r.v <= hi0 * 1.12);
-  const lo = Math.min(lo0, ...shown.map(r => r.v)) * .97, hi = Math.max(hi0, ...shown.map(r => r.v)) * 1.03;
+  const vs = pts.map(p => p.v), lo0 = Math.min(...vs), hi0 = Math.max(...vs), span0 = (hi0 - lo0) || Math.abs(hi0) || 1;
+  const shown = refs.filter(r => r.always || (r.v >= lo0 - span0 * .3 && r.v <= hi0 + span0 * .3));
+  const lo1 = Math.min(lo0, ...shown.map(r => r.v)), hi1 = Math.max(hi0, ...shown.map(r => r.v)), padv = (hi1 - lo1 || 1) * .07;
+  const lo = lo1 - padv, hi = hi1 + padv;
   const t0 = pts[0].t, t1 = Math.max(t0 + DAY, pts[pts.length - 1].t);
   const X = t => pl + (t - t0) / (t1 - t0) * (W - pl - pr), Y = v => pt + (hi - v) / (hi - lo) * (H - pt - pb);
   const maxLines = Math.max(2, Math.floor((H - pt - pb) / 34));
-  const step = [1e3, 2e3, 5e3, 1e4, 2e4, 25e3, 5e4, 1e5, 2e5, 5e5].find(s => (hi - lo) / s <= maxLines) || 5e5;
+  const step = [1e3, 2e3, 5e3, 1e4, 2e4, 25e3, 5e4, 1e5, 2e5, 25e4, 5e5, 1e6, 2e6, 5e6].find(s => (hi - lo) / s <= maxLines) || 1e7;
   let grid = '';
   for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) grid += `<line x1="${pl}" x2="${W - pr}" y1="${Y(v)}" y2="${Y(v)}" style="stroke:rgba(var(--wt),.07)" stroke-dasharray="2 4"/><text x="${pl - 7}" y="${Y(v) + 4}" text-anchor="end" style="fill:var(--mut)" font-size="11">${kb(v)}</text>`;
   let xl = '', pm = -1;
@@ -1720,7 +1721,7 @@ function lineChart(id, pts, { w = 760, h = 240, refs = [] } = {}) {
     ? `<path d="M${X(lr.t).toFixed(1)} ${Y(lr.v).toFixed(1)}L${X(est.t).toFixed(1)} ${Y(est.v).toFixed(1)}" style="stroke:var(--ch)" stroke-width="2" stroke-dasharray="3 4" fill="none" stroke-opacity=".85"/><circle cx="${X(est.t)}" cy="${Y(est.v)}" r="5" style="fill:var(--dotfill);stroke:var(--ch2)" stroke-width="2"/><text x="${X(est.t) - 9}" y="${Y(est.v) - 10}" text-anchor="end" style="fill:var(--ch2)" font-size="11" font-weight="700">วันนี้</text>`
     : `<circle cx="${X(lr.t)}" cy="${Y(lr.v)}" r="9" style="fill:var(--ch)" fill-opacity=".18"/><circle cx="${X(lr.t)}" cy="${Y(lr.v)}" r="4.5" style="fill:var(--knob);stroke:var(--ch)" stroke-width="2"/>`;
   if (CHARTS[id]) CHARTS[id].xy = pts.map(p => [X(p.t), Y(p.v)]);
-  return `<div class="chartw" data-chart="${esc(id)}"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="display:block;overflow:visible" role="img" aria-label="กราฟมูลค่าพอร์ต">
+  return `<div class="chartw" data-chart="${esc(id)}"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="display:block;overflow:visible" role="img" aria-label="${kind === 'pl' ? 'กราฟกำไรสะสม' : 'กราฟมูลค่าพอร์ต'}">
     <defs><linearGradient id="g-${esc(id)}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--ch)" stop-opacity=".3"/><stop offset=".7" style="stop-color:var(--ch)" stop-opacity=".05"/><stop offset="1" style="stop-color:var(--ch)" stop-opacity="0"/></linearGradient></defs>
     ${grid}${xl}${rl}<path d="${area}" fill="url(#g-${esc(id)})"/><path d="${line}" fill="none" style="stroke:var(--ch)" stroke-opacity=".16" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="${line}" fill="none" style="stroke:var(--ch)" stroke-width="2.4" stroke-linejoin="round"/>${dots}${end}
     <line class="hl" x1="0" x2="0" y1="${pt}" y2="${H - pb}" style="display:none;stroke:rgba(var(--wt),.2)"/><circle class="hd" r="4.5" style="display:none;fill:var(--ch2)"/>
@@ -1740,10 +1741,10 @@ function drawCharts(root) {
       const x = ev.clientX - svg.getBoundingClientRect().left, W = svg.getBoundingClientRect().width;
       let i = 0;
       c.xy.forEach(([px], k) => { if (Math.abs(px - x) < Math.abs(c.xy[i][0] - x)) i = k; });
-      const [sx, sy] = c.xy[i], p = c.pts[i], d = i ? (p.v - c.pts[i - 1].v) / c.pts[i - 1].v : 0;
+      const [sx, sy] = c.xy[i], p = c.pts[i], pl = c.opts.kind === 'pl', d = i ? (pl ? p.v - c.pts[i - 1].v : (p.v - c.pts[i - 1].v) / c.pts[i - 1].v) : 0;
       hl.setAttribute('x1', sx); hl.setAttribute('x2', sx); hl.style.display = ''; hd.setAttribute('cx', sx); hd.setAttribute('cy', sy); hd.style.display = '';
       tip.style.display = ''; tip.style.left = Math.min(Math.max(sx, 90), W - 90) + 'px'; tip.style.top = sy + 'px';
-      tip.innerHTML = `<b class="num">฿${baht(p.v)}</b>${i ? ` <span class="${d >= 0 ? 'up' : 'dn'} num">${pct(d, 2)}</span>` : ''}<div class="muted">${p.tip ? esc(p.tip) + ' · ' : ''}${dlong(p.t)}</div>`;
+      tip.innerHTML = `<b class="num">${pl ? (p.v ? signed(p.v) : '0') : '฿' + baht(p.v)}</b>${i ? ` <span class="${d >= 0 ? 'up' : 'dn'} num">${pl ? signed(d) : pct(d, 2)}</span>` : ''}<div class="muted">${p.tip ? esc(p.tip) + ' · ' : ''}${dlong(p.t)}</div>`;
     };
     w.onmouseleave = () => { tip.style.display = hl.style.display = hd.style.display = 'none'; };
   });
@@ -1821,7 +1822,7 @@ function panelTabs(root, narrow) {
 /* mock screenshot from a broker app (generic, not any real broker's screen) */
 function slipSvg(e, c) {
   const buy = e.side === 'buy', col = buy ? '#3ddc97' : '#ff6b7d';
-  const rows = [['หลักทรัพย์', e.sym], ['ประเภท', buy ? 'ซื้อ' : 'ขาย'], ['จำนวน', fmt(e.qty) + ' หุ้น'], ['ราคาที่ Matched', px(e.px)], ['มูลค่า', baht(e.px * e.qty) + ' บาท'], ['เวลา', dt(e.at)], ['บัญชี', 'xxxx-' + (c?.acct || '0000')]];
+  const rows = [['หลักทรัพย์', e.sym], ['ประเภท', buy ? 'ซื้อ' : 'ขาย'], ['จำนวน', fmt(e.qty) + ' ' + unitOf(e)], ['ราคาที่ Matched', px(e.px)], ['มูลค่า', e.mk === 'us' ? px(e.px * e.qty) + ' USD' : baht(e.px * e.qty * (e.k || 1)) + ' บาท'], ['เวลา', dt(e.at)], ['บัญชี', 'xxxx-' + (c?.acct || '0000')]];
   return `<svg viewBox="0 0 300 430" xmlns="http://www.w3.org/2000/svg" font-family="Tahoma,'Leelawadee UI',sans-serif" class="slip" role="img" aria-label="ภาพตัวอย่างยืนยันคำสั่ง"><rect width="300" height="430" rx="16" fill="#0f1424"/><path d="M0 16a16 16 0 0 1 16-16h268a16 16 0 0 1 16 16v38H0z" fill="#19223b"/><text x="18" y="33" fill="#c9d3ea" font-size="14" font-weight="700">แอปซื้อขาย · สถานะคำสั่ง</text><text x="282" y="33" fill="#7d89a6" font-size="12" text-anchor="end">${tstr(e.at)}</text>
   <circle cx="150" cy="102" r="26" fill="${col}" fill-opacity=".16"/><path d="M138 102l8 8 16-16" stroke="${col}" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="150" y="154" text-anchor="middle" fill="#fff" font-size="17" font-weight="700">${buy ? 'ซื้อ' : 'ขาย'}สำเร็จ · Matched</text>
@@ -1845,6 +1846,141 @@ function readImage(file) {
     };
     fr.readAsDataURL(file);
   });
+}
+
+/* ---------- key in a trade: the record and its screenshot go in together ----------
+   The client keys each trade after it is matched in the broker app, with the Order Status screenshot
+   attached ("ภาพหลักฐานเป็นตัวแนบตอน Key ข้อมูล"); the coach confirms it or sends it back to be fixed.
+   A coach can also key a trade for a client from a picture sent on LINE (confirmed at once). */
+const MK_K = { tfex: ['ตัวคูณสัญญา (Multiplier)', 200, 'SET50 Futures = 200 บาทต่อจุด'], gold: ['ตัวคูณสัญญา (Multiplier)', 10, 'Gold Futures 10 บาททองคำ = 10'], us: ['อัตราแลกเปลี่ยน (บาท/USD)', 33, 'ตามที่แอปซื้อขายแสดง'], opt: ['ตัวคูณสัญญา (Multiplier)', 200, 'SET50 Options = 200 บาทต่อจุด'], fut: ['ตัวคูณสัญญา (Multiplier)', 1, 'ตามรายละเอียดสัญญา'] };
+const validK = k => Number.isFinite(k) && k > 0 && k <= 100000;
+// symbols already used in a market other than Thai stocks (for the input suggestions)
+const mkSyms = m => [...new Set([...S.plans.filter(p => p.mk === m).map(p => p.sym), ...S.execs.filter(e => e.mk === m).map(e => e.sym)])].sort();
+// the plan's Position Size as a quantity: board lots of 100 shares in Thai stocks, whole contracts elsewhere
+const planQty = (c, p) => { const q = eqNow(c) * p.size / 100 / (p.hi * (p.k || 1)); return p.mk ? Math.max(1, Math.floor(q)) : lot(q); };
+const thLocal = ms => { const d = tz(ms); return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}T${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}`; };
+const fromLocal = s => { const m = /^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d)$/.exec(s || ''); return m ? Date.UTC(+m[1], m[2] - 1, +m[3], +m[4], +m[5]) - TZ : NaN; };
+const cmpRows = rows => rows.map(([k, [c, s]]) => `<div class="cr ${c}"><span class="ico">${ic(c === 'ok' ? 'check' : c === 'no' ? 'x' : c ? 'alert' : 'dots', 12, 2.4)}</span><span class="k">${k}</span><span>${s}</span></div>`).join('');
+// who: 'client' or the coach keying it; cls: clients to pick from; edit: a record sent back to be fixed
+function keyModal({ who, cls, cl, plan, edit, done }) {
+  const byClient = who === 'client', c0 = client(edit?.cl || cl || cls[0].id), editKey = edit && (edit.plan || 'off:' + edit.sym);
+  let side = edit?.side || 'buy', why = edit?.side === 'sell' && edit.plan && edit.why !== 'self' ? edit.why : 'tp1', mk = edit?.mk || planOf(plan)?.mk || 'th', slip = edit?.slip ? { ...edit.slip } : null;
+  const mkSeg = c => `<select id="kmk" aria-label="ตลาด">${(c.mks || ['th']).map(m => `<option value="${m}" ${m === mk ? 'selected' : ''}>${MARKETS[m][0]}</option>`).join('')}</select>`;
+  const pic = () => slip ? (safeImg(slip.img) ? `<img class="slip" src="${safeImg(slip.img)}" alt="ภาพที่แนบ">` : slipSvg(slip.mock || edit || { sym: '—', side, px: 0, qty: 0, at: now() }, c0)) : `<span class="kd-i">${ic('image', 26)}</span>`;
+  const box = openModal(mhead(edit ? 'แก้ไขรายการ' : byClient ? 'บันทึกรายการซื้อขาย' : 'บันทึกรายการให้ลูกค้า', byClient ? `บันทึกหลังคำสั่งซื้อขายในแอป Matched แล้ว พร้อมแนบภาพหน้าสถานะคำสั่ง · ${coach(c0.coach).name} จะตรวจและเทียบกับแผนให้` : 'จากภาพที่ลูกค้าส่งทาง LINE · บันทึกโดยโค้ชถือว่าตรวจแล้ว ลูกค้าจะเห็นรายการนี้ทันที') + `<div class="mbd"><div class="recf">
+    <div class="recf-img"><div class="kdrop ${slip ? 'has' : ''}" id="drop" role="button" tabindex="0" aria-label="แนบภาพหลักฐาน"><div class="kd-p" id="dropTh">${pic()}</div><div class="kd-t"><b id="dropTx">${slip ? '<span class="up">แนบภาพแล้ว</span> · แตะเพื่อเปลี่ยน' : 'แนบภาพหลักฐาน <span class="dn">*</span>'}</b><span class="hint">หน้าสถานะคำสั่ง (Order Status) ที่เห็นชื่อ จำนวน ราคาที่ Matched และเวลา · ไม่เกิน 8 MB</span></div></div>
+      <button class="btn soft sm" type="button" id="mock">ใช้ภาพตัวอย่าง</button><input type="file" id="file" accept="image/png,image/jpeg,image/webp" hidden></div>
+    <div class="recf-f">
+      ${edit?.fix ? `<div class="note-box y">${ic('chat', 16)}<span><b>${coach(edit.fix.by)?.name || 'โค้ช'}:</b> ${esc(edit.fix.note)}</span></div>` : ''}
+      ${byClient ? '' : `<div class="field"><label for="kcl">ลูกค้า</label><select id="kcl" ${edit ? 'disabled' : ''}>${cls.map(c => `<option value="${c.id}" ${c.id === c0.id ? 'selected' : ''}>${esc(cname(c))}</option>`).join('')}</select></div>`}
+      <div class="fgrid"><div class="field"><label for="kmk">ตลาด</label><div id="kmkw">${mkSeg(c0)}</div></div>
+        <div class="field"><label>ประเภท</label><div class="seg" id="kside"><button type="button" data-s="buy" class="${side === 'buy' ? 'on' : ''}">ซื้อ</button><button type="button" data-s="sell" class="${side === 'sell' ? 'on' : ''}">ขาย</button></div></div></div>
+      <div class="field"><label for="kplan" id="kplanl">แผนของโค้ช</label><select id="kplan"></select></div>
+      <div class="field" id="fsym"><label for="ksym">ชื่อหุ้น / สินทรัพย์</label><input id="ksym" list="ksyms" maxlength="15" autocomplete="off" style="text-transform:uppercase" placeholder="เช่น BANPU"><datalist id="ksyms"></datalist></div>
+      <div class="f3"><div class="field"><label for="kpx">ราคาที่ Matched</label><input id="kpx" type="number" step="0.01" min="0" inputmode="decimal" value="${edit ? edit.px : ''}"></div><div class="field"><label for="kqty" id="kqtyl">จำนวน</label><input id="kqty" type="number" min="1" inputmode="numeric" value="${edit ? edit.qty : ''}"><div class="hint" id="kpq"></div></div><div class="field"><label for="kat">วันเวลาที่ Matched</label><input id="kat" type="datetime-local" value="${thLocal(edit?.at || now())}"></div></div>
+      <div class="field" id="fk"><label for="kk" id="kkl"></label><input id="kk" type="number" step="0.01" min="0" inputmode="decimal"><div class="hint" id="kkh"></div></div>
+      <div class="field" id="fwhy"><label>เหตุผลการขาย</label><div class="seg xsg" id="kwhy">${Object.entries({ tp1: 'TP1', tp2: 'TP2', cut: 'ตัดขาดทุน', coach: 'ตามโค้ชแนะนำ', self: byClient ? 'ขายเอง' : 'ลูกค้าขายเอง' }).map(([k, l]) => `<button type="button" data-w="${k}" class="${k === why ? 'on' : ''}">${l}</button>`).join('')}</div></div>
+      <div class="field" id="foff"><label for="koff">เหตุผลที่ซื้อ (นอกแผน)</label><input id="koff" maxlength="200" placeholder="เช่น เห็นข่าวจากกลุ่มสนทนา" value="${edit && !edit.plan && edit.side === 'buy' && edit.why !== 'self' ? esc(edit.why || '') : ''}"></div>
+      <div class="field"><label for="knote" class="kopt">${byClient ? 'ข้อความถึงโค้ช' : 'หมายเหตุถึงลูกค้า'} <span class="muted">(ไม่บังคับ)</span></label><input id="knote" maxlength="300" placeholder="${byClient ? 'เช่น ซื้อตามที่คุยกับโค้ชเมื่อเช้า' : 'ลูกค้าจะเห็นข้อความนี้ในบันทึกการซื้อขาย'}" value="${esc((byClient ? edit?.knote : edit?.cnote) || '')}"></div>
+      <div class="cmp" id="kcmp" style="margin:0"></div>
+    </div></div></div>
+    <div class="mft"><span class="ferr" id="err"></span><span class="sp"></span><button class="btn ghost" data-act="close">ยกเลิก</button><button class="btn" id="save" disabled>${ic(byClient ? 'send' : 'check', 16)} ${byClient ? (edit ? 'ส่งให้โค้ชตรวจอีกครั้ง' : 'ส่งให้โค้ชตรวจ') : 'บันทึกรายการ'}</button></div>`, 'wide');
+  const $b = q => $(q, box), val = id => $b('#' + id).value, cl0 = () => client(byClient ? c0.id : val('kcl'));
+  const R2 = v => mk === 'th' ? rt(v) : Math.round(v * 100) / 100;
+  // positions to sell from; the record being fixed is left out so its own quantity is not counted twice
+  const sellable = c => positions(c.id).filter(x => (x.mk || 'th') === mk && (x.qty > 0 || x.key === editKey)).map(x => ({ ...x, qty: x.qty + (edit && edit.side === 'sell' && x.key === editKey ? edit.qty : 0) - (edit && edit.side === 'buy' && x.key === editKey ? edit.qty : 0) })).filter(x => x.qty > 0);
+  function planOpts() {
+    const c = cl0(), keep = val('kplan'), want = edit ? editKey : plan;
+    const opts = side === 'buy' ? S.plans.filter(p => p.coach === c.coach && (p.mk || 'th') === mk && p.at <= now() && (planLive(p) || p.id === edit?.plan)).sort((a, b) => b.at - a.at).map(p => [p.id, `${p.sym} · Entry ${px(p.lo)}–${px(p.hi)} · ${dstr(p.at)}`])
+      : sellable(c).map(x => [x.key, `${x.sym} · ถือ ${fmt(x.qty)} ${unitOf(x)}${x.plan ? '' : ' (นอกแผน)'}`]);
+    $b('#kplan').innerHTML = opts.map(([k, l]) => `<option value="${esc(k)}">${esc(l)}</option>`).join('') + (side === 'buy' ? '<option value="">ไม่มีในแผน (ซื้อนอกแผน)</option>' : '');
+    if (opts.some(o => o[0] === keep)) $b('#kplan').value = keep; else if (want && opts.some(o => o[0] === want)) $b('#kplan').value = want; else if (side === 'buy' && edit && !edit.plan) $b('#kplan').value = '';
+    if (side === 'sell' && !opts.length) $b('#kplan').innerHTML = `<option value="">ไม่มี${MARKETS[mk][0]}ที่ถืออยู่</option>`;
+    $b('#kplanl').textContent = side === 'buy' ? 'แผนของโค้ช' : 'สินทรัพย์ที่ขาย';
+    $b('#ksyms').innerHTML = (mk === 'th' ? Object.keys(STOCK_DATA.list || {}) : mkSyms(mk)).map(s => `<option value="${esc(s)}">`).join('');
+    const kd = MK_K[mk];
+    if (kd) { $b('#kkl').textContent = kd[0]; $b('#kkh').textContent = kd[2]; if (!val('kk')) $b('#kk').value = edit?.k || (mk === 'us' ? kd[1] : planOf(val('kplan'))?.k || kd[1]); }
+  }
+  function cur() {
+    const c = cl0(), key = val('kplan'), held = side === 'sell' ? sellable(c).find(x => x.key === key) : null;
+    const p = side === 'buy' ? planOf(key) : held && planOf(held.plan), k = mk === 'th' ? 1 : parseFloat(val('kk'));
+    const sym = side === 'buy' ? (p ? p.sym : val('ksym').trim().toUpperCase()) : held?.sym || '';
+    const pq = p && side === 'buy' ? (edit?.plan === p.id && edit.pq ? edit.pq : planQty(c, p)) : null;
+    return { c, p, held, sym, k, pq, px: parseFloat(val('kpx')), qty: Number(val('kqty')), at: fromLocal(val('kat')), off: clean(val('koff'), 200), note: clean(val('knote'), 300) };
+  }
+  function upd() {
+    const x = cur(), off = side === 'buy' && !x.p, u = MARKETS[mk][1];
+    $b('#fsym').hidden = !off; $b('#foff').hidden = !off; $b('#fwhy').hidden = side !== 'sell' || !x.p; $b('#fk').hidden = mk === 'th';
+    $b('#kmkw').closest('.field').hidden = (x.c.mks || ['th']).length < 2 && mk === 'th';
+    $b('#kqtyl').textContent = `จำนวน (${u})`; $b('#kqty').step = mk === 'th' ? 100 : 1;
+    $b('#kpq').textContent = x.pq ? `ตามแผน ${fmt(x.pq)} ${u} (${x.p.size}% ของพอร์ต)` : x.held ? `ถืออยู่ ${fmt(x.held.qty)} ${u}` : '';
+    let err = '';
+    if (off && x.sym && !validSym(x.sym)) err = 'ชื่อใช้ได้เฉพาะ A–Z ตัวเลข และ . - &';
+    else if (val('kpx') && !validPx(x.px)) err = 'ราคาไม่ถูกต้อง';
+    else if (val('kqty') && !validQty(x.qty)) err = 'จำนวนต้องเป็นจำนวนเต็มมากกว่า 0';
+    else if (mk !== 'th' && val('kk') && !validK(x.k)) err = 'ตัวคูณหรืออัตราแลกเปลี่ยนไม่ถูกต้อง';
+    else if (side === 'sell' && x.held && validQty(x.qty) && x.qty > x.held.qty) err = `ถืออยู่ ${fmt(x.held.qty)} ${u}`;
+    else if (!Number.isFinite(x.at) || x.at > now() + MIN) err = 'เวลาต้องไม่เกินเวลาปัจจุบัน';
+    else if (x.at < x.c.joined - DAY) err = 'เวลาต้องอยู่ในช่วงโปรแกรม';
+    else if (x.p && side === 'buy' && x.at < x.p.at - MIN) err = 'เวลาซื้อต้องหลังจากวันที่โค้ชวางแผน';
+    const e = { plan: x.p?.id || null, side, px: x.px, qty: x.qty, pq: x.pq, at: x.at, why: side === 'sell' ? (x.p ? why : 'self') : x.off, slip: slip ? 1 : null };
+    if (x.p && validPx(x.px) && validQty(x.qty)) {
+      const r = checkEx(e, x.p), rows = [];
+      if (side === 'buy') rows.push(['ราคา', [r.px, r.px === 'ok' ? `อยู่ในช่วง Entry ${px(x.p.lo)}–${px(x.p.hi)}` : x.px > x.p.hi ? `สูงกว่า Entry ${px(x.px - x.p.hi)} (ไล่ราคา)` : 'ต่ำกว่าช่วง Entry']], ['จำนวน', [r.qty, r.qty === 'ok' ? 'ตรงกับแผน' : `${x.qty > x.pq ? 'มากกว่า' : 'น้อยกว่า'}แผน ${Math.round(Math.abs(x.qty - x.pq) / x.pq * 100)}%`]]);
+      else rows.push(['การขาย', [r.sell, r.sell === 'ok' ? SELL_WHY[why] : why === 'self' ? 'ขายเองโดยไม่มีคำแนะนำ นับว่าไม่ตรงแผน' : `ต่ำกว่า Stop Loss ${pct((x.px - slAt(x.p, x.at)) / slAt(x.p, x.at))} (ตัดขาดทุนช้า)`]]);
+      rows.push(['หลักฐาน', [slip ? 'ok' : 'no', slip ? 'แนบภาพแล้ว' : 'ยังไม่ได้แนบภาพ']]);
+      const bad = rows.filter(q => q[1][0] !== 'ok').length;
+      $b('#kcmp').innerHTML = `<div class="ch"><span>เทียบกับแผน ${esc(x.p.sym)}</span>${bad ? `<span class="warn">ไม่ตรง ${bad} ข้อ${byClient ? ' · โค้ชจะติดต่อเพื่อพูดคุย' : ' · ขึ้นเป็นเรื่องที่ต้องเคลียร์'}</span>` : '<span class="up">ตรงแผน</span>'}</div>` + cmpRows(rows);
+    } else $b('#kcmp').innerHTML = off ? `<div class="ch"><span>รายการนอกแผน</span><span class="warn">มีผลต่อคะแนนวินัย</span></div>` : '';
+    $b('#err').textContent = err;
+    $b('#save').disabled = !!err || !(validPx(x.px) && validQty(x.qty) && (x.p || x.held || (off && validSym(x.sym))) && (side === 'buy' || x.held) && (mk === 'th' || validK(x.k)) && slip && Number.isFinite(x.at));
+  }
+  const setPic = () => { $b('#drop').classList.toggle('has', !!slip); $b('#dropTh').innerHTML = pic(); $b('#dropTx').innerHTML = slip ? '<span class="up">แนบภาพแล้ว</span> · แตะเพื่อเปลี่ยน' : 'แนบภาพหลักฐาน <span class="dn">*</span>'; upd(); };
+  const pickFile = () => $b('#file').click();
+  $b('#drop').addEventListener('click', pickFile);
+  $b('#drop').addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); pickFile(); } });
+  $b('#file').addEventListener('change', async ev => { try { slip = { img: await readImage(ev.target.files[0]) }; setPic(); } catch (er) { toast(`${ic('alert', 18)}<div><b>แนบภาพไม่สำเร็จ</b><div class="muted sm">${esc(er.message)}</div></div>`, 'err'); } });
+  // demo: a made-up Order Status screenshot of what was keyed (or of today's plan, filled in)
+  $b('#mock').addEventListener('click', () => {
+    let x = cur();
+    if (!validPx(x.px) && x.p && side === 'buy') { $b('#kpx').value = R2((x.p.lo + x.p.hi) / 2); $b('#kqty').value = x.pq; x = cur(); }
+    if (!validPx(x.px) && x.held) { $b('#kpx').value = R2(x.held.last); $b('#kqty').value = mk === 'th' ? Math.max(100, lot(x.held.qty / 2)) : Math.max(1, Math.floor(x.held.qty / 2)); x = cur(); }
+    slip = { m: 1, mock: { sym: x.sym || 'PTT', side, mk, k: x.k, px: validPx(x.px) ? x.px : 1, qty: validQty(x.qty) ? x.qty : 100, at: Number.isFinite(x.at) ? x.at : now() } };
+    setPic();
+  });
+  $b('#kside').addEventListener('click', ev => { const b = ev.target.closest('[data-s]'); if (!b) return; side = b.dataset.s; $$('#kside button', box).forEach(q => q.classList.toggle('on', q === b)); planOpts(); upd(); });
+  $b('#kmkw').addEventListener('change', ev => { if (ev.target.id !== 'kmk' || !MARKETS[ev.target.value]) return; mk = ev.target.value; $b('#kk').value = ''; planOpts(); upd(); });
+  $b('#kwhy').addEventListener('click', ev => { const b = ev.target.closest('[data-w]'); if (!b) return; why = b.dataset.w; $$('#kwhy button', box).forEach(q => q.classList.toggle('on', q === b)); upd(); });
+  $b('#kcl')?.addEventListener('change', () => { const c = cl0(); if (!(c.mks || ['th']).includes(mk)) mk = 'th'; $b('#kmkw').innerHTML = mkSeg(c); planOpts(); upd(); });
+  $b('#kplan').addEventListener('change', () => { if (mk !== 'th' && mk !== 'us') { const p = planOf(val('kplan')); if (p?.k) $b('#kk').value = p.k; } });
+  box.addEventListener('input', upd); box.addEventListener('change', upd);
+  $b('#save').addEventListener('click', () => {
+    upd(); if ($b('#save').disabled) return;
+    const x = cur(), off = side === 'buy' && !x.p, t = now();
+    if (!Object.hasOwn(S.prices, x.sym)) S.prices[x.sym] = x.px;
+    const f = { plan: x.p?.id || null, sym: x.sym, side, px: x.px, qty: x.qty, at: x.at, slip: slip.img ? { img: slip.img } : { m: 1 } };
+    if (mk !== 'th') Object.assign(f, { mk, k: x.k });
+    if (side === 'buy' && x.p) f.pq = x.pq;
+    if (side === 'sell') f.why = x.p ? why : 'self';
+    if (off) f.why = x.off || 'self';
+    let e;
+    if (edit) {
+      e = edit;
+      ['plan', 'mk', 'k', 'pq', 'why'].forEach(k => delete e[k]);
+      Object.assign(e, f, { ver: 'pend', fixed: t });
+      delete e.vby; delete e.vat;
+    } else {
+      e = { id: nid('e'), cl: x.c.id, ...f, rec: { by: byClient ? x.c.id : who.id, at: t }, ver: byClient ? 'pend' : 'ok' };
+      S.execs.push(e);
+    }
+    if (byClient) { if (x.note) e.knote = x.note; else delete e.knote; } else if (x.note) e.cnote = x.note;
+    pushFeed(byClient ? { by: 'client', who: x.c.id, cl: x.c.id, coach: x.c.coach, kind: 'key', text: `${cname(x.c)} ${edit ? 'แก้ไขรายการ' : 'บันทึกรายการ'}${verbEx(e)} ${e.sym}` }
+      : { by: 'coach', who: who.id, coach: who.id, cl: x.c.id, kind: 'rec', text: `${who.name} บันทึกรายการ${verbEx(e)} ${e.sym} ให้${x.c.name}` });
+    if (!save()) return;
+    closeModal();
+    done?.(e);
+  });
+  planOpts(); upd();
 }
 
 /* ---------- theme: light, dark or follow the device (one setting for both sites) ---------- */
@@ -1927,29 +2063,28 @@ function googleChooser(accounts, onPick, appName) {
 </script>
 <script>
 /* ===== Trading Journal (client side) =====
-   A record of the client's trades, kept by the coach as evidence, and a running profit summary.
-   The client does not trade or answer plans here: the coach talks to them by phone or in person,
-   the client buys or sells in their broker app and sends a screenshot, and the coach records it. */
+   The client's record of every trade and how much they have made toward the 1,000,000 profit goal.
+   The coach advises by phone or in person; the client trades in their broker app, then keys the trade
+   here with the Order Status screenshot attached, and the coach confirms it or sends it back to fix. */
 S = load();
-const VIEW_OK = ['home', 'trades', 'journal', 'port'];
-let view = VIEW_OK.includes(location.hash.slice(1)) ? location.hash.slice(1) : location.hash === '#orders' ? 'trades' : 'home';
-let mTab = 'plan', posTab = 'hold', jFilter = 'all', selPos = null, selEx = null, menu = null, agree = false, shown = null;
+const VIEW_OK = ['home', 'journal', 'port'];
+let view = VIEW_OK.includes(location.hash.slice(1)) ? location.hash.slice(1) : ['#trades', '#orders'].includes(location.hash) ? 'journal' : 'home';
+let jFrom = '', jTo = '', jSym = '', selEx = null, menu = null, agree = false, shown = null;
 const ME = () => client(FEATURED);
 // demo session flag; the real system keeps a server session in an httpOnly cookie
 const signedIn = () => sessionStorage.getItem('p1m-fe') === '1';
 const narrow = () => matchMedia('(max-width: 760px)').matches;
-const VIEWS = { home: homeView, trades: tradesView, journal: journalView, port: portView };
-const NAV = [['home', 'หน้าหลัก', 'home'], ['trades', 'การเทรด', 'target'], ['journal', 'บันทึกการซื้อขาย', 'book'], ['port', 'พอร์ต', 'wallet']];
-const myUps = () => pendUps(FEATURED);
-const fixUps = () => myUps().filter(u => u.st === 'fix');
+const VIEWS = { home: homeView, journal: journalView, port: portView };
+const NAV = [['home', 'หน้าหลัก', 'home'], ['journal', 'บันทึกการซื้อขาย', 'book'], ['port', 'พอร์ต', 'wallet']];
+const myFix = () => fixOf(FEATURED);
 function snapDue() {
   const me = ME(), n = now(), lf = lastFriday(), d = tz(n);
   if (d.getUTCDay() === 5 && d.getUTCHours() * 60 + d.getUTCMinutes() >= 990) return !S.snaps.some(s => s.cl === me.id && dayKey(s.at) === dayKey(n));
   return !S.snaps.some(s => s.cl === me.id && s.day >= lf) && S.days[lf] > me.joined;
 }
-// stop-loss changes on stocks the client still holds, from the last 2 days: a reminder to update the app
+// stop-loss changes on what the client still holds, from the last 2 days: a reminder to update the app
 const slNews = () => openPos(FEATURED).filter(p => p.plan).flatMap(p => planOf(p.plan).sls.filter(x => x.at <= now() && now() - x.at < 2 * DAY).map(x => ({ p, x })));
-const attention = () => fixUps().length + (snapDue() ? 1 : 0) + slNews().length;
+const attention = () => myFix().length + (snapDue() ? 1 : 0) + slNews().length;
 
 function render() {
   clearCache();
@@ -1973,11 +2108,12 @@ function market() {
   if (m >= 990) return ['off', 'ตลาดปิดแล้ว'];
   return ['', 'ตลาดเปิด'];
 }
+const navBadge = k => k === 'journal' && myFix().length ? `<span class="n">${myFix().length}</span>` : '';
 function header() {
   const n = attention(), [mc, mt] = market();
   return `<header class="hdr"><div class="hin">
     <div class="brand" data-go="home"><img src="${LOGO}" alt="Super Trader Republic"><div class="bt"><small>ROAD TO 1M</small><b>ปั้นพอร์ต 1 ล้าน</b></div></div>
-    <nav class="nav">${NAV.map(([k, l, i]) => `<button class="${view === k ? 'on' : ''}" data-go="${k}">${ic(i, 17)}${l}</button>`).join('')}</nav>
+    <nav class="nav">${NAV.map(([k, l, i]) => `<button class="${view === k ? 'on' : ''}" data-go="${k}">${ic(i, 17)}${l}${navBadge(k)}</button>`).join('')}</nav>
     <div class="hr"><div class="mkt ${mc}"><i></i>${mt} · <span class="num">${tstr(now())}</span></div>
     ${demoMenu()}<button class="ibtn kb" data-act="cmdk" aria-label="ค้นหา (Ctrl+K)" title="ค้นหา (Ctrl+K)">${ic('search', 18)}</button>${themeBtn()}
     <div class="dd"><button class="ibtn" data-act="menu" data-m="bell" aria-label="การแจ้งเตือน">${ic('bell', 19)}${n ? `<span class="bdg">${n}</span>` : ''}</button>${menu === 'bell' ? bellMenu() : ''}</div>
@@ -1986,16 +2122,21 @@ function header() {
 }
 function bellMenu() {
   const n = now(), me = ME(), items = [];
-  fixUps().forEach(u => items.push({ sym: u.m?.sym, c: 'warn', t: `<b>${coach(me.coach).name}</b> ขอให้ส่งภาพใหม่`, s: when(u.fix.at, n), go: 'journal' }));
-  slNews().forEach(({ p, x }) => items.push({ sym: p.sym, c: 'gold', t: `เลื่อน Stop Loss ${esc(p.sym)} เป็น ${px(x.sl)} · แก้ Stop Order ในแอปด้วย`, s: when(x.at, n), go: 'trades' }));
-  execsOf(me.id).filter(e => n - e.rec.at < 3 * DAY && e.rec.at <= n).sort((a, b) => b.rec.at - a.rec.at).slice(0, 4).forEach(e => items.push({ sym: e.sym, c: 'blue', t: `<b>${coach(e.rec.by).name}</b> บันทึกรายการ${verbEx(e)} ${esc(e.sym)} ${fmt(e.qty)} หุ้น`, s: when(e.rec.at, n), go: 'journal' }));
-  return `<div class="menu" style="width:340px">${items.length ? items.slice(0, 6).map(i => `<button class="mi" data-go="${i.go}">${i.sym ? slogo(i.sym, 30) : `<span class="oc-ic">${ic('image', 16)}</span>`}<span style="min-width:0"><span style="display:block">${i.t}</span><span class="muted xs">${i.s}</span></span></button>`).join('') : '<div class="empty">ยังไม่มีการแจ้งเตือน</div>'}</div>`;
+  myFix().forEach(e => items.push({ sym: e.sym, t: `<b>${coach(e.fix?.by || me.coach).name}</b> ขอให้แก้ไขรายการ${verbEx(e)} ${esc(e.sym)}`, s: when(e.fix?.at || e.rec.at, n), at: `data-ex="${esc(e.id)}"` }));
+  if (snapDue()) items.push({ icon: 'wallet', t: 'ถึงเวลารายงานยอดพอร์ตประจำสัปดาห์', s: 'ส่งภาพหน้าพอร์ตหลังตลาดปิดวันศุกร์', at: 'data-act="snap"' });
+  slNews().forEach(({ p, x }) => items.push({ sym: p.sym, t: `${coach(me.coach).name} เลื่อน Stop Loss ${esc(p.sym)} เป็น ${px(x.sl)} · แก้ Stop Order ในแอปด้วย`, s: when(x.at, n), at: 'data-go="port"' }));
+  // what the coach did with my records: confirmed them, or keyed one in for me
+  execsOf(me.id).map(e => e.vat && e.vat <= n && n - e.vat < 3 * DAY ? { e, t: e.vat, txt: `<b>${coach(e.vby).name}</b> ตรวจรายการ${verbEx(e)} ${esc(e.sym)} แล้ว` }
+    : !e.rec.by.startsWith('u') && e.rec.at <= n && n - e.rec.at < 3 * DAY ? { e, t: e.rec.at, txt: `<b>${coach(e.rec.by).name}</b> บันทึกรายการ${verbEx(e)} ${esc(e.sym)} ให้คุณ` } : null)
+    .filter(Boolean).sort((a, b) => b.t - a.t).slice(0, 4).forEach(x => items.push({ sym: x.e.sym, t: x.txt, s: when(x.t, n), at: `data-ex="${esc(x.e.id)}"` }));
+  return `<div class="menu" style="width:340px">${items.length ? items.slice(0, 6).map(i => `<button class="mi" ${i.at}>${i.sym ? slogo(i.sym, 30) : `<span class="oc-ic">${ic(i.icon, 16)}</span>`}<span style="min-width:0"><span style="display:block">${i.t}</span><span class="muted xs">${i.s}</span></span></button>`).join('') : '<div class="empty">ยังไม่มีการแจ้งเตือน</div>'}</div>`;
 }
 function meMenu() {
   const me = ME(), co = coach(me.coach);
   return `<div class="menu"><div class="mh"><b>${esc(cname(me))}</b><div class="muted xs">${esc(me.email)} · Google</div></div>
-    <button class="mi" data-act="line">${ic('chat', 16)} ติดต่อ${co.name}ผ่าน LINE</button>
+    <button class="mi" data-act="line">${ic('chat', 16)} ติดต่อ${co.name} ผ่าน LINE</button>
     <div class="mt">ธีม</div>${themeSeg()}
+    <button class="mi" data-act="terms">${ic('trophy', 16)} เงื่อนไขค่าเรียน</button>
     <button class="mi" data-act="glossary">${ic('help', 16)} คำศัพท์การเทรด</button>
     <button class="mi" data-act="rules">${ic('book2', 16)} กติกาของคอร์ส</button>
     <button class="mi" data-act="linkline">${ic(me.line ? 'check' : 'bell', 16)} การแจ้งเตือนผ่าน LINE · ${me.line ? '<span class="up">เชื่อมแล้ว</span>' : '<span class="warn">ยังไม่เชื่อม</span>'}</button>
@@ -2006,228 +2147,139 @@ function demoMenu(corner) {
   return `<div class="dd ${corner ? 'corner' : ''}"><button class="demob" data-act="menu" data-m="demo" aria-label="เมนูต้นแบบ">${ic('sliders', 14)}<span>ต้นแบบ</span></button>${menu === 'demo' ? `<div class="menu">
     <div class="mt">ต้นแบบ · ข้อมูลลูกค้าเป็นข้อมูลสมมติ</div>
     <a class="mi" href="backoffice/" target="_blank" rel="noopener noreferrer">${ic('ext', 16)} เปิดหลังบ้าน (แท็บใหม่)</a>
-    ${signedIn() && ME().ob && myUps().some(u => u.st === 'pend') ? `<button class="mi" data-act="simrec">${ic('check', 16)} ให้โค้ช 1 บันทึกภาพที่คุณส่ง</button>` : ''}
+    ${signedIn() && ME().ob && pendOf(FEATURED).length ? `<button class="mi" data-act="simrec">${ic('check', 16)} ให้${coach(ME().coach).name} ตรวจรายการที่รอตรวจ</button>` : ''}
     <button class="mi" data-act="reset">${ic('refresh', 16)} รีเซ็ตข้อมูลตัวอย่าง</button></div>` : ''}</div>`;
 }
-const tabbar = () => `<nav class="tabbar">${NAV.map(([k, l, i]) => `<button class="${view === k ? 'on' : ''}" data-go="${k}">${ic(i, 22)}${l}</button>`).join('')}</nav>`;
+const tabbar = () => `<nav class="tabbar">${NAV.map(([k, l, i]) => `<button class="${view === k ? 'on' : ''}" data-go="${k}">${ic(i, 22)}${l}${navBadge(k)}</button>`).join('')}</nav>`;
 
 /* ---------- login and first visit ---------- */
 function loginView() {
-  const ps = pnlSum(ME());
+  const me = ME(), st = settle(me);
   return `<div class="corner">${themeBtn()}${demoMenu()}</div><div class="login">
     <div class="lg-brand">
       <img src="${LOGO}" alt="Super Trader Republic">
-      <div class="eyebrow">คอร์สใหม่ · ROAD TO 1,000,000</div>
+      <div class="eyebrow">โปรแกรมติวเข้มเทรดเดอร์ · ROAD TO 1,000,000</div>
       <h1 class="serif">ปั้นพอร์ต<span class="gtxt">1 ล้าน</span></h1>
-      <p>โค้ชประกบตัวต่อตัว บันทึกทุกรายการซื้อขายพร้อมหลักฐาน และสรุปกำไรให้คุณเห็นชัดทุกวัน</p>
+      <p>ติวเข้ม 6–12 เดือนกับโค้ชประจำตัว วัดผลกันที่กำไรจริง ทุกรายการซื้อขายบันทึกพร้อมหลักฐาน และเห็นกำไรชัดเจนทุกวัน</p>
       <div class="feat">
-        <div><span class="fi">${ic('phone', 18)}</span><span><b>โค้ชประกบตัวต่อตัว</b>โทรหรือนัดพูดคุยก่อนทุกการซื้อขาย และบันทึกทุกรายการให้ในระบบ</span></div>
-        <div><span class="fi">${ic('image', 18)}</span><span><b>ทุกรายการมีหลักฐาน</b>ภาพจากแอปซื้อขาย เทียบกับแผนของโค้ชโดยอัตโนมัติ</span></div>
-        <div><span class="fi">${ic('trophy', 18)}</span><span><b>เห็นกำไรชัดเจน</b>กำไรสะสม ผลรายตัว และความคืบหน้าสู่ 1 ล้าน</span></div>
+        <div><span class="fi">${ic('phone', 18)}</span><span><b>โค้ชประกบตลอดโปรแกรม</b>โทรหรือนัดพูดคุยก่อนทุกการซื้อขาย และตรวจทุกรายการที่คุณบันทึก</span></div>
+        <div><span class="fi">${ic('clip', 18)}</span><span><b>บันทึกพร้อมแนบหลักฐาน</b>กรอกรายการซื้อขายพร้อมภาพจากแอป ระบบเทียบกับแผนของโค้ชให้ทันที</span></div>
+        <div><span class="fi">${ic('trophy', 18)}</span><span><b>คืนค่าเรียนตามกำไร</b>ค่าเรียน 1,000,000 บาท ไม่มีกำไรคืนเต็มจำนวน กำไรเกิน 1 ล้านส่วนที่เกินเป็นของคุณ</span></div>
       </div>
     </div>
     <div class="card lg-card">
       <div class="eyebrow">Trading Journal</div>
       <h2>เข้าสู่ระบบ</h2>
-      <div class="muted sm">สำหรับลูกค้าคอร์สปั้นพอร์ต 1 ล้าน</div>
+      <div class="muted sm">สำหรับลูกค้าโปรแกรมปั้นพอร์ต 1 ล้าน</div>
       <div class="lg-prev">
-        <div class="row" style="justify-content:space-between"><span class="muted xs">ตัวอย่าง · กำไรสะสมตามบันทึก</span><span class="tag ok num">${pct(retPct(ME()))}</span></div>
-        <div class="serif num" style="font-size:30px;margin:2px 0 8px"><span class="gtxt">${signed(ps.total)}</span></div>
-        <div class="bar" style="height:9px"><i style="width:${eqNow(ME()) / GOAL * 100}%"></i></div>
-        <div class="row xs muted" style="justify-content:space-between;margin-top:5px"><span>ยอดพอร์ต ฿${kb(eqNow(ME()))}</span><span>เป้าหมาย 1,000,000 บาท</span></div>
+        <div class="row" style="justify-content:space-between"><span class="muted xs">ตัวอย่าง · กำไรสะสมตามบันทึก</span><span class="tag ok num">${pct(retPct(me))}</span></div>
+        <div class="serif num" style="font-size:30px;margin:2px 0 8px"><span class="gtxt">${signed(st.pr)}</span></div>
+        <div class="bar" style="height:9px"><i style="width:${st.pct * 100}%"></i></div>
+        <div class="row xs muted" style="justify-content:space-between;margin-top:5px"><span>${fmt(st.pct * 100, 1)}% ของเป้าหมาย</span><span>เป้าหมายกำไร 1,000,000 บาท</span></div>
       </div>
       <button class="gbtn" data-act="glogin">${GLOGO} เข้าสู่ระบบด้วย Google</button>
-      <p class="xs muted" style="margin:12px 0 0;text-align:center">ใช้ Gmail ที่ลงทะเบียนกับคอร์สเท่านั้น · หากเข้าสู่ระบบไม่ได้ โปรดติดต่อทีม CS</p>
+      <p class="xs muted" style="margin:12px 0 0;text-align:center">ใช้ Gmail ที่ลงทะเบียนกับโปรแกรมเท่านั้น · หากเข้าสู่ระบบไม่ได้ โปรดติดต่อทีม CS</p>
       <p class="xs muted row" style="margin:8px 0 0;justify-content:center;gap:6px">${ic('lock', 13)} ข้อมูลพอร์ตของคุณเปิดเผยเฉพาะคุณ โค้ชประจำตัว และทีม CS</p>
     </div>
   </div>`;
 }
 const RULES = [['phone', 'ซื้อขายตามที่โค้ชแนะนำเท่านั้น', 'โค้ชจะโทรหรือนัดพูดคุยก่อนทุกครั้ง หากต้องการซื้อขายเอง โปรดปรึกษาโค้ชก่อน'],
-  ['image', 'ส่งภาพหลักฐานทุกครั้งที่ซื้อขาย', 'ภาพจากแอปซื้อขายต้องแสดงชื่อหุ้น จำนวน ราคา และเวลา โค้ชจะบันทึกให้ในระบบ'],
+  ['clip', 'บันทึกทุกรายการพร้อมภาพหลักฐาน', 'หลังคำสั่ง Matched ให้บันทึกในระบบภายในวันเดียวกัน แนบภาพที่เห็นชื่อ จำนวน ราคา และเวลา'],
   ['shield', 'ตั้ง Stop Order ตามแผนทุกครั้ง', 'ขายตัดขาดทุนเมื่อราคาถึง Stop Loss ไม่ถือรอ และไม่ซื้อถัวเฉลี่ย'],
   ['wallet', 'รายงานยอดพอร์ตทุกวันศุกร์', 'ส่งภาพหน้าพอร์ตหลังตลาดปิด ใช้ตรวจว่าบันทึกครบถ้วน']];
 function onboardView() {
   const me = ME(), co = coach(me.coach);
   return `<div class="corner">${themeBtn()}${demoMenu()}</div><div class="ob"><div class="card">
     <div class="row"><img src="${LOGO}" alt="" style="height:40px"><div><div class="eyebrow">ยินดีต้อนรับ</div><h2 style="font-size:21px">สวัสดีคุณ${esc(me.name)}</h2></div></div>
-    <div class="ob-k"><div><span class="muted xs">โค้ชประจำตัว</span><b>${co.name}</b></div><div><span class="muted xs">ทุนเริ่มต้น</span><b class="num">฿${baht(me.cap)}</b></div><div><span class="muted xs">โบรกเกอร์</span><b>${esc(me.broker)}</b><span class="muted xs">บัญชี xxxx-${esc(me.acct)}</span></div></div>
+    <div class="ob-k"><div><span class="muted xs">โค้ชประจำตัว</span><b>${co.name}</b></div><div><span class="muted xs">ทุนเริ่มต้น</span><b class="num">฿${baht(me.cap)}</b></div><div><span class="muted xs">โปรแกรม</span><b>${me.term} เดือน · ${TYPE[me.type]}</b><span class="muted xs">${dstr(me.joined)} ${yr(me.joined)} – ${dstr(progEnd(me))} ${yr(progEnd(me))}</span></div></div>
+    <div class="obt"><span class="fi">${ic('trophy', 17)}</span><span><b>ค่าเรียน 1,000,000 บาท · คืนตามกำไรเมื่อจบโปรแกรม</b><span>ไม่มีกำไรหรือขาดทุน คืนเต็มจำนวน · กำไร 300,000 คืน 700,000 · กำไรเกิน 1 ล้าน ส่วนที่เกินเป็นของคุณทั้งหมด</span></span></div>
     <b>กติกา 4 ข้อของคอร์ส</b>
     <div class="rules">${RULES.map(([i, t, s]) => `<div class="rule"><span class="fi">${ic(i, 17)}</span><div><b>${t}</b><span>${s}</span></div></div>`).join('')}</div>
-    <div class="row" style="flex-wrap:wrap;gap:12px;margin-bottom:14px"><span class="fi" style="background:rgba(6,199,85,.14);color:#06c755">${ic('chat', 17)}</span><div style="flex:1;min-width:180px"><b>รับการแจ้งเตือนผ่าน LINE</b><div class="muted xs">แจ้งเมื่อโค้ชบันทึกรายการ หรือขอให้ส่งภาพใหม่</div></div><button class="btn ${me.line ? 'ok' : 'soft'} sm" data-act="linkline">${me.line ? ic('check', 15) + 'เชื่อมแล้ว' : 'เชื่อมต่อ LINE'}</button></div>
-    <div class="row ob-f"><label class="agree"><input type="checkbox" id="agree" ${agree ? 'checked' : ''}> ข้าพเจ้ายอมรับกติกาของคอร์ส และยินยอมให้เก็บข้อมูลการซื้อขายตาม พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล (PDPA)</label><button class="btn" data-act="startapp" id="startBtn" ${agree ? '' : 'disabled'}>เริ่มใช้งาน</button></div>
+    <div class="row obl" style="flex-wrap:wrap;gap:12px;margin-bottom:14px"><span class="fi" style="background:rgba(6,199,85,.14);color:#06c755">${ic('chat', 17)}</span><div style="flex:1;min-width:180px"><b>รับการแจ้งเตือนผ่าน LINE</b><div class="muted xs">แจ้งเมื่อโค้ชตรวจรายการ หรือขอให้แก้ไขรายการ</div></div><button class="btn ${me.line ? 'ok' : 'soft'} sm" data-act="linkline">${me.line ? ic('check', 15) + 'เชื่อมแล้ว' : 'เชื่อมต่อ LINE'}</button></div>
+    <div class="row ob-f"><label class="agree"><input type="checkbox" id="agree" ${agree ? 'checked' : ''}> ข้าพเจ้ายอมรับกติกาและเงื่อนไขค่าเรียน และยินยอมให้เก็บข้อมูลการซื้อขายตาม พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล (PDPA)</label><button class="btn" data-act="startapp" id="startBtn" ${agree ? '' : 'disabled'}>เริ่มใช้งาน</button></div>
   </div></div>`;
 }
 
-/* ---------- home: how much have I made, what changed, what I hold ---------- */
-const eqRefs = () => [{ v: 250000, label: '250K' }, { v: 500000, label: '500K' }, { v: ME().cap, label: 'ทุนเริ่มต้น', c: 'var(--mut)' }];
+/* ---------- home: how much have I made toward 1,000,000, what I would get back, my discipline ---------- */
 function snapState(x) {
   if (!x) return '<span class="tag">ยังไม่มีรายงานวันศุกร์</span>';
   return snapOk(x) ? `<span class="tag ok" title="ยอดที่คุณรายงานวันศุกร์ ${dstr(S.days[x.day])}">${ic('check', 12, 2.4)}ยอดที่รายงานตรงกับบันทึก</span>` : `<span class="tag warn">${ic('alert', 12)}ยอดที่รายงานต่างจากบันทึก ${pct(snapDiff(x))}</span>`;
 }
 function homeView() {
-  const me = ME(), d = discipline(me.id), day = Math.floor((now() - me.joined) / DAY) + 1, ps = pnlSum(me), v = eqNow(me), rr = retPct(me);
-  const items = feedItems(), hold = openPos(me.id);
+  const me = ME(), d = discipline(me.id), ps = pnlSum(me), v = eqNow(me), rr = retPct(me), st = settle(me);
   return `<section class="pnl hero">
-    <div class="hero-l">
-      <div class="eyebrow">เส้นทางสู่ 1,000,000 บาท · วันที่ ${day} ของคอร์ส</div>
-      <div class="rl">กำไรสะสมตามบันทึก · ${dlong(now())} ${snapState(lastSnap(me))}</div>
-      <div class="big serif num"><span class="gtxt">${signed(ps.total)}</span></div>
+    <div class="hero-top"><div class="hero-l">
+      <div class="eyebrow">เป้าหมายกำไร 1,000,000 บาท · เดือนที่ ${progMonth(me)} จาก ${me.term}</div>
+      <div class="rl">กำไรสะสมตามบันทึก · ${dlong(now())} ${snapDue() ? `<button class="tag gold" data-act="snap">${ic('wallet', 12)}รายงานยอดพอร์ตประจำสัปดาห์</button>` : snapState(lastSnap(me))}</div>
+      <div class="big serif num"><span class="${st.pr >= 0 ? 'gtxt' : 'dn'}">${signed(st.pr)}</span></div>
       <div class="meta"><span class="tag ${rr >= 0 ? 'ok' : 'dn'} num" title="เทียบกับทุนเริ่มต้นรวมเงินฝาก/ถอนที่อนุมัติแล้ว">${pct(rr)} จากเงินทุน</span><button class="tag est" data-act="recinfo">${ic('wallet', 13)}ยอดพอร์ต <b class="num">฿${baht(v)}</b></button><span class="tag opt num">${tm('rpl', 'Realized')} ${signed(ps.realized)}</span><span class="tag opt num">${tm('upl', 'Unrealized')} ${signed(ps.unreal)}</span><button class="tag mob ${scoreTone(d.score)}" data-act="scoreinfo">${ic('target', 13)}วินัย ${d.score}</button></div>
-      ${goalBar(v, me.cap)}
-    </div>
-    <div class="hero-c"><div class="hc-h"><span>ยอดพอร์ตรายสัปดาห์ (ตามบันทึก)</span><span class="lgd2"><i></i>ทุกวันศุกร์<i class="e"></i>วันนี้</span></div>${chartBox('eq', repSeries(me), { refs: eqRefs() })}</div>
+    </div>${refundCard(st)}</div>
+    ${goalBar(st)}
+    <div class="hero-c"><div class="hc-h"><span>กำไรสะสมรายสัปดาห์ (ตามบันทึก)</span><span class="lgd2"><i></i>ทุกวันศุกร์<i class="e"></i>วันนี้</span></div>${chartBox('pl', profitSeries(me), { kind: 'pl', refs: [{ v: GOAL, label: 'เป้าหมาย 1 ล้าน', always: 1 }, { v: 0, label: '', c: 'var(--mut)', always: 1 }] })}</div>
   </section>
   <section class="pnl disc"><div class="ph"><h3>คะแนนวินัย</h3><span class="sub">30 วันล่าสุด</span><button class="lnk sm" style="margin-left:auto" data-act="scoreinfo">เกณฑ์การคำนวณ</button></div>
-    <div class="pb"><div class="dsc">${ring(d.score, narrow() ? 46 : 78, 7)}<div><b class="w ${scoreTone(d.score)}">${scoreWord(d.score)}</b><div class="xs ink2 dx">${ic('flag', 13)} ตรงแผนติดต่อกัน <b class="gold num">${streak(me.id)}</b> รายการ</div><div class="xs muted">อันดับวินัย <b class="ink2 num">${cohortRank(me.id)}</b> จาก ${S.clients.length} รายของรุ่น</div>${narrow() ? '<button class="lnk xs" data-act="scoreinfo">ดูรายละเอียด</button>' : ''}</div></div>
+    <div class="pb"><div class="dsc">${ring(d.score, innerHeight < 800 ? 60 : 74, 7)}<div><b class="w ${scoreTone(d.score)}">${scoreWord(d.score)}</b><div class="xs ink2 dx">${ic('flag', 13)} ตรงแผนติดต่อกัน <b class="gold num">${streak(me.id)}</b> รายการ</div><div class="xs muted">อันดับวินัย <b class="ink2 num">${cohortRank(me.id)}</b> จาก ${S.clients.length} รายของรุ่น</div></div></div>
     <div class="mbar">${scoreBars(d)}</div></div></section>
-  <section class="pnl todo"><div class="ph"><h3>อัปเดตล่าสุด</h3><span class="sub">${items.length} รายการ</span><button class="btn sm" data-act="upload" style="margin-left:auto">${ic('upload', 15)} <span class="lgx">ส่งภาพหลักฐาน</span><span class="shx">ส่งภาพ</span></button><div class="pgn" data-pgn="todo"></div></div>
-    <div class="pb">${items.length ? `<div class="list" data-pg="todo" style="gap:8px">${items.join('')}</div>` : `<div class="empty">${ic('check', 28)}<b>ยังไม่มีรายการ</b><div class="xs">รายการที่โค้ชบันทึกให้จะแสดงที่นี่</div></div>`}</div></section>
-  <section class="pnl hold"><div class="ph"><h3>หลักทรัพย์ที่ถือครอง</h3><span class="sub">${hold.length} ตัว · ราคาปิดล่าสุด</span><div class="pgn" data-pgn="hold"></div></div>
-    <div class="pb">${hold.length ? `<div class="list tight" data-pg="hold">${hold.map(holdRow).join('')}</div>` : '<div class="empty">ยังไม่มีหุ้นในพอร์ต</div>'}</div>
-    ${mixBar(me)}</section>`;
+  <section class="pnl prog">${progPanel(me)}</section>`;
 }
-// what needs the client (a new screenshot, the Friday report), what is waiting, then the latest records
-function feedItems() {
-  const me = ME(), n = now(), out = [], co = coach(me.coach);
-  fixUps().forEach(u => out.push(`<article class="oc fix"><div class="oc-h">${u.m ? slogo(u.m.sym, 40) : `<span class="oc-ic">${ic('image', 20)}</span>`}<div class="oc-t"><div class="l1"><b>${co.name}ขอภาพใหม่</b><span class="tag warn">${ic('alert', 12)}ต้องส่งใหม่</span></div><div class="l2" title="${esc(u.fix.note)}">“${esc(u.fix.note)}”</div></div><span class="sp"></span><button class="btn sm" data-act="upload" data-id="${esc(u.id)}">${ic('upload', 15)} ส่งภาพใหม่</button></div></article>`));
-  if (snapDue()) out.push(`<article class="oc sl"><div class="oc-h"><span class="oc-ic">${ic('wallet', 20)}</span><div class="oc-t"><div class="l1"><b>รายงานยอดพอร์ตประจำสัปดาห์</b></div><div class="l2">ส่งภาพหน้าพอร์ตทุกวันศุกร์หลังตลาดปิด ใช้ตรวจว่าบันทึกครบถ้วน</div></div><span class="sp"></span><button class="btn sm" data-act="snap">${ic('wallet', 15)} รายงานยอดพอร์ต</button></div></article>`);
-  slNews().forEach(({ p, x }) => out.push(`<article class="oc sl"><div class="oc-h"><button class="oc-lg" data-stock="${esc(p.sym)}">${slogo(p.sym, 40)}</button><div class="oc-t"><div class="l1"><b>${esc(p.sym)}</b><span class="side sl">SL</span><span class="xs muted">${when(x.at, n)}</span></div><div class="l2">${co.name}เลื่อน Stop Loss เป็น <b class="num">${px(x.sl)}</b> · อย่าลืมแก้ Stop Order ในแอป</div></div><span class="sp"></span><button class="btn ghost sm" data-plan="${esc(p.key)}">ดูแผน</button></div></article>`));
-  myUps().filter(u => u.st === 'pend').forEach(u => out.push(`<article class="oc"><div class="oc-h">${u.m ? slogo(u.m.sym, 40) : `<span class="oc-ic">${ic('image', 20)}</span>`}<div class="oc-t"><div class="l1"><b>ส่งภาพแล้ว${u.m ? ` · ${u.m.side === 'buy' ? 'ซื้อ' : 'ขาย'} ${esc(u.m.sym)}` : ''}</b><span class="tag blue">${ic('clock', 12)}รอโค้ชบันทึก</span></div><div class="l2">ส่งเมื่อ ${when(u.at, n)} · ${co.name}จะบันทึกและเทียบกับแผนให้</div></div><span class="sp"></span><button class="slipth" data-act="upslip" data-id="${esc(u.id)}" title="ดูภาพ">${upImg(u)}</button></div></article>`));
-  execsOf(me.id).filter(e => e.rec.at <= n).slice().sort((a, b) => b.rec.at - a.rec.at).slice(0, 8).forEach(e => {
-    const ok = allOk(checks(e));
-    out.push(`<article class="oc ${e.side === 'buy' ? 'buy' : 'sell'} rc" data-ex="${esc(e.id)}"><div class="oc-h">${slogo(e.sym, 40)}<div class="oc-t"><div class="l1"><b>${esc(e.sym)}</b>${sideTag(e)}<span class="tag ${ok ? 'ok' : e.plan ? 'warn' : 'pu'}">${ok ? ic('check', 12) + 'ตรงแผน' : e.plan ? ic('alert', 12) + 'ไม่ตรงแผน' : 'นอกแผน'}</span></div><div class="l2 num">${verbEx(e)} ${fmt(e.qty)} หุ้น @ ${px(e.px)} · ${coach(e.rec.by).name}บันทึกเมื่อ ${when(e.rec.at, n)}</div></div><span class="sp"></span>${slipThumb(e, me)}</div></article>`);
-  });
-  return out;
+// the money-back terms as if the program ended today: refund = 1,000,000 − profit (never below 0)
+function refundCard(st) {
+  const over = st.extra > 0, full = st.pr <= 0;
+  return `<button class="refund" data-act="terms" title="เงื่อนไขค่าเรียน"><span class="k"><span>หากจบโปรแกรมวันนี้</span>${ic('info', 14)}</span>
+    <span class="s">${over ? 'กำไรเกินเป้าหมาย ส่วนที่เกินเป็นของคุณ' : full ? 'ได้รับค่าเรียนคืนเต็มจำนวน' : 'ได้รับค่าเรียนคืน'}</span>
+    <b class="rv num ${over ? 'up' : ''}">${over ? signed(st.extra) : '฿' + baht(st.refund)}</b>
+    <span class="rsplit" aria-hidden="true"><i style="flex:${st.kept}"></i><s style="flex:${st.refund}"></s></span>
+    <span class="rleg"><span><i></i>กำไรที่ทำได้ ${kb(st.kept)}</span><span><i class="b"></i>คืนค่าเรียน ${kb(st.refund)}</span></span></button>`;
 }
-function mixBar(me) {
-  const v = eqNow(me), pv = Math.min(v, posValue(me.id));
-  return `<div class="mix"><div class="row xs" style="justify-content:space-between"><span><i class="d g"></i>มูลค่าหุ้น <b class="num">฿${baht(pv)}</b></span><span><i class="d c"></i>เงินสด <b class="num">฿${baht(v - pv)}</b></span></div><div class="mixb" title="มูลค่าหุ้น ${Math.round(pv / v * 100)}% ของพอร์ต"><i style="width:${pv / v * 100}%"></i></div></div>`;
-}
-function goalBar(v, cap) {
-  const miles = [250000, 500000, 750000, GOAL];
-  return `<div class="goal"><div class="gtrack" role="progressbar" aria-valuemin="0" aria-valuemax="${GOAL}" aria-valuenow="${Math.round(v)}" aria-label="ความคืบหน้าสู่ 1 ล้าน"><i style="width:${Math.min(100, v / GOAL * 100)}%"></i>
-    <span class="gstart" style="left:${cap / GOAL * 100}%">ทุน ${kb(cap)}</span>
+function goalBar(st) {
+  const miles = [250000, 500000, 750000, GOAL], v = Math.max(0, st.pr);
+  return `<div class="goal"><div class="gtrack" role="progressbar" aria-valuemin="0" aria-valuemax="${GOAL}" aria-valuenow="${Math.round(Math.min(v, GOAL))}" aria-label="กำไรเทียบกับเป้าหมาย 1 ล้านบาท"><i style="width:${Math.min(100, v / GOAL * 100)}%"></i>
     ${miles.map(m => `<span class="gm ${v >= m ? 'hit' : ''}" style="left:${m / GOAL * 100}%"><b>${v >= m ? ic('check', 12, 2.6) : ''}</b><span>${m === GOAL ? '1 ล้าน' : kb(m)}</span></span>`).join('')}</div>
-    <div class="glbl"><span>ยอดพอร์ต <b class="gold num">฿${baht(v)}</b> · ${fmt(v / GOAL * 100, 1)}%</span><span>อีก <b class="num">฿${baht(Math.max(0, GOAL - v))}</b> ถึงเป้าหมาย</span></div></div>`;
+    <div class="glbl"><span>กำไร <b class="gold num">${fmt(Math.min(100, v / GOAL * 100), 1)}%</b> ของเป้าหมาย</span><span>${st.extra > 0 ? `เกินเป้าหมาย <b class="num up">${signed(st.extra)}</b>` : `อีก <b class="num">฿${baht(GOAL - v)}</b> ถึงเป้าหมาย`}</span></div></div>`;
 }
 function scoreBars(d) {
   return [['ตรงแผน', d.acc, `${Math.round(d.acc * 100)}%`], ['ขายตามแผน', d.exit, `${Math.round(d.exit * 100)}%`], ['ไม่ซื้อขายนอกแผน', Math.max(0, 1 - d.off / 3), d.off ? `${d.off} ครั้ง` : 'ไม่มี'], ['หลักฐานครบ', d.proof, `${Math.round(d.proof * 100)}%`]]
     .map(([k, v, s]) => `<div><div class="l"><span class="ink2">${k}</span><b class="num">${s}</b></div><div class="bar ${v >= .9 ? 'up' : v >= .75 ? 'warn' : 'dn'}"><i style="width:${v * 100}%"></i></div></div>`).join('');
 }
-const cells = rows => `<div class="cells" style="grid-template-columns:repeat(${rows.length},minmax(0,1fr))">${rows.map(([k, v, c, s, opt]) => `<div class="${opt ? 'opt' : ''}"><div class="k">${k}</div><div class="v num ${c || ''}">${v}</div>${s ? `<div class="s num">${s}</div>` : ''}</div>`).join('')}</div>`;
-function holdRow(p) {
-  const pl = (p.last - p.avg) * p.qty, r = (p.last - p.avg) / p.avg, gap = p.sl ? (p.last - p.sl) / p.last : null;
-  return `<div class="hrow"><button class="hl" data-plan="${esc(p.key)}" title="ดูแผนและประวัติ ${esc(p.sym)}">${slogo(p.sym, 34)}<span style="min-width:0"><b>${esc(p.sym)}</b> ${p.plan ? '' : '<span class="tag pu">นอกแผน</span>'}<span class="xs muted num" style="display:block">${fmt(p.qty)} หุ้น · Avg ${px(p.avg)}</span></span></button>
-    <div class="r num"><b class="${pl >= 0 ? 'up' : 'dn'}" style="font-size:14px">${signed(pl)}</b><span class="xs ${pl >= 0 ? 'up' : 'dn'}">${pct(r)}</span></div>
-    <div title="${gap == null ? 'ไม่มี Stop Loss' : `ห่าง Stop Loss ${pct(gap)}`}">${gap == null ? '<span class="xs muted">ไม่มี SL</span>' : `<div class="bar ${gap > .05 ? 'up' : gap > .02 ? 'warn' : 'dn'}"><i style="width:${Math.min(100, Math.max(5, gap / .12 * 100))}%"></i></div><div class="xs muted num" style="margin-top:2px">SL ${px(p.sl)}</div>`}</div></div>`;
+const yr = ms => String(tz(ms).getUTCFullYear() + 543).slice(2);
+function paceBox(me, mo, end) {
+  const pr = profit(me), done = Math.max(.5, (now() - me.joined) / (30.44 * DAY)), left = Math.max(.5, (end - now()) / (30.44 * DAY)), need = Math.max(0, GOAL - pr) / left;
+  return `<div class="pace"><div><span>กำไรเฉลี่ยต่อเดือน</span><b class="num ${pr >= 0 ? 'up' : 'dn'}">${signed(pr / done)}</b></div><div title="กำไรที่ต้องทำต่อเดือนในเวลาที่เหลือ เพื่อให้ถึง 1 ล้านเมื่อจบโปรแกรม"><span>ต้องการต่อเดือนเพื่อถึงเป้า</span><b class="num gold">${need ? '฿' + baht(need) : 'ถึงเป้าแล้ว'}</b></div></div>`;
+}
+function progPanel(me) {
+  const mo = progMonth(me), end = progEnd(me), co = coach(me.coach), left = Math.max(0, Math.ceil((end - now()) / DAY));
+  return `<div class="ph"><h3>โปรแกรมของฉัน</h3><span class="sub">${me.term} เดือน · ${TYPE[me.type]}</span></div>
+    <div class="pb"><div><div class="row xs" style="justify-content:space-between"><span class="ink2">เดือนที่ <b class="gold num">${mo}</b> จาก ${me.term}</span><span class="muted">เหลืออีก ${fmt(left)} วัน</span></div>
+      <div class="ptrack" style="--n:${me.term}" aria-hidden="true">${Array.from({ length: me.term }, (_, i) => `<i class="${i + 1 < mo ? 'on' : i + 1 === mo ? 'now' : ''}"></i>`).join('')}</div>
+      <div class="row xs muted" style="justify-content:space-between"><span>เริ่ม ${dstr(me.joined)} ${yr(me.joined)}</span><span>จบ ${dstr(end)} ${yr(end)}</span></div></div>
+      ${paceBox(me, mo, end)}
+      <div class="pstrip"><div><span>โค้ชประจำตัว</span><b>${co.name}</b></div><div><span>ตลาดที่เทรด</span><b class="ell">${me.mks.map(m => MARKETS[m][0]).join(' · ')}</b></div><div><span>ทุนเริ่มต้น</span><b class="num">฿${baht(me.cap)}</b></div><div><span>ค่าเรียน</span><b class="num">฿${baht(TUITION)}</b></div></div>
+      <div class="row" style="gap:8px;margin-top:auto"><button class="btn ghost sm" data-act="terms">${ic('trophy', 15)} เงื่อนไขค่าเรียน</button><button class="btn soft sm" data-act="line">${ic('chat', 15)} LINE ${co.name}</button></div></div>`;
 }
 
-/* ---------- trades: each stock the client bought, with the coach's plan as a position tool ---------- */
-function posList() {
-  const me = ME();
-  return positions(me.id).map(p => ({ key: p.key, pos: p, op: planOf(p.plan), pnl: p.realized + (p.qty ? (p.last - p.avg) * p.qty : 0), state: p.qty > 0 ? 'hold' : 'closed', fills: execsOf(me.id).filter(e => (e.plan || 'off:' + e.sym) === p.key) }))
-    .sort((a, b) => (a.state === 'hold' ? 0 : 1) - (b.state === 'hold' ? 0 : 1) || b.pos.lastAt - a.pos.lastAt);
+/* ---------- journal: every trade the client keyed, its screenshot, and the coach's review ---------- */
+const ymd = ms => { const d = tz(ms); return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}`; };
+const dayStart = s => { const m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(s || ''); return m ? Date.UTC(+m[1], m[2] - 1, +m[3]) - TZ : NaN; };
+// วว/ดด/ปปปป in the Buddhist year, as on Thai forms
+const dmy = s => { const m = /^(\d{4})-(\d\d)-(\d\d)$/.exec(s || ''); return m ? `${m[3]}/${m[2]}/${+m[1] + 543}` : ''; };
+function jList() {
+  const q = jSym.trim().toUpperCase(), from = dayStart(jFrom), to = dayStart(jTo);
+  return execsOf(FEATURED).filter(e => e.rec.at <= now() && (!Number.isFinite(from) || e.at >= from) && (!Number.isFinite(to) || e.at < to + DAY)
+    && (!q || e.sym.includes(q) || (sname(e.sym) || '').toUpperCase().includes(q))).slice().reverse();
 }
-function posData(key) {
-  const me = ME(), pos = positions(me.id).find(p => p.key === key), op = planOf(pos.plan), sl = op ? planSL(op.id) : null;
-  const fills = execsOf(me.id).filter(e => (e.plan || 'off:' + e.sym) === key), bpx = pos.bought / Math.max(1, pos.bq);
-  const oneR = op ? Math.max(0, bpx - op.sl) * pos.bq : 0, upl = pos.qty ? (pos.last - pos.avg) * pos.qty : 0, rpl = pos.realized;
-  return { op, pos, sl, fills, last: pos.last, bpx, oneR, upl, rpl, total: upl + rpl, r: oneR ? (upl + rpl) / oneR : null, pq: fills.find(e => e.side === 'buy')?.pq || pos.bq };
+function dateBtn(k, v, ph) {
+  return `<span class="dw"><button type="button" class="in ${v ? 'set' : ''}" data-act="jdate" data-k="${k}" aria-label="${ph}">${ic('calendar', 15)}<span>${v ? dmy(v) : ph}</span></button><input type="date" class="dpick" id="j${k}" value="${esc(v)}" min="${ymd(ME().joined)}" max="${ymd(now())}" tabindex="-1" aria-hidden="true"></span>`;
 }
-const POS_TABS = [['hold', 'ถือหุ้นอยู่'], ['closed', 'ปิดสถานะแล้ว'], ['all', 'ทั้งหมด']];
-const POS_ST = { hold: ['blue', 'ถือหุ้นอยู่', 'ถืออยู่'], closed: ['', 'ปิดสถานะแล้ว', 'ปิดแล้ว'] };
-function tradesView() {
-  const me = ME(), all = posList(), ps = pnlSum(me), d = discipline(me.id), list = all.filter(p => posTab === 'all' || p.state === posTab);
-  if (!list.some(p => p.key === selPos)) selPos = list[0]?.key || null;
-  return `<div class="vh"><h1>การเทรด</h1><div class="seg">${POS_TABS.map(([k, l]) => { const c = all.filter(p => k === 'all' || p.state === k).length; return `<button class="${posTab === k ? 'on' : ''}" data-tab="${k}">${l}${c ? `<span class="n">${c}</span>` : ''}</button>`; }).join('')}</div><span class="sp"></span>
-    <span class="fr opt">${tm('win')} <b class="num">${ps.closed ? Math.round(ps.rate * 100) + '%' : '—'}</b><span class="xs">${ps.wins}/${ps.closed} ตัว</span></span>
-    <span class="fr">กำไรสะสม <b class="num ${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</b></span>
-    <button class="btn ghost sm gbtn2" data-act="glossary" title="คำศัพท์การเทรด">${ic('help', 15)}<span>คำศัพท์</span></button></div>
-  <section class="pnl plist"><div class="ph"><h3>หุ้นที่ซื้อขาย</h3><span class="sub">${list.length} ตัว · ตรงแผน ${Math.round(d.acc * 100)}%</span><div class="pgn" data-pgn="plans"></div></div>
-    <div class="pb">${list.length ? `<div class="list" data-pg="plans" style="gap:6px">${list.map(posRow).join('')}</div>` : `<div class="empty">${ic('target', 26)}ยังไม่มีรายการ<div class="xs">เมื่อโค้ชบันทึกรายการซื้อให้ หุ้นตัวนั้นจะแสดงที่นี่พร้อมแผนของโค้ช</div></div>`}</div></section>
-  <section class="pnl pdet">${selPos ? posDetail(selPos) : '<div class="empty" style="margin:auto">เลือกหุ้นทางซ้ายเพื่อดูแผนและประวัติ</div>'}</section>`;
-}
-function posRow(x) {
-  const [sc, , sl] = POS_ST[x.state], dev = x.fills.some(e => !allOk(checks(e)));
-  return `<button class="prow ${x.key === selPos ? 'on' : ''}" data-plan="${esc(x.key)}">${slogo(x.pos.sym, 40)}
-    <span class="pr-t"><span class="sym">${esc(x.pos.sym)}</span>${x.op ? `<span class="tag ${sc}">${sl}</span>` : '<span class="tag pu">นอกแผน</span>'}${dev && x.op ? `<span class="tag warn" title="มีรายการที่ไม่ตรงแผน">${ic('alert', 12)}</span>` : ''}</span>
-    <span class="num pr-v ${x.pnl > 0 ? 'up' : x.pnl < 0 ? 'dn' : 'muted'}">${signed(x.pnl)}</span>
-    <span class="pr-m">${x.op ? miniLadder(x.op, x.pos.qty ? x.pos.last : lastPx(x.pos.sym), planSL(x.op.id)) : '<span class="mlad off" title="ไม่มีแผนจากโค้ช"></span>'}</span>
-    <span class="xs muted pr-s ell">${sname(x.pos.sym) ? esc(sname(x.pos.sym)) + ' · ' : ''}ซื้อ ${dstr(x.pos.first)}${x.state === 'closed' ? ` · ขาย ${dstr(x.pos.lastAt)}` : ''}</span><span class="dots" title="${x.fills.length} รายการ">${x.fills.map(e => `<i class="${allOk(checks(e)) ? 'ok' : 'bad'}"></i>`).join('')}</span></button>`;
-}
-// reminders for what should be set in the broker app (the client trades there, not here)
-function appSteps(D) {
-  const { op, pos, sl } = D;
-  if (!pos.qty) return [];
-  if (!op) return [['alert', 'ยังไม่มีแผนจากโค้ช', 'ปรึกษาโค้ชเพื่อกำหนด Stop Loss ของรายการนี้']];
-  return [['shield', 'Stop Order ที่ควรมีในแอป', `Trigger: Last ≤ ${px(sl)} → ขาย ${fmt(pos.qty)} หุ้น`], ['target', 'เป้าหมายขายทำกำไร', `TP1 ${px(op.tp1)} · TP2 ${px(op.tp2)} · โค้ชจะโทรแจ้งเมื่อถึงเป้า`]];
-}
-const appBox = steps => steps.length ? `<div class="tk-app"><div class="kvh">${ic('phone', 13)} สิ่งที่ตั้งไว้ในแอปซื้อขาย</div>${steps.map(([i, t, d]) => `<div class="as"><span class="as-i">${ic(i, 14)}</span><div style="min-width:0"><b>${t}</b><span class="num ell">${d}</span></div></div>`).join('')}</div>` : '';
-// history of one stock: the plan, each recorded trade (with proof and check), stop moves, notes
-function posTimeline(D) {
-  const me = ME(), { op } = D, n = now(), row = (k, tag, title, t, detail, res = '') => `<div class="tlr ${k}"><span class="tn"></span><div class="tl-b"><div class="tl-1">${tag}<b class="ell">${title}</b><span class="tl-w num">${dstr(t)} · ${tstr(t)} น.</span></div>${detail ? `<div class="xs muted ell" title="${esc(detail)}">${esc(detail)}</div>` : ''}${res ? `<div class="res">${res}</div>` : ''}</div></div>`;
-  const evs = D.fills.map(e => { const ck = checks(e); return { t: e.at, h: row(allOk(ck) ? 'ok' : 'bad', sideTag(e), `${verbEx(e)} ${fmt(e.qty)} หุ้น @ ${px(e.px)}`, e.at, `บันทึกโดย${coach(e.rec.by).name} ${dt(e.rec.at)} น.${e.side === 'sell' && e.why ? ' · ' + SELL_WHY[e.why] : ''}${e.cnote ? ' · โค้ช: ' + e.cnote : ''}`, `${ckHtml(ck)} ${slipThumb(e, me)}`) }; });
-  if (op) {
-    op.sls.filter(x => x.at <= n).forEach(x => evs.push({ t: x.at, h: row('sl', '<span class="side sl">SL</span>', `เลื่อน Stop Loss เป็น ${px(x.sl)}`, x.at, x.note) }));
-    S.misses.filter(m => m.cl === me.id && m.plan === op.id && m.at <= n).forEach(m => evs.push({ t: m.at, h: row('bad', '<span class="side ms">!</span>', MISS[m.kind], m.at, `โค้ชบันทึก · ${m.note}`) }));
-    if (op.end && op.end.at <= n) evs.push({ t: op.end.at, h: row('', '<span class="side pl">END</span>', 'โค้ชปิดแผน', op.end.at, op.end.note) });
-    evs.push({ t: op.at, h: row('pl', '<span class="side pl">PLAN</span>', `${coach(op.coach).name} วางแผน ${op.sym}`, op.at, `Entry ${px(op.lo)}–${px(op.hi)} · SL ${px(op.sl)} · TP ${px(op.tp1)}/${px(op.tp2)} · ${op.size}% ของพอร์ต`) });
-  }
-  return evs.sort((a, b) => b.t - a.t).map(x => x.h).join('');
-}
-// phone: the stock opens as a sheet; long history pages instead of scrolling
-function showPos(key) { openModal(posDetail(key, 'modal'), 'mid'); fitPagers($('#modal')); }
-function posDetail(key, mode = 'panel') {
-  const me = ME(), D = posData(key), { op, pos, sl, last } = D, i = stock(pos.sym), state = pos.qty > 0 ? 'hold' : 'closed', [sc, st] = POS_ST[state];
-  const rows = posTimeline(D), steps = appSteps(D);
-  const pnlBox = `<div class="tk-pl"><span class="xs muted">${pos.qty ? 'กำไร/ขาดทุนรวม' : tm('rpl')}</span><b class="num ${D.total >= 0 ? 'up' : 'dn'}">${signed(D.total)}</b><span class="xs num ${D.total >= 0 ? 'up' : 'dn'}">${D.r != null ? sgnR(D.r) : pct(D.total / pos.bought)}</span></div>`;
-  const head = `<div class="tk-h"><button class="slb" data-stock="${esc(pos.sym)}" title="ข้อมูลหุ้น ${esc(i?.th || pos.sym)}">${slogo(pos.sym, mode === 'modal' ? 40 : 48)}</button>
-    <div class="tk-t"><div class="row" style="gap:8px;min-width:0"><b class="tk-sym">${esc(pos.sym)}</b><span class="tag ${sc}">${st}</span>${op ? `<span class="tag line num">${op.size}% ของพอร์ต</span>` : '<span class="tag pu">นอกแผน</span>'}</div>
-    <div class="xs muted ell">${i ? `${esc(i.short || i.th)} · ${esc(i.sectorTh)} · ` : ''}${op ? `แผนของ${coach(op.coach).name} ${dt(op.at)} น.` : 'ซื้อขายโดยไม่มีแผนจากโค้ช'}</div></div>${pnlBox}</div>`;
-  const cell = (k, v, s = '', c = '', opt) => `<div class="kv ${opt ? 'opt' : ''}"><span class="k">${k}</span><b class="num ${c}">${v}</b>${s ? `<span class="s num">${s}</span>` : ''}</div>`;
-  const plan = op ? cell(tm('entry'), `${px(op.lo)}–${px(op.hi)}`, `ราคาปิด ${px(last)}`)
-    + cell(tm('sl', 'Stop Loss'), px(sl), Math.abs(sl - op.sl) > 1e-9 ? `เลื่อนจาก ${px(op.sl)}` : pct((sl - op.hi) / op.hi), sl >= op.hi ? 'gold' : 'dn')
-    + cell(tm('tp', 'TP1 / TP2'), `${px(op.tp1)} / ${px(op.tp2)}`, `${pct((op.tp1 - op.hi) / op.hi)} / ${pct((op.tp2 - op.hi) / op.hi)}`, 'up')
-    + cell(tm('rr'), `1 : ${fmt(rrOf(op, op.tp1), 1)}`, `ถึง TP2 = 1 : ${fmt(rrOf(op, op.tp2), 1)}`)
-    + cell(tm('size'), `${fmt(D.pq)} หุ้น`, `${op.size}% ของพอร์ต`, '', 1)
-    + cell(tm('r', '1R (ความเสี่ยงต่อแผน)'), `฿${baht(D.oneR)}`, `${fmt(D.oneR / eqNow(me) * 100, 2)}% ของพอร์ต`, '', 1) : '';
-  const sells = D.fills.filter(e => e.side === 'sell'), sq = sells.reduce((x, e) => x + e.qty, 0);
-  const mine = pos.qty ? cell(tm('avg'), px(pos.avg), `ถือ ${fmt(pos.qty)} หุ้น`)
-    + cell(tm('mv'), `฿${baht(pos.qty * pos.last)}`, `@ ${px(pos.last)}`)
-    + cell(tm('upl'), signed(D.upl), pct((pos.last - pos.avg) / pos.avg, 2), D.upl > 0 ? 'up' : D.upl < 0 ? 'dn' : '')
-    + cell(tm('rpl'), D.rpl ? signed(D.rpl) : '—', D.rpl ? `ขายแล้ว ${fmt(sq)} หุ้น` : 'ยังไม่ได้ขาย', D.rpl > 0 ? 'up' : D.rpl < 0 ? 'dn' : '')
-    : cell(tm('avg', 'ราคาซื้อเฉลี่ย'), px(D.bpx), `${fmt(pos.bq)} หุ้น`)
-    + cell('ราคาขายเฉลี่ย', sq ? px(sells.reduce((x, e) => x + e.px * e.qty, 0) / sq) : '—', `${sells.length} ครั้ง`)
-    + cell('ระยะเวลาถือ', `${Math.max(1, Math.round((pos.lastAt - pos.first) / DAY))} วัน`, `${dstr(pos.first)} – ${dstr(pos.lastAt)}`)
-    + cell(tm('rpl'), signed(D.rpl), D.r != null ? sgnR(D.r) : '', D.rpl > 0 ? 'up' : D.rpl < 0 ? 'dn' : '');
-  const lastSl = op?.sls.filter(x => x.at <= now()).slice(-1)[0], noteTxt = lastSl ? lastSl.note : op?.note;
-  const note = op && noteTxt ? `<div class="tk-note"><span class="av gold sm">${coach(op.coach).no}</span><div style="min-width:0"><b class="xs">บทวิเคราะห์จาก${coach(op.coach).name}</b><p title="${esc(noteTxt)}">“${esc(noteTxt)}”</p></div></div>` : '';
-  const chart = op ? `<div class="tk-c"><div class="tk-lg xs"><span><i class="rw"></i>Reward</span><span><i class="rk"></i>Risk</span><span><i class="en"></i>Entry</span><span class="pm-k"><i></i>ราคาปิด ${asOfTxt()}</span></div>${posTool({ op, sl, last, avg: pos.qty ? pos.avg : null, fills: D.fills })}${mode === 'modal' ? '' : note}</div>`
-    : `<div class="tk-c"><div class="note-box y">${ic('flag', 16)}<span><b>รายการนอกแผน</b> ซื้อขายโดยไม่ได้อยู่ในแผนของโค้ช จึงไม่มี Entry, Stop Loss และเป้าหมายให้เทียบ · มีผลต่อคะแนนวินัย</span></div>${D.fills[0]?.why && D.fills[0].why !== 'self' ? `<div class="tk-note"><span class="oc-ic">${ic('chat', 16)}</span><div><b class="xs">เหตุผลที่ลูกค้าแจ้ง</b><p>“${esc(D.fills[0].why)}”</p></div></div>` : ''}</div>`;
-  const info = `<div class="tk-i">${op ? `<div class="kvh">แผนของโค้ช</div><div class="kvs">${plan}</div>` : ''}<div class="kvh">${pos.qty ? 'สถานะของคุณ' : 'ผลลัพธ์ของคุณ'}</div><div class="kvs k4">${mine}</div></div>`;
-  const tl = `<div class="tk-tl">${appBox(steps)}<div class="kvh row">ประวัติ <span class="muted">${D.fills.length} รายการที่บันทึก</span><div class="pgn" data-pgn="tl"></div></div><div class="pb"><div class="list tight" data-pg="tl">${rows}</div></div></div>`;
-  if (mode === 'modal') {
-    const tabs = [['plan', op ? 'แผน' : 'ภาพรวม'], ['me', pos.qty ? 'สถานะของคุณ' : 'ผลลัพธ์'], ['tl', 'ประวัติ']];
-    if (!tabs.some(t => t[0] === mTab)) mTab = 'plan';
-    const body = mTab === 'plan' ? `${chart}${op ? `<div class="kvs">${plan}</div>` : ''}` : mTab === 'me' ? `<div class="kvs">${mine}</div>${appBox(steps)}` : `${note}<div class="kvh row">ประวัติ <span class="muted">${D.fills.length} รายการที่บันทึก</span><div class="pgn" data-pgn="mtl"></div></div><div class="pb mtl"><div class="list tight" data-pg="mtl">${rows}</div></div>`;
-    return mhead(`${slogo(pos.sym, 30)}<span>${esc(pos.sym)}</span><span class="tag ${op ? sc : 'pu'}">${op ? st : 'นอกแผน'}</span><span class="num ${D.total >= 0 ? 'up' : 'dn'}" style="font-size:15px">${signed(D.total)}</span>`, op ? `แผนของ${coach(op.coach).name} ${dt(op.at)} น.` : 'ไม่มีแผนจากโค้ช')
-      + `<div class="mbd tk-m"><div class="seg xsg mtabs">${tabs.map(([k, l]) => `<button class="${mTab === k ? 'on' : ''}" data-mtab="${k}">${l}</button>`).join('')}</div>${body}</div>`;
-  }
-  return head + `<div class="tk ${op ? '' : 'offp'}">${chart}${info}${tl}</div>`;
-}
-
-/* ---------- journal: every recorded trade with its screenshot, plus screenshots sent ---------- */
-const J_F = { all: e => true, ok: e => e.plan && allOk(checks(e)), dev: e => e.plan && !allOk(checks(e)), off: e => !e.plan };
 function journalView() {
-  const me = ME(), all = execsOf(me.id).filter(e => e.rec.at <= now()).slice().reverse(), ups = myUps(), ps = pnlSum(me), d = discipline(me.id);
+  const me = ME(), all = execsOf(me.id).filter(e => e.rec.at <= now()), list = jList(), ps = pnlSum(me), d = discipline(me.id), fx = myFix(), pend = pendOf(me.id).length, on = !!(jFrom || jTo || jSym);
   const closed = positions(me.id).filter(p => p.qty === 0 && p.bought > 0).map(p => ({ ...p, r: p.realized / p.bought }));
   const wins = closed.filter(p => p.realized > 0), losses = closed.filter(p => p.realized <= 0), lossSum = losses.reduce((s, p) => s - p.realized, 0);
   const avg = a => a.length ? a.reduce((s, p) => s + p.r, 0) / a.length : 0;
-  const list = jFilter === 'ups' ? [] : all.filter(J_F[jFilter]);
-  if (jFilter === 'ups') { if (!ups.some(u => 'up:' + u.id === selEx)) selEx = ups[0] ? 'up:' + ups[0].id : null; }
-  else if (!list.some(e => e.id === selEx)) selEx = list[0]?.id || null;
-  const chips = [['all', 'ทั้งหมด', all.length], ['ok', 'ตรงแผน', all.filter(J_F.ok).length], ['dev', 'ไม่ตรงแผน', all.filter(J_F.dev).length], ['off', 'นอกแผน', all.filter(J_F.off).length], ['ups', 'ภาพที่ส่ง', ups.length]];
-  return `<div class="vh"><h1>บันทึกการซื้อขาย</h1><div class="chips">${chips.map(([k, l, n]) => `<button class="chip ${jFilter === k ? 'on' : ''}" data-jf="${k}">${l}<span class="n">${n}</span></button>`).join('')}</div><span class="sp"></span><button class="btn sm" data-act="upload">${ic('upload', 15)} ส่งภาพหลักฐาน</button></div>
+  if (!list.some(e => e.id === selEx)) selEx = list[0]?.id || null;
+  return `<div class="vh"><h1>บันทึกการซื้อขาย</h1><div class="jf" role="search">${dateBtn('from', jFrom, narrow() ? 'ตั้งแต่' : 'ตั้งแต่ วว/ดด/ปปปป')}<span class="muted">–</span>${dateBtn('to', jTo, narrow() ? 'ถึง' : 'ถึง วว/ดด/ปปปป')}
+      <label class="in sym ${jSym ? 'set' : ''}">${ic('search', 15)}<input id="jsym" list="jsyms" value="${esc(jSym)}" maxlength="15" autocomplete="off" placeholder="ชื่อหุ้น" aria-label="กรองชื่อหุ้น"><datalist id="jsyms">${[...new Set(all.map(e => e.sym))].sort().map(s => `<option value="${esc(s)}">`).join('')}</datalist></label>
+      ${on ? '<button class="lnk sm" data-act="jclear">ล้างตัวกรอง</button>' : ''}</div><span class="sp"></span>
+    <button class="btn" data-act="key" title="บันทึกรายการซื้อขาย">${ic('plus', 16)}<span>บันทึกรายการ</span></button></div>
   <div class="kstrip">
     <div class="kpi"><div class="k">กำไรสะสม</div><div class="v num ${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</div><div class="s">${pct(retPct(me))} จากเงินทุน</div></div>
     <div class="kpi"><div class="k">${tm('win')}</div><div class="v num">${closed.length ? Math.round(wins.length / closed.length * 100) : 0}%</div><div class="s">กำไร ${wins.length} · ขาดทุน ${losses.length} ตัว</div></div>
@@ -2235,78 +2287,75 @@ function journalView() {
     <div class="kpi opt"><div class="k">กำไรเฉลี่ยต่อตัว</div><div class="v num up">${pct(avg(wins))}</div><div class="s">ขาดทุนเฉลี่ย ${pct(avg(losses))}</div></div>
     <div class="kpi opt"><div class="k">Profit Factor</div><div class="v num">${lossSum ? fmt(wins.reduce((s, p) => s + p.realized, 0) / lossSum, 2) : '—'}</div><div class="s">กำไรรวม ÷ ขาดทุนรวม</div></div>
   </div>
-  <section class="pnl jlist"><div class="ph"><h3>${jFilter === 'ups' ? 'ภาพที่ส่งให้โค้ช' : 'รายการที่โค้ชบันทึก'}</h3><span class="sub">${jFilter === 'ups' ? `${ups.length} ภาพ` : `${list.length} รายการ · ล่าสุดก่อน`}</span><div class="pgn" data-pgn="jl"></div></div>
-    <div class="pb">${jFilter === 'ups' ? (ups.length ? `<div class="list" data-pg="jl" style="gap:2px">${ups.map(upRow).join('')}</div>` : `<div class="empty">${ic('check', 26)}ไม่มีภาพที่รอบันทึก</div>`) : list.length ? `<div class="list" data-pg="jl" style="gap:2px">${list.map(jrow).join('')}</div>` : '<div class="empty">ไม่มีรายการ</div>'}</div></section>
-  <section class="pnl jdet">${!selEx ? '<div class="empty" style="margin:auto">เลือกรายการเพื่อดูรายละเอียด</div>' : selEx.startsWith('up:') ? upDetail(selEx.slice(3)) : execDetail(selEx)}</section>`;
+  <section class="pnl jlist"><div class="ph"><h3>รายการซื้อขาย</h3><span class="sub">${on ? `พบ ${list.length} จาก ${all.length} รายการ` : `${all.length} รายการ · ล่าสุดก่อน`}</span>${fx.length ? `<button class="tag warn" data-ex="${esc(fx[0].id)}">${ic('alert', 12)}ต้องแก้ไข ${fx.length}</button>` : ''}${pend ? `<span class="tag blue">${ic('clock', 12)}รอโค้ชตรวจ ${pend}</span>` : ''}<div class="pgn" data-pgn="jl"></div></div>
+    <div class="pb">${list.length ? `<div class="list" data-pg="jl" style="gap:2px">${list.map(jrow).join('')}</div>` : on ? `<div class="empty">${ic('search', 26)}ไม่พบรายการตามตัวกรอง<div class="xs"><button class="lnk" data-act="jclear">ล้างตัวกรอง</button></div></div>` : `<div class="empty">${ic('book', 26)}<b>ยังไม่มีรายการ</b><div class="xs">หลังคำสั่งซื้อขาย Matched ในแอปแล้ว กด “บันทึกรายการ” พร้อมแนบภาพหน้าสถานะคำสั่ง</div></div>`}</div></section>
+  <section class="pnl jdet">${selEx ? execDetail(selEx) : '<div class="empty" style="margin:auto">เลือกรายการเพื่อดูรายละเอียด</div>'}</section>`;
 }
 function jrow(e) {
-  const ck = checks(e), ok = allOk(ck);
-  return `<button class="jrow ${e.id === selEx ? 'on' : ''}" data-ex="${esc(e.id)}"><span class="t">${wd(e.at)} ${dstr(e.at)}<br>${tstr(e.at)}</span>${sideTag(e)}
-    <span class="jm">${slogo(e.sym, 30)}<span style="min-width:0"><b>${esc(e.sym)}</b> <span class="num sm">${fmt(e.qty)} @ ${px(e.px)}</span><span class="xs muted ell" style="display:block">${e.side === 'sell' && e.why && e.plan ? SELL_WHY[e.why] : e.plan ? 'ตามแผนของโค้ช' : 'นอกแผน'} · ${baht(e.qty * e.px)} บาท</span></span></span>
-    ${e.plan ? ckDots(ck) : '<span class="tag pu">นอกแผน</span>'}<span class="${ok ? 'up' : 'warn'}" title="${ok ? 'ตรงแผน' : 'ไม่ตรงแผน'}">${ic(ok ? 'check' : 'alert', 17, 2.2)}</span></button>`;
+  const ck = checks(e), ok = allOk(ck), v = e.ver || 'ok';
+  return `<button class="jrow ${e.id === selEx ? 'on' : ''} v-${v}" data-ex="${esc(e.id)}"><span class="t">${wd(e.at)} ${dstr(e.at)}<br>${tstr(e.at)}</span>${sideTag(e)}
+    <span class="jm">${slogo(e.sym, 30)}<span style="min-width:0"><b>${esc(e.sym)}</b> <span class="num sm">${fmt(e.qty)} @ ${px(e.px)}</span><span class="xs muted ell" style="display:block">${e.mk && e.mk !== 'th' ? mkName(e) + ' · ' : ''}${e.side === 'sell' && e.why && e.plan ? SELL_WHY[e.why] : e.plan ? 'ตามแผนของโค้ช' : 'นอกแผน'} · ${baht(e.qty * e.px * (e.k || 1))} บาท</span></span></span>
+    ${v !== 'ok' ? verTag(e, 1) : e.plan ? ckDots(ck) : '<span class="tag pu">นอกแผน</span>'}<span class="${ok ? 'up' : 'warn'}" title="${ok ? 'ตรงแผน' : e.plan ? 'ไม่ตรงแผน' : 'นอกแผน'}">${ic(ok ? 'check' : 'alert', 17, 2.2)}</span></button>`;
 }
 function execDetail(id, inModal) {
-  const me = ME(), e = execOf(id), p = planOf(e.plan), r = checks(e);
+  const me = ME(), e = execOf(id), p = planOf(e.plan), r = checks(e), u = unitOf(e);
   const row = (k, plan, act, res) => `<tr><td class="muted">${k}</td><td class="num">${plan}</td><td class="num"><b>${act}</b></td><td>${res ? `<span class="ck ${res}">${res === 'ok' ? ic('check', 11) : ic(res === 'no' ? 'x' : 'alert', 11)}</span>` : ''}</td></tr>`;
   const ok = allOk(r), status = !p ? '<span class="tag pu">รายการนอกแผน</span>' : ok ? `<span class="tag ok">${ic('check', 13)}ตรงแผน</span>` : `<span class="tag warn">${ic('alert', 13)}ไม่ตรงแผน</span>`;
+  const who = `${e.rec.by === me.id ? 'คุณบันทึก' : `${byName(e.rec.by)} บันทึกให้`} ${dt(e.rec.at)} น.${e.fixed ? ` · แก้ไข ${dt(e.fixed)} น.` : ''}${e.vat ? ` · ${coach(e.vby).name} ตรวจแล้ว ${dt(e.vat)} น.` : ''}`;
+  const review = e.ver === 'fix' ? `<div class="note-box y">${ic('chat', 16)}<span><b>${coach(e.fix?.by || me.coach).name} ขอให้แก้ไข:</b> ${esc(e.fix?.note || '')}<br><button class="btn sm" data-act="kedit" data-id="${esc(e.id)}">${ic('edit', 15)} แก้ไขรายการ</button></span></div>`
+    : e.ver === 'pend' ? `<div class="note-box">${ic('clock', 16)}<span>รอ${coach(me.coach).name} ตรวจกับภาพหลักฐาน หากข้อมูลไม่ตรงกับภาพ โค้ชจะขอให้แก้ไข</span></div>` : '';
   const body = `<div class="ed"><div class="ed-slip">${e.slip ? `<button class="slipth" style="width:100%;height:100%;border:none;background:none" data-act="slip" data-id="${esc(e.id)}">${slipImg(e, me)}</button>` : `<div class="empty">${ic('image', 22)}ไม่มีภาพ</div>`}</div>
-    <div class="ed-info"><div class="row" style="gap:6px;flex-wrap:wrap">${status}<span class="tag line">${ic('user', 12)}บันทึกโดย${coach(e.rec.by).name} · ${dt(e.rec.at)}</span></div>
-      ${p ? `<table class="tbl"><thead><tr><th></th><th>แผน</th><th>จริง</th><th></th></tr></thead><tbody>${e.side === 'buy' ? row('ราคา', `${px(p.lo)}–${px(p.hi)}`, px(e.px), r.px) + row('จำนวน', e.pq ? fmt(e.pq) : '—', fmt(e.qty), r.qty) : row('การขาย', SELL_WHY[e.why === 'self' ? 'self' : e.why] ? (e.why === 'cut' ? `SL ${px(slAt(p, e.at))}` : e.why === 'tp1' ? `TP1 ${px(p.tp1)}` : e.why === 'tp2' ? `TP2 ${px(p.tp2)}` : 'ตามคำแนะนำ') : '—', px(e.px), r.sell) + row('จำนวน', '', fmt(e.qty))}${row('หลักฐาน', 'ภาพจากแอป', e.slip ? 'มี' : '—', r.proof)}</tbody></table>
-        ${!ok ? `<div class="note-box y">${ic('alert', 16)}<span>${esc(devText(e))}</span></div>` : ''}${e.side === 'sell' && e.why ? `<div class="xs muted">${SELL_WHY[e.why]}</div>` : ''}`
+    <div class="ed-info"><div class="row" style="gap:6px;flex-wrap:wrap">${verTag(e)}${status}${e.mk && e.mk !== 'th' ? `<span class="tag line">${mkName(e)}</span>` : ''}</div><div class="xs muted">${who}</div>
+      ${review}
+      ${p ? `<table class="tbl"><thead><tr><th></th><th>แผน</th><th>จริง</th><th></th></tr></thead><tbody>${e.side === 'buy' ? row('ราคา', `${px(p.lo)}–${px(p.hi)}`, px(e.px), r.px) + row('จำนวน', e.pq ? `${fmt(e.pq)} ${u}` : '—', `${fmt(e.qty)} ${u}`, r.qty) : row('การขาย', e.why === 'cut' ? `SL ${px(slAt(p, e.at))}` : e.why === 'tp1' ? `TP1 ${px(p.tp1)}` : e.why === 'tp2' ? `TP2 ${px(p.tp2)}` : 'ตามคำแนะนำ', px(e.px), r.sell) + row('จำนวน', '', `${fmt(e.qty)} ${u}`)}${row('หลักฐาน', 'ภาพจากแอป', e.slip ? 'แนบแล้ว' : '—', r.proof)}</tbody></table>
+        ${!ok ? `<div class="note-box y" title="${esc(devText(e))}">${ic('alert', 16)}<span class="clamp">${esc(devText(e))}</span></div>` : ''}${e.side === 'sell' && e.why ? `<div class="xs muted">${SELL_WHY[e.why]}</div>` : ''}`
       : `<div class="note-box">${ic('flag', 16)}<span>ซื้อขายนอกแผน${e.why && e.why !== 'self' ? ` · เหตุผลที่แจ้ง “${esc(e.why)}”` : ''}</span></div>`}
-      ${e.cnote ? `<div class="note-box g">${ic('chat', 16)}<span><b>${coach(e.rec.by).name}:</b> ${esc(e.cnote)}</span></div>` : ''}</div></div>`;
+      ${e.knote ? `<div class="muted sm">ข้อความถึงโค้ช: “${esc(e.knote)}”</div>` : ''}
+      ${e.cnote ? `<div class="cnote" title="${esc(e.cnote)}">${ic('chat', 15)}<span class="clamp"><b>${coach(me.coach).name}:</b> ${esc(e.cnote)}</span></div>` : ''}</div></div>`;
   const title = `${verbEx(e)} ${esc(e.sym)} · ${fmt(e.qty)} @ ${px(e.px)}`;
-  return inModal ? mhead(slogo(e.sym, 28) + title, dt(e.at)) + `<div class="mbd" style="height:min(440px,72dvh)">${body}</div>` : `<div class="ph">${symBtn(e.sym, 30)}${sideTag(e)}<h3 class="num">${fmt(e.qty)} @ ${px(e.px)}</h3><span class="sub">${dt(e.at)}</span></div><div class="pb">${body}</div>`;
+  return inModal ? mhead(slogo(e.sym, 28) + title, dt(e.at)) + `<div class="mbd" style="height:min(460px,74dvh)">${body}</div>` : `<div class="ph">${symBtn(e.sym, 30)}${sideTag(e)}<h3 class="num">${fmt(e.qty)} @ ${px(e.px)}</h3><span class="sub">${dt(e.at)}</span></div><div class="pb">${body}</div>`;
 }
-const upImg = u => { const img = safeImg(u.img); return img ? `<img class="slip" src="${img}" alt="ภาพที่ส่ง">` : u.m ? slipSvg(u.m, ME()) : `<span class="muted">${ic('image', 18)}</span>`; };
-const UP_ST = { pend: ['blue', 'รอโค้ชบันทึก', 'clock'], fix: ['warn', 'โค้ชขอภาพใหม่', 'alert'], done: ['ok', 'บันทึกแล้ว', 'check'] };
-function upRow(u) {
-  const [c, l, i] = UP_ST[u.st];
-  return `<button class="jrow ${'up:' + u.id === selEx ? 'on' : ''}" data-ex="up:${esc(u.id)}"><span class="t">${wd(u.at)} ${dstr(u.at)}<br>${tstr(u.at)}</span><span class="side pl">IMG</span>
-    <span class="jm">${u.m ? slogo(u.m.sym, 30) : `<span class="oc-ic">${ic('image', 16)}</span>`}<span style="min-width:0"><b>ภาพหลักฐาน</b>${u.note ? `<span class="xs muted ell" style="display:block">“${esc(u.note)}”</span>` : ''}</span></span><span class="tag ${c}">${ic(i, 12)}${l}</span><span></span></button>`;
-}
-function upDetail(id) {
-  const u = upOf(id); if (!u) return '';
-  const [c, l, i] = UP_ST[u.st];
-  return `<div class="ph"><h3>ภาพที่ส่งให้โค้ช</h3><span class="sub">${dt(u.at)}</span></div><div class="pb"><div class="ed"><div class="ed-slip"><button class="slipth" style="width:100%;height:100%;border:none;background:none" data-act="upslip" data-id="${esc(u.id)}">${upImg(u)}</button></div>
-    <div class="ed-info"><div><span class="tag ${c}">${ic(i, 13)}${l}</span></div>
-      ${u.st === 'fix' ? `<div class="note-box y">${ic('chat', 16)}<span><b>${coach(u.fix.by).name}:</b> ${esc(u.fix.note)}</span></div><button class="btn sm" data-act="upload" data-id="${esc(u.id)}" style="align-self:flex-start">${ic('upload', 15)} ส่งภาพใหม่</button>` : `<div class="muted sm">${coach(ME().coach).name}จะอ่านภาพ บันทึกรายการ และเทียบกับแผนให้ เมื่อบันทึกแล้ว รายการจะแสดงในบันทึกการซื้อขายและหน้าการเทรด</div>`}
-      ${u.note ? `<div class="muted">หมายเหตุ: “${esc(u.note)}”</div>` : ''}</div></div></div>`;
+const keyNew = () => keyModal({ who: 'client', cls: [ME()], done: keyed });
+function keyEdit(id) { const e = execOf(id); if (!e || e.cl !== FEATURED || e.ver !== 'fix') return; keyModal({ who: 'client', cls: [ME()], edit: e, done: keyed }); }
+function keyed(e) {
+  jFrom = jTo = jSym = ''; selEx = e.id; PG.jl = 0; go('journal');
+  if (narrow()) openModal(execDetail(e.id, true), 'mid');
+  toast(`${ic('send', 18)}<div><b>ส่งให้${coach(ME().coach).name} ตรวจแล้ว · ${allOk(checks(e)) ? 'ตรงแผน' : e.plan ? 'ไม่ตรงแผน' : 'นอกแผน'}</b><div class="muted sm">${verbEx(e)} ${esc(e.sym)} ${fmt(e.qty)} ${unitOf(e)} @ ${px(e.px)}</div></div>`, 'ok');
 }
 
 /* ---------- portfolio ---------- */
 const asOfTxt = () => STOCK_DATA.asOf ? dstr(Date.parse(STOCK_DATA.asOf + 'T10:00:00Z')) : '';
-// one holding with value, weight, result and the money at risk down to its stop
+// one holding with value, weight, result and the money at risk down to its stop (all in baht)
 function holdLine(p, b) {
-  const pl = (p.last - p.avg) * p.qty, r = (p.last - p.avg) / p.avg, gap = p.sl ? (p.last - p.sl) / p.last : null;
-  return `<div class="ptr"><button class="hl" data-plan="${esc(p.key)}" title="ดูแผนและประวัติ ${esc(p.sym)}">${slogo(p.sym, 34)}<span style="min-width:0"><b>${esc(p.sym)}</b> ${p.plan ? '' : '<span class="tag pu">นอกแผน</span>'}<span class="xs muted ell" style="display:block">${esc(sname(p.sym) || '—')}</span></span></button>
-    <span class="num c2"><b>${fmt(p.qty)}</b><span class="xs muted" style="display:block">Avg ${px(p.avg)}</span></span>
+  const r = p.avg ? (p.last - p.avg) / p.avg : 0, gap = p.sl ? (p.last - p.sl) / p.last : null;
+  return `<div class="ptr"><button class="hl" data-jsym="${esc(p.sym)}" title="ดูรายการซื้อขาย ${esc(p.sym)}">${slogo(p.sym, 34)}<span style="min-width:0"><b>${esc(p.sym)}</b> ${p.mk !== 'th' ? `<span class="tag line">${mkName(p)}</span>` : ''}${p.plan ? '' : '<span class="tag pu">นอกแผน</span>'}<span class="xs muted ell" style="display:block">${esc(sname(p.sym) || mkName(p))}</span></span></button>
+    <span class="num c2"><b>${fmt(p.qty)}</b><span class="xs muted" style="display:block">${unitOf(p)} · Avg ${px(p.avg)}</span></span>
     <span class="num c3"><b>${px(p.last)}</b><span class="xs ${r >= 0 ? 'up' : 'dn'}" style="display:block">${pct(r)}</span></span>
     <span class="num c4"><b>฿${baht(p.v)}</b><span class="wbar"><i style="width:${Math.min(100, p.w * 100 / .4)}%"></i></span><span class="xs muted">${fmt(p.w * 100, 1)}% ของพอร์ต</span></span>
-    <span class="num c5"><b class="${pl >= 0 ? 'up' : 'dn'}">${signed(pl)}</b><span class="xs ${pl >= 0 ? 'up' : 'dn'}" style="display:block">${pct(r, 2)}</span></span>
+    <span class="num c5"><b class="${p.upl >= 0 ? 'up' : 'dn'}">${signed(p.upl)}</b><span class="xs ${p.upl >= 0 ? 'up' : 'dn'}" style="display:block">${pct(r, 2)}</span></span>
     <span class="num c6" title="${gap == null ? 'ไม่มี Stop Loss' : `Stop Loss ${px(p.sl)} · ห่าง ${fmt(gap * 100, 1)}%`}">${gap == null ? '<span class="tag warn">ไม่มี SL</span>' : `<b>฿${baht(p.risk)}</b><span class="xs muted" style="display:block">${fmt(p.risk / b.total * 100, 2)}% · SL ${px(p.sl)}</span>`}</span></div>`;
 }
 function closedLine(p) {
   const r = p.realized / p.bought;
-  return `<div class="ctr"><button class="hl" data-plan="${esc(p.key)}" title="ดูแผนและประวัติ ${esc(p.sym)}">${slogo(p.sym, 30)}<span style="min-width:0"><b>${esc(p.sym)}</b> ${p.plan ? '' : '<span class="tag pu">นอกแผน</span>'}<span class="xs muted" style="display:block">${dstr(p.first)} – ${dstr(p.lastAt)} · ${Math.max(1, Math.round((p.lastAt - p.first) / DAY))} วัน</span></span></button>
+  return `<div class="ctr"><button class="hl" data-jsym="${esc(p.sym)}" title="ดูรายการซื้อขาย ${esc(p.sym)}">${slogo(p.sym, 30)}<span style="min-width:0"><b>${esc(p.sym)}</b> ${p.plan ? '' : '<span class="tag pu">นอกแผน</span>'}<span class="xs muted" style="display:block">${dstr(p.first)} – ${dstr(p.lastAt)} · ${Math.max(1, Math.round((p.lastAt - p.first) / DAY))} วัน</span></span></button>
     <span class="num c4"><span class="xs muted">มูลค่าซื้อ</span><b style="display:block">฿${baht(p.bought)}</b></span>
     <span class="num"><b class="${p.realized >= 0 ? 'up' : 'dn'}">${signed(p.realized)}</b><span class="xs ${r >= 0 ? 'up' : 'dn'}" style="display:block">${pct(r)}</span></span></div>`;
 }
 function portView() {
-  const me = ME(), pendF = me.flows.filter(f => f.pend).length, x = lastSnap(me), b = portBook(me), ht = heatTone(b.heat), ps = pnlSum(me), v = eqNow(me);
+  const me = ME(), pendF = me.flows.filter(f => f.pend).length, x = lastSnap(me), b = portBook(me), ht = heatTone(b.heat), ps = pnlSum(me), v = eqNow(me), st = settle(me);
   const snaps = S.snaps.filter(s => s.cl === me.id).sort((a, b) => b.at - a.at);
   const closed = positions(me.id).filter(p => p.qty === 0 && p.bought > 0).sort((a, b) => b.lastAt - a.lastAt);
   return `<div class="vh"><h1>พอร์ต</h1><p>${esc(me.broker)} · บัญชี xxxx-${esc(me.acct)} · ทุนเริ่มต้น ฿${baht(me.cap)}</p><span class="sp"></span><button class="btn ghost sm" data-act="flow">${ic('plus', 15)} แจ้งฝาก/ถอน</button><button class="btn sm" data-act="snap">${ic('wallet', 15)} รายงานยอดพอร์ต</button></div>
   <div class="kstrip">
-    <div class="kpi"><div class="k">กำไรสะสมตามบันทึก</div><div class="v num ${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</div><div class="s">${pct(retPct(me))} · Realized ${signed(ps.realized)}</div></div>
-    <div class="kpi opt2"><div class="k">ยอดพอร์ตตามบันทึก</div><div class="v num gold">฿${baht(v)}</div><div class="s">${fmt(v / GOAL * 100, 1)}% ของเป้าหมาย 1 ล้าน</div></div>
+    <div class="kpi"><div class="k">กำไรสะสมตามบันทึก</div><div class="v num ${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</div><div class="s">${pct(retPct(me))} · ${fmt(st.pct * 100, 1)}% ของเป้า 1 ล้าน</div></div>
+    <div class="kpi opt2"><div class="k">ยอดพอร์ตตามบันทึก</div><div class="v num gold">฿${baht(v)}</div><div class="s">ทุนเริ่มต้น ฿${baht(me.cap)}</div></div>
     <div class="kpi"><div class="k">ความเสี่ยงรวม (${tm('heat')})</div><div class="v num ${ht}">${fmt(b.heat * 100, 1)}%</div><div class="hbar" style="margin:5px 0 4px;height:5px"><i class="${ht}" style="width:${Math.min(100, b.heat / (HEAT_LIMIT * 1.5) * 100)}%"></i><s></s></div><div class="s">฿${baht(b.risk)} หากถึง Stop Loss ทุกตัว · เกณฑ์ ≤ 6%</div></div>
     <div class="kpi opt"><div class="k">ยอดที่รายงานล่าสุด</div><div class="v num">฿${baht(repVal(me))}</div><div class="s">${x ? `${dstr(S.days[x.day])} · ${snapOk(x) ? 'ตรงกับบันทึก' : 'ต่างจากบันทึก ' + pct(snapDiff(x))}` : 'ยังไม่มีรายงาน'}</div></div>
     <div class="kpi opt"><div class="k">ฝาก/ถอนสุทธิ</div><div class="v num">${signed(netFlow(me))}</div><div class="s">${pendF ? `รอ CS ตรวจ ${pendF} รายการ` : `${me.flows.length} รายการ`}</div></div>
   </div>
-  <section class="pnl phold" data-pt="หลักทรัพย์"><div class="ph"><h3>หลักทรัพย์ที่ถือครอง</h3><span class="sub">${b.ps.length} ตัว · ราคาปิด ณ ${asOfTxt()}</span><div class="pgn" data-pgn="ph"></div></div>
-    ${b.ps.length ? `<div class="pth"><span>หุ้น</span><span class="c2">Volume · ${tm('avg', 'Avg')}</span><span class="c3">ราคาปิด</span><span class="c4">${tm('mv')} · สัดส่วน</span><span class="c5">${tm('upl')}</span><span class="c6">Risk ถึง ${tm('sl', 'SL')}</span></div>` : ''}
-    <div class="pb">${b.ps.length ? `<div class="list tight" data-pg="ph">${b.ps.map(p => holdLine(p, b)).join('')}</div>` : '<div class="empty">ยังไม่มีหลักทรัพย์ในพอร์ต</div>'}</div></section>
+  <section class="pnl phold" data-pt="สินทรัพย์"><div class="ph"><h3>สินทรัพย์ที่ถือครอง</h3><span class="sub">${b.ps.length} รายการ · ราคาปิด ณ ${asOfTxt()}</span><div class="pgn" data-pgn="ph"></div></div>
+    ${b.ps.length ? `<div class="pth"><span>สินทรัพย์</span><span class="c2">Volume · ${tm('avg', 'Avg')}</span><span class="c3">ราคาปิด</span><span class="c4">${tm('mv')} · สัดส่วน</span><span class="c5">${tm('upl')}</span><span class="c6">Risk ถึง ${tm('sl', 'SL')}</span></div>` : ''}
+    <div class="pb">${b.ps.length ? `<div class="list tight" data-pg="ph">${b.ps.map(p => holdLine(p, b)).join('')}</div>` : '<div class="empty">ยังไม่มีสินทรัพย์ที่ถือครอง</div>'}</div></section>
   <section class="pnl pclosed" data-pt="ปิดสถานะแล้ว"><div class="ph"><h3>ปิดสถานะแล้ว</h3><span class="sub">${closed.length ? `${tm('win')} ${ps.wins}/${ps.closed} ตัว · ${tm('rpl')} <b class="${ps.realized >= 0 ? 'up' : 'dn'} num">${signed(ps.realized)}</b>` : 'ยังไม่มี'}</span><div class="pgn" data-pgn="pcl"></div></div>
     <div class="pb">${closed.length ? `<div class="list tight" data-pg="pcl">${closed.map(closedLine).join('')}</div>` : '<div class="empty">ยังไม่มีรายการที่ปิดสถานะ</div>'}</div></section>
   <section class="pnl palloc" data-pt="สัดส่วน"><div class="ph"><h3>สัดส่วนการลงทุน</h3><span class="sp"></span>${allocSeg()}</div>
@@ -2317,9 +2366,9 @@ function portView() {
     <div class="pb">${me.flows.length ? `<div class="list tight" data-pg="hist">${me.flows.slice().reverse().map(f => `<div class="frow"><span><span class="tag ${f.amt > 0 ? 'ok' : 'dn'}">${f.amt > 0 ? 'ฝาก' : 'ถอน'}</span> <b class="num">${baht(Math.abs(f.amt))}</b><span class="xs muted" style="display:block">${dt(f.at)}</span></span>${f.pend ? '<span class="tag blue">รอ CS ตรวจ</span>' : f.rej ? '<span class="tag dn">ไม่อนุมัติ</span>' : '<span class="tag ok">อนุมัติแล้ว</span>'}</div>`).join('')}</div>` : '<div class="empty">ยังไม่มีรายการ<div class="xs">โปรดแจ้งทุกครั้งที่โอนเงินเข้าหรือออกจากพอร์ต</div></div>'}</div>`}</section>`;
 }
 
-/* ---------- forms: the client only sends pictures (and the Friday port value) ---------- */
+/* ---------- forms: the Friday port value and deposits/withdrawals (trades are keyed with keyModal) ---------- */
 const num = (box, id) => parseFloat($('#' + id, box).value);
-function slipField(label = 'ภาพหลักฐานจากแอปซื้อขาย', hint = 'ต้องแสดงชื่อหุ้น จำนวน ราคา และเวลา') {
+function slipField(label, hint) {
   return `<div class="field"><label>${label} <span class="dn">*</span></label><div class="drop" id="drop" role="button" tabindex="0"><span class="slipth" id="dropTh">${ic('image', 18)}</span><div style="flex:1;min-width:0"><div id="dropTx">แตะเพื่อแนบภาพ</div><div class="hint">${hint} · ภาพไม่เกิน 8 MB</div></div>
     <button class="btn soft sm" type="button" data-act="mockslip">ใช้ภาพตัวอย่าง</button></div><input type="file" id="file" accept="image/png,image/jpeg,image/webp" hidden></div>`;
 }
@@ -2336,46 +2385,16 @@ function wireSlip(box, onChange, mk) {
   box.querySelector('[data-act=mockslip]').addEventListener('click', e => { e.stopPropagation(); const m = mk(); set({ m: 1, mock: m }, slipSvg(m, ME())); });
   return () => slip;
 }
-const cmpRows = rows => rows.map(([k, [c, s]]) => `<div class="cr ${c}"><span class="ico">${ic(c === 'ok' ? 'check' : c === 'no' ? 'x' : c ? 'alert' : 'dots', 12, 2.4)}</span><span class="k">${k}</span><span>${s}</span></div>`).join('');
-// a believable sample screenshot for the demo: today's plan of the coach, or a sale of a holding
-function sampleTrade() {
-  const me = ME(), held = new Set(openPos(me.id).map(p => p.plan)), n = now();
-  const p = S.plans.filter(x => x.coach === me.coach && planLive(x) && x.at <= n && !held.has(x.id)).sort((a, b) => b.at - a.at)[0];
-  if (p) { const pq = lot(eqNow(me) * p.size / 100 / p.hi); return { sym: p.sym, side: 'buy', px: rt((p.lo + p.hi) / 2), qty: pq, at: n - 4 * MIN, plan: p.id, pq }; }
-  const h = openPos(me.id)[0];
-  return h ? { sym: h.sym, side: 'sell', px: h.last, qty: lot(h.qty * .5), at: n - 4 * MIN, plan: h.plan } : { sym: 'PTT', side: 'buy', px: lastPx('PTT'), qty: 500, at: n - 4 * MIN, plan: null };
-}
-function uploadModal(resendId) {
-  const me = ME(), old = resendId && upOf(resendId), co = coach(me.coach);
-  if (resendId && (!old || old.cl !== me.id || old.st !== 'fix')) return;
-  const box = openModal(mhead(old ? 'ส่งภาพใหม่' : 'ส่งภาพหลักฐานการซื้อขาย', `${co.name}จะบันทึกรายการจากภาพนี้ และเทียบกับแผนให้ · ส่งหลังซื้อขายในแอปเรียบร้อยแล้วเท่านั้น`) + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px">
-    ${old ? `<div class="note-box y">${ic('chat', 16)}<span><b>${coach(old.fix.by).name}:</b> ${esc(old.fix.note)}</span></div>` : ''}
-    ${slipField('ภาพหน้าสถานะคำสั่ง (Order Status) จากแอปซื้อขาย', 'ต้องเห็นชื่อหุ้น จำนวน ราคาที่ Matched และเวลา')}
-    <div class="field"><label for="unote">รายละเอียดเพิ่มเติม <span class="muted">(ไม่บังคับ)</span></label><input id="unote" maxlength="200" placeholder="เช่น ซื้อตามที่คุยกับโค้ชเมื่อเช้า" value="${old ? esc(old.note || '') : ''}"></div>
-    <div class="xs muted">${ic('lock', 12)} ภาพจะเห็นเฉพาะคุณ โค้ชประจำตัว และทีม CS · ระบบลบข้อมูลตำแหน่ง (EXIF) ออกจากภาพก่อนบันทึก</div>
-  </div><div class="mft"><button class="btn ghost" data-act="close">ยกเลิก</button><button class="btn" id="save" disabled>${ic('send', 16)} ส่งให้โค้ช</button></div>`);
-  const getSlip = wireSlip(box, () => { $('#save', box).disabled = !getSlip(); }, () => old?.m || sampleTrade());
-  $('#save', box).addEventListener('click', () => {
-    const sl = getSlip(); if (!sl) return;
-    const note = clean($('#unote', box).value, 200), m = sl.mock || (old && !sl.img ? old.m : null);
-    if (old) Object.assign(old, { st: 'pend', img: sl.img || null, m: sl.img ? null : m, note, at: now(), resent: true });
-    else S.ups.push({ id: nid('up'), cl: me.id, at: now(), img: sl.img || null, m: sl.img ? null : m, note, st: 'pend' });
-    pushFeed({ by: 'client', who: me.id, cl: me.id, coach: me.coach, kind: 'up', text: `${cname(me)} ${old ? 'ส่งภาพใหม่' : 'ส่งภาพหลักฐานการซื้อขาย'}` });
-    if (!save()) return;
-    closeModal(); jFilter = 'ups'; selEx = null; render();
-    toast(`${ic('send', 18)}<div><b>ส่งภาพให้${co.name}แล้ว</b><div class="muted sm">รายการจะแสดงเมื่อโค้ชบันทึกเรียบร้อย</div></div>`, 'ok');
-  });
-}
 function snapModal() {
   const me = ME(), calc = eqNow(me), isFri = tz(now()).getUTCDay() === 5;
   const box = openModal(mhead('รายงานยอดพอร์ตประจำสัปดาห์', isFri ? 'กรอกมูลค่าพอร์ตรวมตามแอปซื้อขาย และแนบภาพหน้าพอร์ต' : 'วันนี้ไม่ใช่วันศุกร์ รายงานล่วงหน้าได้ ระบบจะบันทึกเป็นยอด ณ วันนี้') + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px">
-    <div class="field"><label for="fval">มูลค่าพอร์ตรวม (บาท) <span class="dn">*</span></label><input type="number" id="fval" min="0" inputmode="numeric" placeholder="รวมเงินสดและมูลค่าหุ้น"></div>
+    <div class="field"><label for="fval">มูลค่าพอร์ตรวม (บาท) <span class="dn">*</span></label><input type="number" id="fval" min="0" inputmode="numeric" placeholder="รวมเงินสดและมูลค่าสินทรัพย์"></div>
     ${slipField('ภาพหน้าพอร์ตจากแอปซื้อขาย', 'ต้องแสดงมูลค่าพอร์ตรวมและวันที่')}
     <div class="cmp" id="cmp" style="margin:0"></div>
   </div><div class="mft"><button class="btn ghost" data-act="close">ยกเลิก</button><button class="btn" id="save" disabled>รายงานยอดพอร์ต</button></div>`);
   const upd = () => {
     const v = num(box, 'fval'), df = (v - calc) / calc, ok = Math.abs(df) <= .02;
-    $('#cmp', box).innerHTML = `<div class="ch"><span>ยอดพอร์ตตามบันทึก</span><span class="num">${baht(calc)}</span></div>` + (validMoney(v) ? cmpRows([['ต่าง', [ok ? 'ok' : 'bad', `${pct(df, 2)} · ${ok ? 'ตรงกัน' : 'ต่างเกิน 2% อาจมีรายการที่ยังไม่ได้ส่งภาพให้โค้ช'}`]]]) : '');
+    $('#cmp', box).innerHTML = `<div class="ch"><span>ยอดพอร์ตตามบันทึก</span><span class="num">${baht(calc)}</span></div>` + (validMoney(v) ? cmpRows([['ต่าง', [ok ? 'ok' : 'bad', `${pct(df, 2)} · ${ok ? 'ตรงกัน' : 'ต่างเกิน 2% อาจมีรายการที่ยังไม่ได้บันทึก'}`]]]) : '');
     $('#save', box).disabled = !(validMoney(v) && getSlip());
   };
   const getSlip = wireSlip(box, upd, () => ({ sym: 'PORT', side: 'buy', px: 0, qty: 0, at: now() }));
@@ -2413,28 +2432,24 @@ function flowModal() {
 }
 function slipModal(id) {
   const e = execOf(id); if (!e || e.cl !== FEATURED || !e.slip) return;
-  openModal(mhead(`${slogo(e.sym, 28)}${verbEx(e)} ${esc(e.sym)} · ${fmt(e.qty)} หุ้น @ ${px(e.px)}`, `${dt(e.at)} · บันทึกโดย${coach(e.rec.by).name}`) + `<div class="mbd" style="display:flex;justify-content:center"><div style="width:min(300px,100%);height:min(430px,70dvh)">${slipImg(e, ME())}</div></div>`);
-}
-function upSlipModal(id) {
-  const u = upOf(id); if (!u || u.cl !== FEATURED) return;
-  openModal(mhead('ภาพที่ส่งให้โค้ช', dt(u.at)) + `<div class="mbd" style="display:flex;justify-content:center"><div style="width:min(300px,100%);height:min(430px,70dvh)">${upImg(u)}</div></div>`);
+  openModal(mhead(`${slogo(e.sym, 28)}${verbEx(e)} ${esc(e.sym)} · ${fmt(e.qty)} ${unitOf(e)} @ ${px(e.px)}`, `${dt(e.at)} · บันทึกโดย${e.rec.by === FEATURED ? 'คุณ' : byName(e.rec.by)}`) + `<div class="mbd" style="display:flex;justify-content:center"><div style="width:min(300px,100%);height:min(430px,70dvh)">${slipImg(e, ME())}</div></div>`);
 }
 function recInfo() {
   const me = ME(), x = lastSnap(me), pv = posValue(me.id), v = eqNow(me), ps = pnlSum(me);
-  openModal(mhead('ยอดพอร์ตและกำไรตามบันทึก', 'คำนวณจากรายการซื้อขายที่โค้ชบันทึกพร้อมภาพหลักฐาน') + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px">
-    <div class="pstrip"><div><span>ยอดพอร์ตตามบันทึก</span><b class="num gold">฿${baht(v)}</b></div><div><span>· มูลค่าหุ้น × ราคาปิดล่าสุด</span><b class="num">฿${baht(pv)}</b></div><div><span>· เงินสดคงเหลือ</span><b class="num">฿${baht(v - pv)}</b></div>
+  openModal(mhead('ยอดพอร์ตและกำไรตามบันทึก', 'คำนวณจากรายการซื้อขายที่บันทึกพร้อมภาพหลักฐาน') + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px">
+    <div class="pstrip"><div><span>ยอดพอร์ตตามบันทึก</span><b class="num gold">฿${baht(v)}</b></div><div><span>· มูลค่าสินทรัพย์ × ราคาปิดล่าสุด</span><b class="num">฿${baht(pv)}</b></div><div><span>· เงินสดคงเหลือ</span><b class="num">฿${baht(v - pv)}</b></div>
       <div><span>กำไรสะสม (Realized + Unrealized)</span><b class="num ${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</b></div><div><span>ยอดที่คุณรายงานล่าสุด${x ? ` (${dlong(S.days[x.day])})` : ''}</span><b class="num">฿${baht(repVal(me))}</b></div></div>
-    <div class="note-box g">${ic('info', 16)}<span>คอร์สยึด<b>บันทึกการซื้อขาย</b>ที่โค้ชบันทึกพร้อมภาพหลักฐานเป็นหลัก ส่วน<b>ยอดที่รายงานทุกวันศุกร์</b>ใช้ตรวจว่าทุกรายการถูกบันทึกครบ หากต่างกันเกิน 2% ทีม CS จะติดต่อเพื่อตรวจสอบ</span></div>
-    <div class="xs muted">ราคาหุ้นอ้างอิงราคาปิดจากตลาดหลักทรัพย์แห่งประเทศไทย ไม่รวมค่าธรรมเนียมการซื้อขายและภาษี</div></div>`, 'sm');
+    <div class="note-box g">${ic('info', 16)}<span>โปรแกรมยึด<b>บันทึกการซื้อขาย</b>ที่คุณบันทึกพร้อมภาพหลักฐานและโค้ชตรวจแล้วเป็นหลัก ส่วน<b>ยอดที่รายงานทุกวันศุกร์</b>ใช้ตรวจว่าทุกรายการถูกบันทึกครบ หากต่างกันเกิน 2% ทีม CS จะติดต่อเพื่อตรวจสอบ</span></div>
+    <div class="xs muted">ราคาอ้างอิงราคาปิดล่าสุด ไม่รวมค่าธรรมเนียมการซื้อขายและภาษี · สินทรัพย์ต่างประเทศคิดเป็นบาทตามอัตราแลกเปลี่ยนที่บันทึก</div></div>`, 'sm');
 }
 function scoreInfo() {
   const d = discipline(FEATURED);
-  openModal(mhead('เกณฑ์การคำนวณคะแนนวินัย', 'คำนวณจากรายการที่โค้ชบันทึกใน 30 วันล่าสุด คะแนนเต็ม 100') + `<div class="mbd">
+  openModal(mhead('เกณฑ์การคำนวณคะแนนวินัย', 'คำนวณจากรายการที่บันทึกใน 30 วันล่าสุด คะแนนเต็ม 100') + `<div class="mbd">
     <table class="tbl"><thead><tr><th>องค์ประกอบ</th><th class="r">น้ำหนัก</th><th class="r">ของคุณ</th></tr></thead><tbody>
     <tr><td><b>ตรงแผน</b><div class="xs muted">ซื้อในช่วง Entry ตามจำนวนที่แนะนำ และขายตามแผน</div></td><td class="r">40</td><td class="r num">${Math.round(d.acc * 100)}%</td></tr>
     <tr><td><b>ขายตามแผน</b><div class="xs muted">ขายตัดขาดทุนที่ Stop Loss และขายทำกำไรตามที่โค้ชแนะนำ ไม่ถือเกิน Stop Loss</div></td><td class="r">30</td><td class="r num">${Math.round(d.exit * 100)}%</td></tr>
     <tr><td><b>ไม่ซื้อขายนอกแผน</b><div class="xs muted">หักหนึ่งในสามของส่วนนี้ ต่อรายการนอกแผน 1 ครั้ง</div></td><td class="r">15</td><td class="r num">${d.off} ครั้ง</td></tr>
-    <tr><td><b>หลักฐานครบ</b><div class="xs muted">ส่งภาพทุกรายการ และรายงานยอดพอร์ตทุกวันศุกร์</div></td><td class="r">15</td><td class="r num">${Math.round(d.proof * 100)}%</td></tr>
+    <tr><td><b>หลักฐานครบ</b><div class="xs muted">แนบภาพทุกรายการ และรายงานยอดพอร์ตทุกวันศุกร์</div></td><td class="r">15</td><td class="r num">${Math.round(d.proof * 100)}%</td></tr>
     </tbody></table>
     <div class="row" style="margin-top:14px;gap:6px;flex-wrap:wrap"><span class="tag ok">90 ขึ้นไป ดีเยี่ยม</span><span class="tag warn">75–89 ควรระวัง</span><span class="tag dn">ต่ำกว่า 75 ทีมงานจะโทรติดตาม</span></div></div>`);
 }
@@ -2443,26 +2458,36 @@ function rulesModal() {
     ${RULES.map(([, t, s], i) => `<div class="row" style="align-items:flex-start"><span class="tag gold">${i + 1}</span><div><b>${t}</b><div class="muted sm">${s}</div></div></div>`).join('')}
   </div></div>`);
 }
-
-/* ---------- demo helper: the coach records the screenshot the client sent ---------- */
-function simRecord() {
-  const u = myUps().find(x => x.st === 'pend' && x.m); if (!u) return;
-  const m = u.m, co = coach(ME().coach);
-  const e = { id: nid('e'), cl: u.cl, plan: m.plan || null, sym: m.sym, side: m.side, px: m.px, qty: m.qty, pq: m.pq, at: m.at, slip: u.img ? { img: u.img } : { m: 1 }, rec: { by: co.id, at: now() }, up: u.id, ...(m.side === 'sell' ? { why: 'coach' } : {}) };
-  S.execs.push(e); Object.assign(u, { st: 'done', ex: e.id });
-  pushFeed({ by: 'coach', who: co.id, coach: co.id, cl: u.cl, kind: 'rec', text: `${co.name} บันทึกรายการ${verbEx(e)} ${e.sym} ของ${ME().name}` });
-  if (!save()) return;
-  go('home');
-  toast(`${ic('check', 18)}<div><b>${co.name}บันทึกรายการให้แล้ว</b><div class="muted sm">${verbEx(e)} ${esc(e.sym)} ${fmt(e.qty)} หุ้น @ ${px(e.px)} · ${allOk(checks(e)) ? 'ตรงแผน' : 'ไม่ตรงแผน'}</div></div>`, 'ok');
+// the money-back terms from the program announcement, with where the client stands today
+function termsModal() {
+  const me = ME(), st = settle(me), end = progEnd(me);
+  const rows = [['ขาดทุน หรือไม่มีกำไร', 'คืนเต็มจำนวน ฿1,000,000'], ['กำไร ฿300,000', 'คืน ฿700,000'], ['กำไร ฿1,000,000 ขึ้นไป', 'ไม่มีเงินคืน · กำไรส่วนที่เกินเป็นของคุณทั้งหมด']];
+  openModal(mhead('เงื่อนไขค่าเรียน', `ค่าเรียน ฿${baht(TUITION)} · โปรแกรม ${me.term} เดือน (${dstr(me.joined)} ${yr(me.joined)} – ${dstr(end)} ${yr(end)})`) + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px">
+    <div class="note-box g">${ic('trophy', 16)}<span>เมื่อจบโปรแกรม คืนค่าเรียน <b>1,000,000 − กำไรที่ทำได้</b> ค่าเรียนจึงมาจากกำไรเท่านั้น ถ้าไม่มีกำไรก็ได้คืนทั้งหมด และถ้ากำไรเกิน 1 ล้าน ส่วนที่เกินเป็นของคุณ</span></div>
+    <table class="tbl"><thead><tr><th>กำไรเมื่อจบโปรแกรม</th><th class="r">ค่าเรียนที่ได้คืน</th></tr></thead><tbody>${rows.map(([a, b]) => `<tr><td>${a}</td><td class="r">${b}</td></tr>`).join('')}
+      <tr class="me"><td><b>ของคุณ ณ วันนี้ <span class="num ${st.pr >= 0 ? 'up' : 'dn'}">${signed(st.pr)}</span></b></td><td class="r num"><b class="gold">${st.extra > 0 ? `ไม่มีเงินคืน · ส่วนเกิน ${signed(st.extra)}` : '฿' + baht(st.refund)}</b></td></tr></tbody></table>
+    <div class="xs muted">กำไรคำนวณจากบันทึกการซื้อขาย (Realized + Unrealized ณ ราคาปิด) ไม่รวมเงินฝาก/ถอน · ตัวเลขวันนี้เป็นการประมาณการ ยอดจริงคำนวณ ณ วันจบโปรแกรม</div></div>`, 'sm');
 }
 
-// Ctrl+K: pages, my stocks, actions and every stock
+/* ---------- demo helper: the coach confirms what the client keyed ---------- */
+function simVerify() {
+  const co = coach(ME().coach), list = pendOf(FEATURED); if (!list.length) return;
+  list.forEach(e => Object.assign(e, { ver: 'ok', vby: co.id, vat: now() }));
+  pushFeed({ by: 'coach', who: co.id, coach: co.id, cl: FEATURED, kind: 'vok', text: `${co.name} ตรวจรายการของ${ME().name} ${list.length} รายการ` });
+  if (!save()) return;
+  render();
+  toast(`${ic('check', 18)}<div><b>${co.name} ตรวจรายการแล้ว</b><div class="muted sm">${list.length} รายการ · ${list.map(e => esc(e.sym)).join(', ')}</div></div>`, 'ok');
+}
+
+// Ctrl+K: pages, what I traded, actions and every stock
+const showSym = s => { jSym = s; jFrom = jTo = ''; selEx = null; PG.jl = 0; go('journal'); };
 cmdItems = () => !signedIn() || !ME().ob ? [] : [
   ...NAV.map(([k, l, i]) => ({ g: 'ไปที่หน้า', t: l, ic: i, run: () => go(k) })),
-  ...posList().map(x => ({ g: 'การเทรดของฉัน', t: `${x.pos.sym} · ${x.op ? POS_ST[x.state][1] : 'นอกแผน'}`, s: `${signed(x.pnl)} บาท`, k: 'trade position', sym: x.pos.sym, run: () => { posTab = 'all'; selPos = x.key; PG.tl = 0; go('trades'); pageOf('plans', `[data-plan="${CSS.escape(x.key)}"]`); if (narrow()) { mTab = 'plan'; showPos(x.key); } } })),
-  { g: 'ทำรายการ', t: 'ส่งภาพหลักฐานการซื้อขาย', ic: 'upload', k: 'upload screenshot', run: () => uploadModal() },
+  ...[...new Set(execsOf(FEATURED).map(e => e.sym))].map(s => { const p = openPos(FEATURED).find(x => x.sym === s); return { g: 'รายการซื้อขายของฉัน', t: s, s: p ? `ถืออยู่ ${fmt(p.qty)} ${unitOf(p)}` : 'ปิดสถานะแล้ว', k: 'journal trade', sym: s, run: () => showSym(s) }; }),
+  { g: 'ทำรายการ', t: 'บันทึกรายการซื้อขาย', ic: 'plus', k: 'key record บันทึก แนบภาพ', run: keyNew },
   { g: 'ทำรายการ', t: 'รายงานยอดพอร์ตประจำสัปดาห์', ic: 'wallet', k: 'snapshot ยอด', run: snapModal },
   { g: 'ทำรายการ', t: 'แจ้งฝาก/ถอนเงิน', ic: 'wallet', k: 'deposit withdraw', run: flowModal },
+  { g: 'ทำรายการ', t: 'เงื่อนไขค่าเรียน', ic: 'trophy', k: 'refund tuition คืนเงิน', run: termsModal },
   { g: 'ทำรายการ', t: 'คำศัพท์การเทรด', ic: 'help', k: 'glossary stop loss take profit entry', run: glossaryModal },
   { g: 'ทำรายการ', t: themeNow() === 'light' ? 'เปลี่ยนเป็นธีมมืด' : 'เปลี่ยนเป็นธีมสว่าง', ic: themeNow() === 'light' ? 'moon' : 'sun', k: 'theme dark light ธีม', run: () => setTheme(themeNow() === 'light' ? 'dark' : 'light') },
   ...stockItems(),
@@ -2472,23 +2497,15 @@ cmdItems = () => !signedIn() || !ME().ob ? [] : [
 document.addEventListener('click', e => {
   const g = e.target.closest('[data-go]');
   if (g) { if (signedIn()) go(g.dataset.go); return; }
-  const tb = e.target.closest('[data-tab]'); if (tb) { posTab = tb.dataset.tab; selPos = null; PG.plans = 0; PG.tl = 0; return render(); }
-  const jf = e.target.closest('[data-jf]'); if (jf) { jFilter = jf.dataset.jf; selEx = null; PG.jl = 0; return render(); }
   const pt = e.target.closest('[data-ptk]'); if (pt) { PT[pt.dataset.ptk] = pt.dataset.ptv; return render(); }
-  const pr = e.target.closest('[data-plan]');
-  if (pr && !e.target.closest('[data-act],[data-stock]')) {
-    if (selPos !== pr.dataset.plan) PG.tl = 0;
-    selPos = pr.dataset.plan; mTab = 'plan';
-    if (narrow()) return showPos(selPos);
-    if (view !== 'trades') { posTab = 'all'; go('trades'); return pageOf('plans', `[data-plan="${CSS.escape(selPos)}"]`); }
-    return render();
-  }
-  const mt = e.target.closest('[data-mtab]'); if (mt) { mTab = mt.dataset.mtab; PG.mtl = 0; const b = $('#modal .mbox'); if (b && selPos) { b.innerHTML = posDetail(selPos, 'modal'); fitPagers(b); } return; }
+  const js = e.target.closest('[data-jsym]'); if (js && !e.target.closest('[data-stock]')) return showSym(js.dataset.jsym);
   const ex = e.target.closest('[data-ex]');
   if (ex && !e.target.closest('[data-act]')) {
-    selEx = ex.dataset.ex;
-    if (view !== 'journal') { jFilter = selEx.startsWith('up:') ? 'ups' : 'all'; go('journal'); return pageOf('jl', `[data-ex="${CSS.escape(selEx)}"]`); }
-    return narrow() ? openModal(selEx.startsWith('up:') ? mhead('ภาพที่ส่งให้โค้ช', '') + `<div class="mbd">${upDetail(selEx.slice(3))}</div>` : execDetail(selEx, true), 'mid') : render();
+    selEx = ex.dataset.ex; menu = null;
+    if (view !== 'journal' || !jList().some(x => x.id === selEx)) { jFrom = jTo = jSym = ''; go('journal'); pageOf('jl', `[data-ex="${CSS.escape(selEx)}"]`); }
+    else render();
+    if (narrow()) openModal(execDetail(selEx, true), 'mid');
+    return;
   }
   const a = e.target.closest('[data-act]');
   if (!a) { if (menu && !e.target.closest('.menu')) { menu = null; render(); } return; }
@@ -2496,31 +2513,48 @@ document.addEventListener('click', e => {
   if (act === 'close') return closeModal();
   if (act === 'menu') { menu = menu === a.dataset.m ? null : a.dataset.m; return render(); }
   if (act === 'mockslip') return;
+  if (act === 'jdate') { const i = $('#j' + a.dataset.k); try { i.showPicker(); } catch { i.focus(); } return; }
   if (act !== 'linkline') menu = null;
   if (act === 'glogin') return googleChooser([{ name: 'ณัฐธิดา ก.', email: 'natthida.demo@gmail.com', color: '#c2185b' }, { name: 'Natthida K.', email: 'natthida.home@gmail.com', color: '#00796b' }], acc => {
     // only e-mails CS registered may enter (the server checks the verified Google e-mail)
-    if (acc.email !== ME().email) return 'อีเมลนี้ยังไม่ได้ลงทะเบียนกับคอร์ส โปรดใช้ Gmail ที่แจ้งไว้ตอนสมัคร หรือติดต่อทีม CS';
+    if (acc.email !== ME().email) return 'อีเมลนี้ยังไม่ได้ลงทะเบียนกับโปรแกรม โปรดใช้ Gmail ที่แจ้งไว้ตอนสมัคร หรือติดต่อทีม CS';
     sessionStorage.setItem('p1m-fe', '1'); ME().seen = now();
     pushFeed({ by: 'client', who: FEATURED, cl: FEATURED, coach: ME().coach, kind: 'login', text: `${cname(ME())} เข้าสู่ระบบ` });
     save(); closeModal(); render();
   }, 'ปั้นพอร์ต 1 ล้าน');
   if (act === 'linkline') { ME().line = !ME().line; save(); return render(); }
-  if (act === 'startapp') { if (!agree) return; ME().ob = true; ME().consent = now(); save(); go('home'); return toast(`${ic('check', 18)}<div><b>เข้าสู่ระบบแล้ว</b><div class="muted sm">กำไรสะสมตามบันทึก ${signed(pnlSum(ME()).total)} บาท</div></div>`, 'ok'); }
+  if (act === 'startapp') { if (!agree) return; ME().ob = true; ME().consent = now(); save(); go('home'); return toast(`${ic('check', 18)}<div><b>เข้าสู่ระบบแล้ว</b><div class="muted sm">กำไรสะสมตามบันทึก ${signed(profit(ME()))} บาท</div></div>`, 'ok'); }
   if (act === 'logout') { pushFeed({ by: 'client', who: FEATURED, cl: FEATURED, kind: 'logout', text: `${cname(ME())} ออกจากระบบ` }); save(); sessionStorage.removeItem('p1m-fe'); return render(); }
-  if (act === 'reset') { resetData(); sessionStorage.removeItem('p1m-fe'); agree = false; view = 'home'; render(); return toast('รีเซ็ตข้อมูลตัวอย่างแล้ว'); }
-  if (act === 'simrec') return simRecord();
-  if (act === 'upload') return uploadModal(a.dataset.id);
-  if (act === 'snap') return snapModal();
+  if (act === 'reset') { resetData(); sessionStorage.removeItem('p1m-fe'); agree = false; view = 'home'; jFrom = jTo = jSym = ''; render(); return toast('รีเซ็ตข้อมูลตัวอย่างแล้ว'); }
+  if (act === 'simrec') return simVerify();
+  if (act === 'key') { render(); return keyNew(); }
+  if (act === 'kedit') return keyEdit(a.dataset.id);
+  if (act === 'jclear') { jFrom = jTo = jSym = ''; selEx = null; PG.jl = 0; return render(); }
+  if (act === 'snap') { render(); return snapModal(); }
   if (act === 'flow') return flowModal();
   if (act === 'slip') return slipModal(a.dataset.id);
-  if (act === 'upslip') return upSlipModal(a.dataset.id);
   if (act === 'scoreinfo') return scoreInfo();
   if (act === 'recinfo') return recInfo();
+  if (act === 'terms') { render(); return termsModal(); }
   if (act === 'rules') { render(); return rulesModal(); }
   if (act === 'cs') { render(); return toast(`${ic('phone', 18)}<div><b>ติดต่อ CS</b><div class="muted sm">ระบบจริงจะเปิดแชต LINE กับทีม CS</div></div>`); }
   if (act === 'line') { render(); return toast(`${ic('chat', 18)}<div><b>เปิด LINE</b><div class="muted sm">ระบบจริงจะเปิดห้องแชตกับ${coach(ME().coach).name}</div></div>`); }
 });
-document.addEventListener('change', e => { if (e.target.id === 'agree') { agree = e.target.checked; $('#startBtn').disabled = !agree; } });
+document.addEventListener('change', e => {
+  if (e.target.id === 'agree') { agree = e.target.checked; $('#startBtn').disabled = !agree; return; }
+  if (e.target.id === 'jfrom' || e.target.id === 'jto') {
+    const v = /^\d{4}-\d\d-\d\d$/.test(e.target.value) ? e.target.value : '';
+    if (e.target.id === 'jfrom') jFrom = v; else jTo = v;
+    if (jFrom && jTo && jFrom > jTo) [jFrom, jTo] = [jTo, jFrom];
+    selEx = null; PG.jl = 0; render();
+  }
+});
+// the stock filter narrows the list as the client types; keep the cursor in the box
+document.addEventListener('input', e => {
+  if (e.target.id !== 'jsym') return;
+  jSym = e.target.value.replace(/[^A-Za-z0-9ก-๙&.\- ]/g, '').slice(0, 15); selEx = null; PG.jl = 0; render();
+  const i = $('#jsym'); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); }
+});
 
 // the back office writes to the same storage; pick up its changes
 window.addEventListener('storage', e => {
@@ -2528,13 +2562,13 @@ window.addEventListener('storage', e => {
   const seen = new Set(S.feed.map(f => f.id));
   S = load();
   if (!signedIn()) return render();
-  S.feed.filter(f => !seen.has(f.id) && f.by === 'coach' && f.cl === FEATURED && ['rec', 'upfix', 'plan'].includes(f.kind))
-    .forEach(f => toast(`${ic(f.kind === 'upfix' ? 'alert' : 'check', 18)}<div><b>${esc(f.text)}</b>${f.kind === 'rec' ? '<div class="muted sm">ดูได้ที่บันทึกการซื้อขาย</div>' : ''}</div>`));
+  S.feed.filter(f => !seen.has(f.id) && f.by === 'coach' && f.cl === FEATURED && ['rec', 'vok', 'vfix', 'plan'].includes(f.kind))
+    .forEach(f => toast(`${ic(f.kind === 'vfix' ? 'alert' : 'check', 18)}<div><b>${esc(f.text)}</b>${f.kind !== 'plan' ? '<div class="muted sm">ดูได้ที่บันทึกการซื้อขาย</div>' : ''}</div>`));
   if (!$('#modal').innerHTML) render();
 });
 let rz;
 addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { if (!$('#modal').innerHTML) render(); }, 150); });
-setInterval(() => { if (!$('#modal').innerHTML && signedIn() && !menu) render(); }, 30000);
+setInterval(() => { if (!$('#modal').innerHTML && signedIn() && !menu && document.activeElement?.id !== 'jsym') render(); }, 30000);
 render();
 </script>
 </body>
