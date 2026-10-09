@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-yL/UqOcWuEfzKLFTcgsUBjJz1FhBBRK1RJm+o9r9CyY=' 'sha256-6p0O9rzBsKvSlO3vD7iHLIjvWSPl5AzBLFZ1YT4dvdc=' 'sha256-Yuy81NpVQrM6edmbUmVmdT1UYxQbmfrgy14n4Ol+EPg='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-yL/UqOcWuEfzKLFTcgsUBjJz1FhBBRK1RJm+o9r9CyY=' 'sha256-IBoP2zzUeytQy0XfjX5nbWMgUUYP537ldF2zWEy+Cpk=' 'sha256-AyaM3qZnLiY0lFXsIt2lnlqMBOyjIj/hUACGLd8P8Uo='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>ปั้นพอร์ต 1 ล้าน · Trading Journal (ต้นแบบ)</title>
@@ -566,36 +566,33 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 @keyframes blink{50%{opacity:.4}}
 .tabbar{display:none}
 
-/* home: profit toward the 1,000,000 goal, the tuition refund, discipline and the program */
-.v-home{grid-template-columns:minmax(0,1fr) 330px;grid-template-rows:auto minmax(0,1fr)}
-.v-home .hero{grid-row:1/3}
-.hero{display:flex;flex-direction:column;position:relative;min-height:0}
-.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(560px 260px at 8% 0%,rgba(235,192,98,.17),transparent 70%);pointer-events:none}
-.hero-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,300px);gap:20px;padding:18px 22px 0;position:relative;align-items:start}
-.hero-l{display:flex;flex-direction:column;min-width:0}
-.big{font-size:48px;line-height:1.05;letter-spacing:-.01em;margin:4px 0 10px;font-weight:700}
+/* home: profit and the 1,000,000 goal at a glance, this month and week, a compact chart,
+   discipline, and the one thing clients do here: key a trade */
+.v-home{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr) 330px;grid-template-rows:auto auto minmax(0,1fr)}
+.v-home .hero{grid-column:1/3;grid-row:1}.v-home .kstrip{grid-column:1/3;grid-row:2;grid-template-columns:repeat(4,minmax(0,1fr))}.v-home .pchart{grid-column:1;grid-row:3}.v-home .pmon{grid-column:2;grid-row:3}
+.v-home .disc{grid-column:3;grid-row:1/3}.v-home .qact{grid-column:3;grid-row:3}
+.pmon .pb{display:flex;flex-direction:column;padding-top:4px}
+.mbars{flex:1;min-height:0;display:flex;gap:10px;padding:0 4px}
+.mb{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.mv{font-size:12.5px;font-weight:700;white-space:nowrap}
+.mb.pos .mv{color:var(--up)}.mb.neg .mv{color:var(--dn)}
+.mc{flex:1;min-height:0;width:100%;max-width:44px;position:relative;border-radius:10px;background:rgba(var(--wt),.04)}
+.mc i{position:absolute;left:0;right:0;border-radius:8px;background:linear-gradient(180deg,var(--gold2),var(--gold) 60%,#a8781f);min-height:3px}
+.mb.neg .mc i{background:linear-gradient(180deg,#ff8a97,var(--dn))}
+.mb.now .mc i{opacity:.55}
+.mc s{position:absolute;left:-5px;right:-5px;height:1px;background:var(--line2);text-decoration:none}
+.ml{font-size:12px;color:var(--mut);white-space:nowrap}
+.mb.now .ml{color:var(--gold);font-weight:700}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:30px;align-items:center;padding:18px 24px 16px;position:relative}
+.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(560px 260px at 8% 0%,rgba(235,192,98,.17),transparent 70%);pointer-events:none;border-radius:inherit}
+.hero-l,.hero-g{display:flex;flex-direction:column;min-width:0;position:relative}
+.big{font-size:52px;line-height:1.05;letter-spacing:-.01em;margin:4px 0 12px;font-weight:700}
 .meta{display:flex;flex-wrap:wrap;gap:6px}
 .meta .tag{font-size:12.5px;padding:3px 10px}
-.meta .est{background:rgba(var(--wt),.06);color:var(--ink2);gap:5px}
-.meta .est:hover{background:rgba(var(--wt),.1);color:var(--ink)}
-.meta .est b{color:var(--ink)}
 .meta .mob{display:none}
-.rl{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--ink2);margin-top:6px}
-.rl .tag{font-size:11.5px;padding:1px 8px}
-.refund{display:flex;flex-direction:column;gap:3px;text-align:left;padding:14px 16px 13px;border-radius:18px;background:var(--well);border:1px solid var(--line);min-width:0;position:relative;overflow:hidden;transition:border-color .15s}
-.refund:hover{border-color:var(--goldln)}
-.refund:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue))}
-.refund .k{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--mut);letter-spacing:.03em}
-.refund .s{font-size:13px;color:var(--ink2)}
-.refund .rv{font-size:30px;line-height:1.15;font-weight:700;letter-spacing:-.01em}
-.rsplit{display:flex;gap:2px;height:8px;border-radius:999px;overflow:hidden;background:rgba(var(--wt),.07);margin:6px 0 3px}
-.rsplit i{background:var(--btn);border-radius:999px}
-.rsplit s{background:color-mix(in srgb,var(--blue) 75%,transparent);border-radius:999px;text-decoration:none}
-.rleg{display:flex;justify-content:space-between;gap:4px 10px;flex-wrap:wrap;font-size:12px;color:var(--ink2)}
-.rleg span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
-.rleg i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
-.rleg i.b{background:var(--blue)}
-.goal{padding:30px 22px 0;flex:none;position:relative}
+.rl{font-size:12px;color:var(--mut);margin-top:8px}
+.gh{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:14px;color:var(--ink2);margin-bottom:24px}
+.gh b.p{font-size:24px}
 .gtrack{position:relative;height:10px;border-radius:999px;background:rgba(var(--wt),.07);margin-bottom:31px;box-shadow:var(--wellsh)}
 .gtrack>i{position:absolute;inset:0 auto 0 0;border-radius:inherit;background:linear-gradient(90deg,#7d5414,#ebc062 70%,#fff0c4);box-shadow:0 0 22px rgba(235,192,98,.45)}
 .gtrack>i:after{content:"";position:absolute;right:-8px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:var(--knob);box-shadow:0 0 0 4px rgba(235,192,98,.3),0 0 18px 4px rgba(235,192,98,.6)}
@@ -609,27 +606,37 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 .gm.hit span{color:var(--gold)}
 .gm:last-child{transform:translateX(-100%);align-items:flex-end}
 .glbl{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink2);gap:8px;flex-wrap:wrap}
-.hero-c{flex:1;display:flex;flex-direction:column;padding:12px 14px 6px 4px;min-height:140px;position:relative}
-.hc-h{display:flex;justify-content:space-between;gap:10px;font-size:12px;color:var(--mut);padding:2px 4px 2px 50px;flex:none}
-.lgd2{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+button.kpi{text-align:left;width:100%;cursor:pointer;transition:border-color .15s}
+button.kpi:hover{border-color:var(--goldln)}
+button.kpi>span{display:block}
+.pchart .pb{display:flex;flex-direction:column;padding-top:0}
+.lgd2{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:12px;color:var(--mut)}
 .lgd2 i{width:9px;height:9px;border-radius:50%;border:2px solid var(--gold);margin-left:6px}
 .lgd2 i.e{border-style:dashed;border-color:var(--gold2)}
 .disc .pb{display:flex;flex-direction:column;gap:14px}
 .dsc{display:flex;gap:16px;align-items:center}
 .dsc .w{font-size:17px}
-.mbar{display:flex;flex-direction:column;gap:10px}
-.mbar .l{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+.mbar{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}
+.mbar .l{display:flex;justify-content:space-between;gap:6px;font-size:13px;margin-bottom:4px;white-space:nowrap}
 .mbar .bar{height:6px}
-.prog .pb{display:flex;flex-direction:column;gap:12px}
-.ptrack{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:4px;margin:8px 0 6px}
-.ptrack i{height:8px;border-radius:3px;background:rgba(var(--wt),.08)}
-.ptrack i.on{background:var(--btn)}
-.ptrack i.now{background:var(--gold);box-shadow:0 0 0 3px var(--goldbg)}
-.prog .pstrip b{text-align:right;min-width:0}
-.pace{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.pace div{padding:9px 12px;border-radius:14px;background:var(--well);border:1px solid var(--line);display:flex;flex-direction:column;gap:2px;min-width:0}
-.pace span{font-size:11.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pace b{font-size:16px;white-space:nowrap}
+.qact{display:flex;flex-direction:column;gap:12px;padding:14px}
+.kbig{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px 16px;border-radius:18px;background:var(--btn);color:var(--onbtn);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 10px 26px -12px rgba(235,192,98,.8);transition:transform .15s}
+.kbig:hover{transform:translateY(-1px)}
+.kbig .ki{width:42px;height:42px;border-radius:13px;background:rgba(0,0,0,.14);display:flex;align-items:center;justify-content:center;flex:none}
+.kbig b{display:block;font-size:16px}
+.kbig small{display:block;font-size:12.5px;opacity:.82}
+.qst{display:flex;flex-direction:column;gap:6px}
+.qst button{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--well);border:1px solid var(--line);font-size:14px;width:100%;text-align:left;color:var(--ink2);transition:border-color .15s}
+.qst button:hover{border-color:var(--goldln);color:var(--ink)}
+.qst i{width:9px;height:9px;border-radius:50%;flex:none;background:var(--mut)}
+.qst b{margin-left:auto;font-size:16px;color:var(--ink)}
+.qst .ic{color:var(--mut)}
+.qst .q-warn{border-color:color-mix(in srgb,var(--warn) 45%,transparent)}.qst .q-warn i{background:var(--warn)}.qst .q-warn b{color:var(--warn)}
+.qst .q-blue i{background:var(--blue)}.qst .q-blue b{color:var(--blue)}
+.qst .q-ok i{background:var(--up)}
+.qbt{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.qbt .btn{justify-content:center}
+.qbt .due{border-color:var(--goldln);color:var(--gold)}
 .oc-ic{width:40px;height:40px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--goldbg);color:var(--gold)}
 .tbl tr.me td{background:var(--goldbg)}
 
@@ -713,26 +720,26 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 @media (max-width:900px) and (min-width:761px){.hin .demob span,.hin .kb{display:none}.nav button{padding:7px 10px}.hin{gap:8px}}
 @media (max-width:1100px){
   .disc .ph .sub,.jdet .ph .sub{display:none}
-  .v-home{grid-template-columns:minmax(0,1fr) 290px}.hero-top{grid-template-columns:minmax(0,1fr) 240px;gap:14px}.big{font-size:40px}.meta .opt{display:none}
+  .v-home{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) 290px}.mbars{gap:6px;padding:0}.qbt .btn{padding-left:6px;padding-right:6px}.qbt .btn .ic{display:none}.pchart .ph .sub,.pmon .ph .sub{display:none}.hero{gap:20px;padding:16px 18px 14px}.big{font-size:42px}.mbar{gap:10px 12px}
   .v-journal{grid-template-columns:minmax(0,1fr) 360px}
   .ed{grid-template-columns:96px minmax(0,1fr);gap:10px}.ed-info .tbl td{padding:5px 6px;white-space:normal}.ed-info .tbl{font-size:12.5px}
   .v-port{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}.pth,.ptr{grid-template-columns:minmax(130px,1.4fr) minmax(0,.8fr) minmax(0,1fr) minmax(0,.9fr)}.pth .c2,.ptr .c2,.pth .c3,.ptr .c3{display:none}
   .login{gap:30px}.lg-brand h1{font-size:46px}
 }
 @media (max-width:900px) and (min-width:761px){
-  .v-home{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}.v-home .hero{grid-row:1;grid-column:1/-1}
+  .v-home{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) auto}.v-home .hero,.v-home .kstrip{grid-column:1/-1}.v-home .pchart{grid-column:1}.v-home .pmon{grid-column:2}.v-home .disc{grid-row:4;grid-column:1}.v-home .qact{grid-row:4;grid-column:2}
   .kstrip{grid-template-columns:repeat(3,minmax(0,1fr))}.kstrip .opt{display:none}.phold .ph .sub,.pclosed .ph .sub{display:none}
   .v-journal{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(0,1.1fr) minmax(0,1fr)}.ed-info .clamp{-webkit-line-clamp:2}.ed-info{gap:8px}.jf .in.sym input{width:110px}.v-journal .vh h1{display:none}
 }
 @media (max-width:900px){.hin .mkt{display:none}}
 @media (max-width:420px){.hin .kb{display:none}}
-@media (max-height:800px) and (min-width:761px){.prog .pstrip div:nth-child(n+3){display:none}.prog .pb{gap:9px}.disc .pb{gap:10px}.disc .mbar{gap:7px}}
+@media (max-height:800px) and (min-width:761px){.disc .pb{gap:10px}.disc .mbar{gap:8px 14px}.qact{gap:9px}.qst button{padding:8px 12px}}
 @media (max-height:700px) and (min-width:761px){
   .ob .card{padding:18px 26px}.ob-k{margin:10px 0}.ob-k div{padding:8px 12px}.obt{margin-bottom:10px;padding:9px 12px}.rules{margin:6px 0 10px;gap:8px}.rule{padding:9px 12px}.obl{margin-bottom:10px!important}
-  .pace{display:none}.ed-info .clamp{-webkit-line-clamp:2}.ed-info>.xs.muted{display:none}.ed-info{gap:7px}.ed-info .tbl td,.ed-info .tbl th{padding:4px 6px}.ed-info .note-box{padding:8px 10px;font-size:13px}.disc .mbar{gap:7px}.disc .ph,.prog .ph{min-height:44px;padding-top:11px;padding-bottom:7px}
+  .ed-info .clamp{-webkit-line-clamp:2}.ed-info>.xs.muted{display:none}.ed-info{gap:7px}.ed-info .tbl td,.ed-info .tbl th{padding:4px 6px}.ed-info .note-box{padding:8px 10px;font-size:13px}.disc .ph{min-height:44px;padding-top:11px;padding-bottom:7px}
   .hdr{margin-top:8px}.hin{height:54px}.view{padding-top:10px;gap:12px}
-  .hero-top{padding:12px 20px 0}.big{font-size:40px;margin:2px 0 8px}.goal{padding-top:26px}.gtrack{margin-bottom:29px}.refund{padding:11px 14px 10px}.refund .rv{font-size:25px}
-  .disc .pb{gap:10px}.prog .pb{gap:8px}.prog .pstrip{padding:9px 12px;gap:4px}
+  .hero{padding:12px 20px 12px}.big{font-size:40px;margin:2px 0 8px}.rl{display:none}.gh{margin-bottom:22px}.gtrack{margin-bottom:29px}
+  .v-home .kpi{padding:8px 14px}.v-home .kpi .v{font-size:19px}.kbig{padding:10px 14px}.kbig .ki{width:34px;height:34px}.kbig small{display:none}.qst button{padding:6px 12px}.qact{padding:12px}
 }
 @media (max-width:760px){
   input,textarea,select{font-size:16px}
@@ -746,12 +753,14 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
   .view{padding:10px 8px;gap:10px}
   .vh{gap:8px}.vh h1{font-size:18px}.vh p{display:none}
   .v-home,.v-journal{display:flex!important;flex-direction:column}
-  .v-home .disc,.v-home .prog,.jdet{display:none!important}
-  .v-home .hero{flex:1 1 0}.jlist{flex:1 1 0}
-  .hero-top{grid-template-columns:minmax(0,1fr);gap:10px;padding:14px 16px 0}.hero-l .eyebrow{display:none}.rl{margin-top:0;font-size:12px}.big{font-size:34px;margin:2px 0 6px}.meta .opt{display:none}.meta .mob{display:inline-flex}.meta .tag{font-size:12px;padding:2px 9px}
-  .refund{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:0 10px;padding:9px 12px 10px}.refund:before{display:none}.refund .k,.refund .rleg{display:none}.refund .s{grid-column:1;grid-row:1}.refund .rv{font-size:20px;grid-column:2;grid-row:1}.refund .rsplit{grid-column:1/-1;margin:6px 0 0;height:6px}
-  .goal{padding:26px 16px 0}.gtrack{margin-bottom:30px}.glbl{font-size:12.5px}
-  .hero-c{min-height:110px;padding:6px 8px 4px 0}.hc-h{padding-left:44px}.hc-h .lgd2{display:none}
+  .v-home .disc,.v-home .pmon,.jdet{display:none!important}
+  .v-home .pchart{flex:1 1 0;min-height:90px;order:4}.v-home .qact{order:3}.jlist{flex:1 1 0}.v-home>*{flex:none}
+  .hero{grid-template-columns:minmax(0,1fr);gap:10px;padding:12px 16px 4px}.big{font-size:34px;margin:0 0 8px}.rl,.meta .tag.ok:not(.num):not(.mob),.meta .tag.warn:not(.mob),.glbl{display:none}.meta .mob{display:inline-flex}.meta .tag{font-size:12px;padding:2px 9px}
+  .gh{margin-bottom:22px;font-size:12.5px}.gh b.p{font-size:18px}.gtrack{margin-bottom:30px}
+  .v-home .kpi{padding:7px 12px}.v-home .kpi .v{font-size:16px}
+  .v-home .kstrip{grid-template-columns:repeat(2,minmax(0,1fr))}.v-home .kstrip .opt3{display:none}
+  .pchart .ph .sub,.pchart .lgd2{display:none}.pchart .ph{min-height:0;padding:8px 14px 0}.pchart .ph h3{font-size:13.5px}
+  .qact{padding:0;background:none!important;border:none;box-shadow:none}.qact .qst,.qact .qbt{display:none}.kbig{padding:10px 14px}.kbig .ki{width:32px;height:32px}.kbig small{display:none}
   .kstrip{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.kstrip .opt{display:none}.kpi{padding:8px 12px}.kpi .v{font-size:17px}
   .v-journal .vh h1{display:none}.v-journal .vh .sp{display:none}.v-journal .vh>.btn{padding:0;width:40px;height:38px;justify-content:center;flex:none}.v-journal .vh>.btn span{display:none}
   .jf{flex:1 1 0}.jf .dw{flex:1 1 0}.jf .in{width:100%;padding:0 8px;gap:5px}.jf .in>span{overflow:hidden;text-overflow:ellipsis}.jf .in.sym{flex:1 1 0}.jf .in.sym input{width:100%;font-size:16px}.jf>.muted,.jf .lnk,.jf .dw .ic{display:none}
@@ -1697,7 +1706,7 @@ function spark(vals, w = 120, h = 34) {
 }
 // port chart drawn at its real pixel size so labels stay readable; x is real time, so weekly
 // reports and a dashed "estimate today" point sit where they belong
-const CHART_PAD = { l: 50, r: 16, t: 14, b: 24 };
+const CHART_PAD = { l: 50, r: 16, t: 20, b: 24 };
 function lineChart(id, pts, { w = 760, h = 240, refs = [], kind } = {}) {
   const W = Math.round(w), H = Math.round(h), { l: pl, r: pr, t: pt, b: pb } = CHART_PAD;
   const vs = pts.map(p => p.v), lo0 = Math.min(...vs), hi0 = Math.max(...vs), span0 = (hi0 - lo0) || Math.abs(hi0) || 1;
@@ -2191,7 +2200,7 @@ function onboardView() {
   const me = ME(), co = coach(me.coach);
   return `<div class="corner">${themeBtn()}${demoMenu()}</div><div class="ob"><div class="card">
     <div class="row"><img src="${LOGO}" alt="" style="height:40px"><div><div class="eyebrow">ยินดีต้อนรับ</div><h2 style="font-size:21px">สวัสดีคุณ${esc(me.name)}</h2></div></div>
-    <div class="ob-k"><div><span class="muted xs">โค้ชประจำตัว</span><b>${co.name}</b></div><div><span class="muted xs">ทุนเริ่มต้น</span><b class="num">฿${baht(me.cap)}</b></div><div><span class="muted xs">โปรแกรม</span><b>${me.term} เดือน · ${TYPE[me.type]}</b><span class="muted xs">${dstr(me.joined)} ${yr(me.joined)} – ${dstr(progEnd(me))} ${yr(progEnd(me))}</span></div></div>
+    <div class="ob-k"><div><span class="muted xs">โค้ชประจำตัว</span><b>${co.name}</b></div><div><span class="muted xs">ทุนเริ่มต้น</span><b class="num">฿${baht(me.cap)}</b></div><div><span class="muted xs">โบรกเกอร์</span><b>${esc(me.broker)}</b><span class="muted xs">บัญชี xxxx-${esc(me.acct)}</span></div></div>
     <div class="obt"><span class="fi">${ic('trophy', 17)}</span><span><b>ค่าเรียน 1,000,000 บาท · คืนตามกำไรเมื่อจบโปรแกรม</b><span>ไม่มีกำไรหรือขาดทุน คืนเต็มจำนวน · กำไร 300,000 คืน 700,000 · กำไรเกิน 1 ล้าน ส่วนที่เกินเป็นของคุณทั้งหมด</span></span></div>
     <b>กติกา 4 ข้อของคอร์ส</b>
     <div class="rules">${RULES.map(([i, t, s]) => `<div class="rule"><span class="fi">${ic(i, 17)}</span><div><b>${t}</b><span>${s}</span></div></div>`).join('')}</div>
@@ -2200,61 +2209,75 @@ function onboardView() {
   </div></div>`;
 }
 
-/* ---------- home: how much have I made toward 1,000,000, what I would get back, my discipline ---------- */
+/* ---------- home: how much have I made, how close to 1,000,000, this month and week, my discipline ---------- */
 function snapState(x) {
   if (!x) return '<span class="tag">ยังไม่มีรายงานวันศุกร์</span>';
   return snapOk(x) ? `<span class="tag ok" title="ยอดที่คุณรายงานวันศุกร์ ${dstr(S.days[x.day])}">${ic('check', 12, 2.4)}ยอดที่รายงานตรงกับบันทึก</span>` : `<span class="tag warn">${ic('alert', 12)}ยอดที่รายงานต่างจากบันทึก ${pct(snapDiff(x))}</span>`;
 }
+// profit at the close of trading day i (deposits and withdrawals taken out), and the change since
+// the month began and since last Friday's close
+const profitAt = (c, i) => i < 0 ? 0 : c.eq[i] - c.cap - netFlowAt(c, S.days[i] + DAY - TZ);
+function periodPL(c) {
+  const T = T_(), d = tz(now()), m0 = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1), pr = profit(c);
+  let im = -1, iw = -1;
+  for (let i = 0; i < T; i++) { if (S.days[i] < m0) im = i; if (new Date(S.days[i]).getUTCDay() === 5) iw = i; }
+  return { month: pr - profitAt(c, im), week: pr - profitAt(c, iw), m: d.getUTCMonth(), y: d.getUTCFullYear(), fri: iw >= 0 ? S.days[iw] : null };
+}
 function homeView() {
-  const me = ME(), d = discipline(me.id), ps = pnlSum(me), v = eqNow(me), rr = retPct(me), st = settle(me);
+  const me = ME(), d = discipline(me.id), ps = pnlSum(me), v = eqNow(me), rr = retPct(me), st = settle(me), pp = periodPL(me);
+  const tone = n => n > 0 ? 'up' : n < 0 ? 'dn' : '';
   return `<section class="pnl hero">
-    <div class="hero-top"><div class="hero-l">
-      <div class="eyebrow">เป้าหมายกำไร 1,000,000 บาท · เดือนที่ ${progMonth(me)} จาก ${me.term}</div>
-      <div class="rl">กำไรสะสมตามบันทึก · ${dlong(now())} ${snapDue() ? `<button class="tag gold" data-act="snap">${ic('wallet', 12)}รายงานยอดพอร์ตประจำสัปดาห์</button>` : snapState(lastSnap(me))}</div>
+    <div class="hero-l">
+      <div class="eyebrow">กำไรสะสมตามบันทึก</div>
       <div class="big serif num"><span class="${st.pr >= 0 ? 'gtxt' : 'dn'}">${signed(st.pr)}</span></div>
-      <div class="meta"><span class="tag ${rr >= 0 ? 'ok' : 'dn'} num" title="เทียบกับทุนเริ่มต้นรวมเงินฝาก/ถอนที่อนุมัติแล้ว">${pct(rr)} จากเงินทุน</span><button class="tag est" data-act="recinfo">${ic('wallet', 13)}ยอดพอร์ต <b class="num">฿${baht(v)}</b></button><span class="tag opt num">${tm('rpl', 'Realized')} ${signed(ps.realized)}</span><span class="tag opt num">${tm('upl', 'Unrealized')} ${signed(ps.unreal)}</span><button class="tag mob ${scoreTone(d.score)}" data-act="scoreinfo">${ic('target', 13)}วินัย ${d.score}</button></div>
-    </div>${refundCard(st)}</div>
-    ${goalBar(st)}
-    <div class="hero-c"><div class="hc-h"><span>กำไรสะสมรายสัปดาห์ (ตามบันทึก)</span><span class="lgd2"><i></i>ทุกวันศุกร์<i class="e"></i>วันนี้</span></div>${chartBox('pl', profitSeries(me), { kind: 'pl', refs: [{ v: GOAL, label: 'เป้าหมาย 1 ล้าน', always: 1 }, { v: 0, label: '', c: 'var(--mut)', always: 1 }] })}</div>
+      <div class="meta"><span class="tag ${rr >= 0 ? 'ok' : 'dn'} num" title="เทียบกับทุนเริ่มต้นรวมเงินฝาก/ถอนที่อนุมัติแล้ว">${pct(rr)} จากเงินทุน</span>${snapDue() ? `<button class="tag gold" data-act="snap">${ic('wallet', 12)}รายงานยอดพอร์ตประจำสัปดาห์</button>` : snapState(lastSnap(me))}<button class="tag mob ${scoreTone(d.score)}" data-act="scoreinfo">${ic('target', 13)}วินัย ${d.score}</button></div>
+      <div class="rl">ข้อมูล ณ ${dlong(now())} · ราคาปิดล่าสุด</div>
+    </div>
+    <div class="hero-g">${goalBar(st)}</div>
   </section>
+  <div class="kstrip">
+    <div class="kpi"><div class="k">กำไรเดือนนี้</div><div class="v num ${tone(pp.month)}">${signed(pp.month)}</div><div class="s">ตั้งแต่ 1 ${TH_M[pp.m]}</div></div>
+    <div class="kpi"><div class="k">กำไรสัปดาห์นี้</div><div class="v num ${tone(pp.week)}">${signed(pp.week)}</div><div class="s">${pp.fri ? `เทียบราคาปิดวันศุกร์ ${dstr(pp.fri)}` : 'สัปดาห์แรก'}</div></div>
+    <div class="kpi opt3"><div class="k">${tm('win')}</div><div class="v num">${ps.closed ? Math.round(ps.rate * 100) + '%' : '—'}</div><div class="s">กำไร ${ps.wins} · ขาดทุน ${ps.closed - ps.wins} ตัว</div></div>
+    <button class="kpi opt3" data-act="recinfo" title="ที่มาของยอดพอร์ต"><span class="k">ยอดพอร์ต ${ic('info', 13)}</span><span class="v num">฿${baht(v)}</span><span class="s">ทุนเริ่มต้น ฿${baht(me.cap)}</span></button>
+  </div>
+  <section class="pnl pchart"><div class="ph"><h3>กำไรสะสมรายสัปดาห์</h3><span class="sub">ตามบันทึก</span><span class="lgd2" style="margin-left:auto"><i></i>ปิดวันศุกร์<i class="e"></i>วันนี้</span></div>
+    <div class="pb">${chartBox('pl', profitSeries(me), { kind: 'pl', refs: [{ v: GOAL, label: 'เป้าหมาย 1 ล้าน' }, { v: 0, label: '', c: 'var(--mut)', always: 1 }] })}</div></section>
+  <section class="pnl pmon"><div class="ph"><h3>กำไรรายเดือน</h3><span class="sub">ตามบันทึก</span></div><div class="pb">${monthBars(me)}</div></section>
   <section class="pnl disc"><div class="ph"><h3>คะแนนวินัย</h3><span class="sub">30 วันล่าสุด</span><button class="lnk sm" style="margin-left:auto" data-act="scoreinfo">เกณฑ์การคำนวณ</button></div>
     <div class="pb"><div class="dsc">${ring(d.score, innerHeight < 800 ? 60 : 74, 7)}<div><b class="w ${scoreTone(d.score)}">${scoreWord(d.score)}</b><div class="xs ink2 dx">${ic('flag', 13)} ตรงแผนติดต่อกัน <b class="gold num">${streak(me.id)}</b> รายการ</div><div class="xs muted">อันดับวินัย <b class="ink2 num">${cohortRank(me.id)}</b> จาก ${S.clients.length} รายของรุ่น</div></div></div>
     <div class="mbar">${scoreBars(d)}</div></div></section>
-  <section class="pnl prog">${progPanel(me)}</section>`;
+  <section class="pnl qact">${quickActs(me, pp)}</section>`;
 }
-// the money-back terms as if the program ended today: refund = 1,000,000 − profit (never below 0)
-function refundCard(st) {
-  const over = st.extra > 0, full = st.pr <= 0;
-  return `<button class="refund" data-act="terms" title="เงื่อนไขค่าเรียน"><span class="k"><span>หากจบโปรแกรมวันนี้</span>${ic('info', 14)}</span>
-    <span class="s">${over ? 'กำไรเกินเป้าหมาย ส่วนที่เกินเป็นของคุณ' : full ? 'ได้รับค่าเรียนคืนเต็มจำนวน' : 'ได้รับค่าเรียนคืน'}</span>
-    <b class="rv num ${over ? 'up' : ''}">${over ? signed(st.extra) : '฿' + baht(st.refund)}</b>
-    <span class="rsplit" aria-hidden="true"><i style="flex:${st.kept}"></i><s style="flex:${st.refund}"></s></span>
-    <span class="rleg"><span><i></i>กำไรที่ทำได้ ${kb(st.kept)}</span><span><i class="b"></i>คืนค่าเรียน ${kb(st.refund)}</span></span></button>`;
+// profit made in each calendar month (the current month up to today), last 6 months
+function monthBars(c) {
+  const T = T_(), ends = [];
+  for (let i = 0; i <= T; i++) { const d = new Date(S.days[i]), k = d.getUTCFullYear() * 12 + d.getUTCMonth(); if (ends.length && ends[ends.length - 1].k === k) ends[ends.length - 1].i = i; else ends.push({ k, m: d.getUTCMonth(), i }); }
+  let base = 0;
+  const all = ends.map((x, j) => { const last = j === ends.length - 1, pr = last ? profit(c) : profitAt(c, x.i), v = pr - base; base = pr; return { m: x.m, v, now: last, end: S.days[x.i] }; })
+    .filter(x => x.end + DAY - TZ >= c.joined).slice(-6);
+  const up = Math.max(0, ...all.map(x => x.v)), dn = Math.max(0, ...all.map(x => -x.v)), tot = up + dn || 1, zero = dn / tot * 100;
+  return `<div class="mbars">${all.map(x => { const h = Math.abs(x.v) / tot * 100; return `<div class="mb ${x.v >= 0 ? 'pos' : 'neg'} ${x.now ? 'now' : ''}" title="${TH_M[x.m]}${x.now ? ' (ถึงวันนี้)' : ''}: ${signed(x.v)} บาท"><span class="mv num">${sgn(x.v)}${kb(Math.abs(Math.round(x.v)))}</span><span class="mc">${dn ? `<s style="bottom:${zero}%"></s>` : ''}<i style="${x.v >= 0 ? `bottom:${zero}%` : `top:${100 - zero}%`};height:${h}%"></i></span><span class="ml">${TH_M[x.m]}${x.now ? ' *' : ''}</span></div>`; }).join('')}</div><div class="xs muted" style="margin-top:8px">* เดือนนี้ถึงวันนี้</div>`;
 }
 function goalBar(st) {
-  const miles = [250000, 500000, 750000, GOAL], v = Math.max(0, st.pr);
-  return `<div class="goal"><div class="gtrack" role="progressbar" aria-valuemin="0" aria-valuemax="${GOAL}" aria-valuenow="${Math.round(Math.min(v, GOAL))}" aria-label="กำไรเทียบกับเป้าหมาย 1 ล้านบาท"><i style="width:${Math.min(100, v / GOAL * 100)}%"></i>
+  const miles = [250000, 500000, 750000, GOAL], v = Math.max(0, st.pr), p = Math.min(100, v / GOAL * 100);
+  return `<div class="gh"><span>เป้าหมายกำไร <b class="ink">1,000,000 บาท</b></span><b class="gold num p">${fmt(p, 1)}%</b></div>
+    <div class="gtrack" role="progressbar" aria-valuemin="0" aria-valuemax="${GOAL}" aria-valuenow="${Math.round(Math.min(v, GOAL))}" aria-label="กำไรเทียบกับเป้าหมาย 1 ล้านบาท"><i style="width:${p}%"></i>
     ${miles.map(m => `<span class="gm ${v >= m ? 'hit' : ''}" style="left:${m / GOAL * 100}%"><b>${v >= m ? ic('check', 12, 2.6) : ''}</b><span>${m === GOAL ? '1 ล้าน' : kb(m)}</span></span>`).join('')}</div>
-    <div class="glbl"><span>กำไร <b class="gold num">${fmt(Math.min(100, v / GOAL * 100), 1)}%</b> ของเป้าหมาย</span><span>${st.extra > 0 ? `เกินเป้าหมาย <b class="num up">${signed(st.extra)}</b>` : `อีก <b class="num">฿${baht(GOAL - v)}</b> ถึงเป้าหมาย`}</span></div></div>`;
+    <div class="glbl"><span>ทำได้แล้ว <b class="num">฿${baht(Math.min(v, GOAL))}</b></span><span>${st.extra > 0 ? `เกินเป้าหมาย <b class="num up">${signed(st.extra)}</b>` : `อีก <b class="num">฿${baht(GOAL - v)}</b> ถึงเป้าหมาย`}</span></div>`;
 }
 function scoreBars(d) {
   return [['ตรงแผน', d.acc, `${Math.round(d.acc * 100)}%`], ['ขายตามแผน', d.exit, `${Math.round(d.exit * 100)}%`], ['ไม่ซื้อขายนอกแผน', Math.max(0, 1 - d.off / 3), d.off ? `${d.off} ครั้ง` : 'ไม่มี'], ['หลักฐานครบ', d.proof, `${Math.round(d.proof * 100)}%`]]
     .map(([k, v, s]) => `<div><div class="l"><span class="ink2">${k}</span><b class="num">${s}</b></div><div class="bar ${v >= .9 ? 'up' : v >= .75 ? 'warn' : 'dn'}"><i style="width:${v * 100}%"></i></div></div>`).join('');
 }
-const yr = ms => String(tz(ms).getUTCFullYear() + 543).slice(2);
-function paceBox(me, mo, end) {
-  const pr = profit(me), done = Math.max(.5, (now() - me.joined) / (30.44 * DAY)), left = Math.max(.5, (end - now()) / (30.44 * DAY)), need = Math.max(0, GOAL - pr) / left;
-  return `<div class="pace"><div><span>กำไรเฉลี่ยต่อเดือน</span><b class="num ${pr >= 0 ? 'up' : 'dn'}">${signed(pr / done)}</b></div><div title="กำไรที่ต้องทำต่อเดือนในเวลาที่เหลือ เพื่อให้ถึง 1 ล้านเมื่อจบโปรแกรม"><span>ต้องการต่อเดือนเพื่อถึงเป้า</span><b class="num gold">${need ? '฿' + baht(need) : 'ถึงเป้าแล้ว'}</b></div></div>`;
-}
-function progPanel(me) {
-  const mo = progMonth(me), end = progEnd(me), co = coach(me.coach), left = Math.max(0, Math.ceil((end - now()) / DAY));
-  return `<div class="ph"><h3>โปรแกรมของฉัน</h3><span class="sub">${me.term} เดือน · ${TYPE[me.type]}</span></div>
-    <div class="pb"><div><div class="row xs" style="justify-content:space-between"><span class="ink2">เดือนที่ <b class="gold num">${mo}</b> จาก ${me.term}</span><span class="muted">เหลืออีก ${fmt(left)} วัน</span></div>
-      <div class="ptrack" style="--n:${me.term}" aria-hidden="true">${Array.from({ length: me.term }, (_, i) => `<i class="${i + 1 < mo ? 'on' : i + 1 === mo ? 'now' : ''}"></i>`).join('')}</div>
-      <div class="row xs muted" style="justify-content:space-between"><span>เริ่ม ${dstr(me.joined)} ${yr(me.joined)}</span><span>จบ ${dstr(end)} ${yr(end)}</span></div></div>
-      ${paceBox(me, mo, end)}
-      <div class="pstrip"><div><span>โค้ชประจำตัว</span><b>${co.name}</b></div><div><span>ตลาดที่เทรด</span><b class="ell">${me.mks.map(m => MARKETS[m][0]).join(' · ')}</b></div><div><span>ทุนเริ่มต้น</span><b class="num">฿${baht(me.cap)}</b></div><div><span>ค่าเรียน</span><b class="num">฿${baht(TUITION)}</b></div></div>
-      <div class="row" style="gap:8px;margin-top:auto"><button class="btn ghost sm" data-act="terms">${ic('trophy', 15)} เงื่อนไขค่าเรียน</button><button class="btn soft sm" data-act="line">${ic('chat', 15)} LINE ${co.name}</button></div></div>`;
+// the one thing clients do here (key a trade with its picture), and where their records stand
+function quickActs(me, pp) {
+  const pend = pendOf(me.id), fx = myFix(), n = now();
+  const okM = execsOf(me.id).filter(e => e.ver === 'ok' && e.rec.at <= n && tz(e.at).getUTCMonth() === pp.m && tz(e.at).getUTCFullYear() === pp.y).length;
+  const row = (cls, label, cnt, ex) => `<button class="${cls}" ${ex ? `data-ex="${esc(ex)}"` : 'data-go="journal"'}><i></i>${label}<b class="num">${cnt}</b>${ic('chev', 14)}</button>`;
+  return `<button class="kbig" data-act="key"><span class="ki">${ic('plus', 22, 2.4)}</span><span><b>บันทึกรายการซื้อขาย</b><small>หลังคำสั่ง Matched · แนบภาพจากแอป</small></span></button>
+    <div class="qst">${row(fx.length ? 'q-warn' : '', 'ต้องแก้ไข', fx.length, fx[0]?.id)}${row(pend.length ? 'q-blue' : '', 'รอโค้ชตรวจ', pend.length, pend[pend.length - 1]?.id)}${row('q-ok', 'ตรวจแล้วเดือนนี้', okM)}</div>
+    <div class="qbt"><button class="btn ghost sm ${snapDue() ? 'due' : ''}" data-act="snap">${ic('wallet', 15)} รายงานยอดพอร์ต</button><button class="btn ghost sm" data-act="flow">${ic('plus', 15)} แจ้งฝาก/ถอน</button></div>`;
 }
 
 /* ---------- journal: every trade the client keyed, its screenshot, and the coach's review ---------- */
@@ -2460,9 +2483,9 @@ function rulesModal() {
 }
 // the money-back terms from the program announcement, with where the client stands today
 function termsModal() {
-  const me = ME(), st = settle(me), end = progEnd(me);
+  const me = ME(), st = settle(me);
   const rows = [['ขาดทุน หรือไม่มีกำไร', 'คืนเต็มจำนวน ฿1,000,000'], ['กำไร ฿300,000', 'คืน ฿700,000'], ['กำไร ฿1,000,000 ขึ้นไป', 'ไม่มีเงินคืน · กำไรส่วนที่เกินเป็นของคุณทั้งหมด']];
-  openModal(mhead('เงื่อนไขค่าเรียน', `ค่าเรียน ฿${baht(TUITION)} · โปรแกรม ${me.term} เดือน (${dstr(me.joined)} ${yr(me.joined)} – ${dstr(end)} ${yr(end)})`) + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px">
+  openModal(mhead('เงื่อนไขค่าเรียน', `ค่าเรียน ฿${baht(TUITION)}`) + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px">
     <div class="note-box g">${ic('trophy', 16)}<span>เมื่อจบโปรแกรม คืนค่าเรียน <b>1,000,000 − กำไรที่ทำได้</b> ค่าเรียนจึงมาจากกำไรเท่านั้น ถ้าไม่มีกำไรก็ได้คืนทั้งหมด และถ้ากำไรเกิน 1 ล้าน ส่วนที่เกินเป็นของคุณ</span></div>
     <table class="tbl"><thead><tr><th>กำไรเมื่อจบโปรแกรม</th><th class="r">ค่าเรียนที่ได้คืน</th></tr></thead><tbody>${rows.map(([a, b]) => `<tr><td>${a}</td><td class="r">${b}</td></tr>`).join('')}
       <tr class="me"><td><b>ของคุณ ณ วันนี้ <span class="num ${st.pr >= 0 ? 'up' : 'dn'}">${signed(st.pr)}</span></b></td><td class="r num"><b class="gold">${st.extra > 0 ? `ไม่มีเงินคืน · ส่วนเกิน ${signed(st.extra)}` : '฿' + baht(st.refund)}</b></td></tr></tbody></table>
