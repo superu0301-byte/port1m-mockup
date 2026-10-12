@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-yL/UqOcWuEfzKLFTcgsUBjJz1FhBBRK1RJm+o9r9CyY=' 'sha256-uKyjrmrnGYFxCzMM49tsZugtmY3JYy+tpmR5OhK/rUs=' 'sha256-3nF3peBuOHe3IPnFG+NuMXPYVuIQjdYMS/Wp/f3tlUo='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-yL/UqOcWuEfzKLFTcgsUBjJz1FhBBRK1RJm+o9r9CyY=' 'sha256-uKyjrmrnGYFxCzMM49tsZugtmY3JYy+tpmR5OhK/rUs=' 'sha256-bXebf7YLjFQ0mnfBhRmjLYZiy1obgwI+TjmAewnRQb4='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>ปั้นพอร์ต 1 ล้าน · Trading Journal (ต้นแบบ)</title>
@@ -643,7 +643,7 @@ button.kpi>span{display:block}
 .qst .q-warn{border-color:color-mix(in srgb,var(--warn) 45%,transparent)}.qst .q-warn i{background:var(--warn)}.qst .q-warn b{color:var(--warn)}
 .qst .q-blue i{background:var(--blue)}.qst .q-blue b{color:var(--blue)}
 .qst .q-ok i{background:var(--up)}
-.qbt{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.qbt{display:grid;gap:8px;margin-top:auto}
 .qbt .btn{justify-content:center}
 .qbt .due{border-color:var(--goldln);color:var(--gold)}
 .oc-ic{width:40px;height:40px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;background:var(--goldbg);color:var(--gold)}
@@ -2403,7 +2403,7 @@ function quickActs(me, pp) {
   const row = (cls, label, cnt, ex) => `<button class="${cls}" ${ex ? `data-ex="${esc(ex)}"` : 'data-go="journal"'}><i></i>${label}<b class="num">${cnt}</b>${ic('chev', 14)}</button>`;
   return `<button class="kbig" data-act="key"><span class="ki">${ic('plus', 22, 2.4)}</span><span><b>บันทึกรายการซื้อขาย</b><small>หลังคำสั่ง Matched · แนบภาพจากแอป</small></span></button>
     <div class="qst">${row(fx.length ? 'q-warn' : '', 'ต้องแก้ไข', fx.length, fx[0]?.id)}${row(pend.length ? 'q-blue' : '', 'รอโค้ชตรวจ', pend.length, pend[pend.length - 1]?.id)}${row('q-ok', 'ตรวจแล้วเดือนนี้', okM)}</div>
-    <div class="qbt"><button class="btn ghost sm ${snapDue() ? 'due' : ''}" data-act="snap">${ic('wallet', 15)} รายงานยอดพอร์ต</button><button class="btn ghost sm" data-act="flow">${ic('plus', 15)} แจ้งฝาก/ถอน</button></div>`;
+    <div class="qbt"><button class="btn ghost sm ${snapDue() ? 'due' : ''}" data-act="snap">${ic('wallet', 15)} รายงานยอดพอร์ต</button></div>`;
 }
 
 /* ---------- journal: every trade the client keyed, its screenshot, and the coach's review ---------- */
@@ -2559,27 +2559,6 @@ function snapModal() {
     closeModal(); render(); toast(`${ic('check', 18)}<div><b>รายงานยอดพอร์ตแล้ว</b></div>`, 'ok');
   });
 }
-function flowModal() {
-  const me = ME(), cash = eqNow(me) - posValue(me.id);
-  const box = openModal(mhead('แจ้งฝาก/ถอนเงิน', 'เงินที่โอนเข้าหรือออกจากพอร์ตไม่นับเป็นกำไรขาดทุน · ทีม CS ตรวจสอบหลักฐานการโอนก่อนนับเข้าพอร์ต') + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px">
-    <div class="field"><label>ประเภท</label><div class="seg" id="ft"><button type="button" class="on" data-s="1">ฝากเงินเข้าพอร์ต</button><button type="button" data-s="-1">ถอนออก</button></div></div>
-    <div class="field"><label for="famt">จำนวนเงิน (บาท) <span class="dn">*</span></label><input type="number" id="famt" min="0" inputmode="numeric"><div class="hint">ถอนได้ไม่เกินเงินสดคงเหลือตามบันทึก ฿${baht(cash)}</div></div>
-    ${slipField('ภาพสลิปโอนเงิน', 'ต้องเห็นยอดเงินและวันที่')}
-  </div><div class="mft"><span class="ferr" id="err"></span><span class="sp"></span><button class="btn ghost" data-act="close">ยกเลิก</button><button class="btn" id="save" disabled>แจ้ง CS</button></div>`);
-  let s = 1;
-  $('#ft', box).addEventListener('click', e => { const b = e.target.closest('[data-s]'); if (!b) return; s = +b.dataset.s; $$('#ft button', box).forEach(x => x.classList.toggle('on', x === b)); upd(); });
-  const upd = () => { const a = num(box, 'famt'), err = $('#famt', box).value && !validMoney(a) ? 'จำนวนเงินไม่ถูกต้อง' : s < 0 && a > cash ? 'จำนวนที่ถอนเกินเงินสดคงเหลือ' : ''; $('#err', box).textContent = err; $('#save', box).disabled = !!err || !validMoney(a) || !getSlip(); };
-  const getSlip = wireSlip(box, upd, () => ({ sym: 'โอนเงิน', side: s > 0 ? 'buy' : 'sell', px: 1, qty: Math.round(num(box, 'famt')) || 0, at: now() }));
-  box.addEventListener('input', upd);
-  $('#save', box).addEventListener('click', () => {
-    upd(); if ($('#save', box).disabled) return;
-    const amt = s * Math.round(num(box, 'famt'));
-    me.flows.push({ id: nid('fl'), at: now(), amt, note: s > 0 ? 'ฝากเงินเพิ่มเข้าพอร์ต' : 'ถอนเงินออกจากพอร์ต', img: getSlip().img || null, pend: true });
-    pushFeed({ by: 'client', who: me.id, cl: me.id, coach: me.coach, kind: 'flow', text: `${cname(me)} แจ้ง${s > 0 ? 'ฝาก' : 'ถอน'}เงิน ${baht(Math.abs(amt))} บาท` });
-    if (!save()) return;
-    closeModal(); render(); toast(`${ic('check', 18)}<div><b>แจ้ง CS แล้ว</b><div class="muted sm">จะนับเข้าพอร์ตหลังทีม CS อนุมัติ</div></div>`, 'ok');
-  });
-}
 function slipModal(id) {
   const e = execOf(id); if (!e || e.cl !== FEATURED || !e.slip) return;
   openModal(mhead(`${slogo(e.sym, 28)}${verbEx(e)} ${esc(e.sym)} · ${fmt(e.qty)} ${unitOf(e)} @ ${px(e.px)}`, `${dt(e.at)} · บันทึกโดย${e.rec.by === FEATURED ? 'คุณ' : byName(e.rec.by)}`) + `<div class="mbd" style="display:flex;justify-content:center"><div style="width:min(300px,100%);height:min(430px,70dvh)">${slipImg(e, ME())}</div></div>`);
@@ -2669,7 +2648,6 @@ cmdItems = () => !signedIn() || !ME().ob ? [] : [
   ...[...new Set(execsOf(FEATURED).map(e => e.sym))].map(s => { const p = openPos(FEATURED).find(x => x.sym === s); return { g: 'รายการซื้อขายของฉัน', t: s, s: p ? `ถืออยู่ ${fmt(p.qty)} ${unitOf(p)}` : 'ปิดสถานะแล้ว', k: 'journal trade', sym: s, run: () => showSym(s) }; }),
   { g: 'ทำรายการ', t: 'บันทึกรายการซื้อขาย', ic: 'plus', k: 'key record บันทึก แนบภาพ', run: keyNew },
   { g: 'ทำรายการ', t: 'รายงานยอดพอร์ตประจำสัปดาห์', ic: 'wallet', k: 'snapshot ยอด', run: snapModal },
-  { g: 'ทำรายการ', t: 'แจ้งฝาก/ถอนเงิน', ic: 'wallet', k: 'deposit withdraw', run: flowModal },
   { g: 'ทำรายการ', t: 'แผนเทรดของฉัน', ic: 'target', k: 'trading plan แผนเทรด position size', run: tpModal },
   { g: 'ทำรายการ', t: 'ส่ง Statement ประจำเดือน', ic: 'book', k: 'statement monthly', run: stmtModal },
   { g: 'ทำรายการ', t: 'เงื่อนไขค่าเรียน', ic: 'trophy', k: 'refund tuition คืนเงิน', run: termsModal },
@@ -2716,7 +2694,6 @@ document.addEventListener('click', e => {
   if (act === 'kedit') return keyEdit(a.dataset.id);
   if (act === 'jclear') { jFrom = jTo = jSym = ''; selEx = null; PG.jl = 0; return render(); }
   if (act === 'snap') { render(); return snapModal(); }
-  if (act === 'flow') return flowModal();
   if (act === 'slip') return slipModal(a.dataset.id);
   if (act === 'scoreinfo') return scoreInfo();
   if (act === 'recinfo') return recInfo();
