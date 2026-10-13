@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-yL/UqOcWuEfzKLFTcgsUBjJz1FhBBRK1RJm+o9r9CyY=' 'sha256-uKyjrmrnGYFxCzMM49tsZugtmY3JYy+tpmR5OhK/rUs=' 'sha256-KfV+DaLjSEv+dy9rjUKYwZyPRGmpJ6HPu0fEGl7jH/Y='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-S3ZiKpBh0me8ADDb669OCS/VT74rgVyBLrudTToAW18=' 'sha256-u5wPdfhbrA+SKTNPR02Z6YYt36Rtq89bSqpmjdXRFms='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
-<script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>หลังบ้าน · ปั้นพอร์ต 1 ล้าน (ต้นแบบ)</title>
 <style>
 /* Port 1M look: midnight navy + champagne gold, glass panels over a soft aurora.
@@ -434,40 +434,6 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 .mlad .t1{width:2px;margin-left:-1px;background:var(--bg2)}
 .mlad .lp{width:11px;height:11px;top:-2.5px;margin-left:-5.5px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 2px var(--bg2)}
 .mlad .lp.up{background:var(--up)}.mlad .lp.warn{background:var(--warn)}.mlad .lp.dn{background:var(--dn)}
-.ptool{--ax:46px;--lb:146px;position:relative;flex:1;min-height:120px;border-radius:14px;background:rgba(var(--wt),.025);border:1px solid var(--line);overflow:hidden;font-size:12px}
-.ptool:before{content:"";position:absolute;top:0;bottom:0;left:var(--ax);right:var(--lb);border-left:1px solid var(--line);border-right:1px solid var(--line);background-image:linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 100%}
-/* levels live in an inset box so labels at the very top or bottom stay inside */
-.pt-in{position:absolute;inset:13px 0}
-.pz{position:absolute;left:var(--ax);right:var(--lb)}
-.pz.rw{background:linear-gradient(180deg,color-mix(in srgb,var(--up) 36%,transparent),color-mix(in srgb,var(--up) 20%,transparent))}
-.pz.rw2{background:linear-gradient(180deg,color-mix(in srgb,var(--up) 18%,transparent),color-mix(in srgb,var(--up) 7%,transparent))}
-.pz.rk{background:linear-gradient(180deg,color-mix(in srgb,var(--dn) 10%,transparent),color-mix(in srgb,var(--dn) 34%,transparent))}
-.pz.rk0{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--dn) 13%,transparent) 0 5px,transparent 5px 11px)}
-.pz.lk{background:color-mix(in srgb,var(--gold) 20%,transparent)}
-.pz.en{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--gold) 42%,transparent) 0 4px,color-mix(in srgb,var(--gold) 14%,transparent) 4px 8px);min-height:3px}
-.pl{position:absolute;left:0;right:0;height:0;display:grid;grid-template-columns:var(--ax) minmax(0,1fr) var(--lb);align-items:center;z-index:1}
-.pl .pr{text-align:right;padding-right:8px;color:var(--mut);font-size:11px;font-weight:700}
-.pl .pn{border-top:1.5px solid}
-.pl .pk{justify-self:start;max-width:calc(100% - 8px);margin-left:6px;padding:2px 8px;border-radius:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:700;font-size:11.5px}
-.pl .pk b{font-size:12.5px}
-.pl .pk em{font-style:normal;font-weight:600;opacity:.8}
-.pl.tp .pn{border-color:var(--up)}.pl.tp .pk{background:var(--upbg);color:var(--up)}
-.pl.en .pn{border-color:var(--gold);border-top-style:dashed}.pl.en .pk{background:var(--goldbg);color:var(--gold)}
-.pl.sl .pn{border-color:var(--dn)}.pl.sl .pk{background:var(--dnbg);color:var(--dn)}
-.pl.lk .pn{border-color:var(--gold)}.pl.lk .pk{background:var(--goldbg);color:var(--gold)}
-.pl.old .pn{border-color:var(--mut);border-top-style:dashed;opacity:.55}.pl.old .pk{color:var(--mut);background:rgba(var(--wt),.05)}.pl.old .pr{opacity:.6}
-.pm{position:absolute;left:var(--ax);right:var(--lb);height:0;border-top:1.5px solid var(--ink2);z-index:2}
-.pm span{position:absolute;top:0;transform:translateY(-50%);padding:1px 7px;border-radius:6px;font-size:11px;font-weight:800;white-space:nowrap;line-height:1.6}
-.pm.last span{right:6px;background:var(--ink);color:var(--bg)}
-.pm.last.up{border-color:var(--up)}.pm.last.up span{background:var(--up);color:#03241a}
-.pm.last.warn{border-color:var(--warn)}.pm.last.warn span{background:var(--warn);color:#2b1700}
-.pm.last.dn{border-color:var(--dn)}.pm.last.dn span{background:var(--dn);color:#fff}
-.pm.last.out{border-top-style:dotted}
-.pm.avg{border-top:1.5px dashed var(--blue)}.pm.avg span{left:6px;background:var(--bg2);color:var(--blue);border:1px solid color-mix(in srgb,var(--blue) 45%,transparent)}
-.pf{position:absolute;width:0;height:0;margin-left:-6px;border:6px solid transparent;z-index:3}
-.pf.buy{border-bottom:9px solid var(--up);border-top:0;transform:translateY(-2px)}
-.pf.sell{border-top:9px solid var(--dn);border-bottom:0;transform:translateY(-7px)}
-@container (max-width:330px){.ptool{--ax:38px;--lb:112px}.pl .pk em{display:none}.pl .pr{font-size:10px;padding-right:5px}}
 .cdr{flex:none;display:block}
 
 /* search everywhere */
@@ -499,6 +465,189 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 .thb:hover .ic{transform:rotate(-25deg)}
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
 
+/* ---------- the way a trading app shows a port and its orders (Settrade Streaming), drawn in our look ----------
+   Order Status and Portfolio are tables: .ot-h is the header row, .ot-r a row (one element, so it pages like
+   any list); the columns come from --cols, and less important columns hide as a panel gets narrow. */
+.otw{display:flex;flex-direction:column;min-height:0;flex:1}
+.ot-h,.ot-r{display:grid;grid-template-columns:var(--cols);column-gap:12px;align-items:center;padding:0 16px}
+.ot-h{flex:none;min-height:30px;font-size:12px;color:var(--mut);border-bottom:1px solid var(--line2);white-space:nowrap;background:rgba(var(--wt),.025)}
+.ot-h>*{overflow:hidden;text-overflow:ellipsis}
+.ot-r{min-height:46px;padding-top:4px;padding-bottom:4px;border-bottom:1px solid var(--line);font-size:13.5px;width:100%;text-align:left;color:var(--ink);transition:background .12s}
+.ot-r>*{min-width:0}
+button.ot-r:hover,.ot-r.click:hover{background:rgba(var(--wt),.04);cursor:pointer}
+.ot-r.on{background:var(--goldbg);box-shadow:inset 3px 0 0 var(--gold)}
+.ot-h .r,.ot-r .r{text-align:right}
+.ot-h .c,.ot-r .c{text-align:center;justify-self:center}
+.ot-r .t2{display:block;font-size:11.5px;color:var(--mut);line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ot-r b{font-weight:700}
+.ot-r .slipth{width:24px;height:32px;border-radius:6px}
+.ot-r .side{min-width:40px;padding:2px 6px}
+.ot-f{flex:none;display:grid;grid-template-columns:var(--cols);column-gap:12px;align-items:center;padding:7px 16px;border-top:1px solid var(--line2);font-size:13px;background:rgba(var(--wt),.025)}
+.otw .mo,.otw .mo6{display:none}
+.pb.flush{padding:0}
+.pre{flex:none;padding:10px 16px 6px}
+/* yellow cards */
+.ycs{display:inline-flex;gap:3px;vertical-align:middle}
+.ycs i{width:9px;height:13px;border-radius:2px;border:1.5px solid color-mix(in srgb,#f5c518 55%,transparent);transform:rotate(-6deg)}
+.ycs i.on{background:#f5c518;border-color:#f5c518;box-shadow:0 2px 6px -2px rgba(245,197,24,.7)}
+.ycard{display:inline-block;width:8px;height:11px;border-radius:2px;background:#f5c518;transform:rotate(-6deg);margin-right:4px;vertical-align:-1px;box-shadow:0 1px 4px -1px rgba(245,197,24,.7)}
+/* the record sheet */
+.rd{display:flex;flex-direction:column;gap:12px;min-height:0;height:100%;overflow:auto;scrollbar-width:thin;padding-right:2px}
+.rtrack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;flex:none}
+.rt{position:relative;padding:20px 8px 0 0;display:flex;flex-direction:column;min-width:0;font-size:11.5px;color:var(--mut)}
+.rt:before{content:"";position:absolute;top:8px;left:18px;right:0;height:2px;background:var(--line2)}
+.rt:last-child:before{display:none}
+.rt i{position:absolute;top:0;left:0;width:18px;height:18px;border-radius:50%;background:var(--bg2);border:2px solid var(--line2);display:flex;align-items:center;justify-content:center;color:#fff}
+.rt b{font-size:12.5px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rt span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rt.done i{background:var(--up);border-color:var(--up)}.rt.done:before{background:var(--up)}
+.rt.now i{border-color:var(--blue);box-shadow:0 0 0 4px var(--bluebg)}.rt.now b{color:var(--blue)}
+.rt.warn i{background:var(--warn);border-color:var(--warn)}.rt.warn b{color:var(--warn)}
+.rt.pu i{background:var(--pu);border-color:var(--pu)}.rt.pu b{color:var(--pu)}
+.rt.todo b{color:var(--mut)}
+.rd-top{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:start;flex:none}
+.rd-pic{display:flex;flex-direction:column;gap:4px;align-items:stretch;text-align:center;font-size:11px;color:var(--mut)}
+.rd-pic .slipth{width:96px;height:132px;border-radius:12px}
+.kv{display:grid;grid-template-columns:auto minmax(0,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+.kv>span{padding:5px 12px;border-top:1px solid var(--line);min-width:0}
+.kv>span:nth-child(-n+2){border-top:none}
+.kv>span:nth-child(odd){color:var(--mut);background:rgba(var(--wt),.03);white-space:nowrap}
+.kv>span:nth-child(even){text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kv .side{min-width:0;padding:1px 6px;font-size:10.5px;margin-right:4px}
+.rsec{display:flex;flex-direction:column;gap:6px;flex:none}
+.rsec>h4{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--mut);font-weight:700;letter-spacing:.03em}
+.rsec>h4:after{content:"";flex:1;height:1px;background:var(--line);order:1}
+.rsec>h4>*:not(span:first-child){order:2}
+.ckt{border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px}
+.ckt-h,.ckt-r{display:grid;grid-template-columns:minmax(64px,.8fr) minmax(0,1.1fr) minmax(0,1fr) 68px;gap:10px;align-items:center;padding:5px 12px}
+.ckt-h{font-size:11.5px;color:var(--mut);background:rgba(var(--wt),.03)}
+.ckt-r{border-top:1px solid var(--line)}
+.ckt-r>*{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ckt-r>span:first-child{color:var(--ink2)}
+.ckt-r .tag{justify-self:start}
+.rnote{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;padding:7px 10px;border-radius:10px;background:rgba(var(--wt),.035);border:1px solid var(--line);line-height:1.45}
+.rnote>b{flex:none;color:var(--mut);font-weight:600}
+.rnote.warn{background:var(--warnbg);border-color:transparent;color:var(--note-y)}
+.rnote.warn .ic{flex:none;margin-top:2px}
+/* plan result in a table cell */
+.pst{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:12.5px;white-space:nowrap}
+.pst>i:not(.ycard){width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+.pst .ycard{margin-right:0}
+.pst.ok{color:var(--up)}.pst.warn{color:var(--warn)}.pst.pu{color:var(--pu)}
+/* short screens and phones: the same sheet, tighter (it scrolls inside its panel only if it still does not fit) */
+@media (max-height:760px),(max-width:760px){.rd{gap:8px}.rd-pic .slipth{width:76px;height:104px}.rd-top{grid-template-columns:76px minmax(0,1fr);gap:10px}.kv{font-size:12.5px}.kv>span{padding:3px 10px}.ckt{font-size:12.5px}.ckt-h{display:none}.ckt-h+.ckt-r{border-top:none}.ckt-r{padding:3px 10px}.rt{padding-top:20px}.rt span{display:none}.rsec{gap:4px}.rsec>h4{font-size:11.5px}.rnote{padding:5px 9px;font-size:12px}.mtc-h,.mtc-r{padding:4px 10px}}
+/* a sale and the buys it closed, with the result */
+.mtc{border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:13px;flex:none}
+.mtc-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:7px 12px;background:rgba(var(--wt),.035);color:var(--ink2);font-weight:600}
+.mtc-r{display:grid;grid-template-columns:44px minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:6px 12px;border-top:1px solid var(--line)}
+.mtc-r .side{min-width:0;padding:1px 5px;font-size:10.5px}
+.mtc-f{padding:6px 12px;border-top:1px solid var(--line);font-size:12px;color:var(--mut)}
+@media (max-height:760px){.ed-info .mtc-f,.vd-info .mtc-f{display:none}.ed-info .mtc-h,.ed-info .mtc-r{padding:4px 10px}}
+@media (max-height:700px){.ed-info .mtc-r:nth-child(n+3){display:none}.ed-info .mtc{font-size:12px}}
+@media (max-width:900px){.ed-info .mtc-f{display:none}.ed-info .mtc-r:nth-child(n+3){display:none}.ed-info .mtc-h,.ed-info .mtc-r{padding:4px 10px}}
+/* account summary across the top of the port, like the summary line of a broker app */
+.acct{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-column:1/-1;align-items:stretch}
+.acct>div{padding:11px 16px 10px;border-left:1px solid var(--line);min-width:0}
+.acct>div:first-child{border-left:none}
+.acct .k{font-size:12.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:flex;gap:5px;align-items:center}
+.acct .v{font-size:21px;font-weight:700;white-space:nowrap;letter-spacing:-.01em;line-height:1.35}
+.acct .s{font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acct .main .v{font-size:24px}
+/* one holding, opened from the port (Streaming's portfolio detail with its Buy / Sell buttons) */
+.pdx{display:flex;flex-direction:column;gap:12px}
+.pdx-q{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pdx-q>.num:first-child{font-size:30px;font-weight:700;letter-spacing:-.01em}
+.pdx-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.pdx-g div{padding:9px 12px;border-radius:14px;background:rgba(var(--wt),.04);border:1px solid var(--line);min-width:0}
+.pdx-g span{display:block;font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pdx-g b{font-size:15.5px;white-space:nowrap}
+.pdx .otw{border:1px solid var(--line);border-radius:14px;overflow:hidden;flex:none}
+.pdx-a{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn.buy{background:linear-gradient(135deg,#7af0bd,#2fc585);color:#04261a;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 8px 22px -10px rgba(61,220,151,.7)}
+.btn.sell{background:linear-gradient(135deg,#ff9aa6,#e5475e);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 8px 22px -10px rgba(255,107,125,.7)}
+.pdt{--cols:72px 48px minmax(56px,1fr) minmax(56px,1fr) 96px;container-type:inline-size}
+@container (max-width:420px){.pdt .c-px{display:none}.pdt .ot-h,.pdt .ot-r{--cols:62px 44px minmax(52px,1fr) 92px;column-gap:8px;padding:0 10px}}
+@media (max-height:760px) and (min-width:561px){.pdx{gap:9px}.pdx-g div{padding:6px 11px}.pdx-q>.num:first-child{font-size:26px}}
+@media (max-height:680px) and (min-width:561px){.pdx-g b{font-size:14px}.pdx-g div{padding:5px 10px}.mbox:has(.pdx) .mhd{padding-top:12px}.mbox:has(.pdx) .mbd{padding-top:10px;padding-bottom:10px}}
+@media (max-width:560px){.pdx{gap:9px}.pdx-g{grid-template-columns:1fr 1fr;gap:6px}.pdx-g div:nth-child(n+5){display:none}.pdx-g div{padding:6px 10px}.pdx-q>.num:first-child{font-size:24px}}
+/* the key-in form works like an order ticket: Buy / Sell, price and volume with steps, the amount, then confirm */
+.bs{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex:none}
+/* the screenshot box takes the height the fields need instead of setting it (a tall picture no longer makes the dialog scroll) */
+@media (min-width:701px){.kdrop{contain:size;min-height:200px}}
+@media (max-height:760px) and (min-width:701px){.kdrop{min-height:150px}}
+@media (max-width:700px){.recf-img{flex-wrap:wrap}.recf-img>.bs{flex:1 0 100%}}
+.bs button{padding:8px 0;border-radius:12px;font-weight:800;font-size:15px;letter-spacing:.03em;border:1px solid var(--line2);color:var(--ink2);background:rgba(var(--wt),.03);transition:background .15s,color .15s}
+.bs button:hover{color:var(--ink)}
+.bs button[data-s=buy].on{background:linear-gradient(135deg,#7af0bd,#2fc585);color:#04261a;border-color:transparent;box-shadow:0 8px 20px -12px rgba(61,220,151,.8)}
+.bs button[data-s=sell].on{background:linear-gradient(135deg,#ff9aa6,#e5475e);color:#fff;border-color:transparent;box-shadow:0 8px 20px -12px rgba(255,107,125,.8)}
+.stp{display:grid;grid-template-columns:32px minmax(0,1fr) 32px;border:1px solid var(--line2);border-radius:12px;overflow:hidden;background:rgba(var(--wt),.035);transition:border-color .15s,box-shadow .15s}
+.stp:focus-within{border-color:var(--goldln);box-shadow:0 0 0 3px var(--goldbg)}
+.stp input{border:none;border-radius:0;text-align:center;background:none;box-shadow:none!important;padding-left:2px;padding-right:2px;min-width:0}
+.stp button{font-size:17px;line-height:1;color:var(--ink2);display:flex;align-items:center;justify-content:center}
+.stp button:hover{background:rgba(var(--wt),.06);color:var(--gold)}
+.qq{display:flex;gap:4px;flex-wrap:wrap;min-height:20px}
+.qq button{font-size:11.5px;padding:1px 9px;border-radius:999px;border:1px solid var(--line2);color:var(--ink2);white-space:nowrap}
+.qq button:hover{border-color:var(--goldln);color:var(--gold)}
+.krow{display:flex;gap:12px;min-width:0}.krow>.field{flex:1;min-width:0}
+.kq{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink2);min-height:18px;white-space:nowrap;overflow:hidden}
+.kq>*{flex:none}.kq .ell{flex:0 1 auto}
+.kq .slg{--s:20px}
+.kamt{display:flex;justify-content:space-between;gap:10px;padding:7px 12px;border-radius:12px;background:rgba(var(--wt),.035);border:1px solid var(--line);font-size:13px}
+.kamt b{font-size:15px}
+/* check the record before it goes to the coach, as a broker app asks before an order is sent */
+.cfmw{z-index:70;background:rgba(2,4,10,.55)}
+.cfm{width:min(420px,100%);background:var(--mbg);border:1px solid var(--line2);border-radius:22px;box-shadow:var(--shadow);overflow:hidden;animation:pop .2s cubic-bezier(.2,.75,.2,1)}
+.cfm-h{display:flex;align-items:center;gap:12px;padding:14px 18px}
+.cfm-h.buy{background:linear-gradient(100deg,rgba(61,220,151,.18),transparent)}
+.cfm-h.sell{background:linear-gradient(100deg,rgba(255,107,125,.18),transparent)}
+.cfm-h h3{font-size:17px}
+.cfm-r{display:flex;justify-content:space-between;gap:12px;padding:7px 18px;border-top:1px solid var(--line);font-size:13.5px}
+.cfm-r>span{color:var(--mut)}
+.cfm-f{display:flex;gap:8px;padding:12px 18px 16px;border-top:1px solid var(--line)}
+.cfm-f .btn{flex:1}
+:root[data-theme=light] .cfmw{background:rgba(30,38,70,.25)}
+@media (max-width:560px){.gls{gap:6px}.gl{padding:7px 11px}.gl p{font-size:12.5px;margin-top:1px}}
+/* short laptop screens: dialogs tighten a little so they still fit */
+@media (max-height:760px) and (min-width:701px){.mhd{padding-top:14px}.mbd{padding-top:10px;padding-bottom:12px}.mft{padding-bottom:14px}.field{gap:3px}.fgrid{gap:9px}.mbd input,.mbd select{padding-top:7px;padding-bottom:7px}}
+@media (max-width:700px){.recf-img>.field{flex:1 0 100%}}
+@media (max-height:760px) and (min-width:701px){.recf-f .kopt{display:none}}
+@media (max-height:700px) and (min-width:701px){.recf-f .kq{display:none}}
+@media (max-height:700px) and (min-width:701px){.recf-f{gap:7px}.recf-f .field{gap:3px}.recf .cmp .cr{padding:4px 12px}.recf .cmp .ch{padding:6px 12px}.mbox:has(.recf) .mbd{padding-top:10px;padding-bottom:10px}.mbox:has(.recf) .mhd .muted{display:none}.kdrop{min-height:0}.recf-f .note-box{padding:7px 10px}}
+
+/* ---------- VVIP finish: gold hairlines and diamonds, a private-client card, a richer backdrop, gold that catches the light.
+   Decoration only (pseudo-elements and backgrounds), so every layout and the one-screen fit stay as they are. ---------- */
+:root{--goldfx:linear-gradient(135deg,#fdf0c8 0%,#ecc56f 34%,#b9852f 62%,#f6dc9e 100%);--goldline:linear-gradient(90deg,transparent,rgba(240,200,110,.7) 30%,rgba(255,236,190,.9) 50%,rgba(240,200,110,.7) 70%,transparent);
+  --panelfx:linear-gradient(180deg,rgba(24,34,62,.95),rgba(10,15,30,.97));--rim:linear-gradient(140deg,rgba(252,226,160,.75),rgba(235,192,98,.12) 28%,rgba(235,192,98,.05) 62%,rgba(252,226,160,.55));
+  --bgfx:radial-gradient(1100px 600px at 90% -12%,rgba(235,192,98,.2),transparent 62%),radial-gradient(900px 680px at -12% 112%,rgba(70,110,255,.15),transparent 62%),radial-gradient(760px 460px at 50% 125%,rgba(235,192,98,.08),transparent 66%),repeating-linear-gradient(135deg,rgba(255,255,255,.014) 0 1px,transparent 1px 10px)}
+/* every panel carries a fine gold line along its top */
+.pnl{position:relative}
+.pnl:after{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--goldline);opacity:.55;pointer-events:none}
+.kpi{position:relative;overflow:hidden}
+.kpi:after{content:"";position:absolute;left:12%;right:12%;top:0;height:1px;background:var(--goldline);opacity:.5}
+/* a small gold diamond before each panel title */
+.ph h3:before{content:"";display:inline-block;width:6px;height:6px;margin:0 10px 2px 1px;transform:rotate(45deg);background:var(--goldfx);box-shadow:0 0 8px rgba(235,192,98,.55);vertical-align:middle}
+.eyebrow{letter-spacing:.16em}
+/* the headline card: a gold rim and a seal in the corner */
+.pnl.hero{border:1px solid transparent;background:radial-gradient(620px 300px at 0% 0%,rgba(235,192,98,.2),transparent 70%) padding-box,var(--panelfx) padding-box,var(--rim) border-box;box-shadow:0 34px 80px -34px rgba(0,0,0,.85),inset 0 1px 0 rgba(255,240,200,.08)}
+.pnl.hero:after{content:"";position:absolute;right:-70px;bottom:-110px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(235,192,98,.14);box-shadow:0 0 0 22px rgba(235,192,98,.025),0 0 0 44px rgba(235,192,98,.018);background:none;opacity:1;left:auto;top:auto;pointer-events:none}
+.vvip{display:inline-flex;align-items:center;gap:5px;padding:2px 9px 2px 7px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.18em;color:#2a1c03;background:var(--goldfx);box-shadow:0 4px 14px -6px rgba(235,192,98,.8),inset 0 1px 0 rgba(255,255,255,.6);white-space:nowrap;line-height:1.6}
+.vvip:before{content:"";width:5px;height:5px;transform:rotate(45deg);background:#2a1c03;opacity:.75}
+.mline{display:flex;align-items:center;gap:10px;margin-bottom:6px;min-width:0}
+.mline .nm{font-size:12.5px;color:var(--ink2);letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* gold buttons catch the light when pointed at */
+.btn:not(.ghost):not(.soft):not(.bad),.kbig{position:relative;overflow:hidden}
+.btn:not(.ghost):not(.soft):not(.bad):after,.kbig:after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);transition:left .7s ease;pointer-events:none}
+.btn:not(.ghost):not(.soft):not(.bad):hover:after,.kbig:hover:after{left:135%}
+/* tabs and tables in gold */
+.seg button.on{background:linear-gradient(180deg,rgba(235,192,98,.24),rgba(235,192,98,.08));color:var(--gold2);box-shadow:inset 0 0 0 1px rgba(235,192,98,.38)}
+.ot-h{border-bottom-color:rgba(235,192,98,.22)}
+button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,192,98,.07),rgba(235,192,98,.015) 60%,transparent)}
+.ot-r.on{background:linear-gradient(90deg,rgba(235,192,98,.16),rgba(235,192,98,.05) 70%,transparent)}
+.av.gold{box-shadow:0 0 0 2px rgba(235,192,98,.35),0 0 18px -2px rgba(235,192,98,.55)}
+.mbox{border-color:rgba(235,192,98,.22)}
+.menu{border-color:rgba(235,192,98,.2)}
+.acct .main .v{background:var(--goldfx);-webkit-background-clip:text;background-clip:text;color:transparent}
+
 /* light theme ("soft daylight"): a pastel aurora behind slightly see-through panels, so every panel
    picks up a little colour; off-white instead of paper-white and softer ink, bright without glare.
    Each kind of panel gets its own pastel tint (--tint). No blur filters, so it stays fast. */
@@ -509,6 +658,7 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
   --gtxt:linear-gradient(180deg,#d9a03a 0%,#ae7317 48%,#7a4f0b 100%);--note-pu:#5b2bb5;--note-y:#8a4b08;--cash:#d5dbea;--dotfill:#fff;--grid:rgba(30,41,82,.035);--ch:#c0861d;--ch2:#9a6410;--knob:#fff;
   --t-gold:255,229,186;--t-peach:255,219,203;--t-mint:200,243,225;--t-sky:210,227,255;--t-lav:228,219,255;--t-rose:255,216,230;--tint:var(--t-sky);
   --bgfx:radial-gradient(900px 620px at 104% -10%,rgba(255,186,135,.55),transparent 60%),radial-gradient(760px 560px at -6% -14%,rgba(186,166,255,.48),transparent 60%),radial-gradient(900px 640px at -8% 114%,rgba(118,172,255,.46),transparent 62%),radial-gradient(780px 540px at 72% 120%,rgba(104,218,182,.42),transparent 62%)}
+:root[data-theme=light] .ot-h,:root[data-theme=light] .ckt-h,:root[data-theme=light] .kv>span:nth-child(odd){background:rgba(30,41,82,.045)}
 :root[data-theme=light] .pnl,:root[data-theme=light] .card{background:radial-gradient(640px 260px at 0% 0%,rgba(var(--tint),.95),transparent 75%),linear-gradient(160deg,rgba(var(--tint),.35),rgba(var(--tint),.08) 60%,rgba(var(--tint),.22)),var(--surf);border-color:rgba(255,255,255,.75)}
 :root[data-theme=light] .kpi{background:linear-gradient(135deg,rgba(var(--tint),.95),rgba(255,255,255,.62) 78%);border-color:rgba(255,255,255,.85);box-shadow:inset 0 1px 0 var(--hi),var(--sh1)}
 :root[data-theme=light] .kstrip>.kpi:nth-child(5n+1){--tint:var(--t-gold)}:root[data-theme=light] .kstrip>.kpi:nth-child(5n+2){--tint:var(--t-mint)}:root[data-theme=light] .kstrip>.kpi:nth-child(5n+3){--tint:var(--t-peach)}:root[data-theme=light] .kstrip>.kpi:nth-child(5n+4){--tint:var(--t-sky)}:root[data-theme=light] .kstrip>.kpi:nth-child(5n){--tint:var(--t-lav)}
@@ -536,7 +686,7 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 :root[data-theme=light] .prow{background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.85)}
 :root[data-theme=light] .prow:hover{background:rgba(255,255,255,.8)}
 :root[data-theme=light] .prow.on{background:linear-gradient(100deg,rgba(var(--t-gold),.9),rgba(255,255,255,.6));border-color:var(--goldln)}
-:root[data-theme=light] .ptool{background:rgba(255,255,255,.55);border-color:rgba(255,255,255,.9)}
+
 :root[data-theme=light] .tk-cta{background:linear-gradient(90deg,rgba(var(--t-sky),.95),rgba(255,255,255,.55) 85%)}
 :root[data-theme=light] .seg,:root[data-theme=light] .nav{background:rgba(255,255,255,.5);border-color:rgba(255,255,255,.8)}
 :root[data-theme=light] .seg button.on{background:#fff;box-shadow:0 2px 8px -3px rgba(60,72,150,.35)}
@@ -550,7 +700,55 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 :root[data-theme=light] .btn.ghost,:root[data-theme=light] .btn.soft,:root[data-theme=light] .btn.bad{box-shadow:none}
 :root[data-theme=light] .slg.mono{box-shadow:none}
 
-@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+/* light theme for VVIP: warm ivory and champagne with gold, instead of a rainbow of pastels */
+:root[data-theme=light]{--bg:#efe9df;--bg2:#fffdf8;--bg3:#f7f1e6;--bg4:#e6dccb;--line:rgba(110,80,30,.1);--line2:rgba(110,80,30,.18);--ink:#2a2418;--ink2:#5a4e3a;--mut:#857760;
+  --t-gold:255,236,196;--t-peach:255,233,214;--t-mint:236,244,234;--t-sky:236,240,250;--t-lav:243,237,250;--t-rose:252,234,238;--tint:var(--t-gold);
+  --goldline:linear-gradient(90deg,transparent,rgba(184,132,47,.55) 30%,rgba(214,166,72,.8) 50%,rgba(184,132,47,.55) 70%,transparent);
+  --panelfx:linear-gradient(180deg,#fffdf8,#fbf5ea);--rim:linear-gradient(140deg,rgba(214,166,72,.8),rgba(214,166,72,.18) 30%,rgba(214,166,72,.08) 62%,rgba(214,166,72,.6));
+  --bgfx:radial-gradient(1000px 600px at 92% -12%,rgba(240,200,120,.42),transparent 62%),radial-gradient(800px 600px at -8% -12%,rgba(226,214,250,.55),transparent 62%),radial-gradient(900px 640px at -8% 114%,rgba(255,226,196,.6),transparent 62%),repeating-linear-gradient(135deg,rgba(120,90,40,.025) 0 1px,transparent 1px 10px)}
+:root[data-theme=light] .pnl.hero{border-color:transparent;background:radial-gradient(620px 300px at 0% 0%,rgba(240,200,120,.35),transparent 70%) padding-box,var(--panelfx) padding-box,var(--rim) border-box;box-shadow:0 28px 60px -32px rgba(120,80,20,.45),inset 0 1px 0 #fff}
+:root[data-theme=light] .pnl.hero:after{border-color:rgba(184,132,47,.18);box-shadow:0 0 0 22px rgba(184,132,47,.035),0 0 0 44px rgba(184,132,47,.025)}
+:root[data-theme=light] .seg button.on{background:linear-gradient(180deg,#fff,#fbf1dc);color:var(--gold2);box-shadow:inset 0 0 0 1px rgba(184,132,47,.35),0 2px 8px -3px rgba(150,100,20,.35)}
+:root[data-theme=light] .ot-h{border-bottom-color:rgba(184,132,47,.25)}
+:root[data-theme=light] .ph h3:before{box-shadow:none}
+:root[data-theme=light] .vvip{color:#2a1c03}
+
+/* data panels stay near white so tables read like a statement */
+:root[data-theme=light] .view>.pnl.jlist,:root[data-theme=light] .view>.pnl.jdet,:root[data-theme=light] .view>.pnl.pmain,:root[data-theme=light] .view>.pnl:has(.exq),:root[data-theme=light] .view>.pnl:has(.vd),:root[data-theme=light] .sub>.pnl:has(.otw){--tint:248,250,254}
+/* the in-app switch turns all motion off (account menu › เอฟเฟกต์เคลื่อนไหว) */
+:root[data-fx=off] *,:root[data-fx=off] *:before,:root[data-fx=off] *:after{animation:none!important;transition:none!important}
+
+/* ===== FX: motion that stays smooth on ordinary laptops and phones. Only transform, opacity, clip and stroke offsets
+   are animated (no blur, no filters, no animated shadows), they play once when a page opens, and a slow ambient light
+   drifts behind the page. All of it follows the in-app switch (data-fx on <html>, saved as p1m-fx). ===== */
+:root{--aur1:rgba(235,192,98,.11);--aur2:rgba(90,130,255,.09)}
+:root[data-theme=light]{--aur1:rgba(240,190,100,.26);--aur2:rgba(200,180,250,.3)}
+@keyframes fx-draw{to{stroke-dashoffset:0}}
+@keyframes fx-fade{from{opacity:0}}
+@keyframes fx-growy{from{transform:scaleY(0)}}
+@keyframes fx-growx{from{transform:scaleX(0)}}
+@keyframes fx-clipx{from{clip-path:inset(-24px 100% -24px -24px)}to{clip-path:inset(-24px -24px -24px -24px)}}
+@keyframes fx-arc{from{stroke-dashoffset:var(--arc)}}
+@keyframes fx-shine{from{background-position:170% 0,0 0}to{background-position:-70% 0,0 0}}
+@keyframes fx-aurora{to{transform:translate3d(7%,-5%,0) rotate(9deg) scale(1.1)}}
+@keyframes fx-pop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.18)}100%{transform:none;opacity:1}}
+:root[data-fx=on] body:after{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none;background:radial-gradient(38% 32% at 28% 28%,var(--aur1),transparent 70%),radial-gradient(34% 30% at 72% 68%,var(--aur2),transparent 70%);animation:fx-aurora 30s ease-in-out infinite alternate;will-change:transform}
+/* charts: the line draws itself, the area and the points follow */
+:root[data-fx=on] .enter .chartw .ln{stroke-dasharray:1;stroke-dashoffset:1;animation:fx-draw 1.5s cubic-bezier(.35,.7,.2,1) .15s forwards}
+:root[data-fx=on] .enter .chartw .ar{animation:fx-fade 1.1s ease .55s both}
+:root[data-fx=on] .enter .chartw .dt,:root[data-fx=on] .enter .chartw .en{animation:fx-fade .6s ease 1.25s both}
+/* bars rise from the zero line one after another; progress bars and rings fill in */
+:root[data-fx=on] .enter .mc i{transform-origin:50% 100%;animation:fx-growy .9s cubic-bezier(.2,.8,.2,1) .2s both}
+:root[data-fx=on] .enter .mb.neg .mc i{transform-origin:50% 0}
+:root[data-fx=on] .enter .mb:nth-child(2) .mc i{animation-delay:.28s}
+:root[data-fx=on] .enter .mb:nth-child(3) .mc i{animation-delay:.36s}
+:root[data-fx=on] .enter .mb:nth-child(4) .mc i{animation-delay:.44s}
+:root[data-fx=on] .enter .mb:nth-child(5) .mc i{animation-delay:.52s}
+:root[data-fx=on] .enter .mb:nth-child(6) .mc i{animation-delay:.6s}
+:root[data-fx=on] .enter .bar i,:root[data-fx=on] .enter .hw i{transform-origin:0 50%;animation:fx-growx 1s cubic-bezier(.2,.8,.2,1) .3s both}
+:root[data-fx=on] .enter .gtrack>i{animation:fx-clipx 1.4s cubic-bezier(.2,.8,.2,1) .3s both}
+:root[data-fx=on] .enter .ring .arc{animation:fx-arc 1.3s cubic-bezier(.2,.8,.2,1) .25s both}
+:root[data-fx=on] .enter .ibtn .bdg{animation:fx-pop .5s cubic-bezier(.3,1.4,.5,1) .6s both}
 
 
 .shell{height:100%;display:grid;grid-template-columns:232px minmax(0,1fr);overflow:hidden}
@@ -605,12 +803,13 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 .lo-t{font-size:12px;font-weight:700;white-space:nowrap;padding:4px 10px;border-radius:999px;background:var(--bluebg);color:var(--blue);flex:none;margin-left:auto}
 .lo-t.dn{background:var(--dnbg);color:var(--dn)}
 .lo-c{display:flex;gap:5px;flex-wrap:wrap}
-.crow{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;text-align:left;padding:9px 6px;border-bottom:1px solid var(--line);border-radius:10px}
+.crow{display:grid;grid-template-columns:28px minmax(0,1fr) auto auto;gap:10px;align-items:center;width:100%;text-align:left;padding:9px 6px;border-bottom:1px solid var(--line);border-radius:10px}
 .crow:hover{background:rgba(var(--wt),.04)}
 .crow .cn{display:flex;flex-direction:column;min-width:0}
 
 /* order matrix */
 .v-plans{grid-template-rows:minmax(0,1fr)}
+@media (max-width:900px){.v-plans .ph [data-act=plannew]{display:none}}
 .mx{width:100%;border-collapse:collapse;font-size:13.5px;table-layout:fixed}
 .mx th:first-child{width:44%}.mx th.opt{width:70px}
 .mx .oh>div{overflow:hidden}
@@ -640,7 +839,7 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 .lgd i{width:9px;height:9px;border-radius:50%}
 
 /* verify */
-.v-record{grid-template-columns:330px minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+.v-record{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);grid-template-rows:auto minmax(0,1fr)}
 .vi{display:flex;gap:11px;align-items:center;padding:8px 10px;border-radius:14px;width:100%;text-align:left;border:1px solid transparent;transition:background .15s}
 .vi:hover{background:rgba(var(--wt),.04)}
 .vi.on{background:var(--goldbg);border-color:var(--goldln)}
@@ -648,6 +847,8 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 .vd-slip{min-height:0;display:flex;flex-direction:column;gap:6px}
 .vd-slip .slip{flex:1;min-height:0}
 .vd-info{display:flex;flex-direction:column;gap:10px;min-height:0;min-width:0}
+.vd-info>.rd{flex:1;height:auto}
+.vd-act{display:flex;gap:8px;flex-wrap:wrap;align-items:center;flex:none;padding-top:10px;border-top:1px solid var(--line)}
 .vd-mt{display:none}
 .vd-mt .slipth{width:34px;height:44px}
 .cmpt td,.cmpt th{padding:5px 8px}
@@ -696,6 +897,15 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 
 /* CS */
 .v-overview{grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+/* head coach: three columns of clients, the worrying ones first */
+.v-overview.hd{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto minmax(0,1fr)}
+.hcol .ph{gap:8px}.hcol .ph h3:before{display:none}.hcol .ph h3{flex:none}.hrow .gchips .tag{text-overflow:ellipsis;max-width:100%}.hcol .hdot{width:10px;height:10px;border-radius:50%;flex:none}
+.hcol.red .hdot{background:var(--dn);box-shadow:0 0 10px var(--dn)}.hcol.amber .hdot{background:var(--warn)}.hcol.ok .hdot{background:var(--up)}
+.hcol.red{border-color:color-mix(in srgb,var(--dn) 35%,transparent)}
+.hrow{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);border-radius:10px}
+.hrow:hover{background:rgba(var(--wt),.04)}
+.hrow .hn{display:flex;flex-direction:column;gap:2px;min-width:0}
+.hrow .ic{color:var(--mut)}
 .v-tasks,.v-clients.cs,.v-team{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
 .gchips{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px;min-width:0}
 .gchips .tag{max-width:100%;overflow:hidden}
@@ -755,7 +965,17 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
 @media (max-height:700px){.qchips{display:none}.vd-info{gap:8px}.cmpt td,.cmpt th{padding:4px 8px}.vd{grid-template-columns:190px minmax(0,1fr)}}
 @media (max-width:1020px){.v-clients{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:1180px){.tbl .opt{display:none}}
-@media (max-width:1100px){.k6{grid-template-columns:repeat(3,minmax(0,1fr))}.v-record{grid-template-columns:280px minmax(0,1fr)}.v-apps{grid-template-columns:minmax(0,1fr) 340px}.arow2 .opt{display:none}}
+/* growth chart column in the all-clients list */
+.tbl .nw{white-space:nowrap}
+.grw{display:block;width:120px;height:36px}
+.grw polygon{fill-opacity:.14}
+.grw polyline{fill:none;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.grw .z{stroke:var(--line2);stroke-width:1;stroke-dasharray:2 3}
+@media (max-width:1380px){.tbl .c-1m{display:none}}
+@media (max-width:1100px){.grw{width:92px;height:28px}}
+.crow .grw{width:76px;height:30px}
+@media (max-width:420px){.crow .grw{width:54px;height:26px}.crow{gap:8px}}
+@media (max-width:1100px){.k6{grid-template-columns:repeat(3,minmax(0,1fr))}.v-apps{grid-template-columns:minmax(0,1fr) 340px}.arow2 .opt{display:none}}
 @media (max-width:1180px){
   .shell{grid-template-columns:70px minmax(0,1fr)}
   .sbar{padding:12px 9px}.sbar .lg{padding:0 0 10px;align-items:center}.sbar .lg img{height:24px}.sbar .lg div,.sbar .grp,.sbar nav .l,.sbar .who div{display:none}
@@ -795,6 +1015,29 @@ kbd{font-family:inherit;font-size:11px;font-weight:700;padding:1px 6px;border-ra
   .v-apps .vh>.muted{display:none}.v-apps .vh .chips{flex-wrap:nowrap;overflow:hidden}.v-apps .chip{padding:4px 9px;font-size:12.5px}.arow2{grid-template-columns:30px minmax(0,1fr) auto;gap:8px}.arow2 .opt{display:none}
   #toasts{left:10px;right:10px;bottom:84px}
 }
+
+/* order, position and report tables (see .otw in shared.css): columns per table, hiding the less important ones as the panel narrows */
+.exq{--cols:78px minmax(90px,1.1fr) minmax(76px,.9fr) 44px minmax(54px,.7fr) minmax(54px,.7fr) minmax(84px,.9fr) 92px;container-type:inline-size}
+.exq .mo-t{display:none}
+@container (max-width:720px){.exq .c-cl{display:none}.exq .mo{display:block}.exq .ot-h,.exq .ot-r{--cols:70px minmax(88px,1.1fr) 42px minmax(50px,.7fr) minmax(52px,.7fr) minmax(82px,.9fr) 90px}}
+@container (max-width:600px){.exq .c-px{display:none}.exq .ot-h,.exq .ot-r{--cols:66px minmax(84px,1.1fr) 42px minmax(50px,.7fr) minmax(80px,.9fr) 88px;column-gap:10px;padding:0 12px}}
+@container (max-width:500px){.exq .c-pl{display:none}.exq .ot-h,.exq .ot-r{--cols:62px minmax(76px,1fr) 40px minmax(46px,.7fr) 86px;column-gap:8px;padding:0 10px}}
+/* narrow (the desk's queue): stock with the client and time underneath, side, status */
+@container (max-width:360px){.exq .c-t,.exq .c-qty{display:none}.exq .mo-t{display:inline}.exq .ot-h,.exq .ot-r{--cols:minmax(0,1fr) 40px 88px}}
+.ctg{--cols:minmax(96px,1.2fr) minmax(86px,1fr) minmax(86px,1fr) minmax(66px,.8fr) minmax(80px,.9fr);container-type:inline-size}
+.cex{--cols:78px minmax(86px,1.1fr) 44px minmax(56px,.7fr) minmax(56px,.7fr) minmax(84px,.9fr) minmax(84px,.85fr) 84px 40px;container-type:inline-size}
+@container (max-width:760px){.cex .c-plan{display:none}.cex .ot-h,.cex .ot-r{--cols:72px minmax(80px,1.1fr) 42px minmax(50px,.7fr) minmax(52px,.7fr) minmax(80px,.9fr) 80px 38px}}
+.ctold{--cols:70px minmax(86px,1fr) minmax(76px,.8fr) minmax(116px,1.4fr) minmax(80px,.9fr);container-type:inline-size}
+.cps{--cols:minmax(84px,1.2fr) minmax(52px,.7fr) minmax(56px,.7fr) minmax(56px,.7fr) minmax(80px,1fr);container-type:inline-size}
+.csn{--cols:minmax(80px,1fr) minmax(70px,1fr) minmax(70px,1fr) 68px;container-type:inline-size}
+.cel{--cols:64px 44px minmax(100px,1.6fr) minmax(74px,1fr) 36px;container-type:inline-size}
+@container (max-width:640px){.cex .c-plan,.cex .c-pl{display:none}.cex .ot-h,.cex .ot-r{--cols:72px minmax(80px,1.1fr) 42px minmax(50px,.7fr) minmax(52px,.7fr) 80px 38px}}
+@container (max-width:540px){.ctg .c-out{display:none}.ctg .ot-h,.ctg .ot-r{--cols:minmax(90px,1.2fr) minmax(86px,1fr) minmax(62px,.8fr) minmax(76px,.9fr)}.ctold .c-lv{display:none}.ctold .ot-h,.ctold .ot-r{--cols:62px minmax(80px,1fr) minmax(66px,.8fr) minmax(78px,.9fr)}}
+@container (max-width:500px){.cex .c-px,.cex .c-pic,.cex .c-pl{display:none}.cex .ot-h,.cex .ot-r{--cols:58px minmax(70px,1fr) 40px minmax(46px,.7fr) 78px;column-gap:8px;padding:0 10px}}
+@container (max-width:420px){.cel .c-pic{display:none}.cel .ot-h,.cel .ot-r{--cols:58px 42px minmax(90px,1.6fr) minmax(70px,1fr);column-gap:8px;padding:0 10px}}
+@container (max-width:390px){.ctg .ot-h,.ctg .ot-r{--cols:minmax(74px,1.2fr) minmax(72px,1fr) minmax(54px,.8fr) minmax(68px,.9fr);column-gap:8px;padding:0 10px}.cps .c-avg{display:none}.cps .ot-h,.cps .ot-r{--cols:minmax(74px,1.2fr) minmax(48px,.7fr) minmax(54px,.7fr) minmax(74px,1fr);column-gap:8px;padding:0 10px}}
+@container (max-width:330px){.csn .c-rec{display:none}.csn .ot-h,.csn .ot-r{--cols:minmax(76px,1fr) minmax(68px,1fr) 66px}}
+@container (max-width:300px){.cps .c-last{display:none}.cps .ot-h,.cps .ot-r{--cols:minmax(74px,1.2fr) minmax(48px,.7fr) minmax(74px,1fr)}}
 </style>
 </head>
 <body>
@@ -808,7 +1051,7 @@ const LOGO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYoAAACpCAYAAAA1MXo8
    the client's journal and a screenshot the client sends lands in the coach's queue.
    Everything typed by a user is validated on the way in and escaped on the way out. */
 
-const KEY = 'p1m-mockup-v8';
+const KEY = 'p1m-mockup-v9';
 // program terms (CEO's announcement): tuition 1,000,000 baht, refund = 1,000,000 - profit (full refund
 // with no profit or a loss), anything above 1,000,000 profit is the client's; ports of 5,000,000+ baht,
 // 6-12 months with a coach; at most 50 clients per intake, chosen by interview
@@ -971,7 +1214,7 @@ function generate() {
     };
   });
   // each client's own trading plan, agreed with the coach before the program started
-  clients.forEach(c => { c.tp = makeTP(c, COURSE_START - TZ - (6 - (+c.id.slice(1) % 3)) * DAY + 15 * HR, c.coach); });
+  clients.forEach(c => { c.tp = makeTP(c, COURSE_START - TZ - (6 - (+c.id.slice(1) % 3)) * DAY + 15 * HR, 'head'); });
   clients[0].seen = BASE - 25 * MIN;
   clients[3].seen = BASE - 26 * HR;
   let fid = 0;
@@ -1008,7 +1251,7 @@ function generate() {
   const rec = (x, c, co, cnote, ver = 'ok') => {
     const by = r() < .85 ? c.id : co.id, at0 = Math.min(BASE - 30 * MIN, x.at + (10 + Math.floor(r() * 110)) * MIN);
     const e = { id: 'e' + (++eid), ...x, slip: c.trait < .7 && r() < .08 ? null : { m: 1 }, rec: { by, at: at0 }, ver };
-    if (ver === 'ok' && by !== co.id) Object.assign(e, { vby: co.id, vat: Math.min(BASE - 6 * MIN, at0 + (20 + Math.floor(r() * 200)) * MIN) });
+    if (ver === 'ok') Object.assign(e, { vby: 'head', vat: Math.min(BASE - 6 * MIN, at0 + (20 + Math.floor(r() * 200)) * MIN) });
     if (ver !== 'ok') e.rec.by = c.id;
     if (cnote) e.cnote = cnote;
     execs.push(e);
@@ -1023,7 +1266,7 @@ function generate() {
     const syms = co.no === 1 ? C1SYM : Object.keys(SYMS).sort(() => r() - .5).slice(0, 14), evs = [];
     const mk = (key, sym, hi0, d0, h, mi, note, size, x) => {
       const R = x ? (v => Math.round(v * (x.mk === 'tfex' ? 10 : 100)) / (x.mk === 'tfex' ? 10 : 100)) : rt, hi = R(hi0);
-      const p = { id: `${co.id}-${key}`, key, coach: co.id, sym, lo: R(hi * (x ? .995 : .988)), hi, sl: R(hi * (x?.sl || .955)), tp1: R(hi * (x?.tp1 || 1.07)), tp2: R(hi * (x?.tp2 || 1.12)), size, at: at(d0, h, mi), note, sls: [], end: null };
+      const p = { id: `${co.id}-${key}`, key, coach: co.id, by: 'head', sym, lo: R(hi * (x ? .995 : .988)), hi, sl: R(hi * (x?.sl || .955)), tp1: R(hi * (x?.tp1 || 1.07)), tp2: R(hi * (x?.tp2 || 1.12)), size, at: at(d0, h, mi), note, sls: [], end: null };
       if (x) Object.assign(p, { mk: x.mk, k: x.k });
       plans.push(p); evs.push({ t: p.at, p, type: 'open' });
       return p;
@@ -1256,7 +1499,7 @@ function freshCache() { const m = Math.floor(now() / MIN); if (m !== cacheMin) {
 function load() {
   try { const s = JSON.parse(localStorage.getItem(KEY)); if (validState(s)) { clearCache(); return s; } } catch (e) { }
   const s = generate();
-  try { ['p1m-mockup-v2', 'p1m-mockup-v3', 'p1m-mockup-v4', 'p1m-mockup-v5', 'p1m-mockup-v6', 'p1m-mockup-v7'].forEach(k => localStorage.removeItem(k)); localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { }
+  try { ['p1m-mockup-v2', 'p1m-mockup-v3', 'p1m-mockup-v4', 'p1m-mockup-v5', 'p1m-mockup-v6', 'p1m-mockup-v7', 'p1m-mockup-v8'].forEach(k => localStorage.removeItem(k)); localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { }
   clearCache();
   return s;
 }
@@ -1288,6 +1531,16 @@ const cname = c => c.name + (c.last ? ' ' + c.last : '');
 const seenTxt = c => c.seen ? when(c.seen, now()) : 'ยังไม่เคยเข้าใช้งาน';
 const initial = s => (String(s).match(/[ก-ฮA-Za-z0-9]/) || ['?'])[0];
 const netFlow = c => c.flows.reduce((s, f) => s + (f.pend || f.rej ? 0 : f.amt), 0);
+// the client's capital now: what they started with plus every top-up; profit, returns and the plan's limits all count from it
+const capOf = c => c.cap + netFlow(c);
+// every change of capital with the running total, newest first
+function capLog(c) {
+  let tot = c.cap;
+  const out = [{ at: c.joined, amt: c.cap, kind: 'start', tot, note: '' }];
+  c.flows.filter(f => !f.pend && !f.rej).slice().sort((a, b) => a.at - b.at).forEach(f => { tot += f.amt; out.push({ at: f.at, amt: f.amt, kind: f.cap ? 'cap' : f.amt > 0 ? 'dep' : 'wd', tot, note: f.cap && f.note !== 'เพิ่มทุน' ? f.note : '' }); });
+  return out.reverse();
+}
+const CAP_KIND = { start: ['gold', 'ทุนเริ่มต้น'], cap: ['ok', 'เพิ่มทุน'], dep: ['ok', 'ฝากเงิน'], wd: ['dn', 'ถอนเงิน'] };
 const netFlowAt = (c, at) => c.flows.reduce((s, f) => s + (f.pend || f.rej || f.at > at ? 0 : f.amt), 0);
 const execsOf = clId => memo('ex:' + clId, () => S.execs.filter(e => e.cl === clId).sort((a, b) => a.at - b.at));
 // The records are the main reference ("ยึดบันทึกเป็นหลัก"): port value = cash + holdings at the
@@ -1334,7 +1587,7 @@ function tpDoc(c, short) {
     ${row(short ? 'หยุดทบทวนเมื่อ' : 'ระดับขาดทุนที่ต้องหยุดทบทวน', `พอร์ตลดลง ${fmt(tp.stop * 100)}% จากจุดสูงสุด${short ? '' : ' · หยุดเปิดสถานะใหม่และทบทวนกับโค้ช'}`)}
     ${short ? '' : row('การทบทวน', 'Coaching ทุกวันอังคาร 19:00 น. · Review ประจำเดือนนัดแรกของเดือน')}
   </div>
-  ${short ? '' : `<div class="xs muted tpf">ฉบับที่ ${tp.no} · ${coach(tp.by)?.name || 'โค้ช'}จัดทำ ${dstr(tp.at)} ${String(tz(tp.at).getUTCFullYear() + 543).slice(2)} · ${tp.ok ? `<span class="up">ลูกค้ายืนยันแล้ว ${dstr(tp.ok)} ${String(tz(tp.ok).getUTCFullYear() + 543).slice(2)}</span>` : '<span class="warn">รอลูกค้ายืนยันฉบับนี้</span>'}</div>`}`;
+  ${short ? '' : `<div class="xs muted tpf">ฉบับที่ ${tp.no} · ${staffName(tp.by)}จัดทำ ${dstr(tp.at)} ${String(tz(tp.at).getUTCFullYear() + 543).slice(2)} · ${tp.ok ? `<span class="up">ลูกค้ายืนยันแล้ว ${dstr(tp.ok)} ${String(tz(tp.ok).getUTCFullYear() + 543).slice(2)}</span>` : '<span class="warn">รอลูกค้ายืนยันฉบับนี้</span>'}</div>`}`;
 }
 // what the coach told this client for each plan: kept as evidence ("เราไม่เคยบอกให้ซื้อตัวนี้ ด้วย position เท่านี้")
 const toldOf = c => S.plans.filter(p => p.alloc?.[c.id]).sort((a, b) => b.at - a.at);
@@ -1378,6 +1631,18 @@ function repSeries(c) {
 }
 // the same weeks as profit (deposits and withdrawals taken out), measured against the 1,000,000 goal
 const profitSeries = c => repSeries(c).map((p, i) => ({ ...p, v: p.est ? profit(c) : i ? p.v - c.cap - netFlowAt(c, p.t + DAY - TZ) : 0, tip: i ? p.tip : 'เริ่มโปรแกรม' }));
+// cumulative profit at each close: every trading day, every Friday (weekly, with the reported-value check) or every month end
+function plSeries(c, per) {
+  if (per !== 'd' && per !== 'm') return profitSeries(c);
+  const T = T_(), pts = per === 'm' ? [{ t: S.days[0], v: 0, tip: 'เริ่มโปรแกรม' }] : [];
+  for (let i = 0; i < T; i++) {
+    const d = new Date(S.days[i]), nx = new Date(S.days[i + 1]);
+    if (per === 'm' && nx.getUTCMonth() === d.getUTCMonth()) continue;
+    pts.push({ t: S.days[i], v: c.eq[i] - c.cap - netFlowAt(c, S.days[i] + DAY - TZ), tip: per === 'm' ? `สิ้นเดือน${TH_M[d.getUTCMonth()]} · ตามบันทึก` : 'ปิดวัน · ตามบันทึก' });
+  }
+  pts.push({ t: S.days[T], v: profit(c), est: true, tip: 'วันนี้ · ราคาปิดล่าสุด' });
+  return pts;
+}
 const lastFriday = () => { for (let i = T_() - 1; i >= 0; i--) if (new Date(S.days[i]).getUTCDay() === 5) return i; return 0; };
 function drawdown(c) { const v = [...c.eq.slice(0, -1), eqNow(c)]; let pk = 0, dd = 0; for (const x of v) { pk = Math.max(pk, x); dd = Math.max(dd, (pk - x) / pk); } const hi = Math.max(...v); return { max: dd, now: (hi - eqNow(c)) / hi }; }
 
@@ -1405,12 +1670,101 @@ function extraChecks(e) {
 }
 const checks = e => memo('ck:' + e.id, () => ({ ...checkEx(e, planOf(e.plan)), ...extraChecks(e) }));
 const allOk = r => Object.values(r).every(v => v === 'ok');
+// ใบเหลือง (yellow card): each record the head coach confirmed that did not follow the plan (or bought off-plan),
+// and each time a coach wrote down that the client did not follow a plan. At YC_LIMIT cards the coach talks with the
+// client about the refund guarantee (it may be cancelled if the client keeps trading off the plan).
+// cards count over the last 30 days, so a client who gets back on the plan sees them expire
+const YC_LIMIT = 3, YC_DAYS = 30;
+const yellowCards = clId => memo('yc:' + clId, () => [
+  ...execsOf(clId).filter(e => e.at <= now() && e.ver === 'ok' && !allOk(checks(e)) && (e.plan || e.side === 'buy')).map(e => ({ at: e.vat || e.at, ex: e.id, sym: e.sym, why: e.plan ? devText(e) : `ซื้อ ${e.sym} นอกแผน` })),
+  ...S.misses.filter(m => m.cl === clId && m.at <= now()).map(m => ({ at: m.at, miss: m.id, sym: planOf(m.plan)?.sym || '', why: MISS[m.kind] }))].filter(y => y.at >= now() - YC_DAYS * DAY).sort((a, b) => a.at - b.at));
+const ycOf = e => { const i = yellowCards(e.cl).findIndex(y => y.ex === e.id); return i < 0 ? 0 : i + 1; };
+// small yellow cards, n of them filled (up to the limit)
+const ycIcons = n => `<span class="ycs" title="ใบเหลือง ${n} ใบใน ${YC_DAYS} วันล่าสุด · ครบ ${YC_LIMIT} ใบ โค้ชจะนัดคุยเรื่องสิทธิ์คืนค่าเรียน">${Array.from({ length: Math.max(YC_LIMIT, n) }, (_, i) => `<i class="${i < n ? 'on' : ''}"></i>`).join('')}</span>`;
+
+// buys and sells of one holding paired first in, first out: each sale shows the buys it closed and its profit or loss
+// (against the average cost at the time, the way Realized P/L is counted); each buy shows what was sold of it and what is left
+function lotMatch(clId, key) {
+  return memo('lot:' + clId + ':' + key, () => {
+    const sells = {}, buys = {}, lots = [];
+    let qty = 0, cost = 0;
+    for (const x of execsOf(clId)) {
+      if ((x.plan || 'off:' + x.sym) !== key) continue;
+      const k = x.k || 1;
+      if (x.side === 'buy') { const l = { e: x, left: x.qty, sold: [] }; lots.push(l); buys[x.id] = l; qty += x.qty; cost += x.px * x.qty * k; continue; }
+      const q = Math.min(x.qty, qty), avg = qty ? cost / qty : x.px * k, used = [], pl = (x.px * k - avg) * q;
+      let need = q;
+      for (const l of lots) { if (!need) break; const t = Math.min(l.left, need); if (!t) continue; l.left -= t; need -= t; used.push({ e: l.e, qty: t }); l.sold.push({ e: x, qty: t, pl: q ? pl * t / q : 0 }); }
+      sells[x.id] = { buys: used, qty: q, avg: avg / k, pl, r: avg ? (x.px * k - avg) / avg : 0 };
+      cost -= avg * q; qty -= q;
+    }
+    return { sells, buys };
+  });
+}
+const matchOf = e => { const m = lotMatch(e.cl, e.plan || 'off:' + e.sym); return e.side === 'sell' ? m.sells[e.id] : m.buys[e.id]; };
+// the result of a sale, for a table cell
+const salePL = e => { const m = e.side === 'sell' && matchOf(e); return m ? `<span class="t2 ${m.pl >= 0 ? 'up' : 'dn'}" title="กำไร/ขาดทุนเทียบต้นทุนเฉลี่ย ${px(m.avg)}">${signed(m.pl)} · ${pct(m.r)}</span>` : ''; };
+/* ---------- one record, laid out the same way on every page: where it is in its life, the order itself,
+   the check against the plan, the buy-sell pairing, then notes ---------- */
+const planSt = e => !e.plan ? ['pu', 'นอกแผน'] : allOk(checks(e)) ? ['ok', 'ตรงแผน'] : ['warn', 'ไม่ตรงแผน'];
+// the plan result in a table cell: a coloured dot and the word (a yellow card when the record earned one)
+const planMark = e => { const [c, l] = planSt(e); return `<span class="pst ${c}" title="${c === 'warn' ? esc(devText(e)) : ''}">${ycOf(e) ? '<i class="ycard"></i>' : '<i></i>'}${l}</span>`; };
+// profit or loss of a sale in a table cell ("—" for a buy)
+const plCell = e => { const m = e.side === 'sell' && matchOf(e); return m ? `<b class="${m.pl >= 0 ? 'up' : 'dn'}">${signed(m.pl)}</b><span class="t2 ${m.pl >= 0 ? 'up' : 'dn'}">${pct(m.r, 1)}</span>` : '<span class="muted">—</span>'; };
+function recTrack(e) {
+  const ok = e.ver === 'ok', fix = e.ver === 'fix', [pc, pl] = planSt(e), yc = ycOf(e);
+  const st = [
+    ['done', 'บันทึกแล้ว', `${dstr(e.rec.at)} ${tstr(e.rec.at)} · ${e.rec.by === e.cl ? 'ลูกค้า' : byName(e.rec.by)}${e.fixed ? ' · แก้ไข' : ''}`],
+    [ok ? 'done' : fix ? 'warn' : 'now', ok ? 'ตรวจกับภาพแล้ว' : fix ? 'ขอให้แก้ไข' : 'รอตรวจกับภาพ', ok ? `${staffName(e.vby || 'head')}${e.vat ? ' · ' + dstr(e.vat) + ' ' + tstr(e.vat) : ''}` : fix ? `${staffName(e.fix?.by || 'head')} · ${dstr(e.fix?.at || e.rec.at)}` : 'หัวหน้าโค้ช'],
+    [ok ? (pc === 'ok' ? 'done' : pc === 'pu' ? 'pu' : 'warn') : 'todo', ok ? pl : 'ผลเทียบแผน', ok ? (pc === 'ok' ? 'นับเป็นรายการตรงแผน' : yc ? `ใบเหลืองใบที่ ${yc}` : 'เรื่องที่ต้องเคลียร์') : 'หลังตรวจกับภาพ']];
+  return `<div class="rtrack">${st.map(([k, t, x]) => `<div class="rt ${k}"><i>${k === 'done' ? ic('check', 10, 3) : ''}</i><b>${t}</b><span>${x}</span></div>`).join('')}</div>`;
+}
+function recFacts(e) {
+  const p = planOf(e.plan), u = unitOf(e), k = e.k || 1;
+  const rows = [['วันเวลาที่ Matched', `${dt(e.at)} น.`], ...(e.side === 'sell' ? [['เหตุผลการขาย', e.plan && e.why && SELL_WHY[e.why] ? SELL_WHY[e.why] : 'ขายเอง ไม่มีคำแนะนำ']] : []), ['ราคา × จำนวน', `${px(e.px)} × ${fmt(e.qty)} ${u}`], ['มูลค่า', `<b>฿${baht(e.px * e.qty * k)}</b>`],
+    ...(e.mk && e.mk !== 'th' ? [[MK_K[e.mk][0], fmt(k, 2)]] : []), ['แผน', p ? `${esc(p.sym)} · ${planBy(p)} ${dstr(p.at)}` : '<span class="pu">ไม่มีแผน · นอกแผน</span>']];
+  const m = e.side === 'buy' && matchOf(e);
+  if (m) { const sold = m.sold.reduce((a, x) => a + x.qty, 0), pl = m.sold.reduce((a, x) => a + x.pl, 0); rows.push(['ขายแล้ว', sold ? `${fmt(sold)} · เหลือ ${fmt(m.left)} ${u} · <b class="${pl >= 0 ? 'up' : 'dn'}">${signed(pl)}</b>` : `ยังไม่ได้ขาย · ถือ ${fmt(m.left)} ${u}`]); }
+  return `<div class="kv">${rows.map(([a, b]) => `<span>${a}</span><span class="num">${b}</span>`).join('')}</div>`;
+}
+function recCheck(e) {
+  const p = planOf(e.plan), r = checks(e), u = unitOf(e), rows = [];
+  const res = v => `<span class="tag ${v === 'ok' ? 'ok' : v === 'no' ? 'dn' : 'warn'}">${v === 'ok' ? ic('check', 11) + 'ตรง' : v === 'no' ? ic('x', 11) + 'ไม่มี' : ic('alert', 11) + 'ไม่ตรง'}</span>`;
+  if (p && e.side === 'buy') rows.push(['ราคา', `${px(p.lo)}–${px(p.hi)}`, px(e.px), r.px], ['จำนวน', e.pq ? `${fmt(e.pq)} ${u}` : '—', `${fmt(e.qty)} ${u}`, r.qty]);
+  if (p && e.side === 'sell') rows.push(['การขาย', e.why === 'cut' ? `SL ${px(slAt(p, e.at))}` : e.why === 'tp1' ? `TP1 ${px(p.tp1)}` : e.why === 'tp2' ? `TP2 ${px(p.tp2)}` : e.why === 'coach' ? 'ตามคำแนะนำ' : 'ไม่มีคำแนะนำ', px(e.px), r.sell]);
+  if (!p) rows.push(['แผน', 'ต้องมีแผน', e.side === 'buy' ? 'ซื้อนอกแผน' : 'ขายรายการนอกแผน', 'no']);
+  if (r.size) rows.push(['ขนาดสถานะ', `≤ ฿${kb(tpLimit(client(e.cl)))}`, 'เกินแผนเทรด', r.size]);
+  if (r.avg) rows.push(['ถัวขาดทุน', 'ไม่ซื้อต่ำกว่าทุน', 'ซื้อต่ำกว่าทุน', r.avg]);
+  rows.push(['หลักฐาน', 'ภาพจากแอป', e.slip ? 'แนบแล้ว' : 'ไม่มี', r.proof]);
+  const yc = ycOf(e), why = e.plan ? devText(e) : e.side === 'buy' ? `ซื้อ ${e.sym} โดยไม่มีแผนจากหัวหน้าโค้ช` : '';
+  return `<div class="ckt"><div class="ckt-h"><span>หัวข้อ</span><span>ตามแผน</span><span>จริง</span><span>ผล</span></div>${rows.map(([a, b, c, v]) => `<div class="ckt-r"><span>${a}</span><span class="num">${b}</span><b class="num">${c}</b>${res(v)}</div>`).join('')}</div>${!allOk(r) && why ? `<div class="rnote warn">${yc ? `<i class="ycard"></i><span><b>ใบเหลืองใบที่ ${yc}${yc >= YC_LIMIT ? ' · ครบเกณฑ์ โค้ชจะนัดคุยเรื่องสิทธิ์คืนค่าเรียน' : ''}</b> · ${esc(why)}</span>` : `${ic('alert', 13)}<span>${esc(why)}</span>`}</div>` : ''}`;
+}
+const recSec = (t, html, tail = '') => html ? `<section class="rsec"><h4><span>${t}</span>${tail}</h4>${html}</section>` : '';
+// notes on a record: why the client bought, what the client told the coach, what the coach wrote back
+const recNotes = (e, coachName) => [e.side === 'buy' && e.reason ? ['เหตุผลที่เข้า', esc(e.reason)] : null, e.knote ? ['ข้อความจากลูกค้า', `“${esc(e.knote)}”`] : null, e.cnote ? [`หมายเหตุจาก${coachName || 'โค้ช'}`, esc(e.cnote)] : null].filter(Boolean).map(([a, b]) => `<div class="rnote"><b>${a}</b><span>${b}</span></div>`).join('');
+
+// which buys a sale closed (or what was sold of a buy), with the profit or loss
+function matchBox(e) {
+  const m = matchOf(e), u = unitOf(e); if (!m) return '';
+  const line = (x, q, extra = '') => `<div class="mtc-r"><span class="side ${x.side}">${x.side === 'buy' ? 'BUY' : 'SELL'}</span><span class="num">${dstr(x.at)} ${tstr(x.at)}</span><span class="num">${fmt(q)} ${u} @ ${px(x.px)}</span>${extra}</div>`;
+  if (e.side === 'sell') return `<div class="mtc"><div class="mtc-h"><span>ขายคู่กับรายการซื้อ</span><b class="num ${m.pl >= 0 ? 'up' : 'dn'}">${m.pl >= 0 ? 'กำไร' : 'ขาดทุน'} ${signed(m.pl)} <span class="xs">(${pct(m.r, 2)})</span></b></div>
+    ${m.buys.map(b => line(b.e, b.qty)).join('') || '<div class="mtc-r muted">ไม่พบรายการซื้อที่บันทึกไว้</div>'}
+    <div class="mtc-f num">ต้นทุนเฉลี่ย ${px(m.avg)} → ขาย ${px(e.px)} × ${fmt(m.qty)} ${u}</div></div>`;
+  const sold = m.sold.reduce((a, x) => a + x.qty, 0), pl = m.sold.reduce((a, x) => a + x.pl, 0);
+  return `<div class="mtc"><div class="mtc-h"><span>${sold ? `ขายแล้ว ${fmt(sold)} · เหลือ ${fmt(m.left)} ${u}` : `ยังไม่ได้ขาย · ถือ ${fmt(m.left)} ${u}`}</span>${sold ? `<b class="num ${pl >= 0 ? 'up' : 'dn'}">${signed(pl)}</b>` : ''}</div>
+    ${m.sold.map(x => line(x.e, x.qty, `<b class="num ${x.pl >= 0 ? 'up' : 'dn'}">${signed(x.pl)}</b>`)).join('')}</div>`;
+}
 const CK_LABEL = { plan: 'แผน', px: 'ราคา', qty: 'จำนวน', sell: 'การขาย', proof: 'หลักฐาน', avg: 'ถัวขาดทุน', size: 'ขนาดสถานะ' };
 const ckHtml = r => '<span class="checks">' + Object.entries(r).map(([k, v]) => `<span class="ck ${v}">${v === 'ok' ? ic('check', 12) : ic(v === 'no' ? 'x' : 'alert', 12)}${CK_LABEL[k]}</span>`).join('') + '</span>';
 const ckDots = r => '<span class="dots">' + Object.entries(r).map(([k, v]) => `<i class="${v}" title="${CK_LABEL[k]}: ${v === 'ok' ? 'ตรง' : v === 'no' ? 'ไม่มี' : 'ไม่ตรง'}"></i>`).join('') + '</span>';
 // records are keyed by the client (sometimes by the coach for them) and confirmed by the coach
-const byName = id => String(id).startsWith('u') ? cname(client(id)) : coach(id)?.name || 'ทีม CS';
-const VER = { pend: ['blue', 'รอโค้ชตรวจ', 'clock'], fix: ['warn', 'ต้องแก้ไข', 'alert'], ok: ['ok', 'ตรวจแล้ว', 'check'] };
+// staff by id: the head coach, a coach, or CS
+const staffName = id => id === 'head' ? (S.head?.name || 'หัวหน้าโค้ช') : id === 'cs' ? 'ทีม CS' : coach(id)?.name || 'หัวหน้าโค้ช';
+const byName = id => String(id).startsWith('u') ? cname(client(id)) : staffName(id);
+// a plan reaches the clients it was given to (the size told to each one is kept in alloc)
+const planFor = (p, c) => p.alloc ? !!p.alloc[c.id] : p.coach === c.coach;
+const planBy = p => staffName(p.by || p.coach);
+const VER = { pend: ['blue', 'รอหัวหน้าโค้ชตรวจ', 'clock'], fix: ['warn', 'ต้องแก้ไข', 'alert'], ok: ['ok', 'ตรวจแล้ว', 'check'] };
 const verTag = (e, short) => { const [c, l, i] = VER[e.ver] || VER.ok; return `<span class="tag ${c}">${ic(i, 12)}${short && e.ver === 'pend' ? 'รอตรวจ' : l}</span>`; };
 const SELL_WHY = { tp1: 'แบ่งขายทำกำไรที่ TP1', tp2: 'ขายทำกำไรที่ TP2', cut: 'ขายตัดขาดทุนที่ Stop Loss', coach: 'ขายตามคำแนะนำของโค้ช', self: 'ลูกค้าขายเอง (ไม่ตรงแผน)' };
 const MISS = { nocut: 'ไม่ขายตัดขาดทุนตามแผน', nosell: 'ไม่ขายทำกำไรตามแผน' };
@@ -1518,7 +1872,7 @@ function weekStrip(c) {
   return `<div class="wk"><svg class="wbars" viewBox="0 0 100 40" preserveAspectRatio="none" aria-label="ผลรายสัปดาห์"><line x1="0" x2="100" y1="20" y2="20" style="stroke:rgba(var(--wt),.16)" stroke-width="1" vector-effect="non-scaling-stroke"/>${w.map((x, i) => { const h = Math.max(.8, Math.abs(x.r) / max * 18); return `<rect x="${(i * bw + bw * .2).toFixed(2)}" width="${(bw * .6).toFixed(2)}" y="${(x.r >= 0 ? 20 - h : 20).toFixed(2)}" height="${h.toFixed(2)}" style="fill:var(--${x.r >= 0 ? 'up' : 'dn'})"><title>สัปดาห์ ${dstr(x.t)} ${pct(x.r)}</title></rect>`; }).join('')}</svg>
     <div class="wks xs"><span>ดีที่สุด <b class="up num">${pct(best.r)}</b></span><span>แย่ที่สุด <b class="dn num">${pct(worst.r)}</b></span><span>เป็นบวก <b class="num ink2">${up}/${w.length}</b> สัปดาห์</span></div></div>`;
 }
-const histSeg = () => `<div class="seg xsg" role="tablist"><button class="${HIST_TAB === 'rep' ? 'on' : ''}" data-htab="rep">ยอดที่รายงาน</button><button class="${HIST_TAB === 'stmt' ? 'on' : ''}" data-htab="stmt">Statement</button><button class="${HIST_TAB === 'flow' ? 'on' : ''}" data-htab="flow">ฝาก/ถอน</button></div>`;
+const histSeg = () => `<div class="seg xsg" role="tablist"><button class="${HIST_TAB === 'rep' ? 'on' : ''}" data-htab="rep">ยอดที่รายงาน</button><button class="${HIST_TAB === 'stmt' ? 'on' : ''}" data-htab="stmt">Statement</button><button class="${HIST_TAB === 'flow' ? 'on' : ''}" data-htab="flow">ทุน</button></div>`;
 // one row per month: the Statement sent (or still missing)
 const stmtRows = c => stmtDue(c).slice().reverse().map(x => `<div class="frow"><span><b>${ymName(x.ym)}</b><span class="xs muted" style="display:block">${x.got ? `ส่งเมื่อ ${dt(x.got.at)} · ยอดพอร์ต ฿${baht(x.got.val)}` : `กำหนดส่งภายใน ${dstr(x.due)}`}</span></span>${x.got ? '<span class="tag ok">ส่งแล้ว</span>' : x.late ? '<span class="tag dn">ยังไม่ส่ง</span>' : '<span class="tag blue">ยังไม่ถึงกำหนด</span>'}</div>`).join('');
 document.addEventListener('click', e => {
@@ -1609,6 +1963,8 @@ function alerts(at) {
       else if (dd.now >= stop * .6) out.push({ k: `dd:${c.id}:${dayKey(tnow)}`, sev: 'mid', aud: 'coach', type: 'dd', cl: c.id, coach: c.coach, at: tnow, title: `ใกล้ระดับขาดทุนที่ต้องหยุดทบทวน (ลดลง ${pct(-dd.now)})`, detail: `ระดับที่ต้องหยุดตามแผนเทรด ${fmt(stop * 100)}% จากจุดสูงสุด · ควรลดความเสี่ยงของพอร์ต` });
       const a2 = attOf(c.id);
       if (a2.t >= 4 && a2.rate < .8) out.push({ k: `att:${c.id}:${a2.t}`, sev: a2.rate < .7 ? 'high' : 'mid', aud: 'both', type: 'att', cl: c.id, coach: c.coach, at: sessOf(c.id)[0].at, title: `เข้าร่วม Coaching ${a2.n}/${a2.t} นัด (${fmt(a2.rate * 100)}%) ต่ำกว่าเกณฑ์ 80%`, detail: 'ข้อตกลงกำหนดให้เข้าร่วม Coaching และ Review อย่างน้อย 80% ของนัดหมาย' });
+      const ycn = yellowCards(c.id).length;
+      if (ycn >= YC_LIMIT) out.push({ k: `yc:${c.id}:${ycn}`, sev: 'high', aud: 'coach', type: 'yc', cl: c.id, coach: c.coach, at: tnow, title: `ใบเหลือง ${ycn} ใบ: นัดคุยเรื่องสิทธิ์คืนค่าเรียน`, detail: `ไม่ตรงแผน ${ycn} ครั้งใน ${YC_DAYS} วัน · แจ้งลูกค้าว่าหากยังไม่ทำตามแผน อาจยกเลิกการรับประกันคืนค่าเรียน` });
       for (const x of stmtDue(c)) if (x.late && !x.got && tnow > x.due) out.push({ k: `stmt:${c.id}:${x.ym}`, sev: 'mid', aud: 'cs', type: 'stmt', cl: c.id, coach: c.coach, at: x.due, title: `ยังไม่ส่ง Statement เดือน ${ymName(x.ym)}`, detail: 'ส่งรายงานพอร์ตและ Statement จากโบรกเกอร์ทุกเดือน ภายในวันที่ 5 ของเดือนถัดไป' });
     }
     const sevN = { high: 0, mid: 1, low: 2 };
@@ -1633,6 +1989,7 @@ const IC = {
   upload: 'M12 15V4M7.5 8.5L12 4l4.5 4.5M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4',
   image: 'M4 5h16v14H4zM4 15.5l4.5-4.5 4 4 3-3 4.5 4.5M15 9h.01',
   plus: 'M12 5v14M5 12h14',
+  minus: 'M5 12h14',
   user: 'M12 12a4 4 0 1 0 0-8a4 4 0 1 0 0 8M4.5 20.5a7.5 7.5 0 0 1 15 0',
   users: 'M9 11a3.6 3.6 0 1 0 0-7.2A3.6 3.6 0 1 0 9 11M2.5 20a6.5 6.5 0 0 1 13 0M15.5 4.2a3.6 3.6 0 0 1 0 6.6M17.5 13.6A6.5 6.5 0 0 1 21.5 20',
   shield: 'M12 3l8 3v6c0 4.8-3.4 8-8 9-4.6-1-8-4.2-8-9V6z',
@@ -1694,7 +2051,7 @@ function stockModal(s) {
   const asOf = STOCK_DATA.asOf ? dstr(Date.parse(STOCK_DATA.asOf + 'T10:00:00Z')) + ' ' + (+STOCK_DATA.asOf.slice(0, 4) + 543) : '';
   openModal(`<div class="stm">
     <div class="stm-h">${slogo(s, 64)}<div style="min-width:0"><div class="row" style="gap:8px"><h3>${esc(s)}</h3><span class="tag gold">${esc(i.sectorTh)}</span>${i.sign ? `<span class="tag">${esc(i.sign)}</span>` : ''}</div><div class="ink2 ell">${esc(i.th)}</div><div class="xs muted ell">${esc(i.en)}</div></div><button class="x" data-act="close" aria-label="ปิด">${ic('x', 18)}</button></div>
-    <div class="stm-p"><span class="num">${px(last)}</span><span class="tag ${ch >= 0 ? 'ok' : 'dn'} num">${sgn(last - i.prior)}${px(Math.abs(last - i.prior))} (${pct(ch, 2)})</span><span class="xs muted">ราคาปิด ณ ${asOf} · ราคาปิดวันทำการก่อนหน้า ${px(i.prior)} บาท</span></div>
+    <div class="stm-p"><span class="num ${ch > 0 ? 'up' : ch < 0 ? 'dn' : ''}">${px(last)}</span><span class="tag ${ch >= 0 ? 'ok' : 'dn'} num">${sgn(last - i.prior)}${px(Math.abs(last - i.prior))} (${pct(ch, 2)})</span><span class="xs muted">ราคาปิด ณ ${asOf} · ราคาปิดวันทำการก่อนหน้า ${px(i.prior)} บาท</span></div>
     <div class="stm-r"><div class="row xs muted" style="justify-content:space-between"><span>ต่ำสุด 52 สัปดาห์ <b class="num ink2">${px(i.lo52)}</b></span><span>สูงสุด 52 สัปดาห์ <b class="num ink2">${px(i.hi52)}</b></span></div><div class="r52"><i style="left:${pos * 100}%"></i></div></div>
     <div class="stm-k"><div><span>P/E</span><b class="num">${i.pe ? fmt(i.pe, 2) + ' เท่า' : '—'}</b></div><div><span>อัตราเงินปันผลตอบแทน</span><b class="num">${i.dy ? fmt(i.dy, 2) + '%' : '—'}</b></div><div><span>มูลค่าหลักทรัพย์ตามราคาตลาด</span><b class="num">${fmt(i.mcap)} ล้านบาท</b></div></div>
     <p class="xs muted" style="margin:0">${ic('info', 13)} แหล่งข้อมูล: ตลาดหลักทรัพย์แห่งประเทศไทย (SET) ณ วันที่ ${asOf} · ระบบจริงจะแสดงราคาล่าสุดจากผู้ให้บริการข้อมูลที่ได้รับอนุญาต</p>
@@ -1747,29 +2104,6 @@ function miniLadder(op, last, sl = op.sl) {
   const lock = sl >= op.hi;
   return `<span class="mlad" aria-hidden="true">${lock ? `<i class="lk" style="left:${X(op.hi).toFixed(1)}%;width:${w(op.hi, sl)}%"></i>` : `<i class="rk" style="left:${X(sl).toFixed(1)}%;width:${w(sl, op.hi)}%"></i>`}<i class="rw" style="left:${X(op.hi).toFixed(1)}%;width:${w(op.hi, op.tp2)}%"></i><i class="t1" style="left:${X(op.tp1).toFixed(1)}%"></i>${last ? `<i class="lp ${last >= op.hi ? 'up' : last > sl ? 'warn' : 'dn'}" style="left:${X(last).toFixed(1)}%"></i>` : ''}</span>`;
 }
-// TradingView-style position tool: red = risk down to the stop, green = room up to the targets.
-// The latest close, your average cost and each of your fills are marked on it.
-function posTool({ op, sl = op.sl, last, avg, fills = [] }) {
-  const sl0 = op.sl, r1 = op.hi - sl0;
-  const lv = [op.tp2, op.tp1, op.hi, op.lo, sl0, sl], vmax = Math.max(...lv), vmin = Math.min(...lv), span = vmax - vmin;
-  const extra = [last, avg, ...fills.map(f => f.px)].filter(v => v != null);
-  // prices far outside the plan are pinned to the edge so the plan itself stays readable
-  const top = Math.min(Math.max(vmax, ...extra), vmax + span * .3) + span * .07, bot = Math.max(Math.min(vmin, ...extra), vmin - span * .3) - span * .07;
-  const Y = p => Math.max(0, Math.min(100, (top - p) / (top - bot) * 100)), out = p => p > top || p < bot;
-  const z = (cls, a, b) => `<i class="pz ${cls}" style="top:${Y(a).toFixed(2)}%;height:${Math.max(0, Y(b) - Y(a)).toFixed(2)}%"></i>`;
-  const lvl = (cls, k, p, t) => `<div class="pl ${cls}" style="top:${Y(p).toFixed(2)}%" title="${esc(t)}"><span class="pr num">${sgnR((p - op.hi) / r1)}</span><span class="pn"></span><span class="pk">${k} <b class="num">${px(p)}</b> <em class="num">${pct((p - op.hi) / op.hi)}</em></span></div>`;
-  const moved = Math.abs(sl - sl0) > 1e-9, be = Math.abs(sl - op.hi) < 1e-9;
-  let h = `<div class="ptool"><div class="pt-in">${z('rw', op.tp2, op.tp1)}${z('rw2', op.tp1, op.hi)}${sl < op.hi ? z('rk', op.hi, sl) : z('lk', sl, op.hi)}${moved ? z('rk0', op.hi, sl0) : ''}${z('en', op.hi, op.lo)}`;
-  h += lvl('tp', 'TP2', op.tp2, 'ราคาเป้าหมายที่สอง (Take Profit 2)') + lvl('tp', 'TP1', op.tp1, 'ราคาเป้าหมายแรก (Take Profit 1)');
-  h += be ? `<div class="pl en" style="top:${Y(op.hi).toFixed(2)}%" title="เลื่อน Stop Loss มาที่ราคาเข้าซื้อแล้ว (Breakeven)"><span class="pr num">0R</span><span class="pn"></span><span class="pk">SL <b class="num">${px(sl)}</b> <em>= Entry</em></span></div>`
-    : lvl('en', 'Entry', op.hi, `ราคาเข้าซื้อ ${px(op.lo)}–${px(op.hi)}`) + lvl(sl < op.hi ? 'sl' : 'lk', moved ? 'SL ใหม่' : 'SL', sl, 'จุดตัดขาดทุน (Stop Loss)');
-  if (moved) h += `<div class="pl old" style="top:${Y(sl0).toFixed(2)}%" title="จุดตัดขาดทุนเดิม"><span class="pr num">−1.0R</span><span class="pn"></span><span class="pk">SL เดิม <b class="num">${px(sl0)}</b></span></div>`;
-  if (avg) h += `<div class="pm avg" style="top:${Y(avg).toFixed(2)}%"><span class="num">ทุน ${px(avg)}</span></div>`;
-  const fs = [...fills].sort((a, b) => a.at - b.at);
-  fs.forEach((f, i) => { h += `<i class="pf ${f.side}" style="top:${Y(f.px).toFixed(2)}%;left:calc(var(--ax) + (100% - var(--ax) - var(--lb)) * ${(fs.length > 1 ? .3 + i / (fs.length - 1) * .4 : .5).toFixed(3)})" title="${f.side === 'buy' ? 'ซื้อ' : 'ขาย'} ${fmt(f.qty)} หุ้น @ ${px(f.px)} · ${dt(f.at)}"></i>`; });
-  if (last) h += `<div class="pm last ${last >= (avg || op.hi) ? 'up' : last > sl ? 'warn' : 'dn'} ${out(last) ? 'out' : ''}" style="top:${Y(last).toFixed(2)}%"><span class="num">${out(last) ? (last > top ? '▲ ' : '▼ ') : ''}ปิด ${px(last)}</span></div>`;
-  return h + '</div></div>';
-}
 // small countdown ring: how much of the response window is left
 function cdRing(left, total, size = 34) {
   const f = Math.max(0, Math.min(1, left / total)), r = (size - 4) / 2, c = 2 * Math.PI * r;
@@ -1815,7 +2149,7 @@ document.addEventListener('click', e => { if (e.target.closest('[data-act="cmdk"
 /* ---------- small visuals ---------- */
 function ring(score, size = 64, stroke = 6) {
   const r = (size - stroke) / 2, c = 2 * Math.PI * r, col = { ok: 'var(--up)', warn: 'var(--warn)', dn: 'var(--dn)' }[scoreTone(score)];
-  return `<div class="ring" style="width:${size}px;height:${size}px;font-size:${Math.round(size * .3)}px;color:${col}"><svg width="${size}" height="${size}"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" style="stroke:rgba(var(--wt),.07)" stroke-width="${stroke}" fill="none"/><circle cx="${size / 2}" cy="${size / 2}" r="${r}" stroke="currentColor" stroke-opacity=".16" stroke-width="${stroke + 6}" fill="none" stroke-linecap="round" stroke-dasharray="${c * score / 100} ${c}"/><circle class="arc" cx="${size / 2}" cy="${size / 2}" r="${r}" stroke="currentColor" stroke-width="${stroke}" fill="none" stroke-linecap="round" stroke-dasharray="${c * score / 100} ${c}"/></svg><b class="num">${score}</b></div>`;
+  return `<div class="ring" style="width:${size}px;height:${size}px;font-size:${Math.round(size * .3)}px;color:${col}"><svg width="${size}" height="${size}"><circle cx="${size / 2}" cy="${size / 2}" r="${r}" style="stroke:rgba(var(--wt),.07)" stroke-width="${stroke}" fill="none"/><circle cx="${size / 2}" cy="${size / 2}" r="${r}" stroke="currentColor" stroke-opacity=".16" stroke-width="${stroke + 6}" fill="none" stroke-linecap="round" stroke-dasharray="${c * score / 100} ${c}"/><circle class="arc" cx="${size / 2}" cy="${size / 2}" r="${r}" stroke="currentColor" stroke-width="${stroke}" fill="none" stroke-linecap="round" stroke-dasharray="${c * score / 100} ${c}" style="--arc:${(c * score / 100).toFixed(1)}"/></svg><b class="num">${score}</b></div>`;
 }
 function spark(vals, w = 120, h = 34) {
   const lo = Math.min(...vals), hi = Math.max(...vals), sx = w / Math.max(1, vals.length - 1), sy = v => h - 3 - (v - lo) / (hi - lo || 1) * (h - 6);
@@ -1850,7 +2184,7 @@ function lineChart(id, pts, { w = 760, h = 240, refs = [], kind } = {}) {
   if (CHARTS[id]) CHARTS[id].xy = pts.map(p => [X(p.t), Y(p.v)]);
   return `<div class="chartw" data-chart="${esc(id)}"><svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="display:block;overflow:visible" role="img" aria-label="${kind === 'pl' ? 'กราฟกำไรสะสม' : 'กราฟมูลค่าพอร์ต'}">
     <defs><linearGradient id="g-${esc(id)}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--ch)" stop-opacity=".3"/><stop offset=".7" style="stop-color:var(--ch)" stop-opacity=".05"/><stop offset="1" style="stop-color:var(--ch)" stop-opacity="0"/></linearGradient></defs>
-    ${grid}${xl}${rl}<path d="${area}" fill="url(#g-${esc(id)})"/><path d="${line}" fill="none" style="stroke:var(--ch)" stroke-opacity=".16" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="${line}" fill="none" style="stroke:var(--ch)" stroke-width="2.4" stroke-linejoin="round"/>${dots}${end}
+    ${grid}${xl}${rl}<path class="ar" d="${area}" fill="url(#g-${esc(id)})"/><path class="ln" pathLength="1" d="${line}" fill="none" style="stroke:var(--ch)" stroke-opacity=".16" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path class="ln" pathLength="1" d="${line}" fill="none" style="stroke:var(--ch)" stroke-width="2.4" stroke-linejoin="round"/><g class="dt">${dots}</g><g class="en">${end}</g>
     <line class="hl" x1="0" x2="0" y1="${pt}" y2="${H - pb}" style="display:none;stroke:rgba(var(--wt),.2)"/><circle class="hd" r="4.5" style="display:none;fill:var(--ch2)"/>
   </svg><div class="ctip" style="display:none"></div></div>`;
 }
@@ -1884,7 +2218,9 @@ function fitPagers(root = document) {
     const key = box.dataset.pg, rows = [...box.children];
     if (!box.offsetParent && !box.getClientRects().length) return;   // panel hidden behind a tab
     const area = box.closest('.pb') || box.parentElement;
-    const limit = () => area.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(area).paddingBottom) || 0);
+    // a totals row under the list (Deal Summary) stays on screen too
+    const tail = () => { let h = 0; for (let n = box.nextElementSibling; n; n = n.nextElementSibling) h += n.getBoundingClientRect().height; return h; };
+    const limit = () => area.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(area).paddingBottom) || 0) - tail();
     const gap = parseFloat(getComputedStyle(box).rowGap) || 0;
     const nav = document.querySelector(`[data-pgn="${key}"]`);
     const setNav = () => { if (nav) nav.innerHTML = n > 1 ? `<button data-pgp="${key}" ${p ? '' : 'disabled'} aria-label="หน้าก่อน">${ic('back', 15)}</button><span class="num">${p + 1}/${n}</span><button data-pgx="${key}" ${p < n - 1 ? '' : 'disabled'} aria-label="หน้าถัดไป">${ic('chev', 15)}</button>` : ''; };
@@ -1988,42 +2324,42 @@ const planQty = (c, p) => { const q = eqNow(c) * p.size / 100 / (p.hi * (p.k || 
 const thLocal = ms => { const d = tz(ms); return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}-${pad(d.getUTCDate())}T${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}`; };
 const fromLocal = s => { const m = /^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d)$/.exec(s || ''); return m ? Date.UTC(+m[1], m[2] - 1, +m[3], +m[4], +m[5]) - TZ : NaN; };
 const cmpRows = rows => rows.map(([k, [c, s]]) => `<div class="cr ${c}"><span class="ico">${ic(c === 'ok' ? 'check' : c === 'no' ? 'x' : c ? 'alert' : 'dots', 12, 2.4)}</span><span class="k">${k}</span><span>${s}</span></div>`).join('');
-// who: 'client' or the coach keying it; cls: clients to pick from; edit: a record sent back to be fixed
-function keyModal({ who, cls, cl, plan, edit, done }) {
+// who: 'client' or the coach keying it; cls: clients to pick from; edit: a record sent back to be fixed;
+// side / pos / sym open it ready to sell a holding (pos = its key) or to buy more of a stock off-plan
+function keyModal({ who, cls, cl, plan, edit, done, side: side0, pos, sym: sym0, mk: mk0 }) {
   const byClient = who === 'client', c0 = client(edit?.cl || cl || cls[0].id), editKey = edit && (edit.plan || 'off:' + edit.sym);
-  let side = edit?.side || 'buy', why = edit?.side === 'sell' && edit.plan && edit.why !== 'self' ? edit.why : 'tp1', mk = edit?.mk || planOf(plan)?.mk || 'th', slip = edit?.slip ? { ...edit.slip } : null;
+  let side = edit?.side || side0 || 'buy', why = edit?.side === 'sell' && edit.plan && edit.why !== 'self' ? edit.why : 'tp1', mk = edit?.mk || planOf(plan)?.mk || mk0 || 'th', slip = edit?.slip ? { ...edit.slip } : null;
   const mkSeg = c => `<select id="kmk" aria-label="ตลาด">${(c.mks || ['th']).map(m => `<option value="${m}" ${m === mk ? 'selected' : ''}>${MARKETS[m][0]}</option>`).join('')}</select>`;
   const pic = () => slip ? (safeImg(slip.img) ? `<img class="slip" src="${safeImg(slip.img)}" alt="ภาพที่แนบ">` : slipSvg(slip.mock || edit || { sym: '—', side, px: 0, qty: 0, at: now() }, c0)) : `<span class="kd-i">${ic('image', 26)}</span>`;
-  const box = openModal(mhead(edit ? 'แก้ไขรายการ' : byClient ? 'บันทึกรายการซื้อขาย' : 'บันทึกรายการให้ลูกค้า', byClient ? `บันทึกหลังคำสั่งซื้อขายในแอป Matched แล้ว พร้อมแนบภาพหน้าสถานะคำสั่ง · ${coach(c0.coach).name} จะตรวจและเทียบกับแผนให้` : 'จากภาพที่ลูกค้าส่งทาง LINE · บันทึกโดยโค้ชถือว่าตรวจแล้ว ลูกค้าจะเห็นรายการนี้ทันที') + `<div class="mbd"><div class="recf">
-    <div class="recf-img"><div class="kdrop ${slip ? 'has' : ''}" id="drop" role="button" tabindex="0" aria-label="แนบภาพหลักฐาน"><div class="kd-p" id="dropTh">${pic()}</div><div class="kd-t"><b id="dropTx">${slip ? '<span class="up">แนบภาพแล้ว</span> · แตะเพื่อเปลี่ยน' : 'แนบภาพหลักฐาน <span class="dn">*</span>'}</b><span class="hint">หน้าสถานะคำสั่ง (Order Status) ที่เห็นชื่อ จำนวน ราคาที่ Matched และเวลา · ไม่เกิน 8 MB</span></div></div>
+  const box = openModal(mhead(edit ? 'แก้ไขรายการ' : byClient ? 'บันทึกรายการซื้อขาย' : 'บันทึกรายการให้ลูกค้า', byClient ? `บันทึกหลังคำสั่งซื้อขายในแอป Matched แล้ว พร้อมแนบภาพหน้าสถานะคำสั่ง · หัวหน้าโค้ชจะตรวจกับภาพและเทียบกับแผนให้` : 'จากภาพที่ลูกค้าส่งทาง LINE · หัวหน้าโค้ชจะตรวจกับภาพอีกครั้ง ลูกค้าเห็นรายการนี้ทันที') + `<div class="mbd"><div class="recf">
+    <div class="recf-img">${byClient ? '' : `<div class="field"><label for="kcl">ลูกค้า</label><select id="kcl" ${edit ? 'disabled' : ''}>${cls.map(c => `<option value="${c.id}" ${c.id === c0.id ? 'selected' : ''}>${esc(cname(c))}</option>`).join('')}</select></div>`}<div class="bs" id="kside" role="group" aria-label="ประเภทรายการ"><button type="button" data-s="buy" class="${side === 'buy' ? 'on' : ''}">ซื้อ · BUY</button><button type="button" data-s="sell" class="${side === 'sell' ? 'on' : ''}">ขาย · SELL</button></div><div class="kdrop ${slip ? 'has' : ''}" id="drop" role="button" tabindex="0" aria-label="แนบภาพหลักฐาน"><div class="kd-p" id="dropTh">${pic()}</div><div class="kd-t"><b id="dropTx">${slip ? '<span class="up">แนบภาพแล้ว</span> · แตะเพื่อเปลี่ยน' : 'แนบภาพหลักฐาน <span class="dn">*</span>'}</b><span class="hint">หน้าสถานะคำสั่ง (Order Status) ที่เห็นชื่อ จำนวน ราคาที่ Matched และเวลา · ไม่เกิน 8 MB</span></div></div>
       <button class="btn soft sm" type="button" id="mock">ใช้ภาพตัวอย่าง</button><input type="file" id="file" accept="image/png,image/jpeg,image/webp" hidden></div>
     <div class="recf-f">
-      ${edit?.fix ? `<div class="note-box y">${ic('chat', 16)}<span><b>${coach(edit.fix.by)?.name || 'โค้ช'}:</b> ${esc(edit.fix.note)}</span></div>` : ''}
-      ${byClient ? '' : `<div class="field"><label for="kcl">ลูกค้า</label><select id="kcl" ${edit ? 'disabled' : ''}>${cls.map(c => `<option value="${c.id}" ${c.id === c0.id ? 'selected' : ''}>${esc(cname(c))}</option>`).join('')}</select></div>`}
-      <div class="fgrid"><div class="field"><label for="kmk">ตลาด</label><div id="kmkw">${mkSeg(c0)}</div></div>
-        <div class="field"><label>ประเภท</label><div class="seg" id="kside"><button type="button" data-s="buy" class="${side === 'buy' ? 'on' : ''}">ซื้อ</button><button type="button" data-s="sell" class="${side === 'sell' ? 'on' : ''}">ขาย</button></div></div></div>
-      <div class="field"><label for="kplan" id="kplanl">แผนของโค้ช</label><select id="kplan"></select></div>
+      ${edit?.fix ? `<div class="note-box y">${ic('chat', 16)}<span><b>${staffName(edit.fix.by)}:</b> ${esc(edit.fix.note)}</span></div>` : ''}
+      <div class="krow"><div class="field" id="fmk"><label for="kmk">ตลาด</label><div id="kmkw">${mkSeg(c0)}</div></div><div class="field" style="flex:2.2"><label for="kplan" id="kplanl">แผนจากหัวหน้าโค้ช</label><select id="kplan"></select><div class="hint kq" id="kq"></div></div></div>
       <div class="field" id="fsym"><label for="ksym">ชื่อหุ้น / สินทรัพย์</label><input id="ksym" list="ksyms" maxlength="15" autocomplete="off" style="text-transform:uppercase" placeholder="เช่น BANPU"><datalist id="ksyms"></datalist></div>
-      <div class="f3"><div class="field"><label for="kpx">ราคาที่ Matched</label><input id="kpx" type="number" step="0.01" min="0" inputmode="decimal" value="${edit ? edit.px : ''}"></div><div class="field"><label for="kqty" id="kqtyl">จำนวน</label><input id="kqty" type="number" min="1" inputmode="numeric" value="${edit ? edit.qty : ''}"><div class="hint" id="kpq"></div></div><div class="field"><label for="kat">วันเวลาที่ Matched</label><input id="kat" type="datetime-local" value="${thLocal(edit?.at || now())}"></div></div>
+      <div class="f3"><div class="field"><label for="kpx">ราคาที่ Matched</label><div class="stp"><button type="button" data-stp="kpx" data-d="-1" aria-label="ลดราคา 1 ช่วงราคา">−</button><input id="kpx" type="number" step="0.01" min="0" inputmode="decimal" value="${edit ? edit.px : ''}"><button type="button" data-stp="kpx" data-d="1" aria-label="เพิ่มราคา 1 ช่วงราคา">+</button></div><div class="hint num" id="kamt"></div></div>
+        <div class="field"><label for="kqty" id="kqtyl">จำนวน</label><div class="stp"><button type="button" data-stp="kqty" data-d="-1" aria-label="ลดจำนวน">−</button><input id="kqty" type="number" min="1" inputmode="numeric" value="${edit ? edit.qty : ''}"><button type="button" data-stp="kqty" data-d="1" aria-label="เพิ่มจำนวน">+</button></div><div class="hint qq" id="kpq"></div></div>
+        <div class="field"><label for="kat">วันเวลาที่ Matched</label><input id="kat" type="datetime-local" value="${thLocal(edit?.at || now())}"></div></div>
       <div class="field" id="fk"><label for="kk" id="kkl"></label><input id="kk" type="number" step="0.01" min="0" inputmode="decimal"><div class="hint" id="kkh"></div></div>
       <div class="field" id="fwhy"><label>เหตุผลการขาย</label><div class="seg xsg" id="kwhy">${Object.entries({ tp1: 'TP1', tp2: 'TP2', cut: 'ตัดขาดทุน', coach: 'ตามโค้ชแนะนำ', self: byClient ? 'ขายเอง' : 'ลูกค้าขายเอง' }).map(([k, l]) => `<button type="button" data-w="${k}" class="${k === why ? 'on' : ''}">${l}</button>`).join('')}</div></div>
       <div class="field" id="foff"><label for="koff">เหตุผลที่เข้า <span class="dn">*</span></label><input id="koff" maxlength="200" placeholder="เช่น ราคาย่อมาที่แนวรับ ตามแผนของโค้ช" value="${edit && edit.side === 'buy' ? esc((edit.plan ? edit.reason : edit.why !== 'self' ? edit.why : '') || '') : ''}"></div>
       <div class="field"><label for="knote" class="kopt">${byClient ? 'ข้อความถึงโค้ช' : 'หมายเหตุถึงลูกค้า'} <span class="muted">(ไม่บังคับ)</span></label><input id="knote" maxlength="300" placeholder="${byClient ? 'เช่น ซื้อตามที่คุยกับโค้ชเมื่อเช้า' : 'ลูกค้าจะเห็นข้อความนี้ในบันทึกการซื้อขาย'}" value="${esc((byClient ? edit?.knote : edit?.cnote) || '')}"></div>
       <div class="cmp" id="kcmp" style="margin:0"></div>
     </div></div></div>
-    <div class="mft"><span class="ferr" id="err"></span><span class="sp"></span><button class="btn ghost" data-act="close">ยกเลิก</button><button class="btn" id="save" disabled>${ic(byClient ? 'send' : 'check', 16)} ${byClient ? (edit ? 'ส่งให้โค้ชตรวจอีกครั้ง' : 'ส่งให้โค้ชตรวจ') : 'บันทึกรายการ'}</button></div>`, 'wide');
+    <div class="mft"><span class="ferr" id="err"></span><span class="sp"></span><button class="btn ghost" data-act="close">ยกเลิก</button><button class="btn ${side}" id="save" disabled></button></div>`, 'wide');
   const $b = q => $(q, box), val = id => $b('#' + id).value, cl0 = () => client(byClient ? c0.id : val('kcl'));
   const R2 = v => mk === 'th' ? rt(v) : Math.round(v * 100) / 100;
   // positions to sell from; the record being fixed is left out so its own quantity is not counted twice
   const sellable = c => positions(c.id).filter(x => (x.mk || 'th') === mk && (x.qty > 0 || x.key === editKey)).map(x => ({ ...x, qty: x.qty + (edit && edit.side === 'sell' && x.key === editKey ? edit.qty : 0) - (edit && edit.side === 'buy' && x.key === editKey ? edit.qty : 0) })).filter(x => x.qty > 0);
   function planOpts() {
-    const c = cl0(), keep = val('kplan'), want = edit ? editKey : plan;
-    const opts = side === 'buy' ? S.plans.filter(p => p.coach === c.coach && (p.mk || 'th') === mk && p.at <= now() && (!p.alloc || p.alloc[c.id]) && (planLive(p) || p.id === edit?.plan)).sort((a, b) => b.at - a.at).map(p => [p.id, `${p.sym} · Entry ${px(p.lo)}–${px(p.hi)} · ${dstr(p.at)}`])
+    const c = cl0(), keep = val('kplan'), want = edit ? editKey : side === 'sell' ? pos : plan;
+    const opts = side === 'buy' ? S.plans.filter(p => planFor(p, c) && (p.mk || 'th') === mk && p.at <= now() && (planLive(p) || p.id === edit?.plan)).sort((a, b) => b.at - a.at).map(p => [p.id, `${p.sym} · Entry ${px(p.lo)}–${px(p.hi)} · ${dstr(p.at)}`])
       : sellable(c).map(x => [x.key, `${x.sym} · ถือ ${fmt(x.qty)} ${unitOf(x)}${x.plan ? '' : ' (นอกแผน)'}`]);
     $b('#kplan').innerHTML = opts.map(([k, l]) => `<option value="${esc(k)}">${esc(l)}</option>`).join('') + (side === 'buy' ? '<option value="">ไม่มีในแผน (ซื้อนอกแผน)</option>' : '');
     if (opts.some(o => o[0] === keep)) $b('#kplan').value = keep; else if (want && opts.some(o => o[0] === want)) $b('#kplan').value = want; else if (side === 'buy' && edit && !edit.plan) $b('#kplan').value = '';
     if (side === 'sell' && !opts.length) $b('#kplan').innerHTML = `<option value="">ไม่มี${MARKETS[mk][0]}ที่ถืออยู่</option>`;
-    $b('#kplanl').textContent = side === 'buy' ? 'แผนของโค้ช' : 'สินทรัพย์ที่ขาย';
+    $b('#kplanl').textContent = side === 'buy' ? 'แผนจากหัวหน้าโค้ช' : 'สินทรัพย์ที่ขาย';
     $b('#ksyms').innerHTML = (mk === 'th' ? Object.keys(STOCK_DATA.list || {}) : mkSyms(mk)).map(s => `<option value="${esc(s)}">`).join('');
     const kd = MK_K[mk];
     if (kd) { $b('#kkl').textContent = kd[0]; $b('#kkh').textContent = kd[2]; if (!val('kk')) $b('#kk').value = edit?.k || (mk === 'us' ? kd[1] : planOf(val('kplan'))?.k || kd[1]); }
@@ -2042,7 +2378,14 @@ function keyModal({ who, cls, cl, plan, edit, done }) {
     $b('#fsym').hidden = !off; $b('#foff').hidden = side !== 'buy'; $b('#fwhy').hidden = side !== 'sell' || !x.p; $b('#fk').hidden = mk === 'th';
     $b('#kmkw').closest('.field').hidden = (x.c.mks || ['th']).length < 2 && mk === 'th';
     $b('#kqtyl').textContent = `จำนวน (${u})`; $b('#kqty').step = mk === 'th' ? 100 : 1;
-    $b('#kpq').textContent = x.pq ? `โค้ชแนะนำ ${fmt(x.pq)} ${u}` : x.held ? `ถืออยู่ ${fmt(x.held.qty)} ${u}` : '';
+    const half = x.held ? (mk === 'th' ? Math.max(100, lot(x.held.qty / 2)) : Math.max(1, Math.floor(x.held.qty / 2))) : 0;
+    $b('#kpq').innerHTML = x.pq ? `<button type="button" data-q="${x.pq}" title="ใส่จำนวนตามที่โค้ชแนะนำ">ตามแผน ${fmt(x.pq)}</button>` : x.held ? `<button type="button" data-q="${x.held.qty}">ทั้งหมด ${fmt(x.held.qty)}</button>${half < x.held.qty ? `<button type="button" data-q="${half}">ครึ่งหนึ่ง ${fmt(half)}</button>` : ''}` : '';
+    const si = x.sym && validSym(x.sym) ? stock(x.sym) : null, lp = x.sym && validSym(x.sym) ? lastPx(x.sym) : null, ch = si?.prior && lp ? (lp - si.prior) / si.prior : null;
+    $b('#kq').innerHTML = x.sym && lp ? `${slogo(x.sym, 18)}<b>${esc(x.sym)}</b>${si?.short ? `<span class="ell">${esc(si.short)}</span>` : ''}<span>ราคาปิด <b class="num">${px(lp)}</b>${ch != null ? ` <span class="num ${ch >= 0 ? 'up' : 'dn'}">${pct(ch, 2)}</span>` : ''}</span>${x.held ? `<span>· ถือ ${fmt(x.held.qty)} ทุน ${px(x.held.avg)}</span>` : ''}` : '';
+    const amt = validPx(x.px) && validQty(x.qty) ? x.px * x.qty * (mk === 'th' ? 1 : validK(x.k) ? x.k : 0) : 0;
+    $b('#kamt').innerHTML = amt ? `มูลค่า <b>฿${baht(amt)}</b>${side === 'sell' && x.held ? ` · <span class="${x.px >= x.held.avg ? 'up' : 'dn'}">${signed((x.px - x.held.avg) * x.qty * (mk === 'th' ? 1 : x.k))}</span>` : ''}` : '';
+    $b('#save').className = `btn ${side}`;
+    $b('#save').innerHTML = `${ic(side === 'buy' ? 'plus' : 'minus', 16)} ${side === 'buy' ? 'บันทึกซื้อ' : 'บันทึกขาย'}${edit ? ' (แก้ไข)' : ''}`;
     let err = '';
     if (off && x.sym && !validSym(x.sym)) err = 'ชื่อใช้ได้เฉพาะ A–Z ตัวเลข และ . - &';
     else if (val('kpx') && !validPx(x.px)) err = 'ราคาไม่ถูกต้อง';
@@ -2066,11 +2409,31 @@ function keyModal({ who, cls, cl, plan, edit, done }) {
       else rows.push(['การขาย', [r.sell, r.sell === 'ok' ? SELL_WHY[why] : why === 'self' ? 'ขายเองโดยไม่มีคำแนะนำ นับว่าไม่ตรงแผน' : `ต่ำกว่า Stop Loss ${pct((x.px - slAt(x.p, x.at)) / slAt(x.p, x.at))} (ตัดขาดทุนช้า)`]]);
       rows.push(...xrow, ['หลักฐาน', [slip ? 'ok' : 'no', slip ? 'แนบภาพแล้ว' : 'ยังไม่ได้แนบภาพ']]);
       const bad = rows.filter(q => q[1][0] !== 'ok').length;
+      verdict = bad ? `<span class="warn">ไม่ตรงแผน ${bad} ข้อ</span>` : '<span class="up">ตรงแผน</span>';
       $b('#kcmp').innerHTML = `<div class="ch"><span>เทียบกับแผน ${esc(x.p.sym)}</span>${bad ? `<span class="warn">ไม่ตรง ${bad} ข้อ${byClient ? ' · โค้ชจะติดต่อเพื่อพูดคุย' : ' · ขึ้นเป็นเรื่องที่ต้องเคลียร์'}</span>` : '<span class="up">ตรงแผน</span>'}</div>` + cmpRows(rows);
-    } else $b('#kcmp').innerHTML = off ? `<div class="ch"><span>รายการนอกแผน · ไม่มีคำแนะนำจากโค้ช</span><span class="warn">มีผลต่อคะแนนวินัย</span></div>` + cmpRows(xrow) : '';
+    } else { $b('#kcmp').innerHTML = off ? `<div class="ch"><span>รายการนอกแผน · ไม่มีคำแนะนำจากโค้ช</span><span class="warn">มีผลต่อคะแนนวินัย</span></div>` + cmpRows(xrow) : ''; verdict = off ? '<span class="pu">นอกแผน</span>' : side === 'sell' && x.held && !x.held.plan ? '<span class="pu">ขายรายการนอกแผน</span>' : ''; }
     $b('#err').textContent = err;
     $b('#save').disabled = !!err || !(validPx(x.px) && validQty(x.qty) && (x.p || x.held || (off && validSym(x.sym))) && (side === 'buy' || x.held) && (mk === 'th' || validK(x.k)) && slip && Number.isFinite(x.at));
   }
+  let verdict = '';
+  // + / - move the price one tick (Thai stocks use SET price steps) and the volume one board lot
+  $b('.recf-f').addEventListener('click', ev => {
+    const st = ev.target.closest('[data-stp]'), qb = ev.target.closest('[data-q]');
+    if (qb) { $b('#kqty').value = qb.dataset.q; return upd(); }
+    if (!st) return;
+    const x = cur(), d = +st.dataset.d, inp = $b('#' + st.dataset.stp);
+    if (st.dataset.stp === 'kpx') {
+      let v = parseFloat(inp.value);
+      if (!validPx(v)) v = x.p ? (side === 'buy' ? x.p.hi : x.p.tp1) : x.held ? x.held.last : lastPx(x.sym) || 0;
+      else { const t = mk === 'th' ? tick(d > 0 ? v : v - 1e-9) : v >= 1000 ? 10 : v >= 100 ? .1 : .01; v = Math.round((v + d * t) * 100) / 100; }
+      if (validPx(v)) inp.value = mk === 'th' ? rt(v) : v;
+    } else {
+      const step = mk === 'th' ? 100 : 1; let v = Number(inp.value);
+      v = validQty(v) ? v + d * step : x.pq || x.held?.qty || step;
+      if (v > 0) inp.value = v;
+    }
+    upd();
+  });
   const setPic = () => { $b('#drop').classList.toggle('has', !!slip); $b('#dropTh').innerHTML = pic(); $b('#dropTx').innerHTML = slip ? '<span class="up">แนบภาพแล้ว</span> · แตะเพื่อเปลี่ยน' : 'แนบภาพหลักฐาน <span class="dn">*</span>'; upd(); };
   const pickFile = () => $b('#file').click();
   $b('#drop').addEventListener('click', pickFile);
@@ -2092,7 +2455,8 @@ function keyModal({ who, cls, cl, plan, edit, done }) {
   let reasonTouched = !!edit;
   $b('#koff').addEventListener('input', () => { reasonTouched = true; });
   box.addEventListener('input', upd); box.addEventListener('change', upd);
-  $b('#save').addEventListener('click', () => {
+  const commit = () => {
+    $('#cfmw')?.remove();
     upd(); if ($b('#save').disabled) return;
     const x = cur(), off = side === 'buy' && !x.p, t = now();
     if (!Object.hasOwn(S.prices, x.sym)) S.prices[x.sym] = x.px;
@@ -2108,7 +2472,7 @@ function keyModal({ who, cls, cl, plan, edit, done }) {
       Object.assign(e, f, { ver: 'pend', fixed: t });
       delete e.vby; delete e.vat;
     } else {
-      e = { id: nid('e'), cl: x.c.id, ...f, rec: { by: byClient ? x.c.id : who.id, at: t }, ver: byClient ? 'pend' : 'ok' };
+      e = { id: nid('e'), cl: x.c.id, ...f, rec: { by: byClient ? x.c.id : who.id, at: t }, ver: 'pend' };
       S.execs.push(e);
     }
     if (byClient) { if (x.note) e.knote = x.note; else delete e.knote; } else if (x.note) e.cnote = x.note;
@@ -2117,8 +2481,24 @@ function keyModal({ who, cls, cl, plan, edit, done }) {
     if (!save()) return;
     closeModal();
     done?.(e);
+  };
+  $b('#save').addEventListener('click', () => {
+    upd(); if ($b('#save').disabled) return;
+    const x = cur(), u = MARKETS[mk][1], k = mk === 'th' ? 1 : x.k;
+    const rows = [...(byClient ? [] : [['ลูกค้า', esc(cname(x.c))]]), ['หุ้น', `${slogo(x.sym, 18)} <b>${esc(x.sym)}</b>`], ['จำนวน', `${fmt(x.qty)} ${u}`], ['ราคาที่ Matched', px(x.px)], ['มูลค่า', `฿${baht(x.px * x.qty * k)}`], ['วันเวลา', dt(x.at)], ...(verdict ? [['เทียบแผน', verdict]] : []), ['ภาพหลักฐาน', '<span class="up">แนบแล้ว</span>']];
+    $('#modal').insertAdjacentHTML('beforeend', `<div class="modal cfmw" id="cfmw"><div class="cfm" role="alertdialog" aria-modal="true" aria-label="ตรวจสอบรายการ"><div class="cfm-h ${side}">${sideTag({ side })}<h3>ตรวจสอบรายการ${side === 'buy' ? 'ซื้อ' : 'ขาย'} ${esc(x.sym)}</h3></div>
+      ${rows.map(([a, b]) => `<div class="cfm-r"><span>${a}</span><span class="num row" style="gap:6px">${b}</span></div>`).join('')}
+      <div class="cfm-f"><button class="btn ghost" id="cfmBack">แก้ไข</button><button class="btn ${side}" id="cfmOk">${ic(byClient ? 'send' : 'check', 16)} ${byClient ? 'ยืนยัน ส่งตรวจ' : 'ยืนยัน บันทึก ส่งตรวจ'}</button></div></div></div>`);
+    const w = $('#cfmw'), back = () => { w.remove(); $b('#save').focus(); };
+    $('#cfmOk', w).focus();
+    $('#cfmOk', w).addEventListener('click', commit);
+    $('#cfmBack', w).addEventListener('click', back);
+    w.addEventListener('mousedown', ev => { if (ev.target === w) back(); });
+    w.addEventListener('keydown', ev => { if (ev.key === 'Escape') { ev.stopPropagation(); back(); } });
   });
-  planOpts(); upd();
+  planOpts();
+  if (sym0 && side === 'buy') { $b('#kplan').value = ''; $b('#ksym').value = sym0; }
+  upd();
 }
 
 /* ---------- theme: light, dark or follow the device (one setting for both sites) ---------- */
@@ -2135,7 +2515,7 @@ function applyTheme() {
 // the new theme spreads out in a circle from the button that was pressed
 function setTheme(p, from) {
   const apply = () => { try { p === 'system' ? localStorage.removeItem(THEME_KEY) : localStorage.setItem(THEME_KEY, p); } catch {} applyTheme(); render(); };
-  if (themeOf(p) === themeNow() || !document.startViewTransition || matchMedia('(prefers-reduced-motion: reduce)').matches) return apply();
+  if (themeOf(p) === themeNow() || !document.startViewTransition || document.documentElement.dataset.fx === 'off') return apply();
   const r = from?.getBoundingClientRect(), x = r ? r.left + r.width / 2 : innerWidth - 40, y = r ? r.top + r.height / 2 : 30;
   document.startViewTransition(apply).ready.then(() => {
     const R = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
@@ -2212,7 +2592,7 @@ S = load();
 let view = null, selCl = null, selEx = null, selApp = null, aFilter = 'all', clTab = 'ov', rFilter = 'pend', tFilter = 'all', teamTab = 'staff', q = '', fCoach = '', fStat = 'all', sortBy = 'score', menu = null;
 const ME = () => { const id = sessionStorage.getItem('p1m-bo'); return id === 'cs' ? S.cs : id === 'head' ? S.head : id ? coach(id) : null; };
 const isCS = () => ME()?.id === 'cs';
-// the head coach sees every client and every coach's records and plans, but does not act for the coach
+// the head coach checks every record clients send and writes every plan; coaches follow up their clients and key records for them
 const isHead = () => ME()?.id === 'head';
 const isCoach = () => !!coach(ME()?.id);
 const seeAll = () => isCS() || isHead();
@@ -2222,13 +2602,13 @@ const mine = () => seeAll() ? S.clients : S.clients.filter(c => c.coach === ME()
 const canSee = id => { const c = id && client(id); return !!c && !!ME() && (seeAll() || c.coach === ME().id); };
 const narrow = () => matchMedia('(max-width: 900px)').matches;
 const NAV = {
-  coach: [['desk', 'ภาพรวม', 'grid'], ['plans', 'แผนการเทรด', 'target'], ['record', 'บันทึกการซื้อขาย', 'inbox'], ['clients', 'ลูกค้าของฉัน', 'users']],
-  head: [['overview', 'ภาพรวม', 'grid'], ['clients', 'ลูกค้าทั้งหมด', 'users'], ['record', 'บันทึกการซื้อขาย', 'inbox'], ['plans', 'แผนของโค้ช', 'target']],
+  coach: [['desk', 'ภาพรวม', 'grid'], ['clients', 'ลูกค้าของฉัน', 'users'], ['record', 'บันทึกการซื้อขาย', 'inbox'], ['plans', 'แผนการเทรด', 'target']],
+  head: [['overview', 'สถานะลูกค้า', 'grid'], ['record', 'ตรวจรายการ', 'inbox'], ['plans', 'แผนการเทรด', 'target'], ['clients', 'ลูกค้าทั้งหมด', 'users']],
   cs: [['overview', 'ภาพรวม', 'grid'], ['tasks', 'งาน CS', 'phone'], ['clients', 'ลูกค้าทั้งหมด', 'users'], ['apps', 'ผู้สมัคร', 'user'], ['team', 'ทีมงานและสิทธิ์', 'shield']],
 };
 const TITLES = { desk: 'ภาพรวม', plans: 'แผนการเทรดและการทำตามแผน', record: 'บันทึกการซื้อขาย', clients: 'ลูกค้า', apps: 'ผู้สมัครและการคัดเลือก', overview: 'ภาพรวมทั้งคอร์ส', tasks: 'งาน CS', team: 'ทีมงานและสิทธิ์' };
-const AL_IC = { dev: 'alert', off: 'flag', miss: 'alert', sl: 'alert', heat: 'shield', idle: 'user', nosnap: 'wallet', diff: 'wallet', score: 'target', dd: 'chart', flow: 'wallet', att: 'calendar', stmt: 'book' };
-const COACH_T = ['dev', 'off', 'miss', 'sl'];
+const AL_IC = { yc: 'flag', dev: 'alert', off: 'flag', miss: 'alert', sl: 'alert', heat: 'shield', idle: 'user', nosnap: 'wallet', diff: 'wallet', score: 'target', dd: 'chart', flow: 'wallet', att: 'calendar', stmt: 'book' };
+const COACH_T = ['dev', 'off', 'miss', 'sl', 'yc'];
 const myIds = () => new Set(mine().map(c => c.id));
 // records the clients keyed in, waiting for the coach; ones sent back to fix; ones confirmed this week
 const pendQ = () => { const ids = myIds(); return S.execs.filter(e => ids.has(e.cl) && e.ver === 'pend' && e.rec.at <= now()).sort((a, b) => a.rec.at - b.rec.at); };
@@ -2239,7 +2619,8 @@ const recQ = () => { const ids = myIds(), since = now() - 7 * DAY; return S.exec
 const myAlerts = () => alerts().filter(a => isHead() ? true : isCS() ? a.aud !== 'coach' || (COACH_T.includes(a.type) && now() - a.at > 2 * DAY) : a.coach === ME().id && a.aud !== 'cs');
 let pCoach = 'c1';
 const planCoach = () => isCoach() ? ME().id : coach(pCoach) ? pCoach : 'c1';
-const myPlans = () => S.plans.filter(p => p.coach === planCoach() && p.at <= now()).sort((a, b) => (planLive(b) - planLive(a)) || b.at - a.at);
+// the plans that reach one coach's clients (the head coach looks at them one coach at a time)
+const myPlans = () => { const cl = S.clients.filter(c => c.coach === planCoach()); return S.plans.filter(p => p.at <= now() && cl.some(c => planFor(p, c))).sort((a, b) => (planLive(b) - planLive(a)) || b.at - a.at); };
 
 /* ---------- session: staff sign out after 30 idle minutes ---------- */
 const ACT = 'p1m-bo-act';
@@ -2265,7 +2646,7 @@ function render() {
   if (!view || (view !== 'client' && !NAV[role].some(n => n[0] === view))) view = NAV[role][0][0];
   const body = { desk: deskView, plans: plansView, record: recordView, clients: clientsView, apps: appsView, overview: overviewView, tasks: tasksView, team: teamView, client: clientView }[view]();
   const vk = view + ':' + (selCl || ''), enter = shownV !== vk; shownV = vk;
-  app.innerHTML = `<div class="shell">${sidebar(role)}<div class="main">${topbar()}<main class="view vgrid v-${view} ${seeAll() ? 'cs' : ''} ${enter ? 'enter' : ''}" data-v="${view}">${body}</main></div></div>`;
+  app.innerHTML = `<div class="shell">${sidebar(role)}<div class="main">${topbar()}<main class="view vgrid v-${view} ${seeAll() ? 'cs' : ''} ${isHead() ? 'hd' : ''} ${enter ? 'enter' : ''}" data-v="${view}">${body}</main></div></div>`;
   panelTabs(app, narrow());
   drawCharts(app);
   fitPagers(app);
@@ -2285,8 +2666,8 @@ function market() {
 }
 function topbar() {
   const [mc, mt] = market();
-  const title = view === 'client' ? esc(cname(client(selCl))) : view === 'clients' && seeAll() ? 'ลูกค้าทั้งหมด' : view === 'clients' ? 'ลูกค้าของฉัน' : TITLES[view];
-  const cta = isHead() ? '' : isCS() ? `<button class="btn sm" data-act="addcl">${ic('plus', 16)}<span class="l">เพิ่มลูกค้า</span></button>` : `<button class="btn sm" data-act="recnew">${ic('plus', 16)}<span class="l">บันทึกรายการให้ลูกค้า</span></button>`;
+  const title = view === 'client' ? esc(cname(client(selCl))) : view === 'clients' && seeAll() ? 'ลูกค้าทั้งหมด' : view === 'clients' ? 'ลูกค้าของฉัน' : isHead() && view === 'overview' ? 'สถานะลูกค้าทั้งหมด' : isHead() && view === 'record' ? 'ตรวจรายการที่ลูกค้าบันทึก' : TITLES[view];
+  const cta = isHead() ? `<button class="btn sm" data-act="plannew">${ic('plus', 16)}<span class="l">บันทึกแผนใหม่</span></button>` : isCS() ? `<button class="btn sm" data-act="addcl">${ic('plus', 16)}<span class="l">เพิ่มลูกค้า</span></button>` : `<button class="btn sm" data-act="recnew">${ic('plus', 16)}<span class="l">บันทึกรายการให้ลูกค้า</span></button>`;
   return `<div class="top">${view === 'client' ? `<button class="crumb" data-go="clients">${ic('back', 16)}ลูกค้า</button>` : ''}<h1>${title}</h1><span class="sp"></span><span class="muted sm dl">${dlong(now())}</span><div class="mkt ${mc}"><i></i>${mt} · <span class="num">${tstr(now())}</span></div><button class="kbtn" data-act="cmdk" title="ค้นหา (Ctrl+K)">${ic('search', 16)}<span class="l">ค้นหา</span><kbd>Ctrl K</kbd></button>${themeBtn()}${demoMenu()}${cta}</div>`;
 }
 function demoMenu(corner) {
@@ -2305,8 +2686,8 @@ function loginView() {
     <img src="${LOGO}" alt="Super Trader Republic">
     <div class="eyebrow" style="margin-top:12px">Back office</div>
     <h2 style="font-size:22px;margin:4px 0">หลังบ้าน · ปั้นพอร์ต 1 ล้าน</h2>
-    <div class="muted sm">สำหรับโค้ชและทีม CS</div>
-    <div class="roles"><div><b>โค้ช 10 คน</b>ประกบลูกค้าคนละ 5 ราย ตรวจทุกรายการที่ลูกค้าบันทึกพร้อมหลักฐาน และเคลียร์เมื่อไม่ตรงแผน</div><div><b>หัวหน้าโค้ช</b>ดูภาพรวมลูกค้าทั้ง 50 ราย แผนและรายการของโค้ชทุกคน</div><div><b>CS 1 คน</b>ดูแลลูกค้าทั้ง 50 ราย คัดเลือกผู้สมัครรุ่นใหม่ และติดตามเรื่องค้าง</div></div>
+    <div class="muted sm">สำหรับหัวหน้าโค้ช โค้ช และทีม CS</div>
+    <div class="roles"><div><b>โค้ช 10 คน</b>ดูแลลูกค้าคนละ 5 ราย ติดตามและเคลียร์เมื่อไม่ตรงแผน บันทึกรายการให้ลูกค้าได้</div><div><b>หัวหน้าโค้ช</b>ตรวจทุกรายการที่ลูกค้าบันทึก วางแผนการเทรดทั้งหมด และดูสถานะลูกค้าทั้ง 50 ราย</div><div><b>CS 1 คน</b>ดูแลลูกค้าทั้ง 50 ราย คัดเลือกผู้สมัครรุ่นใหม่ และติดตามเรื่องค้าง</div></div>
     <button class="gbtn" data-act="glogin">${GLOGO} เข้าสู่ระบบด้วย Google</button>
     <p class="xs muted row" style="margin:12px 0 0;justify-content:center;gap:6px">${ic('lock', 13)} เฉพาะอีเมลทีมงานที่ได้รับสิทธิ์ · ออกจากระบบอัตโนมัติเมื่อไม่มีการใช้งาน 30 นาที</p>
   </div></div>`;
@@ -2315,7 +2696,11 @@ function loginView() {
 /* ---------- shared bits ---------- */
 const avatar = (c, cls = '') => `<span class="av ${cls}" style="background:${hue(c.id)}">${esc(initial(c.name))}</span>`;
 function hue(id) { const h = ((parseInt(String(id).replace(/\D/g, ''), 10) || 0) * 47) % 360; return `linear-gradient(135deg,hsl(${h} 45% 38%),hsl(${h} 50% 24%))`; }
-const pnl = ({ t, sub = '', key, rows, cls = '', pt, empty = 'ไม่มีรายการ', head = '', gap, pre = '' }) => `<section class="pnl" ${pt ? `data-pt="${esc(pt)}"` : ''}><div class="ph"><h3>${t}</h3><span class="sub">${sub}</span>${head}<div class="pgn" data-pgn="${key}"></div></div><div class="pb" ${pre ? 'style="display:flex;flex-direction:column;gap:8px"' : ''}>${pre}${rows ? `<div class="list ${cls}" data-pg="${key}" ${gap != null ? `style="gap:${gap}px"` : ''}>${rows}</div>` : `<div class="empty">${empty}</div>`}</div></section>`;
+const pnl = ({ t, sub = '', key, rows, cls = '', pt, empty = 'ไม่มีรายการ', head = '', gap, pre = '', th = '', tcls = '' }) => {
+  const top = `<section class="pnl" ${pt ? `data-pt="${esc(pt)}"` : ''}><div class="ph"><h3>${t}</h3><span class="sub">${sub}</span>${head}<div class="pgn" data-pgn="${key}"></div></div>`;
+  if (th && rows) return `${top}<div class="pb flush" style="display:flex;flex-direction:column">${pre ? `<div class="pre">${pre}</div>` : ''}<div class="otw ${tcls}">${th}<div class="list tight" data-pg="${key}">${rows}</div></div></div></section>`;
+  return `${top}<div class="pb" ${pre ? 'style="display:flex;flex-direction:column;gap:8px"' : ''}>${pre}${rows ? `<div class="list ${cls}" data-pg="${key}" ${gap != null ? `style="gap:${gap}px"` : ''}>${rows}</div>` : `<div class="empty">${empty}</div>`}</div></section>`;
+};
 const kpi = (icn, k, v, s, cls = '') => `<div class="kpi"><div class="k">${ic(icn, 14)} ${k}</div><div class="v num ${cls}">${v}</div><div class="s">${s}</div></div>`;
 const planLine = p => `Entry ${px(p.lo)}–${px(p.hi)} · SL ${px(planSL(p.id))} · TP ${px(p.tp1)}/${px(p.tp2)} · ${p.size}% ของพอร์ต`;
 function alertRow(a, withCoach) {
@@ -2323,7 +2708,7 @@ function alertRow(a, withCoach) {
   if (a.ex) acts.push(`<button class="ibtn" data-act="viewex" data-id="${esc(a.ex)}" title="ดูรายการและภาพหลักฐาน" aria-label="ดูรายการและภาพหลักฐาน" style="width:30px;height:30px">${ic('image', 15)}</button>`);
   if (COACH_T.includes(a.type) || a.type === 'dd' || a.type === 'heat') acts.push(`<button class="btn soft sm" data-act="call" data-k="${esc(a.k)}" title="บันทึกผลการคุยกับลูกค้า">${ic('phone', 14)} เคลียร์</button>`);
   acts.push(`<button class="ibtn" data-act="open" data-id="${esc(c.id)}" title="ดูลูกค้า" aria-label="ดูลูกค้า" style="width:30px;height:30px">${ic('chev', 16)}</button>`);
-  return `<div class="al ${a.sev}"><span class="sv"></span>${a.sym ? slogo(a.sym, 34) : `<span class="aic">${ic(AL_IC[a.type] || 'alert', 16)}</span>`}
+  return `<div class="al ${a.sev}"><span class="sv"></span>${a.sym ? slogo(a.sym, 26) : `<span class="aic">${ic(AL_IC[a.type] || 'alert', 16)}</span>`}
     <div style="min-width:0"><div class="ti ell">${esc(a.title)}</div><div class="de ell" title="${esc(a.detail)}">${esc(cname(c))}${withCoach ? ` · ${coach(c.coach).name}` : ''} · ${esc(a.detail)}</div></div>
     <div class="acts">${acts.join('')}</div></div>`;
 }
@@ -2343,7 +2728,8 @@ function groupRow(g, compact) {
     <div class="acts">${acts}</div></div>`;
 }
 function flagsOf(c) {
-  const al = alerts().filter(a => a.cl === c.id), f = [], pn = pendOf(c.id).length, fx = fixOf(c.id).length;
+  const al = alerts().filter(a => a.cl === c.id), f = [], pn = pendOf(c.id).length, fx = fixOf(c.id).length, yc = yellowCards(c.id).length;
+  if (yc) f.push(`<span class="tag ${yc >= YC_LIMIT ? 'dn' : 'warn'}" title="ใบเหลือง ${yc} ใบ"><i class="ycard"></i>ใบเหลือง ${yc}</span>`);
   if (al.some(a => a.type === 'sl' || (a.type === 'miss' && a.sev === 'high'))) f.push('<span class="tag dn">หลุด Stop Loss</span>');
   const dev = al.filter(a => a.type === 'dev' || a.type === 'miss').length;
   if (dev) f.push(`<span class="tag warn">ไม่ตรงแผน ${dev}</span>`);
@@ -2362,7 +2748,7 @@ function flagsOf(c) {
 }
 function clientRow(c) {
   const d = discipline(c.id), ps = pnlSum(c), fl = flagsOf(c).length;
-  return `<button class="crow" data-act="open" data-id="${esc(c.id)}">${avatar(c, 'sm')}<span class="cn"><b class="ell">${esc(cname(c))}</b><span class="xs muted num" title="กำไรสะสมตามบันทึก">กำไร <span class="${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</span> · ${pct(retPct(c))}${fl ? ` · <span class="warn">${fl} เรื่อง</span>` : ''}</span></span><span class="tag ${scoreTone(d.score)} num" title="คะแนนวินัย">${d.score}</span></button>`;
+  return `<button class="crow" data-act="open" data-id="${esc(c.id)}">${avatar(c, 'sm')}<span class="cn"><b class="ell">${esc(cname(c))}</b><span class="xs muted num" title="กำไรสะสมตามบันทึก">กำไร <span class="${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</span> · ${pct(retPct(c))}${fl ? ` · <span class="warn">${fl} เรื่อง</span>` : ''}</span></span><span title="การเติบโต: กำไรสะสมรายสัปดาห์ตั้งแต่เริ่มโปรแกรม">${growth(c, 76, 30)}</span><span class="tag ${scoreTone(d.score)} num" title="คะแนนวินัย">${d.score}</span></button>`;
 }
 // sparkline that stretches to fill its box (no text, so stretching is fine)
 function sparkFill(vals) {
@@ -2370,10 +2756,20 @@ function sparkFill(vals) {
   const pts = vals.map((v, i) => `${(i / n * 200).toFixed(1)},${(56 - (v - lo) / (hi - lo || 1) * 52).toFixed(1)}`).join(' ');
   return `<svg viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" style="stroke:${col}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round" points="${pts}"/></svg>`;
 }
+// a client's growth since joining: cumulative profit at each Friday's close and today, filled down to zero
+function growth(c, w = 120, h = 36) {
+  const v = profitSeries(c).map(p => p.v), lo = Math.min(0, ...v), hi = Math.max(0, ...v), n = Math.max(1, v.length - 1);
+  const X = i => (2 + i / n * (w - 7)).toFixed(1), Y = x => (h - 4 - (x - lo) / (hi - lo || 1) * (h - 8)).toFixed(1);
+  const line = v.map((x, i) => `${X(i)},${Y(x)}`).join(' '), col = v[v.length - 1] >= 0 ? 'var(--up)' : 'var(--dn)';
+  return `<svg class="grw" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><line class="z" x1="2" x2="${w - 2}" y1="${Y(0)}" y2="${Y(0)}"/><polygon points="${X(0)},${Y(0)} ${line} ${X(v.length - 1)},${Y(0)}" style="fill:${col}"/><polyline points="${line}" style="stroke:${col}"/><circle cx="${X(v.length - 1)}" cy="${Y(v[v.length - 1])}" r="2.8" style="fill:${col}"/></svg>`;
+}
+const EXHEAD = '<div class="ot-h"><span class="c-t">เวลา</span><span class="c-cl">ลูกค้า</span><span>หุ้น</span><span class="c">B/S</span><span class="r c-qty">จำนวน</span><span class="r c-px">ราคา</span><span class="r c-pl">กำไร/ขาดทุน</span><span class="r">สถานะ</span></div>';
 function exRow(e, sel) {
-  const c = client(e.cl), ok = allOk(checks(e)), n = now();
-  const when2 = e.ver === 'pend' ? `บันทึก ${when(e.rec.at, n)}` : e.ver === 'fix' ? `ขอแก้ไข ${when(e.fix?.at || e.rec.at, n)}` : dt(e.at);
-  return `<button class="vi ${sel ? 'on' : ''}" data-sel="${esc(e.id)}">${slogo(e.sym, 34)}<span style="flex:1;min-width:0"><b class="ell" style="display:block;font-size:14px">${verbEx(e)} ${esc(e.sym)} · ${esc(c.name)}</b><span class="xs muted num ell" style="display:block">${fmt(e.qty)} @ ${px(e.px)} · ${when2}</span></span>${e.ver !== 'ok' ? verTag(e, 1) : !e.plan ? '<span class="tag pu">นอกแผน</span>' : ok ? `<span class="tag ok">${ic('check', 12)}</span>` : '<span class="tag warn">ไม่ตรงแผน</span>'}</button>`;
+  const c = client(e.cl), ok = allOk(checks(e));
+  const t = e.ver === 'pend' ? e.rec.at : e.ver === 'fix' ? (e.fix?.at || e.rec.at) : e.at;
+  const st = e.ver !== 'ok' ? verTag(e, 1) : planMark(e);
+  return `<button class="ot-r ${sel ? 'on' : ''}" data-sel="${esc(e.id)}"><span class="num c-t">${dstr(t)}<span class="t2">${e.ver === 'pend' ? 'บันทึก ' : e.ver === 'fix' ? 'ขอแก้ ' : ''}${tstr(t)}</span></span><span class="c-cl"><b class="ell" style="display:block">${esc(c.name)}</b><span class="t2">${seeAll() ? coach(c.coach).name : esc(c.last || '')}</span></span>
+    <span class="jm">${slogo(e.sym, 24)}<span style="min-width:0"><b class="ell" style="display:block">${esc(e.sym)}</b><span class="t2 mo">${esc(c.name)}<span class="mo-t"> · ${dstr(t)} ${tstr(t)}</span></span></span></span><span class="c">${sideTag(e)}</span><span class="r num c-qty">${fmt(e.qty)}</span><span class="r num c-px">${px(e.px)}</span><span class="r num c-pl">${plCell(e)}</span><span class="r">${st}</span></button>`;
 }
 
 /* ---------- coach: desk ---------- */
@@ -2383,13 +2779,13 @@ function deskView() {
   const avgD = Math.round(cl.reduce((s, c) => s + discipline(c.id).score, 0) / (cl.length || 1)), high = al.filter(a => a.sev === 'high').length;
   return `<div class="kstrip" data-pt="สรุป">
     ${kpi('trophy', 'กำไรรวมของลูกค้า', signed(tot), `${pct(tot / base)} จากเงินทุน · ${cl.length} ราย`, tot >= 0 ? 'up' : 'dn')}
-    ${kpi('inbox', 'รายการรอตรวจ', pq.length, pq.length ? '<span class="warn">ตรวจกับภาพภายในวันเดียวกัน</span>' : 'ตรวจครบแล้ว', pq.length ? 'blue' : '')}
+    ${kpi('inbox', 'รอหัวหน้าโค้ชตรวจ', pq.length, pq.length ? 'รายการที่ลูกค้าของคุณบันทึก' : 'ตรวจครบแล้ว', pq.length ? 'blue' : '')}
     ${kpi('alert', 'เรื่องที่ต้องเคลียร์', al.length, high ? `<span class="dn">ด่วน ${high} เรื่อง</span>` : 'คุยกับลูกค้าแล้วบันทึกผล', al.length ? 'warn' : '')}
     ${kpi('target', 'วินัยเฉลี่ย', avgD, '30 วันล่าสุด', scoreTone(avgD))}
-    ${kpi('flag', 'ถึงเป้ากำไร 1 ล้าน', `${hit}/${cl.length} ราย`, `ค่าเรียนที่ต้องคืนหากจบวันนี้ ฿${kb(sts.reduce((s, x) => s + x.refund, 0))}`, hit ? 'up' : '')}
+    ${kpi('flag', 'กำไรถึง 1 ล้าน (เงื่อนไขคืนค่าเรียน)', `${hit}/${cl.length} ราย`, `ค่าเรียนที่ต้องคืนหากจบวันนี้ ฿${kb(sts.reduce((s, x) => s + x.refund, 0))}`, hit ? 'up' : '')}
   </div>
   ${pnl({ t: 'เรื่องที่ต้องเคลียร์กับลูกค้า', sub: `${al.length} เรื่อง · คุยแล้วกด "เคลียร์" เพื่อบันทึกผล`, key: 'al', rows: al.map(a => alertRow(a)).join(''), cls: 'tight', pt: 'ต้องเคลียร์', empty: `${ic('check', 26)}ทุกคนทำตามแผน` })}
-  ${pnl({ t: 'รายการรอตรวจ', sub: `${pq.length} รายการที่ลูกค้าบันทึก`, key: 'up', pt: 'รอตรวจ', gap: 2, rows: pq.map(e => exRow(e)).join(''), empty: `${ic('check', 26)}ไม่มีรายการรอตรวจ` })}
+  ${pnl({ t: 'รอหัวหน้าโค้ชตรวจ', sub: `${pq.length} รายการที่ลูกค้าบันทึก`, key: 'up', pt: 'รอตรวจ', th: EXHEAD, tcls: 'exq', rows: pq.map(e => exRow(e)).join(''), empty: `${ic('check', 26)}ไม่มีรายการรอตรวจ` })}
   ${pnl({ t: 'ลูกค้าของฉัน', sub: 'วินัยต่ำสุดก่อน', key: 'cl5', rows: [...cl].sort((a, b) => discipline(a.id).score - discipline(b.id).score).map(clientRow).join(''), cls: 'tight', pt: 'ลูกค้า' })}`;
 }
 
@@ -2411,25 +2807,25 @@ function planCell(p, c) {
 function plansView() {
   const co = coach(planCoach()), cl = S.clients.filter(c => c.coach === co.id), ps = myPlans(), live = ps.filter(planLive).length;
   const legend = `<span class="lgd"><span><i style="background:var(--up)"></i>ตรงแผน</span><span><i style="background:var(--warn)"></i>ไม่ตรงแผน</span><span><i style="background:var(--dn)"></i>หลุด Stop Loss</span><span><i style="background:var(--blue)"></i>รอตรวจ</span></span>`;
-  return `<section class="pnl"><div class="ph">${isCoach() ? '' : `<select id="pcoach" class="pcsel" aria-label="เลือกโค้ช">${S.coaches.map(x => `<option value="${x.id}" ${x.id === co.id ? 'selected' : ''}>${x.name}</option>`).join('')}</select>`}<h3>แผนของ${co.name} · เปิดอยู่ ${live} จาก ${ps.length} แผน</h3><span class="sub">${legend}</span>${isCoach() ? `<button class="btn ghost sm" data-act="plannew" style="margin-left:auto">${ic('plus', 15)} บันทึกแผนใหม่</button>` : ''}<div class="pgn" data-pgn="mx"></div></div>
+  return `<section class="pnl"><div class="ph">${isCoach() ? '' : `<select id="pcoach" class="pcsel" aria-label="เลือกโค้ช">${S.coaches.map(x => `<option value="${x.id}" ${x.id === co.id ? 'selected' : ''}>${x.name}</option>`).join('')}</select>`}<h3>${isCoach() ? 'แผนสำหรับลูกค้าของคุณ' : `ลูกค้าของ${co.name}`} · เปิดอยู่ ${live} จาก ${ps.length} แผน</h3><span class="sub">${legend}</span>${isHead() ? `<button class="btn ghost sm" data-act="plannew" style="margin-left:auto">${ic('plus', 15)} บันทึกแผนใหม่</button>` : ''}<div class="pgn" data-pgn="mx"></div></div>
     <div class="pb">${ps.length ? `<table class="mx"><thead><tr><th>แผน</th>${cl.map(c => { const d = discipline(c.id); return `<th><span class="colh" data-act="open" data-id="${esc(c.id)}">${avatar(c, 'sm')}<span>${esc(c.name)}</span><small>ตรงแผน ${Math.round(d.acc * 100)}%</small></span></th>`; }).join('')}<th class="opt">ซื้อ</th></tr></thead><tbody data-pg="mx">
     ${ps.map(p => {
       const lv = planLive(p), bought = cl.filter(c => positions(c.id).some(x => x.plan === p.id)).length;
       const st = lv ? '<span class="tag blue">เปิดอยู่</span>' : p.end.why === 'tp2' ? '<span class="tag ok">ปิด · ถึง TP2</span>' : p.end.why === 'sl' ? '<span class="tag dn">ปิด · หลุด SL</span>' : '<span class="tag">ปิดแผน</span>';
-      return `<tr class="${lv ? 'live' : ''}"><td><div class="oh">${slogo(p.sym, 32)}<div style="min-width:0"><b>${esc(p.sym)}</b> ${st}${lv && isCoach() ? ` <button class="lnk xs" data-act="plansl" data-id="${esc(p.id)}">เลื่อน SL</button> · <button class="lnk xs" data-act="planend" data-id="${esc(p.id)}">ปิดแผน</button>` : ''}<div class="os ell" title="${esc(p.note || '')}">${dt(p.at)} · ${planLine(p)}</div></div></div></td>
+      return `<tr class="${lv ? 'live' : ''}"><td><div class="oh">${slogo(p.sym, 32)}<div style="min-width:0"><b>${esc(p.sym)}</b> ${st}${lv && isHead() ? ` <button class="lnk xs" data-act="plansl" data-id="${esc(p.id)}">เลื่อน SL</button> · <button class="lnk xs" data-act="planend" data-id="${esc(p.id)}">ปิดแผน</button>` : ''}<div class="os ell" title="${esc(p.note || '')}">${dt(p.at)} · ${planLine(p)}</div></div></div></td>
         ${cl.map(c => `<td>${planCell(p, c)}</td>`).join('')}
         <td class="opt"><b class="num">${bought}/${cl.length}</b><div class="bar ${bought === cl.length ? 'up' : ''}" style="width:52px;margin:3px auto 0;height:5px"><i style="width:${cl.length ? bought / cl.length * 100 : 0}%"></i></div></td></tr>`;
-    }).join('')}</tbody></table>` : `<div class="empty">ยังไม่มีแผน<div style="margin-top:10px"><button class="btn sm" data-act="plannew">${ic('plus', 15)} บันทึกแผนแรก</button></div></div>`}</div></section>`;
+    }).join('')}</tbody></table>` : `<div class="empty">ยังไม่มีแผน${isHead() ? `<div style="margin-top:10px"><button class="btn sm" data-act="plannew">${ic('plus', 15)} บันทึกแผนแรก</button></div>` : ''}</div>`}</div></section>`;
 }
 // one client on one plan: every record with its proof and check, notes of what was not followed
 function cellModal(pid, cid) {
   const p = planOf(pid), c = client(cid);
-  if (!p || !canSee(cid) || (isCoach() && p.coach !== ME().id)) return;
+  if (!p || !canSee(cid) || !planFor(p, c)) return;
   const fills = execsOf(c.id).filter(e => e.plan === p.id), ms = S.misses.filter(m => m.cl === c.id && m.plan === p.id), pos = positions(c.id).find(x => x.plan === p.id);
-  const rows = [...fills.map(e => ({ t: e.at, h: `<div class="trow"><span class="xs muted">${dt(e.at)}</span>${sideTag(e)}<span class="jm"><span style="min-width:0"><b>${verbEx(e)} ${fmt(e.qty)} @ ${px(e.px)}</b><span class="xs muted ell" style="display:block">${allOk(checks(e)) ? 'ตรงแผน' : esc(devText(e))}</span></span></span><span class="row" style="gap:6px">${e.ver !== 'ok' ? verTag(e, 1) : ckDots(checks(e))}${slipThumb(e, c)}</span></div>` })),
-    ...ms.map(m => ({ t: m.at, h: `<div class="trow"><span class="xs muted">${dt(m.at)}</span><span class="side ms">!</span><span class="jm"><span style="min-width:0"><b>${MISS[m.kind]}</b><span class="xs muted ell" style="display:block">${esc(m.note)}</span></span></span><span></span></div>` }))].sort((a, b) => a.t - b.t).map(x => x.h).join('');
+  const rows = [...fills.map(e => ({ t: e.at, h: `<div class="ot-r"><span class="num">${dstr(e.at)}<span class="t2">${tstr(e.at)}</span></span><span class="c">${sideTag(e)}</span><span style="min-width:0"><b class="num">${verbEx(e)} ${fmt(e.qty)} @ ${px(e.px)}</b>${e.side === 'sell' && matchOf(e) ? salePL(e) : `<span class="t2" title="${allOk(checks(e)) ? '' : esc(devText(e))}">${allOk(checks(e)) ? 'ตรงแผน' : esc(devText(e))}</span>`}</span><span class="r">${e.ver !== 'ok' ? verTag(e, 1) : ckDots(checks(e))}</span><span class="c c-pic">${slipThumb(e, c)}</span></div>` })),
+    ...ms.map(m => ({ t: m.at, h: `<div class="ot-r"><span class="num">${dstr(m.at)}<span class="t2">${tstr(m.at)}</span></span><span class="c"><span class="side ms">!</span></span><span style="min-width:0"><b class="warn">${MISS[m.kind]}</b><span class="t2" title="${esc(m.note)}">${esc(m.note)}</span></span><span class="r"><span class="tag warn">โค้ชบันทึก</span></span><span class="c-pic"></span></div>` }))].sort((a, b) => a.t - b.t).map(x => x.h).join('');
   openModal(mhead(`${slogo(p.sym, 28)}${esc(p.sym)} · ${esc(cname(c))}`, planLine(p)) + `<div class="mbd">${pos ? `<div class="row" style="gap:8px;margin-bottom:10px;flex-wrap:wrap"><span class="tag ${pos.qty ? 'blue' : ''}">${pos.qty ? `ถืออยู่ ${fmt(pos.qty)} ${unitOf(pos)}` : 'ปิดสถานะแล้ว'}</span><span class="tag num ${pos.realized + pos.upl >= 0 ? 'ok' : 'dn'}">${signed(pos.realized + pos.upl)} บาท</span></div>` : '<div class="muted" style="margin-bottom:10px">ลูกค้ายังไม่ได้ซื้อตามแผนนี้</div>'}
-    <div class="list tight">${rows || '<div class="empty">ยังไม่มีรายการที่บันทึก</div>'}</div></div>
+    ${rows ? `<div class="otw cel" style="border:1px solid var(--line2)"><div class="ot-h"><span>วันที่</span><span class="c">B/S</span><span>รายการ</span><span class="r">ผล</span><span class="c c-pic">ภาพ</span></div><div class="list tight">${rows}</div></div>` : '<div class="empty">ยังไม่มีรายการที่บันทึก</div>'}</div>
     ${isCoach() ? `<div class="mft"><button class="btn ghost" data-act="miss" data-c="${esc(c.id)}" data-p="${esc(p.id)}">${ic('alert', 15)} บันทึกการไม่ทำตามแผน</button><button class="btn" data-act="recnew" data-c="${esc(c.id)}" data-p="${esc(p.id)}">${ic('plus', 15)} บันทึกรายการให้ลูกค้า</button></div>` : ''}`, 'mid');
 }
 const cmpTable = e => {
@@ -2447,45 +2843,40 @@ const R_F = [['pend', 'รอตรวจ', pendQ], ['fix', 'รอลูกค�
 function recordView() {
   const f = R_F.find(x => x[0] === rFilter) || R_F[0], items = f[2]();
   if (!items.some(e => e.id === selEx)) selEx = items[0]?.id || null;
-  return `<div class="vh"><div class="chips">${R_F.map(([k, l, fn]) => `<button class="chip ${rFilter === k ? 'on' : ''}" data-rf="${k}">${l}<span class="n">${fn().length}</span></button>`).join('')}</div><span class="sp"></span><span class="muted sm opt">ลูกค้าบันทึกพร้อมแนบภาพ · ตรวจว่าข้อมูลตรงกับภาพแล้วกดยืนยัน ระบบเทียบกับแผนให้อัตโนมัติ</span></div>
-  ${pnl({ t: f[1], sub: `${items.length} รายการ`, key: 'vq', pt: 'รายการ', gap: 2, empty: `${ic('check', 26)}ไม่มีรายการ`, rows: items.map(e => exRow(e, e.id === selEx)).join('') })}
+  return `<div class="vh"><div class="chips">${R_F.map(([k, l, fn]) => `<button class="chip ${rFilter === k ? 'on' : ''}" data-rf="${k}">${l}<span class="n">${fn().length}</span></button>`).join('')}</div><span class="sp"></span><span class="muted sm opt">${isHead() ? 'ลูกค้าบันทึกพร้อมแนบภาพ · ตรวจว่าข้อมูลตรงกับภาพแล้วกดยืนยัน ระบบเทียบกับแผนและจับคู่ซื้อ–ขายให้อัตโนมัติ' : 'รายการของลูกค้าที่คุณดูแล · หัวหน้าโค้ชเป็นผู้ตรวจกับภาพ · รายการขายแสดงกำไร/ขาดทุนและรายการซื้อที่จับคู่'}</span></div>
+  ${pnl({ t: f[1], sub: `${items.length} รายการ`, key: 'vq', pt: 'รายการ', th: EXHEAD, tcls: 'exq', empty: `${ic('check', 26)}ไม่มีรายการ`, rows: items.map(e => exRow(e, e.id === selEx)).join('') })}
   <section class="pnl" data-pt="รายละเอียด">${selEx ? exDetail(execOf(selEx)) : '<div class="empty" style="margin:auto">ไม่มีรายการที่เลือก</div>'}</section>`;
 }
 function exDetail(e) {
-  const c = client(e.cl), ok = allOk(checks(e)), cleared = S.done['dev:' + e.id], byCl = e.rec.by === c.id;
-  const who = `${byCl ? 'ลูกค้าบันทึก' : `${byName(e.rec.by)} บันทึกให้`} ${dt(e.rec.at)}${e.fixed ? ` · แก้ไข ${dt(e.fixed)}` : ''}${e.vat ? ` · ${coach(e.vby).name} ตรวจแล้ว ${dt(e.vat)}` : ''}`;
-  const acts = e.ver === 'pend' && !isCoach() ? `<div class="note-box">${ic('clock', 16)}<span>รอ${coach(c.coach).name} ตรวจกับภาพ</span></div>` : e.ver === 'pend' ? `<div class="row" style="flex-wrap:wrap;margin-top:auto"><span class="vd-mt">${slipThumb(e, c)}</span><button class="btn ok" data-act="vok" data-id="${esc(e.id)}">${ic('check', 16)} <span class="lgx">ข้อมูลตรงกับภาพ · ยืนยัน</span><span class="shx">ยืนยัน</span></button><button class="btn bad" data-act="vfix" data-id="${esc(e.id)}">${ic('edit', 16)} <span class="lgx">ขอให้ลูกค้าแก้ไข</span><span class="shx">ขอแก้ไข</span></button></div>`
-    : e.ver === 'fix' ? `<div class="note-box y">${ic('clock', 16)}<span>รอลูกค้าแก้ไข · ขอเมื่อ ${dt(e.fix?.at || e.rec.at)}: “${esc(e.fix?.note || '')}”</span></div>`
-    : !ok ? (cleared ? `<div class="tag ok" style="align-self:flex-start">${ic('check', 13)}เคลียร์แล้ว ${dstr(cleared.at)}${cleared.note ? ' · ' + esc(cleared.note) : ''}</div>` : `<div class="row"><span class="vd-mt">${slipThumb(e, c)}</span><button class="btn soft sm" data-act="call" data-k="dev:${esc(e.id)}">${ic('phone', 14)} บันทึกผลการคุยกับลูกค้า</button></div>`) : '';
-  return `<div class="ph">${symBtn(e.sym, 32)}${sideTag(e)}<h3 class="ell">${esc(cname(c))}</h3><span class="sub">${dt(e.at)}${e.mk && e.mk !== 'th' ? ' · ' + mkName(e) : ''}</span><span style="margin-left:auto" class="row">${verTag(e)}${!e.plan ? '<span class="tag pu">นอกแผน</span>' : ok ? '<span class="tag ok">ตรงแผน</span>' : '<span class="tag warn">ไม่ตรงแผน</span>'}</span></div>
+  const c = client(e.cl), ok = allOk(checks(e)), cleared = S.done['dev:' + e.id];
+  const acts = e.ver === 'pend' && isHead() ? `<div class="vd-act"><span class="vd-mt">${slipThumb(e, c)}</span><button class="btn ok" data-act="vok" data-id="${esc(e.id)}">${ic('check', 16)} <span class="lgx">ข้อมูลตรงกับภาพ · ยืนยัน</span><span class="shx">ยืนยัน</span></button><button class="btn bad" data-act="vfix" data-id="${esc(e.id)}">${ic('edit', 16)} <span class="lgx">ขอให้ลูกค้าแก้ไข</span><span class="shx">ขอแก้ไข</span></button></div>`
+    : e.ver === 'fix' ? `<div class="rnote warn">${ic('clock', 14)}<span>รอลูกค้าแก้ไข · ขอเมื่อ ${dt(e.fix?.at || e.rec.at)}: “${esc(e.fix?.note || '')}”</span></div>`
+    : e.ver === 'ok' && !ok ? (cleared ? `<div class="rnote"><b class="up">${ic('check', 13)} เคลียร์แล้ว</b><span>${dstr(cleared.at)}${cleared.note ? ' · ' + esc(cleared.note) : ''}</span></div>` : `<div class="vd-act"><span class="vd-mt">${slipThumb(e, c)}</span><button class="btn soft sm" data-act="call" data-k="dev:${esc(e.id)}">${ic('phone', 14)} บันทึกผลการคุยกับลูกค้า</button></div>`) : '';
+  const m = matchOf(e), pair = m && e.side === 'sell' ? recSec('จับคู่กับรายการซื้อ', matchBox(e)) : '';
+  return `<div class="ph">${symBtn(e.sym, 22)}${sideTag(e)}<h3 class="ell">${esc(cname(c))}</h3><span class="sub">${coach(c.coach).name}</span><span style="margin-left:auto" class="row">${verTag(e)}</span></div>
     <div class="pb"><div class="vd"><div class="vd-slip">${slipImg(e, c) || '<div class="empty">ไม่มีภาพหลักฐาน</div>'}<div class="xs muted" style="text-align:center">ภาพที่แนบมากับรายการ</div></div>
-      <div class="vd-info"><div class="xs muted">${who}</div>${cmpTable(e)}
-        ${e.mk && e.mk !== 'th' ? `<div class="xs muted">${MK_K[e.mk][0]} ${fmt(e.k, 2)} · มูลค่า ${baht(e.px * e.qty * e.k)} บาท</div>` : ''}
-        ${ok || e.ver !== 'ok' ? '' : `<div class="note-box y">${ic('alert', 16)}<span>${esc(devText(e))}</span></div>`}
-        ${e.knote ? `<div class="note-box">${ic('chat', 16)}<span>ลูกค้าแจ้ง: “${esc(e.knote)}”</span></div>` : ''}
-        ${e.cnote ? `<div class="note-box g">${ic('chat', 16)}<span>หมายเหตุถึงลูกค้า: ${esc(e.cnote)}</span></div>` : ''}
-        ${acts}</div></div></div>`;
+      <div class="vd-info"><div class="rd">${recTrack(e)}${recFacts(e)}${recSec('เทียบกับแผน', recCheck(e))}${pair}${recSec('บันทึกเพิ่มเติม', recNotes(e, coach(c.coach).name))}</div>${acts}</div></div></div>`;
 }
 // coach keys a trade for a client (from a picture sent on LINE); confirmed at once
 function recNew({ cl, plan } = {}) {
   if (!isCoach()) return;
   keyModal({ who: ME(), cls: mine(), cl: canSee(cl) ? cl : null, plan, done: e => {
-    selEx = e.id; rFilter = allOk(checks(e)) ? 'rec' : 'dev'; go('record'); pageOf('vq', `[data-sel="${CSS.escape(e.id)}"]`);
-    toast(`${ic('check', 18)}<div><b>บันทึกแล้ว · ${allOk(checks(e)) ? 'ตรงแผน' : e.plan ? 'ไม่ตรงแผน' : 'นอกแผน'}</b><div class="muted sm">${esc(client(e.cl).name)} · ${verbEx(e)} ${esc(e.sym)} ${fmt(e.qty)} ${unitOf(e)} @ ${px(e.px)}</div></div>`, allOk(checks(e)) ? 'ok' : '');
+    selEx = e.id; rFilter = 'pend'; go('record'); pageOf('vq', `[data-sel="${CSS.escape(e.id)}"]`);
+    toast(`${ic('check', 18)}<div><b>บันทึกแล้ว · รอหัวหน้าโค้ชตรวจ · ${allOk(checks(e)) ? 'ตรงแผน' : e.plan ? 'ไม่ตรงแผน' : 'นอกแผน'}</b><div class="muted sm">${esc(client(e.cl).name)} · ${verbEx(e)} ${esc(e.sym)} ${fmt(e.qty)} ${unitOf(e)} @ ${px(e.px)}</div></div>`, allOk(checks(e)) ? 'ok' : '');
   } });
 }
 // the record matches its picture: confirm it (anything off-plan then becomes an issue to clear)
 function verifyEx(id) {
-  const e = execOf(id); if (!e || !canSee(e.cl) || e.ver !== 'pend' || !isCoach()) return;
+  const e = execOf(id); if (!e || !canSee(e.cl) || e.ver !== 'pend' || !isHead()) return;
   Object.assign(e, { ver: 'ok', vby: ME().id, vat: now() });
   const c = client(e.cl);
-  pushFeed({ by: 'coach', who: ME().id, coach: ME().id, cl: c.id, kind: 'vok', text: `${ME().name} ตรวจรายการ${verbEx(e)} ${e.sym} ของ${c.name}แล้ว` });
+  pushFeed({ by: 'head', who: ME().id, coach: c.coach, cl: c.id, kind: 'vok', text: `${ME().name} ตรวจรายการ${verbEx(e)} ${e.sym} ของ${c.name}แล้ว` });
   if (!save()) return;
   selEx = null; render();
   toast(`${ic('check', 18)}<div><b>ยืนยันรายการแล้ว · ${allOk(checks(e)) ? 'ตรงแผน' : e.plan ? 'ไม่ตรงแผน' : 'นอกแผน'}</b><div class="muted sm">${esc(c.name)} · ${verbEx(e)} ${esc(e.sym)}${allOk(checks(e)) ? '' : ' · เข้ารายการเรื่องที่ต้องเคลียร์'}</div></div>`, allOk(checks(e)) ? 'ok' : '');
 }
 function verFixModal(id) {
-  const e = execOf(id); if (!e || !canSee(e.cl) || e.ver !== 'pend' || !isCoach()) return;
+  const e = execOf(id); if (!e || !canSee(e.cl) || e.ver !== 'pend' || !isHead()) return;
   const quick = ['จำนวนหรือราคาที่บันทึกไม่ตรงกับภาพ โปรดตรวจสอบและแก้ไข', 'ภาพไม่ชัด มองไม่เห็นราคาที่ Matched และเวลา โปรดแนบภาพหน้าสถานะคำสั่ง (Order Status) ใหม่', 'ภาพนี้เป็นหน้าส่งคำสั่ง ยังไม่ใช่รายการที่ Matched โปรดแนบภาพหลังซื้อขายสำเร็จ', 'เลือกแผนไม่ถูกต้อง โปรดเลือกแผนให้ตรงกับหุ้นที่ซื้อ'];
   const box = openModal(mhead(`ขอให้แก้ไขรายการ · ${esc(cname(client(e.cl)))}`, `${verbEx(e)} ${esc(e.sym)} ${fmt(e.qty)} @ ${px(e.px)} · ลูกค้าจะเห็นข้อความนี้และได้รับแจ้งเตือนผ่าน LINE`) + `<div class="mbd"><div class="radio">${quick.map((r, i) => `<label><input type="radio" name="r" value="${esc(r)}" ${i ? '' : 'checked'}> ${esc(r)}</label>`).join('')}</div>
     <div class="field" style="margin-top:10px"><label for="fx">รายละเอียดเพิ่มเติม <span class="muted">(ไม่บังคับ)</span></label><input id="fx" maxlength="200" placeholder="เช่น ในภาพซื้อ 1,500 หุ้น"></div></div>
@@ -2493,7 +2884,7 @@ function verFixModal(id) {
   $('#save', box).addEventListener('click', () => {
     const extra = clean($('#fx', box).value, 200), note = $('input[name=r]:checked', box).value + (extra ? ` · ${extra}` : '');
     Object.assign(e, { ver: 'fix', fix: { at: now(), by: ME().id, note } });
-    pushFeed({ by: 'coach', who: ME().id, coach: ME().id, cl: e.cl, kind: 'vfix', text: `${ME().name} ขอให้แก้ไขรายการ${verbEx(e)} ${e.sym}` });
+    pushFeed({ by: 'head', who: ME().id, coach: client(e.cl).coach, cl: e.cl, kind: 'vfix', text: `${ME().name} ขอให้แก้ไขรายการ${verbEx(e)} ${e.sym}` });
     if (!save()) return;
     closeModal(); selEx = null; render(); toast(`${ic('send', 18)}<div><b>ส่งให้ลูกค้าแก้ไขแล้ว</b><div class="muted sm">${esc(client(e.cl).name)} จะได้รับแจ้งเตือนผ่าน LINE</div></div>`);
   });
@@ -2515,18 +2906,18 @@ function missModal(cid, pid) {
 }
 // the coach's plan for a stock: kept to check records against, shown to clients once they bought
 function planModal(mode, id) {
-  if (!isCoach()) return;
+  if (!isHead()) return;
   const me = ME(), p = id && planOf(id);
-  if (mode !== 'new' && (!p || p.coach !== me.id || !planLive(p))) return;
+  if (mode !== 'new' && (!p || !planLive(p))) return;
   if (mode === 'sl') {
-    const box = openModal(mhead(`เลื่อน Stop Loss · ${esc(p.sym)}`, `Stop Loss ปัจจุบัน ${px(planSL(p.id))} · Entry ${px(p.hi)} · ลูกค้าที่ถือหุ้นตัวนี้จะเห็นค่าใหม่ในหน้าพอร์ต`) + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px"><div class="fgrid"><div class="field"><label for="nsl">Stop Loss ใหม่</label><input id="nsl" type="number" step="0.01" value="${p.hi}"></div><div class="field"><label>ราคาปิดล่าสุด</label><input value="${px(lastPx(p.sym))}" disabled></div></div>
-      <div class="field"><label for="pn">เหตุผล</label><input id="pn" maxlength="300" value="ราคายืนเหนือราคาเข้าซื้อได้แล้ว เลื่อน Stop Loss ขึ้นมาที่ราคาเข้าซื้อ (Breakeven)"></div><div class="xs muted">โทรแจ้งลูกค้าให้แก้ Stop Order ในแอปด้วย</div></div>
+    const box = openModal(mhead(`เลื่อน Stop Loss · ${esc(p.sym)}`, `Stop Loss ปัจจุบัน ${px(planSL(p.id))} · Entry ${px(p.hi)} · ลูกค้าที่ถือหุ้นตัวนี้จะเห็นค่าใหม่ในหน้าพอร์ต · โค้ชประจำตัวช่วยแจ้งลูกค้า`) + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px"><div class="fgrid"><div class="field"><label for="nsl">Stop Loss ใหม่</label><input id="nsl" type="number" step="0.01" value="${p.hi}"></div><div class="field"><label>ราคาปิดล่าสุด</label><input value="${px(lastPx(p.sym))}" disabled></div></div>
+      <div class="field"><label for="pn">เหตุผล</label><input id="pn" maxlength="300" value="ราคายืนเหนือราคาเข้าซื้อได้แล้ว เลื่อน Stop Loss ขึ้นมาที่ราคาเข้าซื้อ (Breakeven)"></div><div class="xs muted">โค้ชประจำตัวจะโทรแจ้งลูกค้าให้แก้ Stop Order ในแอปด้วย</div></div>
       <div class="mft"><span class="ferr" id="err"></span><span class="sp"></span><button class="btn ghost" data-act="close">ยกเลิก</button><button class="btn" id="save">บันทึก</button></div>`);
     $('#save', box).addEventListener('click', () => {
       const v = parseFloat($('#nsl', box).value);
       if (!validPx(v) || v >= lastPx(p.sym)) { $('#err', box).textContent = 'Stop Loss ใหม่ต้องต่ำกว่าราคาล่าสุด'; return; }
       p.sls.push({ at: now(), sl: v, note: clean($('#pn', box).value, 300) || 'เลื่อน Stop Loss' });
-      pushFeed({ by: 'coach', who: me.id, coach: me.id, kind: 'plan', text: `${me.name} เลื่อน Stop Loss ${p.sym} เป็น ${px(v)}` });
+      pushFeed({ by: 'head', who: me.id, kind: 'plan', text: `${me.name} เลื่อน Stop Loss ${p.sym} เป็น ${px(v)}` });
       if (!save()) return; closeModal(); render(); toast(`${ic('check', 18)}<div><b>เลื่อน Stop Loss แล้ว</b><div class="muted sm">${esc(p.sym)} → ${px(v)}</div></div>`, 'ok');
     });
     return;
@@ -2537,12 +2928,12 @@ function planModal(mode, id) {
     $('#save', box).addEventListener('click', () => {
       const r = $('input[name=w]:checked', box);
       p.end = { at: now(), why: r.value, note: r.dataset.l };
-      pushFeed({ by: 'coach', who: me.id, coach: me.id, kind: 'plan', text: `${me.name} ปิดแผน ${p.sym} · ${r.dataset.l}` });
+      pushFeed({ by: 'head', who: me.id, kind: 'plan', text: `${me.name} ปิดแผน ${p.sym} · ${r.dataset.l}` });
       if (!save()) return; closeModal(); render(); toast(`${ic('check', 18)}<div><b>ปิดแผนแล้ว</b><div class="muted sm">${esc(p.sym)}</div></div>`);
     });
     return;
   }
-  const box = openModal(mhead('บันทึกแผนใหม่', 'แผนที่คุยกับลูกค้าแล้ว ใช้เทียบกับรายการที่ลูกค้าซื้อขายจริง · ลูกค้าเลือกแผนนี้ได้ตอนบันทึกรายการซื้อ') + `<div class="mbd" style="display:flex;flex-direction:column;gap:11px">
+  const box = openModal(mhead('บันทึกแผนใหม่', 'แผนจากหัวหน้าโค้ชถึงลูกค้าทุกคนที่เทรดตลาดนี้ ใช้เทียบกับรายการที่ลูกค้าซื้อขายจริง · ลูกค้าเลือกแผนนี้ได้ตอนบันทึกรายการซื้อ') + `<div class="mbd" style="display:flex;flex-direction:column;gap:11px">
     <div class="fgrid"><div class="field"><label for="pmk">ตลาด</label><select id="pmk">${Object.entries(MARKETS).map(([k, [l]]) => `<option value="${k}">${l}</option>`).join('')}</select></div><div class="field" id="fpk" hidden><label for="pk" id="pkl"></label><input id="pk" type="number" step="0.01" min="0"></div></div>
     <div class="fgrid"><div class="field"><label for="sym" class="row" style="gap:6px;min-width:0">หุ้น / สินทรัพย์ <span class="muted ell" id="symnm" style="font-weight:400"></span></label><input id="sym" list="syms" maxlength="15" autocomplete="off" placeholder="เช่น PTT" style="text-transform:uppercase"><datalist id="syms">${Object.keys(SYMS).map(s => `<option value="${s}">${esc(sname(s))}</option>`).join('')}</datalist><div class="hint" id="lastpx">พิมพ์ชื่อย่อหุ้นเพื่อดูราคาปิดล่าสุด</div></div>
       <div class="field"><label for="lo">${tm('entry', 'ราคาเข้าซื้อ · Entry')} (ต่ำสุด – สูงสุด)</label><div class="row" style="gap:6px"><input id="lo" type="number" step="0.01" min="0"><span class="muted">–</span><input id="hi" type="number" step="0.01" min="0" aria-label="ราคาซื้อสูงสุด"></div></div></div>
@@ -2561,8 +2952,8 @@ function planModal(mode, id) {
     const o = cur(), e = errors(o), risk = validPx(o.hi) && validPx(o.sl) && o.sl < o.hi ? (o.hi - o.sl) / o.hi : 0, tp2 = validPx(o.tp2) && o.tp2 >= o.tp1 ? o.tp2 : o.tp1;
     $('#sizev', box).textContent = o.size + '%';
     $('#risk', box).innerHTML = `<span>${tm('r', 'Risk ต่อพอร์ต')} <b class="num ${risk * o.size > 1.5 ? 'dn' : ''}">${risk ? fmt(risk * o.size, 2) + '%' : '—'}</b></span><span>${tm('rr')} <b class="num">${risk && validPx(o.tp1) ? '1 : ' + fmt((o.tp1 - o.hi) / (o.hi - o.sl), 1) : '—'}</b></span>`;
-    const cls = S.clients.filter(c => c.coach === me.id), okc = cls.filter(c => c.mks.includes(o.mk)), pp = { ...o, mk: o.mk === 'th' ? undefined : o.mk, k: o.mk === 'th' ? 1 : o.k };
-    $('#psz', box).innerHTML = !e ? `<span class="muted">ขนาดสถานะที่แจ้งลูกค้าแต่ละคน (เก็บเป็นหลักฐาน):</span> ${okc.map(c => `${esc(c.name)} <b class="num">${fmt(planQty(c, pp))}</b> ${MARKETS[o.mk][1]}`).join(' · ')}${cls.length > okc.length ? ` · <span class="muted">ไม่แจ้ง ${cls.length - okc.length} ราย (ไม่ได้เทรด${MARKETS[o.mk][0]}ตามแผนเทรด)</span>` : ''}` : '';
+    const cls = S.clients, okc = cls.filter(c => c.mks.includes(o.mk)), pp = { ...o, mk: o.mk === 'th' ? undefined : o.mk, k: o.mk === 'th' ? 1 : o.k };
+    $('#psz', box).innerHTML = !e ? `<span class="muted">แจ้งลูกค้า <b class="ink2">${okc.length} ราย</b> ขนาดสถานะคำนวณจากพอร์ตของแต่ละคน (เก็บเป็นหลักฐาน) เช่น</span> ${okc.slice(0, 4).map(c => `${esc(c.name)} <b class="num">${fmt(planQty(c, pp))}</b> ${MARKETS[o.mk][1]}`).join(' · ')}${cls.length > okc.length ? ` · <span class="muted">ไม่แจ้ง ${cls.length - okc.length} ราย (ไม่ได้เทรด${MARKETS[o.mk][0]})</span>` : ''}` : '';
     $('#lad', box).innerHTML = !e ? `${miniLadder({ ...o, tp2 }, lastPx(o.sym))}<div class="lad-k xs num"><span class="dn">SL ${px(o.sl)} (${pct((o.sl - o.hi) / o.hi)})</span><span class="gold">Entry ${px(o.lo)}–${px(o.hi)}</span><span class="up">TP1 ${px(o.tp1)} (${pct((o.tp1 - o.hi) / o.hi)})</span><span class="up">TP2 ${px(tp2)} (${pct((tp2 - o.hi) / o.hi)})</span></div>` : '<div class="xs muted">กรอก Entry, Stop Loss และ TP เพื่อดูภาพรวมของแผน</div>';
     $('#err', box).textContent = touched ? e : ''; $('#save', box).disabled = !!e;
   };
@@ -2575,12 +2966,12 @@ function planModal(mode, id) {
   box.addEventListener('input', () => { touched = true; upd(); });
   $('#save', box).addEventListener('click', () => {
     const o = cur(); touched = true; if (errors(o)) return upd();
-    const np = { id: `${me.id}-${nid('p')}`, key: 'N', coach: me.id, sym: o.sym, lo: o.lo, hi: o.hi, sl: o.sl, tp1: o.tp1, tp2: validPx(o.tp2) ? o.tp2 : o.tp1, size: o.size, at: now(), note: clean($('#note', box).value, 300) || 'ซื้อตามแผนที่คุยกับโค้ช', sls: [], end: null };
+    const np = { id: `head-${nid('p')}`, key: 'N', coach: null, by: 'head', sym: o.sym, lo: o.lo, hi: o.hi, sl: o.sl, tp1: o.tp1, tp2: validPx(o.tp2) ? o.tp2 : o.tp1, size: o.size, at: now(), note: clean($('#note', box).value, 300) || 'ซื้อตามแผนที่คุยกับโค้ช', sls: [], end: null };
     if (o.mk !== 'th') Object.assign(np, { mk: o.mk, k: o.k });
     np.alloc = {};
-    S.clients.filter(c => c.coach === me.id && c.mks.includes(o.mk)).forEach(c => { const q = planQty(c, np); np.alloc[c.id] = { qty: q, amt: Math.round(q * np.hi * (np.k || 1)), at: np.at }; });
+    S.clients.filter(c => c.mks.includes(o.mk)).forEach(c => { const q = planQty(c, np); np.alloc[c.id] = { qty: q, amt: Math.round(q * np.hi * (np.k || 1)), at: np.at }; });
     S.plans.push(np);
-    pushFeed({ by: 'coach', who: me.id, coach: me.id, kind: 'plan', text: `${me.name} บันทึกแผน ${np.sym} · Entry ${px(np.lo)}–${px(np.hi)}` });
+    pushFeed({ by: 'head', who: me.id, kind: 'plan', text: `${me.name} บันทึกแผน ${np.sym} · Entry ${px(np.lo)}–${px(np.hi)}` });
     if (!save()) return; closeModal(); go('plans'); toast(`${ic('check', 18)}<div><b>บันทึกแผน ${esc(np.sym)} แล้ว</b><div class="muted sm">ใช้เทียบกับรายการที่บันทึกต่อจากนี้</div></div>`, 'ok');
   });
   upd();
@@ -2597,8 +2988,8 @@ function clientCard(c) {
   const d = discipline(c.id), v = eqNow(c), ps = pnlSum(c), fl = flagsOf(c), st = settle(c);
   return `<div class="pnl ccard" data-act="open" data-id="${esc(c.id)}" role="button" tabindex="0">
     <div class="row">${avatar(c)}<div style="min-width:0;flex:1"><b class="ell" style="display:block">${esc(cname(c))}</b><span class="xs muted">เข้าใช้งาน ${seenTxt(c)}</span></div></div>
-    <div><div class="xs muted">กำไรสะสมตามบันทึก</div><div class="serif num" style="font-size:25px"><span class="gtxt">${signed(ps.total)}</span></div><div class="xs num"><span class="${ps.total >= 0 ? 'up' : 'dn'}">${pct(retPct(c))} จากเงินทุน</span> <span class="muted">· พอร์ต ฿${kb(v)}</span></div></div>
-    <div><div class="bar"><i style="width:${st.pct * 100}%"></i></div><div class="xs muted ell" style="margin-top:3px">${fmt(st.pct * 100, 1)}% ของเป้า 1 ล้าน · ${st.extra > 0 ? 'ถึงเป้าแล้ว' : `คืน ฿${kb(st.refund)}`}</div></div>
+    <div><div class="xs muted">กำไรสะสมตามบันทึก</div><div class="serif num" style="font-size:25px"><span class="${ps.total >= 0 ? 'gtxt' : 'dn'}">${signed(ps.total)}</span></div><div class="xs num"><span class="${ps.total >= 0 ? 'up' : 'dn'}">${pct(retPct(c))} จากเงินทุน</span> <span class="muted">· พอร์ต ฿${kb(v)}</span></div></div>
+    <div><div class="bar"><i style="width:${st.pct * 100}%"></i></div><div class="xs muted ell" style="margin-top:3px">${fmt(st.pct * 100, 1)}% ของเงื่อนไข 1 ล้าน · ${st.extra > 0 ? 'ถึง 1 ล้านแล้ว' : `คืน ฿${kb(st.refund)}`}</div></div>
     <div class="cc-s" title="กำไรสะสมรายสัปดาห์ตามบันทึก">${sparkFill(profitSeries(c).map(p => p.v))}</div>
     <div class="cc-k"><div><b class="num ${scoreTone(d.score)}">${d.score}</b>วินัย</div><div><b class="num">${Math.round(d.acc * 100)}%</b>ตรงแผน</div><div><b class="num">${ps.closed ? Math.round(ps.rate * 100) + '%' : '—'}</b>Win Rate</div></div>
     <div class="flags">${fl.length ? fl.slice(0, 3).join('') : '<span class="tag ok">เรียบร้อย</span>'}</div>
@@ -2609,7 +3000,7 @@ function clientView() {
   const c = client(selCl), co = coach(c.coach), notes = S.notes.filter(x => x.cl === c.id).length;
   if (!CL_TABS.some(t => t[0] === clTab)) clTab = 'ov';
   const tab = { ov: clOverview, trd: clTrades, plan: clPlan, port: clPort, notes: clNotes }[clTab](c);
-  return `<section class="pnl chd">${avatar(c, 'lg')}<div style="min-width:0"><h2 class="ell">${esc(cname(c))}</h2><div class="muted sm ell">${co.name} · ${c.term} เดือน ${TYPE[c.type]} · เดือนที่ ${progMonth(c)} · ${c.mks.map(m => MARKETS[m][0]).join(', ')} · ${esc(c.phone)} · ${esc(c.broker)} xxxx-${esc(c.acct)}${c.ob ? ` · เข้าใช้งาน ${seenTxt(c)}` : ' · <span class="warn">ยังไม่เคยเข้าใช้งาน</span>'}</div></div>
+  return `<section class="pnl chd">${avatar(c, 'lg')}<div style="min-width:0;flex:1 1 180px"><h2 class="ell">${esc(cname(c))} ${yellowCards(c.id).length ? ycIcons(yellowCards(c.id).length) : ''}</h2><div class="muted sm ell">${co.name} · ${c.term} เดือน ${TYPE[c.type]} · เดือนที่ ${progMonth(c)} · ${c.mks.map(m => MARKETS[m][0]).join(', ')} · ${esc(c.phone)} · ${esc(c.broker)} xxxx-${esc(c.acct)}${c.ob ? ` · เข้าใช้งาน ${seenTxt(c)}` : ' · <span class="warn">ยังไม่เคยเข้าใช้งาน</span>'}</div></div>
     <span class="sp"></span><div class="seg">${CL_TABS.map(([k, l, sl]) => `<button class="${clTab === k ? 'on' : ''}" data-ctab="${k}"><span class="lgx">${l}</span><span class="shx">${sl}</span>${k === 'notes' && notes ? `<span class="n">${notes}</span>` : ''}</button>`).join('')}</div>
     <button class="btn soft sm" data-act="line1" data-id="${esc(c.id)}">${ic('chat', 15)} LINE</button>${isCS() ? `<button class="btn ghost sm" data-act="recoach" data-id="${esc(c.id)}">${ic('users', 15)} เปลี่ยนโค้ช</button>` : ''}</section>
   <div class="sub vgrid c-${clTab === 'trd' ? 'ord' : clTab}" data-v="cl-${clTab}">${tab}</div>`;
@@ -2622,28 +3013,29 @@ function clOverview(c) {
     <div class="kpi" title="ตรงแผน ${Math.round(d.acc * 100)}% · ขายตามแผน ${Math.round(d.exit * 100)}% · นอกแผน ${d.off} ครั้ง · หลักฐาน ${Math.round(d.proof * 100)}%"><div class="k">${ic('target', 14)} คะแนนวินัย</div><div class="v num ${scoreTone(d.score)}">${d.score} <span class="xs">${scoreWord(d.score)}</span></div><div class="dist" style="margin:4px 0 0">${[d.acc, d.exit, Math.max(0, 1 - d.off / 3), d.proof].map(x => `<i style="flex:1;background:var(--${x >= .9 ? 'up' : x >= .75 ? 'warn' : 'dn'});opacity:${.35 + x * .65}"></i>`).join('')}</div><div class="s">ตรงแผน · ขายตามแผน · นอกแผน · หลักฐาน</div></div>
     ${kpi('check', 'รายการ 30 วัน', `${d.n}`, `ไม่ตรงแผน ${d.devN} · ไม่ทำตามแผน ${d.miss} · นอกแผน ${d.off}`)}
     ${kpi('alert', 'ลดลงจากจุดสูงสุด', pct(-dd.now), `สูงสุด ${pct(-dd.max)}`, dd.now > .1 ? 'dn' : '')}
-    ${kpi('trophy', 'คืนค่าเรียน (ถ้าจบวันนี้)', st.extra > 0 ? 'ไม่มี' : '฿' + baht(st.refund), st.extra > 0 ? `กำไรเกินเป้า ${signed(st.extra)}` : `ทำได้ ${fmt(st.pct * 100, 1)}% ของเป้ากำไร 1 ล้าน`, st.extra > 0 ? 'up' : '')}
+    ${kpi('trophy', 'คืนค่าเรียน (ถ้าจบวันนี้)', st.extra > 0 ? 'ไม่มี' : '฿' + baht(st.refund), st.extra > 0 ? `กำไรเกิน 1 ล้าน ${signed(st.extra)}` : `ทำได้ ${fmt(st.pct * 100, 1)}% ของเงื่อนไข 1 ล้าน`, st.extra > 0 ? 'up' : '')}
   </div>
-  <section class="pnl" data-pt="กราฟ"><div class="ph"><h3>กำไรสะสมรายสัปดาห์ตามบันทึก</h3><span class="sub">จุดสีส้ม = ยอดที่ลูกค้ารายงานต่างจากบันทึก</span></div><div class="pb" style="display:flex;flex-direction:column">${chartBox('cl', profitSeries(c), { kind: 'pl', refs: [{ v: GOAL, label: 'เป้าหมาย 1 ล้าน', always: 1 }, { v: 0, label: '', c: 'var(--mut)', always: 1 }] })}</div></section>
+  <section class="pnl" data-pt="กราฟ"><div class="ph"><h3>กำไรสะสมรายสัปดาห์ตามบันทึก</h3><span class="sub">จุดสีส้ม = ยอดที่ลูกค้ารายงานต่างจากบันทึก</span></div><div class="pb" style="display:flex;flex-direction:column">${chartBox('cl', profitSeries(c), { kind: 'pl', refs: [{ v: GOAL, label: '1 ล้าน', always: 1 }, { v: 0, label: '', c: 'var(--mut)', always: 1 }] })}</div></section>
   ${pnl({ t: 'เรื่องที่ต้องเคลียร์', sub: `${al.length} เรื่อง`, key: 'cal', pt: 'เรื่องค้าง', rows: al.map(a => alertRow(a)).join(''), cls: 'tight', empty: `${ic('check', 24)}ไม่มีเรื่องค้าง` })}
-  ${pnl({ t: 'สินทรัพย์ที่ถือครอง', sub: `${hold.length} รายการ`, key: 'cps', pt: 'สินทรัพย์', cls: 'tight', empty: 'ไม่มีสินทรัพย์ที่ถือครอง', rows: hold.map(p => { const pl = p.upl; return `<div class="hr2 wl">${slogo(p.sym, 34)}<span><b>${esc(p.sym)}</b> <span class="xs muted num">${fmt(p.qty)} ${unitOf(p)} · Avg ${px(p.avg)}</span></span><b class="num ${pl >= 0 ? 'up' : 'dn'}">${signed(pl)}</b><span class="xs muted num">ราคาปิด ${px(p.last)} · SL ${p.sl ? px(p.sl) : '—'}</span>${!p.plan ? '<span class="tag pu">นอกแผน</span>' : p.sl && p.last <= p.sl ? '<span class="tag dn">หลุด Stop Loss</span>' : '<span class="tag ok">ตามแผน</span>'}</div>`; }).join('') })}`;
+  ${pnl({ t: 'สินทรัพย์ที่ถือครอง', sub: `${hold.length} รายการ`, key: 'cps', pt: 'สินทรัพย์', cls: 'tight', empty: 'ไม่มีสินทรัพย์ที่ถือครอง', tcls: 'cps', th: `<div class="ot-h"><span>หุ้น</span><span class="r">จำนวน</span><span class="r c-avg">${tm('avg', 'Avg')}</span><span class="r c-last">ราคาปิด</span><span class="r">${tm('upl', 'U.P/L')}</span></div>`,
+    rows: hold.map(p => { const pl = p.upl; return `<div class="ot-r"><span class="jm">${slogo(p.sym, 20)}<span style="min-width:0"><b>${esc(p.sym)}</b><span class="t2">${!p.plan ? '<span class="pu">นอกแผน</span>' : p.sl && p.last <= p.sl ? '<span class="dn">หลุด Stop Loss</span>' : `SL ${p.sl ? px(p.sl) : '—'}`}</span></span></span><span class="r num">${fmt(p.qty)}<span class="t2">${unitOf(p)}</span></span><span class="r num c-avg">${px(p.avg)}</span><span class="r num c-last">${px(p.last)}</span><span class="r num ${pl >= 0 ? 'up' : 'dn'}"><b>${signed(pl)}</b></span></div>`; }).join('') })}`;
 }
 // the client's own trading plan, what the coach told them for each plan (kept as evidence), coaching attendance
 function clPlan(c) {
-  const told = toldOf(c), a = attOf(c.id), ss = sessOf(c.id), co = isCoach();
+  const told = toldOf(c), a = attOf(c.id), ss = sessOf(c.id), co = isCoach(), hd = isHead();
   const offBuys = execsOf(c.id).filter(e => !e.plan && e.side === 'buy' && e.at <= now());
   const toldRow = p => {
     const t = p.alloc[c.id], q = execsOf(c.id).filter(e => e.plan === p.id && e.side === 'buy').reduce((s, e) => s + e.qty, 0), u = unitOf(p);
-    const res = !q ? '<span class="tag">ไม่ได้ซื้อ</span>' : q > t.qty * 1.1 ? `<span class="tag warn">ซื้อ ${fmt(q)} เกินที่แนะนำ</span>` : `<span class="tag ok">ซื้อ ${fmt(q)} ${u}</span>`;
-    return `<div class="trow"><span class="xs muted">${dt(t.at || p.at)}</span>${slogo(p.sym, 28)}<span class="jm"><span style="min-width:0"><b>${esc(p.sym)}</b> <span class="num sm">แนะนำ ${fmt(t.qty)} ${u} · ฿${kb(t.amt)}</span><span class="xs muted ell" style="display:block">Entry ${px(p.lo)}–${px(p.hi)} · SL ${px(p.sl)} · TP ${px(p.tp1)}/${px(p.tp2)} · ${coach(p.coach).name}</span></span></span>${res}</div>`;
+    const res = !q ? '<span class="muted xs">ไม่ได้ซื้อ</span>' : q > t.qty * 1.1 ? `<b class="warn num">${fmt(q)}</b><span class="t2 warn">เกินที่แนะนำ</span>` : `<b class="up num">${fmt(q)}</b><span class="t2">${u} · ตามที่แนะนำ</span>`;
+    return `<div class="ot-r"><span class="num">${dstr(t.at || p.at)}<span class="t2">${tstr(t.at || p.at)}</span></span><span class="jm">${slogo(p.sym, 20)}<span style="min-width:0"><b>${esc(p.sym)}</b><span class="t2">${planBy(p)}</span></span></span><span class="r num"><b>${fmt(t.qty)}</b> ${u}<span class="t2">฿${kb(t.amt)}</span></span><span class="num xs c-lv">Entry ${px(p.lo)}–${px(p.hi)}<span class="t2">SL ${px(p.sl)} · TP ${px(p.tp1)}/${px(p.tp2)}</span></span><span class="r">${res}</span></div>`;
   };
-  return `<section class="pnl" data-pt="แผนเทรด"><div class="ph"><h3>แผนเทรด</h3><span class="sub">ฉบับที่ ${c.tp.no} · ${c.tp.ok ? `<span class="up">ยืนยันแล้ว ${dstr(c.tp.ok)}</span>` : '<span class="warn">รอลูกค้ายืนยัน</span>'}</span><button class="lnk xs" data-act="tpview" data-id="${esc(c.id)}" style="margin-left:auto">ฉบับเต็ม</button>${co ? `<button class="btn ghost sm" data-act="tpedit" data-id="${esc(c.id)}">${ic('edit', 15)} ปรับ</button>` : ''}</div><div class="pb"><div class="tpfull">${tpDoc(c)}</div><div class="tpshort">${tpDoc(c, true)}</div></div></section>
-  ${pnl({ t: 'คำแนะนำจากโค้ช', sub: `${told.length} แผน · แก้ไข/ลบไม่ได้`, key: 'ctold', pt: 'คำแนะนำ', cls: 'tight', empty: 'ยังไม่มีคำแนะนำ', pre: offBuys.length ? `<div class="note-box y">${ic('flag', 16)}<span><b>ซื้อเองโดยไม่มีคำแนะนำจากโค้ช:</b> ${offBuys.map(e => `${esc(e.sym)} ${dstr(e.at)}`).join(' · ')}</span></div>` : '', rows: told.map(toldRow).join('') })}
+  return `<section class="pnl" data-pt="แผนเทรด"><div class="ph"><h3>แผนเทรด</h3><span class="sub">ฉบับที่ ${c.tp.no} · ${c.tp.ok ? `<span class="up">ยืนยันแล้ว ${dstr(c.tp.ok)}</span>` : '<span class="warn">รอลูกค้ายืนยัน</span>'}</span><button class="lnk xs" data-act="tpview" data-id="${esc(c.id)}" style="margin-left:auto">ฉบับเต็ม</button>${hd ? `<button class="btn ghost sm" data-act="tpedit" data-id="${esc(c.id)}">${ic('edit', 15)} ปรับ</button>` : ''}</div><div class="pb"><div class="tpfull">${tpDoc(c)}</div><div class="tpshort">${tpDoc(c, true)}</div></div></section>
+  ${pnl({ t: 'คำแนะนำจากโค้ช', sub: `${told.length} แผน · แก้ไข/ลบไม่ได้`, key: 'ctold', pt: 'คำแนะนำ', cls: 'tight', empty: 'ยังไม่มีคำแนะนำ', tcls: 'ctold', th: '<div class="ot-h"><span>วันที่</span><span>หุ้น</span><span class="r">ขนาดที่แนะนำ</span><span class="c-lv">แผน</span><span class="r">ลูกค้าซื้อจริง</span></div>', pre: offBuys.length ? `<div class="note-box y">${ic('flag', 16)}<span><b>ซื้อเองโดยไม่มีคำแนะนำจากโค้ช:</b> ${offBuys.map(e => `${esc(e.sym)} ${dstr(e.at)}`).join(' · ')}</span></div>` : '', rows: told.map(toldRow).join('') })}
   ${pnl({ t: `Coaching <span class="num ${a.rate < .8 ? 'warn' : 'up'}">${a.n}/${a.t}</span>`, sub: '', key: 'cses', pt: 'Coaching', cls: 'tight', head: co ? `<button class="btn ghost sm" data-act="sessnew" data-id="${esc(c.id)}" style="margin-left:auto">${ic('plus', 15)} บันทึกนัด</button>` : '', empty: 'ยังไม่มีนัด', rows: ss.map(x => `<div class="hr2"><span><b>${x.kind === 'review' ? 'Review ประจำเดือน' : 'Coaching'}</b> <span class="xs muted">${wd(x.at)} ${dt(x.at)}</span></span>${x.att ? '<span class="tag ok">เข้าร่วม</span>' : '<span class="tag warn">ไม่ได้เข้าร่วม</span>'}${x.note ? `<span class="xs muted">${esc(x.note)}</span>` : ''}</div>`).join('') })}`;
 }
 // the coach updates the client's trading plan: a new version the client confirms; the old one is kept
 function tpEditModal(id) {
-  const c = client(id); if (!c || !canSee(id) || !isCoach()) return;
+  const c = client(id); if (!c || !canSee(id) || !isHead()) return;
   const tp = c.tp, base = tpBase(c);
   const box = openModal(mhead(`ปรับแผนเทรด · ${esc(cname(c))}`, `บันทึกเป็นฉบับที่ ${tp.no + 1} · ลูกค้าต้องยืนยันอีกครั้ง · ฉบับเดิมเก็บไว้เป็นหลักฐาน`) + `<div class="mbd" style="display:flex;flex-direction:column;gap:11px">
     <div class="field"><label for="tstr">กลยุทธ์</label><input id="tstr" maxlength="200" value="${esc(tp.strategy)}"></div>
@@ -2660,7 +3052,7 @@ function tpEditModal(id) {
     const o = cur(), err = check(o); if (err) { $('#err', box).textContent = err; return; }
     (c.tpHist || (c.tpHist = [])).push({ ...tp });
     c.tp = { no: tp.no + 1, at: now(), by: ME().id, ok: null, ...o };
-    pushFeed({ by: 'coach', who: ME().id, coach: ME().id, cl: c.id, kind: 'tpu', text: `${ME().name} ปรับแผนเทรดของ${c.name} (ฉบับที่ ${c.tp.no}) รอลูกค้ายืนยัน` });
+    pushFeed({ by: 'head', who: ME().id, coach: c.coach, cl: c.id, kind: 'tpu', text: `${ME().name} ปรับแผนเทรดของ${c.name} (ฉบับที่ ${c.tp.no}) รอลูกค้ายืนยัน` });
     if (!save()) return;
     closeModal(); render(); toast(`${ic('check', 18)}<div><b>บันทึกแผนเทรดฉบับที่ ${c.tp.no} แล้ว</b><div class="muted sm">${esc(c.name)} จะได้รับแจ้งให้ยืนยัน</div></div>`, 'ok');
   });
@@ -2719,23 +3111,25 @@ function onBehalfModal(id, kind) {
 }
 function clTrades(c) {
   const n = now(), ps = positions(c.id).slice().sort((a, b) => (b.qty > 0) - (a.qty > 0) || b.lastAt - a.lastAt);
-  const recs = [...execsOf(c.id).filter(e => e.at <= n).map(e => ({ t: e.at, h: `<div class="trow"><span class="xs muted">${dt(e.at)}</span>${sideTag(e)}<span class="jm">${slogo(e.sym, 28)}<span style="min-width:0"><b>${verbEx(e)} ${esc(e.sym)}</b> <span class="num sm">${fmt(e.qty)} @ ${px(e.px)}</span><span class="xs muted ell" style="display:block">${allOk(checks(e)) ? `${e.rec.by === c.id ? 'ลูกค้าบันทึก' : byName(e.rec.by) + 'บันทึกให้'}${e.vat ? ' · ตรวจแล้ว' : ''}` : esc(devText(e))}</span></span></span><span class="row" style="gap:6px">${e.ver !== 'ok' ? verTag(e, 1) : e.plan ? ckDots(checks(e)) : '<span class="tag pu">นอกแผน</span>'}${slipThumb(e, c)}</span></div>` })),
-    ...S.misses.filter(m => m.cl === c.id).map(m => ({ t: m.at, h: `<div class="trow"><span class="xs muted">${dt(m.at)}</span><span class="side ms">!</span><span class="jm">${slogo(planOf(m.plan)?.sym || '', 28)}<span style="min-width:0"><b>${MISS[m.kind]} ${esc(planOf(m.plan)?.sym || '')}</b><span class="xs muted ell" style="display:block">${esc(m.note)}</span></span></span><span class="tag warn">โค้ชบันทึก</span></div>` }))].sort((a, b) => b.t - a.t);
+  const planCol = e => { const ok = allOk(checks(e)); return !e.plan ? '<b class="pu">นอกแผน</b><span class="t2">ไม่มีคำแนะนำ</span>' : `<b class="${ok ? 'up' : 'warn'}" title="${ok ? '' : esc(devText(e))}">${ok ? 'ตรงแผน' : 'ไม่ตรงแผน'}</b><span class="t2">${ckDots(checks(e))}</span>`; };
+  const recs = [...execsOf(c.id).filter(e => e.at <= n).map(e => ({ t: e.at, h: `<div class="ot-r"><span class="num">${dstr(e.at)}<span class="t2">${tstr(e.at)}</span></span><span class="jm">${slogo(e.sym, 20)}<span style="min-width:0"><b>${esc(e.sym)}</b><span class="t2">${e.rec.by === c.id ? 'ลูกค้าบันทึก' : byName(e.rec.by) + 'บันทึกให้'}</span></span></span><span class="c">${sideTag(e)}</span><span class="r num">${fmt(e.qty)}</span><span class="r num c-px">${px(e.px)}</span><span class="r num c-pl">${plCell(e)}</span><span class="c-plan">${e.ver === 'ok' ? planMark(e) : '<span class="muted xs">รอตรวจ</span>'}</span><span class="r">${verTag(e, 1)}</span><span class="c c-pic">${slipThumb(e, c)}</span></div>` })),
+    ...S.misses.filter(m => m.cl === c.id).map(m => ({ t: m.at, h: `<div class="ot-r"><span class="num">${dstr(m.at)}<span class="t2">${tstr(m.at)}</span></span><span class="jm">${slogo(planOf(m.plan)?.sym || '', 20)}<span style="min-width:0"><b>${esc(planOf(m.plan)?.sym || '')}</b><span class="t2 warn">${MISS[m.kind]}</span></span></span><span class="c"><span class="side ms">!</span></span><span></span><span class="c-px"></span><span class="c-pl"></span><span class="c-plan xs"><span class="t2" title="${esc(m.note)}" style="white-space:normal;max-height:2.6em">${esc(m.note)}</span></span><span class="r"><span class="tag warn">โค้ชบันทึก</span></span><span class="c-pic"></span></div>` }))].sort((a, b) => b.t - a.t);
   const canAct = isCoach();
   const avgOf = a => a.reduce((s, e) => s + e.qty * e.px, 0) / Math.max(1, a.reduce((s, e) => s + e.qty, 0));
-  return `${pnl({ t: 'เข้า · ออก · คงเหลือ', sub: `${ps.length} รายการ · กำไรสะสม ${signed(pnlSum(c).total)}`, key: 'ctg', pt: 'สถานะ', cls: 'tight', rows: ps.map(p => {
+  return `${pnl({ t: 'เข้า · ออก · คงเหลือ', sub: `${ps.length} รายการ · กำไรสะสม ${signed(pnlSum(c).total)}`, key: 'ctg', pt: 'สถานะ', cls: 'tight', tcls: 'ctg', th: '<div class="ot-h"><span>หุ้น</span><span class="r">เข้า (ซื้อ)</span><span class="r c-out">ออก (ขาย)</span><span class="r">คงเหลือ</span><span class="r">P/L</span></div>', rows: ps.map(p => {
     const pl = p.realized + p.upl, fills = execsOf(c.id).filter(e => (e.plan || 'off:' + e.sym) === p.key), b = fills.filter(e => e.side === 'buy'), sl2 = fills.filter(e => e.side === 'sell'), bq = b.reduce((s, e) => s + e.qty, 0), sq = sl2.reduce((s, e) => s + e.qty, 0), u = unitOf(p), dev = fills.some(e => !allOk(checks(e)));
-    return `<div class="trow"><span class="xs muted">${dstr(p.first)}</span>${slogo(p.sym, 28)}<span class="jm"><span style="min-width:0"><b>${esc(p.sym)}</b> <span class="tag ${p.qty ? 'blue' : ''}">${p.qty ? `เหลือ ${fmt(p.qty)} ${u}` : 'ปิดสถานะแล้ว'}</span>${!p.plan ? ' <span class="tag pu">นอกแผน</span>' : dev ? ' <span class="tag warn">ไม่ตรงแผน</span>' : ''}<span class="xs muted ell" style="display:block">เข้า ${fmt(bq)} @ ${px(avgOf(b))}${sq ? ` · ออก ${fmt(sq)} @ ${px(avgOf(sl2))}` : ' · ยังไม่ได้ขาย'}${p.qty && p.sl ? ` · SL ${px(p.sl)}` : ''}</span></span></span><b class="num ${pl >= 0 ? 'up' : 'dn'}">${signed(pl)}</b></div>`; }).join('') })}
-  ${pnl({ t: 'รายการที่บันทึก', sub: `${recs.length} รายการ`, key: 'cex', pt: 'รายการ', cls: 'tight', head: canAct ? `<button class="btn sm" data-act="recnew" data-c="${esc(c.id)}" style="margin-left:auto">${ic('plus', 15)} บันทึกรายการให้ลูกค้า</button>` : '', rows: recs.map(x => x.h).join('') })}`;
+    return `<div class="ot-r"><span class="jm">${slogo(p.sym, 20)}<span style="min-width:0"><b>${esc(p.sym)}</b>${!p.plan ? ' <span class="tag pu">นอกแผน</span>' : dev ? ' <span class="tag warn">ไม่ตรงแผน</span>' : ''}<span class="t2">${dstr(p.first)}${p.qty && p.sl ? ` · SL ${px(p.sl)}` : ''}</span></span></span>
+      <span class="r num">${fmt(bq)}<span class="t2">@ ${px(avgOf(b))}</span></span><span class="r num c-out">${sq ? `${fmt(sq)}<span class="t2">@ ${px(avgOf(sl2))}</span>` : '<span class="muted">—</span>'}</span><span class="r num">${p.qty ? `<b class="blue">${fmt(p.qty)}</b><span class="t2">${u}</span>` : '<span class="muted xs">ปิดแล้ว</span>'}</span><span class="r num ${pl >= 0 ? 'up' : 'dn'}"><b>${signed(pl)}</b></span></div>`; }).join('') })}
+  ${pnl({ t: 'รายการที่บันทึก', sub: `${recs.length} รายการ`, key: 'cex', pt: 'รายการ', cls: 'tight', tcls: 'cex', th: '<div class="ot-h"><span>วันที่</span><span>หุ้น</span><span class="c">B/S</span><span class="r">จำนวน</span><span class="r c-px">ราคา</span><span class="r c-pl">กำไร/ขาดทุน</span><span class="c-plan">เทียบแผน</span><span class="r">สถานะ</span><span class="c c-pic">ภาพ</span></div>', head: canAct ? `<button class="btn sm" data-act="recnew" data-c="${esc(c.id)}" style="margin-left:auto">${ic('plus', 15)} บันทึกรายการให้ลูกค้า</button>` : '', rows: recs.map(x => x.h).join('') })}`;
 }
 function clPort(c) {
   const snaps = S.snaps.filter(s => s.cl === c.id).sort((a, b) => b.at - a.at);
   return `<section class="pnl palloc" data-pt="สัดส่วนและความเสี่ยง"><div class="ph"><h3>สัดส่วนและความเสี่ยง</h3><span class="sp"></span>${allocSeg()}</div>
     <div class="pb" style="display:flex;align-items:center">${allocView(c, narrow() ? 120 : 140)}</div>
     <div class="pfoot">${heatView(c)}${concLine(c)}</div></section>
-  ${pnl({ pre: weekStrip(c), t: 'ยอดพอร์ตที่ลูกค้ารายงาน', sub: 'ทุกวันศุกร์ เทียบกับบันทึก', key: 'csn', pt: 'ยอดที่รายงาน', cls: 'tight', empty: 'ยังไม่มีรายงาน', head: isCoach() ? `<button class="btn ghost sm" data-act="behalf" data-k="snap" data-id="${esc(c.id)}" style="margin-left:auto">${ic('plus', 15)} รายงานแทน</button>` : '', rows: snaps.map(s => { const df = (s.val - c.eq[s.day]) / c.eq[s.day]; return `<div class="hr2"><span>${wd(S.days[s.day])} ${dstr(S.days[s.day])} <span class="xs muted">รายงาน ${dt(s.at)}</span></span><span class="tag ${Math.abs(df) > .02 ? 'warn' : 'ok'} num">${pct(df, 2)}</span><span class="xs muted num">รายงาน ${baht(s.val)} · ตามบันทึก ${baht(c.eq[s.day])}</span></div>`; }).join('') })}
+  ${pnl({ pre: weekStrip(c), t: 'ยอดพอร์ตที่ลูกค้ารายงาน', sub: 'ทุกวันศุกร์ เทียบกับบันทึก', key: 'csn', pt: 'ยอดที่รายงาน', cls: 'tight', empty: 'ยังไม่มีรายงาน', tcls: 'csn', th: '<div class="ot-h"><span>วันศุกร์</span><span class="r">ยอดที่รายงาน</span><span class="r c-rec">ตามบันทึก</span><span class="r">ต่าง</span></div>', head: isCoach() ? `<button class="btn ghost sm" data-act="behalf" data-k="snap" data-id="${esc(c.id)}" style="margin-left:auto">${ic('plus', 15)} รายงานแทน</button>` : '', rows: snaps.map(s => { const df = (s.val - c.eq[s.day]) / c.eq[s.day]; return `<div class="ot-r"><span class="num">${wd(S.days[s.day])} ${dstr(S.days[s.day])}<span class="t2">ส่ง ${dt(s.at)}</span></span><span class="r num">${baht(s.val)}</span><span class="r num c-rec">${baht(c.eq[s.day])}</span><span class="r"><span class="tag ${Math.abs(df) > .02 ? 'warn' : 'ok'} num">${pct(df, 2)}</span></span></div>`; }).join('') })}
   <div class="stk" data-pt="Statement · ฝาก/ถอน">${pnl({ t: 'Statement ประจำเดือน', sub: 'ส่งภายในวันที่ 5', key: 'cst', cls: 'tight', empty: 'ยังไม่ถึงกำหนดส่ง', head: isCoach() ? `<button class="btn ghost sm" data-act="behalf" data-k="stmt" data-id="${esc(c.id)}" style="margin-left:auto">${ic('plus', 15)} ส่งแทน</button>` : '', rows: stmtRows(c) })}
-  ${pnl({ t: 'ฝาก / ถอนเงิน', sub: 'CS อนุมัติก่อนนับเข้าพอร์ต', key: 'cfl', cls: 'tight', empty: 'ยังไม่มีรายการ', rows: c.flows.slice().reverse().map(f => `<div class="hr2"><span><span class="tag ${f.amt > 0 ? 'ok' : 'dn'}">${f.amt > 0 ? 'ฝาก' : 'ถอน'}</span> <b class="num">${baht(Math.abs(f.amt))}</b></span>${f.pend ? (isCS() ? `<button class="btn sm" data-act="flowrev" data-c="${esc(c.id)}" data-f="${esc(f.id)}">ตรวจหลักฐาน</button>` : '<span class="tag blue">รอ CS</span>') : f.rej ? '<span class="tag dn">ไม่อนุมัติ</span>' : '<span class="tag ok">อนุมัติแล้ว</span>'}<span class="xs muted">${dt(f.at)}${f.rej ? ' · ' + esc(f.rej.why) : ''}</span></div>`).join('') })}</div>`;
+  ${pnl({ t: `ทุน <span class="gold num">฿${baht(capOf(c))}</span>`, sub: 'เพิ่มทุน · ฝาก / ถอน', key: 'cfl', cls: 'tight', empty: 'ยังไม่มีรายการ', rows: c.flows.slice().reverse().map(f => `<div class="hr2"><span><span class="tag ${f.cap ? 'gold' : f.amt > 0 ? 'ok' : 'dn'}">${f.cap ? 'เพิ่มทุน' : f.amt > 0 ? 'ฝาก' : 'ถอน'}</span> <b class="num">${baht(Math.abs(f.amt))}</b></span>${f.cap ? '<span class="tag ok">ลูกค้าเพิ่ม · มีผลทันที</span>' : f.pend ? (isCS() ? `<button class="btn sm" data-act="flowrev" data-c="${esc(c.id)}" data-f="${esc(f.id)}">ตรวจหลักฐาน</button>` : '<span class="tag blue">รอ CS</span>') : f.rej ? '<span class="tag dn">ไม่อนุมัติ</span>' : '<span class="tag ok">อนุมัติแล้ว</span>'}<span class="xs muted">${dt(f.at)}${f.rej ? ' · ' + esc(f.rej.why) : ''}</span></div>`).join('') })}</div>`;
 }
 function clNotes(c) {
   const notes = S.notes.filter(x => x.cl === c.id).sort((a, b) => b.at - a.at);
@@ -2745,7 +3139,38 @@ function clNotes(c) {
 }
 
 /* ---------- CS: overview ---------- */
+// short reasons for the head coach's board
+const AL_SHORT = { sl: 'หลุด Stop Loss', miss: 'ไม่ทำตามแผน', dd: 'ใกล้/ถึงระดับหยุดทบทวน', att: 'Coaching ต่ำกว่า 80%', heat: 'Heat เกิน 6%', stmt: 'ยังไม่ส่ง Statement', nosnap: 'ยังไม่รายงานยอด', diff: 'ยอดไม่ตรงบันทึก', idle: 'ไม่ได้เข้าใช้งาน', flow: 'รออนุมัติฝาก/ถอน', dev: 'ไม่ตรงแผน', off: 'ซื้อนอกแผน' };
+// how worrying a client is, for the head coach: red (น่าเป็นห่วง), amber (ควรติดตาม) or fine, with the reasons
+function concern(c) {
+  const d = discipline(c.id), al = alerts().filter(a => a.cl === c.id), yc = yellowCards(c.id).length, red = [], amber = [];
+  if (yc >= YC_LIMIT) red.push(`ใบเหลือง ${yc} ใบ`); else if (yc) amber.push(`ใบเหลือง ${yc} ใบ`);
+  if (d.score < 75) red.push(`วินัย ${d.score}`); else if (d.score < 90) amber.push(`วินัย ${d.score}`);
+  [...new Set(al.filter(a => a.sev === 'high' && !['yc', 'score'].includes(a.type)).map(a => AL_SHORT[a.type] || a.title))].forEach(t => red.push(t));
+  const mid = [...new Set(al.filter(a => a.sev !== 'high' && !['score', 'yc', 'dev', 'off'].includes(a.type)).map(a => AL_SHORT[a.type] || a.title))];
+  mid.forEach(t => amber.push(t));
+  if (profit(c) < 0) amber.push(`ขาดทุน ${signed(profit(c))}`);
+  return { lv: red.length ? 'red' : amber.length ? 'amber' : 'ok', why: [...red.map(t => ['dn', t]), ...amber.map(t => ['warn', t])] };
+}
+let hCoach = '';
+function headView() {
+  const all = S.clients.map(c => ({ c, ...concern(c) })), list = all.filter(x => !hCoach || x.c.coach === hCoach), g = { red: [], amber: [], ok: [] };
+  list.forEach(x => g[x.lv].push(x));
+  Object.values(g).forEach(a => a.sort((x, y) => x.why.length === y.why.length ? discipline(x.c.id).score - discipline(y.c.id).score : y.why.length - x.why.length));
+  const row = x => { const c = x.c, d = discipline(c.id), yc = yellowCards(c.id).length;
+    return `<button class="hrow" data-act="open" data-id="${esc(c.id)}">${avatar(c, 'sm')}<span class="hn"><span class="row" style="gap:6px;min-width:0"><b class="ell">${esc(cname(c))}</b><span class="tag line">${coach(c.coach).name}</span>${yc ? ycIcons(yc) : ''}</span>
+      <span class="xs muted num">กำไร <span class="${profit(c) >= 0 ? 'up' : 'dn'}">${pct(retPct(c))}</span> · วินัย <b class="${scoreTone(d.score)}">${d.score}</b> · ตรงแผน ${Math.round(d.acc * 100)}%</span>
+      ${x.why.length ? `<span class="gchips">${x.why.slice(0, 2).map(([k, t]) => `<span class="tag ${k}" title="${esc(t)}">${esc(t)}</span>`).join('')}${x.why.length > 2 ? `<span class="tag">+${x.why.length - 2}</span>` : ''}</span>` : ''}</span>${ic('chev', 16)}</button>`; };
+  const col = (k, t, sub, ic2) => `<section class="pnl hcol ${k}" data-pt="${t} ${g[k].length}"><div class="ph"><span class="hdot"></span><h3>${t}</h3><span class="tag ${k === 'red' ? 'dn' : k === 'amber' ? 'warn' : 'ok'} num">${g[k].length}</span><span class="sub">${sub}</span><div class="pgn" data-pgn="h${k}"></div></div>
+    <div class="pb">${g[k].length ? `<div class="list tight" data-pg="h${k}">${g[k].map(row).join('')}</div>` : `<div class="empty">${ic(ic2, 24)}ไม่มีลูกค้าในกลุ่มนี้</div>`}</div></section>`;
+  const byCoach = S.coaches.map(co => ({ co, n: all.filter(x => x.c.coach === co.id && x.lv === 'red').length })).filter(x => x.n).sort((a, b) => b.n - a.n);
+  return `<div class="vh"><select id="hcoach" class="pcsel" aria-label="กรองตามโค้ช"><option value="">ลูกค้าของโค้ชทุกคน (${S.clients.length})</option>${S.coaches.map(co => `<option value="${co.id}" ${hCoach === co.id ? 'selected' : ''}>${co.name} · ${S.clients.filter(c => c.coach === co.id).length} ราย</option>`).join('')}</select>
+    <span class="muted sm opt">จัดกลุ่มจากใบเหลือง คะแนนวินัย เรื่องที่ยังไม่เคลียร์ และการขาดทุน · เลือกลูกค้าเพื่อดูรายละเอียด</span><span class="sp"></span>${byCoach.length ? `<span class="xs muted opt">น่าเป็นห่วงมากที่สุด: ${byCoach.slice(0, 3).map(x => `<b class="ink2">${x.co.name}</b> ${x.n} ราย`).join(' · ')}</span>` : ''}
+    <button class="tag blue" data-go="record">${ic('inbox', 12)}รอตรวจ ${pendQ().length}</button></div>
+  ${col('red', 'น่าเป็นห่วง', 'ใบเหลืองครบ วินัยต่ำ หรือมีเรื่องด่วน', 'check')}${col('amber', 'ควรติดตาม', 'เริ่มมีสัญญาณ ให้โค้ชติดตาม', 'check')}${col('ok', 'ปกติ', 'ทำตามแผนดี', 'users')}`;
+}
 function overviewView() {
+  if (isHead()) return headView();
   const cl = S.clients, n = now(), al = myAlerts(), groups = csGroups(al);
   const ds = cl.map(c => discipline(c.id).score), avgD = Math.round(ds.reduce((a, b) => a + b, 0) / ds.length);
   const tot = cl.reduce((s, c) => s + eqNow(c), 0), base = cl.reduce((s, c) => s + c.cap + netFlow(c), 0), prof = tot - base;
@@ -2755,7 +3180,7 @@ function overviewView() {
     ${kpi('trophy', 'กำไรรวมทั้งคอร์ส', signed(prof), `${pct(prof / base)} จากเงินทุน · ตามบันทึก`, prof >= 0 ? 'up' : 'dn')}
     ${kpi('wallet', 'ค่าเรียนที่ต้องคืน (ถ้าจบวันนี้)', '฿' + kb(refunds), `จากค่าเรียนรับแล้ว ฿${kb(TUITION * cl.length)} · คืนเต็ม ${sts.filter(x => x.pr <= 0).length} ราย`)}
     <div class="kpi"><div class="k">${ic('target', 14)} วินัยเฉลี่ย</div><div class="v num ${scoreTone(avgD)}">${avgD}</div><div class="dist">${b.map(([k, v]) => `<i style="flex:${v};background:var(--${k})"></i>`).join('')}</div><div class="s">${b.map(([, v, l]) => `${l} ${v}`).join(' · ')}</div></div>
-    ${kpi('flag', 'ถึงเป้ากำไร 1 ล้าน', `${hit(GOAL)}/${cl.length} ราย`, `กำไร ≥500K ${hit(500000)} ราย · ≥250K ${hit(250000)} ราย`, hit(GOAL) ? 'up' : '')}
+    ${kpi('flag', 'กำไรถึง 1 ล้าน (เงื่อนไขคืนค่าเรียน)', `${hit(GOAL)}/${cl.length} ราย`, `กำไร ≥500K ${hit(500000)} ราย · ≥250K ${hit(250000)} ราย`, hit(GOAL) ? 'up' : '')}
     ${kpi('phone', 'ลูกค้าที่ต้องติดต่อ', groups.length, `${al.length} เรื่อง · ด่วน ${high} คน`, high ? 'dn' : '')}
   </div>
   <section class="pnl" data-pt="โค้ช"><div class="ph"><h3>โค้ชทั้ง 10 คน</h3><span class="sub">เลือกเพื่อดูลูกค้าของโค้ชแต่ละคน</span><div class="pgn" data-pgn="co"></div></div><div class="pb"><table class="tbl"><thead><tr><th>โค้ช</th><th class="r opt2">ลูกค้า</th><th>วินัยเฉลี่ย</th><th class="r opt2">ตรงแผน</th><th class="r">กำไรเฉลี่ย</th><th class="r opt" title="รายการที่ลูกค้าบันทึกและโค้ชยังไม่ได้ตรวจ">รอตรวจ</th><th class="r" title="เรื่องที่โค้ชยังไม่ได้เคลียร์กับลูกค้า">ค้างเคลียร์</th><th class="opt">เข้าระบบ</th></tr></thead><tbody data-pg="co">
@@ -2791,12 +3216,12 @@ function allClientsView() {
   const body = narrow() ? pnl({ t: 'ลูกค้า', sub: `${list.length} จาก ${S.clients.length} คน`, key: 'all', cls: 'tight', rows: list.map(clientRow).join(''), empty: 'ไม่พบลูกค้าตามเงื่อนไข' }) : null;
   return `<div class="vh"><div class="tsearch">${ic('search', 16)}<input id="q" value="${esc(q)}" maxlength="60" placeholder="ค้นหาชื่อหรืออีเมล" aria-label="ค้นหาลูกค้า"></div>
     <select id="fcoach" style="width:auto;border-radius:999px" aria-label="กรองตามโค้ช"><option value="">โค้ชทุกคน</option>${S.coaches.map(co => `<option value="${co.id}" ${fCoach === co.id ? 'selected' : ''}>${co.name}</option>`).join('')}</select>
-    <div class="chips">${[['all', 'ทั้งหมด'], ['open', 'มีเรื่องค้าง'], ['low', 'วินัยต่ำกว่า 75'], ['mile', 'ถึงเป้ากำไร 1 ล้าน']].map(([k, l]) => `<button class="chip ${fStat === k ? 'on' : ''}" data-fs="${k}">${l}</button>`).join('')}</div>
+    <div class="chips">${[['all', 'ทั้งหมด'], ['open', 'มีเรื่องค้าง'], ['low', 'วินัยต่ำกว่า 75'], ['mile', 'กำไรถึง 1 ล้าน']].map(([k, l]) => `<button class="chip ${fStat === k ? 'on' : ''}" data-fs="${k}">${l}</button>`).join('')}</div>
     <span class="sp"></span><select id="sort" style="width:auto;border-radius:999px" aria-label="เรียงลำดับ">${[['score', 'วินัยต่ำสุดก่อน'], ['ret', 'กำไรสูงสุด'], ['refund', 'คืนค่าเรียนมากสุด'], ['name', 'รหัสลูกค้า']].map(([k, l]) => `<option value="${k}" ${sortBy === k ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
-  ${body || `<section class="pnl"><div class="ph"><h3>ลูกค้า</h3><span class="sub">แสดง ${list.length} จาก ${S.clients.length} ราย</span><div class="pgn" data-pgn="all"></div></div><div class="pb">${list.length ? `<table class="tbl"><thead><tr><th>ลูกค้า</th><th>โค้ช</th><th class="opt">โปรแกรม</th><th class="r">ทุนเริ่มต้น</th><th class="r">กำไรสะสม</th><th>เป้ากำไร 1 ล้าน</th><th class="r">คืนค่าเรียน</th><th class="r">วินัย</th><th>เรื่องค้าง</th><th class="opt">เข้าใช้งาน</th></tr></thead><tbody data-pg="all">
-    ${list.map(c => { const d = discipline(c.id), st = settle(c), pr = st.pr, fl = flagsOf(c); return `<tr class="click" data-act="open" data-id="${esc(c.id)}"><td><div class="row" style="gap:8px">${avatar(c, 'sm')}<div style="min-width:0"><b>${esc(cname(c))}</b><div class="xs muted">${esc(c.email)}</div></div></div></td><td>${coach(c.coach).name}</td>
-      <td class="opt xs">${c.term} เดือน<div class="muted">${TYPE[c.type]}</div></td><td class="r num">${baht(c.cap)}</td><td class="r num ${pr >= 0 ? 'up' : 'dn'}"><b>${signed(pr)}</b><div class="xs">${pct(retPct(c))}</div></td><td style="min-width:100px"><div class="bar" style="height:6px"><i style="width:${st.pct * 100}%"></i></div><div class="xs muted num">${fmt(st.pct * 100, 1)}%</div></td>
-      <td class="r num">${st.extra > 0 ? '<span class="tag ok">ถึงเป้า</span>' : baht(st.refund)}</td><td class="r"><span class="tag ${scoreTone(d.score)} num">${d.score}</span></td><td><div class="flags">${fl.slice(0, 2).join('') || '<span class="muted xs">—</span>'}${fl.length > 2 ? `<span class="tag">+${fl.length - 2}</span>` : ''}</div></td><td class="xs muted opt">${seenTxt(c)}</td></tr>`; }).join('')}</tbody></table>` : '<div class="empty">ไม่พบลูกค้าตามเงื่อนไข</div>'}</div></section>`}`;
+  ${body || `<section class="pnl"><div class="ph"><h3>ลูกค้า</h3><span class="sub">แสดง ${list.length} จาก ${S.clients.length} ราย</span><div class="pgn" data-pgn="all"></div></div><div class="pb">${list.length ? `<table class="tbl"><thead><tr><th>ลูกค้า</th><th>โค้ช</th><th class="opt">โปรแกรม</th><th class="r">ทุน</th><th class="r">กำไรสะสม</th><th class="c-grw" title="กำไรสะสม ณ ราคาปิดทุกวันศุกร์ตั้งแต่เริ่มโปรแกรม จนถึงวันนี้">การเติบโต</th><th class="c-1m">เงื่อนไข 1 ล้าน</th><th class="r">คืนค่าเรียน</th><th class="r">วินัย</th><th>เรื่องค้าง</th><th class="opt">เข้าใช้งาน</th></tr></thead><tbody data-pg="all">
+    ${list.map(c => { const d = discipline(c.id), st = settle(c), pr = st.pr, fl = flagsOf(c); return `<tr class="click" data-act="open" data-id="${esc(c.id)}"><td><div class="row" style="gap:8px">${avatar(c, 'sm')}<div style="min-width:0"><b>${esc(cname(c))}</b><div class="xs muted">${esc(c.email)}</div></div></div></td><td class="nw">${coach(c.coach).name}</td>
+      <td class="opt xs nw">${c.term} เดือน<div class="muted">${TYPE[c.type]}</div></td><td class="r num" title="ทุนเริ่มต้น ${baht(c.cap)}">${baht(capOf(c))}</td><td class="r num ${pr >= 0 ? 'up' : 'dn'}"><b>${signed(pr)}</b><div class="xs">${pct(retPct(c))}</div></td><td class="c-grw" title="กำไรสะสมรายสัปดาห์ตั้งแต่เริ่มโปรแกรม ${dstr(c.joined)} ถึงวันนี้">${growth(c)}</td><td class="c-1m" style="min-width:100px"><div class="bar" style="height:6px"><i style="width:${st.pct * 100}%"></i></div><div class="xs muted num">${fmt(st.pct * 100, 1)}%</div></td>
+      <td class="r num">${st.extra > 0 ? '<span class="tag ok">ถึง 1 ล้าน</span>' : baht(st.refund)}</td><td class="r"><span class="tag ${scoreTone(d.score)} num">${d.score}</span></td><td><div class="flags">${fl.slice(0, 2).join('') || '<span class="muted xs">—</span>'}${fl.length > 2 ? `<span class="tag">+${fl.length - 2}</span>` : ''}</div></td><td class="xs muted opt nw">${seenTxt(c)}</td></tr>`; }).join('')}</tbody></table>` : '<div class="empty">ไม่พบลูกค้าตามเงื่อนไข</div>'}</div></section>`}`;
 }
 
 /* ---------- CS: applicants for the next intake (port 5,000,000+, interview, at most 50 seats) ---------- */
@@ -2877,7 +3302,7 @@ function teamView() {
     body = `<section class="pnl"><div class="ph"><h3>ทีมงาน</h3><span class="sub">เข้าสู่ระบบด้วย Google · บังคับใช้การยืนยันตัวตน 2 ขั้นตอน</span><button class="btn ghost sm" data-act="addstaff" style="margin-left:auto">${ic('plus', 15)} เพิ่มทีมงาน</button><div class="pgn" data-pgn="st"></div></div><div class="pb"><table class="tbl"><thead><tr><th>ชื่อ</th><th class="opt">อีเมล Google</th><th>บทบาท</th><th class="r">ลูกค้า</th><th class="opt">สถานะ</th><th class="opt">เข้าระบบล่าสุด</th></tr></thead><tbody data-pg="st">
       ${staff.map(s => `<tr><td><div class="row" style="gap:8px"><span class="av ${s.role === 'CS' ? '' : 'gold'} sm">${s.role === 'CS' ? 'CS' : s.role === 'หัวหน้าโค้ช' ? 'H' : s.no}</span><b>${esc(s.name)}</b></div></td><td class="muted opt">${esc(s.email)}</td><td><span class="tag ${s.role === 'CS' ? 'blue' : 'gold'}">${s.role}</span></td><td class="r num">${s.cnt}</td><td class="opt"><span class="tag ok">ใช้งาน</span></td><td class="xs muted opt">${when(s.seen, n)}</td></tr>`).join('')}</tbody></table></div></section>`;
   } else if (teamTab === 'perm') {
-    const P = [['ดูข้อมูลลูกค้า', 'ของตัวเอง', 'ลูกค้าของตัวเอง 5 ราย', 'ทั้ง 50 ราย', 'ทั้ง 50 ราย'], ['บันทึกรายการซื้อขายพร้อมแนบภาพ', '✓', 'บันทึกให้ลูกค้าได้', 'ดูได้', '—'], ['ตรวจรายการ / ขอให้ลูกค้าแก้ไข', '—', '✓', 'ดูได้', 'ดูได้'], ['แผนเทรดเฉพาะบุคคล', 'ยืนยัน', 'จัดทำ / ปรับ', 'ดูได้', 'ดูได้'], ['บันทึกแผน เลื่อน Stop Loss ปิดแผน', '—', '✓', 'ดูได้', 'ดูได้'], ['บันทึกนัด Coaching / การไม่ทำตามแผน / เคลียร์กับลูกค้า', '—', '✓', 'ดูได้', 'ติดตามเมื่อค้างเกิน 2 วัน'], ['รายงานยอดพอร์ต / Statement / แจ้งฝาก-ถอน', '✓', 'ส่งแทนลูกค้าได้', 'ดูได้', 'ตรวจและอนุมัติ'], ['บันทึกทีมงาน', '—', '✓', '✓', '✓'], ['คัดเลือกผู้สมัคร นัดสัมภาษณ์', '—', 'สัมภาษณ์ตามที่ได้รับมอบหมาย', '—', '✓'], ['เพิ่มลูกค้า จับคู่/เปลี่ยนโค้ช', '—', '—', '—', '✓'], ['เพิ่ม/ปิดบัญชีทีมงาน', '—', '—', '—', '✓'], ['ดูรายงานรวมและประวัติการใช้งาน', '—', 'เฉพาะของตัวเอง', '✓', '✓']];
+    const P = [['ดูข้อมูลลูกค้า', 'ของตัวเอง', 'ลูกค้าของตัวเอง 5 ราย', 'ทั้ง 50 ราย', 'ทั้ง 50 ราย'], ['บันทึกรายการซื้อขายพร้อมแนบภาพ', '✓', 'บันทึกให้ลูกค้าได้', 'ดูได้', '—'], ['ตรวจรายการกับภาพ / ขอให้ลูกค้าแก้ไข', '—', 'ดูได้', '✓', 'ดูได้'], ['แผนเทรดเฉพาะบุคคล', 'ยืนยัน', 'ดูได้', 'จัดทำ / ปรับ', 'ดูได้'], ['บันทึกแผน เลื่อน Stop Loss ปิดแผน', '—', 'ดูได้', '✓', 'ดูได้'], ['บันทึกนัด Coaching / การไม่ทำตามแผน / เคลียร์กับลูกค้า', '—', '✓', 'ดูได้', 'ติดตามเมื่อค้างเกิน 2 วัน'], ['รายงานยอดพอร์ต / Statement / แจ้งฝาก-ถอน', '✓', 'ส่งแทนลูกค้าได้', 'ดูได้', 'ตรวจและอนุมัติ'], ['บันทึกทีมงาน', '—', '✓', '✓', '✓'], ['คัดเลือกผู้สมัคร นัดสัมภาษณ์', '—', 'สัมภาษณ์ตามที่ได้รับมอบหมาย', '—', '✓'], ['เพิ่มลูกค้า จับคู่/เปลี่ยนโค้ช', '—', '—', '—', '✓'], ['เพิ่ม/ปิดบัญชีทีมงาน', '—', '—', '—', '✓'], ['ดูรายงานรวมและประวัติการใช้งาน', '—', 'เฉพาะของตัวเอง', '✓', '✓']];
     body = `<section class="pnl"><div class="ph"><h3>สิทธิ์ตามบทบาท</h3><span class="sub">ระบบจริงตรวจสอบสิทธิ์ที่เซิร์ฟเวอร์ทุกครั้งที่อ่านหรือแก้ไขข้อมูล ไม่ได้อาศัยเพียงการซ่อนเมนู</span><div class="pgn" data-pgn="pm"></div></div><div class="pb"><table class="tbl perm"><thead><tr><th>การใช้งาน</th><th>ลูกค้า</th><th>โค้ช</th><th>หัวหน้าโค้ช</th><th>CS</th></tr></thead><tbody data-pg="pm">
       ${P.map(r => `<tr><td>${r[0]}</td>${r.slice(1).map(x => `<td class="${x === '—' ? 'muted' : x === '✓' ? 'up' : ''}">${x === '✓' ? ic('check', 16, 2.4) : x}</td>`).join('')}</tr>`).join('')}</tbody></table></div></section>`;
   } else {
@@ -2955,7 +3380,7 @@ function addClientModal(app) {
     if (err) { $('#err', box).textContent = err; return; }
     const coId = $('#co', box).value, id = 'u' + pad(S.clients.reduce((m, c) => Math.max(m, +c.id.slice(1) || 0), 0) + 1);
     S.clients.push({ id, name: v('nm'), last: v('ln') ? v('ln')[0] + '.' : '', email: em, phone: ph || '—', coach: coId, cap, broker: BROKERS.includes(v('br')) ? v('br') : BROKERS[0], acct: ac || '0000', trait: .9, eq: S.days.map(() => cap), flows: [], ob: false, line: false, seen: 0, joined: now(), term, type, mks, paid: { amt: TUITION, at: now() } });
-    { const nc = S.clients[S.clients.length - 1]; nc.tp = makeTP(nc, now(), coId); nc.tp.ok = null; }
+    { const nc = S.clients[S.clients.length - 1]; nc.tp = makeTP(nc, now(), 'head'); nc.tp.ok = null; }
     if (a) Object.assign(a, { stage: 'in', cl: id });
     S.notes.push({ id: nid('n'), cl: id, by: 'cs', role: 'cs', at: now(), text: `${a ? 'รับเข้าโปรแกรมจากผู้สมัคร' : 'เพิ่มเข้าระบบ'} จับคู่กับ${coach(coId).name} · ${term} เดือน ${TYPE[type]}` });
     pushFeed({ by: 'cs', who: 'cs', kind: 'client', cl: id, coach: coId, text: `CS ${a ? 'รับผู้สมัคร' : 'เพิ่มลูกค้าใหม่'} ${v('nm')} (${em}) เข้าโปรแกรม ให้${coach(coId).name}` });
@@ -2994,7 +3419,7 @@ const openClient = id => { if (!canSee(id)) return; if (selCl !== id) { clTab = 
 cmdItems = () => !ME() ? [] : [
   ...NAV[roleOf()].map(([k, l, i]) => ({ g: 'ไปที่หน้า', t: l, ic: i, run: () => go(k) })),
   ...mine().map(c => ({ g: 'ลูกค้า', t: cname(c), s: `${c.email} · กำไร ${signed(profit(c))} · วินัย ${discipline(c.id).score}${seeAll() ? ' · ' + coach(c.coach).name : ''}`, k: c.phone, ic: 'user', run: () => openClient(c.id) })),
-  ...(isHead() ? [] : isCS() ? [{ g: 'ทำรายการ', t: 'เพิ่มลูกค้า', ic: 'plus', k: 'add client', run: () => addClientModal() }, ...S.apps.map(a => ({ g: 'ผู้สมัคร', t: `${a.name} ${a.last}`, s: `${STAGE[a.stage][1]} · พอร์ต ฿${kb(a.port)}`, k: a.phone, ic: 'user', run: () => { selApp = a.id; aFilter = 'all'; go('apps'); pageOf('ap', `[data-app="${CSS.escape(a.id)}"]`); } }))] : [{ g: 'ทำรายการ', t: 'รายการรอตรวจ', ic: 'inbox', k: 'verify check', run: () => { rFilter = 'pend'; go('record'); } }, { g: 'ทำรายการ', t: 'บันทึกรายการให้ลูกค้า', ic: 'plus', k: 'record trade', run: () => recNew() }, { g: 'ทำรายการ', t: 'บันทึกแผนใหม่', ic: 'target', k: 'plan entry stop loss', run: () => planModal('new') }]),
+  ...(isHead() ? [{ g: 'ทำรายการ', t: 'รายการรอตรวจ', ic: 'inbox', k: 'verify check', run: () => { rFilter = 'pend'; go('record'); } }, { g: 'ทำรายการ', t: 'บันทึกแผนใหม่', ic: 'target', k: 'plan entry stop loss', run: () => planModal('new') }] : isCS() ? [{ g: 'ทำรายการ', t: 'เพิ่มลูกค้า', ic: 'plus', k: 'add client', run: () => addClientModal() }, ...S.apps.map(a => ({ g: 'ผู้สมัคร', t: `${a.name} ${a.last}`, s: `${STAGE[a.stage][1]} · พอร์ต ฿${kb(a.port)}`, k: a.phone, ic: 'user', run: () => { selApp = a.id; aFilter = 'all'; go('apps'); pageOf('ap', `[data-app="${CSS.escape(a.id)}"]`); } }))] : [{ g: 'ทำรายการ', t: 'รายการของลูกค้า', ic: 'inbox', k: 'record trade', run: () => { rFilter = 'pend'; go('record'); } }, { g: 'ทำรายการ', t: 'บันทึกรายการให้ลูกค้า', ic: 'plus', k: 'record trade', run: () => recNew() }]),
   { g: 'ทำรายการ', t: 'คำศัพท์การเทรด', ic: 'help', k: 'glossary stop loss take profit entry', run: glossaryModal },
   { g: 'ทำรายการ', t: themeNow() === 'light' ? 'เปลี่ยนเป็นธีมมืด' : 'เปลี่ยนเป็นธีมสว่าง', ic: themeNow() === 'light' ? 'moon' : 'sun', k: 'theme dark light ธีม', run: () => setTheme(themeNow() === 'light' ? 'dark' : 'light') },
   ...stockItems(),
@@ -3085,7 +3510,7 @@ document.addEventListener('keydown', e => {
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches?.('.ccard')) { e.preventDefault(); e.target.click(); }
 });
 document.addEventListener('input', e => { if (e.target.id === 'q') { q = clean(e.target.value, 60); PG.all = 0; const pos = e.target.selectionStart; render(); const i = $('#q'); if (i) { i.focus(); i.setSelectionRange(pos, pos); } } });
-document.addEventListener('change', e => { if (e.target.id === 'pcoach') { pCoach = coach(e.target.value) ? e.target.value : 'c1'; PG.mx = 0; return render(); } if (e.target.id === 'fcoach') { fCoach = coach(e.target.value) ? e.target.value : ''; PG.all = 0; render(); } if (e.target.id === 'sort') { sortBy = e.target.value; PG.all = 0; render(); } });
+document.addEventListener('change', e => { if (e.target.id === 'pcoach') { pCoach = coach(e.target.value) ? e.target.value : 'c1'; PG.mx = 0; return render(); } if (e.target.id === 'hcoach') { hCoach = coach(e.target.value) ? e.target.value : ''; PG.hred = PG.hamber = PG.hok = 0; return render(); } if (e.target.id === 'fcoach') { fCoach = coach(e.target.value) ? e.target.value : ''; PG.all = 0; render(); } if (e.target.id === 'sort') { sortBy = e.target.value; PG.all = 0; render(); } });
 
 // the client journal writes to the same storage; pick up its changes
 window.addEventListener('storage', e => {
@@ -3093,8 +3518,8 @@ window.addEventListener('storage', e => {
   const seen = new Set(S.feed.map(f => f.id));
   S = load();
   const me = ME(); if (!me) return render();
-  S.feed.filter(f => !seen.has(f.id) && f.by === 'client' && f.kind !== 'login' && f.kind !== 'logout' && (isCS() ? ['flow', 'snap'].includes(f.kind) : f.coach === me.id))
-    .forEach(f => toast(`${ic(f.kind === 'key' ? 'inbox' : 'check', 18)}<div><b>${esc(f.text)}</b><div class="muted sm">${f.kind === 'key' ? 'เข้าคิวรายการรอตรวจ' : 'อัปเดตแล้ว'}</div></div>`));
+  S.feed.filter(f => !seen.has(f.id) && f.by === 'client' && f.kind !== 'login' && f.kind !== 'logout' && (isCS() ? ['flow', 'snap', 'cap'].includes(f.kind) : isHead() ? f.kind === 'key' : f.coach === me.id))
+    .forEach(f => toast(`${ic(f.kind === 'key' ? 'inbox' : 'check', 18)}<div><b>${esc(f.text)}</b><div class="muted sm">${f.kind === 'key' ? (isHead() ? 'เข้าคิวรอตรวจ' : 'รอหัวหน้าโค้ชตรวจ') : 'อัปเดตแล้ว'}</div></div>`));
   if (!$('#modal').innerHTML && document.activeElement?.id !== 'q' && document.activeElement?.id !== 'newnote') render();
 });
 let rz;
