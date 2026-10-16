@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-chPY+EQqCiiO4O1gpC+nKb13JJ+Az115sNzEEPyitqY=' 'sha256-QUigMCGhsTbyRE54o5WkeyRsmBiFfGAHDRmVx2bmrvw='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-yGOdL2JB/ykZ8FxQbtUakCVSGNAK5aChqEDij9Llzlw=' 'sha256-QUigMCGhsTbyRE54o5WkeyRsmBiFfGAHDRmVx2bmrvw='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>ปั้นพอร์ต 1 ล้าน · Trading Journal (ต้นแบบ)</title>
@@ -2949,7 +2949,7 @@ function googleChooser(accounts, onPick, appName) {
 
 /* ===== Characters: the drawn people of the community hall (client site) and the coaches' portraits (both sites).
    drawChar draws one person with their feet at (o.x, o.y); avatarOf gives a member their look (S.avatars, or a steady
-   random one); staffFace / staffBust draw a coach once as a picture. ===== */
+   random one); staffFace draws a coach's face once as a picture. ===== */
 const AV = {
   skin: ['#f7d7b8', '#ebb995', '#cf956b', '#a06a47', '#6f462b'],
   hair: ['สั้น', 'ตั้ง', 'บ๊อบ', 'ยาว', 'มวย', 'เกรียน'],
@@ -3050,22 +3050,13 @@ function staffLook(id) {
 }
 // a coach's face in the same drawn style, made once per person (the Coaching calendar shows who runs each session)
 const FACES = {};
-function staffFace(id) {
-  if (FACES[id]) return FACES[id];
-  const w = 48, cv = document.createElement('canvas'); cv.width = cv.height = w;
-  const sc = w / 31, a = staffLook(id), ctx = cv.getContext('2d');
-  ctx.fillStyle = id === 'head' ? '#c79a3a' : '#5d7fb5'; ctx.beginPath(); ctx.arc(w / 2, w / 2, w / 2, 0, Math.PI * 2); ctx.fill(); ctx.clip();
-  drawChar(ctx, a, 'rookie', { x: w / 2, y: w / 2 + 33.5 * sc + 9, s: sc, t: 0, face: 'f' });
-  return (FACES[id] = blobOf(cv.toDataURL('image/png')));
-}
-// a coach from the chest up for the head coach's coach cards (made once per person and size)
-function staffBust(id, w = 120, h = 96) {
-  const key = `${id}:${w}x${h}`;
+function staffFace(id, px = 48) {
+  const key = id + ':' + px;
   if (FACES[key]) return FACES[key];
-  const k2 = 2, cv = document.createElement('canvas'); cv.width = w * k2; cv.height = h * k2;
-  const ctx = cv.getContext('2d'); ctx.scale(k2, k2);
-  const sc = h / 30;   // the head near the top, cut at the waist
-  drawChar(ctx, staffLook(id), 'rookie', { x: w / 2, y: h * .17 + 43 * sc, s: sc, t: 0, face: 'f' });
+  const w = 48, cv = document.createElement('canvas'); cv.width = cv.height = px;
+  const sc = w / 31, a = staffLook(id), ctx = cv.getContext('2d'); ctx.scale(px / w, px / w);
+  ctx.fillStyle = id === 'head' ? '#a8843a' : '#34497e'; ctx.beginPath(); ctx.arc(w / 2, w / 2, w / 2, 0, Math.PI * 2); ctx.fill(); ctx.clip();
+  drawChar(ctx, a, 'rookie', { x: w / 2, y: w / 2 + 33.5 * sc + 9, s: sc, t: 0, face: 'f' });
   return (FACES[key] = blobOf(cv.toDataURL('image/png')));
 }
 

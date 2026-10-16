@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-chPY+EQqCiiO4O1gpC+nKb13JJ+Az115sNzEEPyitqY=' 'sha256-w8Zvmil8r5sTABqX+txq2vFAVKQUrsatO48/PsBP+z0='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-yGOdL2JB/ykZ8FxQbtUakCVSGNAK5aChqEDij9Llzlw=' 'sha256-V3sAO/Fn6xtsLsDrtzNOjOhv9CjMFlygc3gWYJVk6gE='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>หลังบ้าน · ปั้นพอร์ต 1 ล้าน (ต้นแบบ)</title>
@@ -907,38 +907,54 @@ button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,19
 .hcol.red{border-color:color-mix(in srgb,var(--dn) 35%,transparent)}
 .hrow{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);border-radius:10px}
 .hrow:hover{background:rgba(var(--wt),.04)}
-/* the head coach's coach cards: navy portrait cards (dark in both themes), each client one bar (height = discipline, colour = status) */
+/* the head coach's coach cards: deep navy with gold hairlines (the same in both themes, like the client's member card),
+   muted status colours; a thin line on top shows each coach's most serious client status */
 .v-overview.hd:has(.cocg),.v-overview.hd:has(.corl){grid-template-columns:minmax(0,1fr)}
-.hsum{display:flex;align-items:center;gap:6px 14px;flex-wrap:wrap;font-size:13.5px}.hs{display:inline-flex;align-items:center;gap:6px}.hs i{width:9px;height:9px;border-radius:50%}
+.hsum{display:flex;align-items:center;gap:6px 16px;flex-wrap:wrap;font-size:13.5px}.hs{display:inline-flex;align-items:center;gap:6px}.hs i{width:8px;height:8px;border-radius:50%}
 .hs.red i{background:var(--dn)}.hs.amber i{background:var(--warn)}.hs.ok i{background:var(--up)}
-.cocg{min-height:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:12px}
-.coc{position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;text-align:left;padding:0 0 10px;border-radius:18px;border:1px solid rgba(120,150,255,.2);background:linear-gradient(180deg,#0f1c48,#0a1230 70%);color:#e6ebf8;cursor:pointer;transition:transform .15s,border-color .15s;font:inherit}
-.coc:hover,.coc:focus-visible{transform:translateY(-2px);border-color:rgba(235,192,98,.65);outline:0}
-.coc-p{position:relative;display:block;flex:1 1 0;min-height:60px;max-height:150px;overflow:hidden;background:radial-gradient(130% 100% at 30% 0%,#3157cf 0%,#172b78 50%,#0b1440 100%);border-bottom:1px solid rgba(255,255,255,.08)}
-.coc-img{position:absolute;left:0;bottom:0;height:100%;max-height:120px;width:auto}
-.coc-no{position:absolute;top:8px;left:8px;z-index:1;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:11.5px;font-weight:800;color:#f3d991;background:#0b1440;border:1px solid rgba(235,192,98,.65)}
-.coc.alert .coc-no{background:#d6455d;border-color:#ff8fa0;color:#fff}
-.coc-nm{position:absolute;right:10px;top:9px;display:flex;flex-direction:column;align-items:flex-end;text-align:right}
-.coc-nm b{font-size:19px;line-height:1.15;color:#f3d991;text-shadow:0 2px 8px rgba(0,0,0,.4)}.coc-nm small{font-size:11.5px;color:#c9d3ef}
-.coc-m{display:block;padding:7px 12px 0;font-size:11.5px;color:#8fb4ff}
-.coc-k{display:flex;align-items:baseline;gap:6px;padding:2px 12px 0;font-size:11.5px;color:#aab6d6}
-.coc-k b{font-size:22px;line-height:1.2}.coc .up{color:#4fd391}.coc .warn{color:#f5c04f}.coc .dn{color:#ff7b8e}
-.coc-r{margin-left:auto;display:inline-flex;align-items:center;gap:3px;padding:1px 7px;border-radius:999px;background:rgba(214,69,93,.22);color:#ff9aa9;font-weight:700}
-.coc-b{display:flex;align-items:flex-end;gap:3px;height:36px;margin:6px 12px 0;border-bottom:1px solid rgba(255,255,255,.14)}
-.coc-b i{flex:1;max-width:22px;height:var(--h);border-radius:3px 3px 0 0;background:#3fbf7f}.coc-b i.red{background:#ef5a6f}.coc-b i.amber{background:#f2b33d}
-.coc-s{display:flex;flex-direction:column;gap:4px;padding:7px 12px 0}
-.coc-sr{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:2px 8px;font-size:11.5px;color:#c9d3ef}.coc-sr b{font-size:12px}
-.cbar{grid-column:1/-1;height:4px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden}.cbar i{display:block;height:100%;border-radius:4px;background:#3fbf7f}
-.coc-sr.red .cbar i{background:#ef5a6f}.coc-sr.amber .cbar i{background:#f2b33d}
-.hco-f{width:30px;height:30px;border-radius:50%;flex:none}
+.cocg{min-height:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:14px}
+.coc{--rd:#d9707f;--am:#d2a24c;--gr:#4caf88;position:relative;display:flex;flex-direction:column;gap:9px;min-width:0;min-height:0;overflow:hidden;text-align:left;padding:15px 15px 13px;border-radius:16px;
+  border:1px solid rgba(235,192,98,.16);background:linear-gradient(180deg,#152250 0%,#0d1634 62%,#0b1230 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 10px 24px -16px rgba(5,10,30,.7);color:#e9edf7;cursor:pointer;font:inherit;transition:border-color .15s,transform .15s}
+.coc:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--gr);opacity:.85}
+.coc.w-red:before{background:var(--rd)}.coc.w-amber:before{background:var(--am)}
+.coc:hover,.coc:focus-visible{border-color:rgba(235,192,98,.55);transform:translateY(-2px);outline:0}
+.coc-h{display:flex;align-items:center;gap:11px;min-width:0}
+.coc-av{width:42px;height:42px;border-radius:50%;flex:none;box-shadow:0 0 0 1.5px rgba(235,192,98,.75),0 0 0 4px rgba(235,192,98,.1)}
+.coc-id{display:flex;flex-direction:column;min-width:0;flex:1}.coc-id b{font-size:16px;font-weight:700;letter-spacing:.01em;color:#fff}.coc-id small{font-size:12px;color:#9eabcb}
+.coc-h>svg{flex:none;color:#6f7ea6;transition:transform .15s,color .15s}.coc:hover .coc-h>svg{color:#ebc062;transform:translateX(2px)}
+.coc-m{display:block;font-size:11.5px;color:#8392b8;padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.07)}
+.coc-k{display:grid;grid-template-columns:1fr 1fr}
+.coc-k>span{display:flex;flex-direction:column;gap:1px;min-width:0}.coc-k>span+span{padding-left:12px;border-left:1px solid rgba(255,255,255,.07)}
+.coc-k small{font-size:11px;color:#8d9bbf}.coc-k b{font-size:22px;line-height:1.15;font-weight:700;color:#fff}.coc-k em{font-style:normal;font-size:13px;font-weight:600;color:#7d8bb0;margin-left:1px}
+.coc-k b.up{color:#6fd0a6}.coc-k b.dn{color:#f0909c}
+.coc-c{flex:1 1 auto;display:flex;flex-direction:column;gap:5px;min-height:46px;max-height:110px}.coc-c small{font-size:10.5px;color:#7d8bb0}
+.coc-b{position:relative;flex:1;min-height:30px;display:flex;align-items:flex-end;justify-content:space-around;gap:6px;padding:0 4px;border-bottom:1px solid rgba(255,255,255,.18)}
+.coc-b:before{content:"";position:absolute;left:0;right:0;bottom:75%;border-top:1px dashed rgba(235,192,98,.28)}
+.coc-b i{position:relative;width:100%;max-width:16px;height:var(--h);border-radius:2px 2px 0 0;background:var(--gr);opacity:.92}.coc-b i.red{background:var(--rd)}.coc-b i.amber{background:var(--am)}
+.coc-s{display:flex;flex-direction:column;gap:5px;padding-top:9px;border-top:1px solid rgba(255,255,255,.07)}
+.coc-sr{display:grid;grid-template-columns:7px 64px minmax(0,1fr) 16px;align-items:center;gap:8px;font-size:11.5px;color:#b4bfdc}
+.coc-sr>i{width:7px;height:7px;border-radius:50%;background:var(--gr)}.coc-sr.red>i{background:var(--rd)}.coc-sr.amber>i{background:var(--am)}
+.coc-sr b{text-align:right;font-size:12px;color:#fff}
+.cbar{height:4px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden}.cbar i{display:block;height:100%;border-radius:4px;background:var(--gr)}
+.coc-sr.red .cbar i{background:var(--rd)}.coc-sr.amber .cbar i{background:var(--am)}
+.hco-f{width:30px;height:30px;border-radius:50%;flex:none;box-shadow:0 0 0 1.5px rgba(235,192,98,.7)}
+/* light theme: ivory-white cards with navy ink and gold hairlines */
+:root[data-theme=light] .coc{--rd:#c64a5d;--am:#b8861f;--gr:#2f8f69;background:linear-gradient(180deg,#fff 0%,#fbf8f1 100%);border-color:rgba(171,132,52,.3);color:#1b2440;box-shadow:inset 0 1px 0 #fff,0 12px 26px -20px rgba(70,52,12,.45)}
+:root[data-theme=light] .coc:hover,:root[data-theme=light] .coc:focus-visible{border-color:rgba(171,132,52,.75)}
+:root[data-theme=light] .coc-id b,:root[data-theme=light] .coc-k b,:root[data-theme=light] .coc-sr b{color:#17213d}
+:root[data-theme=light] .coc-id small,:root[data-theme=light] .coc-k small,:root[data-theme=light] .coc-c small,:root[data-theme=light] .coc-m,:root[data-theme=light] .coc-k em{color:#7b8093}
+:root[data-theme=light] .coc-sr{color:#4b5269}:root[data-theme=light] .coc-h>svg{color:#a6abba}:root[data-theme=light] .coc:hover .coc-h>svg{color:#a8843a}
+:root[data-theme=light] .coc-m,:root[data-theme=light] .coc-s,:root[data-theme=light] .coc-k>span+span{border-color:rgba(23,33,61,.09)}
+:root[data-theme=light] .coc-b{border-bottom-color:rgba(23,33,61,.22)}:root[data-theme=light] .coc-b:before{border-top-color:rgba(171,132,52,.45)}
+:root[data-theme=light] .cbar{background:rgba(23,33,61,.07)}:root[data-theme=light] .coc-k b.up{color:#2f8f69}:root[data-theme=light] .coc-k b.dn{color:#c64a5d}
 /* phones and tablets: one row per coach */
 .corl{flex:1;min-height:0}
 .cor{display:grid;grid-template-columns:40px minmax(0,1fr) auto 16px;gap:10px;align-items:center;width:100%;text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);border-radius:10px}
-.cor:hover{background:rgba(var(--wt),.04)}.cor-f{width:40px;height:40px;border-radius:50%}
+.cor:hover{background:rgba(var(--wt),.04)}.cor-f{width:40px;height:40px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(235,192,98,.6)}
 .cor-n{display:flex;flex-direction:column;gap:1px;min-width:0}.cor-s{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.cstk{display:flex;width:96px;height:7px;border-radius:7px;overflow:hidden;gap:2px}.cstk i{display:block;height:100%}.cstk .red{background:var(--dn)}.cstk .amber{background:var(--warn)}.cstk .ok{background:var(--up)}
-@media (max-height:700px){.coc-m{display:none}.coc-b{height:30px;margin-top:4px}.coc-s{gap:2px;padding-top:5px}.coc-k b{font-size:19px}.cocg{gap:10px}}
-@media (max-width:1180px){.coc-nm b{font-size:16px}.coc-k b{font-size:19px}}
+.cstk{display:flex;width:96px;height:6px;border-radius:6px;overflow:hidden;gap:2px}.cstk i{display:block;height:100%}.cstk .red{background:var(--dn)}.cstk .amber{background:var(--warn)}.cstk .ok{background:var(--up)}
+@media (max-height:700px){.coc{gap:7px;padding:12px 13px 11px}.coc-m{display:none}.coc-c small{display:none}.coc-k b{font-size:19px}.coc-s{gap:4px;padding-top:7px}.cocg{gap:10px}.coc-av{width:36px;height:36px}}
+@media (max-width:1180px){.coc{padding:13px 12px 12px}.coc-sr{grid-template-columns:7px 58px minmax(0,1fr) 14px;gap:6px}.coc-id b{font-size:15px}.coc-h>svg{display:none}}
 .hrow .hn{display:flex;flex-direction:column;gap:2px;min-width:0}
 .hrow .ic{color:var(--mut)}
 .v-tasks,.v-clients.cs,.v-team{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
@@ -2622,7 +2638,7 @@ function googleChooser(accounts, onPick, appName) {
 
 /* ===== Characters: the drawn people of the community hall (client site) and the coaches' portraits (both sites).
    drawChar draws one person with their feet at (o.x, o.y); avatarOf gives a member their look (S.avatars, or a steady
-   random one); staffFace / staffBust draw a coach once as a picture. ===== */
+   random one); staffFace draws a coach's face once as a picture. ===== */
 const AV = {
   skin: ['#f7d7b8', '#ebb995', '#cf956b', '#a06a47', '#6f462b'],
   hair: ['สั้น', 'ตั้ง', 'บ๊อบ', 'ยาว', 'มวย', 'เกรียน'],
@@ -2723,22 +2739,13 @@ function staffLook(id) {
 }
 // a coach's face in the same drawn style, made once per person (the Coaching calendar shows who runs each session)
 const FACES = {};
-function staffFace(id) {
-  if (FACES[id]) return FACES[id];
-  const w = 48, cv = document.createElement('canvas'); cv.width = cv.height = w;
-  const sc = w / 31, a = staffLook(id), ctx = cv.getContext('2d');
-  ctx.fillStyle = id === 'head' ? '#c79a3a' : '#5d7fb5'; ctx.beginPath(); ctx.arc(w / 2, w / 2, w / 2, 0, Math.PI * 2); ctx.fill(); ctx.clip();
-  drawChar(ctx, a, 'rookie', { x: w / 2, y: w / 2 + 33.5 * sc + 9, s: sc, t: 0, face: 'f' });
-  return (FACES[id] = blobOf(cv.toDataURL('image/png')));
-}
-// a coach from the chest up for the head coach's coach cards (made once per person and size)
-function staffBust(id, w = 120, h = 96) {
-  const key = `${id}:${w}x${h}`;
+function staffFace(id, px = 48) {
+  const key = id + ':' + px;
   if (FACES[key]) return FACES[key];
-  const k2 = 2, cv = document.createElement('canvas'); cv.width = w * k2; cv.height = h * k2;
-  const ctx = cv.getContext('2d'); ctx.scale(k2, k2);
-  const sc = h / 30;   // the head near the top, cut at the waist
-  drawChar(ctx, staffLook(id), 'rookie', { x: w / 2, y: h * .17 + 43 * sc, s: sc, t: 0, face: 'f' });
+  const w = 48, cv = document.createElement('canvas'); cv.width = cv.height = px;
+  const sc = w / 31, a = staffLook(id), ctx = cv.getContext('2d'); ctx.scale(px / w, px / w);
+  ctx.fillStyle = id === 'head' ? '#a8843a' : '#34497e'; ctx.beginPath(); ctx.arc(w / 2, w / 2, w / 2, 0, Math.PI * 2); ctx.fill(); ctx.clip();
+  drawChar(ctx, a, 'rookie', { x: w / 2, y: w / 2 + 33.5 * sc + 9, s: sc, t: 0, face: 'f' });
   return (FACES[key] = blobOf(cv.toDataURL('image/png')));
 }
 
@@ -3328,15 +3335,19 @@ function coachCards(all) {
     mine.forEach(x => cnt[x.lv]++);
     return { co, mine, cnt, n: mine.length, okP: mine.length ? Math.round(cnt.ok / mine.length * 100) : 0, mks: [...new Set(mine.flatMap(x => x.c.mks || ['th']))].map(k => MARKETS[k]?.[0]).filter(Boolean) };
   });
-  const tone = v => v >= 60 ? 'up' : v >= 40 ? 'warn' : 'dn';
+  // one card per coach: who they are, how many of their clients are fine, the average discipline, each client as a
+  // column (height = discipline score, colour = status, the dashed line = 75, the "ควรระวัง" line) and the three groups
+  const card = x => {
+    const avg = x.n ? Math.round(x.mine.reduce((t, y) => t + discipline(y.c.id).score, 0) / x.n) : 0, worst = x.cnt.red ? 'red' : x.cnt.amber ? 'amber' : 'ok';
+    return `<button class="coc w-${worst}" data-hco="${x.co.id}" aria-label="${esc(x.co.name)} · ลูกค้า ${x.n} ราย · ${LV.map(([k, l]) => `${l} ${x.cnt[k]}`).join(' · ')} · ดูรายชื่อลูกค้า">
+      <span class="coc-h"><img class="coc-av" src="${staffFace(x.co.id, 96)}" alt=""><span class="coc-id"><b>${esc(x.co.name)}</b><small>ดูแลลูกค้า ${x.n} ราย</small></span>${ic('chev', 16)}</span>
+      <span class="coc-m ell" title="ตลาดที่ลูกค้าของโค้ชเทรด">${x.mks.join(' · ') || '—'}</span>
+      <span class="coc-k"><span><small>ลูกค้าปกติ</small><b class="num">${x.cnt.ok}<em>/${x.n}</em></b></span><span><small>วินัยเฉลี่ย</small><b class="num ${avg >= 90 ? 'up' : avg >= 75 ? '' : 'dn'}">${avg}</b></span></span>
+      <span class="coc-c"><small>ลูกค้ารายคน · คะแนนวินัย</small><span class="coc-b">${x.mine.map(y => { const d = discipline(y.c.id).score; return `<i class="${y.lv}" style="--h:${Math.max(8, d)}%" title="${esc(cname(y.c))} · ${LV_N[y.lv]} · วินัย ${d}"></i>`; }).join('')}</span></span>
+      <span class="coc-s">${LV.map(([k, l]) => `<span class="coc-sr ${k}"><i></i><span>${l}</span><span class="cbar"><i style="width:${x.n ? x.cnt[k] / x.n * 100 : 0}%"></i></span><b class="num">${x.cnt[k]}</b></span>`).join('')}</span></button>`;
+  };
   const stack = x => `<span class="cstk" aria-hidden="true">${LV.map(([k]) => x.cnt[k] ? `<i class="${k}" style="flex:${x.cnt[k]}"></i>` : '').join('')}</span>`;
-  const card = x => `<button class="coc ${x.cnt.red ? 'alert' : ''}" data-hco="${x.co.id}" aria-label="${esc(x.co.name)} · ลูกค้า ${x.n} ราย · ${LV.map(([k, l]) => `${l} ${x.cnt[k]}`).join(' · ')}">
-      <span class="coc-p"><span class="coc-no num">${x.co.no}</span><img class="coc-img" src="${staffBust(x.co.id)}" alt=""><span class="coc-nm"><b>${esc(x.co.name)}</b><small>ดูแล ${x.n} ราย</small></span></span>
-      <span class="coc-m ell">${x.mks.join(' • ') || '—'}</span>
-      <span class="coc-k"><b class="num ${tone(x.okP)}">${x.okP}%</b><span>ปกติ ${x.cnt.ok}/${x.n}</span>${x.cnt.red ? `<span class="coc-r num">${ic('alert', 12)}${x.cnt.red}</span>` : ''}</span>
-      <span class="coc-b" title="ลูกค้าแต่ละราย · ความสูงคือคะแนนวินัย · สีคือสถานะ">${x.mine.map(y => { const d = discipline(y.c.id).score; return `<i class="${y.lv}" style="--h:${Math.max(14, d)}%" title="${esc(cname(y.c))} · ${LV_N[y.lv]} · วินัย ${d}"></i>`; }).join('')}</span>
-      <span class="coc-s">${LV.map(([k, l]) => `<span class="coc-sr ${k}"><span>${l}</span><b class="num">${x.cnt[k]}</b><span class="cbar"><i style="width:${x.n ? x.cnt[k] / x.n * 100 : 0}%"></i></span></span>`).join('')}</span></button>`;
-  const row = x => `<button class="cor" data-hco="${x.co.id}"><img class="cor-f" src="${staffFace(x.co.id)}" alt=""><span class="cor-n"><b>${esc(x.co.name)}</b><span class="xs muted ell">ดูแล ${x.n} ราย · ${x.mks.join(' • ')}</span></span>
+  const row = x => `<button class="cor" data-hco="${x.co.id}"><img class="cor-f" src="${staffFace(x.co.id, 96)}" alt=""><span class="cor-n"><b>${esc(x.co.name)}</b><span class="xs muted ell">ดูแล ${x.n} ราย · ${x.mks.join(' • ')}</span></span>
       <span class="cor-s">${stack(x)}<span class="xs num">${LV.map(([k, , t]) => `<span class="${t}">● ${x.cnt[k]}</span>`).join(' ')}</span></span>${ic('chev', 16)}</button>`;
   const head = `<div class="vh"><span class="hsum"><span>ลูกค้า <b class="num">${all.length}</b> ราย</span>${LV.map(([k, l]) => `<span class="hs ${k}"><i></i>${l} <b class="num">${tot[k]}</b></span>`).join('')}</span>
     <span class="muted sm opt" title="สถานะจัดจากใบเหลือง คะแนนวินัย เรื่องที่ยังไม่เคลียร์ และการขาดทุน">เลือกโค้ชเพื่อดูรายชื่อลูกค้า</span><span class="sp"></span>
@@ -3357,7 +3368,7 @@ function headView() {
   const col = (k, t, sub, ic2) => `<section class="pnl hcol ${k}" data-pt="${t} ${g[k].length}"><div class="ph"><span class="hdot"></span><h3>${t}</h3><span class="tag ${k === 'red' ? 'dn' : k === 'amber' ? 'warn' : 'ok'} num">${g[k].length}</span><span class="sub">${sub}</span><div class="pgn" data-pgn="h${k}"></div></div>
     <div class="pb">${g[k].length ? `<div class="list tight" data-pg="h${k}">${g[k].map(row).join('')}</div>` : `<div class="empty">${ic(ic2, 24)}ไม่มีลูกค้าในกลุ่มนี้</div>`}</div></section>`;
   const byCoach = hCoach !== 'all' ? [] : S.coaches.map(co => ({ co, n: all.filter(x => x.c.coach === co.id && x.lv === 'red').length })).filter(x => x.n).sort((a, b) => b.n - a.n);
-  return `<div class="vh"><button class="btn ghost sm" data-hco="">${ic('back', 15)} โค้ชทั้งหมด</button>${hCoach !== 'all' ? `<img class="hco-f" src="${staffFace(hCoach)}" alt="">` : ''}<select id="hcoach" class="pcsel" aria-label="เลือกโค้ช"><option value="all" ${hCoach === 'all' ? 'selected' : ''}>ลูกค้าของโค้ชทุกคน (${S.clients.length})</option>${S.coaches.map(co => `<option value="${co.id}" ${hCoach === co.id ? 'selected' : ''}>${co.name} · ${S.clients.filter(c => c.coach === co.id).length} ราย</option>`).join('')}</select>
+  return `<div class="vh"><button class="btn ghost sm" data-hco="">${ic('back', 15)} โค้ชทั้งหมด</button>${hCoach !== 'all' ? `<img class="hco-f" src="${staffFace(hCoach, 72)}" alt="">` : ''}<select id="hcoach" class="pcsel" aria-label="เลือกโค้ช"><option value="all" ${hCoach === 'all' ? 'selected' : ''}>ลูกค้าของโค้ชทุกคน (${S.clients.length})</option>${S.coaches.map(co => `<option value="${co.id}" ${hCoach === co.id ? 'selected' : ''}>${co.name} · ${S.clients.filter(c => c.coach === co.id).length} ราย</option>`).join('')}</select>
     <span class="muted sm opt">จัดกลุ่มจากใบเหลือง คะแนนวินัย เรื่องที่ยังไม่เคลียร์ และการขาดทุน · เลือกลูกค้าเพื่อดูรายละเอียด</span><span class="sp"></span>${byCoach.length ? `<span class="xs muted opt">น่าเป็นห่วงมากที่สุด: ${byCoach.slice(0, 3).map(x => `<b class="ink2">${x.co.name}</b> ${x.n} ราย`).join(' · ')}</span>` : ''}
     <button class="tag blue" data-go="record">${ic('inbox', 12)}รอตรวจ ${pendQ().length}</button></div>
   ${col('red', 'น่าเป็นห่วง', 'ใบเหลืองครบ วินัยต่ำ หรือมีเรื่องด่วน', 'check')}${col('amber', 'ควรติดตาม', 'เริ่มมีสัญญาณ ให้โค้ชติดตาม', 'check')}${col('ok', 'ปกติ', 'ทำตามแผนดี', 'users')}`;
