@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-nD3KlHlYjSy9x9dxk11xVZbxnKlfcIjpo6WM4QCqT6A=' 'sha256-9Myoazb15Qiuz6JmiaakKxd9xLd/4J8iEhvzCPnXJOk='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-y9bzCvhvqfrn9d+P+o3FSvd8wwAlb+y2nXo0WyKDrFM=' 'sha256-ShZIwGR5O/IqI4nWXdXPtsBJ4ZdRsYiuwCGFt5Rki4Y='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>หลังบ้าน · ปั้นพอร์ต 1 ล้าน (ต้นแบบ)</title>
@@ -897,6 +897,41 @@ button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,19
 .chd{padding:12px 18px;display:flex;flex-direction:row;align-items:center;gap:14px;flex-wrap:wrap}
 .chd h2{font-size:20px}
 .sub{display:grid;gap:14px;min-height:0;min-width:0}
+.ph .sub{display:block}
+.c-prof{grid-template-columns:minmax(260px,330px) minmax(0,1fr)}
+.prf-l .pb{display:flex;flex-direction:column;gap:10px}.prf-l .ph .sub{white-space:nowrap}.prf-r .ph .sub{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prf-id{display:flex;align-items:center;gap:12px;min-width:0}.prf-id>div{display:flex;flex-direction:column;gap:2px;min-width:0}.prf-id b{font-size:17px}
+.prf-d>div{grid-template-columns:88px minmax(0,1fr);gap:10px;padding:7px 12px;font-size:13px}.prf-d b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.prf-co{display:inline-flex;align-items:center;gap:7px}.prf-co img{width:22px;height:22px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(235,192,98,.6)}
+.prf-b{display:flex;flex-direction:column;gap:12px}
+.prf-mix{display:flex;flex-direction:column;gap:7px}
+.prf-stk{display:flex;gap:3px;height:12px;border-radius:12px;overflow:hidden}.prf-stk i{display:block;min-width:4px}
+.prf-lg{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;font-size:12.5px}.prf-lg>span{display:inline-flex;align-items:center;gap:6px}.prf-lg i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.mkg{flex:1;min-height:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:10px}
+.mkc{container-type:inline-size;position:relative;display:flex;flex-direction:column;gap:7px;padding:12px 13px;border-radius:14px;border:1px solid var(--line);background:var(--well);overflow:hidden;min-width:0}
+.mkc:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--mc)}
+.mkc>*{flex:none}.mkc-h{display:flex;align-items:center;gap:7px;min-width:0}.mkc-h>b:first-of-type{white-space:nowrap}.mkc-h .tag{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mkc-h>i{width:9px;height:9px;border-radius:3px;background:var(--mc);flex:none}.mkc-h>b:first-of-type{font-size:15px}.mkc-h .num{font-size:15px}
+.mkc-bar{height:5px;border-radius:5px;background:rgba(var(--wt),.07);overflow:hidden}.mkc-bar i{display:block;height:100%;background:var(--mc);border-radius:5px}
+.mkc-s{font-size:13px;line-height:1.4;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mkc-f{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--mut);flex-wrap:wrap}.mkc-f b{color:var(--ink)}
+.mkc-t{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px;border-top:1px solid var(--line);padding-top:4px}
+.mkc-p{font-size:12px;color:var(--mut);margin-left:6px}
+/* narrow cards: no Leverage tag (the product line already says it) */
+@container (max-width:250px){.mkc-t>div{font-size:12.5px}.mkc-h .tag{display:none}.mkc-h>b:first-of-type,.mkc-h .num{font-size:14px}.mkc-p{display:none}}
+.mkc-t>div{display:flex;flex-direction:column;gap:0;padding:5px 0;font-size:13px;border-bottom:1px dashed var(--line);min-width:0}.mkc-t>div.w{grid-column:1/-1}.mkc-t span{color:var(--mut);font-size:11.5px}.mkc-t b{font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mkc-y{display:flex;flex-wrap:wrap;gap:5px;min-height:24px;margin-top:auto}.mkc-y .chip2{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;border:1px solid var(--line2);font-size:12px;font-weight:600}
+.prf-rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.prr{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);min-width:0}.prr-k{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:5px}.prr b{font-size:19px}
+.prf-lev{display:flex;align-items:flex-start;gap:6px;line-height:1.45}
+@media (max-width:1180px){.prf-rules{grid-template-columns:repeat(2,minmax(0,1fr))}.c-prof{grid-template-columns:minmax(240px,290px) minmax(0,1fr)}}
+@media (max-height:760px){.prf-l .pb{gap:9px}.prf-d>div{padding:5px 12px}.mkc{padding:10px 12px;gap:5px}.prr{padding:7px 11px}.prr b{font-size:17px}.prf-b{gap:9px}}
+@media (max-height:680px){.prf-lev,.mkc-y,.mkc-s{display:none}}
+@media (max-width:900px) and (max-height:700px){.mkc-s{display:none}.mkc{padding:8px 11px;gap:4px}.mkc-t>div{padding:2px 0}.mkc-t>div.w{display:none}.prf-b{gap:6px}}
+@media (max-height:700px) and (min-width:901px){.prf-rules{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.prr{padding:7px 10px}.prr .xs{display:none}.prr b{font-size:16px}}
+@media (max-height:760px){.mkc-t>div{padding:3px 0}.prf-d>div{font-size:12.5px;padding:5px 12px}.mkc-y,.prf-lev{display:none}.prf-id .av{width:40px;height:40px}}
+/* phones: the market cards slide sideways */
+@media (max-width:900px){.c-prof{grid-template-columns:minmax(0,1fr)}.mkg{flex:none;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:2px}.mkc{scroll-snap-align:start}.prf-lev,.prf-lg,.prf-r .ph .sub{display:none}.prf-r .ph .lnk{white-space:nowrap}.prf-b{gap:8px}.mkc{padding:10px 12px;gap:5px}.mkc-t>div{padding:3px 0}
+  .prf-rules{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.prr{flex-direction:row;align-items:baseline;justify-content:space-between;gap:6px;padding:7px 10px}.prr .xs{display:none}.prr b{font-size:15px}.prr-k{font-size:11.5px}.mkr .prf-rules{grid-template-columns:repeat(2,minmax(0,1fr))}.mkr .prr{flex-direction:column;align-items:flex-start;gap:0}}
 .c-ov{grid-template-columns:minmax(0,1.45fr) minmax(0,1.05fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
 .c-ord{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
 .c-port{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,.85fr)}
@@ -1028,6 +1063,7 @@ button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,19
 .range{display:flex;align-items:center;gap:12px}
 .range input{padding:0;accent-color:var(--gold);background:none;border:none;box-shadow:none}
 .shx{display:none}
+@media (max-width:1500px) and (min-width:901px){.chd .lgx{display:none}.chd .shx{display:inline}}
 #lastpx{display:flex;align-items:center;gap:6px;min-height:20px}
 /* applicants for the next intake */
 .v-apps{grid-template-columns:minmax(0,1fr) 410px;grid-template-rows:auto auto minmax(0,1fr)}
@@ -1140,13 +1176,13 @@ const LOGO = blobOf('data:image/webp;base64,UklGRrJkAABXRUJQVlA4WAoAAAAQAAAAiQEA
    the client's journal and a screenshot the client sends lands in the coach's queue.
    Everything typed by a user is validated on the way in and escaped on the way out. */
 
-const KEY = 'p1m-mockup-v10';
+const KEY = 'p1m-mockup-v11';
 // program terms (CEO's announcement): tuition 1,000,000 baht, refund = 1,000,000 - profit (full refund
 // with no profit or a loss), anything above 1,000,000 profit is the client's; ports of 5,000,000+ baht,
 // 6-12 months with a coach; at most 50 clients per intake, chosen by interview
 const TUITION = 1000000, GOAL = 1000000, MIN_PORT = 5000000;
 // markets the program covers; k on a record turns price x quantity into baht (multiplier x exchange rate)
-const MARKETS = { th: ['หุ้นไทย', 'หุ้น'], tfex: ['TFEX', 'สัญญา'], gold: ['ทองคำ', 'หน่วย'], us: ['หุ้นอเมริกา', 'หุ้น'], opt: ['Options', 'สัญญา'], fut: ['Futures', 'สัญญา'] };
+const MARKETS = { th: ['หุ้นไทย', 'หุ้น'], block: ['Block Trade', 'สัญญา'], tfex: ['TFEX', 'สัญญา'], gold: ['ทองคำ', 'หน่วย'], us: ['หุ้นอเมริกา', 'หุ้น'], opt: ['Options', 'สัญญา'], fut: ['Futures', 'สัญญา'] };
 const unitOf = x => MARKETS[x?.mk || 'th'][1];
 const mkName = x => MARKETS[x?.mk || 'th'][0];
 const TZ = 7 * 3600e3, DAY = 86400e3, HR = 3600e3, MIN = 60e3;
@@ -1293,7 +1329,7 @@ function generate() {
   const coaches = Array.from({ length: 10 }, (_, i) => ({ id: 'c' + (i + 1), no: i + 1, name: 'โค้ช ' + (i + 1), email: `coach${pad(i + 1)}@sptr.example`, seen: BASE - Math.floor(r() * 150) * MIN }));
   const C1_TRAIT = [.93, .97, .8, .62, .88], C1_CAP = [5000000, 8000000, 6000000, 5000000, 10000000];
   const CAPS = [5000000, 5000000, 6000000, 8000000, 10000000, 12000000, 15000000, 20000000];
-  const MK_SETS = [['th'], ['th', 'tfex'], ['th', 'us'], ['th', 'tfex', 'gold'], ['th', 'us', 'opt'], ['th', 'tfex', 'fut']];
+  const MK_SETS = [['th'], ['th', 'tfex'], ['th', 'us'], ['th', 'tfex', 'gold'], ['th', 'us', 'opt'], ['th', 'block', 'tfex']];
   const clients = NAMES.map(([th, en], i) => {
     const first = i < 5, trait = first ? C1_TRAIT[i] : .6 + r() * .38;
     return {
@@ -1604,7 +1640,7 @@ function freshCache() { const m = Math.floor(now() / MIN); if (m !== cacheMin) {
 function load() {
   try { const s = JSON.parse(localStorage.getItem(KEY)); if (validState(s)) { clearCache(); return s; } } catch (e) { }
   const s = generate();
-  try { ['p1m-mockup-v2', 'p1m-mockup-v3', 'p1m-mockup-v4', 'p1m-mockup-v5', 'p1m-mockup-v6', 'p1m-mockup-v7', 'p1m-mockup-v8', 'p1m-mockup-v9'].forEach(k => localStorage.removeItem(k)); localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { }
+  try { ['p1m-mockup-v2', 'p1m-mockup-v3', 'p1m-mockup-v4', 'p1m-mockup-v5', 'p1m-mockup-v6', 'p1m-mockup-v7', 'p1m-mockup-v8', 'p1m-mockup-v9', 'p1m-mockup-v10'].forEach(k => localStorage.removeItem(k)); localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { }
   clearCache();
   return s;
 }
@@ -1667,8 +1703,8 @@ function pnlSum(c) {
 /* ---------- individual trading plan (conditions, items 2 and 3) ----------
    Agreed with the coach before measuring starts: markets, strategy, money per market, position size,
    risk per trade, and the loss level at which trading stops for a review. */
-const LEV = ['tfex', 'gold', 'opt', 'fut'];
-const STRAT = { th: 'Swing Trade หุ้นไทยตามแนวโน้ม ถือ 1–4 สัปดาห์', tfex: 'SET50 Futures ตามแนวโน้มรายวัน', gold: 'Gold Futures ตามแนวโน้ม', us: 'หุ้นอเมริกากลุ่มเทคโนโลยี ซื้อเมื่อราคาย่อตัว', opt: 'Options เพื่อป้องกันความเสี่ยงของพอร์ต', fut: 'Futures ตามแนวโน้ม' };
+const LEV = ['block', 'tfex', 'gold', 'opt', 'fut'];
+const STRAT = { th: 'Swing Trade หุ้นไทยตามแนวโน้ม ถือ 1–4 สัปดาห์', block: 'หุ้นใหญ่ใน SET50 ถือสั้น 1–5 วัน ใช้ Leverage ไม่เกินวงเงิน', tfex: 'SET50 Futures ตามแนวโน้มรายวัน', gold: 'Gold Futures ตามแนวโน้ม', us: 'หุ้นอเมริกากลุ่มเทคโนโลยี ซื้อเมื่อราคาย่อตัว', opt: 'Options เพื่อป้องกันความเสี่ยงของพอร์ต', fut: 'Futures ตามแนวโน้ม' };
 const r100k = v => Math.round(v / 100000) * 100000;
 function makeTP(c, at, by) {
   const others = c.mks.filter(m => m !== 'th'), cash = r100k(c.cap * .2), alloc = { th: r100k(c.cap * (others.length ? .6 : .8)) };
@@ -2421,7 +2457,7 @@ function readImage(file) {
    The client keys each trade after it is matched in the broker app, with the Order Status screenshot
    attached ("ภาพหลักฐานเป็นตัวแนบตอน Key ข้อมูล"); the coach confirms it or sends it back to be fixed.
    A coach can also key a trade for a client from a picture sent on LINE (confirmed at once). */
-const MK_K = { tfex: ['ตัวคูณสัญญา (Multiplier)', 200, 'SET50 Futures = 200 บาทต่อจุด'], gold: ['ตัวคูณสัญญา (Multiplier)', 10, 'Gold Futures 10 บาททองคำ = 10'], us: ['อัตราแลกเปลี่ยน (บาท/USD)', 33, 'ตามที่แอปซื้อขายแสดง'], opt: ['ตัวคูณสัญญา (Multiplier)', 200, 'SET50 Options = 200 บาทต่อจุด'], fut: ['ตัวคูณสัญญา (Multiplier)', 1, 'ตามรายละเอียดสัญญา'] };
+const MK_K = { block: ['ตัวคูณสัญญา (Multiplier)', 1000, 'Single Stock Futures 1 สัญญา = 1,000 หุ้น'], tfex: ['ตัวคูณสัญญา (Multiplier)', 200, 'SET50 Futures = 200 บาทต่อจุด'], gold: ['ตัวคูณสัญญา (Multiplier)', 10, 'Gold Futures 10 บาททองคำ = 10'], us: ['อัตราแลกเปลี่ยน (บาท/USD)', 33, 'ตามที่แอปซื้อขายแสดง'], opt: ['ตัวคูณสัญญา (Multiplier)', 200, 'SET50 Options = 200 บาทต่อจุด'], fut: ['ตัวคูณสัญญา (Multiplier)', 1, 'ตามรายละเอียดสัญญา'] };
 const validK = k => Number.isFinite(k) && k > 0 && k <= 100000;
 // symbols already used in a market other than Thai stocks (for the input suggestions)
 const mkSyms = m => [...new Set([...S.plans.filter(p => p.mk === m).map(p => p.sym), ...S.execs.filter(e => e.mk === m).map(e => e.sym)])].sort();
@@ -2808,7 +2844,7 @@ function staffFace(id, px = 48) {
    Roles here are only a demo switch kept in sessionStorage. The real system signs staff in
    with Google, keeps the session in an httpOnly cookie and checks every request on the server. */
 S = load();
-let view = null, selCl = null, selEx = null, selApp = null, aFilter = 'all', clTab = 'ov', rFilter = 'pend', tFilter = 'all', teamTab = 'staff', q = '', fCoach = '', fStat = 'all', sortBy = 'score', menu = null;
+let view = null, selCl = null, selEx = null, selApp = null, aFilter = 'all', clTab = 'prof', rFilter = 'pend', tFilter = 'all', teamTab = 'staff', q = '', fCoach = '', fStat = 'all', sortBy = 'score', menu = null;
 const ME = () => { const id = sessionStorage.getItem('p1m-bo'); return id === 'cs' ? S.cs : id === 'head' ? S.head : id ? coach(id) : null; };
 const isCS = () => ME()?.id === 'cs';
 // the head coach checks every record clients send and writes every plan; coaches follow up their clients and key records for them
@@ -3268,11 +3304,11 @@ function clientCard(c) {
     <div class="flags">${fl.length ? fl.slice(0, 3).join('') : '<span class="tag ok">เรียบร้อย</span>'}</div>
   </div>`;
 }
-const CL_TABS = [['ov', 'ภาพรวม', 'ภาพรวม'], ['trd', 'การซื้อขาย', 'ซื้อขาย'], ['plan', 'แผนและหลักฐาน', 'แผน'], ['port', 'ยอดพอร์ตและฝาก/ถอน', 'พอร์ต'], ['notes', 'บันทึกทีมงาน', 'บันทึก']];
+const CL_TABS = [['prof', 'โปรไฟล์', 'โปรไฟล์'], ['ov', 'ภาพรวม', 'ภาพรวม'], ['trd', 'การซื้อขาย', 'ซื้อขาย'], ['plan', 'แผนและหลักฐาน', 'แผน'], ['port', 'ยอดพอร์ตและฝาก/ถอน', 'พอร์ต'], ['notes', 'บันทึกทีมงาน', 'บันทึก']];
 function clientView() {
   const c = client(selCl), co = coach(c.coach), notes = S.notes.filter(x => x.cl === c.id).length;
-  if (!CL_TABS.some(t => t[0] === clTab)) clTab = 'ov';
-  const tab = { ov: clOverview, trd: clTrades, plan: clPlan, port: clPort, notes: clNotes }[clTab](c);
+  if (!CL_TABS.some(t => t[0] === clTab)) clTab = 'prof';
+  const tab = { prof: clProfile, ov: clOverview, trd: clTrades, plan: clPlan, port: clPort, notes: clNotes }[clTab](c);
   return `<section class="pnl chd">${avatar(c, 'lg')}<div style="min-width:0;flex:1 1 180px"><h2 class="ell">${esc(cname(c))} ${yellowCards(c.id).length ? ycIcons(yellowCards(c.id).length) : ''}</h2><div class="muted sm ell">${co.name} · ${c.term} เดือน ${TYPE[c.type]} · เดือนที่ ${progMonth(c)} · ${c.mks.map(m => MARKETS[m][0]).join(', ')} · ${esc(c.phone)} · ${esc(c.broker)} xxxx-${esc(c.acct)}${c.ob ? ` · เข้าใช้งาน ${seenTxt(c)}` : ' · <span class="warn">ยังไม่เคยเข้าใช้งาน</span>'}</div></div>
     <span class="sp"></span><div class="seg">${CL_TABS.map(([k, l, sl]) => `<button class="${clTab === k ? 'on' : ''}" data-ctab="${k}"><span class="lgx">${l}</span><span class="shx">${sl}</span>${k === 'notes' && notes ? `<span class="n">${notes}</span>` : ''}</button>`).join('')}</div>
     <button class="btn soft sm" data-act="line1" data-id="${esc(c.id)}">${ic('chat', 15)} LINE</button>${isCS() ? `<button class="btn ghost sm" data-act="recoach" data-id="${esc(c.id)}">${ic('users', 15)} เปลี่ยนโค้ช</button>` : ''}</section>
@@ -3292,6 +3328,56 @@ function clOverview(c) {
   ${pnl({ t: 'เรื่องที่ต้องเคลียร์', sub: `${al.length} เรื่อง`, key: 'cal', pt: 'เรื่องค้าง', rows: al.map(a => alertRow(a)).join(''), cls: 'tight', empty: `${ic('check', 24)}ไม่มีเรื่องค้าง` })}
   ${pnl({ t: 'สินทรัพย์ที่ถือครอง', sub: `${hold.length} รายการ`, key: 'cps', pt: 'สินทรัพย์', cls: 'tight', empty: 'ไม่มีสินทรัพย์ที่ถือครอง', tcls: 'cps', th: `<div class="ot-h"><span>หุ้น</span><span class="r">จำนวน</span><span class="r c-avg">${tm('avg', 'Avg')}</span><span class="r c-last">ราคาปิด</span><span class="r">${tm('upl', 'U.P/L')}</span></div>`,
     rows: hold.map(p => { const pl = p.upl; return `<div class="ot-r"><span class="jm">${slogo(p.sym, 20)}<span style="min-width:0"><b>${esc(p.sym)}</b><span class="t2">${!p.plan ? '<span class="pu">นอกแผน</span>' : p.sl && p.last <= p.sl ? '<span class="dn">หลุด Stop Loss</span>' : `SL ${p.sl ? px(p.sl) : '—'}`}</span></span></span><span class="r num">${fmt(p.qty)}<span class="t2">${unitOf(p)}</span></span><span class="r num c-avg">${px(p.avg)}</span><span class="r num c-last">${px(p.last)}</span><span class="r num ${pl >= 0 ? 'up' : 'dn'}"><b>${signed(pl)}</b></span></div>`; }).join('') })}`;
+}
+// the client's profile: who they are and their program on the left; on the right the trading plan designed for them —
+// how the money is split across the markets they trade (หุ้นไทย, Block Trade, TFEX...), each market's approach and what
+// they actually traded there, and the limits every trade must keep
+const MK_D = { th: 'หุ้นใน SET และ mai', block: 'Single Stock Futures (Block Trade)', tfex: 'SET50 Index Futures', gold: 'Gold Futures', us: 'หุ้นสหรัฐฯ NYSE / NASDAQ', opt: 'SET50 Index Options', fut: 'Futures ต่างประเทศ' };
+const MK_SZ = { block: '1 สัญญา = 1,000 หุ้น', tfex: '200 บาทต่อจุด', gold: '10 บาททองคำ', opt: '200 บาทต่อจุด', us: 'USD คิดเป็นบาท' };
+const MK_C = { th: '#c9a24a', block: '#8a6fd8', tfex: '#3f86e0', gold: '#d6a12e', us: '#2fa58f', opt: '#cf6a90', fut: '#7c8aa6' };
+function clProfile(c) {
+  const co = coach(c.coach), tp = c.tp, base = tpBase(c), n = now(), ex = execsOf(c.id).filter(e => e.at <= n), d = discipline(c.id), yc = yellowCards(c.id).length, cn = concern(c), at = attOf(c.id);
+  const mkOf = e => e.mk || 'th', parts = String(tp.strategy || '').split(' · '), stratOf = (m, i) => parts.length === c.mks.length ? parts[i] : STRAT[m] || '';
+  const j = tz(c.joined), end = Date.UTC(j.getUTCFullYear(), j.getUTCMonth() + c.term, j.getUTCDate()) - TZ, ups = c.flows.filter(f => f.cap && !f.pend && !f.rej).length;
+  const info = (k, v, t = '') => `<div><span>${k}</span><b ${t ? `title="${esc(t)}"` : ''}>${v}</b></div>`;
+  const segs = [...c.mks.map(m => [m, tp.alloc[m] || 0]), ['cash', tp.cash]], tot = segs.reduce((a, [, v]) => a + v, 0) || 1;
+  const card = (m, i) => {
+    const v = tp.alloc[m] || 0, mine = ex.filter(e => mkOf(e) === m), syms = [...new Set(mine.slice().reverse().map(e => e.sym))].slice(0, 4);
+    const ps = positions(c.id).filter(x => (x.mk || 'th') === m), held = ps.filter(x => x.qty > 0).length, pl = ps.reduce((t, x) => t + x.realized + (x.qty > 0 ? x.upl : 0), 0);
+    const fact = (k, val, wide) => `<div ${wide ? 'class="w"' : ''}><span>${k}</span><b>${val}</b></div>`;
+    return `<div class="mkc" style="--mc:${MK_C[m] || '#8a93a8'}"><div class="mkc-h"><i></i><b>${MARKETS[m][0]}</b>${LEV.includes(m) ? '<span class="tag xs" title="สินค้าที่มี Leverage: มูลค่าสถานะไม่เกินวงเงินของตลาด">Leverage</span>' : ''}<span class="sp"></span><b class="num">฿${kb(v)}</b><span class="mkc-p num" title="ของเงินทุน">${fmt(base ? v / base * 100 : 0)}%</span></div>
+      <div class="mkc-bar"><i style="width:${Math.min(100, base ? v / base * 100 : 0)}%"></i></div>
+      <div class="mkc-s" title="${esc(stratOf(m, i))}">${esc(stratOf(m, i))}</div>
+      <div class="mkc-t">${fact('สินค้า', MK_D[m] || MARKETS[m][0], 1)}${MK_SZ[m] ? fact(m === 'us' ? 'ราคา' : 'ขนาดสัญญา', MK_SZ[m]) : ''}${fact('สูงสุดต่อตัว', `฿${kb(Math.min(v, tp.maxPos * base))}`)}${fact('ผลในตลาดนี้', mine.length ? `<span class="${pl >= 0 ? 'up' : 'dn'}">${signed(Math.round(pl))}</span>` : '—')}${fact('30 วัน', `${mine.filter(e => n - e.at < 30 * DAY).length} รายการ · ถือ ${held}`)}</div>
+      <div class="mkc-y">${syms.length ? syms.map(sy => `<span class="chip2">${m === 'th' ? slogo(sy, 16) : ''}${esc(sy)}</span>`).join('') : '<span class="xs muted">ยังไม่มีรายการในตลาดนี้</span>'}</div></div>`;
+  };
+  const rule = (icn, k, v, sub) => `<div class="prr"><span class="prr-k">${ic(icn, 14)} ${k}</span><b class="num">${v}</b><span class="xs muted">${sub}</span></div>`;
+  const lev = c.mks.filter(m => LEV.includes(m));
+  const rules = rule('target', 'ขนาดสถานะสูงสุด', `${fmt(tp.maxPos * 100)}%`, `฿${kb(tp.maxPos * base)} ต่อตัว`) + rule('shield', 'ความเสี่ยงต่อครั้ง', `${fmt(tp.risk * 100)}%`, `฿${kb(tp.risk * base)} จาก Entry ถึง Stop Loss`)
+    + rule('alert', 'หยุดทบทวนเมื่อ', `−${fmt(tp.stop * 100)}%`, 'พอร์ตลดลงจากจุดสูงสุด') + rule('wallet', 'เงินสดสำรอง', `฿${kb(tp.cash)}`, `${fmt(tp.cash / (base || 1) * 100)}% ของเงินทุน`);
+  return `<section class="pnl prf-l" data-pt="ข้อมูลลูกค้า"><div class="ph"><h3>ข้อมูลลูกค้า</h3><span class="sub">${TYPE[c.type]} Trader</span></div><div class="pb">
+      <div class="prf-id">${avatar(c, 'lg')}<div style="min-width:0"><b class="ell">${esc(c.name)} ${esc(c.last || '')}</b><span class="xs muted">เดือนที่ ${progMonth(c)} จาก ${c.term} · วินัย <b class="${scoreTone(d.score)}">${d.score}</b>${yc ? ` · ${ycIcons(yc)}` : ''}</span></div></div>
+      <div class="tpd prf-d">
+        ${info('โทรศัพท์', `${esc(c.phone)} · ${c.line ? '<span class="up">LINE เชื่อมแล้ว</span>' : '<span class="warn">ยังไม่เชื่อม LINE</span>'}`)}${info('อีเมล', esc(c.email), c.email)}
+        ${info('บัญชีซื้อขาย', `${esc(c.broker)} · xxxx-${esc(c.acct)}`)}
+        ${info('โปรแกรม', `${c.term} เดือน · ${dstr(c.joined)} ${String(tz(c.joined).getUTCFullYear() + 543).slice(2)} – ${dstr(end)} ${String(tz(end).getUTCFullYear() + 543).slice(2)}`)}
+        ${info('ค่าเรียน', c.paid ? `฿${baht(c.paid.amt)} <span class="muted">ชำระ ${dstr(c.paid.at)}</span>` : '<span class="warn">ยังไม่ชำระ</span>')}
+        ${info('โค้ชผู้ดูแล', `<span class="prf-co"><img src="${staffFace(co.id, 48)}" alt="">${esc(co.name)}</span>`)}
+        ${info('เงินทุน', `฿${baht(base)}${ups ? ` <span class="muted">เริ่มต้น ฿${kb(c.cap)} · เพิ่มทุน ${ups} ครั้ง</span>` : ''}`)}
+      </div>
+      <div class="tpd prf-d">
+        ${info('สถานะ', `<span class="${cn.lv === 'red' ? 'dn' : cn.lv === 'amber' ? 'warn' : 'up'}">● ${LV_N[cn.lv]}</span>${cn.why.length ? ` <span class="muted">${esc(cn.why[0][1])}${cn.why.length > 1 ? ` +${cn.why.length - 1}` : ''}</span>` : ''}`, cn.why.map(w => w[1]).join(' · '))}
+        ${info('Coaching', `<span class="${at.rate >= .8 ? 'up' : 'warn'}">${at.n}/${at.t} นัด · ${Math.round(at.rate * 100)}%</span> <span class="muted">เกณฑ์ 80%</span>`)}
+        ${info('ใช้งานล่าสุด', when(c.seen, n))}
+      </div></div></section>
+    <section class="pnl prf-r" data-pt="แผนเทรดที่ออกแบบ"><div class="ph"><h3>แผนเทรดที่ออกแบบให้</h3><span class="sub" title="${staffName(tp.by)}จัดทำ ${dstr(tp.at)}">ฉบับที่ ${tp.no} · ${tp.ok ? `<span class="up">ยืนยันแล้ว ${dstr(tp.ok)}</span>` : '<span class="warn">รอลูกค้ายืนยัน</span>'}</span><span class="sp"></span><button class="lnk xs" data-act="tpview" data-id="${esc(c.id)}">ฉบับเต็ม</button>${isHead() ? `<button class="btn ghost sm" data-act="tpedit" data-id="${esc(c.id)}">${ic('edit', 15)} ปรับแผน</button>` : ''}</div>
+      <div class="pb prf-b">
+        <div class="prf-mix"><div class="prf-stk" role="img" aria-label="สัดส่วนเงินทุน ${segs.map(([m, v]) => `${m === 'cash' ? 'เงินสดสำรอง' : MARKETS[m][0]} ${fmt(v / tot * 100)}%`).join(' · ')}">${segs.map(([m, v]) => `<i style="flex:${v};background:${m === 'cash' ? 'var(--line2)' : MK_C[m]}" title="${m === 'cash' ? 'เงินสดสำรอง' : MARKETS[m][0]} ฿${baht(v)}"></i>`).join('')}</div>
+          <div class="prf-lg">${segs.map(([m, v]) => `<span><i style="background:${m === 'cash' ? 'var(--line2)' : MK_C[m]}"></i>${m === 'cash' ? 'เงินสดสำรอง' : MARKETS[m][0]} <b class="num">${fmt(v / tot * 100)}%</b></span>`).join('')}<span class="sp"></span><span class="muted">เงินทุนในโปรแกรม <b class="num">฿${baht(base)}</b></span></div></div>
+        <div class="mkg" style="--n:${Math.min(3, c.mks.length)}">${c.mks.map(card).join('')}${narrow() ? `<div class="mkc mkr"><div class="mkc-h"><b>กติกาความเสี่ยง</b></div><div class="prf-rules">${rules}</div></div>` : ''}</div>
+        ${narrow() ? '' : `<div class="prf-rules">${rules}</div>`}
+        ${lev.length ? `<div class="xs muted prf-lev">${ic('info', 13)} ${lev.map(m => MARKETS[m][0]).join(', ')}: มูลค่าสถานะไม่เกินวงเงินของตลาด และขาดทุนต่อครั้งไม่เกิน ฿${baht(tp.risk * base)} · ทบทวนแผนทุก Coaching วันอังคาร 19:00 น.</div>` : ''}
+      </div></section>`;
 }
 // the client's own trading plan, what the coach told them for each plan (kept as evidence), coaching attendance
 function clPlan(c) {
@@ -3748,7 +3834,7 @@ function addStaffModal() {
 
 /* ---------- events ---------- */
 // Ctrl+K: pages, clients (only the ones this account may see), actions and every stock
-const openClient = id => { if (!canSee(id)) return; if (selCl !== id) { clTab = 'ov'; ['cal', 'cps', 'ctg', 'cex', 'csn', 'cfl', 'cno', 'ctold', 'cses', 'cst'].forEach(k => { PG[k] = 0; }); } selCl = id; go('client'); };
+const openClient = id => { if (!canSee(id)) return; if (selCl !== id) { clTab = 'prof'; ['cal', 'cps', 'ctg', 'cex', 'csn', 'cfl', 'cno', 'ctold', 'cses', 'cst'].forEach(k => { PG[k] = 0; }); } selCl = id; go('client'); };
 cmdItems = () => !ME() ? [] : [
   ...NAV[roleOf()].map(([k, l, i]) => ({ g: 'ไปที่หน้า', t: l, ic: i, run: () => go(k) })),
   ...mine().map(c => ({ g: 'ลูกค้า', t: cname(c), s: `${c.email} · กำไร ${signed(profit(c))} · วินัย ${discipline(c.id).score}${seeAll() ? ' · ' + coach(c.coach).name : ''}`, k: c.phone, ic: 'user', run: () => openClient(c.id) })),
