@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-22o9jLs8JngH0s4bZEy2ft3wmoF0Wk+dhpYLU4d9Mdo=' 'sha256-1qdCX2qq1Jywvbhp3KnA8WagISL9mqT2+vPTN232lEE='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-22o9jLs8JngH0s4bZEy2ft3wmoF0Wk+dhpYLU4d9Mdo=' 'sha256-1Xxj+K8C2klhYmQ04pOre1Ogn13ZF/kGuLQ50zOczjQ='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>หลังบ้าน · ปั้นพอร์ต 1 ล้าน (ต้นแบบ)</title>
@@ -1000,6 +1000,34 @@ button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,19
 .hcol.red{border-color:color-mix(in srgb,var(--dn) 35%,transparent)}
 .hrow{display:grid;grid-template-columns:24px minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);border-radius:10px}
 .hrow:hover{background:rgba(var(--wt),.04)}
+/* the evidence file: a paper document in a dialog; print shows only the document */
+.mbox.docm{width:min(940px,100%);height:calc(100dvh - 24px);display:flex;flex-direction:column;overflow:hidden;padding:0}
+.doc-bar{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line);flex:none}.doc-bar b{display:flex;align-items:center;gap:8px}
+.docv{flex:1;min-height:0;overflow:auto;padding:18px;background:rgba(var(--wt),.04)}
+.doc{background:#fff;color:#1b2033;max-width:820px;margin:0 auto;padding:36px 42px;border-radius:6px;box-shadow:0 10px 30px -12px rgba(0,0,0,.35);font-size:12.5px;line-height:1.5}
+.dhd{display:flex;align-items:center;gap:16px;padding-bottom:14px;border-bottom:2px solid #b8913f}.dhd img{height:46px}.dhd>div:nth-child(2){flex:1;display:flex;flex-direction:column}.dhd b{font-size:20px;color:#141a2e}.dhd span{color:#5c6275}
+.dno{display:flex;flex-direction:column;align-items:flex-end;font-size:11px;color:#5c6275}.dno b{font-size:13px;color:#141a2e}
+.dsec{margin-top:18px;break-inside:auto}.dsec h2{display:flex;align-items:baseline;gap:8px;font-size:14.5px;color:#141a2e;margin:0 0 8px;padding-left:10px;border-left:3px solid #b8913f}
+.dsec h2>span{color:#b8913f}.dsec h2 small{margin-left:auto;font-size:11px;font-weight:400;color:#6b7083}
+.dkv,.dtb{width:100%;border-collapse:collapse}.dkv th{width:150px;text-align:left;font-weight:600;color:#5c6275;vertical-align:top}
+.dkv th,.dkv td,.dtb th,.dtb td{padding:5px 8px;border-bottom:1px solid #e6e2d6;vertical-align:top}
+.dtb thead th{background:#f6f2e7;text-align:left;font-weight:600;color:#3d4256;font-size:11.5px}.dtb tr{break-inside:avoid}
+.dimg{width:46px}.dimg .slip{width:40px;height:56px;border-radius:4px;object-fit:cover}.dimg svg.slip{width:40px;height:56px}
+.dsum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.dsum>div{border:1px solid #e6e2d6;border-radius:8px;padding:8px 10px;display:flex;flex-direction:column}
+.dsum span,.dsum small{font-size:11px;color:#6b7083}.dsum b{font-size:17px;color:#141a2e}
+.doc .tpd{background:#faf8f2;border-color:#e6e2d6}.doc .tpd>div{border-color:#e6e2d6;color:#1b2033}.doc .tpd>div>span,.doc .tpf,.doc .muted{color:#6b7083}
+.dok{color:#1d7f56;font-weight:600}.dbad{color:#b5364a;font-weight:600}.dpend{color:#a8761a;font-weight:600}.dmut,.dnone{color:#6b7083}.dnone{margin:4px 0}
+.dft{margin-top:22px;padding-top:12px;border-top:1px solid #e6e2d6;color:#6b7083;font-size:11px}
+.dsig{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:34px}.dsig div{display:flex;flex-direction:column;align-items:center;gap:6px;color:#3d4256}.dsig span{width:100%;border-bottom:1px solid #9aa0b2;height:26px}
+@media (max-width:760px){.doc{padding:20px 16px}.dsum{grid-template-columns:1fr 1fr}.dkv th{width:96px}.docv{padding:8px}.doc-bar .xs{display:none}}
+@media print{
+  @page{size:A4;margin:12mm}
+  body *{visibility:hidden!important}
+  #modal .doc,#modal .doc *{visibility:visible!important}
+  #modal .modal,#modal .mbox.docm,#modal .docv{position:static!important;display:block!important;height:auto!important;overflow:visible!important;background:none!important;box-shadow:none!important;border:0!important;padding:0!important;animation:none!important}
+  #modal .doc{position:absolute;left:0;top:0;width:100%;max-width:none;box-shadow:none;border-radius:0;padding:0}
+  .doc-bar{display:none!important}
+}
 /* the head coach's coach cards: deep navy with gold hairlines (the same in both themes, like the client's member card),
    muted status colours; a thin line on top shows each coach's most serious client status */
 .v-overview.hd:has(.cocg),.v-overview.hd:has(.corl){grid-template-columns:minmax(0,1fr)}
@@ -1100,7 +1128,8 @@ button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,19
 .range{display:flex;align-items:center;gap:12px}
 .range input{padding:0;accent-color:var(--gold);background:none;border:none;box-shadow:none}
 .shx{display:none}
-@media (max-width:1500px) and (min-width:901px){.chd .lgx{display:none}.chd .shx{display:inline}}
+@media (max-width:1500px) and (min-width:901px){.chd .lgx{display:none}.chd .shx{display:inline}.evb span{display:none}}
+@media (max-width:900px){.evb span{display:none}}
 #lastpx{display:flex;align-items:center;gap:6px;min-height:20px}
 /* applicants for the next intake */
 .v-apps{grid-template-columns:minmax(0,1fr) 410px;grid-template-rows:auto auto minmax(0,1fr)}
@@ -3418,7 +3447,7 @@ function clientView() {
   const tab = { prof: clProfile, ov: clOverview, trd: clTrades, plan: clPlan, port: clPort, notes: clNotes }[clTab](c);
   return `<section class="pnl chd">${avatar(c, 'lg')}<div style="min-width:0;flex:1 1 180px"><h2 class="ell">${esc(cname(c))} ${yellowCards(c.id).length ? ycIcons(yellowCards(c.id).length) : ''}</h2><div class="muted sm ell">${co.name} · ${c.term} เดือน ${TYPE[c.type]} · เดือนที่ ${progMonth(c)} · ${c.mks.map(m => MARKETS[m][0]).join(', ')} · ${esc(c.phone)} · ${esc(c.broker)} xxxx-${esc(c.acct)}${c.ob ? ` · เข้าใช้งาน ${seenTxt(c)}` : ' · <span class="warn">ยังไม่เคยเข้าใช้งาน</span>'}</div></div>
     <span class="sp"></span><div class="seg">${CL_TABS.map(([k, l, sl]) => `<button class="${clTab === k ? 'on' : ''}" data-ctab="${k}"><span class="lgx">${l}</span><span class="shx">${sl}</span>${k === 'notes' && notes ? `<span class="n">${notes}</span>` : ''}</button>`).join('')}</div>
-    <button class="btn soft sm" data-act="line1" data-id="${esc(c.id)}">${ic('chat', 15)} LINE</button>${isCS() ? `<button class="btn ghost sm" data-act="recoach" data-id="${esc(c.id)}">${ic('users', 15)} เปลี่ยนโค้ช</button>` : ''}</section>
+    <button class="btn soft sm" data-act="line1" data-id="${esc(c.id)}">${ic('chat', 15)} LINE</button><button class="btn ghost sm evb" data-act="evid" data-id="${esc(c.id)}" title="แฟ้มหลักฐานของลูกค้า · พิมพ์หรือบันทึกเป็น PDF">${ic('book', 15)}<span> แฟ้มหลักฐาน</span></button>${isCS() ? `<button class="btn ghost sm" data-act="recoach" data-id="${esc(c.id)}">${ic('users', 15)} เปลี่ยนโค้ช</button>` : ''}</section>
   <div class="sub vgrid c-${clTab === 'trd' ? 'ord' : clTab}" data-v="cl-${clTab}">${tab}</div>`;
 }
 function clOverview(c) {
@@ -3465,6 +3494,53 @@ function clProfile(c) {
         ${narrow() ? '' : `<div class="prf-rules">${tpRules(c)}</div>`}
         ${tpLev(c)}
       </div></section>`;
+}
+/* ---------- the evidence file of one client: everything the refund guarantee may be argued over, in one document ----------
+   who the client is and the program, where things stand today, the trading plan they confirmed (and every version),
+   each plan the head coach gave with the size told, every record with how it was checked and by whom, the picture,
+   what did not follow the plan, Coaching attendance, the Friday reports and Statements, and the team's notes.
+   Shown as a paper document; "พิมพ์" prints only the document (or saves it as PDF). */
+function evidenceModal(id) {
+  const c = client(id); if (!c || !canSee(id)) return;
+  const n = now(), me = ME(), co = coach(c.coach), tp = c.tp, st = settle(c), base = tpBase(c), ps = pnlSum(c), d = discipline(c.id), a = attOf(c.id);
+  const ex = execsOf(c.id).filter(e => e.at <= n), told = toldOf(c).filter(p => p.at <= n), ycs = yellowCards(c.id), yy = ms => String(tz(ms).getUTCFullYear() + 543).slice(2), dd = ms => `${dstr(ms)} ${yy(ms)}`;
+  const j = tz(c.joined), end = Date.UTC(j.getUTCFullYear(), j.getUTCMonth() + c.term, j.getUTCDate()) - TZ, no = `EV-${c.id.toUpperCase()}-${isoOf(dayOf(n)).replace(/-/g, '')}`;
+  const kv = rows => `<table class="dkv">${rows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('')}</table>`;
+  const tbl = (head, rows, empty) => rows.length ? `<table class="dtb"><thead><tr>${head.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table>` : `<p class="dnone">${empty}</p>`;
+  const sec = (nn, t, body, sub = '') => `<section class="dsec"><h2><span>${nn}</span>${t}${sub ? `<small>${sub}</small>` : ''}</h2>${body}</section>`;
+  const res = e => { const r = checks(e), bad = Object.entries(r).filter(([, v]) => v !== 'ok').map(([k]) => CK_LABEL[k] || k); return e.ver !== 'ok' ? `<span class="dpend">${e.ver === 'fix' ? 'รอลูกค้าแก้ไข' : 'รอตรวจ'}</span>` : bad.length ? `<span class="dbad">${e.plan ? 'ไม่ตรงแผน' : 'นอกแผน'}: ${bad.join(', ')}</span>` : '<span class="dok">ตรงแผน</span>'; };
+  const bought = p => ex.filter(e => e.plan === p.id && e.side === 'buy').reduce((t, e) => t + e.qty, 0);
+  const devs = [...ex.filter(e => e.ver === 'ok' && !allOk(checks(e)) && (e.plan || e.side === 'buy')).map(e => ({ at: e.vat || e.at, sym: e.sym, why: e.plan ? devText(e) : `ซื้อ ${e.sym} นอกแผน`, yc: ycs.some(y => y.ex === e.id), done: S.done['dev:' + e.id] })),
+    ...S.misses.filter(m => m.cl === c.id && m.at <= n).map(m => ({ at: m.at, sym: planOf(m.plan)?.sym || '', why: `${MISS[m.kind]} · ${m.note}`, yc: ycs.some(y => y.miss === m.id), done: S.done['miss:' + m.id] }))].sort((x, y) => x.at - y.at);
+  const doc = `<article class="doc">
+    <header class="dhd"><img src="${LOGO}" alt="Super Trader Republic"><div><b>แฟ้มหลักฐานผู้เรียน</b><span>โปรแกรมปั้นพอร์ต 1 ล้าน · Super Trader Republic</span></div><div class="dno"><span>เลขที่เอกสาร</span><b>${no}</b><span>ออกเมื่อ ${dd(n)} ${tstr(n)} น.</span><span>โดย ${esc(me.name)}</span></div></header>
+    ${sec('1', 'ข้อมูลผู้เรียนและโปรแกรม', kv([
+      ['ชื่อ–นามสกุล', `${esc(c.name)} ${esc(c.last || '')} <span class="dmut">(${esc(c.id.toUpperCase())})</span>`], ['ติดต่อ', `${esc(c.phone)} · ${esc(c.email)} · LINE ${c.line ? 'เชื่อมแล้ว' : 'ยังไม่เชื่อม'}`],
+      ['บัญชีซื้อขาย', `${esc(c.broker)} · xxxx-${esc(c.acct)}`], ['ประเภท / ตลาด', `${TYPE[c.type]} Trader · ${c.mks.map(m => MARKETS[m][0]).join(', ')}`],
+      ['โปรแกรม', `${c.term} เดือน · ${dd(c.joined)} – ${dd(end)} · โค้ชผู้ดูแล ${esc(co.name)}`], ['ค่าเรียน', c.paid ? `฿${baht(c.paid.amt)} ชำระเมื่อ ${dd(c.paid.at)}` : 'ยังไม่ชำระ'],
+      ['เงินทุนในโปรแกรม', `฿${baht(base)} (เริ่มต้น ฿${baht(c.cap)})`]]))}
+    ${sec('2', 'สรุป ณ วันที่ออกเอกสาร', `<div class="dsum">
+      <div><span>กำไรสะสมตามบันทึก</span><b class="${ps.total >= 0 ? 'dok' : 'dbad'}">${signed(ps.total)}</b><small>${pct(retPct(c))} ของเงินทุน</small></div>
+      <div><span>เงื่อนไขกำไร 1 ล้าน</span><b>${fmt(st.pct * 100, 1)}%</b><small>${st.extra > 0 ? 'ผ่านเงื่อนไขแล้ว' : `คืนค่าเรียนหากจบวันนี้ ฿${baht(st.refund)}`}</small></div>
+      <div><span>รายการที่บันทึก</span><b>${ex.length}</b><small>ไม่เป็นไปตามแผน ${devs.length} · ใบเหลือง ${YC_DAYS} วัน ${ycs.length}</small></div>
+      <div><span>เข้าร่วม Coaching</span><b>${a.n}/${a.t}</b><small>${Math.round(a.rate * 100)}% · เกณฑ์ 80% · วินัย ${d.score}</small></div></div>`)}
+    ${sec('3', 'แผนเทรดเฉพาะบุคคล', `${tpDoc(c)}${(c.tpHist || []).length ? `<p class="dmut">ฉบับก่อนหน้า: ${c.tpHist.map(h => `ฉบับที่ ${h.no} (${dd(h.at)}${h.ok ? ` · ยืนยัน ${dd(h.ok)}` : ''})`).join(' · ')}</p>` : ''}`, `ฉบับที่ ${tp.no} · ${tp.ok ? `ลูกค้ายืนยันเมื่อ ${dd(tp.ok)} ${tstr(tp.ok)} น.` : 'รอลูกค้ายืนยัน'}`)}
+    ${sec('4', 'แผนและขนาดที่หัวหน้าโค้ชแนะนำ', tbl(['วันที่', 'หลักทรัพย์', 'Entry · SL · TP', 'ขนาดที่แนะนำ', 'ลูกค้าซื้อจริง'], told.map(p => { const t = p.alloc[c.id], q = bought(p), u = unitOf(p);
+      return `<tr><td>${dd(t.at || p.at)} ${tstr(t.at || p.at)}</td><td><b>${esc(p.sym)}</b> <span class="dmut">${planBy(p)}</span></td><td>${px(p.lo)}–${px(p.hi)} · SL ${px(slAt(p, n))} · TP ${px(p.tp1)}/${px(p.tp2)}</td><td>${fmt(t.qty)} ${u} · ฿${kb(t.amt)}</td><td>${!q ? '<span class="dmut">ไม่ได้ซื้อ</span>' : q > t.qty * 1.1 ? `<span class="dbad">${fmt(q)} ${u} · เกินที่แนะนำ</span>` : `<span class="dok">${fmt(q)} ${u} · ตามที่แนะนำ</span>`}</td></tr>`; }), 'ยังไม่มีแผน'), 'บันทึกแล้วแก้ไขหรือลบไม่ได้')}
+    ${sec('5', 'รายการซื้อขายและผลการตรวจ', tbl(['วันที่', 'รายการ', 'แผน', 'ผลตรวจ', 'ตรวจโดย', 'หลักฐาน'], ex.map(e => `<tr><td>${dd(e.at)} ${tstr(e.at)}</td><td><b>${e.side === 'buy' ? 'ซื้อ' : 'ขาย'} ${esc(e.sym)}</b><br>${fmt(e.qty)} ${unitOf(e)} @ ${px(e.px)}</td><td>${e.plan ? esc(planOf(e.plan)?.sym || '') : '<span class="dbad">นอกแผน</span>'}</td><td>${res(e)}</td><td>${e.vby ? `${esc(staffName(e.vby))}<br><span class="dmut">${dd(e.vat || e.at)} ${tstr(e.vat || e.at)}</span>` : '—'}</td><td class="dimg">${e.slip ? slipImg(e, c) : '<span class="dbad">ไม่มีภาพ</span>'}</td></tr>`), 'ยังไม่มีรายการ'), `${ex.length} รายการ · บันทึกโดยลูกค้าพร้อมภาพหน้าจอสถานะคำสั่ง`)}
+    ${sec('6', 'สิ่งที่ไม่เป็นไปตามแผน', tbl(['วันที่', 'หลักทรัพย์', 'รายละเอียด', 'ใบเหลือง', 'การติดตาม'], devs.map(x => `<tr><td>${dd(x.at)}</td><td>${esc(x.sym)}</td><td>${esc(x.why)}</td><td>${x.yc ? '<span class="dbad">นับ (30 วัน)</span>' : '<span class="dmut">หมดอายุ</span>'}</td><td>${x.done ? `คุยแล้ว ${dd(x.done.at)} · ${esc(staffName(x.done.by))}${x.done.note ? `<br><span class="dmut">${esc(x.done.note)}</span>` : ''}` : '<span class="dpend">ยังไม่ได้เคลียร์</span>'}</td></tr>`), 'ทำตามแผนทุกรายการ'), `ใบเหลืองครบ ${YC_LIMIT} ใบใน ${YC_DAYS} วัน โค้ชนัดคุยเรื่องสิทธิ์คืนค่าเรียน`)}
+    ${sec('7', 'การเข้าร่วม Coaching', tbl(['วันที่', 'ประเภท', 'ผล', 'หมายเหตุ'], sessOf(c.id).slice().reverse().map(x => `<tr><td>${dd(x.at)} ${tstr(x.at)}</td><td>${x.kind === 'review' ? 'Review ประจำเดือน' : 'Coaching'}</td><td>${x.att ? '<span class="dok">เข้าร่วม</span>' : '<span class="dbad">ไม่ได้เข้าร่วม</span>'}</td><td>${esc(x.note || '')}</td></tr>`), 'ยังไม่มีนัด'), `${a.n}/${a.t} นัด · ${Math.round(a.rate * 100)}%`)}
+    ${sec('8', 'รายงานยอดพอร์ตและ Statement', tbl(['วันที่', 'ประเภท', 'ยอดที่รายงาน', 'เทียบกับบันทึก'], [...snapsOf(c).map(x => ({ t: x.at, h: `<tr><td>${dd(x.at)}</td><td>ยอดพอร์ตวันศุกร์</td><td>฿${baht(x.val)}</td><td>${snapOk(x) ? '<span class="dok">ตรงกัน</span>' : `<span class="dbad">ต่าง ${pct(snapDiff(x))}</span>`}</td></tr>` })),
+      ...S.stmts.filter(x => x.cl === c.id).map(x => ({ t: x.at, h: `<tr><td>${dd(x.at)}</td><td>Statement ${ymName(x.ym)}</td><td>฿${baht(x.val)}</td><td class="dmut">จากโบรกเกอร์</td></tr>` }))].sort((x, y) => x.t - y.t).map(x => x.h), 'ยังไม่มีรายงาน'))}
+    ${sec('9', 'บันทึกของทีมงาน', tbl(['วันที่', 'โดย', 'บันทึก'], S.notes.filter(x => x.cl === c.id).sort((x, y) => x.at - y.at).map(x => `<tr><td>${dd(x.at)} ${tstr(x.at)}</td><td>${x.role === 'cs' ? 'ทีม CS' : esc(staffName(x.by))}</td><td>${esc(x.text)}</td></tr>`), 'ไม่มีบันทึก'))}
+    <footer class="dft"><p>เอกสารนี้สร้างจากข้อมูลในระบบ ณ เวลาที่ออกเอกสาร รายการที่ยืนยันแล้วและแผนที่ส่งแล้วแก้ไขหรือลบไม่ได้ ภาพหลักฐานเก็บคู่กับแต่ละรายการ</p>
+      <div class="dsig"><div><span></span>ผู้ออกเอกสาร · ${esc(me.name)}</div><div><span></span>ผู้ตรวจสอบ · หัวหน้าโค้ช</div></div></footer>
+  </article>`;
+  const box = openModal(`<div class="doc-bar"><b>${ic('book', 18)} แฟ้มหลักฐาน · ${esc(cname(c))}</b><span class="xs muted">${no}</span><span class="sp"></span><button class="btn sm" id="docprint">${ic('note', 15)} พิมพ์ / บันทึกเป็น PDF</button><button class="x" data-act="close" aria-label="ปิด">${ic('x', 18)}</button></div><div class="docv">${doc}</div>`, 'docm');
+  $('#docprint', box).addEventListener('click', () => {
+    pushFeed({ by: roleOf(), who: me.id, coach: c.coach, cl: c.id, kind: 'evid', text: `${me.name} พิมพ์แฟ้มหลักฐานของ${c.name} (${no})` });
+    save(); window.print();
+  });
 }
 // the client's own trading plan, what the coach told them for each plan (kept as evidence), coaching attendance
 function clPlan(c) {
@@ -3975,6 +4051,7 @@ document.addEventListener('click', e => {
   if (act === 'vok') return verifyEx(id);
   if (act === 'vbulk') return bulkModal();
   if (act === 'tpedit') return tpEditModal(id);
+  if (act === 'evid') return evidenceModal(id);
   if (act === 'tpview') { const c = client(id); if (!c || !canSee(id)) return; return openModal(mhead(`แผนเทรดเฉพาะบุคคล · ${esc(cname(c))}`, `ฉบับที่ ${c.tp.no}${c.tpHist?.length ? ` · ฉบับก่อนหน้าเก็บไว้ ${c.tpHist.length} ฉบับ` : ''}`) + `<div class="mbd">${tpDoc(c)}</div>`, 'mid'); }
   if (act === 'sessnew') return sessModal(id);
   if (act === 'behalf') return onBehalfModal(id, a.dataset.k);

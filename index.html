@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-22o9jLs8JngH0s4bZEy2ft3wmoF0Wk+dhpYLU4d9Mdo=' 'sha256-TyVkL8MDHnn83araFRfhoT4l2fpnajRphkVq0BXSgmA='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-22o9jLs8JngH0s4bZEy2ft3wmoF0Wk+dhpYLU4d9Mdo=' 'sha256-pM2Uk1sa+OBusftWj4HjTuF91EabD09BYmPseEM0dPw='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>ปั้นพอร์ต 1 ล้าน · Trading Journal (ต้นแบบ)</title>
@@ -1419,6 +1419,47 @@ button.kpi>span{display:block}
   .ob .card{padding:18px}
   #toasts{left:10px;right:10px;bottom:90px}
 }
+/* short screens: the glossary leaves the sidebar (it stays in the account menu) to make room for the calculator */
+@media (max-height:760px) and (min-width:761px){.sb-gl{display:none!important}}
+/* before sending an order, step by step: a stepper on top, what has been chosen so far, one question per step */
+.mbox.szm{width:min(720px,100%)}
+.sz-steps{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:12px 22px 0;padding:0}
+.sz-steps li{position:relative;min-width:0}.sz-steps li+li:before{content:"";position:absolute;left:-6px;right:calc(100% - 4px);top:16px;height:2px;background:var(--line2)}
+.sz-steps button{width:100%;display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:12px;border:1px solid var(--line);background:rgba(var(--wt),.02);color:var(--mut);font:inherit;font-size:13px;cursor:pointer;min-width:0}
+.sz-steps button:disabled{cursor:default;opacity:.55}.sz-steps span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.sz-steps i{width:22px;height:22px;flex:none;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:700;font-size:12px;background:rgba(var(--wt),.07);color:var(--ink2)}
+.sz-steps .on button{border-color:var(--gold);color:var(--ink);background:rgba(235,192,98,.09)}.sz-steps .on i{background:var(--btn);color:#2a1c03}
+.sz-steps .done button{color:var(--ink2)}.sz-steps .done i{background:color-mix(in srgb,var(--up) 20%,transparent);color:var(--up)}
+.sz-sum{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 22px 0;padding:7px 12px;border-radius:10px;background:rgba(var(--wt),.035);font-size:13px;color:var(--mut)}.sz-sum>span{display:inline-flex;align-items:center;gap:6px}.sz-sum b{color:var(--ink)}
+.sz-b{display:flex;flex-direction:column;gap:12px;min-height:300px}
+.sz-mk{align-self:flex-start}.sz-q{font-weight:700;font-size:15px;margin:0}
+.szpl{display:flex;flex-direction:column;gap:8px;max-height:340px;overflow:auto;padding:2px}
+.szpc{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;text-align:left;padding:10px 14px;border-radius:14px;border:1.5px solid var(--line2);background:rgba(var(--wt),.02);font:inherit;color:var(--ink);cursor:pointer;transition:border-color .12s,background .12s}
+.szpc:hover{border-color:rgba(235,192,98,.6)}.szpc.on{border-color:var(--gold);background:rgba(235,192,98,.1)}
+.szpc-r .tag{margin-top:3px}.szpc-t{display:flex;flex-direction:column;min-width:0}.szpc-t b{font-size:15px}.szpc-r{display:flex;flex-direction:column;align-items:flex-end}.szpc-r b{font-size:16px}
+.szpc.off{border-style:dashed}.szpc.off .szpc-t .xs{color:var(--dn)}.szpc-i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--dn) 14%,transparent);color:var(--dn)}
+.sz-none{padding:8px 4px}
+.szcs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}.szc{padding:4px 10px;border-radius:999px;border:1px solid var(--line2);background:rgba(var(--wt),.03);font:inherit;font-size:12.5px;color:var(--ink2);cursor:pointer}.szc:hover{border-color:var(--gold)}.szc b{color:var(--ink)}
+.sz-h{display:block;margin-top:5px;font-size:12.5px;color:var(--mut)}.sz-h.up{color:var(--up)}.sz-h.dn{color:var(--dn)}.sz-h svg{vertical-align:-2px}
+.sz-b .f2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sz-big{display:flex;flex-direction:column;padding:12px 16px;border-radius:14px;background:radial-gradient(260px 120px at 0% 0%,rgba(235,192,98,.18),transparent 70%),rgba(var(--wt),.03);border:1px solid rgba(235,192,98,.3)}
+.sz-big small{font-size:12px;color:var(--mut)}.sz-big b{font-size:30px;line-height:1.2}.sz-big b span{font-size:15px;color:var(--mut);font-weight:600}
+.szqw{display:flex;gap:8px;align-items:center}.szqw input{flex:1;min-width:0;text-align:center;font-size:17px;font-weight:700}.szqw .ibtn{width:40px;height:40px;flex:none}
+.szlim{display:grid;grid-template-columns:1fr 1fr;gap:10px}.szlim>div{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;min-width:0}.szlim span{font-size:12px;color:var(--mut)}.szlim b{font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.szlim b span{font-weight:400}
+.sz-t>div{grid-template-columns:150px minmax(0,1fr);padding:6px 12px;font-size:13px}.sz-t b{font-weight:600}
+.sz-g{display:flex;flex-direction:column;gap:6px}.sz-gh{font-size:13px;font-weight:700}.sz-gh .muted{font-weight:400;font-size:12px;margin-left:6px}
+.sz-ck{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.sz-ck>div{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:center;padding:7px 12px;font-size:13px;border-top:1px solid var(--line)}.sz-ck>div:first-child{border-top:0}
+.sz-ck i{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(var(--wt),.06)}.sz-ck span{font-weight:600;min-width:0}.sz-ck small{font-size:12px;color:var(--mut);text-align:right;white-space:nowrap}
+.sz-ck .ok i{color:var(--up);background:color-mix(in srgb,var(--up) 15%,transparent)}.sz-ck .bad i{color:var(--dn);background:color-mix(in srgb,var(--dn) 15%,transparent)}.sz-ck .bad span{color:var(--dn)}.sz-ck .warn i{color:var(--warn);background:color-mix(in srgb,var(--warn) 15%,transparent)}
+.szchk{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;padding:11px 14px;border:1.5px dashed var(--line2);border-radius:12px;cursor:pointer}.szchk.on{border-style:solid;border-color:color-mix(in srgb,var(--up) 55%,transparent);background:color-mix(in srgb,var(--up) 7%,transparent)}.szchk input{width:18px;height:18px;accent-color:var(--up)}
+.sz-v{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:12px;border:1px solid var(--line)}.sz-v>div{display:flex;flex-direction:column;min-width:0}.sz-v b{font-size:15px;color:inherit}.sz-v span{font-size:12.5px;color:var(--mut)}
+.sz-v.up{border-color:color-mix(in srgb,var(--up) 50%,transparent);background:color-mix(in srgb,var(--up) 8%,transparent);color:var(--up)}.sz-v.dn{border-color:color-mix(in srgb,var(--dn) 50%,transparent);background:color-mix(in srgb,var(--dn) 8%,transparent);color:var(--dn)}
+.sz-v.warn{border-color:color-mix(in srgb,var(--warn) 50%,transparent);background:color-mix(in srgb,var(--warn) 8%,transparent);color:var(--warn)}.sz-v.blue{border-color:color-mix(in srgb,var(--blue) 45%,transparent);background:color-mix(in srgb,var(--blue) 8%,transparent);color:var(--blue)}
+@media (max-height:760px) and (min-width:761px){.szm .mhd .muted{display:none}.sz-b{gap:9px;min-height:0}.szpl{max-height:260px}.sz-ck>div{padding:5px 12px}.sz-big{padding:8px 14px}.sz-big b{font-size:25px}.szlim>div{padding:7px 11px}}
+@media (max-height:680px) and (min-width:761px){.sz-sum{display:none}.szpl{max-height:220px}.sz-ck>div{padding:4px 12px}.sz-v{padding:8px 12px}.szchk{padding:8px 12px}.sz-g{gap:4px}}
+@media (max-width:760px){.sz-steps{margin:10px 14px 0}.sz-steps span{display:none}.sz-steps button{justify-content:center}.sz-steps .on span{display:inline}.sz-steps{grid-template-columns:auto auto auto auto}.sz-steps .on{flex:1}
+  .sz-sum{margin:8px 14px 0}.sz-b{min-height:0}.szpl{max-height:none}.sz-b .f2,.szlim{grid-template-columns:minmax(0,1fr)}.sz-ck small{display:none}.sz-ck>div{grid-template-columns:22px minmax(0,1fr)}}
 /* the client's profile: card, details, level and badges on the left; the trading plan by market on the right */
 .v-me{grid-template-columns:minmax(300px,370px) minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
 .pme .pb{display:flex;flex-direction:column;gap:10px}
@@ -3248,8 +3289,9 @@ function sidebar() {
     <nav class="sb-nav" aria-label="เมนูหลัก"><div class="sb-grp">เมนูหลัก</div>${NAV.map(([k, l, i]) => `<button class="${view === k ? 'on' : ''}" data-go="${k}" title="${l}">${ic(i, 19)}<span class="l">${l}</span>${navBadge(k)}</button>`).join('')}
       <div class="sb-grp">บริการของคุณ</div>
       <button data-act="tp" title="แผนเทรดของฉัน">${ic('target', 19)}<span class="l">แผนเทรดของฉัน</span>${me.tp.ok ? '' : '<span class="n">1</span>'}</button>
+      <button data-act="size" title="คำนวณก่อนส่งคำสั่ง">${ic('shield', 19)}<span class="l">คำนวณก่อนเทรด</span></button>
       <button data-act="coaching" title="ตาราง Coaching">${ic('calendar', 19)}<span class="l">ตาราง Coaching</span>${nextSess().at - now() < DAY ? '<span class="soon">วันนี้</span>' : ''}</button>
-      <button data-act="glossary" title="คำศัพท์การเทรด">${ic('help', 19)}<span class="l">คำศัพท์การเทรด</span></button></nav>
+      <button class="sb-gl" data-act="glossary" title="คำศัพท์การเทรด">${ic('help', 19)}<span class="l">คำศัพท์การเทรด</span></button></nav>
     <div class="sb-st"><div class="sb-grp">รายการของคุณ</div>
       ${st(fx.length ? 'q-warn' : '', 'ต้องแก้ไข', fx.length, fx[0] ? `data-ex="${esc(fx[0].id)}"` : 'data-go="journal"')}
       ${st(pend.length ? 'q-blue' : '', 'รอหัวหน้าโค้ชตรวจ', pend.length, pend.length ? `data-ex="${esc(pend[pend.length - 1].id)}"` : 'data-go="journal"')}
@@ -3291,6 +3333,7 @@ function meMenu() {
     <button class="mi" data-act="line">${ic('chat', 16)} ติดต่อ${co.name} ผ่าน LINE</button>
     <div class="mt">ธีม</div>${themeSeg()}
     <button class="mi" data-act="fx">${ic('sliders', 16)} เอฟเฟกต์เคลื่อนไหว · ${document.documentElement.dataset.fx === 'off' ? '<span class="muted">ปิดอยู่</span>' : '<span class="up">เปิดอยู่</span>'}</button>
+    <button class="mi" data-act="size">${ic('shield', 16)} คำนวณก่อนส่งคำสั่ง</button>
     <button class="mi" data-act="tp">${ic('target', 16)} แผนเทรดของฉัน${me.tp.ok ? '' : ' <span class="tag warn">รอยืนยัน</span>'}</button>
     <button class="mi" data-act="terms">${ic('trophy', 16)} เงื่อนไขค่าเรียน</button>
     <button class="mi" data-act="glossary">${ic('help', 16)} คำศัพท์การเทรด</button>
@@ -3405,6 +3448,136 @@ function cardHTML(me, t, o = {}) {
 // the card in the client's level, or a level they are trying out (the demo menu or the card preview)
 let tierDemo = null;
 function memberCard(me) { const real = tierOf(profit(me)); return cardHTML(me, tierDemo ?? real, { demo: tierDemo != null && tierDemo !== real }); }
+/* ---------- before sending an order, step by step: 1 the plan, 2 price and Stop Loss, 3 how many, 4 the check ----------
+   The coach tells the plan by phone; here the client sizes the order against their own trading plan (risk per trade,
+   max position, portfolio heat) and sees, with the very rules the records are checked by afterwards, whether the
+   trade would be on the plan — so a yellow card is avoided before it happens, not found after. Nothing is saved. */
+const SZ_STEPS = ['เลือกแผน', 'ราคาและ Stop', 'จำนวน', 'ตรวจก่อนส่ง'];
+const boughtOn = (c, pid) => execsOf(c.id).filter(e => e.plan === pid && e.side === 'buy' && e.at <= now()).reduce((t, e) => t + e.qty, 0);
+function sizeCalc(me, st) {
+  const tp = me.tp, base = tpBase(me), riskB = tp.risk * base, bk = portBook(me), p = planOf(st.pid), L = st.mk === 'th' ? 100 : 1, k = st.mk === 'th' ? 1 : (st.k > 0 ? st.k : MK_K[st.mk]?.[1] || 1);
+  const ok = st.e > 0 && st.s > 0 && st.s < st.e, riskU = ok ? (st.e - st.s) * k : 0, held = st.sym ? heldBefore({ cl: me.id, sym: st.sym, at: now() + 1, id: '' }) : { q: 0, avg: 0 };
+  const byRisk = ok ? Math.floor(riskB / riskU / L) * L : 0, byPos = ok ? Math.max(0, Math.floor((tpLimit(me) / (st.e * k) - held.q) / L) * L) : 0;
+  const pq = p?.alloc?.[me.id]?.qty || 0, rec = pq || Math.max(0, Math.min(byRisk, byPos)), q = st.qTouched ? Math.max(0, Math.round(st.q || 0)) : rec;
+  const loss = q * riskU, gain = st.t > st.e ? q * (st.t - st.e) * k : 0, heat = (bk.risk + loss) / (bk.total || base), val = q * st.e * k, u = MARKETS[st.mk][1];
+  // the head coach's check on the record (checkEx / extraChecks): failing one of these makes it a yellow card
+  const plan = [
+    [p ? 'ok' : 'bad', 'มีแผนจากหัวหน้าโค้ช', p ? `${esc(p.sym)} · ${planBy(p)}` : 'ซื้อนอกแผน'],
+    p ? [st.e >= p.lo - 1e-9 && st.e <= p.hi + 1e-9 ? 'ok' : 'bad', 'ราคาเข้าอยู่ในช่วง Entry', `${px(p.lo)}–${px(p.hi)}`] : null,
+    p && pq ? [Math.abs(q - pq) / pq <= .1 ? 'ok' : 'bad', 'จำนวนตามที่แนะนำ (±10%)', `${fmt(pq)} ${u}`] : null,
+    [held.q > 0 && st.e < held.avg * .995 ? 'bad' : 'ok', 'ไม่ใช่การซื้อเพิ่มขณะขาดทุน', held.q > 0 ? `ถืออยู่ ${fmt(held.q)} ${u} · ต้นทุน ${px(held.avg)}` : 'ยังไม่ได้ถือ'],
+    [(held.q + q) * st.e * k > tpLimit(me) * 1.02 ? 'bad' : 'ok', 'ไม่เกินขนาดสถานะสูงสุด', `${fmt(tp.maxPos * 100)}% · ฿${kb(tpLimit(me))}`],
+  ].filter(Boolean);
+  // the client's own risk limits
+  const risk = [
+    [loss <= riskB * 1.001 ? 'ok' : 'warn', `ขาดทุนถ้าโดน Stop ไม่เกิน ${fmt(tp.risk * 100)}%`, `฿${kb(loss)} · ${fmt(loss / base * 100, 2)}%`],
+    p ? [st.s >= planSL(p.id) - 1e-9 ? 'ok' : 'warn', 'Stop Loss ไม่ห่างกว่าแผน', `แผน ${px(planSL(p.id))}`] : null,
+    [heat <= HEAT_LIMIT ? 'ok' : 'warn', `ความเสี่ยงรวมของพอร์ตไม่เกิน ${fmt(HEAT_LIMIT * 100)}%`, `หลังซื้อ ${fmt(heat * 100, 1)}%`],
+  ].filter(Boolean);
+  const bad = plan.filter(r => r[0] === 'bad'), warn = risk.filter(r => r[0] === 'warn');
+  const verdict = bad.length ? ['dn', 'alert', `ไม่ตรงแผน ${bad.length} ข้อ`, `ถ้าส่งคำสั่งตามนี้ จะนับเป็นใบเหลือง: ${bad.map(r => r[1]).join(' · ')}`] : warn.length ? ['warn', 'alert', `ควรทบทวน ${warn.length} ข้อ`, 'ตรงแผน แต่เกินกติกาความเสี่ยงของคุณ'] : !st.stop ? ['blue', 'clock', 'ตั้งคำสั่ง Stop ก่อนส่ง', 'ทุกข้อตรงแผนและอยู่ในกติกาความเสี่ยง'] : ['up', 'check', 'พร้อมส่งคำสั่ง', 'ตรงแผนและอยู่ในกติกาความเสี่ยง'];
+  return { p, L, k, u, ok, riskU, held, byRisk, byPos, pq, rec, q, loss, gain, heat, val, base, riskB, plan, risk, verdict };
+}
+function sizeModal(pre = {}) {
+  const me = ME(), tp = me.tp;
+  const st = { mk: me.mks.includes(pre.mk) ? pre.mk : me.mks[0] || 'th', pid: '', sym: '', e: 0, s: 0, t: 0, k: 0, q: 0, qTouched: false, stop: false, chosen: false };
+  let step = 1;
+  const livePlans = () => S.plans.filter(p => planFor(p, me) && (p.mk || 'th') === st.mk && p.at <= now() && planLive(p)).sort((a, b) => b.at - a.at);
+  const box = openModal('', 'szm');
+  const pick = pid => {
+    const p = planOf(pid); st.pid = p ? p.id : ''; st.chosen = true; st.qTouched = false;
+    if (p) Object.assign(st, { sym: p.sym, e: p.hi, s: planSL(p.id), t: p.tp1, k: p.k || 0 });
+    else Object.assign(st, { sym: '', e: 0, s: 0, t: 0 });
+  };
+  const ckRow = ([v, t, sub]) => `<div class="${v}"><i>${ic(v === 'ok' ? 'check' : v === 'bad' ? 'x' : v === 'todo' ? 'clock' : 'alert', 13, 2.4)}</i><span>${t}</span><small>${sub}</small></div>`;
+  const chip = (v, label) => `<button class="szc" data-v="${v}">${label} <b class="num">${px(v)}</b></button>`;
+  function body(x) {
+    const p = x.p, u = x.u;
+    if (step === 1) {
+      const ps = livePlans();
+      return `${me.mks.length > 1 ? `<div class="seg sz-mk" role="tablist">${me.mks.map(m => `<button class="${m === st.mk ? 'on' : ''}" data-szmk="${m}">${MARKETS[m][0]}</button>`).join('')}</div>` : ''}
+        <p class="sz-q">ซื้อตามแผนไหนของหัวหน้าโค้ช?</p>
+        <div class="szpl">${ps.map(q => { const a = q.alloc?.[me.id]; return `<button class="szpc ${st.chosen && st.pid === q.id ? 'on' : ''}" data-szp="${esc(q.id)}">${slogo(q.sym, 30)}<span class="szpc-t"><b>${esc(q.sym)}</b><span class="xs muted">Entry ${px(q.lo)}–${px(q.hi)} · SL ${px(planSL(q.id))} · TP ${px(q.tp1)}</span></span><span class="szpc-r">${a ? `<b class="num">${fmt(a.qty)}</b><span class="xs muted">${unitOf(q)} ที่แนะนำ</span>` : ''}${a && boughtOn(me, q.id) >= a.qty * .9 ? '<span class="tag ok xs">ซื้อครบแล้ว</span>' : ''}</span></button>`; }).join('') || `<div class="xs muted sz-none">ยังไม่มีแผนที่เปิดอยู่ใน${MARKETS[st.mk][0]}</div>`}
+          <button class="szpc off ${st.chosen && !st.pid ? 'on' : ''}" data-szp=""><span class="szpc-i">${ic('flag', 16)}</span><span class="szpc-t"><b>ไม่มีในแผน · ซื้อเอง</b><span class="xs">นับเป็นใบเหลือง และต้องระบุเหตุผลตอนบันทึก</span></span></button></div>`;
+    }
+    if (step === 2) {
+      const last = st.sym ? lastPx(st.sym) : null;
+      return `${!st.pid ? `<div class="field"><label for="szsym">หลักทรัพย์</label><input id="szsym" maxlength="15" list="szsyms" autocomplete="off" placeholder="เช่น PTT" value="${esc(st.sym)}"><datalist id="szsyms">${(st.mk === 'th' ? Object.keys(STOCK_DATA.list || {}) : mkSyms(st.mk)).map(v => `<option value="${esc(v)}">`).join('')}</datalist></div>` : ''}
+        <div class="field"><label for="sze">ราคาเข้า (Entry)</label><input id="sze" type="number" inputmode="decimal" step="0.01" min="0" value="${st.e || ''}">
+          <div class="szcs">${p ? chip(p.hi, 'บนสุดของช่วง') + chip(p.lo, 'ล่างสุด') : ''}${last ? chip(last, 'ราคาล่าสุด') : ''}</div>
+          ${hE(x)}</div>
+        <div class="field"><label for="szsl">Stop Loss</label><input id="szsl" type="number" inputmode="decimal" step="0.01" min="0" value="${st.s || ''}">
+          <div class="szcs">${p ? `<button class="szc" data-sl="${planSL(p.id)}">ตามแผน <b class="num">${px(planSL(p.id))}</b></button>` : ''}</div>
+          ${hS(x)}</div>
+        <div class="f2"><div class="field"><label for="sztp">เป้าหมาย (TP) <span class="muted">ไม่บังคับ</span></label><input id="sztp" type="number" inputmode="decimal" step="0.01" min="0" value="${st.t || ''}">
+          <div class="szcs">${p ? `<button class="szc" data-tp="${p.tp1}">TP1 <b class="num">${px(p.tp1)}</b></button><button class="szc" data-tp="${p.tp2}">TP2 <b class="num">${px(p.tp2)}</b></button>` : ''}</div>
+          ${hT(x)}</div>
+          ${st.mk !== 'th' ? `<div class="field"><label for="szk">ตัวคูณสัญญา</label><input id="szk" type="number" inputmode="decimal" step="0.01" min="0" value="${st.k || MK_K[st.mk]?.[1] || ''}"><span class="sz-h">${esc(MK_K[st.mk]?.[2] || '')}</span></div>` : ''}</div>`;
+    }
+    if (step === 3) {
+      const over = (x.held.q + x.q) * st.e * x.k > tpLimit(me) * 1.02, pctRisk = x.riskB ? x.loss / x.riskB : 0, pctPos = tpLimit(me) ? (x.held.q + x.q) * st.e * x.k / tpLimit(me) : 0;
+      return `<div class="field"><label for="szq">จำนวนที่จะซื้อ <span class="muted">(${u}${x.L > 1 ? ` · ทีละ ${x.L}` : ''})</span></label><div class="szqw"><button class="ibtn" data-szd="-1" aria-label="ลด">${ic('minus', 16)}</button><input id="szq" type="number" inputmode="numeric" min="0" step="${x.L}" value="${x.q}"><button class="ibtn" data-szd="1" aria-label="เพิ่ม">${ic('plus', 16)}</button><button class="btn ghost sm" data-szrec ${x.q === x.rec ? 'disabled' : ''}>ใช้ขนาดที่แนะนำ</button></div></div>
+        <div class="sz-live">${live3(x)}</div>`;
+    }
+    return step4(x);
+  }
+  const hE = x => { const p = x.p, inR = p && st.e >= p.lo - 1e-9 && st.e <= p.hi + 1e-9; return `<span class="sz-h ${p ? inR ? 'up' : 'dn' : ''}" id="szh-e">${p ? inR ? `${ic('check', 12, 2.6)} อยู่ในช่วง Entry ของแผน ${px(p.lo)}–${px(p.hi)}` : `${ic('x', 12, 2.6)} นอกช่วง Entry ${px(p.lo)}–${px(p.hi)} · จะนับเป็นใบเหลือง` : 'ซื้อนอกแผน · ไม่มีช่วง Entry ให้เทียบ'}</span>`; };
+  const hS = x => `<span class="sz-h ${x.ok ? '' : st.s ? 'dn' : ''}" id="szh-s">${x.ok ? `ห่างจากราคาเข้า ${px(st.e - st.s)} บาท (${fmt((st.e - st.s) / st.e * 100, 1)}%)` : st.s ? 'Stop Loss ต้องต่ำกว่าราคาเข้า' : 'ราคาที่ตั้งคำสั่ง Stop ในแอป'}</span>`;
+  const hT = x => `<span class="sz-h" id="szh-t">${x.ok && st.t > st.e ? `Risk : Reward = 1 : ${fmt((st.t - st.e) / (st.e - st.s), 2)}` : ''}</span>`;
+  function live3(x) {
+    const p = x.p, u = x.u, over = (x.held.q + x.q) * st.e * x.k > tpLimit(me) * 1.02, pctRisk = x.riskB ? x.loss / x.riskB : 0, pctPos = tpLimit(me) ? (x.held.q + x.q) * st.e * x.k / tpLimit(me) : 0;
+    const got = p ? boughtOn(me, p.id) : 0;
+    return `${got ? `<div class="note-box y">${ic('alert', 16)}<span>คุณซื้อตามแผน ${esc(p.sym)} ไปแล้ว <b>${fmt(got)} ${u}</b>${x.pq && got >= x.pq * .9 ? ' ครบตามที่แนะนำแล้ว ซื้อเพิ่มจะเกินขนาดที่โค้ชแนะนำ' : ''}</span></div>` : ''}<div class="sz-big"><small>${x.pq ? 'ขนาดที่หัวหน้าโค้ชแนะนำ' : 'ขนาดที่แนะนำ'}</small><b class="num">${fmt(x.rec)} <span>${u}</span></b><span class="xs muted">${x.pq ? `ตามแผน ${esc(p.sym)} · ระบบตรวจว่าซื้อไม่ห่างจากนี้เกิน 10%` : `น้อยที่สุดระหว่างงบความเสี่ยง (${fmt(x.byRisk)}) กับขนาดสถานะสูงสุด (${fmt(x.byPos)})`}</span></div>
+        <div class="szlim"><div><span>ความเสี่ยงถ้าโดน Stop</span><b class="num ${pctRisk > 1.001 ? 'dn' : ''}">฿${kb(x.loss)} <span class="muted">จากงบ ฿${kb(x.riskB)}</span></b><div class="bar ${pctRisk > 1.001 ? 'dn' : 'up'}"><i style="width:${Math.min(100, pctRisk * 100)}%"></i></div></div>
+          <div><span>ขนาดสถานะ${x.held.q ? ' (รวมที่ถืออยู่)' : ''}</span><b class="num ${over ? 'dn' : ''}">฿${kb((x.held.q + x.q) * st.e * x.k)} <span class="muted">จากสูงสุด ฿${kb(tpLimit(me))}</span></b><div class="bar ${over ? 'dn' : 'up'}"><i style="width:${Math.min(100, pctPos * 100)}%"></i></div></div></div>
+        <div class="tpd sz-t"><div><span>มูลค่าที่จะซื้อ</span><b class="num">฿${baht(Math.round(x.val))} <span class="muted">${fmt(x.val / x.base * 100, 1)}% ของทุน</span></b></div>${x.gain ? `<div><span>ถ้าถึงเป้าหมาย</span><b class="num up">+฿${baht(Math.round(x.gain))}</b></div>` : ''}</div>`;
+  }
+  const step4 = x => `<div class="sz-v ${x.verdict[0]}">${ic(x.verdict[1], 20)}<div><b>${x.verdict[2]}</b><span>${x.verdict[3]}</span></div></div>
+      <div class="sz-g"><div class="sz-gh">กฎของแผน <span class="muted">ไม่ผ่านข้อใด = ใบเหลือง</span></div><div class="sz-ck">${x.plan.map(ckRow).join('')}</div></div>
+      <div class="sz-g"><div class="sz-gh">กติกาความเสี่ยงของคุณ</div><div class="sz-ck">${x.risk.map(ckRow).join('')}</div></div>
+      <label class="szchk ${st.stop ? 'on' : ''}"><input type="checkbox" id="szstop" ${st.stop ? 'checked' : ''}> ตั้งคำสั่ง Stop (Stop Order) ที่ ${px(st.s)} ในแอปแล้ว</label>`;
+  const canNext = x => step === 1 ? st.chosen : step === 2 ? x.ok && !!st.sym : step === 3 ? x.q > 0 : true;
+  function draw(focusId) {
+    const x = sizeCalc(me, st), done = i => i < step - 1 || (i === 0 && st.chosen);
+    const sum = st.chosen ? `<div class="sz-sum">${st.sym ? `<span>${st.mk === 'th' ? slogo(st.sym, 16) : ''}<b>${esc(st.sym)}</b>${st.pid ? '' : ' <span class="dn">นอกแผน</span>'}</span>` : ''}${step > 2 && x.ok ? `<span>Entry <b class="num">${px(st.e)}</b></span><span>Stop <b class="num">${px(st.s)}</b></span>` : ''}${step > 3 ? `<span><b class="num">${fmt(x.q)}</b> ${x.u}</span>` : ''}</div>` : '';
+    box.innerHTML = `<div class="mhd"><div style="min-width:0"><h3>${ic('shield', 20)} คำนวณก่อนส่งคำสั่ง</h3><div class="muted sm" style="margin-top:3px">ตามแผนเทรดของคุณ · เสี่ยงไม่เกิน ${fmt(tp.risk * 100)}% (฿${kb(x.riskB)}) ต่อครั้ง · สูงสุด ${fmt(tp.maxPos * 100)}% ต่อตัว</div></div><button class="x" data-act="close" aria-label="ปิด">${ic('x', 18)}</button></div>
+      <ol class="sz-steps">${SZ_STEPS.map((t, i) => `<li class="${i + 1 === step ? 'on' : done(i) ? 'done' : ''}"><button data-szs="${i + 1}" ${i + 1 <= step || (i + 1 === step + 1 && canNext(x)) ? '' : 'disabled'}><i>${done(i) && i + 1 !== step ? ic('check', 12, 2.6) : i + 1}</i><span>${t}</span></button></li>`).join('')}</ol>
+      ${sum}<div class="mbd sz-b">${body(x)}</div>
+      <div class="mft">${step > 1 ? `<button class="btn ghost" data-szgo="-1">${ic('back', 15)} ย้อนกลับ</button>` : '<span class="xs muted">ใช้คำนวณเท่านั้น ยังไม่บันทึกอะไร</span>'}<span class="sp"></span>
+        ${step < 4 ? `<button class="btn" data-szgo="1" ${canNext(x) ? '' : 'disabled'}>ถัดไป ${ic('chev', 15)}</button>` : `<button class="btn ghost" data-act="close">ปิด</button><button class="btn ${x.verdict[0] === 'up' ? '' : 'soft'}" id="szkey">${ic('plus', 15)} บันทึกหลัง Matched</button>`}</div>`;
+    if (focusId) { const el = $('#' + focusId, box); if (el) { el.focus(); const v = el.value; if (el.setSelectionRange && el.type !== 'number') el.setSelectionRange(v.length, v.length); } }
+    $('#szkey', box)?.addEventListener('click', () => { closeModal(); keyModal({ who: 'client', cls: [me], done: keyed, plan: st.pid || undefined, mk: st.mk, sym: st.sym || undefined, side: 'buy' }); });
+  }
+  // only the numbers below the inputs change while typing, so the field keeps its focus
+  const refresh = () => {
+    const x = sizeCalc(me, st), put = (sel, html) => { const el = $(sel, box); if (el) el.outerHTML = html; };
+    if (step === 2) { put('#szh-e', hE(x)); put('#szh-s', hS(x)); put('#szh-t', hT(x)); }
+    if (step === 3) { $('.sz-live', box).innerHTML = live3(x); const r = $('[data-szrec]', box); if (r) r.disabled = x.q === x.rec; }
+    const nx = $('[data-szgo="1"]', box); if (nx) nx.disabled = !canNext(x);
+  };
+  box.addEventListener('click', ev => {
+    const t = ev.target;
+    const mkb = t.closest('[data-szmk]'); if (mkb) { st.mk = me.mks.includes(mkb.dataset.szmk) ? mkb.dataset.szmk : 'th'; st.chosen = false; st.pid = ''; return draw(); }
+    const pb = t.closest('[data-szp]'); if (pb) { pick(pb.dataset.szp); step = 2; return draw(); }
+    const c = t.closest('.szc'); if (c) { if (c.dataset.v) st.e = +c.dataset.v; if (c.dataset.sl) st.s = +c.dataset.sl; if (c.dataset.tp) st.t = +c.dataset.tp; st.qTouched = false; return draw(); }
+    const d = t.closest('[data-szd]'); if (d) { const x = sizeCalc(me, st); st.q = Math.max(0, x.q + +d.dataset.szd * x.L); st.qTouched = true; return draw(); }
+    if (t.closest('[data-szrec]')) { st.qTouched = false; return draw(); }
+    const g = t.closest('[data-szgo]'); if (g) { const x = sizeCalc(me, st); const to = step + +g.dataset.szgo; if (+g.dataset.szgo > 0 && !canNext(x)) return; step = Math.max(1, Math.min(4, to)); return draw(); }
+    const sb = t.closest('[data-szs]'); if (sb && !sb.disabled) { step = +sb.dataset.szs; return draw(); }
+  });
+  box.addEventListener('input', ev => {
+    const id = ev.target.id, v = ev.target.value;
+    if (id === 'szsym') st.sym = clean(v, 15).toUpperCase().replace(/[^A-Z0-9&.\-]/g, '');
+    else if (id === 'sze') st.e = parseFloat(v) || 0; else if (id === 'szsl') st.s = parseFloat(v) || 0; else if (id === 'sztp') st.t = parseFloat(v) || 0; else if (id === 'szk') st.k = parseFloat(v) || 0;
+    else if (id === 'szq') { st.q = parseFloat(v) || 0; st.qTouched = true; } else return;
+    refresh();
+  });
+  box.addEventListener('change', ev => { if (ev.target.id === 'szstop') { st.stop = ev.target.checked; draw(); } });
+  box.addEventListener('keydown', ev => { if (ev.key === 'Enter' && ev.target.matches('input:not([type=checkbox])')) { ev.preventDefault(); $('[data-szgo="1"]', box)?.click(); } });
+  // a plan given from outside (e.g. a holding) starts at step 2
+  if (pre.plan && planOf(pre.plan)) { pick(pre.plan); step = 2; }
+  draw();
+}
 // the client's own profile (tapping the member card): who they are, their account and coach, their level and badges,
 // and the trading plan the coach designed for them by market — no program term or refund figures on the client side
 function profileView() {
@@ -3428,7 +3601,7 @@ function profileView() {
       <div class="me-md">${bs.map(medal).join('')}</div>
       <div class="me-act"><button class="btn ghost sm" data-act="avatar">${ic('user', 15)} แต่งตัวละคร</button><button class="btn ghost sm" data-act="commset">${ic('users', 15)} การแสดงในคอมมูนิตี้</button></div>
     </div></section>
-    <section class="pnl pplan" data-pt="แผนเทรด"><div class="ph"><h3>แผนเทรดของฉัน</h3><span class="sub" title="${staffName(tp.by)}จัดทำ ${dstr(tp.at)}">ฉบับที่ ${tp.no} · ${tp.ok ? `<span class="up">ยืนยันแล้ว ${dstr(tp.ok)}</span>` : '<span class="warn">รอคุณยืนยัน</span>'}</span><span class="sp"></span>${tp.ok ? `<button class="lnk xs" data-act="tp">ฉบับเต็ม</button>` : `<button class="btn sm" data-act="tp">${ic('check', 15)} ตรวจและยืนยัน</button>`}</div>
+    <section class="pnl pplan" data-pt="แผนเทรด"><div class="ph"><h3>แผนเทรดของฉัน</h3><span class="sub" title="${staffName(tp.by)}จัดทำ ${dstr(tp.at)}">ฉบับที่ ${tp.no} · ${tp.ok ? `<span class="up">ยืนยันแล้ว ${dstr(tp.ok)}</span>` : '<span class="warn">รอคุณยืนยัน</span>'}</span><span class="sp"></span><button class="btn soft sm" data-act="size">${ic('shield', 14)} คำนวณก่อนเทรด</button>${tp.ok ? `<button class="lnk xs" data-act="tp">ฉบับเต็ม</button>` : `<button class="btn sm" data-act="tp">${ic('check', 15)} ตรวจและยืนยัน</button>`}</div>
       <div class="pb prf-b">
         ${tpMix(me)}
         ${tpCards(me, narrow() ? tpRulesSlide(me) : '')}
@@ -4152,7 +4325,7 @@ function simVerify() {
 // Ctrl+K: pages, what I traded, actions and every stock
 const showSym = s => { jSym = s; jFrom = jTo = ''; selEx = null; PG.jl = 0; go('journal'); };
 cmdItems = () => !signedIn() || !ME().ob ? [] : [
-  ...NAV.map(([k, l, i]) => ({ g: 'ไปที่หน้า', t: l, ic: i, run: () => go(k) })), { g: 'ไปที่หน้า', t: 'โปรไฟล์ของฉัน', ic: 'user', k: 'profile โปรไฟล์ ข้อมูล แผนเทรด', run: () => go('me') },
+  ...NAV.map(([k, l, i]) => ({ g: 'ไปที่หน้า', t: l, ic: i, run: () => go(k) })), { g: 'ไปที่หน้า', t: 'โปรไฟล์ของฉัน', ic: 'user', k: 'profile โปรไฟล์ ข้อมูล แผนเทรด', run: () => go('me') }, { g: 'ทำรายการ', t: 'คำนวณก่อนส่งคำสั่ง', ic: 'shield', k: 'position size คำนวณ ขนาด ความเสี่ยง stop loss', run: () => sizeModal() },
   ...[...new Set(execsOf(FEATURED).map(e => e.sym))].map(s => { const p = openPos(FEATURED).find(x => x.sym === s); return { g: 'รายการซื้อขายของฉัน', t: s, s: p ? `ถืออยู่ ${fmt(p.qty)} ${unitOf(p)}` : 'ปิดสถานะแล้ว', k: 'journal trade', sym: s, run: () => showSym(s) }; }),
   { g: 'ทำรายการ', t: 'บันทึกรายการซื้อขาย', ic: 'plus', k: 'key record บันทึก แนบภาพ', run: keyNew },
   { g: 'ทำรายการ', t: 'รายงานยอดพอร์ตประจำสัปดาห์', ic: 'wallet', k: 'snapshot ยอด', run: snapModal },
@@ -4779,6 +4952,7 @@ document.addEventListener('click', e => {
   if (act === 'recinfo') return recInfo();
   if (act === 'terms') { render(); return termsModal(); }
   if (act === 'coaching') { render(); return coachingModal(); }
+  if (act === 'size') { render(); return sizeModal(); }
   if (act === 'commset') { render(); return commSet(); }
   if (act === 'badges') { render(); return badgesModal(); }
   if (act === 'tiers') { render(); return tierModal(); }
