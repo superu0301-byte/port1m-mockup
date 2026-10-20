@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-TsmZ0VX0wdFkSYcB2v/mvtIn6AoFkp3398k5HbburBE=' 'sha256-DPa5T7qd5oEoTcrT/SwYsEGT+i4tKZZ+C0DDkwp3oPc='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-22o9jLs8JngH0s4bZEy2ft3wmoF0Wk+dhpYLU4d9Mdo=' 'sha256-TyVkL8MDHnn83araFRfhoT4l2fpnajRphkVq0BXSgmA='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>ปั้นพอร์ต 1 ล้าน · Trading Journal (ต้นแบบ)</title>
@@ -752,6 +752,25 @@ button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,19
 :root[data-fx=on] .enter .gtrack>i{animation:fx-clipx 1.4s cubic-bezier(.2,.8,.2,1) .3s both}
 :root[data-fx=on] .enter .ring .arc{animation:fx-arc 1.3s cubic-bezier(.2,.8,.2,1) .25s both}
 :root[data-fx=on] .enter .ibtn .bdg{animation:fx-pop .5s cubic-bezier(.3,1.4,.5,1) .6s both}
+/* the trading plan by market (the client's profile and the back office profile) */
+.prf-mix{display:flex;flex-direction:column;gap:7px}
+.prf-stk{display:flex;gap:3px;height:12px;border-radius:12px;overflow:hidden}.prf-stk i{display:block;min-width:4px}
+.prf-lg{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;font-size:12.5px}.prf-lg>span{display:inline-flex;align-items:center;gap:6px}.prf-lg i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.mkg{flex:1;min-height:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:10px}
+.mkc{container-type:inline-size;position:relative;display:flex;flex-direction:column;gap:7px;padding:12px 13px;border-radius:14px;border:1px solid var(--line);background:var(--well);overflow:hidden;min-width:0}
+.mkc:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--mc)}
+.mkc>*{flex:none}.mkc-h{display:flex;align-items:center;gap:7px;min-width:0}.mkc-h>b:first-of-type{white-space:nowrap}.mkc-h .tag{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mkc-h>i{width:9px;height:9px;border-radius:3px;background:var(--mc);flex:none}.mkc-h>b:first-of-type{font-size:15px}.mkc-h .num{font-size:15px}
+.mkc-bar{height:5px;border-radius:5px;background:rgba(var(--wt),.07);overflow:hidden}.mkc-bar i{display:block;height:100%;background:var(--mc);border-radius:5px}
+.mkc-s{font-size:13px;line-height:1.4;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mkc-f{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--mut);flex-wrap:wrap}.mkc-f b{color:var(--ink)}
+.mkc-t{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px;border-top:1px solid var(--line);padding-top:4px}
+.mkc-p{font-size:12px;color:var(--mut);margin-left:6px}
+@container (max-width:250px){.mkc-t>div{font-size:12.5px}.mkc-h .tag{display:none}.mkc-h>b:first-of-type,.mkc-h .num{font-size:14px}.mkc-p{display:none}}
+.mkc-t>div{display:flex;flex-direction:column;gap:0;padding:5px 0;font-size:13px;border-bottom:1px dashed var(--line);min-width:0}.mkc-t>div.w{grid-column:1/-1}.mkc-t span{color:var(--mut);font-size:11.5px}.mkc-t b{font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mkc-y{display:flex;flex-wrap:wrap;gap:5px;min-height:24px;margin-top:auto}.mkc-y .mkchip{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;border:1px solid var(--line2);font-size:12px;font-weight:600}
+.prf-rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.prr{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);min-width:0}.prr-k{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:5px}.prr b{font-size:19px}
+.prf-lev{display:flex;align-items:flex-start;gap:6px;line-height:1.45}
 
 
 /* ===== shell: a dark private-client sidebar beside the page; the page carries its own title bar ===== */
@@ -1400,6 +1419,28 @@ button.kpi>span{display:block}
   .ob .card{padding:18px}
   #toasts{left:10px;right:10px;bottom:90px}
 }
+/* the client's profile: card, details, level and badges on the left; the trading plan by market on the right */
+.v-me{grid-template-columns:minmax(300px,370px) minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+.pme .pb{display:flex;flex-direction:column;gap:10px}
+.me-card{display:flex;justify-content:center}.me-card .ccard{width:100%;max-width:340px;cursor:default}
+.pme .pb>*{flex:none}
+.me-tier{display:flex;align-items:baseline;gap:8px;font-size:12.5px;color:var(--mut);min-width:0}.me-tier>span{min-width:0}.me-tier b{color:var(--ink)}.me-tier .gold{color:var(--gold)}.me-tier .lnk{margin-left:auto}
+.me-d>div{grid-template-columns:86px minmax(0,1fr);gap:10px;padding:6px 12px;font-size:13px}.me-d b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}.me-d .lnk{font-size:12.5px;display:inline;vertical-align:baseline;padding:0}
+.prf-co{display:inline-flex;align-items:center;gap:7px}.me-line{width:24px;height:24px;margin-left:2px}.prf-co img{width:22px;height:22px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(235,192,98,.6)}
+.me-st{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:12px}
+.me-st>span{display:flex;flex-direction:column;align-items:center;padding:6px 0}.me-st>span+span{border-left:1px solid var(--line)}.me-st small{font-size:11px;color:var(--mut)}.me-st b{font-size:17px}
+.me-md{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.me-md .mdl span{display:none}.me-md .mdl{justify-content:center;display:flex}
+/* short screens and phones: one row of small medals, no community row (its button stays) */
+@media (max-height:760px),(max-width:760px){.me-md{grid-template-columns:repeat(12,minmax(0,1fr));gap:2px}.me-md .mdl i{width:24px;height:24px}.me-md .mdl svg{width:12px;height:12px}.me-d>div:has(.me-cm){display:none}}
+.me-act{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.pplan .prf-b{display:flex;flex-direction:column;gap:12px}
+@media (max-height:820px){.me-card .ccard{max-width:290px}.me-d>div{padding:4px 12px}}
+@media (max-height:760px){.me-card .ccard{max-width:220px}.mkc{padding:10px 12px;gap:5px}.mkc-t>div{padding:3px 0}.mkc-y,.prf-lev{display:none}.prr{padding:7px 11px}.prr b{font-size:17px}.pplan .prf-b{gap:9px}}
+@media (max-height:680px){.me-md,.mkc-s{display:none}.me-card{display:none!important}.prf-rules{grid-template-columns:repeat(4,minmax(0,1fr))}.prr .xs{display:none}}
+@media (max-width:1180px) and (min-width:761px){.v-me{grid-template-columns:minmax(260px,300px) minmax(0,1fr)}.prf-rules{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.v-me{grid-template-columns:minmax(0,1fr)}.v-me .me-card .ccard{display:block!important;max-width:220px}.v-me .me-card{display:flex}
+  .v-me .mkg{flex:none;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:2px}.v-me .mkc{scroll-snap-align:start}
+  .v-me .prf-lg,.v-me .prf-lev,.pplan .ph .sub{display:none}.v-me .prf-rules{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.v-me .prr{padding:7px 10px}.v-me .prr .xs{display:none}.v-me .prr b{font-size:15px}.v-me .mkc-t>div.w{display:none}}
 </style>
 </head>
 <body>
@@ -1950,6 +1991,44 @@ function makeTP(c, at, by) {
   return { no: 1, at, by, ok: at + 20 * HR, strategy: c.mks.map(m => STRAT[m]).join(' · '), alloc, cash, maxPos: .15, risk: .01, stop: .1 };
 }
 const tpBase = c => c.cap + netFlow(c);
+const MK_D = { th: 'หุ้นใน SET และ mai', block: 'Single Stock Futures (Block Trade)', tfex: 'SET50 Index Futures', gold: 'Gold Futures', us: 'หุ้นสหรัฐฯ NYSE / NASDAQ', opt: 'SET50 Index Options', fut: 'Futures ต่างประเทศ' };
+const MK_SZ = { block: '1 สัญญา = 1,000 หุ้น', tfex: '200 บาทต่อจุด', gold: '10 บาททองคำ', opt: '200 บาทต่อจุด', us: 'USD คิดเป็นบาท' };
+const MK_C = { th: '#c9a24a', block: '#8a6fd8', tfex: '#3f86e0', gold: '#d6a12e', us: '#2fa58f', opt: '#cf6a90', fut: '#7c8aa6' };
+/* ---------- the trading plan designed for a client, by market: how the capital is split, one card per market (approach,
+   product, contract size, max per position, how it has gone, recent symbols) and the risk rules. The client's own
+   profile and the back office profile show the same thing. ---------- */
+function tpMix(c) {
+  const tp = c.tp, base = tpBase(c), segs = [...c.mks.map(m => [m, tp.alloc[m] || 0]), ['cash', tp.cash]], tot = segs.reduce((a, [, v]) => a + v, 0) || 1;
+  const nm = m => m === 'cash' ? 'เงินสดสำรอง' : MARKETS[m][0], col = m => m === 'cash' ? 'var(--line2)' : MK_C[m];
+  return `<div class="prf-mix"><div class="prf-stk" role="img" aria-label="สัดส่วนเงินทุน ${segs.map(([m, v]) => `${nm(m)} ${fmt(v / tot * 100)}%`).join(' · ')}">${segs.map(([m, v]) => `<i style="flex:${v};background:${col(m)}" title="${nm(m)} ฿${baht(v)}"></i>`).join('')}</div>
+    <div class="prf-lg">${segs.map(([m, v]) => `<span><i style="background:${col(m)}"></i>${nm(m)} <b class="num">${fmt(v / tot * 100)}%</b></span>`).join('')}<span class="sp"></span><span class="muted">เงินทุนในโปรแกรม <b class="num">฿${baht(base)}</b></span></div></div>`;
+}
+function tpCards(c, extra = '') {
+  const tp = c.tp, base = tpBase(c), n = now(), ex = execsOf(c.id).filter(e => e.at <= n), mkOf = e => e.mk || 'th';
+  const parts = String(tp.strategy || '').split(' · '), stratOf = (m, i) => parts.length === c.mks.length ? parts[i] : STRAT[m] || '';
+  const card = (m, i) => {
+    const v = tp.alloc[m] || 0, mine = ex.filter(e => mkOf(e) === m), syms = [...new Set(mine.slice().reverse().map(e => e.sym))].slice(0, 4);
+    const ps = positions(c.id).filter(x => (x.mk || 'th') === m), held = ps.filter(x => x.qty > 0).length, pl = ps.reduce((t, x) => t + x.realized + (x.qty > 0 ? x.upl : 0), 0);
+    const fact = (k, val, wide) => `<div ${wide ? 'class="w"' : ''}><span>${k}</span><b>${val}</b></div>`;
+    return `<div class="mkc" style="--mc:${MK_C[m] || '#8a93a8'}"><div class="mkc-h"><i></i><b>${MARKETS[m][0]}</b>${LEV.includes(m) ? '<span class="tag xs" title="สินค้าที่มี Leverage: มูลค่าสถานะไม่เกินวงเงินของตลาด">Leverage</span>' : ''}<span class="sp"></span><b class="num">฿${kb(v)}</b><span class="mkc-p num" title="ของเงินทุน">${fmt(base ? v / base * 100 : 0)}%</span></div>
+      <div class="mkc-bar"><i style="width:${Math.min(100, base ? v / base * 100 : 0)}%"></i></div>
+      <div class="mkc-s" title="${esc(stratOf(m, i))}">${esc(stratOf(m, i))}</div>
+      <div class="mkc-t">${fact('สินค้า', MK_D[m] || MARKETS[m][0], 1)}${MK_SZ[m] ? fact(m === 'us' ? 'ราคา' : 'ขนาดสัญญา', MK_SZ[m]) : ''}${fact('สูงสุดต่อตัว', `฿${kb(Math.min(v, tp.maxPos * base))}`)}${fact('ผลในตลาดนี้', mine.length ? `<span class="${pl >= 0 ? 'up' : 'dn'}">${signed(Math.round(pl))}</span>` : '—')}${fact('30 วัน', `${mine.filter(e => n - e.at < 30 * DAY).length} รายการ · ถือ ${held}`)}</div>
+      <div class="mkc-y">${syms.length ? syms.map(sy => `<span class="mkchip">${m === 'th' ? slogo(sy, 16) : ''}${esc(sy)}</span>`).join('') : '<span class="xs muted">ยังไม่มีรายการในตลาดนี้</span>'}</div></div>`;
+  };
+  return `<div class="mkg" style="--n:${Math.min(3, c.mks.length)}">${c.mks.map(card).join('')}${extra}</div>`;
+}
+function tpRules(c) {
+  const tp = c.tp, base = tpBase(c), rule = (icn, k, v, sub) => `<div class="prr"><span class="prr-k">${ic(icn, 14)} ${k}</span><b class="num">${v}</b><span class="xs muted">${sub}</span></div>`;
+  return rule('target', 'ขนาดสถานะสูงสุด', `${fmt(tp.maxPos * 100)}%`, `฿${kb(tp.maxPos * base)} ต่อตัว`) + rule('shield', 'ความเสี่ยงต่อครั้ง', `${fmt(tp.risk * 100)}%`, `฿${kb(tp.risk * base)} จาก Entry ถึง Stop Loss`)
+    + rule('alert', 'หยุดทบทวนเมื่อ', `−${fmt(tp.stop * 100)}%`, 'พอร์ตลดลงจากจุดสูงสุด') + rule('wallet', 'เงินสดสำรอง', `฿${kb(tp.cash)}`, `${fmt(tp.cash / (tpBase(c) || 1) * 100)}% ของเงินทุน`);
+}
+// on phones the rules are the last card you slide to
+const tpRulesSlide = c => `<div class="mkc mkr"><div class="mkc-h"><b>กติกาความเสี่ยง</b></div><div class="prf-rules">${tpRules(c)}</div></div>`;
+function tpLev(c) {
+  const lev = c.mks.filter(m => LEV.includes(m));
+  return lev.length ? `<div class="xs muted prf-lev">${ic('info', 13)} ${lev.map(m => MARKETS[m][0]).join(', ')}: มูลค่าสถานะไม่เกินวงเงินของตลาด และขาดทุนต่อครั้งไม่เกิน ฿${baht(c.tp.risk * tpBase(c))} · ทบทวนแผนทุก Coaching วันอังคาร 19:00 น.</div>` : '';
+}
 // position value of one holding against the plan's limit, and the loss level that means "stop and review"
 const tpLimit = c => c.tp.maxPos * tpBase(c);
 // short: the key numbers only, for a side panel
@@ -3091,7 +3170,7 @@ function staffFace(id, px = 48) {
    The coach advises by phone or in person; the client trades in their broker app, then keys the trade
    here with the Order Status screenshot attached, and the coach confirms it or sends it back to fix. */
 S = load();
-const VIEW_OK = ['home', 'journal', 'port', 'comm'];
+const VIEW_OK = ['home', 'journal', 'port', 'comm', 'me'];
 let view = VIEW_OK.includes(location.hash.slice(1)) ? location.hash.slice(1) : ['#trades', '#orders'].includes(location.hash) ? 'journal' : 'home';
 let jFrom = '', jTo = '', jSym = '', selEx = null, menu = null, agree = false, shown = null;
 // like a trading app: the trades page shows Order Status or Deal Summary, the port shows Portfolio or Realized
@@ -3102,7 +3181,7 @@ const ME = () => client(FEATURED);
 // demo session flag; the real system keeps a server session in an httpOnly cookie
 const signedIn = () => sessionStorage.getItem('p1m-fe') === '1';
 const narrow = () => matchMedia('(max-width: 760px)').matches;
-const VIEWS = { home: homeView, journal: journalView, port: portView, comm: commView };
+const VIEWS = { home: homeView, journal: journalView, port: portView, comm: commView, me: profileView };
 // [page, name, icon, short name for the phone tab bar]
 const NAV = [['home', 'หน้าหลัก', 'home'], ['journal', 'บันทึกการซื้อขาย', 'book', 'บันทึก'], ['port', 'พอร์ต', 'wallet'], ['comm', 'คอมมูนิตี้', 'users']];
 const myFix = () => fixOf(FEATURED);
@@ -3180,7 +3259,7 @@ function sidebar() {
   </aside>`;
 }
 // the title bar: a greeting at home, otherwise the page and what it holds
-const PAGE_T = { comm: () => ['คอมมูนิตี้', 'ทำเนียบรุ่น ROAD TO 1M · ระดับ เหรียญ และความสำเร็จของเพื่อนร่วมรุ่น'], journal: () => ['บันทึกการซื้อขาย', 'ทุกรายการที่คุณบันทึก พร้อมผลการตรวจของหัวหน้าโค้ช'], port: () => ['พอร์ต', `ทุน ยอดพอร์ต และหุ้นที่ถือ · ราคาปิด ณ ${asOfTxt()}`] };
+const PAGE_T = { me: () => ['โปรไฟล์ของฉัน', 'ข้อมูลของคุณ แผนเทรดที่โค้ชออกแบบให้ และความสำเร็จ'], comm: () => ['คอมมูนิตี้', 'ทำเนียบรุ่น ROAD TO 1M · ระดับ เหรียญ และความสำเร็จของเพื่อนร่วมรุ่น'], journal: () => ['บันทึกการซื้อขาย', 'ทุกรายการที่คุณบันทึก พร้อมผลการตรวจของหัวหน้าโค้ช'], port: () => ['พอร์ต', `ทุน ยอดพอร์ต และหุ้นที่ถือ · ราคาปิด ณ ${asOfTxt()}`] };
 const hello = () => { const h = tz(now()).getUTCHours(); return h < 12 ? 'อรุณสวัสดิ์' : h < 18 ? 'สวัสดีตอนบ่าย' : 'สวัสดีตอนเย็น'; };
 function header() {
   const n = attention(), [mc, mt] = market(), [t, sub] = PAGE_T[view] ? PAGE_T[view]() : [`${hello()} คุณ${esc(ME().name)}`, `${dlong(now())} · ข้อมูลตามบันทึกและราคาปิดล่าสุด`];
@@ -3208,6 +3287,7 @@ function bellMenu() {
 function meMenu() {
   const me = ME(), co = coach(me.coach);
   return `<div class="menu"><div class="mh"><b>${esc(cname(me))}</b><div class="muted xs">${esc(me.email)} · Google</div></div>
+    <button class="mi" data-go="me">${ic('user', 16)} โปรไฟล์ของฉัน</button>
     <button class="mi" data-act="line">${ic('chat', 16)} ติดต่อ${co.name} ผ่าน LINE</button>
     <div class="mt">ธีม</div>${themeSeg()}
     <button class="mi" data-act="fx">${ic('sliders', 16)} เอฟเฟกต์เคลื่อนไหว · ${document.documentElement.dataset.fx === 'off' ? '<span class="muted">ปิดอยู่</span>' : '<span class="up">เปิดอยู่</span>'}</button>
@@ -3317,7 +3397,7 @@ function homeView() {
 // the private-client card: who the client is in the program, drawn like a premium bank card
 function cardHTML(me, t, o = {}) {
   const b = board('ret', 'all'), r = commPref(me).on ? b.find(x => x.c.id === me.id) : null;
-  return `<div class="ccard t-${TIERS[t][0]}" ${o.preview ? 'aria-hidden="true"' : `data-go="comm" role="button" tabindex="0" title="ดูทำเนียบ ระดับ และเหรียญของคุณ" aria-label="บัตรสมาชิก ${esc(cname(me))} ระดับ ${TIERS[t][1]}"`}><div class="cc-t"><img src="${LOGO}" alt=""><span class="vvip">PRIVATE CLIENT</span></div>
+  return `<div class="ccard t-${TIERS[t][0]}" ${o.preview ? 'aria-hidden="true"' : `data-go="me" role="button" tabindex="0" title="โปรไฟล์ของฉัน" aria-label="โปรไฟล์ของฉัน · บัตรสมาชิก ${esc(cname(me))} ระดับ ${TIERS[t][1]}"`}><div class="cc-t"><img src="${LOGO}" alt=""><span class="vvip">PRIVATE CLIENT</span></div>
     <span class="cc-chip"></span>${o.demo ? '<span class="cc-demo">ตัวอย่าง</span>' : ''}
     <div class="cc-n">${esc(cname(me))}</div>
     <div class="cc-b"><span><small>LEVEL</small><b>${TIERS[t][1].toUpperCase()}</b></span><span style="text-align:right"><small>RANK · ผลตอบแทน</small><b class="num">${r ? `#${r.rank} / ${b.length}` : '—'}</b></span></div></div>`;
@@ -3325,6 +3405,37 @@ function cardHTML(me, t, o = {}) {
 // the card in the client's level, or a level they are trying out (the demo menu or the card preview)
 let tierDemo = null;
 function memberCard(me) { const real = tierOf(profit(me)); return cardHTML(me, tierDemo ?? real, { demo: tierDemo != null && tierDemo !== real }); }
+// the client's own profile (tapping the member card): who they are, their account and coach, their level and badges,
+// and the trading plan the coach designed for them by market — no program term or refund figures on the client side
+function profileView() {
+  const me = ME(), co = coach(me.coach), pr = profit(me), t = tierOf(pr), nx = TIERS[t + 1], cp = commPref(me), bs = badgesOf(me), got = bs.filter(b => b.ok).length;
+  const base = tpBase(me), ups = me.flows.filter(f => f.cap && !f.pend && !f.rej).length, d = discipline(me.id), a = attOf(me.id), tp = me.tp;
+  const info = (k, v, tt = '') => `<div><span>${k}</span><b ${tt ? `title="${esc(tt)}"` : ''}>${v}</b></div>`;
+  const yy = ms => String(tz(ms).getUTCFullYear() + 543).slice(2);
+  return `<section class="pnl pme" data-pt="โปรไฟล์"><div class="ph"><h3>โปรไฟล์</h3><span class="sub">สมาชิกตั้งแต่ ${dstr(me.joined)} ${yy(me.joined)}</span></div><div class="pb">
+      <div class="me-card">${cardHTML(me, t, { preview: true })}</div>
+      <div class="me-tier">${nx ? `<span class="ell" title="ระดับ ${nx[1]} เมื่อกำไรสะสมถึง ฿${baht(nx[2])}">ระดับถัดไป <b>${nx[1]}</b> · อีก <b class="num gold">฿${kb(Math.max(0, nx[2] - pr))}</b></span>` : '<span>ระดับสูงสุดของโปรแกรม</span>'}<button class="lnk xs" data-act="tiers">ดูทุกระดับ</button></div>
+      ${nx ? `<div class="bar me-bar"><i style="width:${Math.min(100, Math.max(0, (pr - Math.max(0, TIERS[t][2])) / (nx[2] - Math.max(0, TIERS[t][2])) * 100))}%"></i></div>` : ''}
+      <div class="tpd me-d">
+        ${info('โทรศัพท์', `${esc(me.phone)} · ${me.line ? '<span class="up">LINE เชื่อมแล้ว</span>' : '<button class="lnk" data-act="linkline">เชื่อม LINE</button>'}`)}
+        ${info('อีเมล', esc(me.email), me.email)}
+        ${info('บัญชีซื้อขาย', `${esc(me.broker)} · xxxx-${esc(me.acct)}`)}
+        ${info('เงินทุน', `฿${baht(base)}${ups ? ` <span class="muted">เพิ่มทุน ${ups} ครั้ง</span>` : ''}`)}
+        ${info('โค้ชผู้ดูแล', `<span class="prf-co"><img src="${staffFace(co.id, 48)}" alt="">${esc(co.name)}<button class="ibtn me-line" data-act="line" title="ติดต่อ${esc(co.name)}ทาง LINE" aria-label="ติดต่อ${esc(co.name)}ทาง LINE">${ic('chat', 13)}</button></span>`)}
+        ${info('คอมมูนิตี้ <i class="me-cm"></i>', cp.on ? `แสดงเป็น ${esc(commName(me))}${cp.amt ? '' : ' · เฉพาะ %'}` : '<span class="muted">ไม่แสดง</span>')}
+      </div>
+      <div class="me-st"><span title="คะแนนวินัย 30 วันล่าสุด"><small>วินัย</small><b class="num ${scoreTone(d.score)}">${d.score}</b></span><span title="เข้าร่วม Coaching · เกณฑ์ 80%"><small>Coaching</small><b class="num ${a.rate >= .8 ? 'up' : 'warn'}">${a.n}/${a.t}</b></span><span title="เหรียญความสำเร็จ"><small>เหรียญ</small><b class="num">${got}/${bs.length}</b></span></div>
+      <div class="me-md">${bs.map(medal).join('')}</div>
+      <div class="me-act"><button class="btn ghost sm" data-act="avatar">${ic('user', 15)} แต่งตัวละคร</button><button class="btn ghost sm" data-act="commset">${ic('users', 15)} การแสดงในคอมมูนิตี้</button></div>
+    </div></section>
+    <section class="pnl pplan" data-pt="แผนเทรด"><div class="ph"><h3>แผนเทรดของฉัน</h3><span class="sub" title="${staffName(tp.by)}จัดทำ ${dstr(tp.at)}">ฉบับที่ ${tp.no} · ${tp.ok ? `<span class="up">ยืนยันแล้ว ${dstr(tp.ok)}</span>` : '<span class="warn">รอคุณยืนยัน</span>'}</span><span class="sp"></span>${tp.ok ? `<button class="lnk xs" data-act="tp">ฉบับเต็ม</button>` : `<button class="btn sm" data-act="tp">${ic('check', 15)} ตรวจและยืนยัน</button>`}</div>
+      <div class="pb prf-b">
+        ${tpMix(me)}
+        ${tpCards(me, narrow() ? tpRulesSlide(me) : '')}
+        ${narrow() ? '' : `<div class="prf-rules">${tpRules(me)}</div>`}
+        ${tpLev(me)}
+      </div></section>`;
+}
 // every level's card, to see what each looks like and how far away it is
 function tierModal() {
   const me = ME(), pr = profit(me), real = tierOf(pr);
@@ -4041,7 +4152,7 @@ function simVerify() {
 // Ctrl+K: pages, what I traded, actions and every stock
 const showSym = s => { jSym = s; jFrom = jTo = ''; selEx = null; PG.jl = 0; go('journal'); };
 cmdItems = () => !signedIn() || !ME().ob ? [] : [
-  ...NAV.map(([k, l, i]) => ({ g: 'ไปที่หน้า', t: l, ic: i, run: () => go(k) })),
+  ...NAV.map(([k, l, i]) => ({ g: 'ไปที่หน้า', t: l, ic: i, run: () => go(k) })), { g: 'ไปที่หน้า', t: 'โปรไฟล์ของฉัน', ic: 'user', k: 'profile โปรไฟล์ ข้อมูล แผนเทรด', run: () => go('me') },
   ...[...new Set(execsOf(FEATURED).map(e => e.sym))].map(s => { const p = openPos(FEATURED).find(x => x.sym === s); return { g: 'รายการซื้อขายของฉัน', t: s, s: p ? `ถืออยู่ ${fmt(p.qty)} ${unitOf(p)}` : 'ปิดสถานะแล้ว', k: 'journal trade', sym: s, run: () => showSym(s) }; }),
   { g: 'ทำรายการ', t: 'บันทึกรายการซื้อขาย', ic: 'plus', k: 'key record บันทึก แนบภาพ', run: keyNew },
   { g: 'ทำรายการ', t: 'รายงานยอดพอร์ตประจำสัปดาห์', ic: 'wallet', k: 'snapshot ยอด', run: snapModal },

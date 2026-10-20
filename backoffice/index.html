@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-TsmZ0VX0wdFkSYcB2v/mvtIn6AoFkp3398k5HbburBE=' 'sha256-jxKwpK4JmoVEQ9isFyhHN+E4Nx8ov6VYBsOiYbof6ss='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-22o9jLs8JngH0s4bZEy2ft3wmoF0Wk+dhpYLU4d9Mdo=' 'sha256-1qdCX2qq1Jywvbhp3KnA8WagISL9mqT2+vPTN232lEE='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>หลังบ้าน · ปั้นพอร์ต 1 ล้าน (ต้นแบบ)</title>
@@ -752,6 +752,25 @@ button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,19
 :root[data-fx=on] .enter .gtrack>i{animation:fx-clipx 1.4s cubic-bezier(.2,.8,.2,1) .3s both}
 :root[data-fx=on] .enter .ring .arc{animation:fx-arc 1.3s cubic-bezier(.2,.8,.2,1) .25s both}
 :root[data-fx=on] .enter .ibtn .bdg{animation:fx-pop .5s cubic-bezier(.3,1.4,.5,1) .6s both}
+/* the trading plan by market (the client's profile and the back office profile) */
+.prf-mix{display:flex;flex-direction:column;gap:7px}
+.prf-stk{display:flex;gap:3px;height:12px;border-radius:12px;overflow:hidden}.prf-stk i{display:block;min-width:4px}
+.prf-lg{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;font-size:12.5px}.prf-lg>span{display:inline-flex;align-items:center;gap:6px}.prf-lg i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.mkg{flex:1;min-height:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:10px}
+.mkc{container-type:inline-size;position:relative;display:flex;flex-direction:column;gap:7px;padding:12px 13px;border-radius:14px;border:1px solid var(--line);background:var(--well);overflow:hidden;min-width:0}
+.mkc:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--mc)}
+.mkc>*{flex:none}.mkc-h{display:flex;align-items:center;gap:7px;min-width:0}.mkc-h>b:first-of-type{white-space:nowrap}.mkc-h .tag{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mkc-h>i{width:9px;height:9px;border-radius:3px;background:var(--mc);flex:none}.mkc-h>b:first-of-type{font-size:15px}.mkc-h .num{font-size:15px}
+.mkc-bar{height:5px;border-radius:5px;background:rgba(var(--wt),.07);overflow:hidden}.mkc-bar i{display:block;height:100%;background:var(--mc);border-radius:5px}
+.mkc-s{font-size:13px;line-height:1.4;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mkc-f{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--mut);flex-wrap:wrap}.mkc-f b{color:var(--ink)}
+.mkc-t{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px;border-top:1px solid var(--line);padding-top:4px}
+.mkc-p{font-size:12px;color:var(--mut);margin-left:6px}
+@container (max-width:250px){.mkc-t>div{font-size:12.5px}.mkc-h .tag{display:none}.mkc-h>b:first-of-type,.mkc-h .num{font-size:14px}.mkc-p{display:none}}
+.mkc-t>div{display:flex;flex-direction:column;gap:0;padding:5px 0;font-size:13px;border-bottom:1px dashed var(--line);min-width:0}.mkc-t>div.w{grid-column:1/-1}.mkc-t span{color:var(--mut);font-size:11.5px}.mkc-t b{font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mkc-y{display:flex;flex-wrap:wrap;gap:5px;min-height:24px;margin-top:auto}.mkc-y .mkchip{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;border:1px solid var(--line2);font-size:12px;font-weight:600}
+.prf-rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.prr{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);min-width:0}.prr-k{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:5px}.prr b{font-size:19px}
+.prf-lev{display:flex;align-items:flex-start;gap:6px;line-height:1.45}
 
 
 .shell{height:100%;display:grid;grid-template-columns:232px minmax(0,1fr);overflow:hidden}
@@ -940,25 +959,7 @@ button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,19
 .prf-d>div{grid-template-columns:88px minmax(0,1fr);gap:10px;padding:7px 12px;font-size:13px}.prf-d b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 .prf-co{display:inline-flex;align-items:center;gap:7px}.prf-co img{width:22px;height:22px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(235,192,98,.6)}
 .prf-b{display:flex;flex-direction:column;gap:12px}
-.prf-mix{display:flex;flex-direction:column;gap:7px}
-.prf-stk{display:flex;gap:3px;height:12px;border-radius:12px;overflow:hidden}.prf-stk i{display:block;min-width:4px}
-.prf-lg{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;font-size:12.5px}.prf-lg>span{display:inline-flex;align-items:center;gap:6px}.prf-lg i{width:9px;height:9px;border-radius:3px;display:inline-block}
-.mkg{flex:1;min-height:0;display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:10px}
-.mkc{container-type:inline-size;position:relative;display:flex;flex-direction:column;gap:7px;padding:12px 13px;border-radius:14px;border:1px solid var(--line);background:var(--well);overflow:hidden;min-width:0}
-.mkc:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--mc)}
-.mkc>*{flex:none}.mkc-h{display:flex;align-items:center;gap:7px;min-width:0}.mkc-h>b:first-of-type{white-space:nowrap}.mkc-h .tag{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mkc-h>i{width:9px;height:9px;border-radius:3px;background:var(--mc);flex:none}.mkc-h>b:first-of-type{font-size:15px}.mkc-h .num{font-size:15px}
-.mkc-bar{height:5px;border-radius:5px;background:rgba(var(--wt),.07);overflow:hidden}.mkc-bar i{display:block;height:100%;background:var(--mc);border-radius:5px}
-.mkc-s{font-size:13px;line-height:1.4;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.mkc-f{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--mut);flex-wrap:wrap}.mkc-f b{color:var(--ink)}
-.mkc-t{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 12px;border-top:1px solid var(--line);padding-top:4px}
-.mkc-p{font-size:12px;color:var(--mut);margin-left:6px}
 /* narrow cards: no Leverage tag (the product line already says it) */
-@container (max-width:250px){.mkc-t>div{font-size:12.5px}.mkc-h .tag{display:none}.mkc-h>b:first-of-type,.mkc-h .num{font-size:14px}.mkc-p{display:none}}
-.mkc-t>div{display:flex;flex-direction:column;gap:0;padding:5px 0;font-size:13px;border-bottom:1px dashed var(--line);min-width:0}.mkc-t>div.w{grid-column:1/-1}.mkc-t span{color:var(--mut);font-size:11.5px}.mkc-t b{font-weight:600;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mkc-y{display:flex;flex-wrap:wrap;gap:5px;min-height:24px;margin-top:auto}.mkc-y .chip2{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border-radius:999px;border:1px solid var(--line2);font-size:12px;font-weight:600}
-.prf-rules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-.prr{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);min-width:0}.prr-k{font-size:12px;color:var(--mut);display:flex;align-items:center;gap:5px}.prr b{font-size:19px}
-.prf-lev{display:flex;align-items:flex-start;gap:6px;line-height:1.45}
 @media (max-width:1180px){.prf-rules{grid-template-columns:repeat(2,minmax(0,1fr))}.c-prof{grid-template-columns:minmax(240px,290px) minmax(0,1fr)}}
 @media (max-height:760px){.prf-l .pb{gap:9px}.prf-d>div{padding:5px 12px}.mkc{padding:10px 12px;gap:5px}.prr{padding:7px 11px}.prr b{font-size:17px}.prf-b{gap:9px}}
 @media (max-height:680px){.prf-lev,.mkc-y,.mkc-s{display:none}}
@@ -1748,6 +1749,44 @@ function makeTP(c, at, by) {
   return { no: 1, at, by, ok: at + 20 * HR, strategy: c.mks.map(m => STRAT[m]).join(' · '), alloc, cash, maxPos: .15, risk: .01, stop: .1 };
 }
 const tpBase = c => c.cap + netFlow(c);
+const MK_D = { th: 'หุ้นใน SET และ mai', block: 'Single Stock Futures (Block Trade)', tfex: 'SET50 Index Futures', gold: 'Gold Futures', us: 'หุ้นสหรัฐฯ NYSE / NASDAQ', opt: 'SET50 Index Options', fut: 'Futures ต่างประเทศ' };
+const MK_SZ = { block: '1 สัญญา = 1,000 หุ้น', tfex: '200 บาทต่อจุด', gold: '10 บาททองคำ', opt: '200 บาทต่อจุด', us: 'USD คิดเป็นบาท' };
+const MK_C = { th: '#c9a24a', block: '#8a6fd8', tfex: '#3f86e0', gold: '#d6a12e', us: '#2fa58f', opt: '#cf6a90', fut: '#7c8aa6' };
+/* ---------- the trading plan designed for a client, by market: how the capital is split, one card per market (approach,
+   product, contract size, max per position, how it has gone, recent symbols) and the risk rules. The client's own
+   profile and the back office profile show the same thing. ---------- */
+function tpMix(c) {
+  const tp = c.tp, base = tpBase(c), segs = [...c.mks.map(m => [m, tp.alloc[m] || 0]), ['cash', tp.cash]], tot = segs.reduce((a, [, v]) => a + v, 0) || 1;
+  const nm = m => m === 'cash' ? 'เงินสดสำรอง' : MARKETS[m][0], col = m => m === 'cash' ? 'var(--line2)' : MK_C[m];
+  return `<div class="prf-mix"><div class="prf-stk" role="img" aria-label="สัดส่วนเงินทุน ${segs.map(([m, v]) => `${nm(m)} ${fmt(v / tot * 100)}%`).join(' · ')}">${segs.map(([m, v]) => `<i style="flex:${v};background:${col(m)}" title="${nm(m)} ฿${baht(v)}"></i>`).join('')}</div>
+    <div class="prf-lg">${segs.map(([m, v]) => `<span><i style="background:${col(m)}"></i>${nm(m)} <b class="num">${fmt(v / tot * 100)}%</b></span>`).join('')}<span class="sp"></span><span class="muted">เงินทุนในโปรแกรม <b class="num">฿${baht(base)}</b></span></div></div>`;
+}
+function tpCards(c, extra = '') {
+  const tp = c.tp, base = tpBase(c), n = now(), ex = execsOf(c.id).filter(e => e.at <= n), mkOf = e => e.mk || 'th';
+  const parts = String(tp.strategy || '').split(' · '), stratOf = (m, i) => parts.length === c.mks.length ? parts[i] : STRAT[m] || '';
+  const card = (m, i) => {
+    const v = tp.alloc[m] || 0, mine = ex.filter(e => mkOf(e) === m), syms = [...new Set(mine.slice().reverse().map(e => e.sym))].slice(0, 4);
+    const ps = positions(c.id).filter(x => (x.mk || 'th') === m), held = ps.filter(x => x.qty > 0).length, pl = ps.reduce((t, x) => t + x.realized + (x.qty > 0 ? x.upl : 0), 0);
+    const fact = (k, val, wide) => `<div ${wide ? 'class="w"' : ''}><span>${k}</span><b>${val}</b></div>`;
+    return `<div class="mkc" style="--mc:${MK_C[m] || '#8a93a8'}"><div class="mkc-h"><i></i><b>${MARKETS[m][0]}</b>${LEV.includes(m) ? '<span class="tag xs" title="สินค้าที่มี Leverage: มูลค่าสถานะไม่เกินวงเงินของตลาด">Leverage</span>' : ''}<span class="sp"></span><b class="num">฿${kb(v)}</b><span class="mkc-p num" title="ของเงินทุน">${fmt(base ? v / base * 100 : 0)}%</span></div>
+      <div class="mkc-bar"><i style="width:${Math.min(100, base ? v / base * 100 : 0)}%"></i></div>
+      <div class="mkc-s" title="${esc(stratOf(m, i))}">${esc(stratOf(m, i))}</div>
+      <div class="mkc-t">${fact('สินค้า', MK_D[m] || MARKETS[m][0], 1)}${MK_SZ[m] ? fact(m === 'us' ? 'ราคา' : 'ขนาดสัญญา', MK_SZ[m]) : ''}${fact('สูงสุดต่อตัว', `฿${kb(Math.min(v, tp.maxPos * base))}`)}${fact('ผลในตลาดนี้', mine.length ? `<span class="${pl >= 0 ? 'up' : 'dn'}">${signed(Math.round(pl))}</span>` : '—')}${fact('30 วัน', `${mine.filter(e => n - e.at < 30 * DAY).length} รายการ · ถือ ${held}`)}</div>
+      <div class="mkc-y">${syms.length ? syms.map(sy => `<span class="mkchip">${m === 'th' ? slogo(sy, 16) : ''}${esc(sy)}</span>`).join('') : '<span class="xs muted">ยังไม่มีรายการในตลาดนี้</span>'}</div></div>`;
+  };
+  return `<div class="mkg" style="--n:${Math.min(3, c.mks.length)}">${c.mks.map(card).join('')}${extra}</div>`;
+}
+function tpRules(c) {
+  const tp = c.tp, base = tpBase(c), rule = (icn, k, v, sub) => `<div class="prr"><span class="prr-k">${ic(icn, 14)} ${k}</span><b class="num">${v}</b><span class="xs muted">${sub}</span></div>`;
+  return rule('target', 'ขนาดสถานะสูงสุด', `${fmt(tp.maxPos * 100)}%`, `฿${kb(tp.maxPos * base)} ต่อตัว`) + rule('shield', 'ความเสี่ยงต่อครั้ง', `${fmt(tp.risk * 100)}%`, `฿${kb(tp.risk * base)} จาก Entry ถึง Stop Loss`)
+    + rule('alert', 'หยุดทบทวนเมื่อ', `−${fmt(tp.stop * 100)}%`, 'พอร์ตลดลงจากจุดสูงสุด') + rule('wallet', 'เงินสดสำรอง', `฿${kb(tp.cash)}`, `${fmt(tp.cash / (tpBase(c) || 1) * 100)}% ของเงินทุน`);
+}
+// on phones the rules are the last card you slide to
+const tpRulesSlide = c => `<div class="mkc mkr"><div class="mkc-h"><b>กติกาความเสี่ยง</b></div><div class="prf-rules">${tpRules(c)}</div></div>`;
+function tpLev(c) {
+  const lev = c.mks.filter(m => LEV.includes(m));
+  return lev.length ? `<div class="xs muted prf-lev">${ic('info', 13)} ${lev.map(m => MARKETS[m][0]).join(', ')}: มูลค่าสถานะไม่เกินวงเงินของตลาด และขาดทุนต่อครั้งไม่เกิน ฿${baht(c.tp.risk * tpBase(c))} · ทบทวนแผนทุก Coaching วันอังคาร 19:00 น.</div>` : '';
+}
 // position value of one holding against the plan's limit, and the loss level that means "stop and review"
 const tpLimit = c => c.tp.maxPos * tpBase(c);
 // short: the key numbers only, for a side panel
@@ -3400,29 +3439,10 @@ function clOverview(c) {
 // the client's profile: who they are and their program on the left; on the right the trading plan designed for them —
 // how the money is split across the markets they trade (หุ้นไทย, Block Trade, TFEX...), each market's approach and what
 // they actually traded there, and the limits every trade must keep
-const MK_D = { th: 'หุ้นใน SET และ mai', block: 'Single Stock Futures (Block Trade)', tfex: 'SET50 Index Futures', gold: 'Gold Futures', us: 'หุ้นสหรัฐฯ NYSE / NASDAQ', opt: 'SET50 Index Options', fut: 'Futures ต่างประเทศ' };
-const MK_SZ = { block: '1 สัญญา = 1,000 หุ้น', tfex: '200 บาทต่อจุด', gold: '10 บาททองคำ', opt: '200 บาทต่อจุด', us: 'USD คิดเป็นบาท' };
-const MK_C = { th: '#c9a24a', block: '#8a6fd8', tfex: '#3f86e0', gold: '#d6a12e', us: '#2fa58f', opt: '#cf6a90', fut: '#7c8aa6' };
 function clProfile(c) {
-  const co = coach(c.coach), tp = c.tp, base = tpBase(c), n = now(), ex = execsOf(c.id).filter(e => e.at <= n), d = discipline(c.id), yc = yellowCards(c.id).length, cn = concern(c), at = attOf(c.id);
-  const mkOf = e => e.mk || 'th', parts = String(tp.strategy || '').split(' · '), stratOf = (m, i) => parts.length === c.mks.length ? parts[i] : STRAT[m] || '';
+  const co = coach(c.coach), tp = c.tp, base = tpBase(c), n = now(), d = discipline(c.id), yc = yellowCards(c.id).length, cn = concern(c), at = attOf(c.id);
   const j = tz(c.joined), end = Date.UTC(j.getUTCFullYear(), j.getUTCMonth() + c.term, j.getUTCDate()) - TZ, ups = c.flows.filter(f => f.cap && !f.pend && !f.rej).length;
   const info = (k, v, t = '') => `<div><span>${k}</span><b ${t ? `title="${esc(t)}"` : ''}>${v}</b></div>`;
-  const segs = [...c.mks.map(m => [m, tp.alloc[m] || 0]), ['cash', tp.cash]], tot = segs.reduce((a, [, v]) => a + v, 0) || 1;
-  const card = (m, i) => {
-    const v = tp.alloc[m] || 0, mine = ex.filter(e => mkOf(e) === m), syms = [...new Set(mine.slice().reverse().map(e => e.sym))].slice(0, 4);
-    const ps = positions(c.id).filter(x => (x.mk || 'th') === m), held = ps.filter(x => x.qty > 0).length, pl = ps.reduce((t, x) => t + x.realized + (x.qty > 0 ? x.upl : 0), 0);
-    const fact = (k, val, wide) => `<div ${wide ? 'class="w"' : ''}><span>${k}</span><b>${val}</b></div>`;
-    return `<div class="mkc" style="--mc:${MK_C[m] || '#8a93a8'}"><div class="mkc-h"><i></i><b>${MARKETS[m][0]}</b>${LEV.includes(m) ? '<span class="tag xs" title="สินค้าที่มี Leverage: มูลค่าสถานะไม่เกินวงเงินของตลาด">Leverage</span>' : ''}<span class="sp"></span><b class="num">฿${kb(v)}</b><span class="mkc-p num" title="ของเงินทุน">${fmt(base ? v / base * 100 : 0)}%</span></div>
-      <div class="mkc-bar"><i style="width:${Math.min(100, base ? v / base * 100 : 0)}%"></i></div>
-      <div class="mkc-s" title="${esc(stratOf(m, i))}">${esc(stratOf(m, i))}</div>
-      <div class="mkc-t">${fact('สินค้า', MK_D[m] || MARKETS[m][0], 1)}${MK_SZ[m] ? fact(m === 'us' ? 'ราคา' : 'ขนาดสัญญา', MK_SZ[m]) : ''}${fact('สูงสุดต่อตัว', `฿${kb(Math.min(v, tp.maxPos * base))}`)}${fact('ผลในตลาดนี้', mine.length ? `<span class="${pl >= 0 ? 'up' : 'dn'}">${signed(Math.round(pl))}</span>` : '—')}${fact('30 วัน', `${mine.filter(e => n - e.at < 30 * DAY).length} รายการ · ถือ ${held}`)}</div>
-      <div class="mkc-y">${syms.length ? syms.map(sy => `<span class="chip2">${m === 'th' ? slogo(sy, 16) : ''}${esc(sy)}</span>`).join('') : '<span class="xs muted">ยังไม่มีรายการในตลาดนี้</span>'}</div></div>`;
-  };
-  const rule = (icn, k, v, sub) => `<div class="prr"><span class="prr-k">${ic(icn, 14)} ${k}</span><b class="num">${v}</b><span class="xs muted">${sub}</span></div>`;
-  const lev = c.mks.filter(m => LEV.includes(m));
-  const rules = rule('target', 'ขนาดสถานะสูงสุด', `${fmt(tp.maxPos * 100)}%`, `฿${kb(tp.maxPos * base)} ต่อตัว`) + rule('shield', 'ความเสี่ยงต่อครั้ง', `${fmt(tp.risk * 100)}%`, `฿${kb(tp.risk * base)} จาก Entry ถึง Stop Loss`)
-    + rule('alert', 'หยุดทบทวนเมื่อ', `−${fmt(tp.stop * 100)}%`, 'พอร์ตลดลงจากจุดสูงสุด') + rule('wallet', 'เงินสดสำรอง', `฿${kb(tp.cash)}`, `${fmt(tp.cash / (base || 1) * 100)}% ของเงินทุน`);
   return `<section class="pnl prf-l" data-pt="ข้อมูลลูกค้า"><div class="ph"><h3>ข้อมูลลูกค้า</h3><span class="sub">${TYPE[c.type]} Trader</span></div><div class="pb">
       <div class="prf-id">${avatar(c, 'lg')}<div style="min-width:0"><b class="ell">${esc(c.name)} ${esc(c.last || '')}</b><span class="xs muted">เดือนที่ ${progMonth(c)} จาก ${c.term} · วินัย <b class="${scoreTone(d.score)}">${d.score}</b>${yc ? ` · ${ycIcons(yc)}` : ''}</span></div></div>
       <div class="tpd prf-d">
@@ -3440,11 +3460,10 @@ function clProfile(c) {
       </div></div></section>
     <section class="pnl prf-r" data-pt="แผนเทรดที่ออกแบบ"><div class="ph"><h3>แผนเทรดที่ออกแบบให้</h3><span class="sub" title="${staffName(tp.by)}จัดทำ ${dstr(tp.at)}">ฉบับที่ ${tp.no} · ${tp.ok ? `<span class="up">ยืนยันแล้ว ${dstr(tp.ok)}</span>` : '<span class="warn">รอลูกค้ายืนยัน</span>'}</span><span class="sp"></span><button class="lnk xs" data-act="tpview" data-id="${esc(c.id)}">ฉบับเต็ม</button>${isHead() ? `<button class="btn ghost sm" data-act="tpedit" data-id="${esc(c.id)}">${ic('edit', 15)} ปรับแผน</button>` : ''}</div>
       <div class="pb prf-b">
-        <div class="prf-mix"><div class="prf-stk" role="img" aria-label="สัดส่วนเงินทุน ${segs.map(([m, v]) => `${m === 'cash' ? 'เงินสดสำรอง' : MARKETS[m][0]} ${fmt(v / tot * 100)}%`).join(' · ')}">${segs.map(([m, v]) => `<i style="flex:${v};background:${m === 'cash' ? 'var(--line2)' : MK_C[m]}" title="${m === 'cash' ? 'เงินสดสำรอง' : MARKETS[m][0]} ฿${baht(v)}"></i>`).join('')}</div>
-          <div class="prf-lg">${segs.map(([m, v]) => `<span><i style="background:${m === 'cash' ? 'var(--line2)' : MK_C[m]}"></i>${m === 'cash' ? 'เงินสดสำรอง' : MARKETS[m][0]} <b class="num">${fmt(v / tot * 100)}%</b></span>`).join('')}<span class="sp"></span><span class="muted">เงินทุนในโปรแกรม <b class="num">฿${baht(base)}</b></span></div></div>
-        <div class="mkg" style="--n:${Math.min(3, c.mks.length)}">${c.mks.map(card).join('')}${narrow() ? `<div class="mkc mkr"><div class="mkc-h"><b>กติกาความเสี่ยง</b></div><div class="prf-rules">${rules}</div></div>` : ''}</div>
-        ${narrow() ? '' : `<div class="prf-rules">${rules}</div>`}
-        ${lev.length ? `<div class="xs muted prf-lev">${ic('info', 13)} ${lev.map(m => MARKETS[m][0]).join(', ')}: มูลค่าสถานะไม่เกินวงเงินของตลาด และขาดทุนต่อครั้งไม่เกิน ฿${baht(tp.risk * base)} · ทบทวนแผนทุก Coaching วันอังคาร 19:00 น.</div>` : ''}
+        ${tpMix(c)}
+        ${tpCards(c, narrow() ? tpRulesSlide(c) : '')}
+        ${narrow() ? '' : `<div class="prf-rules">${tpRules(c)}</div>`}
+        ${tpLev(c)}
       </div></section>`;
 }
 // the client's own trading plan, what the coach told them for each plan (kept as evidence), coaching attendance
