@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-22o9jLs8JngH0s4bZEy2ft3wmoF0Wk+dhpYLU4d9Mdo=' 'sha256-pM2Uk1sa+OBusftWj4HjTuF91EabD09BYmPseEM0dPw='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-jSvUjBVPxLuGkt7p03mqEuWYBtJi8KUxNQDAAlLDQoQ=' 'sha256-DDB1+BLJfT2mTlupnSu9WMpZagOiyCFLtnOIIBisYCU='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>ปั้นพอร์ต 1 ล้าน · Trading Journal (ต้นแบบ)</title>
@@ -487,13 +487,11 @@ button.ot-r:hover,.ot-r.click:hover{background:rgba(var(--wt),.04);cursor:pointe
 .pb.flush{padding:0}
 .pre{flex:none;padding:10px 16px 6px}
 /* yellow cards */
-.ycs{display:inline-flex;gap:3px;vertical-align:middle}
-.ycs i{width:9px;height:13px;border-radius:2px;border:1.5px solid color-mix(in srgb,#f5c518 55%,transparent);transform:rotate(-6deg)}
-.ycs i.on{background:#f5c518;border-color:#f5c518;box-shadow:0 2px 6px -2px rgba(245,197,24,.7)}
-/* yellow cards in the corner of a KPI tile (the tooltip explains them) */
-.kpi .ycs.kc{position:absolute;top:12px;right:14px;gap:4px}
-.kpi .ycs.kc i{width:11px;height:15px}
-.ycard{display:inline-block;width:8px;height:11px;border-radius:2px;background:#f5c518;transform:rotate(-6deg);margin-right:4px;vertical-align:-1px;box-shadow:0 1px 4px -1px rgba(245,197,24,.7)}
+/* คะแนนตามกติกา: the score as a small badge (green 85+, amber 70–84, red below 70), and what a record cost */
+.ptb{display:inline-flex;align-items:baseline;gap:1px;padding:0 7px;border-radius:999px;font-weight:800;font-size:12px;line-height:19px;border:1.5px solid currentColor;vertical-align:middle;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ptb small{font-size:9.5px;font-weight:600;opacity:.75}.ptb.up{color:var(--up)}.ptb.warn{color:var(--warn)}.ptb.dn{color:var(--dn)}
+.kpi .ptb.kc{position:absolute;top:11px;right:12px}
+.ptm{font-size:11px;font-weight:800;color:var(--dn);margin-right:4px;font-variant-numeric:tabular-nums;flex:none}
 /* the record sheet */
 .rd{display:flex;flex-direction:column;gap:12px;min-height:0;height:100%;overflow:auto;scrollbar-width:thin;padding-right:2px}
 .rtrack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;flex:none}
@@ -534,8 +532,8 @@ button.ot-r:hover,.ot-r.click:hover{background:rgba(var(--wt),.04);cursor:pointe
 .rnote.warn .ic{flex:none;margin-top:2px}
 /* plan result in a table cell */
 .pst{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:12.5px;white-space:nowrap}
-.pst>i:not(.ycard){width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
-.pst .ycard{margin-right:0}
+.pst>i{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+
 .pst.ok{color:var(--up)}.pst.warn{color:var(--warn)}.pst.pu{color:var(--pu)}
 /* short screens and phones: the same sheet, tighter (it scrolls inside its panel only if it still does not fit) */
 @media (max-height:760px),(max-width:760px){.rd{gap:8px}.rd-pic .slipth{width:76px;height:104px}.rd-top{grid-template-columns:76px minmax(0,1fr);gap:10px}.kv{font-size:12.5px}.kv>span{padding:3px 10px}.ckt{font-size:12.5px}.ckt-h{display:none}.ckt-h+.ckt-r{border-top:none}.ckt-r{padding:3px 10px}.rt{padding-top:20px}.rt span{display:none}.rsec{gap:4px}.rsec>h4{font-size:11.5px}.rnote{padding:5px 9px;font-size:12px}.mtc-h,.mtc-r{padding:4px 10px}}
@@ -1419,6 +1417,8 @@ button.kpi>span{display:block}
   .ob .card{padding:18px}
   #toasts{left:10px;right:10px;bottom:90px}
 }
+/* short screens: the discipline panel drops the cohort rank line, the score stays */
+@media (max-height:680px){.dsc-rk{display:none}}.dsc .ptb{line-height:17px}
 /* short screens: the glossary leaves the sidebar (it stays in the account menu) to make room for the calculator */
 @media (max-height:760px) and (min-width:761px){.sb-gl{display:none!important}}
 /* before sending an order, step by step: a stepper on top, what has been chosen so far, one question per step */
@@ -1468,7 +1468,7 @@ button.kpi>span{display:block}
 .me-tier{display:flex;align-items:baseline;gap:8px;font-size:12.5px;color:var(--mut);min-width:0}.me-tier>span{min-width:0}.me-tier b{color:var(--ink)}.me-tier .gold{color:var(--gold)}.me-tier .lnk{margin-left:auto}
 .me-d>div{grid-template-columns:86px minmax(0,1fr);gap:10px;padding:6px 12px;font-size:13px}.me-d b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}.me-d .lnk{font-size:12.5px;display:inline;vertical-align:baseline;padding:0}
 .prf-co{display:inline-flex;align-items:center;gap:7px}.me-line{width:24px;height:24px;margin-left:2px}.prf-co img{width:22px;height:22px;border-radius:50%;box-shadow:0 0 0 1.5px rgba(235,192,98,.6)}
-.me-st{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--line);border-radius:12px}
+.me-st{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:12px}
 .me-st>span{display:flex;flex-direction:column;align-items:center;padding:6px 0}.me-st>span+span{border-left:1px solid var(--line)}.me-st small{font-size:11px;color:var(--mut)}.me-st b{font-size:17px}
 .me-md{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.me-md .mdl span{display:none}.me-md .mdl{justify-content:center;display:flex}
 /* short screens and phones: one row of small medals, no community row (its button stays) */
@@ -2183,17 +2183,48 @@ function extraChecks(e) {
 }
 const checks = e => memo('ck:' + e.id, () => ({ ...checkEx(e, planOf(e.plan)), ...extraChecks(e) }));
 const allOk = r => Object.values(r).every(v => v === 'ok');
-// ใบเหลือง (yellow card): each record the head coach confirmed that did not follow the plan (or bought off-plan),
-// and each time a coach wrote down that the client did not follow a plan. At YC_LIMIT cards the coach talks with the
-// client about the refund guarantee (it may be cancelled if the client keeps trading off the plan).
-// cards count over the last 30 days, so a client who gets back on the plan sees them expire
-const YC_LIMIT = 3, YC_DAYS = 30;
-const yellowCards = clId => memo('yc:' + clId, () => [
-  ...execsOf(clId).filter(e => e.at <= now() && e.ver === 'ok' && !allOk(checks(e)) && (e.plan || e.side === 'buy')).map(e => ({ at: e.vat || e.at, ex: e.id, sym: e.sym, why: e.plan ? devText(e) : `ซื้อ ${e.sym} นอกแผน` })),
-  ...S.misses.filter(m => m.cl === clId && m.at <= now()).map(m => ({ at: m.at, miss: m.id, sym: planOf(m.plan)?.sym || '', why: MISS[m.kind] }))].filter(y => y.at >= now() - YC_DAYS * DAY).sort((a, b) => a.at - b.at));
-const ycOf = e => { const i = yellowCards(e.cl).findIndex(y => y.ex === e.id); return i < 0 ? 0 : i + 1; };
-// small yellow cards, n of them filled (up to the limit)
-const ycIcons = (n, cls = '') => `<span class="ycs ${cls}" role="img" aria-label="ใบเหลือง ${n} ใบ" title="ใบเหลือง ${n} ใบใน ${YC_DAYS} วันล่าสุด · ครบ ${YC_LIMIT} ใบ โค้ชจะนัดคุยเรื่องสิทธิ์คืนค่าเรียน">${Array.from({ length: Math.max(YC_LIMIT, n) }, (_, i) => `<i class="${i < n ? 'on' : ''}"></i>`).join('')}</span>`;
+// คะแนนตามกติกา 100 คะแนน (replaced the yellow cards on 2026-10-20): every client starts with 100. Each thing that did
+// not follow the plan or the program's rules takes points off by how serious it is (records only once the head coach has
+// confirmed them); a week with nothing taken off gives 2 back, up to 100. Below 70 the coach talks with the client;
+// below 50 the refund guarantee is reviewed.
+const PT_MAX = 100, PT_TALK = 70, PT_REVIEW = 50, PT_BACK = 2;
+const PT_RULE = { off: [10, 'ซื้อนอกแผน'], nocut: [10, 'ไม่ขายตัดขาดทุนตามแผน'], late: [10, 'ขายตัดขาดทุนช้ากว่าแผน'], dev: [5, 'ไม่ตรงแผน (ราคา จำนวน ขนาดสถานะ ถัวขาดทุน)'],
+  self: [5, 'ขายโดยไม่มีเหตุผลตามแผน'], nosell: [5, 'ไม่ขายทำกำไรตามแผน'], att: [3, 'ขาด Coaching'], snap: [2, 'ไม่ส่งยอดพอร์ตวันศุกร์'], stmt: [2, 'ไม่ส่ง Statement'] };
+// what took points off, oldest first: { at, k, pts, why, sym, ex (a record), miss (a coach's note) }
+const ptLosses = clId => memo('ptl:' + clId, () => {
+  const c = client(clId), n = now(), out = [], add = (at, k, x) => { if (at <= n && at >= c.joined) out.push({ at, k, pts: PT_RULE[k][0], why: PT_RULE[k][1], ...x }); };
+  for (const e of execsOf(clId)) {
+    if (e.at > n || e.ver !== 'ok' || allOk(checks(e))) continue;
+    const t = e.vat || e.at;
+    if (!e.plan) { if (e.side === 'buy') add(t, 'off', { ex: e.id, sym: e.sym, why: `ซื้อ ${e.sym} นอกแผน` }); continue; }
+    add(t, e.side === 'sell' ? (e.why === 'cut' ? 'late' : 'self') : 'dev', { ex: e.id, sym: e.sym, why: devText(e) });
+  }
+  for (const m of S.misses) if (m.cl === clId) add(m.at, m.kind === 'nocut' ? 'nocut' : 'nosell', { miss: m.id, sym: planOf(m.plan)?.sym || '', why: `${MISS[m.kind]}${planOf(m.plan) ? ' ' + planOf(m.plan).sym : ''}` });
+  for (const x of sessOf(clId)) if (!x.att) add(x.at, 'att', { why: `ขาด${x.kind === 'review' ? ' Review ประจำเดือน' : ' Coaching'} ${dstr(x.at)}` });
+  // a Friday that passed with no port report that day or the next two trading days
+  S.days.forEach((d, i) => { if (new Date(d).getUTCDay() === 5 && i < T_() && !S.snaps.some(x => x.cl === clId && x.day >= i && x.day <= i + 2)) add(d - TZ + DAY, 'snap', { why: `ไม่ส่งยอดพอร์ตวันศุกร์ที่ ${dstr(d - TZ + 12 * HR)}` }); });
+  for (const x of stmtDue(c)) if (x.late && !x.got) add(x.due, 'stmt', { why: `ไม่ส่ง Statement เดือน ${ymName(x.ym)}` });
+  return out.sort((a, b) => a.at - b.at);
+});
+// the score at a time, with every change (losses, and the 2 back for each finished week with no loss; weeks run Monday–Sunday)
+function points(clId, at) {
+  const calc = () => {
+    const c = client(clId), tnow = at ?? now(), ls = ptLosses(clId).filter(x => x.at <= tnow), j = tz(c.joined);
+    const w0 = Date.UTC(j.getUTCFullYear(), j.getUTCMonth(), j.getUTCDate()) - ((j.getUTCDay() + 6) % 7) * DAY - TZ, ev = ls.map(x => ({ at: x.at, d: -x.pts, x }));
+    for (let w = w0; w + 7 * DAY <= tnow; w += 7 * DAY) if (!ls.some(x => x.at >= w && x.at < w + 7 * DAY)) ev.push({ at: w + 7 * DAY - 1, d: PT_BACK, wk: w });
+    ev.sort((a, b) => a.at - b.at);
+    let s = PT_MAX;
+    for (const e of ev) { const b = s; s = Math.max(0, Math.min(PT_MAX, s + e.d)); e.chg = s - b; e.after = s; }
+    return { score: s, lost: ls.reduce((t, x) => t + x.pts, 0), events: ev.filter(e => e.chg || e.x), losses: ls };
+  };
+  return at == null ? memo('pts:' + clId, calc) : calc();
+}
+const ptOf = e => ptLosses(e.cl).find(x => x.ex === e.id);   // what a record cost, if anything
+const ptTone = s => s >= 85 ? 'up' : s >= PT_TALK ? 'warn' : 'dn';
+const ptLevel = s => s < PT_REVIEW ? 'พิจารณาสิทธิ์คืนค่าเรียน' : s < PT_TALK ? 'โค้ชนัดคุย' : 'ปกติ';
+const ptBadge = (s, cls = '') => `<span class="ptb ${ptTone(s)} ${cls}" title="คะแนนตามกติกา ${s}/100 · ต่ำกว่า ${PT_TALK} โค้ชนัดคุย · ต่ำกว่า ${PT_REVIEW} พิจารณาสิทธิ์คืนค่าเรียน">${s}<small>/100</small></span>`;
+// the rules in one line (dialogs)
+const ptRulesTxt = () => `ทุกคนเริ่มที่ ${PT_MAX} คะแนน · ${[...new Set(Object.values(PT_RULE).map(([p, l]) => `${l.replace(/ \(.*\)/, '')} −${p}`))].join(' · ')} · สัปดาห์ที่ไม่ถูกหักเลยได้คืน +${PT_BACK} · ต่ำกว่า ${PT_TALK} โค้ชนัดคุย · ต่ำกว่า ${PT_REVIEW} พิจารณาสิทธิ์คืนค่าเรียน`;
 
 // buys and sells of one holding paired first in, first out: each sale shows the buys it closed and its profit or loss
 // (against the average cost at the time, the way Realized P/L is counted); each buy shows what was sold of it and what is left
@@ -2221,15 +2252,15 @@ const salePL = e => { const m = e.side === 'sell' && matchOf(e); return m ? `<sp
    the check against the plan, the buy-sell pairing, then notes ---------- */
 const planSt = e => !e.plan ? ['pu', 'นอกแผน'] : allOk(checks(e)) ? ['ok', 'ตรงแผน'] : ['warn', 'ไม่ตรงแผน'];
 // the plan result in a table cell: a coloured dot and the word (a yellow card when the record earned one)
-const planMark = e => { const [c, l] = planSt(e); return `<span class="pst ${c}" title="${c === 'warn' ? esc(devText(e)) : ''}">${ycOf(e) ? '<i class="ycard"></i>' : '<i></i>'}${l}</span>`; };
+const planMark = e => { const [c, l] = planSt(e); return `<span class="pst ${c}" title="${c === 'warn' ? esc(devText(e)) : ''}">${ptOf(e) ? `<b class="ptm" title="หัก ${ptOf(e).pts} คะแนน">−${ptOf(e).pts}</b>` : '<i></i>'}${l}</span>`; };
 // profit or loss of a sale in a table cell ("—" for a buy)
 const plCell = e => { const m = e.side === 'sell' && matchOf(e); return m ? `<b class="${m.pl >= 0 ? 'up' : 'dn'}">${signed(m.pl)}</b><span class="t2 ${m.pl >= 0 ? 'up' : 'dn'}">${pct(m.r, 1)}</span>` : '<span class="muted">—</span>'; };
 function recTrack(e) {
-  const ok = e.ver === 'ok', fix = e.ver === 'fix', [pc, pl] = planSt(e), yc = ycOf(e);
+  const ok = e.ver === 'ok', fix = e.ver === 'fix', [pc, pl] = planSt(e), pt = ptOf(e);
   const st = [
     ['done', 'บันทึกแล้ว', `${dstr(e.rec.at)} ${tstr(e.rec.at)} · ${e.rec.by === e.cl ? 'ลูกค้า' : byName(e.rec.by)}${e.fixed ? ' · แก้ไข' : ''}`],
     [ok ? 'done' : fix ? 'warn' : 'now', ok ? 'ตรวจกับภาพแล้ว' : fix ? 'ขอให้แก้ไข' : 'รอตรวจกับภาพ', ok ? `${staffName(e.vby || 'head')}${e.vat ? ' · ' + dstr(e.vat) + ' ' + tstr(e.vat) : ''}` : fix ? `${staffName(e.fix?.by || 'head')} · ${dstr(e.fix?.at || e.rec.at)}` : 'หัวหน้าโค้ช'],
-    [ok ? (pc === 'ok' ? 'done' : pc === 'pu' ? 'pu' : 'warn') : 'todo', ok ? pl : 'ผลเทียบแผน', ok ? (pc === 'ok' ? 'นับเป็นรายการตรงแผน' : yc ? `ใบเหลืองใบที่ ${yc}` : 'เรื่องที่ต้องเคลียร์') : 'หลังตรวจกับภาพ']];
+    [ok ? (pc === 'ok' ? 'done' : pc === 'pu' ? 'pu' : 'warn') : 'todo', ok ? pl : 'ผลเทียบแผน', ok ? (pc === 'ok' ? 'นับเป็นรายการตรงแผน' : pt ? `หัก ${pt.pts} คะแนน` : 'เรื่องที่ต้องเคลียร์') : 'หลังตรวจกับภาพ']];
   return `<div class="rtrack">${st.map(([k, t, x]) => `<div class="rt ${k}"><i>${k === 'done' ? ic('check', 10, 3) : ''}</i><b>${t}</b><span>${x}</span></div>`).join('')}</div>`;
 }
 function recFacts(e) {
@@ -2249,8 +2280,8 @@ function recCheck(e) {
   if (r.size) rows.push(['ขนาดสถานะ', `≤ ฿${kb(tpLimit(client(e.cl)))}`, 'เกินแผนเทรด', r.size]);
   if (r.avg) rows.push(['ถัวขาดทุน', 'ไม่ซื้อต่ำกว่าทุน', 'ซื้อต่ำกว่าทุน', r.avg]);
   rows.push(['หลักฐาน', 'ภาพจากแอป', e.slip ? 'แนบแล้ว' : 'ไม่มี', r.proof]);
-  const yc = ycOf(e), why = e.plan ? devText(e) : e.side === 'buy' ? `ซื้อ ${e.sym} โดยไม่มีแผนจากหัวหน้าโค้ช` : '';
-  return `<div class="ckt"><div class="ckt-h"><span>หัวข้อ</span><span>ตามแผน</span><span>จริง</span><span>ผล</span></div>${rows.map(([a, b, c, v]) => `<div class="ckt-r"><span>${a}</span><span class="num">${b}</span><b class="num">${c}</b>${res(v)}</div>`).join('')}</div>${!allOk(r) && why ? `<div class="rnote warn">${yc ? `<i class="ycard"></i><span><b>ใบเหลืองใบที่ ${yc}${yc >= YC_LIMIT ? ' · ครบเกณฑ์ โค้ชจะนัดคุยเรื่องสิทธิ์คืนค่าเรียน' : ''}</b> · ${esc(why)}</span>` : `${ic('alert', 13)}<span>${esc(why)}</span>`}</div>` : ''}`;
+  const pt = ptOf(e), sc = pt ? points(e.cl).score : 0, why = e.plan ? devText(e) : e.side === 'buy' ? `ซื้อ ${e.sym} โดยไม่มีแผนจากหัวหน้าโค้ช` : '';
+  return `<div class="ckt"><div class="ckt-h"><span>หัวข้อ</span><span>ตามแผน</span><span>จริง</span><span>ผล</span></div>${rows.map(([a, b, c, v]) => `<div class="ckt-r"><span>${a}</span><span class="num">${b}</span><b class="num">${c}</b>${res(v)}</div>`).join('')}</div>${!allOk(r) && why ? `<div class="rnote warn">${pt ? `<b class="ptm">−${pt.pts}</b><span><b>หัก ${pt.pts} คะแนน · คะแนนตอนนี้ ${sc}/100${sc < PT_REVIEW ? ' · ต่ำกว่า 50 พิจารณาสิทธิ์คืนค่าเรียน' : sc < PT_TALK ? ' · ต่ำกว่า 70 โค้ชนัดคุย' : ''}</b> · ${esc(why)}</span>` : `${ic('alert', 13)}<span>${esc(why)}</span>`}</div>` : ''}`;
 }
 const recSec = (t, html, tail = '') => html ? `<section class="rsec"><h4><span>${t}</span>${tail}</h4>${html}</section>` : '';
 // notes on a record: why the client bought, what the client told the coach, what the coach wrote back
@@ -2476,8 +2507,8 @@ function alerts(at) {
       else if (dd.now >= stop * .6) out.push({ k: `dd:${c.id}:${dayKey(tnow)}`, sev: 'mid', aud: 'coach', type: 'dd', cl: c.id, coach: c.coach, at: tnow, title: `ใกล้ระดับขาดทุนที่ต้องหยุดทบทวน (ลดลง ${pct(-dd.now)})`, detail: `ระดับที่ต้องหยุดตามแผนเทรด ${fmt(stop * 100)}% จากจุดสูงสุด · ควรลดความเสี่ยงของพอร์ต` });
       const a2 = attOf(c.id);
       if (a2.t >= 4 && a2.rate < .8) out.push({ k: `att:${c.id}:${a2.t}`, sev: a2.rate < .7 ? 'high' : 'mid', aud: 'both', type: 'att', cl: c.id, coach: c.coach, at: sessOf(c.id)[0].at, title: `เข้าร่วม Coaching ${a2.n}/${a2.t} นัด (${fmt(a2.rate * 100)}%) ต่ำกว่าเกณฑ์ 80%`, detail: 'ข้อตกลงกำหนดให้เข้าร่วม Coaching และ Review อย่างน้อย 80% ของนัดหมาย' });
-      const ycn = yellowCards(c.id).length;
-      if (ycn >= YC_LIMIT) out.push({ k: `yc:${c.id}:${ycn}`, sev: 'high', aud: 'coach', type: 'yc', cl: c.id, coach: c.coach, at: tnow, title: `ใบเหลือง ${ycn} ใบ: นัดคุยเรื่องสิทธิ์คืนค่าเรียน`, detail: `ไม่ตรงแผน ${ycn} ครั้งใน ${YC_DAYS} วัน · แจ้งลูกค้าว่าหากยังไม่ทำตามแผน อาจยกเลิกการรับประกันคืนค่าเรียน` });
+      const sc = points(c.id, at).score;
+      if (sc < PT_TALK) out.push({ k: `pts:${c.id}:${sc < PT_REVIEW ? 'r' : 't'}`, sev: sc < PT_REVIEW ? 'high' : 'mid', aud: 'coach', type: 'pts', cl: c.id, coach: c.coach, at: tnow, title: sc < PT_REVIEW ? `คะแนน ${sc}/100: พิจารณาสิทธิ์คืนค่าเรียน` : `คะแนน ${sc}/100: นัดคุยกับลูกค้า`, detail: sc < PT_REVIEW ? 'ต่ำกว่า 50 คะแนน ให้หัวหน้าโค้ชพิจารณาสิทธิ์รับประกันคืนค่าเรียน' : 'ต่ำกว่า 70 คะแนน โค้ชนัดคุยเรื่องการทำตามแผนและกติกาของโปรแกรม' });
       for (const x of stmtDue(c)) if (x.late && !x.got && tnow > x.due) out.push({ k: `stmt:${c.id}:${x.ym}`, sev: 'mid', aud: 'cs', type: 'stmt', cl: c.id, coach: c.coach, at: x.due, title: `ยังไม่ส่ง Statement เดือน ${ymName(x.ym)}`, detail: 'ส่งรายงานพอร์ตและ Statement จากโบรกเกอร์ทุกเดือน ภายในวันที่ 5 ของเดือนถัดไป' });
     }
     const sevN = { high: 0, mid: 1, low: 2 };
@@ -3317,7 +3348,7 @@ function bellMenu() {
   const n = now(), me = ME(), items = [];
   if (!me.tp.ok) items.push({ icon: 'target', t: `<b>${staffName(me.tp.by)}</b> ปรับแผนเทรดของคุณ โปรดตรวจและยืนยัน`, s: when(me.tp.at, n), at: 'data-act="tp"' });
   myFix().forEach(e => items.push({ sym: e.sym, t: `<b>${staffName(e.fix?.by || 'head')}</b> ขอให้แก้ไขรายการ${verbEx(e)} ${esc(e.sym)}`, s: when(e.fix?.at || e.rec.at, n), at: `data-ex="${esc(e.id)}"` }));
-  yellowCards(me.id).filter(y => y.ex && y.at <= n && n - y.at < 3 * DAY).forEach(y => items.push({ sym: y.sym, t: `<b>ได้รับใบเหลือง</b> ${esc(y.sym)} · ${esc(y.why)}`, s: `${when(y.at, n)} · สะสม ${yellowCards(me.id).length}/${YC_LIMIT} ใบ`, at: `data-ex="${esc(y.ex)}"` }));
+  ptLosses(me.id).filter(y => y.at <= n && n - y.at < 3 * DAY).forEach(y => items.push({ sym: y.sym || undefined, icon: 'flag', t: `<b>ถูกหัก ${y.pts} คะแนน</b> ${esc(y.why)}`, s: `${when(y.at, n)} · คะแนนตอนนี้ ${points(me.id).score}/100`, at: y.ex ? `data-ex="${esc(y.ex)}"` : '' }));
   if (snapDue()) items.push({ icon: 'wallet', t: 'ถึงเวลารายงานยอดพอร์ตประจำสัปดาห์', s: 'ส่งภาพหน้าพอร์ตหลังตลาดปิดวันศุกร์', at: 'data-act="snap"' });
   slNews().forEach(({ p, x }) => items.push({ sym: p.sym, t: `${planBy(p.plan ? planOf(p.plan) : {})} เลื่อน Stop Loss ${esc(p.sym)} เป็น ${px(x.sl)} · แก้ Stop Order ในแอปด้วย`, s: when(x.at, n), at: 'data-go="port"' }));
   // what the coach did with my records: confirmed them, or keyed one in for me
@@ -3433,7 +3464,7 @@ function homeView() {
     <div class="pb">${b.ps.length ? `<div class="list tight" data-pg="hh">${b.ps.map(p => homeHold(p, maxW)).join('')}</div>` : `<div class="empty">${ic('wallet', 26)}ยังไม่มีหุ้นในพอร์ต</div>`}</div></section>
   <section class="pnl pmon"><div class="ph"><h3>กำไร${PER_NAME[barP]}</h3><span class="sub">ตามบันทึก</span><span class="sp"></span>${perSeg('bar', barP)}</div><div class="pb">${periodBars(me, barP)}</div></section>
   <section class="pnl disc"><div class="ph"><h3>คะแนนวินัย</h3><span class="sub">30 วันล่าสุด</span><button class="lnk sm" style="margin-left:auto" data-act="scoreinfo">เกณฑ์การคำนวณ</button></div>
-    <div class="pb"><div class="dsc">${ring(d.score, innerHeight < 800 ? 60 : 74, 7)}<div><b class="w ${scoreTone(d.score)}">${scoreWord(d.score)}</b><div class="xs ink2 dx">${ic('flag', 13)} ตรงแผนติดต่อกัน <b class="gold num">${streak(me.id)}</b> รายการ</div><div class="xs muted">อันดับวินัย <b class="ink2 num">${cohortRank(me.id)}</b> จาก ${S.clients.length} รายของรุ่น</div><div class="xs ${yellowCards(me.id).length >= YC_LIMIT ? 'dn' : 'muted'} row" style="gap:6px;margin-top:2px">${ycIcons(yellowCards(me.id).length)} ใบเหลือง ${yellowCards(me.id).length}/${YC_LIMIT}</div></div></div>
+    <div class="pb"><div class="dsc">${ring(d.score, innerHeight < 800 ? 60 : 74, 7)}<div><b class="w ${scoreTone(d.score)}">${scoreWord(d.score)}</b><div class="xs ink2 dx">${ic('flag', 13)} ตรงแผนติดต่อกัน <b class="gold num">${streak(me.id)}</b> รายการ</div><div class="xs muted dsc-rk">อันดับวินัย <b class="ink2 num">${cohortRank(me.id)}</b> จาก ${S.clients.length} รายของรุ่น</div><div class="xs ${points(me.id).score < PT_TALK ? 'dn' : 'muted'} row" style="gap:6px;margin-top:2px">${ptBadge(points(me.id).score)} คะแนนตามกติกา${points(me.id).score < PT_TALK ? ' · ' + ptLevel(points(me.id).score) : ''}</div></div></div>
     <div class="mbar">${scoreBars(d)}</div></div></section>
   <section class="pnl qact">${quickActs(me, pp)}</section>`;
 }
@@ -3475,7 +3506,7 @@ function sizeCalc(me, st) {
     [heat <= HEAT_LIMIT ? 'ok' : 'warn', `ความเสี่ยงรวมของพอร์ตไม่เกิน ${fmt(HEAT_LIMIT * 100)}%`, `หลังซื้อ ${fmt(heat * 100, 1)}%`],
   ].filter(Boolean);
   const bad = plan.filter(r => r[0] === 'bad'), warn = risk.filter(r => r[0] === 'warn');
-  const verdict = bad.length ? ['dn', 'alert', `ไม่ตรงแผน ${bad.length} ข้อ`, `ถ้าส่งคำสั่งตามนี้ จะนับเป็นใบเหลือง: ${bad.map(r => r[1]).join(' · ')}`] : warn.length ? ['warn', 'alert', `ควรทบทวน ${warn.length} ข้อ`, 'ตรงแผน แต่เกินกติกาความเสี่ยงของคุณ'] : !st.stop ? ['blue', 'clock', 'ตั้งคำสั่ง Stop ก่อนส่ง', 'ทุกข้อตรงแผนและอยู่ในกติกาความเสี่ยง'] : ['up', 'check', 'พร้อมส่งคำสั่ง', 'ตรงแผนและอยู่ในกติกาความเสี่ยง'];
+  const verdict = bad.length ? ['dn', 'alert', `ไม่ตรงแผน ${bad.length} ข้อ`, `ถ้าส่งคำสั่งตามนี้ จะถูกหัก ${p ? PT_RULE.dev[0] : PT_RULE.off[0]} คะแนน: ${bad.map(r => r[1]).join(' · ')}`] : warn.length ? ['warn', 'alert', `ควรทบทวน ${warn.length} ข้อ`, 'ตรงแผน แต่เกินกติกาความเสี่ยงของคุณ'] : !st.stop ? ['blue', 'clock', 'ตั้งคำสั่ง Stop ก่อนส่ง', 'ทุกข้อตรงแผนและอยู่ในกติกาความเสี่ยง'] : ['up', 'check', 'พร้อมส่งคำสั่ง', 'ตรงแผนและอยู่ในกติกาความเสี่ยง'];
   return { p, L, k, u, ok, riskU, held, byRisk, byPos, pq, rec, q, loss, gain, heat, val, base, riskB, plan, risk, verdict };
 }
 function sizeModal(pre = {}) {
@@ -3498,7 +3529,7 @@ function sizeModal(pre = {}) {
       return `${me.mks.length > 1 ? `<div class="seg sz-mk" role="tablist">${me.mks.map(m => `<button class="${m === st.mk ? 'on' : ''}" data-szmk="${m}">${MARKETS[m][0]}</button>`).join('')}</div>` : ''}
         <p class="sz-q">ซื้อตามแผนไหนของหัวหน้าโค้ช?</p>
         <div class="szpl">${ps.map(q => { const a = q.alloc?.[me.id]; return `<button class="szpc ${st.chosen && st.pid === q.id ? 'on' : ''}" data-szp="${esc(q.id)}">${slogo(q.sym, 30)}<span class="szpc-t"><b>${esc(q.sym)}</b><span class="xs muted">Entry ${px(q.lo)}–${px(q.hi)} · SL ${px(planSL(q.id))} · TP ${px(q.tp1)}</span></span><span class="szpc-r">${a ? `<b class="num">${fmt(a.qty)}</b><span class="xs muted">${unitOf(q)} ที่แนะนำ</span>` : ''}${a && boughtOn(me, q.id) >= a.qty * .9 ? '<span class="tag ok xs">ซื้อครบแล้ว</span>' : ''}</span></button>`; }).join('') || `<div class="xs muted sz-none">ยังไม่มีแผนที่เปิดอยู่ใน${MARKETS[st.mk][0]}</div>`}
-          <button class="szpc off ${st.chosen && !st.pid ? 'on' : ''}" data-szp=""><span class="szpc-i">${ic('flag', 16)}</span><span class="szpc-t"><b>ไม่มีในแผน · ซื้อเอง</b><span class="xs">นับเป็นใบเหลือง และต้องระบุเหตุผลตอนบันทึก</span></span></button></div>`;
+          <button class="szpc off ${st.chosen && !st.pid ? 'on' : ''}" data-szp=""><span class="szpc-i">${ic('flag', 16)}</span><span class="szpc-t"><b>ไม่มีในแผน · ซื้อเอง</b><span class="xs">หัก ${PT_RULE.off[0]} คะแนน และต้องระบุเหตุผลตอนบันทึก</span></span></button></div>`;
     }
     if (step === 2) {
       const last = st.sym ? lastPx(st.sym) : null;
@@ -3521,7 +3552,7 @@ function sizeModal(pre = {}) {
     }
     return step4(x);
   }
-  const hE = x => { const p = x.p, inR = p && st.e >= p.lo - 1e-9 && st.e <= p.hi + 1e-9; return `<span class="sz-h ${p ? inR ? 'up' : 'dn' : ''}" id="szh-e">${p ? inR ? `${ic('check', 12, 2.6)} อยู่ในช่วง Entry ของแผน ${px(p.lo)}–${px(p.hi)}` : `${ic('x', 12, 2.6)} นอกช่วง Entry ${px(p.lo)}–${px(p.hi)} · จะนับเป็นใบเหลือง` : 'ซื้อนอกแผน · ไม่มีช่วง Entry ให้เทียบ'}</span>`; };
+  const hE = x => { const p = x.p, inR = p && st.e >= p.lo - 1e-9 && st.e <= p.hi + 1e-9; return `<span class="sz-h ${p ? inR ? 'up' : 'dn' : ''}" id="szh-e">${p ? inR ? `${ic('check', 12, 2.6)} อยู่ในช่วง Entry ของแผน ${px(p.lo)}–${px(p.hi)}` : `${ic('x', 12, 2.6)} นอกช่วง Entry ${px(p.lo)}–${px(p.hi)} · จะถูกหัก ${PT_RULE.dev[0]} คะแนน` : 'ซื้อนอกแผน · ไม่มีช่วง Entry ให้เทียบ'}</span>`; };
   const hS = x => `<span class="sz-h ${x.ok ? '' : st.s ? 'dn' : ''}" id="szh-s">${x.ok ? `ห่างจากราคาเข้า ${px(st.e - st.s)} บาท (${fmt((st.e - st.s) / st.e * 100, 1)}%)` : st.s ? 'Stop Loss ต้องต่ำกว่าราคาเข้า' : 'ราคาที่ตั้งคำสั่ง Stop ในแอป'}</span>`;
   const hT = x => `<span class="sz-h" id="szh-t">${x.ok && st.t > st.e ? `Risk : Reward = 1 : ${fmt((st.t - st.e) / (st.e - st.s), 2)}` : ''}</span>`;
   function live3(x) {
@@ -3533,7 +3564,7 @@ function sizeModal(pre = {}) {
         <div class="tpd sz-t"><div><span>มูลค่าที่จะซื้อ</span><b class="num">฿${baht(Math.round(x.val))} <span class="muted">${fmt(x.val / x.base * 100, 1)}% ของทุน</span></b></div>${x.gain ? `<div><span>ถ้าถึงเป้าหมาย</span><b class="num up">+฿${baht(Math.round(x.gain))}</b></div>` : ''}</div>`;
   }
   const step4 = x => `<div class="sz-v ${x.verdict[0]}">${ic(x.verdict[1], 20)}<div><b>${x.verdict[2]}</b><span>${x.verdict[3]}</span></div></div>
-      <div class="sz-g"><div class="sz-gh">กฎของแผน <span class="muted">ไม่ผ่านข้อใด = ใบเหลือง</span></div><div class="sz-ck">${x.plan.map(ckRow).join('')}</div></div>
+      <div class="sz-g"><div class="sz-gh">กฎของแผน <span class="muted">ไม่ผ่านข้อใด = หัก ${x.p ? PT_RULE.dev[0] : PT_RULE.off[0]} คะแนน</span></div><div class="sz-ck">${x.plan.map(ckRow).join('')}</div></div>
       <div class="sz-g"><div class="sz-gh">กติกาความเสี่ยงของคุณ</div><div class="sz-ck">${x.risk.map(ckRow).join('')}</div></div>
       <label class="szchk ${st.stop ? 'on' : ''}"><input type="checkbox" id="szstop" ${st.stop ? 'checked' : ''}> ตั้งคำสั่ง Stop (Stop Order) ที่ ${px(st.s)} ในแอปแล้ว</label>`;
   const canNext = x => step === 1 ? st.chosen : step === 2 ? x.ok && !!st.sym : step === 3 ? x.q > 0 : true;
@@ -3597,7 +3628,7 @@ function profileView() {
         ${info('โค้ชผู้ดูแล', `<span class="prf-co"><img src="${staffFace(co.id, 48)}" alt="">${esc(co.name)}<button class="ibtn me-line" data-act="line" title="ติดต่อ${esc(co.name)}ทาง LINE" aria-label="ติดต่อ${esc(co.name)}ทาง LINE">${ic('chat', 13)}</button></span>`)}
         ${info('คอมมูนิตี้ <i class="me-cm"></i>', cp.on ? `แสดงเป็น ${esc(commName(me))}${cp.amt ? '' : ' · เฉพาะ %'}` : '<span class="muted">ไม่แสดง</span>')}
       </div>
-      <div class="me-st"><span title="คะแนนวินัย 30 วันล่าสุด"><small>วินัย</small><b class="num ${scoreTone(d.score)}">${d.score}</b></span><span title="เข้าร่วม Coaching · เกณฑ์ 80%"><small>Coaching</small><b class="num ${a.rate >= .8 ? 'up' : 'warn'}">${a.n}/${a.t}</b></span><span title="เหรียญความสำเร็จ"><small>เหรียญ</small><b class="num">${got}/${bs.length}</b></span></div>
+      <div class="me-st"><span title="คะแนนตามกติกา · ต่ำกว่า 70 โค้ชนัดคุย · ต่ำกว่า 50 พิจารณาสิทธิ์คืนค่าเรียน"><small>คะแนน</small><b class="num ${ptTone(points(me.id).score)}">${points(me.id).score}</b></span><span title="คะแนนวินัย 30 วันล่าสุด"><small>วินัย</small><b class="num ${scoreTone(d.score)}">${d.score}</b></span><span title="เข้าร่วม Coaching · เกณฑ์ 80%"><small>Coaching</small><b class="num ${a.rate >= .8 ? 'up' : 'warn'}">${a.n}/${a.t}</b></span><span title="เหรียญความสำเร็จ"><small>เหรียญ</small><b class="num">${got}/${bs.length}</b></span></div>
       <div class="me-md">${bs.map(medal).join('')}</div>
       <div class="me-act"><button class="btn ghost sm" data-act="avatar">${ic('user', 15)} แต่งตัวละคร</button><button class="btn ghost sm" data-act="commset">${ic('users', 15)} การแสดงในคอมมูนิตี้</button></div>
     </div></section>
@@ -3703,7 +3734,7 @@ function journalView() {
   <div class="kstrip">
     <div class="kpi"><div class="k">กำไรสะสม</div><div class="v num ${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</div><div class="s">${pct(retPct(me))} จากเงินทุน</div></div>
     <div class="kpi"><div class="k">${tm('win')}</div><div class="v num">${closed.length ? Math.round(wins.length / closed.length * 100) : 0}%</div><div class="s">กำไร ${wins.length} · ขาดทุน ${losses.length} ตัว</div></div>
-    <div class="kpi"><div class="k">ตรงแผน</div>${ycIcons(yellowCards(me.id).length, 'kc')}<div class="v num ${scoreTone(d.acc * 100)}">${Math.round(d.acc * 100)}%</div><div class="s">${d.planN - d.devN} จาก ${d.planN} รายการ · ${YC_DAYS} วัน</div></div>
+    <div class="kpi"><div class="k">ตรงแผน</div>${ptBadge(points(me.id).score, 'kc')}<div class="v num ${scoreTone(d.acc * 100)}">${Math.round(d.acc * 100)}%</div><div class="s">${d.planN - d.devN} จาก ${d.planN} รายการ · 30 วัน</div></div>
     <div class="kpi opt"><div class="k">กำไรเฉลี่ยต่อตัว</div><div class="v num up">${pct(avg(wins))}</div><div class="s">ขาดทุนเฉลี่ย ${pct(avg(losses))}</div></div>
     <div class="kpi opt"><div class="k">Profit Factor</div><div class="v num">${lossSum ? fmt(wins.reduce((s, p) => s + p.realized, 0) / lossSum, 2) : '—'}</div><div class="s">กำไรรวม ÷ ขาดทุนรวม</div></div>
   </div>
@@ -3994,7 +4025,7 @@ function scoreInfo() {
 function rulesModal() {
   openModal(mhead('กติกาของคอร์ส', 'ยอมรับไว้เมื่อเข้าใช้งานครั้งแรก') + `<div class="mbd"><div class="list">
     ${RULES.map(([, t, s], i) => `<div class="row" style="align-items:flex-start"><span class="tag gold">${i + 1}</span><div><b>${t}</b><div class="muted sm">${s}</div></div></div>`).join('')}
-    <div class="note-box y">${ycIcons(YC_LIMIT)}<span>รายการที่ไม่ตรงแผนนับเป็น<b>ใบเหลือง</b> ครบ ${YC_LIMIT} ใบภายใน ${YC_DAYS} วัน โค้ชจะนัดพูดคุย และอาจยกเลิกการรับประกันคืนค่าเรียน</span></div>
+    <div class="note-box y">${ic('flag', 16)}<span><b>คะแนนตามกติกา 100 คะแนน:</b> ${ptRulesTxt()}</span></div>
   </div></div>`);
 }
 // the money-back terms from the program announcement, with where the client stands today
@@ -4005,7 +4036,7 @@ function termsModal() {
     <div class="note-box g">${ic('trophy', 16)}<span>เมื่อจบโปรแกรม คืนค่าเรียน <b>1,000,000 − กำไรที่ทำได้</b> ค่าเรียนจึงมาจากกำไรเท่านั้น ถ้าไม่มีกำไรก็ได้คืนทั้งหมด และถ้ากำไรเกิน 1 ล้าน ส่วนที่เกินเป็นของคุณ</span></div>
     <table class="tbl"><thead><tr><th>กำไรเมื่อจบโปรแกรม</th><th class="r">ค่าเรียนที่ได้คืน</th></tr></thead><tbody>${rows.map(([a, b]) => `<tr><td>${a}</td><td class="r">${b}</td></tr>`).join('')}
       <tr class="me"><td><b>ของคุณ ณ วันนี้ <span class="num ${st.pr >= 0 ? 'up' : 'dn'}">${signed(st.pr)}</span></b></td><td class="r num"><b class="gold">${st.extra > 0 ? `ไม่มีเงินคืน · ส่วนเกิน ${signed(st.extra)}` : '฿' + baht(st.refund)}</b></td></tr></tbody></table>
-    <div class="note-box y">${ycIcons(YC_LIMIT)}<span><b>ใบเหลือง:</b> ทุกรายการที่ไม่ตรงแผนหรือซื้อนอกแผน (หลังหัวหน้าโค้ชตรวจแล้ว) นับเป็นใบเหลือง 1 ใบ ครบ ${YC_LIMIT} ใบภายใน ${YC_DAYS} วัน โค้ชจะนัดพูดคุย และอาจยกเลิกการรับประกันคืนค่าเรียน · ของคุณตอนนี้ ${yellowCards(me.id).length} ใบ</span></div>
+    <div class="note-box y">${ic('flag', 16)}<span><b>คะแนนตามกติกา:</b> เริ่ม 100 คะแนน หักตามความหนักของเรื่องที่ไม่เป็นไปตามแผน (รายละเอียดใน “กติกาของคอร์ส”) · ต่ำกว่า ${PT_TALK} โค้ชนัดคุย · ต่ำกว่า ${PT_REVIEW} พิจารณาสิทธิ์คืนค่าเรียน · ของคุณตอนนี้ <b>${points(ME().id).score}/100</b></span></div>
     <div class="xs muted">กำไรคำนวณจากบันทึกการซื้อขาย (Realized + Unrealized ณ ราคาปิด) ไม่รวมเงินฝาก/ถอน · ตัวเลขวันนี้เป็นการประมาณการ ยอดจริงคำนวณ ณ วันจบโปรแกรม</div></div>`, 'sm');
 }
 
@@ -4090,14 +4121,14 @@ function fdRow(x) {
 function challenge() {
   return memo('chl', () => {
     const d = tz(now()), m0 = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1) - TZ;
-    const ok = c => !yellowCards(c.id).some(y => y.at >= m0) && execsOf(c.id).some(e => e.rec.at >= m0 && e.rec.at <= now());
+    const ok = c => !ptLosses(c.id).some(y => y.at >= m0) && execsOf(c.id).some(e => e.rec.at >= m0 && e.rec.at <= now());
     return { name: `ตรงแผนทุกรายการตลอดเดือน${TH_MF[d.getUTCMonth()]}`, n: S.clients.filter(ok).length, me: ok(ME()), tot: S.clients.length };
   });
 }
 // badges: profit milestones, runs on plan, discipline, coaching, results
 function badgesOf(c) {
   return memo('bd:' + c.id, () => {
-    const pr = profit(c), d = discipline(c.id), a = attOf(c.id), ps = pnlSum(c), best = streakRuns(c.id).best, yc = yellowCards(c.id).length;
+    const pr = profit(c), d = discipline(c.id), a = attOf(c.id), ps = pnlSum(c), best = streakRuns(c.id).best, lost = ptLosses(c.id).filter(y => y.at >= now() - 30 * DAY).reduce((t, y) => t + y.pts, 0);
     const nOk = execsOf(c.id).filter(e => e.ver === 'ok').length, bigWin = positions(c.id).some(p => p.qty === 0 && p.bought > 0 && p.realized / p.bought >= .1);
     const money = (k, n, v, dsc) => ({ k, n, ic: 'trophy', d: dsc || `กำไรสะสมถึง ฿${baht(v)}`, ok: pr >= v, prog: `อีก ฿${baht(Math.max(0, v - pr))}` });
     return [
@@ -4106,7 +4137,7 @@ function badgesOf(c) {
       { k: 's10', n: 'ตรงแผน 10', ic: 'target', d: 'บันทึกตรงแผนติดต่อกัน 10 รายการ', ok: best >= 10, prog: `ทำได้สูงสุด ${best}/10` },
       { k: 's25', n: 'ตรงแผน 25', ic: 'target', d: 'บันทึกตรงแผนติดต่อกัน 25 รายการ', ok: best >= 25, prog: `ทำได้สูงสุด ${best}/25` },
       { k: 'disc', n: 'วินัยเหล็ก', ic: 'shield', d: 'คะแนนวินัย 90 ขึ้นไป', ok: d.score >= 90, prog: `ตอนนี้ ${d.score}/90` },
-      { k: 'clean', n: 'ไร้ใบเหลือง', ic: 'check', d: `ไม่มีใบเหลืองใน ${YC_DAYS} วัน (บันทึกอย่างน้อย 10 รายการ)`, ok: !yc && d.n >= 10, prog: yc ? `มีใบเหลือง ${yc} ใบ` : `บันทึกแล้ว ${d.n}/10 รายการ` },
+      { k: 'clean', n: 'ไม่ถูกหักคะแนน', ic: 'check', d: 'ไม่ถูกหักคะแนนใน 30 วัน (บันทึกอย่างน้อย 10 รายการ)', ok: !lost && d.n >= 10, prog: lost ? `ถูกหัก ${lost} คะแนนใน 30 วัน` : `บันทึกแล้ว ${d.n}/10 รายการ` },
       { k: 'coach', n: 'Coaching ครบ', ic: 'calendar', d: 'เข้าร่วม Coaching ทุกนัด (อย่างน้อย 4 นัด)', ok: a.t >= 4 && a.n === a.t, prog: `เข้าร่วม ${a.n}/${a.t} นัด` },
       { k: 'win', n: 'Win Rate 60%', ic: 'chart', d: 'ปิดสถานะกำไร 60% ขึ้นไป (อย่างน้อย 5 ตัว)', ok: ps.closed >= 5 && ps.rate >= .6, prog: `ตอนนี้ ${ps.closed ? Math.round(ps.rate * 100) : 0}% จาก ${ps.closed} ตัว` },
       { k: 'big', n: 'กำไร 10%+', ic: 'zap', d: 'ปิดสถานะที่กำไร 10% ขึ้นไป', ok: bigWin, prog: 'ยังไม่มีสถานะที่ปิดด้วยกำไร 10%' },

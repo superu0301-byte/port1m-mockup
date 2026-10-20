@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-22o9jLs8JngH0s4bZEy2ft3wmoF0Wk+dhpYLU4d9Mdo=' 'sha256-1Xxj+K8C2klhYmQ04pOre1Ogn13ZF/kGuLQ50zOczjQ='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-jSvUjBVPxLuGkt7p03mqEuWYBtJi8KUxNQDAAlLDQoQ=' 'sha256-yB0LDHC1P0fQdd1F2AljZMeaSYuY6Casa0/z69/0IHM='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>หลังบ้าน · ปั้นพอร์ต 1 ล้าน (ต้นแบบ)</title>
@@ -487,13 +487,11 @@ button.ot-r:hover,.ot-r.click:hover{background:rgba(var(--wt),.04);cursor:pointe
 .pb.flush{padding:0}
 .pre{flex:none;padding:10px 16px 6px}
 /* yellow cards */
-.ycs{display:inline-flex;gap:3px;vertical-align:middle}
-.ycs i{width:9px;height:13px;border-radius:2px;border:1.5px solid color-mix(in srgb,#f5c518 55%,transparent);transform:rotate(-6deg)}
-.ycs i.on{background:#f5c518;border-color:#f5c518;box-shadow:0 2px 6px -2px rgba(245,197,24,.7)}
-/* yellow cards in the corner of a KPI tile (the tooltip explains them) */
-.kpi .ycs.kc{position:absolute;top:12px;right:14px;gap:4px}
-.kpi .ycs.kc i{width:11px;height:15px}
-.ycard{display:inline-block;width:8px;height:11px;border-radius:2px;background:#f5c518;transform:rotate(-6deg);margin-right:4px;vertical-align:-1px;box-shadow:0 1px 4px -1px rgba(245,197,24,.7)}
+/* คะแนนตามกติกา: the score as a small badge (green 85+, amber 70–84, red below 70), and what a record cost */
+.ptb{display:inline-flex;align-items:baseline;gap:1px;padding:0 7px;border-radius:999px;font-weight:800;font-size:12px;line-height:19px;border:1.5px solid currentColor;vertical-align:middle;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ptb small{font-size:9.5px;font-weight:600;opacity:.75}.ptb.up{color:var(--up)}.ptb.warn{color:var(--warn)}.ptb.dn{color:var(--dn)}
+.kpi .ptb.kc{position:absolute;top:11px;right:12px}
+.ptm{font-size:11px;font-weight:800;color:var(--dn);margin-right:4px;font-variant-numeric:tabular-nums;flex:none}
 /* the record sheet */
 .rd{display:flex;flex-direction:column;gap:12px;min-height:0;height:100%;overflow:auto;scrollbar-width:thin;padding-right:2px}
 .rtrack{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;flex:none}
@@ -534,8 +532,8 @@ button.ot-r:hover,.ot-r.click:hover{background:rgba(var(--wt),.04);cursor:pointe
 .rnote.warn .ic{flex:none;margin-top:2px}
 /* plan result in a table cell */
 .pst{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:12.5px;white-space:nowrap}
-.pst>i:not(.ycard){width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
-.pst .ycard{margin-right:0}
+.pst>i{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+
 .pst.ok{color:var(--up)}.pst.warn{color:var(--warn)}.pst.pu{color:var(--pu)}
 /* short screens and phones: the same sheet, tighter (it scrolls inside its panel only if it still does not fit) */
 @media (max-height:760px),(max-width:760px){.rd{gap:8px}.rd-pic .slipth{width:76px;height:104px}.rd-top{grid-template-columns:76px minmax(0,1fr);gap:10px}.kv{font-size:12.5px}.kv>span{padding:3px 10px}.ckt{font-size:12.5px}.ckt-h{display:none}.ckt-h+.ckt-r{border-top:none}.ckt-r{padding:3px 10px}.rt{padding-top:20px}.rt span{display:none}.rsec{gap:4px}.rsec>h4{font-size:11.5px}.rnote{padding:5px 9px;font-size:12px}.mtc-h,.mtc-r{padding:4px 10px}}
@@ -848,6 +846,15 @@ button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,19
 
 /* order matrix */
 .v-plans{grid-template-rows:minmax(0,1fr)}
+/* how the plans did: tiles, then every plan with its result in R, how many clients bought and stayed on it */
+.v-plans:has(.pvh){grid-template-rows:auto minmax(0,1fr)}
+.v-plans:has(.pfk){grid-template-rows:auto auto minmax(0,1fr)}
+.pvs{flex:none}.pvs button{padding:5px 12px;font-size:13px}
+.pft td{vertical-align:middle}.pft .oh{display:flex;align-items:center;gap:8px}
+.rbar{position:relative;height:4px;margin-top:4px;border-radius:4px;background:rgba(var(--wt),.07)}.rbar i{position:absolute;top:0;bottom:0;border-radius:4px}.rbar i.up{background:var(--up)}.rbar i.dn{background:var(--dn)}
+.rbar:after{content:"";position:absolute;left:50%;top:-2px;bottom:-2px;width:1px;background:var(--line2)}
+@media (max-width:900px){.pft .pf-x,.pft .opt{display:none}.pft td,.pft th{padding-left:8px;padding-right:8px}.pfp .ph .sub{display:none}}
+@media (max-width:420px){.pft .pf-d{display:none}}
 @media (max-width:900px){.v-plans .ph [data-act=plannew]{display:none}}
 .mx{width:100%;border-collapse:collapse;font-size:13.5px;table-layout:fixed}
 .mx th:first-child{width:44%}.mx th.opt{width:70px}
@@ -1929,17 +1936,48 @@ function extraChecks(e) {
 }
 const checks = e => memo('ck:' + e.id, () => ({ ...checkEx(e, planOf(e.plan)), ...extraChecks(e) }));
 const allOk = r => Object.values(r).every(v => v === 'ok');
-// ใบเหลือง (yellow card): each record the head coach confirmed that did not follow the plan (or bought off-plan),
-// and each time a coach wrote down that the client did not follow a plan. At YC_LIMIT cards the coach talks with the
-// client about the refund guarantee (it may be cancelled if the client keeps trading off the plan).
-// cards count over the last 30 days, so a client who gets back on the plan sees them expire
-const YC_LIMIT = 3, YC_DAYS = 30;
-const yellowCards = clId => memo('yc:' + clId, () => [
-  ...execsOf(clId).filter(e => e.at <= now() && e.ver === 'ok' && !allOk(checks(e)) && (e.plan || e.side === 'buy')).map(e => ({ at: e.vat || e.at, ex: e.id, sym: e.sym, why: e.plan ? devText(e) : `ซื้อ ${e.sym} นอกแผน` })),
-  ...S.misses.filter(m => m.cl === clId && m.at <= now()).map(m => ({ at: m.at, miss: m.id, sym: planOf(m.plan)?.sym || '', why: MISS[m.kind] }))].filter(y => y.at >= now() - YC_DAYS * DAY).sort((a, b) => a.at - b.at));
-const ycOf = e => { const i = yellowCards(e.cl).findIndex(y => y.ex === e.id); return i < 0 ? 0 : i + 1; };
-// small yellow cards, n of them filled (up to the limit)
-const ycIcons = (n, cls = '') => `<span class="ycs ${cls}" role="img" aria-label="ใบเหลือง ${n} ใบ" title="ใบเหลือง ${n} ใบใน ${YC_DAYS} วันล่าสุด · ครบ ${YC_LIMIT} ใบ โค้ชจะนัดคุยเรื่องสิทธิ์คืนค่าเรียน">${Array.from({ length: Math.max(YC_LIMIT, n) }, (_, i) => `<i class="${i < n ? 'on' : ''}"></i>`).join('')}</span>`;
+// คะแนนตามกติกา 100 คะแนน (replaced the yellow cards on 2026-10-20): every client starts with 100. Each thing that did
+// not follow the plan or the program's rules takes points off by how serious it is (records only once the head coach has
+// confirmed them); a week with nothing taken off gives 2 back, up to 100. Below 70 the coach talks with the client;
+// below 50 the refund guarantee is reviewed.
+const PT_MAX = 100, PT_TALK = 70, PT_REVIEW = 50, PT_BACK = 2;
+const PT_RULE = { off: [10, 'ซื้อนอกแผน'], nocut: [10, 'ไม่ขายตัดขาดทุนตามแผน'], late: [10, 'ขายตัดขาดทุนช้ากว่าแผน'], dev: [5, 'ไม่ตรงแผน (ราคา จำนวน ขนาดสถานะ ถัวขาดทุน)'],
+  self: [5, 'ขายโดยไม่มีเหตุผลตามแผน'], nosell: [5, 'ไม่ขายทำกำไรตามแผน'], att: [3, 'ขาด Coaching'], snap: [2, 'ไม่ส่งยอดพอร์ตวันศุกร์'], stmt: [2, 'ไม่ส่ง Statement'] };
+// what took points off, oldest first: { at, k, pts, why, sym, ex (a record), miss (a coach's note) }
+const ptLosses = clId => memo('ptl:' + clId, () => {
+  const c = client(clId), n = now(), out = [], add = (at, k, x) => { if (at <= n && at >= c.joined) out.push({ at, k, pts: PT_RULE[k][0], why: PT_RULE[k][1], ...x }); };
+  for (const e of execsOf(clId)) {
+    if (e.at > n || e.ver !== 'ok' || allOk(checks(e))) continue;
+    const t = e.vat || e.at;
+    if (!e.plan) { if (e.side === 'buy') add(t, 'off', { ex: e.id, sym: e.sym, why: `ซื้อ ${e.sym} นอกแผน` }); continue; }
+    add(t, e.side === 'sell' ? (e.why === 'cut' ? 'late' : 'self') : 'dev', { ex: e.id, sym: e.sym, why: devText(e) });
+  }
+  for (const m of S.misses) if (m.cl === clId) add(m.at, m.kind === 'nocut' ? 'nocut' : 'nosell', { miss: m.id, sym: planOf(m.plan)?.sym || '', why: `${MISS[m.kind]}${planOf(m.plan) ? ' ' + planOf(m.plan).sym : ''}` });
+  for (const x of sessOf(clId)) if (!x.att) add(x.at, 'att', { why: `ขาด${x.kind === 'review' ? ' Review ประจำเดือน' : ' Coaching'} ${dstr(x.at)}` });
+  // a Friday that passed with no port report that day or the next two trading days
+  S.days.forEach((d, i) => { if (new Date(d).getUTCDay() === 5 && i < T_() && !S.snaps.some(x => x.cl === clId && x.day >= i && x.day <= i + 2)) add(d - TZ + DAY, 'snap', { why: `ไม่ส่งยอดพอร์ตวันศุกร์ที่ ${dstr(d - TZ + 12 * HR)}` }); });
+  for (const x of stmtDue(c)) if (x.late && !x.got) add(x.due, 'stmt', { why: `ไม่ส่ง Statement เดือน ${ymName(x.ym)}` });
+  return out.sort((a, b) => a.at - b.at);
+});
+// the score at a time, with every change (losses, and the 2 back for each finished week with no loss; weeks run Monday–Sunday)
+function points(clId, at) {
+  const calc = () => {
+    const c = client(clId), tnow = at ?? now(), ls = ptLosses(clId).filter(x => x.at <= tnow), j = tz(c.joined);
+    const w0 = Date.UTC(j.getUTCFullYear(), j.getUTCMonth(), j.getUTCDate()) - ((j.getUTCDay() + 6) % 7) * DAY - TZ, ev = ls.map(x => ({ at: x.at, d: -x.pts, x }));
+    for (let w = w0; w + 7 * DAY <= tnow; w += 7 * DAY) if (!ls.some(x => x.at >= w && x.at < w + 7 * DAY)) ev.push({ at: w + 7 * DAY - 1, d: PT_BACK, wk: w });
+    ev.sort((a, b) => a.at - b.at);
+    let s = PT_MAX;
+    for (const e of ev) { const b = s; s = Math.max(0, Math.min(PT_MAX, s + e.d)); e.chg = s - b; e.after = s; }
+    return { score: s, lost: ls.reduce((t, x) => t + x.pts, 0), events: ev.filter(e => e.chg || e.x), losses: ls };
+  };
+  return at == null ? memo('pts:' + clId, calc) : calc();
+}
+const ptOf = e => ptLosses(e.cl).find(x => x.ex === e.id);   // what a record cost, if anything
+const ptTone = s => s >= 85 ? 'up' : s >= PT_TALK ? 'warn' : 'dn';
+const ptLevel = s => s < PT_REVIEW ? 'พิจารณาสิทธิ์คืนค่าเรียน' : s < PT_TALK ? 'โค้ชนัดคุย' : 'ปกติ';
+const ptBadge = (s, cls = '') => `<span class="ptb ${ptTone(s)} ${cls}" title="คะแนนตามกติกา ${s}/100 · ต่ำกว่า ${PT_TALK} โค้ชนัดคุย · ต่ำกว่า ${PT_REVIEW} พิจารณาสิทธิ์คืนค่าเรียน">${s}<small>/100</small></span>`;
+// the rules in one line (dialogs)
+const ptRulesTxt = () => `ทุกคนเริ่มที่ ${PT_MAX} คะแนน · ${[...new Set(Object.values(PT_RULE).map(([p, l]) => `${l.replace(/ \(.*\)/, '')} −${p}`))].join(' · ')} · สัปดาห์ที่ไม่ถูกหักเลยได้คืน +${PT_BACK} · ต่ำกว่า ${PT_TALK} โค้ชนัดคุย · ต่ำกว่า ${PT_REVIEW} พิจารณาสิทธิ์คืนค่าเรียน`;
 
 // buys and sells of one holding paired first in, first out: each sale shows the buys it closed and its profit or loss
 // (against the average cost at the time, the way Realized P/L is counted); each buy shows what was sold of it and what is left
@@ -1967,15 +2005,15 @@ const salePL = e => { const m = e.side === 'sell' && matchOf(e); return m ? `<sp
    the check against the plan, the buy-sell pairing, then notes ---------- */
 const planSt = e => !e.plan ? ['pu', 'นอกแผน'] : allOk(checks(e)) ? ['ok', 'ตรงแผน'] : ['warn', 'ไม่ตรงแผน'];
 // the plan result in a table cell: a coloured dot and the word (a yellow card when the record earned one)
-const planMark = e => { const [c, l] = planSt(e); return `<span class="pst ${c}" title="${c === 'warn' ? esc(devText(e)) : ''}">${ycOf(e) ? '<i class="ycard"></i>' : '<i></i>'}${l}</span>`; };
+const planMark = e => { const [c, l] = planSt(e); return `<span class="pst ${c}" title="${c === 'warn' ? esc(devText(e)) : ''}">${ptOf(e) ? `<b class="ptm" title="หัก ${ptOf(e).pts} คะแนน">−${ptOf(e).pts}</b>` : '<i></i>'}${l}</span>`; };
 // profit or loss of a sale in a table cell ("—" for a buy)
 const plCell = e => { const m = e.side === 'sell' && matchOf(e); return m ? `<b class="${m.pl >= 0 ? 'up' : 'dn'}">${signed(m.pl)}</b><span class="t2 ${m.pl >= 0 ? 'up' : 'dn'}">${pct(m.r, 1)}</span>` : '<span class="muted">—</span>'; };
 function recTrack(e) {
-  const ok = e.ver === 'ok', fix = e.ver === 'fix', [pc, pl] = planSt(e), yc = ycOf(e);
+  const ok = e.ver === 'ok', fix = e.ver === 'fix', [pc, pl] = planSt(e), pt = ptOf(e);
   const st = [
     ['done', 'บันทึกแล้ว', `${dstr(e.rec.at)} ${tstr(e.rec.at)} · ${e.rec.by === e.cl ? 'ลูกค้า' : byName(e.rec.by)}${e.fixed ? ' · แก้ไข' : ''}`],
     [ok ? 'done' : fix ? 'warn' : 'now', ok ? 'ตรวจกับภาพแล้ว' : fix ? 'ขอให้แก้ไข' : 'รอตรวจกับภาพ', ok ? `${staffName(e.vby || 'head')}${e.vat ? ' · ' + dstr(e.vat) + ' ' + tstr(e.vat) : ''}` : fix ? `${staffName(e.fix?.by || 'head')} · ${dstr(e.fix?.at || e.rec.at)}` : 'หัวหน้าโค้ช'],
-    [ok ? (pc === 'ok' ? 'done' : pc === 'pu' ? 'pu' : 'warn') : 'todo', ok ? pl : 'ผลเทียบแผน', ok ? (pc === 'ok' ? 'นับเป็นรายการตรงแผน' : yc ? `ใบเหลืองใบที่ ${yc}` : 'เรื่องที่ต้องเคลียร์') : 'หลังตรวจกับภาพ']];
+    [ok ? (pc === 'ok' ? 'done' : pc === 'pu' ? 'pu' : 'warn') : 'todo', ok ? pl : 'ผลเทียบแผน', ok ? (pc === 'ok' ? 'นับเป็นรายการตรงแผน' : pt ? `หัก ${pt.pts} คะแนน` : 'เรื่องที่ต้องเคลียร์') : 'หลังตรวจกับภาพ']];
   return `<div class="rtrack">${st.map(([k, t, x]) => `<div class="rt ${k}"><i>${k === 'done' ? ic('check', 10, 3) : ''}</i><b>${t}</b><span>${x}</span></div>`).join('')}</div>`;
 }
 function recFacts(e) {
@@ -1995,8 +2033,8 @@ function recCheck(e) {
   if (r.size) rows.push(['ขนาดสถานะ', `≤ ฿${kb(tpLimit(client(e.cl)))}`, 'เกินแผนเทรด', r.size]);
   if (r.avg) rows.push(['ถัวขาดทุน', 'ไม่ซื้อต่ำกว่าทุน', 'ซื้อต่ำกว่าทุน', r.avg]);
   rows.push(['หลักฐาน', 'ภาพจากแอป', e.slip ? 'แนบแล้ว' : 'ไม่มี', r.proof]);
-  const yc = ycOf(e), why = e.plan ? devText(e) : e.side === 'buy' ? `ซื้อ ${e.sym} โดยไม่มีแผนจากหัวหน้าโค้ช` : '';
-  return `<div class="ckt"><div class="ckt-h"><span>หัวข้อ</span><span>ตามแผน</span><span>จริง</span><span>ผล</span></div>${rows.map(([a, b, c, v]) => `<div class="ckt-r"><span>${a}</span><span class="num">${b}</span><b class="num">${c}</b>${res(v)}</div>`).join('')}</div>${!allOk(r) && why ? `<div class="rnote warn">${yc ? `<i class="ycard"></i><span><b>ใบเหลืองใบที่ ${yc}${yc >= YC_LIMIT ? ' · ครบเกณฑ์ โค้ชจะนัดคุยเรื่องสิทธิ์คืนค่าเรียน' : ''}</b> · ${esc(why)}</span>` : `${ic('alert', 13)}<span>${esc(why)}</span>`}</div>` : ''}`;
+  const pt = ptOf(e), sc = pt ? points(e.cl).score : 0, why = e.plan ? devText(e) : e.side === 'buy' ? `ซื้อ ${e.sym} โดยไม่มีแผนจากหัวหน้าโค้ช` : '';
+  return `<div class="ckt"><div class="ckt-h"><span>หัวข้อ</span><span>ตามแผน</span><span>จริง</span><span>ผล</span></div>${rows.map(([a, b, c, v]) => `<div class="ckt-r"><span>${a}</span><span class="num">${b}</span><b class="num">${c}</b>${res(v)}</div>`).join('')}</div>${!allOk(r) && why ? `<div class="rnote warn">${pt ? `<b class="ptm">−${pt.pts}</b><span><b>หัก ${pt.pts} คะแนน · คะแนนตอนนี้ ${sc}/100${sc < PT_REVIEW ? ' · ต่ำกว่า 50 พิจารณาสิทธิ์คืนค่าเรียน' : sc < PT_TALK ? ' · ต่ำกว่า 70 โค้ชนัดคุย' : ''}</b> · ${esc(why)}</span>` : `${ic('alert', 13)}<span>${esc(why)}</span>`}</div>` : ''}`;
 }
 const recSec = (t, html, tail = '') => html ? `<section class="rsec"><h4><span>${t}</span>${tail}</h4>${html}</section>` : '';
 // notes on a record: why the client bought, what the client told the coach, what the coach wrote back
@@ -2222,8 +2260,8 @@ function alerts(at) {
       else if (dd.now >= stop * .6) out.push({ k: `dd:${c.id}:${dayKey(tnow)}`, sev: 'mid', aud: 'coach', type: 'dd', cl: c.id, coach: c.coach, at: tnow, title: `ใกล้ระดับขาดทุนที่ต้องหยุดทบทวน (ลดลง ${pct(-dd.now)})`, detail: `ระดับที่ต้องหยุดตามแผนเทรด ${fmt(stop * 100)}% จากจุดสูงสุด · ควรลดความเสี่ยงของพอร์ต` });
       const a2 = attOf(c.id);
       if (a2.t >= 4 && a2.rate < .8) out.push({ k: `att:${c.id}:${a2.t}`, sev: a2.rate < .7 ? 'high' : 'mid', aud: 'both', type: 'att', cl: c.id, coach: c.coach, at: sessOf(c.id)[0].at, title: `เข้าร่วม Coaching ${a2.n}/${a2.t} นัด (${fmt(a2.rate * 100)}%) ต่ำกว่าเกณฑ์ 80%`, detail: 'ข้อตกลงกำหนดให้เข้าร่วม Coaching และ Review อย่างน้อย 80% ของนัดหมาย' });
-      const ycn = yellowCards(c.id).length;
-      if (ycn >= YC_LIMIT) out.push({ k: `yc:${c.id}:${ycn}`, sev: 'high', aud: 'coach', type: 'yc', cl: c.id, coach: c.coach, at: tnow, title: `ใบเหลือง ${ycn} ใบ: นัดคุยเรื่องสิทธิ์คืนค่าเรียน`, detail: `ไม่ตรงแผน ${ycn} ครั้งใน ${YC_DAYS} วัน · แจ้งลูกค้าว่าหากยังไม่ทำตามแผน อาจยกเลิกการรับประกันคืนค่าเรียน` });
+      const sc = points(c.id, at).score;
+      if (sc < PT_TALK) out.push({ k: `pts:${c.id}:${sc < PT_REVIEW ? 'r' : 't'}`, sev: sc < PT_REVIEW ? 'high' : 'mid', aud: 'coach', type: 'pts', cl: c.id, coach: c.coach, at: tnow, title: sc < PT_REVIEW ? `คะแนน ${sc}/100: พิจารณาสิทธิ์คืนค่าเรียน` : `คะแนน ${sc}/100: นัดคุยกับลูกค้า`, detail: sc < PT_REVIEW ? 'ต่ำกว่า 50 คะแนน ให้หัวหน้าโค้ชพิจารณาสิทธิ์รับประกันคืนค่าเรียน' : 'ต่ำกว่า 70 คะแนน โค้ชนัดคุยเรื่องการทำตามแผนและกติกาของโปรแกรม' });
       for (const x of stmtDue(c)) if (x.late && !x.got && tnow > x.due) out.push({ k: `stmt:${c.id}:${x.ym}`, sev: 'mid', aud: 'cs', type: 'stmt', cl: c.id, coach: c.coach, at: x.due, title: `ยังไม่ส่ง Statement เดือน ${ymName(x.ym)}`, detail: 'ส่งรายงานพอร์ตและ Statement จากโบรกเกอร์ทุกเดือน ภายในวันที่ 5 ของเดือนถัดไป' });
     }
     const sevN = { high: 0, mid: 1, low: 2 };
@@ -2979,8 +3017,8 @@ const NAV = {
   cs: [['overview', 'ภาพรวม', 'grid'], ['tasks', 'งาน CS', 'phone'], ['clients', 'ลูกค้าทั้งหมด', 'users'], ['apps', 'ผู้สมัคร', 'user'], ['team', 'ทีมงานและสิทธิ์', 'shield']],
 };
 const TITLES = { desk: 'ภาพรวม', plans: 'แผนการเทรดและการทำตามแผน', record: 'บันทึกการซื้อขาย', clients: 'ลูกค้า', apps: 'ผู้สมัครและการคัดเลือก', overview: 'ภาพรวมทั้งคอร์ส', tasks: 'งาน CS', team: 'ทีมงานและสิทธิ์' };
-const AL_IC = { yc: 'flag', dev: 'alert', off: 'flag', miss: 'alert', sl: 'alert', heat: 'shield', idle: 'user', nosnap: 'wallet', diff: 'wallet', score: 'target', dd: 'chart', flow: 'wallet', att: 'calendar', stmt: 'book' };
-const COACH_T = ['dev', 'off', 'miss', 'sl', 'yc'];
+const AL_IC = { pts: 'flag', dev: 'alert', off: 'flag', miss: 'alert', sl: 'alert', heat: 'shield', idle: 'user', nosnap: 'wallet', diff: 'wallet', score: 'target', dd: 'chart', flow: 'wallet', att: 'calendar', stmt: 'book' };
+const COACH_T = ['dev', 'off', 'miss', 'sl', 'pts'];
 const myIds = () => new Set(mine().map(c => c.id));
 // records the clients keyed in, waiting for the coach; ones sent back to fix; ones confirmed this week
 const pendQ = () => { const ids = myIds(); return S.execs.filter(e => ids.has(e.cl) && e.ver === 'pend' && e.rec.at <= now()).sort((a, b) => a.rec.at - b.rec.at); };
@@ -3100,8 +3138,8 @@ function groupRow(g, compact) {
     <div class="acts">${acts}</div></div>`;
 }
 function flagsOf(c) {
-  const al = alerts().filter(a => a.cl === c.id), f = [], pn = pendOf(c.id).length, fx = fixOf(c.id).length, yc = yellowCards(c.id).length;
-  if (yc) f.push(`<span class="tag ${yc >= YC_LIMIT ? 'dn' : 'warn'}" title="ใบเหลือง ${yc} ใบ"><i class="ycard"></i>ใบเหลือง ${yc}</span>`);
+  const al = alerts().filter(a => a.cl === c.id), f = [], pn = pendOf(c.id).length, fx = fixOf(c.id).length, sc = points(c.id).score;
+  if (sc < 85) f.push(`<span class="tag ${sc < PT_TALK ? 'dn' : 'warn'}" title="คะแนนตามกติกา ${sc}/100">คะแนน ${sc}</span>`);
   if (al.some(a => a.type === 'sl' || (a.type === 'miss' && a.sev === 'high'))) f.push('<span class="tag dn">หลุด Stop Loss</span>');
   const dev = al.filter(a => a.type === 'dev' || a.type === 'miss').length;
   if (dev) f.push(`<span class="tag warn">ไม่ตรงแผน ${dev}</span>`);
@@ -3188,9 +3226,10 @@ function planCell(p, c) {
   return `<button class="cell ${k}" data-act="cell" data-p="${esc(p.id)}" data-c="${esc(c.id)}" title="${esc(c.name)}: ${sub}"><span class="d">${ic(icn, 14, 2.4)}</span><span class="s num">${sub}</span></button>`;
 }
 function plansView() {
+  if (isHead() && pView === 'perf') return planPerfView();
   const co = coach(planCoach()), cl = S.clients.filter(c => c.coach === co.id), ps = myPlans(), live = ps.filter(planLive).length;
   const legend = `<span class="lgd"><span><i style="background:var(--up)"></i>ตรงแผน</span><span><i style="background:var(--warn)"></i>ไม่ตรงแผน</span><span><i style="background:var(--dn)"></i>หลุด Stop Loss</span><span><i style="background:var(--blue)"></i>รอตรวจ</span></span>`;
-  return `<section class="pnl"><div class="ph">${isCoach() ? '' : `<select id="pcoach" class="pcsel" aria-label="เลือกโค้ช">${S.coaches.map(x => `<option value="${x.id}" ${x.id === co.id ? 'selected' : ''}>${x.name}</option>`).join('')}</select>`}<h3>${isCoach() ? 'แผนสำหรับลูกค้าของคุณ' : `ลูกค้าของ${co.name}`} · เปิดอยู่ ${live} จาก ${ps.length} แผน</h3><span class="sub">${legend}</span>${isHead() ? `<button class="btn ghost sm" data-act="plannew" style="margin-left:auto">${ic('plus', 15)} บันทึกแผนใหม่</button>` : ''}<div class="pgn" data-pgn="mx"></div></div>
+  return `${isHead() ? '<div class="vh pvh"><div class="seg" role="tablist"><button class="on" data-pview="mx">การทำตามแผน</button><button data-pview="perf">ผลงานของแผน</button></div></div>' : ''}<section class="pnl"><div class="ph">${isCoach() ? '' : `<select id="pcoach" class="pcsel" aria-label="เลือกโค้ช">${S.coaches.map(x => `<option value="${x.id}" ${x.id === co.id ? 'selected' : ''}>${x.name}</option>`).join('')}</select>`}<h3>${isCoach() ? 'แผนสำหรับลูกค้าของคุณ' : `ลูกค้าของ${co.name}`} · เปิดอยู่ ${live} จาก ${ps.length} แผน</h3><span class="sub">${legend}</span>${isHead() ? `<button class="btn ghost sm" data-act="plannew" style="margin-left:auto">${ic('plus', 15)} บันทึกแผนใหม่</button>` : ''}<div class="pgn" data-pgn="mx"></div></div>
     <div class="pb">${ps.length ? `<table class="mx"><thead><tr><th>แผน</th>${cl.map(c => { const d = discipline(c.id); return `<th><span class="colh" data-act="open" data-id="${esc(c.id)}">${avatar(c, 'sm')}<span>${esc(c.name)}</span><small>ตรงแผน ${Math.round(d.acc * 100)}%</small></span></th>`; }).join('')}<th class="opt">ซื้อ</th></tr></thead><tbody data-pg="mx">
     ${ps.map(p => {
       const lv = planLive(p), bought = cl.filter(c => positions(c.id).some(x => x.plan === p.id)).length;
@@ -3445,7 +3484,7 @@ function clientView() {
   const c = client(selCl), co = coach(c.coach), notes = S.notes.filter(x => x.cl === c.id).length;
   if (!CL_TABS.some(t => t[0] === clTab)) clTab = 'prof';
   const tab = { prof: clProfile, ov: clOverview, trd: clTrades, plan: clPlan, port: clPort, notes: clNotes }[clTab](c);
-  return `<section class="pnl chd">${avatar(c, 'lg')}<div style="min-width:0;flex:1 1 180px"><h2 class="ell">${esc(cname(c))} ${yellowCards(c.id).length ? ycIcons(yellowCards(c.id).length) : ''}</h2><div class="muted sm ell">${co.name} · ${c.term} เดือน ${TYPE[c.type]} · เดือนที่ ${progMonth(c)} · ${c.mks.map(m => MARKETS[m][0]).join(', ')} · ${esc(c.phone)} · ${esc(c.broker)} xxxx-${esc(c.acct)}${c.ob ? ` · เข้าใช้งาน ${seenTxt(c)}` : ' · <span class="warn">ยังไม่เคยเข้าใช้งาน</span>'}</div></div>
+  return `<section class="pnl chd">${avatar(c, 'lg')}<div style="min-width:0;flex:1 1 180px"><h2 class="ell">${esc(cname(c))} ${ptBadge(points(c.id).score)}</h2><div class="muted sm ell">${co.name} · ${c.term} เดือน ${TYPE[c.type]} · เดือนที่ ${progMonth(c)} · ${c.mks.map(m => MARKETS[m][0]).join(', ')} · ${esc(c.phone)} · ${esc(c.broker)} xxxx-${esc(c.acct)}${c.ob ? ` · เข้าใช้งาน ${seenTxt(c)}` : ' · <span class="warn">ยังไม่เคยเข้าใช้งาน</span>'}</div></div>
     <span class="sp"></span><div class="seg">${CL_TABS.map(([k, l, sl]) => `<button class="${clTab === k ? 'on' : ''}" data-ctab="${k}"><span class="lgx">${l}</span><span class="shx">${sl}</span>${k === 'notes' && notes ? `<span class="n">${notes}</span>` : ''}</button>`).join('')}</div>
     <button class="btn soft sm" data-act="line1" data-id="${esc(c.id)}">${ic('chat', 15)} LINE</button><button class="btn ghost sm evb" data-act="evid" data-id="${esc(c.id)}" title="แฟ้มหลักฐานของลูกค้า · พิมพ์หรือบันทึกเป็น PDF">${ic('book', 15)}<span> แฟ้มหลักฐาน</span></button>${isCS() ? `<button class="btn ghost sm" data-act="recoach" data-id="${esc(c.id)}">${ic('users', 15)} เปลี่ยนโค้ช</button>` : ''}</section>
   <div class="sub vgrid c-${clTab === 'trd' ? 'ord' : clTab}" data-v="cl-${clTab}">${tab}</div>`;
@@ -3469,11 +3508,11 @@ function clOverview(c) {
 // how the money is split across the markets they trade (หุ้นไทย, Block Trade, TFEX...), each market's approach and what
 // they actually traded there, and the limits every trade must keep
 function clProfile(c) {
-  const co = coach(c.coach), tp = c.tp, base = tpBase(c), n = now(), d = discipline(c.id), yc = yellowCards(c.id).length, cn = concern(c), at = attOf(c.id);
+  const co = coach(c.coach), tp = c.tp, base = tpBase(c), n = now(), d = discipline(c.id), sc = points(c.id).score, cn = concern(c), at = attOf(c.id);
   const j = tz(c.joined), end = Date.UTC(j.getUTCFullYear(), j.getUTCMonth() + c.term, j.getUTCDate()) - TZ, ups = c.flows.filter(f => f.cap && !f.pend && !f.rej).length;
   const info = (k, v, t = '') => `<div><span>${k}</span><b ${t ? `title="${esc(t)}"` : ''}>${v}</b></div>`;
   return `<section class="pnl prf-l" data-pt="ข้อมูลลูกค้า"><div class="ph"><h3>ข้อมูลลูกค้า</h3><span class="sub">${TYPE[c.type]} Trader</span></div><div class="pb">
-      <div class="prf-id">${avatar(c, 'lg')}<div style="min-width:0"><b class="ell">${esc(c.name)} ${esc(c.last || '')}</b><span class="xs muted">เดือนที่ ${progMonth(c)} จาก ${c.term} · วินัย <b class="${scoreTone(d.score)}">${d.score}</b>${yc ? ` · ${ycIcons(yc)}` : ''}</span></div></div>
+      <div class="prf-id">${avatar(c, 'lg')}<div style="min-width:0"><b class="ell">${esc(c.name)} ${esc(c.last || '')}</b><span class="xs muted">เดือนที่ ${progMonth(c)} จาก ${c.term} · วินัย <b class="${scoreTone(d.score)}">${d.score}</b> · ${ptBadge(sc)}</span></div></div>
       <div class="tpd prf-d">
         ${info('โทรศัพท์', `${esc(c.phone)} · ${c.line ? '<span class="up">LINE เชื่อมแล้ว</span>' : '<span class="warn">ยังไม่เชื่อม LINE</span>'}`)}${info('อีเมล', esc(c.email), c.email)}
         ${info('บัญชีซื้อขาย', `${esc(c.broker)} · xxxx-${esc(c.acct)}`)}
@@ -3495,6 +3534,111 @@ function clProfile(c) {
         ${tpLev(c)}
       </div></section>`;
 }
+/* ---------- paper documents (the evidence file, the management report): pieces, and a dialog that prints only the paper ---------- */
+const docKV = rows => `<table class="dkv">${rows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('')}</table>`;
+const docTbl = (head, rows, empty) => rows.length ? `<table class="dtb"><thead><tr>${head.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table>` : `<p class="dnone">${empty}</p>`;
+const docSec = (nn, t, body, sub = '') => `<section class="dsec"><h2><span>${nn}</span>${t}${sub ? `<small>${sub}</small>` : ''}</h2>${body}</section>`;
+const docDate = ms => `${dstr(ms)} ${String(tz(ms).getUTCFullYear() + 543).slice(2)}`;
+const docHead = (title, sub, no) => `<header class="dhd"><img src="${LOGO}" alt="Super Trader Republic"><div><b>${title}</b><span>${sub}</span></div><div class="dno"><span>เลขที่เอกสาร</span><b>${no}</b><span>ออกเมื่อ ${docDate(now())} ${tstr(now())} น.</span><span>โดย ${esc(ME().name)}</span></div></header>`;
+function openDoc(bar, no, doc, onPrint) {
+  const box = openModal(`<div class="doc-bar"><b>${ic('book', 18)} ${bar}</b><span class="xs muted">${no}</span><span class="sp"></span><button class="btn sm" id="docprint">${ic('note', 15)} พิมพ์ / บันทึกเป็น PDF</button><button class="x" data-act="close" aria-label="ปิด">${ic('x', 18)}</button></div><div class="docv">${doc}</div>`, 'docm');
+  $('#docprint', box).addEventListener('click', () => { onPrint?.(); save(); window.print(); });
+  return box;
+}
+
+/* ---------- how the head coach's plans have done ----------
+   A plan's result in R: what it made against its own risk (from the middle of the Entry range to the first Stop Loss).
+   At TP1 the plan sells half and moves the stop to Entry, so the rest ends at TP2, at that stop, or wherever it is now. */
+function planR(p) {
+  const e = (p.lo + p.hi) / 2, risk = e - p.sl; if (!(risk > 0)) return null;
+  const tp1 = (p.sls || []).some(x => x.at <= now() && String(x.note || '').startsWith('ราคาถึง TP1')), live = planLive(p), last = lastPx(p.sym) ?? e;
+  const exit = live ? last : p.end.why === 'tp2' ? p.tp2 : p.end.why === 'sl' ? slAt(p, p.end.at) : last, r = x => (x - e) / risk;
+  return tp1 ? .5 * r(p.tp1) + .5 * r(exit) : r(exit);
+}
+// the clients a plan was told to: how many bought, how many stayed on the plan in every record, what they made on it
+const planStat = p => memo('pst:' + p.id, () => {
+  const ids = Object.keys(p.alloc || {}), n = now(), r = planR(p), live = planLive(p);
+  let bought = 0, followed = 0, pl = 0;
+  ids.forEach(id => {
+    const recs = execsOf(id).filter(e => e.plan === p.id && e.at <= n); if (!recs.some(e => e.side === 'buy')) return;
+    bought++; if (recs.every(e => e.ver !== 'ok' || allOk(checks(e)))) followed++;
+    const pos = positions(id).find(x => x.plan === p.id); if (pos) pl += pos.realized + (pos.qty > 0 ? pos.upl : 0);
+  });
+  return { p, r, live, told: ids.length, bought, followed, pl, res: live ? 'live' : p.end.why === 'tp2' ? 'tp' : p.end.why === 'sl' ? (r > .05 ? 'be' : 'sl') : 'close' };
+});
+function planPerf(ps) {
+  const st = ps.map(planStat), closed = st.filter(x => !x.live && x.r != null), wins = closed.filter(x => x.r > 0), sum = k => st.reduce((t, x) => t + x[k], 0);
+  return { st, closed: closed.length, wins: wins.length, win: closed.length ? wins.length / closed.length : 0, avgR: closed.length ? closed.reduce((t, x) => t + x.r, 0) / closed.length : 0,
+    told: sum('told'), bought: sum('bought'), followed: sum('followed'), pl: sum('pl'), live: st.filter(x => x.live).length };
+}
+const PRES = { live: ['blue', 'เปิดอยู่'], tp: ['ok', 'ถึง TP2'], be: ['ok', 'ถึง TP1 แล้วออก'], sl: ['dn', 'หลุด Stop Loss'], close: ['', 'ปิดแผน'] };
+const rTxt = r => r == null ? '—' : `${r >= 0 ? '+' : '−'}${fmt(Math.abs(r), 2)}R`;
+let pView = 'mx', ppCoach = '', ppRes = 'all';
+function planPerfView() {
+  const ps = S.plans.filter(p => p.at <= now() && (!ppCoach || p.coach === ppCoach)).sort((a, b) => b.at - a.at), pf = planPerf(ps);
+  const shown = pf.st.filter(x => ppRes === 'all' || (ppRes === 'live') === x.live);
+  const tile = (icn, k, v, sub, tone = '') => `<div class="kpi kf"><div class="k"><span class="kf-i">${ic(icn, 14)}</span>${k}</div><div class="v num ${tone}">${v}</div><div class="s">${sub}</div></div>`;
+  const row = x => { const p = x.p, [tc, tl] = PRES[x.res];
+    return `<tr><td class="num nw pf-d">${dstr(p.at)}<div class="xs muted">${p.coach ? coach(p.coach).name : 'ทุกโค้ช'}</div></td><td><div class="oh">${slogo(p.sym, 26)}<div style="min-width:0"><b>${esc(p.sym)}</b><div class="xs muted">${MARKETS[p.mk || 'th'][0]}</div></div></div></td>
+      <td class="num xs opt">Entry ${px(p.lo)}–${px(p.hi)}<br>SL ${px(p.sl)} · TP ${px(p.tp1)}/${px(p.tp2)}</td><td><span class="tag ${tc}">${tl}</span></td>
+      <td class="r"><b class="num ${x.r == null ? '' : x.r >= 0 ? 'up' : 'dn'}">${rTxt(x.r)}</b><div class="rbar"><i class="${x.r >= 0 ? 'up' : 'dn'}" style="width:${Math.min(50, Math.abs(x.r || 0) / 3 * 50)}%;${x.r >= 0 ? 'left:50%' : `right:50%`}"></i></div></td>
+      <td class="r num pf-x">${x.bought}/${x.told}</td><td class="r num ${x.bought && x.followed < x.bought ? 'warn' : ''}">${x.bought ? `${Math.round(x.followed / x.bought * 100)}%` : '—'}</td><td class="r num pf-x ${x.pl >= 0 ? 'up' : 'dn'}">${x.bought ? signed(Math.round(x.pl)) : '—'}</td></tr>`; };
+  return `<div class="vh"><div class="seg" role="tablist"><button data-pview="mx">การทำตามแผน</button><button class="on" data-pview="perf">ผลงานของแผน</button></div>
+      <select id="ppcoach" class="pcsel" aria-label="เลือกโค้ช"><option value="">ทุกโค้ช</option>${S.coaches.map(x => `<option value="${x.id}" ${x.id === ppCoach ? 'selected' : ''}>${x.name}</option>`).join('')}</select>
+      <span class="muted sm opt" title="R = กำไรหรือขาดทุนเทียบกับความเสี่ยงของแผน (กลางช่วง Entry ถึง Stop Loss แรก) · ถึง TP1 ขายครึ่งหนึ่งและเลื่อน Stop มาที่ Entry">R คือผลเทียบกับความเสี่ยงของแผน</span></div>
+    <div class="kstrip k6 pfk" data-pt="สรุป">
+      ${tile('target', 'แผนทั้งหมด', pf.st.length, `เปิดอยู่ ${pf.live} · ปิดแล้ว ${pf.closed}`)}
+      ${tile('trophy', 'อัตราชนะ', `${Math.round(pf.win * 100)}%`, `แผนที่ปิดแล้ว ${pf.wins}/${pf.closed}`, pf.win >= .5 ? 'up' : 'warn')}
+      ${tile('chart', 'R เฉลี่ยต่อแผน', rTxt(pf.avgR), 'แผนที่ปิดแล้ว', pf.avgR >= 0 ? 'up' : 'dn')}
+      ${tile('users', 'ลูกค้าซื้อตามแผน', `${pf.told ? Math.round(pf.bought / pf.told * 100) : 0}%`, `${fmt(pf.bought)} จาก ${fmt(pf.told)} ครั้งที่แนะนำ`)}
+      ${tile('check', 'ทำตามแผนครบ', `${pf.bought ? Math.round(pf.followed / pf.bought * 100) : 0}%`, 'ราคา จำนวน และการขาย', pf.bought && pf.followed / pf.bought >= .8 ? 'up' : 'warn')}
+      ${tile('wallet', 'กำไรของลูกค้าจากแผน', signed(Math.round(pf.pl)), 'รวมที่ขายแล้วและที่ยังถือ', pf.pl >= 0 ? 'up' : 'dn')}
+    </div>
+    <section class="pnl pfp" data-pt="แผน"><div class="ph"><h3>แผน</h3><div class="seg xsg" role="tablist">${[['all', 'ทั้งหมด', pf.st.length], ['closed', 'ปิดแล้ว', pf.st.length - pf.live], ['live', 'เปิดอยู่', pf.live]].map(([k, l, c]) => `<button class="${ppRes === k ? 'on' : ''}" data-ppres="${k}">${l} <span class="num">${c}</span></button>`).join('')}</div><span class="sub">ล่าสุดก่อน</span><div class="pgn" data-pgn="pp"></div></div>
+      <div class="pb flush"><table class="tbl pft"><thead><tr><th class="pf-d">วันที่</th><th>หลักทรัพย์</th><th class="opt">แผน</th><th>ผล</th><th class="r">R</th><th class="r pf-x">ลูกค้าซื้อ</th><th class="r">ทำตามแผน</th><th class="r pf-x">กำไรของลูกค้า</th></tr></thead><tbody data-pg="pp">${shown.map(row).join('')}</tbody></table></div></section>`;
+}
+
+/* ---------- management report: the week in one document ----------
+   the cohort, the tuition that may have to be returned (today, and where each client is heading by the end of the
+   program at their pace so far), client status, the ten coaches, how the plans have done, and the week's work */
+function forecast(c) {
+  const n = now(), el = Math.max(14 * DAY, n - c.joined), end = progEnd(c), tot = Math.max(el, end - c.joined), proj = profit(c) * tot / el;
+  return { proj, refund: TUITION - Math.max(0, Math.min(TUITION, proj)), end };
+}
+function execReport() {
+  if (!seeAll()) return;
+  const n = now(), tn = tz(n), mon = dayOf(n) - ((tn.getUTCDay() + 6) % 7) * DAY - TZ, fri = mon + 4 * DAY, cl = S.clients, al = alerts();
+  const all = cl.map(c => ({ c, ...concern(c) })), cnt = { red: 0, amber: 0, ok: 0 }; all.forEach(x => cnt[x.lv]++);
+  const pr = cl.reduce((t, c) => t + profit(c), 0), cap = cl.reduce((t, c) => t + tpBase(c), 0), sts = cl.map(settle), fc = cl.map(forecast);
+  const dNow = Math.round(cl.reduce((t, c) => t + discipline(c.id).score, 0) / cl.length), dAgo = Math.round(cl.reduce((t, c) => t + discWeeks(c.id)[6], 0) / cl.length);
+  const att = cl.reduce((t, c) => { const a = attOf(c.id); return [t[0] + a.n, t[1] + a.t]; }, [0, 0]);
+  const refToday = sts.reduce((t, x) => t + x.refund, 0), refEnd = fc.reduce((t, x) => t + x.refund, 0), paid = cl.reduce((t, c) => t + (c.paid?.amt || 0), 0);
+  const hit = sts.filter(x => x.pr >= GOAL).length, willHit = fc.filter((x, i) => sts[i].pr < GOAL && x.proj >= GOAL).length;
+  const pf = planPerf(S.plans.filter(p => p.at <= n)), wk = S.execs.filter(e => e.rec.at >= mon && e.rec.at <= n), pq = S.execs.filter(e => e.ver === 'pend' && e.rec.at <= n), fx = S.execs.filter(e => e.ver === 'fix');
+  const closedWk = pf.st.filter(x => !x.live && x.p.end.at >= mon && x.p.end.at <= n);
+  const ptWk = cl.reduce((t, c) => t + ptLosses(c.id).filter(y => y.at >= mon).reduce((a, y) => a + y.pts, 0), 0), scs = cl.map(c => points(c.id).score);
+  const no = `EX-${isoOf(dayOf(n)).replace(/-/g, '')}`, wkTxt = `${tz(mon).getUTCDate()}–${dstr(fri)} ${String(tz(fri).getUTCFullYear() + 543).slice(2)}`;
+  const card = (k, v, sub, cls = '') => `<div><span>${k}</span><b class="${cls}">${v}</b><small>${sub}</small></div>`;
+  const red = all.filter(x => x.lv === 'red').sort((a, b) => b.why.length - a.why.length || discipline(a.c.id).score - discipline(b.c.id).score);
+  const doc = `<article class="doc">${docHead('รายงานผู้บริหารประจำสัปดาห์', `โปรแกรมปั้นพอร์ต 1 ล้าน · สัปดาห์ ${wkTxt}`, no)}
+    ${docSec('1', 'ภาพรวมรุ่น', `<div class="dsum">${card('ลูกค้า', `${cl.length} ราย`, `เงินทุนรวม ฿${kb(cap)}`)}${card('กำไรรวมตามบันทึก', signed(Math.round(pr)), `${pct(pr / cap)} ของเงินทุน · ถึง 1 ล้าน ${hit} ราย`, pr >= 0 ? 'dok' : 'dbad')}
+      ${card('วินัยเฉลี่ย', `${dNow}`, dNow === dAgo ? 'เท่ากับสัปดาห์ก่อน' : `${dNow > dAgo ? '▲' : '▼'}${Math.abs(dNow - dAgo)} เทียบสัปดาห์ก่อน`, dNow >= 75 ? 'dok' : 'dbad')}${card('เข้าร่วม Coaching', `${Math.round(att[0] / (att[1] || 1) * 100)}%`, `${att[0]}/${att[1]} นัด · เกณฑ์ 80%`)}</div>`)}
+    ${docSec('2', 'ค่าเรียนที่อาจต้องคืน', `<div class="dsum">${card('ค่าเรียนรับแล้ว', `฿${kb(paid)}`, `${cl.filter(c => c.paid).length} ราย`)}${card('ต้องคืนถ้าจบวันนี้', `฿${kb(refToday)}`, `${Math.round(refToday / (paid || 1) * 100)}% ของค่าเรียน`, 'dbad')}
+      ${card('คาดการณ์ ณ วันจบโปรแกรม', `฿${kb(refEnd)}`, `${refEnd <= refToday ? 'ลดลง' : 'เพิ่มขึ้น'} ฿${kb(Math.abs(refToday - refEnd))} จากวันนี้`, refEnd <= refToday ? 'dok' : 'dbad')}${card('คาดว่าถึง 1 ล้านเพิ่ม', `${willHit} ราย`, `ถึงแล้ว ${hit} ราย · ยังไม่ถึง ${cl.length - hit - willHit} ราย`)}</div>
+      ${docTbl(['ช่วงที่คาด ณ วันจบ', 'จำนวนลูกค้า', 'ค่าเรียนที่คาดว่าต้องคืน'], [['ขาดทุนหรือไม่มีกำไร (คืนเต็ม)', x => x.proj <= 0], ['กำไรไม่ถึง 500,000', x => x.proj > 0 && x.proj < 5e5], ['กำไร 500,000 – 1 ล้าน', x => x.proj >= 5e5 && x.proj < GOAL], ['กำไรถึง 1 ล้าน (ไม่ต้องคืน)', x => x.proj >= GOAL]].map(([l, f]) => { const g = fc.filter(f); return `<tr><td>${l}</td><td>${g.length} ราย</td><td>฿${baht(Math.round(g.reduce((t, x) => t + x.refund, 0)))}</td></tr>`; }), '')}
+      <p class="dmut">คาดการณ์จากกำไรต่อวันของลูกค้าแต่ละรายตั้งแต่เริ่มโปรแกรม ต่อเนื่องถึงวันจบโปรแกรมของรายนั้น (คืน = 1 ล้าน − กำไร ขาดทุนคืนเต็ม) เป็นการประมาณเพื่อวางแผน ไม่ใช่ตัวเลขทางบัญชี</p>`)}
+    ${docSec('3', 'สถานะลูกค้า', `<div class="dsum">${card('น่าเป็นห่วง', `${cnt.red} ราย`, 'คะแนนต่ำกว่า 70 วินัยต่ำ หรือมีเรื่องด่วน', 'dbad')}${card('ควรติดตาม', `${cnt.amber} ราย`, 'เริ่มมีสัญญาณ', 'dpend')}${card('ปกติ', `${cnt.ok} ราย`, 'ทำตามแผนดี', 'dok')}${card('คะแนนตามกติกา', `${Math.round(scs.reduce((a, b) => a + b, 0) / scs.length)} เฉลี่ย`, `ต่ำกว่า 70: ${scs.filter(s => s < PT_TALK).length} ราย · ต่ำกว่า 50: ${scs.filter(s => s < PT_REVIEW).length} ราย · สัปดาห์นี้หัก ${ptWk} คะแนน`)}</div>
+      ${docTbl(['ลูกค้า', 'โค้ช', 'เหตุผล', 'วินัย', 'คะแนน'], red.slice(0, 12).map(x => `<tr><td><b>${esc(cname(x.c))}</b></td><td>${coach(x.c.coach).name}</td><td>${x.why.map(w => esc(w[1])).join(' · ')}</td><td>${discipline(x.c.id).score}</td><td class="${points(x.c.id).score < PT_REVIEW ? 'dbad' : ''}">${points(x.c.id).score}</td></tr>`), 'ไม่มีลูกค้าที่น่าเป็นห่วง')}${red.length > 12 ? `<p class="dmut">และอีก ${red.length - 12} ราย</p>` : ''}`, 'น่าเป็นห่วงมากที่สุดก่อน')}
+    ${docSec('4', 'ผลงานโค้ช', docTbl(['โค้ช', 'ลูกค้า', 'ปกติ · ติดตาม · ห่วง', 'วินัยเฉลี่ย', 'เรื่องค้าง', 'Coaching', 'กำไรลูกค้ารวม'], S.coaches.map(co => { const x = coachStat(co, all, al), pc = x.mine.reduce((t, y) => t + profit(y.c), 0);
+      return `<tr><td><b>${esc(co.name)}</b></td><td>${x.n}</td><td>${x.cnt.ok} · ${x.cnt.amber} · <span class="${x.cnt.red ? 'dbad' : ''}">${x.cnt.red}</span></td><td>${x.dNow} <span class="${x.dDelta > 0 ? 'dok' : x.dDelta < 0 ? 'dbad' : 'dmut'}">${x.dDelta ? `${x.dDelta > 0 ? '▲' : '▼'}${Math.abs(x.dDelta)}` : '–'}</span></td><td class="${x.open && x.oldest > 2 * DAY ? 'dbad' : ''}">${x.open}${x.open ? ` · ${ageTx(x.oldest)}` : ''}</td><td>${Math.round(x.att * 100)}%</td><td class="${pc >= 0 ? 'dok' : 'dbad'}">${signed(Math.round(pc))}</td></tr>`; }), ''), 'เรื่องค้าง = เรื่องที่โค้ชต้องคุยกับลูกค้าแล้วบันทึกผล')}
+    ${docSec('5', 'ผลงานของแผนการเทรด', `<div class="dsum">${card('แผนทั้งหมด', pf.st.length, `เปิดอยู่ ${pf.live} · ปิดในสัปดาห์นี้ ${closedWk.length}`)}${card('อัตราชนะ', `${Math.round(pf.win * 100)}%`, `${pf.wins}/${pf.closed} แผนที่ปิดแล้ว`)}${card('R เฉลี่ยต่อแผน', rTxt(pf.avgR), 'เทียบกับความเสี่ยงของแผน', pf.avgR >= 0 ? 'dok' : 'dbad')}${card('ลูกค้าทำตามแผนครบ', `${pf.bought ? Math.round(pf.followed / pf.bought * 100) : 0}%`, `ซื้อตามแผน ${pf.told ? Math.round(pf.bought / pf.told * 100) : 0}% ของครั้งที่แนะนำ`)}</div>
+      ${closedWk.length ? docTbl(['แผนที่ปิดในสัปดาห์นี้', 'ผล', 'R', 'ลูกค้าซื้อ', 'กำไรของลูกค้า'], closedWk.map(x => `<tr><td><b>${esc(x.p.sym)}</b> <span class="dmut">${x.p.coach ? coach(x.p.coach).name : ''}</span></td><td>${PRES[x.res][1]}</td><td class="${x.r >= 0 ? 'dok' : 'dbad'}">${rTxt(x.r)}</td><td>${x.bought}/${x.told}</td><td class="${x.pl >= 0 ? 'dok' : 'dbad'}">${signed(Math.round(x.pl))}</td></tr>`), '') : ''}`)}
+    ${docSec('6', 'งานในสัปดาห์', docKV([['รายการที่ลูกค้าบันทึก', `${wk.length} รายการ · ตรวจแล้ว ${wk.filter(e => e.ver === 'ok').length}`], ['รอหัวหน้าโค้ชตรวจ', `${pq.length} รายการ${pq.length ? ` · รอนานสุด ${ageTx(n - Math.min(...pq.map(e => e.rec.at)))}` : ''}`], ['รอลูกค้าแก้ไข', `${fx.length} รายการ`], ['เรื่องค้างทั้งหมด', `${al.filter(a => a.aud !== 'cs').length} เรื่อง`]]))}
+    <footer class="dft"><p>รายงานนี้สร้างจากข้อมูลในระบบ ณ เวลาที่ออกเอกสาร ตัวเลขกำไรเป็นไปตามรายการที่บันทึกและราคาปิดล่าสุด</p>
+      <div class="dsig"><div><span></span>ผู้จัดทำ · ${esc(ME().name)}</div><div><span></span>ผู้บริหาร</div></div></footer></article>`;
+  openDoc(`รายงานผู้บริหาร · สัปดาห์ ${wkTxt}`, no, doc, () => pushFeed({ by: roleOf(), who: ME().id, kind: 'exrep', text: `${ME().name} พิมพ์รายงานผู้บริหาร (${no})` }));
+}
+
 /* ---------- the evidence file of one client: everything the refund guarantee may be argued over, in one document ----------
    who the client is and the program, where things stand today, the trading plan they confirmed (and every version),
    each plan the head coach gave with the size told, every record with how it was checked and by whom, the picture,
@@ -3503,15 +3647,12 @@ function clProfile(c) {
 function evidenceModal(id) {
   const c = client(id); if (!c || !canSee(id)) return;
   const n = now(), me = ME(), co = coach(c.coach), tp = c.tp, st = settle(c), base = tpBase(c), ps = pnlSum(c), d = discipline(c.id), a = attOf(c.id);
-  const ex = execsOf(c.id).filter(e => e.at <= n), told = toldOf(c).filter(p => p.at <= n), ycs = yellowCards(c.id), yy = ms => String(tz(ms).getUTCFullYear() + 543).slice(2), dd = ms => `${dstr(ms)} ${yy(ms)}`;
+  const ex = execsOf(c.id).filter(e => e.at <= n), told = toldOf(c).filter(p => p.at <= n), pts = points(c.id), yy = ms => String(tz(ms).getUTCFullYear() + 543).slice(2), dd = ms => `${dstr(ms)} ${yy(ms)}`;
   const j = tz(c.joined), end = Date.UTC(j.getUTCFullYear(), j.getUTCMonth() + c.term, j.getUTCDate()) - TZ, no = `EV-${c.id.toUpperCase()}-${isoOf(dayOf(n)).replace(/-/g, '')}`;
-  const kv = rows => `<table class="dkv">${rows.map(([k, v]) => `<tr><th>${k}</th><td>${v}</td></tr>`).join('')}</table>`;
-  const tbl = (head, rows, empty) => rows.length ? `<table class="dtb"><thead><tr>${head.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table>` : `<p class="dnone">${empty}</p>`;
-  const sec = (nn, t, body, sub = '') => `<section class="dsec"><h2><span>${nn}</span>${t}${sub ? `<small>${sub}</small>` : ''}</h2>${body}</section>`;
+  const kv = docKV, tbl = docTbl, sec = docSec;
   const res = e => { const r = checks(e), bad = Object.entries(r).filter(([, v]) => v !== 'ok').map(([k]) => CK_LABEL[k] || k); return e.ver !== 'ok' ? `<span class="dpend">${e.ver === 'fix' ? 'รอลูกค้าแก้ไข' : 'รอตรวจ'}</span>` : bad.length ? `<span class="dbad">${e.plan ? 'ไม่ตรงแผน' : 'นอกแผน'}: ${bad.join(', ')}</span>` : '<span class="dok">ตรงแผน</span>'; };
   const bought = p => ex.filter(e => e.plan === p.id && e.side === 'buy').reduce((t, e) => t + e.qty, 0);
-  const devs = [...ex.filter(e => e.ver === 'ok' && !allOk(checks(e)) && (e.plan || e.side === 'buy')).map(e => ({ at: e.vat || e.at, sym: e.sym, why: e.plan ? devText(e) : `ซื้อ ${e.sym} นอกแผน`, yc: ycs.some(y => y.ex === e.id), done: S.done['dev:' + e.id] })),
-    ...S.misses.filter(m => m.cl === c.id && m.at <= n).map(m => ({ at: m.at, sym: planOf(m.plan)?.sym || '', why: `${MISS[m.kind]} · ${m.note}`, yc: ycs.some(y => y.miss === m.id), done: S.done['miss:' + m.id] }))].sort((x, y) => x.at - y.at);
+  const devs = pts.losses.filter(x => x.ex || x.miss), doneOf = x => x.ex ? S.done['dev:' + x.ex] : x.miss ? S.done['miss:' + x.miss] : null;
   const doc = `<article class="doc">
     <header class="dhd"><img src="${LOGO}" alt="Super Trader Republic"><div><b>แฟ้มหลักฐานผู้เรียน</b><span>โปรแกรมปั้นพอร์ต 1 ล้าน · Super Trader Republic</span></div><div class="dno"><span>เลขที่เอกสาร</span><b>${no}</b><span>ออกเมื่อ ${dd(n)} ${tstr(n)} น.</span><span>โดย ${esc(me.name)}</span></div></header>
     ${sec('1', 'ข้อมูลผู้เรียนและโปรแกรม', kv([
@@ -3522,13 +3663,14 @@ function evidenceModal(id) {
     ${sec('2', 'สรุป ณ วันที่ออกเอกสาร', `<div class="dsum">
       <div><span>กำไรสะสมตามบันทึก</span><b class="${ps.total >= 0 ? 'dok' : 'dbad'}">${signed(ps.total)}</b><small>${pct(retPct(c))} ของเงินทุน</small></div>
       <div><span>เงื่อนไขกำไร 1 ล้าน</span><b>${fmt(st.pct * 100, 1)}%</b><small>${st.extra > 0 ? 'ผ่านเงื่อนไขแล้ว' : `คืนค่าเรียนหากจบวันนี้ ฿${baht(st.refund)}`}</small></div>
-      <div><span>รายการที่บันทึก</span><b>${ex.length}</b><small>ไม่เป็นไปตามแผน ${devs.length} · ใบเหลือง ${YC_DAYS} วัน ${ycs.length}</small></div>
+      <div><span>รายการที่บันทึก</span><b>${ex.length}</b><small>ไม่เป็นไปตามแผน ${devs.length} · คะแนนตามกติกา ${pts.score}/100</small></div>
       <div><span>เข้าร่วม Coaching</span><b>${a.n}/${a.t}</b><small>${Math.round(a.rate * 100)}% · เกณฑ์ 80% · วินัย ${d.score}</small></div></div>`)}
     ${sec('3', 'แผนเทรดเฉพาะบุคคล', `${tpDoc(c)}${(c.tpHist || []).length ? `<p class="dmut">ฉบับก่อนหน้า: ${c.tpHist.map(h => `ฉบับที่ ${h.no} (${dd(h.at)}${h.ok ? ` · ยืนยัน ${dd(h.ok)}` : ''})`).join(' · ')}</p>` : ''}`, `ฉบับที่ ${tp.no} · ${tp.ok ? `ลูกค้ายืนยันเมื่อ ${dd(tp.ok)} ${tstr(tp.ok)} น.` : 'รอลูกค้ายืนยัน'}`)}
     ${sec('4', 'แผนและขนาดที่หัวหน้าโค้ชแนะนำ', tbl(['วันที่', 'หลักทรัพย์', 'Entry · SL · TP', 'ขนาดที่แนะนำ', 'ลูกค้าซื้อจริง'], told.map(p => { const t = p.alloc[c.id], q = bought(p), u = unitOf(p);
       return `<tr><td>${dd(t.at || p.at)} ${tstr(t.at || p.at)}</td><td><b>${esc(p.sym)}</b> <span class="dmut">${planBy(p)}</span></td><td>${px(p.lo)}–${px(p.hi)} · SL ${px(slAt(p, n))} · TP ${px(p.tp1)}/${px(p.tp2)}</td><td>${fmt(t.qty)} ${u} · ฿${kb(t.amt)}</td><td>${!q ? '<span class="dmut">ไม่ได้ซื้อ</span>' : q > t.qty * 1.1 ? `<span class="dbad">${fmt(q)} ${u} · เกินที่แนะนำ</span>` : `<span class="dok">${fmt(q)} ${u} · ตามที่แนะนำ</span>`}</td></tr>`; }), 'ยังไม่มีแผน'), 'บันทึกแล้วแก้ไขหรือลบไม่ได้')}
     ${sec('5', 'รายการซื้อขายและผลการตรวจ', tbl(['วันที่', 'รายการ', 'แผน', 'ผลตรวจ', 'ตรวจโดย', 'หลักฐาน'], ex.map(e => `<tr><td>${dd(e.at)} ${tstr(e.at)}</td><td><b>${e.side === 'buy' ? 'ซื้อ' : 'ขาย'} ${esc(e.sym)}</b><br>${fmt(e.qty)} ${unitOf(e)} @ ${px(e.px)}</td><td>${e.plan ? esc(planOf(e.plan)?.sym || '') : '<span class="dbad">นอกแผน</span>'}</td><td>${res(e)}</td><td>${e.vby ? `${esc(staffName(e.vby))}<br><span class="dmut">${dd(e.vat || e.at)} ${tstr(e.vat || e.at)}</span>` : '—'}</td><td class="dimg">${e.slip ? slipImg(e, c) : '<span class="dbad">ไม่มีภาพ</span>'}</td></tr>`), 'ยังไม่มีรายการ'), `${ex.length} รายการ · บันทึกโดยลูกค้าพร้อมภาพหน้าจอสถานะคำสั่ง`)}
-    ${sec('6', 'สิ่งที่ไม่เป็นไปตามแผน', tbl(['วันที่', 'หลักทรัพย์', 'รายละเอียด', 'ใบเหลือง', 'การติดตาม'], devs.map(x => `<tr><td>${dd(x.at)}</td><td>${esc(x.sym)}</td><td>${esc(x.why)}</td><td>${x.yc ? '<span class="dbad">นับ (30 วัน)</span>' : '<span class="dmut">หมดอายุ</span>'}</td><td>${x.done ? `คุยแล้ว ${dd(x.done.at)} · ${esc(staffName(x.done.by))}${x.done.note ? `<br><span class="dmut">${esc(x.done.note)}</span>` : ''}` : '<span class="dpend">ยังไม่ได้เคลียร์</span>'}</td></tr>`), 'ทำตามแผนทุกรายการ'), `ใบเหลืองครบ ${YC_LIMIT} ใบใน ${YC_DAYS} วัน โค้ชนัดคุยเรื่องสิทธิ์คืนค่าเรียน`)}
+    ${sec('6', 'คะแนนตามกติกาและสิ่งที่ไม่เป็นไปตามแผน', tbl(['วันที่', 'รายการ', 'คะแนน', 'คงเหลือ', 'การติดตาม'], pts.events.map(ev => { const x = ev.x, done = x && doneOf(x);
+      return `<tr><td>${dd(ev.at)}</td><td>${x ? `${x.sym && !x.why.includes(x.sym) ? `<b>${esc(x.sym)}</b> ` : ''}${esc(x.why)}` : '<span class="dmut">สัปดาห์ที่ไม่ถูกหักคะแนน</span>'}</td><td class="${ev.chg < 0 ? 'dbad' : 'dok'}">${ev.chg > 0 ? '+' : ev.chg < 0 ? '−' : ''}${Math.abs(ev.chg)}</td><td>${ev.after}</td><td>${!x ? '—' : done ? `คุยแล้ว ${dd(done.at)} · ${esc(staffName(done.by))}${done.note ? `<br><span class="dmut">${esc(done.note)}</span>` : ''}` : x.ex || x.miss ? '<span class="dpend">ยังไม่ได้เคลียร์</span>' : '—'}</td></tr>`; }), 'ไม่ถูกหักคะแนน'), `เริ่ม 100 · ตอนนี้ ${pts.score}/100 · ต่ำกว่า ${PT_TALK} โค้ชนัดคุย · ต่ำกว่า ${PT_REVIEW} พิจารณาสิทธิ์คืนค่าเรียน`)}
     ${sec('7', 'การเข้าร่วม Coaching', tbl(['วันที่', 'ประเภท', 'ผล', 'หมายเหตุ'], sessOf(c.id).slice().reverse().map(x => `<tr><td>${dd(x.at)} ${tstr(x.at)}</td><td>${x.kind === 'review' ? 'Review ประจำเดือน' : 'Coaching'}</td><td>${x.att ? '<span class="dok">เข้าร่วม</span>' : '<span class="dbad">ไม่ได้เข้าร่วม</span>'}</td><td>${esc(x.note || '')}</td></tr>`), 'ยังไม่มีนัด'), `${a.n}/${a.t} นัด · ${Math.round(a.rate * 100)}%`)}
     ${sec('8', 'รายงานยอดพอร์ตและ Statement', tbl(['วันที่', 'ประเภท', 'ยอดที่รายงาน', 'เทียบกับบันทึก'], [...snapsOf(c).map(x => ({ t: x.at, h: `<tr><td>${dd(x.at)}</td><td>ยอดพอร์ตวันศุกร์</td><td>฿${baht(x.val)}</td><td>${snapOk(x) ? '<span class="dok">ตรงกัน</span>' : `<span class="dbad">ต่าง ${pct(snapDiff(x))}</span>`}</td></tr>` })),
       ...S.stmts.filter(x => x.cl === c.id).map(x => ({ t: x.at, h: `<tr><td>${dd(x.at)}</td><td>Statement ${ymName(x.ym)}</td><td>฿${baht(x.val)}</td><td class="dmut">จากโบรกเกอร์</td></tr>` }))].sort((x, y) => x.t - y.t).map(x => x.h), 'ยังไม่มีรายงาน'))}
@@ -3536,11 +3678,7 @@ function evidenceModal(id) {
     <footer class="dft"><p>เอกสารนี้สร้างจากข้อมูลในระบบ ณ เวลาที่ออกเอกสาร รายการที่ยืนยันแล้วและแผนที่ส่งแล้วแก้ไขหรือลบไม่ได้ ภาพหลักฐานเก็บคู่กับแต่ละรายการ</p>
       <div class="dsig"><div><span></span>ผู้ออกเอกสาร · ${esc(me.name)}</div><div><span></span>ผู้ตรวจสอบ · หัวหน้าโค้ช</div></div></footer>
   </article>`;
-  const box = openModal(`<div class="doc-bar"><b>${ic('book', 18)} แฟ้มหลักฐาน · ${esc(cname(c))}</b><span class="xs muted">${no}</span><span class="sp"></span><button class="btn sm" id="docprint">${ic('note', 15)} พิมพ์ / บันทึกเป็น PDF</button><button class="x" data-act="close" aria-label="ปิด">${ic('x', 18)}</button></div><div class="docv">${doc}</div>`, 'docm');
-  $('#docprint', box).addEventListener('click', () => {
-    pushFeed({ by: roleOf(), who: me.id, coach: c.coach, cl: c.id, kind: 'evid', text: `${me.name} พิมพ์แฟ้มหลักฐานของ${c.name} (${no})` });
-    save(); window.print();
-  });
+  openDoc(`แฟ้มหลักฐาน · ${esc(cname(c))}`, no, doc, () => pushFeed({ by: roleOf(), who: me.id, coach: c.coach, cl: c.id, kind: 'evid', text: `${me.name} พิมพ์แฟ้มหลักฐานของ${c.name} (${no})` }));
 }
 // the client's own trading plan, what the coach told them for each plan (kept as evidence), coaching attendance
 function clPlan(c) {
@@ -3665,11 +3803,11 @@ function clNotes(c) {
 const AL_SHORT = { sl: 'หลุด Stop Loss', miss: 'ไม่ทำตามแผน', dd: 'ใกล้/ถึงระดับหยุดทบทวน', att: 'Coaching ต่ำกว่า 80%', heat: 'Heat เกิน 6%', stmt: 'ยังไม่ส่ง Statement', nosnap: 'ยังไม่รายงานยอด', diff: 'ยอดไม่ตรงบันทึก', idle: 'ไม่ได้เข้าใช้งาน', flow: 'รออนุมัติฝาก/ถอน', dev: 'ไม่ตรงแผน', off: 'ซื้อนอกแผน' };
 // how worrying a client is, for the head coach: red (น่าเป็นห่วง), amber (ควรติดตาม) or fine, with the reasons
 function concern(c) {
-  const d = discipline(c.id), al = alerts().filter(a => a.cl === c.id), yc = yellowCards(c.id).length, red = [], amber = [];
-  if (yc >= YC_LIMIT) red.push(`ใบเหลือง ${yc} ใบ`); else if (yc) amber.push(`ใบเหลือง ${yc} ใบ`);
+  const d = discipline(c.id), al = alerts().filter(a => a.cl === c.id), sc = points(c.id).score, red = [], amber = [];
+  if (sc < PT_TALK) red.push(`คะแนน ${sc}/100`); else if (sc < 85) amber.push(`คะแนน ${sc}/100`);
   if (d.score < 75) red.push(`วินัย ${d.score}`); else if (d.score < 90) amber.push(`วินัย ${d.score}`);
-  [...new Set(al.filter(a => a.sev === 'high' && !['yc', 'score'].includes(a.type)).map(a => AL_SHORT[a.type] || a.title))].forEach(t => red.push(t));
-  const mid = [...new Set(al.filter(a => a.sev !== 'high' && !['score', 'yc', 'dev', 'off'].includes(a.type)).map(a => AL_SHORT[a.type] || a.title))];
+  [...new Set(al.filter(a => a.sev === 'high' && !['pts', 'score'].includes(a.type)).map(a => AL_SHORT[a.type] || a.title))].forEach(t => red.push(t));
+  const mid = [...new Set(al.filter(a => a.sev !== 'high' && !['score', 'pts', 'dev', 'off'].includes(a.type)).map(a => AL_SHORT[a.type] || a.title))];
   mid.forEach(t => amber.push(t));
   if (profit(c) < 0) amber.push(`ขาดทุน ${signed(profit(c))}`);
   return { lv: red.length ? 'red' : amber.length ? 'amber' : 'ok', why: [...red.map(t => ['dn', t]), ...amber.map(t => ['warn', t])] };
@@ -3722,8 +3860,8 @@ function coachCards(all) {
   const row = x => `<button class="cor" data-hco="${x.co.id}"><img class="cor-f" src="${staffFace(x.co.id, 96)}" alt=""><span class="cor-n"><b>${esc(x.co.name)}</b><span class="xs muted ell">ดูแล ${x.n} ราย · วินัย ${x.dNow}${x.dDelta ? ` (${x.dDelta > 0 ? '▲' : '▼'}${Math.abs(x.dDelta)})` : ''} · ${x.open ? `ค้าง ${x.open} เรื่อง` : 'ไม่มีเรื่องค้าง'}</span></span>
       <span class="cor-s">${stack(x)}<span class="xs num">${LV.map(([k, , t]) => `<span class="${t}">● ${x.cnt[k]}</span>`).join(' ')}</span></span>${ic('chev', 16)}</button>`;
   const head = `<div class="vh"><span class="hsum"><span>ลูกค้า <b class="num">${all.length}</b> ราย</span>${LV.map(([k, l]) => `<span class="hs ${k}"><i></i>${l} <b class="num">${tot[k]}</b></span>`).join('')}</span>
-    <span class="muted sm opt" title="สถานะจัดจากใบเหลือง คะแนนวินัย เรื่องที่ยังไม่เคลียร์ และการขาดทุน">เลือกโค้ชเพื่อดูรายชื่อลูกค้า</span><span class="sp"></span>
-    <button class="lnk sm" data-hco="all">ดูลูกค้าทุกคน</button><button class="tag blue" data-go="record">${ic('inbox', 12)}รอตรวจ ${pendQ().length}</button></div>`;
+    <span class="muted sm opt" title="สถานะจัดจากคะแนนตามกติกา คะแนนวินัย เรื่องที่ยังไม่เคลียร์ และการขาดทุน">เลือกโค้ชเพื่อดูรายชื่อลูกค้า</span><span class="sp"></span>
+    <button class="btn soft sm" data-act="exrep">${ic('book', 14)} รายงานผู้บริหาร</button><button class="lnk sm" data-hco="all">ดูลูกค้าทุกคน</button><button class="tag blue" data-go="record">${ic('inbox', 12)}รอตรวจ ${pendQ().length}</button></div>`;
   if (narrow()) return head + `<section class="pnl corl"><div class="ph"><h3>โค้ชทั้งหมด</h3><span class="sub">แตะเพื่อดูรายชื่อลูกค้า</span><div class="pgn" data-pgn="hco"></div></div><div class="pb"><div class="list tight" data-pg="hco">${cs.map(row).join('')}</div></div></section>`;
   return head + `<div class="cocg">${cs.map(card).join('')}</div>`;
 }
@@ -3733,8 +3871,8 @@ function headView() {
   const list = all.filter(x => hCoach === 'all' || x.c.coach === hCoach), g = { red: [], amber: [], ok: [] };
   list.forEach(x => g[x.lv].push(x));
   Object.values(g).forEach(a => a.sort((x, y) => x.why.length === y.why.length ? discipline(x.c.id).score - discipline(y.c.id).score : y.why.length - x.why.length));
-  const row = x => { const c = x.c, d = discipline(c.id), yc = yellowCards(c.id).length;
-    return `<button class="hrow" data-act="open" data-id="${esc(c.id)}">${avatar(c, 'sm')}<span class="hn"><span class="row" style="gap:6px;min-width:0"><b class="ell">${esc(cname(c))}</b>${hCoach === 'all' ? `<span class="tag line">${coach(c.coach).name}</span>` : ''}${yc ? ycIcons(yc) : ''}<span class="hsp">${discSpark(c.id)}</span></span>
+  const row = x => { const c = x.c, d = discipline(c.id);
+    return `<button class="hrow" data-act="open" data-id="${esc(c.id)}">${avatar(c, 'sm')}<span class="hn"><span class="row" style="gap:6px;min-width:0"><b class="ell">${esc(cname(c))}</b>${hCoach === 'all' ? `<span class="tag line">${coach(c.coach).name}</span>` : ''}${ptBadge(points(c.id).score)}<span class="hsp">${discSpark(c.id)}</span></span>
       <span class="xs muted num">กำไร <span class="${profit(c) >= 0 ? 'up' : 'dn'}">${pct(retPct(c))}</span> · วินัย <b class="${scoreTone(d.score)}">${d.score}</b> · ตรงแผน ${Math.round(d.acc * 100)}%</span>
       ${x.why.length ? `<span class="gchips">${x.why.slice(0, 2).map(([k, t]) => `<span class="tag ${k}" title="${esc(t)}">${esc(t)}</span>`).join('')}${x.why.length > 2 ? `<span class="tag">+${x.why.length - 2}</span>` : ''}</span>` : ''}</span>${ic('chev', 16)}</button>`; };
   const col = (k, t, sub, ic2) => `<section class="pnl hcol ${k}" data-pt="${t} ${g[k].length}"><div class="ph"><span class="hdot"></span><h3>${t}</h3><span class="tag ${k === 'red' ? 'dn' : k === 'amber' ? 'warn' : 'ok'} num">${g[k].length}</span><span class="sub">${sub}</span><div class="pgn" data-pgn="h${k}"></div></div>
@@ -3747,9 +3885,9 @@ function headView() {
     ${kpi('calendar', 'เข้าร่วม Coaching', `${Math.round(cst.att * 100)}%`, 'ลูกค้าทั้งหมดของโค้ช · เกณฑ์ 80%', cst.att >= .8 ? 'up' : 'warn')}</div>` : '';
   const byCoach = hCoach !== 'all' ? [] : S.coaches.map(co => ({ co, n: all.filter(x => x.c.coach === co.id && x.lv === 'red').length })).filter(x => x.n).sort((a, b) => b.n - a.n);
   return `<div class="vh"><button class="btn ghost sm" data-hco="">${ic('back', 15)} โค้ชทั้งหมด</button>${hCoach !== 'all' ? `<img class="hco-f" src="${staffFace(hCoach, 72)}" alt="">` : ''}<select id="hcoach" class="pcsel" aria-label="เลือกโค้ช"><option value="all" ${hCoach === 'all' ? 'selected' : ''}>ลูกค้าของโค้ชทุกคน (${S.clients.length})</option>${S.coaches.map(co => `<option value="${co.id}" ${hCoach === co.id ? 'selected' : ''}>${co.name} · ${S.clients.filter(c => c.coach === co.id).length} ราย</option>`).join('')}</select>
-    <span class="muted sm opt">จัดกลุ่มจากใบเหลือง คะแนนวินัย เรื่องที่ยังไม่เคลียร์ และการขาดทุน · เลือกลูกค้าเพื่อดูรายละเอียด</span><span class="sp"></span>${byCoach.length ? `<span class="xs muted opt">น่าเป็นห่วงมากที่สุด: ${byCoach.slice(0, 3).map(x => `<b class="ink2">${x.co.name}</b> ${x.n} ราย`).join(' · ')}</span>` : ''}
+    <span class="muted sm opt">จัดกลุ่มจากคะแนนตามกติกา คะแนนวินัย เรื่องที่ยังไม่เคลียร์ และการขาดทุน · เลือกลูกค้าเพื่อดูรายละเอียด</span><span class="sp"></span>${byCoach.length ? `<span class="xs muted opt">น่าเป็นห่วงมากที่สุด: ${byCoach.slice(0, 3).map(x => `<b class="ink2">${x.co.name}</b> ${x.n} ราย`).join(' · ')}</span>` : ''}
     <button class="tag blue" data-go="record">${ic('inbox', 12)}รอตรวจ ${pendQ().length}</button></div>
-  ${strip}  ${col('red', 'น่าเป็นห่วง', 'ใบเหลืองครบ วินัยต่ำ หรือมีเรื่องด่วน', 'check')}${col('amber', 'ควรติดตาม', 'เริ่มมีสัญญาณ ให้โค้ชติดตาม', 'check')}${col('ok', 'ปกติ', 'ทำตามแผนดี', 'users')}`;
+  ${strip}  ${col('red', 'น่าเป็นห่วง', 'คะแนนต่ำกว่า 70 วินัยต่ำ หรือมีเรื่องด่วน', 'check')}${col('amber', 'ควรติดตาม', 'เริ่มมีสัญญาณ ให้โค้ชติดตาม', 'check')}${col('ok', 'ปกติ', 'ทำตามแผนดี', 'users')}`;
 }
 function overviewView() {
   if (isHead()) return headView();
@@ -4002,6 +4140,8 @@ cmdItems = () => !ME() ? [] : [
   ...NAV[roleOf()].map(([k, l, i]) => ({ g: 'ไปที่หน้า', t: l, ic: i, run: () => go(k) })),
   ...mine().map(c => ({ g: 'ลูกค้า', t: cname(c), s: `${c.email} · กำไร ${signed(profit(c))} · วินัย ${discipline(c.id).score}${seeAll() ? ' · ' + coach(c.coach).name : ''}`, k: c.phone, ic: 'user', run: () => openClient(c.id) })),
   ...(isHead() ? [{ g: 'ทำรายการ', t: 'รายการรอตรวจ', ic: 'inbox', k: 'verify check', run: () => { rFilter = 'pend'; go('record'); } }, { g: 'ทำรายการ', t: 'บันทึกแผนใหม่', ic: 'target', k: 'plan entry stop loss', run: () => planModal('new') }] : isCS() ? [{ g: 'ทำรายการ', t: 'เพิ่มลูกค้า', ic: 'plus', k: 'add client', run: () => addClientModal() }, ...S.apps.map(a => ({ g: 'ผู้สมัคร', t: `${a.name} ${a.last}`, s: `${STAGE[a.stage][1]} · พอร์ต ฿${kb(a.port)}`, k: a.phone, ic: 'user', run: () => { selApp = a.id; aFilter = 'all'; go('apps'); pageOf('ap', `[data-app="${CSS.escape(a.id)}"]`); } }))] : [{ g: 'ทำรายการ', t: 'รายการของลูกค้า', ic: 'inbox', k: 'record trade', run: () => { rFilter = 'pend'; go('record'); } }, { g: 'ทำรายการ', t: 'บันทึกรายการให้ลูกค้า', ic: 'plus', k: 'record trade', run: () => recNew() }]),
+  ...(seeAll() ? [{ g: 'ทำรายการ', t: 'รายงานผู้บริหารประจำสัปดาห์', ic: 'book', k: 'report executive รายงาน ผู้บริหาร ค่าเรียน คืน', run: execReport }] : []),
+  ...(isHead() ? [{ g: 'ไปที่หน้า', t: 'ผลงานของแผน', ic: 'chart', k: 'plan performance win rate R', run: () => { pView = 'perf'; go('plans'); } }] : []),
   { g: 'ทำรายการ', t: 'คำศัพท์การเทรด', ic: 'help', k: 'glossary stop loss take profit entry', run: glossaryModal },
   { g: 'ทำรายการ', t: themeNow() === 'light' ? 'เปลี่ยนเป็นธีมมืด' : 'เปลี่ยนเป็นธีมสว่าง', ic: themeNow() === 'light' ? 'moon' : 'sun', k: 'theme dark light ธีม', run: () => setTheme(themeNow() === 'light' ? 'dark' : 'light') },
   ...stockItems(),
@@ -4020,6 +4160,9 @@ document.addEventListener('click', e => {
   const ap = e.target.closest('[data-app]'); if (ap) { selApp = ap.dataset.app; if (narrow()) PT.apps = 'รายละเอียด'; return render(); }
   const af = e.target.closest('[data-af]'); if (af) { aFilter = af.dataset.af; selApp = null; PG.ap = 0; return render(); }
   const rf = e.target.closest('[data-rf]'); if (rf) { rFilter = rf.dataset.rf; selEx = null; PG.vq = 0; return render(); }
+  const prs = e.target.closest('[data-ppres]'); if (prs) { ppRes = ['live', 'closed'].includes(prs.dataset.ppres) ? prs.dataset.ppres : 'all'; PG.pp = 0; return render(); }
+  const pv = e.target.closest('[data-pview]'); if (pv && isHead()) { pView = pv.dataset.pview === 'perf' ? 'perf' : 'mx'; PG.pp = 0; return render(); }
+  if (e.target.closest('[data-act="exrep"]')) return execReport();
   const rt = e.target.closest('[data-rtri]'); if (rt) { rTri = ['ok', 'dev'].includes(rt.dataset.rtri) ? rt.dataset.rtri : 'all'; selEx = null; PG.vq = 0; return render(); }
   const tf = e.target.closest('[data-tf]'); if (tf) { tFilter = tf.dataset.tf; PG.tk = 0; return render(); }
   const fs = e.target.closest('[data-fs]'); if (fs) { fStat = fs.dataset.fs; PG.all = 0; return render(); }
@@ -4106,7 +4249,7 @@ document.addEventListener('keydown', e => {
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches?.('.ccard')) { e.preventDefault(); e.target.click(); }
 });
 document.addEventListener('input', e => { if (e.target.id === 'q') { q = clean(e.target.value, 60); PG.all = 0; const pos = e.target.selectionStart; render(); const i = $('#q'); if (i) { i.focus(); i.setSelectionRange(pos, pos); } } });
-document.addEventListener('change', e => { if (e.target.id === 'pcoach') { pCoach = coach(e.target.value) ? e.target.value : 'c1'; PG.mx = 0; return render(); } if (e.target.id === 'hcoach') { hCoach = e.target.value === 'all' || coach(e.target.value) ? e.target.value : ''; PG.hred = PG.hamber = PG.hok = 0; return render(); } if (e.target.id === 'fcoach') { fCoach = coach(e.target.value) ? e.target.value : ''; PG.all = 0; render(); } if (e.target.id === 'sort') { sortBy = e.target.value; PG.all = 0; render(); } });
+document.addEventListener('change', e => { if (e.target.id === 'ppcoach') { ppCoach = coach(e.target.value) ? e.target.value : ''; PG.pp = 0; return render(); } if (e.target.id === 'pcoach') { pCoach = coach(e.target.value) ? e.target.value : 'c1'; PG.mx = 0; return render(); } if (e.target.id === 'hcoach') { hCoach = e.target.value === 'all' || coach(e.target.value) ? e.target.value : ''; PG.hred = PG.hamber = PG.hok = 0; return render(); } if (e.target.id === 'fcoach') { fCoach = coach(e.target.value) ? e.target.value : ''; PG.all = 0; render(); } if (e.target.id === 'sort') { sortBy = e.target.value; PG.all = 0; render(); } });
 
 // the client journal writes to the same storage; pick up its changes
 window.addEventListener('storage', e => {
