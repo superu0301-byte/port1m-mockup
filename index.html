@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-jSvUjBVPxLuGkt7p03mqEuWYBtJi8KUxNQDAAlLDQoQ=' 'sha256-DDB1+BLJfT2mTlupnSu9WMpZagOiyCFLtnOIIBisYCU='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-pmQj8Vmq/BWhHkYqM0j3FqJQqWjqZ5Me1ckkgVb7fWw=' 'sha256-v4GPlNyfehwA9vnwhXL+xe7If/wwZA1iAh50Pf7Ergo='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>ปั้นพอร์ต 1 ล้าน · Trading Journal (ต้นแบบ)</title>
@@ -1126,7 +1126,7 @@ body.hall:after{animation-play-state:paused}
 .sc.td .sc-d{background:#2f3f9a;color:#fff;font-weight:800}
 .sc.om .sc-d{opacity:.45}.sc.om{background:rgba(var(--wt),.015)}
 .sc-e{display:flex;flex-direction:column;gap:5px;min-height:0}
-.t-coach{--ec:#90caf9}.t-review{--ec:#fff176}.t-mentor{--ec:#d7ccc8}.t-war{--ec:#bcaaa4}.t-snap{--ec:#a5d6a7}.t-stmt{--ec:#ce93d8}.t-close{--ec:#ef9a9a}
+.t-coach{--ec:#90caf9}.t-review{--ec:#fff176}.t-snap{--ec:#a5d6a7}.t-stmt{--ec:#ce93d8}.t-close{--ec:#ef9a9a}
 .se{flex:none;display:flex;align-items:center;gap:4px;height:26px;padding:0 3px 0 8px;border-radius:999px;font-size:12px;min-width:0;background:color-mix(in srgb,var(--ec) 30%,transparent);color:var(--ink)}
 :root[data-theme=light] .se{background:var(--ec);color:#17202e}
 .se b{flex:none;font-weight:700}.se .ell{flex:1;min-width:0}.se>svg{flex:none}
@@ -1274,12 +1274,12 @@ button.kpi>span{display:block}
 .v-port{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1.05fr) minmax(0,1fr)}
 .v-port .pmain{grid-area:3/1/5/2}.v-port .palloc{grid-area:3/2}.v-port .phist{grid-area:4/2}
 .pmain .ph .seg{flex:none}
-.phold{--cols:minmax(120px,1.3fr) minmax(60px,.7fr) minmax(60px,.7fr) minmax(62px,.75fr) minmax(86px,1fr) 56px minmax(84px,1fr) 64px minmax(86px,1fr);container-type:inline-size}
+.phold{--cols:minmax(120px,1.4fr) minmax(60px,.7fr) minmax(60px,.7fr) minmax(86px,1fr) 56px minmax(66px,.8fr) minmax(84px,1fr);container-type:inline-size}
 .pclosed{--cols:minmax(120px,1.3fr) minmax(120px,1.2fr) minmax(90px,1fr) minmax(96px,1fr) 70px;container-type:inline-size}
-@container (max-width:800px){.phold .c-w{display:none}.phold .ot-h,.phold .ot-r{--cols:minmax(110px,1.3fr) minmax(56px,.7fr) minmax(58px,.7fr) minmax(60px,.75fr) minmax(82px,1fr) minmax(82px,1fr) 62px minmax(84px,1fr)}}
-@container (max-width:660px){.phold .mo6{display:block}.phold .c-avg,.phold .c-pc,.phold .c-sl{display:none}.phold .ot-h,.phold .ot-r{--cols:minmax(104px,1.3fr) minmax(54px,.7fr) minmax(62px,.8fr) minmax(82px,1fr) minmax(84px,1fr)}.pclosed .c-per{display:none}.pclosed .ot-h,.pclosed .ot-r{--cols:minmax(110px,1.3fr) minmax(86px,1fr) minmax(96px,1fr) 66px}}
+@container (max-width:800px){.phold .c-w{display:none}.phold .ot-h,.phold .ot-r{--cols:minmax(110px,1.4fr) minmax(56px,.7fr) minmax(58px,.7fr) minmax(82px,1fr) minmax(62px,.8fr) minmax(80px,1fr)}}
+@container (max-width:660px){.phold .c-avg,.phold .c-sl{display:none}.phold .ot-h,.phold .ot-r{--cols:minmax(104px,1.4fr) minmax(54px,.7fr) minmax(82px,1fr) minmax(80px,1fr)}.pclosed .c-per{display:none}.pclosed .ot-h,.pclosed .ot-r{--cols:minmax(110px,1.3fr) minmax(86px,1fr) minmax(96px,1fr) 66px}}
 /* phones: two lines per holding, as in a trading app (stock with volume and cost · price · result) */
-@container (max-width:480px){.phold .c-qty,.phold .c-mv{display:none}.phold .ot-h,.phold .ot-r{--cols:minmax(0,1.4fr) minmax(64px,.8fr) minmax(86px,1fr);column-gap:8px;padding-left:12px;padding-right:12px}.phold .dk{display:none}.phold .mo{display:inline}.phold .t2.mo{display:block}.pclosed .c-buy{display:none}.pclosed .ot-h,.pclosed .ot-r{--cols:minmax(0,1.3fr) minmax(90px,1fr) 64px;column-gap:8px;padding-left:12px;padding-right:12px}}
+@container (max-width:480px){.phold .c-qty,.phold .c-rk{display:none}.phold .ot-h,.phold .ot-r{--cols:minmax(0,1.4fr) minmax(86px,1fr);column-gap:8px;padding-left:12px;padding-right:12px}.phold .dk{display:none}.phold .mo{display:inline}.phold .t2.mo{display:block}.pclosed .c-buy{display:none}.pclosed .ot-h,.pclosed .ot-r{--cols:minmax(0,1.3fr) minmax(90px,1fr) 64px;column-gap:8px;padding-left:12px;padding-right:12px}}
 /* capital: shown big and clear, with the button to add to it */
 .capb{display:inline-flex;align-items:center;gap:10px;padding:4px 4px 4px 14px;border-radius:14px;background:var(--goldbg);border:1px solid var(--goldln);min-width:0}
 .capb .k{font-size:13px;color:var(--ink2);font-weight:700}
@@ -1520,6 +1520,8 @@ const TH_M = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 
 const TH_D = ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'];
 const TH_DAY = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
 const pad = n => String(n).padStart(2, '0');
+// only https links to LINE (a coach's or CS's LINE profile / official account)
+const safeLink = u => typeof u === 'string' && /^https:\/\/(line\.me|lin\.ee)\//.test(u) ? u : '';
 // image data (data: URL) as a short blob: link, so pages that repeat a picture don't copy its bytes into the HTML each time
 function blobOf(d) {
   try { const b = atob(d.slice(d.indexOf(',') + 1)), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return URL.createObjectURL(new Blob([u], { type: d.slice(5, d.indexOf(';')) })); }
@@ -1951,7 +1953,7 @@ function validState(s) {
   for (const e of s.execs) if (e.slip && e.slip.img && !safeImg(e.slip.img)) e.slip = null;
   for (const x of [...s.snaps, ...s.stmts]) if (x.img && !safeImg(x.img)) x.img = null;
   for (const c of s.clients) if (!c.tp || typeof c.tp.alloc !== 'object') return false;
-  for (const c of s.clients) { if (!isArr(c.eq) || !isArr(c.flows)) return false; for (const f of c.flows) if (f.img && !safeImg(f.img)) f.img = null; }
+  for (const c of s.clients) { if (!isArr(c.flows)) return false; for (const f of c.flows) if (f.img && !safeImg(f.img)) f.img = null; }
   return true;
 }
 // render() runs on every click; recompute alerts and scores only when data or the demo minute changed
@@ -2005,8 +2007,9 @@ function capLog(c) {
 const CAP_KIND = { start: ['gold', 'ทุนเริ่มต้น'], cap: ['ok', 'เพิ่มทุน'], dep: ['ok', 'ฝากเงิน'], wd: ['dn', 'ถอนเงิน'] };
 const netFlowAt = (c, at) => c.flows.reduce((s, f) => s + (f.pend || f.rej || f.at > at ? 0 : f.amt), 0);
 const execsOf = clId => memo('ex:' + clId, () => S.execs.filter(e => e.cl === clId).sort((a, b) => a.at - b.at));
-// The records are the main reference ("ยึดบันทึกเป็นหลัก"): port value = cash + holdings at the
-// latest close, both worked out from the trades the coach recorded.
+// The records are the main reference ("ยึดบันทึกเป็นหลัก"). There are no live prices: holdings count at what they cost,
+// so the port by the records = capital + deposits/withdrawals + the profit of what has been sold (realized), and
+// "profit" means realized profit. The figure from the broker app is the one the client reports every Friday.
 const cashOf = c => c.cap + netFlow(c) + execsOf(c.id).reduce((s, e) => s + (e.side === 'buy' ? -1 : 1) * e.qty * e.px * (e.k || 1), 0);
 const eqNow = c => memo('eq:' + c.id, () => cashOf(c) + posValue(c.id));
 const profit = c => eqNow(c) - c.cap - netFlow(c);
@@ -2131,15 +2134,28 @@ const untilTx = ms => ms >= DAY ? `อีก ${Math.floor(ms / DAY)} วัน $
 // weekly reports are still collected, as a check that every trade was recorded
 const snapsOf = c => memo('snaps:' + c.id, () => S.snaps.filter(x => x.cl === c.id).sort((a, b) => a.day - b.day || a.at - b.at));
 const lastSnap = c => snapsOf(c).slice(-1)[0] || null;
-const snapDiff = x => { const b = client(x.cl)?.eq[x.day]; return b ? (x.val - b) / b : 0; };
-const snapOk = x => Math.abs(snapDiff(x)) <= .02;
+// realized profit up to a time (average cost, the same way positions() counts it)
+const realizedAt = (c, t) => memo(`ra:${c.id}:${t}`, () => {
+  const m = {}; let r = 0;
+  for (const e of execsOf(c.id)) {
+    if (e.at > t) break;
+    const key = e.plan || 'off:' + e.sym, k = e.k || 1, p = m[key] || (m[key] = { q: 0, cost: 0 });
+    if (e.side === 'buy') { p.q += e.qty; p.cost += e.px * e.qty * k; }
+    else { const q = Math.min(e.qty, p.q), avg = p.q ? p.cost / p.q : e.px * k; r += (e.px * k - avg) * q; p.cost -= avg * q; p.q -= q; }
+  }
+  return r;
+});
+// the port by the records and the profit at the close of trading day i
+const dayEnd = i => S.days[i] + DAY - TZ;
+const eqAt = (c, i) => c.cap + netFlowAt(c, dayEnd(i)) + realizedAt(c, dayEnd(i));
+const profitAtDay = (c, i) => i < 0 ? 0 : realizedAt(c, dayEnd(i));
 const repVal = c => lastSnap(c)?.val ?? c.cap;
 const repRet = c => { const x = lastSnap(c); if (!x) return 0; const base = c.cap + netFlowAt(c, x.at); return (x.val - base) / base; };
 // weekly port value from the records for charts, with the reported figure on each tooltip
 function repSeries(c) {
   const fr = S.days.map((t, i) => [t, i]).filter(([t, i]) => new Date(t).getUTCDay() === 5 && i < T_());
-  const pts = [{ t: S.days[0], v: c.cap, tip: 'ทุนเริ่มต้น' }, ...fr.map(([t, i]) => { const x = snapsOf(c).find(s => s.day === i); return { t, v: c.eq[i], warn: x && !snapOk(x), tip: x ? (snapOk(x) ? 'ตามบันทึก · ยอดที่ลูกค้ารายงานตรงกัน' : `ตามบันทึก · ยอดที่รายงานต่าง ${pct(snapDiff(x))}`) : 'ตามบันทึก · ไม่มีรายงานสัปดาห์นี้' }; })];
-  pts.push({ t: S.days[T_()], v: eqNow(c), est: true, tip: 'วันนี้ · ราคาปิดล่าสุด' });
+  const pts = [{ t: S.days[0], v: c.cap, tip: 'ทุนเริ่มต้น' }, ...fr.map(([t, i]) => { const x = snapsOf(c).find(s => s.day === i); return { t, v: eqAt(c, i), tip: x ? `ตามรายการที่ขายแล้ว · ลูกค้ารายงานยอดพอร์ต ฿${baht(x.val)}` : 'ตามรายการที่ขายแล้ว · ไม่มีรายงานสัปดาห์นี้' }; })];
+  pts.push({ t: S.days[T_()], v: eqNow(c), est: true, tip: 'วันนี้ · ตามรายการที่ขายแล้ว' });
   return pts;
 }
 // the same weeks as profit (deposits and withdrawals taken out), measured against the 1,000,000 goal
@@ -2151,13 +2167,13 @@ function plSeries(c, per) {
   for (let i = 0; i < T; i++) {
     const d = new Date(S.days[i]), nx = new Date(S.days[i + 1]);
     if (per === 'm' && nx.getUTCMonth() === d.getUTCMonth()) continue;
-    pts.push({ t: S.days[i], v: c.eq[i] - c.cap - netFlowAt(c, S.days[i] + DAY - TZ), tip: per === 'm' ? `สิ้นเดือน${TH_M[d.getUTCMonth()]} · ตามบันทึก` : 'ปิดวัน · ตามบันทึก' });
+    pts.push({ t: S.days[i], v: profitAtDay(c, i), tip: per === 'm' ? `สิ้นเดือน${TH_M[d.getUTCMonth()]} · ตามรายการที่ขายแล้ว` : 'ปิดวัน · ตามรายการที่ขายแล้ว' });
   }
-  pts.push({ t: S.days[T], v: profit(c), est: true, tip: 'วันนี้ · ราคาปิดล่าสุด' });
+  pts.push({ t: S.days[T], v: profit(c), est: true, tip: 'วันนี้ · ตามรายการที่ขายแล้ว' });
   return pts;
 }
 const lastFriday = () => { for (let i = T_() - 1; i >= 0; i--) if (new Date(S.days[i]).getUTCDay() === 5) return i; return 0; };
-function drawdown(c) { const v = [...c.eq.slice(0, -1), eqNow(c)]; let pk = 0, dd = 0; for (const x of v) { pk = Math.max(pk, x); dd = Math.max(dd, (pk - x) / pk); } const hi = Math.max(...v); return { max: dd, now: (hi - eqNow(c)) / hi }; }
+function drawdown(c) { const v = [...Array.from({ length: T_() }, (_, i) => eqAt(c, i)), eqNow(c)]; let pk = 0, dd = 0; for (const x of v) { pk = Math.max(pk, x); dd = Math.max(dd, (pk - x) / pk); } const hi = Math.max(...v); return { max: dd, now: (hi - eqNow(c)) / hi }; }
 
 // the coach's plan for a stock: Entry, Stop Loss (moved up over time), targets
 const planSL = id => { const p = planOf(id); return p ? slAt(p, now()) : null; };
@@ -2340,8 +2356,9 @@ function positions(clId) {
       p.lastAt = e.at; p.lastPx = e.px;
     }
     return Object.values(m).map(p => {
-      const op = planOf(p.plan), last = S.prices[p.sym] ?? p.lastPx, v = p.qty * last * p.k;
-      return { ...p, avg: p.qty ? p.cpx / p.qty : 0, last, v, upl: p.qty ? v - p.cost : 0, sl: op ? planSL(op.id) : null, tp1: op?.tp1, tp2: op?.tp2 };
+      // no live price: a holding is valued at its cost (avg), so there is no unrealized result
+      const op = planOf(p.plan), avg = p.qty ? p.cpx / p.qty : 0;
+      return { ...p, avg, last: avg, v: p.qty ? p.cost : 0, upl: 0, sl: op ? planSL(op.id) : null, tp1: op?.tp1, tp2: op?.tp2 };
     });
   });
 }
@@ -2488,16 +2505,11 @@ function alerts(at) {
         const p = planOf(m.plan);
         out.push({ k: `miss:${m.id}`, sev: m.kind === 'nocut' ? 'high' : 'mid', aud: 'coach', type: 'miss', cl: c.id, coach: c.coach, at: m.at, sym: p?.sym, title: `${MISS[m.kind]}: ${p?.sym || ''}`, detail: `บันทึกเมื่อ ${dstr(m.at)} · ${m.note}` });
       }
-      for (const p of openPos(c.id)) {
-        if (!p.sl || p.last > p.sl || S.misses.some(m => m.cl === c.id && m.plan === p.plan && m.kind === 'nocut')) continue;
-        out.push({ k: `sl:${p.key}:${c.id}`, sev: 'high', aud: 'coach', type: 'sl', cl: c.id, coach: c.coach, at: tnow, sym: p.sym, title: `${p.sym} หลุด Stop Loss แต่ยังถืออยู่`, detail: `ราคาปิด ${px(p.last)} · Stop Loss ${px(p.sl)} · Unrealized ${signed(p.upl)} บาท` });
-      }
       for (const f of c.flows) if (f.pend) out.push({ k: `flow:${f.id}`, sev: 'mid', aud: 'cs', type: 'flow', cl: c.id, coach: c.coach, at: f.at, flow: f.id, title: `แจ้ง${f.amt > 0 ? 'ฝาก' : 'ถอน'}เงิน ${baht(Math.abs(f.amt))} บาท รอการอนุมัติ`, detail: 'ตรวจสอบหลักฐานการโอนก่อนนับเข้าพอร์ต' });
       const seen = c.seen || c.joined;
       if (tnow - seen > 72 * HR) out.push({ k: `idle:${c.id}:${seen}`, sev: tnow - seen > 5 * DAY ? 'high' : 'mid', aud: 'cs', type: 'idle', cl: c.id, coach: c.coach, at: seen, title: c.seen ? `ไม่ได้เข้าใช้งาน ${Math.floor((tnow - seen) / DAY)} วัน` : `ยังไม่เคยเข้าใช้งาน (${Math.floor((tnow - seen) / DAY)} วัน)`, detail: c.seen ? 'ควรโทรติดตาม และแนะนำให้ส่งภาพหลักฐานผ่านระบบ' : 'ช่วยลูกค้าเข้าสู่ระบบครั้งแรกด้วย Gmail ที่ลงทะเบียนไว้' });
       const sn = S.snaps.find(s => s.cl === c.id && s.day === lf);
       if (!sn && S.days[lf] + 17 * HR - TZ > c.joined) out.push({ k: `nosnap:${c.id}:${lf}`, sev: 'mid', aud: 'cs', type: 'nosnap', cl: c.id, coach: c.coach, at: S.days[lf] + 17 * HR, title: `ยังไม่รายงานยอดพอร์ตวันศุกร์ที่ ${dstr(S.days[lf])}`, detail: 'ใช้ตรวจว่าบันทึกการซื้อขายครบถ้วน · ส่งภาพหน้าพอร์ตทุกวันศุกร์หลังตลาดปิด' });
-      else if (sn && !snapOk(sn)) out.push({ k: `diff:${c.id}:${sn.id}`, sev: 'mid', aud: 'cs', type: 'diff', cl: c.id, coach: c.coach, at: sn.at, title: `ยอดพอร์ตที่รายงานต่างจากบันทึก ${pct(snapDiff(sn))}`, detail: `รายงาน ${baht(sn.val)} · ตามบันทึก ${baht(c.eq[sn.day])} · อาจมีรายการซื้อขายที่โค้ชยังไม่ได้บันทึก` });
       const bk = portBook(c);
       if (bk.heat > HEAT_LIMIT) out.push({ k: `heat:${c.id}:${dayKey(tnow)}`, sev: 'mid', aud: 'coach', type: 'heat', cl: c.id, coach: c.coach, at: tnow, title: `Portfolio Heat ${fmt(bk.heat * 100, 1)}% เกินเกณฑ์ 6%`, detail: `หากทุกตัวถึง Stop Loss จะขาดทุน ฿${baht(bk.risk)} · ควรลด Position Size หรือเลื่อน Stop Loss` });
       const d = discipline(c.id, at);
@@ -2580,25 +2592,20 @@ const sname = s => stock(s)?.short || '';
 const symTag = (s, size = 26) => `<span class="sy" title="${esc(stock(s)?.th || s)}">${slogo(s, size)}<b>${esc(s)}</b></span>`;
 // same, as a button that opens the company card (only where the parent isn't clickable)
 const symBtn = (s, size = 26, cls = '') => `<button class="sy ${cls}" data-stock="${esc(s)}" title="ข้อมูลหุ้น ${esc(stock(s)?.th || s)}">${slogo(s, size)}<b>${esc(s)}</b></button>`;
-const lastPx = s => S.prices[s] ?? stock(s)?.last;
-// one-line company strip for forms: logo, name, sector, last price
+// one-line company strip for forms: logo, name, sector
 function stockLine(s) {
-  const i = stock(s), last = lastPx(s);
+  const i = stock(s);
   if (!i) return `<div class="sline">${slogo(s, 36)}<div style="min-width:0"><b>${esc(s)}</b><div class="xs muted">ไม่มีข้อมูลบริษัทในระบบ ตรวจชื่อย่อหุ้นอีกครั้ง</div></div></div>`;
-  const ch = i.prior ? (last - i.prior) / i.prior : 0;
-  return `<div class="sline">${slogo(s, 36)}<div style="min-width:0"><b>${esc(s)}</b> <span class="xs muted">${esc(i.sectorTh)}</span><div class="xs muted ell">${esc(i.th)}</div></div><div class="r num"><b>${px(last)}</b><span class="xs ${ch >= 0 ? 'up' : 'dn'}">${pct(ch, 2)}</span></div></div>`;
+  return `<div class="sline">${slogo(s, 36)}<div style="min-width:0"><b>${esc(s)}</b> <span class="xs muted">${esc(i.sectorTh)}</span><div class="xs muted ell">${esc(i.th)}</div></div></div>`;
 }
 function stockModal(s) {
   const i = stock(s);
   if (!i) return toast(`${ic('info', 18)}<div><b>${esc(s)}</b><div class="muted sm">ยังไม่มีข้อมูลบริษัทนี้ในระบบ</div></div>`);
-  const last = lastPx(s), ch = i.prior ? (last - i.prior) / i.prior : 0, pos = Math.max(0, Math.min(1, (last - i.lo52) / ((i.hi52 - i.lo52) || 1)));
   const asOf = STOCK_DATA.asOf ? dstr(Date.parse(STOCK_DATA.asOf + 'T10:00:00Z')) + ' ' + (+STOCK_DATA.asOf.slice(0, 4) + 543) : '';
   openModal(`<div class="stm">
     <div class="stm-h">${slogo(s, 64)}<div style="min-width:0"><div class="row" style="gap:8px"><h3>${esc(s)}</h3><span class="tag gold">${esc(i.sectorTh)}</span>${i.sign ? `<span class="tag">${esc(i.sign)}</span>` : ''}</div><div class="ink2 ell">${esc(i.th)}</div><div class="xs muted ell">${esc(i.en)}</div></div><button class="x" data-act="close" aria-label="ปิด">${ic('x', 18)}</button></div>
-    <div class="stm-p"><span class="num ${ch > 0 ? 'up' : ch < 0 ? 'dn' : ''}">${px(last)}</span><span class="tag ${ch >= 0 ? 'ok' : 'dn'} num">${sgn(last - i.prior)}${px(Math.abs(last - i.prior))} (${pct(ch, 2)})</span><span class="xs muted">ราคาปิด ณ ${asOf} · ราคาปิดวันทำการก่อนหน้า ${px(i.prior)} บาท</span></div>
-    <div class="stm-r"><div class="row xs muted" style="justify-content:space-between"><span>ต่ำสุด 52 สัปดาห์ <b class="num ink2">${px(i.lo52)}</b></span><span>สูงสุด 52 สัปดาห์ <b class="num ink2">${px(i.hi52)}</b></span></div><div class="r52"><i style="left:${pos * 100}%"></i></div></div>
     <div class="stm-k"><div><span>P/E</span><b class="num">${i.pe ? fmt(i.pe, 2) + ' เท่า' : '—'}</b></div><div><span>อัตราเงินปันผลตอบแทน</span><b class="num">${i.dy ? fmt(i.dy, 2) + '%' : '—'}</b></div><div><span>มูลค่าหลักทรัพย์ตามราคาตลาด</span><b class="num">${fmt(i.mcap)} ล้านบาท</b></div></div>
-    <p class="xs muted" style="margin:0">${ic('info', 13)} แหล่งข้อมูล: ตลาดหลักทรัพย์แห่งประเทศไทย (SET) ณ วันที่ ${asOf} · ระบบจริงจะแสดงราคาล่าสุดจากผู้ให้บริการข้อมูลที่ได้รับอนุญาต</p>
+    <p class="xs muted" style="margin:0">${ic('info', 13)} ข้อมูลบริษัท: ตลาดหลักทรัพย์แห่งประเทศไทย (SET) ณ วันที่ ${asOf} · ระบบไม่แสดงราคาหุ้น ดูราคาในแอปซื้อขายของคุณ</p>
   </div>`, 'sm');
 }
 document.addEventListener('click', e => { const b = e.target.closest('[data-stock]'); if (b && !b.closest('.mbox')) stockModal(b.dataset.stock); });
@@ -2924,8 +2931,8 @@ function keyModal({ who, cls, cl, plan, edit, done, side: side0, pos, sym: sym0,
     $b('#kqtyl').textContent = `จำนวน (${u})`; $b('#kqty').step = mk === 'th' ? 100 : 1;
     const half = x.held ? (mk === 'th' ? Math.max(100, lot(x.held.qty / 2)) : Math.max(1, Math.floor(x.held.qty / 2))) : 0;
     $b('#kpq').innerHTML = x.pq ? `<button type="button" data-q="${x.pq}" title="ใส่จำนวนตามที่โค้ชแนะนำ">ตามแผน ${fmt(x.pq)}</button>` : x.held ? `<button type="button" data-q="${x.held.qty}">ทั้งหมด ${fmt(x.held.qty)}</button>${half < x.held.qty ? `<button type="button" data-q="${half}">ครึ่งหนึ่ง ${fmt(half)}</button>` : ''}` : '';
-    const si = x.sym && validSym(x.sym) ? stock(x.sym) : null, lp = x.sym && validSym(x.sym) ? lastPx(x.sym) : null, ch = si?.prior && lp ? (lp - si.prior) / si.prior : null;
-    $b('#kq').innerHTML = x.sym && lp ? `${slogo(x.sym, 18)}<b>${esc(x.sym)}</b>${si?.short ? `<span class="ell">${esc(si.short)}</span>` : ''}<span>ราคาปิด <b class="num">${px(lp)}</b>${ch != null ? ` <span class="num ${ch >= 0 ? 'up' : 'dn'}">${pct(ch, 2)}</span>` : ''}</span>${x.held ? `<span>· ถือ ${fmt(x.held.qty)} ทุน ${px(x.held.avg)}</span>` : ''}` : '';
+    const si = x.sym && validSym(x.sym) ? stock(x.sym) : null;
+    $b('#kq').innerHTML = x.sym && si ? `${slogo(x.sym, 18)}<b>${esc(x.sym)}</b>${si?.short ? `<span class="ell">${esc(si.short)}</span>` : ''}${x.held ? `<span>· ถือ ${fmt(x.held.qty)} ทุน ${px(x.held.avg)}</span>` : ''}` : '';
     const amt = validPx(x.px) && validQty(x.qty) ? x.px * x.qty * (mk === 'th' ? 1 : validK(x.k) ? x.k : 0) : 0;
     $b('#kamt').innerHTML = amt ? `มูลค่า <b>฿${baht(amt)}</b>${side === 'sell' && x.held ? ` · <span class="${x.px >= x.held.avg ? 'up' : 'dn'}">${signed((x.px - x.held.avg) * x.qty * (mk === 'th' ? 1 : x.k))}</span>` : ''}` : '';
     $b('#save').className = `btn ${side}`;
@@ -2968,7 +2975,7 @@ function keyModal({ who, cls, cl, plan, edit, done, side: side0, pos, sym: sym0,
     const x = cur(), d = +st.dataset.d, inp = $b('#' + st.dataset.stp);
     if (st.dataset.stp === 'kpx') {
       let v = parseFloat(inp.value);
-      if (!validPx(v)) v = x.p ? (side === 'buy' ? x.p.hi : x.p.tp1) : x.held ? x.held.last : lastPx(x.sym) || 0;
+      if (!validPx(v)) v = x.p ? (side === 'buy' ? x.p.hi : x.p.tp1) : x.held ? x.held.avg : 0;
       else { const t = mk === 'th' ? tick(d > 0 ? v : v - 1e-9) : v >= 1000 ? 10 : v >= 100 ? .1 : .01; v = Math.round((v + d * t) * 100) / 100; }
       if (validPx(v)) inp.value = mk === 'th' ? rt(v) : v;
     } else {
@@ -3003,7 +3010,6 @@ function keyModal({ who, cls, cl, plan, edit, done, side: side0, pos, sym: sym0,
     $('#cfmw')?.remove();
     upd(); if ($b('#save').disabled) return;
     const x = cur(), off = side === 'buy' && !x.p, t = now();
-    if (!Object.hasOwn(S.prices, x.sym)) S.prices[x.sym] = x.px;
     const f = { plan: x.p?.id || null, sym: x.sym, side, px: x.px, qty: x.qty, at: x.at, slip: slip.img ? { img: slip.img } : { m: 1 } };
     if (mk !== 'th') Object.assign(f, { mk, k: x.k });
     if (side === 'buy' && x.p) Object.assign(f, { pq: x.pq, reason: x.off });
@@ -3332,10 +3338,10 @@ function sidebar() {
   </aside>`;
 }
 // the title bar: a greeting at home, otherwise the page and what it holds
-const PAGE_T = { me: () => ['โปรไฟล์ของฉัน', 'ข้อมูลของคุณ แผนเทรดที่โค้ชออกแบบให้ และความสำเร็จ'], comm: () => ['คอมมูนิตี้', 'ทำเนียบรุ่น ROAD TO 1M · ระดับ เหรียญ และความสำเร็จของเพื่อนร่วมรุ่น'], journal: () => ['บันทึกการซื้อขาย', 'ทุกรายการที่คุณบันทึก พร้อมผลการตรวจของหัวหน้าโค้ช'], port: () => ['พอร์ต', `ทุน ยอดพอร์ต และหุ้นที่ถือ · ราคาปิด ณ ${asOfTxt()}`] };
+const PAGE_T = { me: () => ['โปรไฟล์ของฉัน', 'ข้อมูลของคุณ แผนเทรดที่โค้ชออกแบบให้ และความสำเร็จ'], comm: () => ['คอมมูนิตี้', 'ทำเนียบรุ่น ROAD TO 1M · ระดับ เหรียญ และความสำเร็จของเพื่อนร่วมรุ่น'], journal: () => ['บันทึกการซื้อขาย', 'ทุกรายการที่คุณบันทึก พร้อมผลการตรวจของหัวหน้าโค้ช'], port: () => ['พอร์ต', 'ทุน หุ้นที่ถือ และยอดพอร์ตที่คุณรายงาน'] };
 const hello = () => { const h = tz(now()).getUTCHours(); return h < 12 ? 'อรุณสวัสดิ์' : h < 18 ? 'สวัสดีตอนบ่าย' : 'สวัสดีตอนเย็น'; };
 function header() {
-  const n = attention(), [mc, mt] = market(), [t, sub] = PAGE_T[view] ? PAGE_T[view]() : [`${hello()} คุณ${esc(ME().name)}`, `${dlong(now())} · ข้อมูลตามบันทึกและราคาปิดล่าสุด`];
+  const n = attention(), [mc, mt] = market(), [t, sub] = PAGE_T[view] ? PAGE_T[view]() : [`${hello()} คุณ${esc(ME().name)}`, `${dlong(now())} · ข้อมูลตามรายการที่บันทึกและหัวหน้าโค้ชตรวจแล้ว`];
   return `<header class="hdr"><div class="hin">
     <div class="brand" data-go="home"><img src="${LOGO}" alt="Super Trader Republic"></div>
     <div class="ttl"><h1>${t}</h1><small>${sub}</small></div>
@@ -3369,7 +3375,6 @@ function meMenu() {
     <button class="mi" data-act="terms">${ic('trophy', 16)} เงื่อนไขค่าเรียน</button>
     <button class="mi" data-act="glossary">${ic('help', 16)} คำศัพท์การเทรด</button>
     <button class="mi" data-act="rules">${ic('book2', 16)} กติกาของคอร์ส</button>
-    <button class="mi" data-act="linkline">${ic(me.line ? 'check' : 'bell', 16)} การแจ้งเตือนผ่าน LINE · ${me.line ? '<span class="up">เชื่อมแล้ว</span>' : '<span class="warn">ยังไม่เชื่อม</span>'}</button>
     <button class="mi" data-act="cs">${ic('phone', 16)} ติดต่อ CS</button>
     <button class="mi" data-act="logout">${ic('logout', 16)} ออกจากระบบ</button></div>`;
 }
@@ -3427,7 +3432,6 @@ function onboardView() {
     <div class="row obl" style="flex-wrap:wrap;gap:12px;margin-bottom:12px"><span class="fi">${ic('target', 17)}</span><div style="flex:1;min-width:180px"><b>แผนเทรดเฉพาะบุคคลของคุณ</b><div class="muted xs">จัดทำโดย${staffName(me.tp.by)} · ขนาดสถานะสูงสุด ${fmt(me.tp.maxPos * 100)}% · หยุดทบทวนเมื่อพอร์ตลดลง ${fmt(me.tp.stop * 100)}%</div></div><button class="btn soft sm" data-act="tp">ดูแผนเทรด</button></div>
     <b>กติกา 4 ข้อของคอร์ส</b>
     <div class="rules">${RULES.map(([i, t, s]) => `<div class="rule"><span class="fi">${ic(i, 17)}</span><div><b>${t}</b><span>${s}</span></div></div>`).join('')}</div>
-    <div class="row obl oln" style="flex-wrap:wrap;gap:12px;margin-bottom:14px"><span class="fi" style="background:rgba(6,199,85,.14);color:#06c755">${ic('chat', 17)}</span><div style="flex:1;min-width:180px"><b>รับการแจ้งเตือนผ่าน LINE</b><div class="muted xs">แจ้งเมื่อโค้ชตรวจรายการ หรือขอให้แก้ไขรายการ</div></div><button class="btn ${me.line ? 'ok' : 'soft'} sm" data-act="linkline">${me.line ? ic('check', 15) + 'เชื่อมแล้ว' : 'เชื่อมต่อ LINE'}</button></div>
     <div class="row ob-f"><label class="agree"><input type="checkbox" id="agree" ${agree ? 'checked' : ''}> ข้าพเจ้ายอมรับกติกา แผนเทรด และเงื่อนไขค่าเรียน และยินยอมให้เก็บข้อมูลการซื้อขายตาม พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล (PDPA)</label><button class="btn" data-act="startapp" id="startBtn" ${agree ? '' : 'disabled'}>เริ่มใช้งาน</button></div>
   </div></div>`;
 }
@@ -3435,11 +3439,11 @@ function onboardView() {
 /* ---------- home: how much have I made, how close to 1,000,000, this month and week, my discipline ---------- */
 function snapState(x) {
   if (!x) return '<span class="tag">ยังไม่มีรายงานวันศุกร์</span>';
-  return snapOk(x) ? `<span class="tag ok" title="ยอดที่คุณรายงานวันศุกร์ ${dstr(S.days[x.day])}">${ic('check', 12, 2.4)}ยอดที่รายงานตรงกับบันทึก</span>` : `<span class="tag warn">${ic('alert', 12)}ยอดที่รายงานต่างจากบันทึก ${pct(snapDiff(x))}</span>`;
+  return `<span class="tag ok" title="ยอดพอร์ตที่คุณรายงาน ${dstr(S.days[x.day])}">${ic('check', 12, 2.4)}รายงานยอดพอร์ตแล้ว ฿${kb(x.val)}</span>`;
 }
 // profit at the close of trading day i (deposits and withdrawals taken out), and the change since
 // the month began and since last Friday's close
-const profitAt = (c, i) => i < 0 ? 0 : c.eq[i] - c.cap - netFlowAt(c, S.days[i] + DAY - TZ);
+const profitAt = profitAtDay;
 function periodPL(c) {
   const T = T_(), d = tz(now()), m0 = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1), pr = profit(c);
   let im = -1, iw = -1;
@@ -3451,7 +3455,7 @@ function homeView() {
   const tone = n => n > 0 ? 'up' : n < 0 ? 'dn' : '', maxW = Math.max(...b.ps.map(p => p.w), .01);
   return `<section class="pnl hero">
     <div class="hx"><div class="hero-l">
-      <div class="eyebrow">กำไรสะสมตามบันทึก</div>
+      <div class="eyebrow" title="กำไรของรายการที่ขายแล้ว หุ้นที่ยังถือนับตามต้นทุน">กำไรสะสม · ขายแล้ว</div>
       <div class="big serif num"><span class="${st.pr >= 0 ? 'gtxt' : 'dn'}">${signed(st.pr)}</span></div>
       <div class="meta"><span class="tag ${rr >= 0 ? 'ok' : 'dn'} num" title="เทียบกับทุนเริ่มต้นรวมเงินฝาก/ถอนที่อนุมัติแล้ว">${pct(rr)} จากเงินทุน</span>${snapDue() ? `<button class="tag gold" data-act="snap">${ic('wallet', 12)}รายงานยอดพอร์ตประจำสัปดาห์</button>` : snapState(lastSnap(me))}<button class="tag mob ${scoreTone(d.score)}" data-act="scoreinfo">${ic('target', 13)}วินัย ${d.score}</button></div></div>
       <div class="hk"><div><span>กำไรเดือนนี้</span><b class="num ${tone(pp.month)}">${signed(pp.month)}</b></div><div><span>กำไรสัปดาห์นี้</span><b class="num ${tone(pp.week)}">${signed(pp.week)}</b></div>
@@ -3481,7 +3485,7 @@ let tierDemo = null;
 function memberCard(me) { const real = tierOf(profit(me)); return cardHTML(me, tierDemo ?? real, { demo: tierDemo != null && tierDemo !== real }); }
 /* ---------- before sending an order, step by step: 1 the plan, 2 price and Stop Loss, 3 how many, 4 the check ----------
    The coach tells the plan by phone; here the client sizes the order against their own trading plan (risk per trade,
-   max position, portfolio heat) and sees, with the very rules the records are checked by afterwards, whether the
+   max position, open risk to the stops) and sees, with the very rules the records are checked by afterwards, whether the
    trade would be on the plan — so a yellow card is avoided before it happens, not found after. Nothing is saved. */
 const SZ_STEPS = ['เลือกแผน', 'ราคาและ Stop', 'จำนวน', 'ตรวจก่อนส่ง'];
 const boughtOn = (c, pid) => execsOf(c.id).filter(e => e.plan === pid && e.side === 'buy' && e.at <= now()).reduce((t, e) => t + e.qty, 0);
@@ -3532,10 +3536,9 @@ function sizeModal(pre = {}) {
           <button class="szpc off ${st.chosen && !st.pid ? 'on' : ''}" data-szp=""><span class="szpc-i">${ic('flag', 16)}</span><span class="szpc-t"><b>ไม่มีในแผน · ซื้อเอง</b><span class="xs">หัก ${PT_RULE.off[0]} คะแนน และต้องระบุเหตุผลตอนบันทึก</span></span></button></div>`;
     }
     if (step === 2) {
-      const last = st.sym ? lastPx(st.sym) : null;
       return `${!st.pid ? `<div class="field"><label for="szsym">หลักทรัพย์</label><input id="szsym" maxlength="15" list="szsyms" autocomplete="off" placeholder="เช่น PTT" value="${esc(st.sym)}"><datalist id="szsyms">${(st.mk === 'th' ? Object.keys(STOCK_DATA.list || {}) : mkSyms(st.mk)).map(v => `<option value="${esc(v)}">`).join('')}</datalist></div>` : ''}
         <div class="field"><label for="sze">ราคาเข้า (Entry)</label><input id="sze" type="number" inputmode="decimal" step="0.01" min="0" value="${st.e || ''}">
-          <div class="szcs">${p ? chip(p.hi, 'บนสุดของช่วง') + chip(p.lo, 'ล่างสุด') : ''}${last ? chip(last, 'ราคาล่าสุด') : ''}</div>
+          <div class="szcs">${p ? chip(p.hi, 'บนสุดของช่วง') + chip(p.lo, 'ล่างสุด') : ''}</div>
           ${hE(x)}</div>
         <div class="field"><label for="szsl">Stop Loss</label><input id="szsl" type="number" inputmode="decimal" step="0.01" min="0" value="${st.s || ''}">
           <div class="szcs">${p ? `<button class="szc" data-sl="${planSL(p.id)}">ตามแผน <b class="num">${px(planSL(p.id))}</b></button>` : ''}</div>
@@ -3621,7 +3624,7 @@ function profileView() {
       <div class="me-tier">${nx ? `<span class="ell" title="ระดับ ${nx[1]} เมื่อกำไรสะสมถึง ฿${baht(nx[2])}">ระดับถัดไป <b>${nx[1]}</b> · อีก <b class="num gold">฿${kb(Math.max(0, nx[2] - pr))}</b></span>` : '<span>ระดับสูงสุดของโปรแกรม</span>'}<button class="lnk xs" data-act="tiers">ดูทุกระดับ</button></div>
       ${nx ? `<div class="bar me-bar"><i style="width:${Math.min(100, Math.max(0, (pr - Math.max(0, TIERS[t][2])) / (nx[2] - Math.max(0, TIERS[t][2])) * 100))}%"></i></div>` : ''}
       <div class="tpd me-d">
-        ${info('โทรศัพท์', `${esc(me.phone)} · ${me.line ? '<span class="up">LINE เชื่อมแล้ว</span>' : '<button class="lnk" data-act="linkline">เชื่อม LINE</button>'}`)}
+        ${info('โทรศัพท์', esc(me.phone))}
         ${info('อีเมล', esc(me.email), me.email)}
         ${info('บัญชีซื้อขาย', `${esc(me.broker)} · xxxx-${esc(me.acct)}`)}
         ${info('เงินทุน', `฿${baht(base)}${ups ? ` <span class="muted">เพิ่มทุน ${ups} ครั้ง</span>` : ''}`)}
@@ -3660,9 +3663,8 @@ function tierModal() {
 }
 // one stock held, on the home page: its share of the port, value and result; tap for the detail
 function homeHold(p, maxW) {
-  const r = p.cost ? p.upl / p.cost : 0;
   return `<button class="hh" data-pos="${esc(p.key)}" title="ดูรายละเอียด ${esc(p.sym)}">${slogo(p.sym, 30)}<span class="hn"><span><b>${esc(p.sym)}</b><small>${fmt(p.w * 100, 1)}% ของพอร์ต</small></span><span class="hw"><i style="width:${(p.w / maxW * 100).toFixed(1)}%"></i></span></span>
-    <span class="r num"><b>฿${baht(p.v)}</b><small class="${r >= 0 ? 'up' : 'dn'}">${pct(r, 2)}</small></span></button>`;
+    <span class="r num"><b>฿${baht(p.v)}</b><small>ต้นทุน${p.sl ? ` · SL ${px(p.sl)}` : ''}</small></span></button>`;
 }
 // the day / week / month switch on the home charts
 const PER_NAME = { d: 'รายวัน', w: 'รายสัปดาห์', m: 'รายเดือน' };
@@ -3679,7 +3681,7 @@ function periodBars(c, per) {
     return { v, now: i === T, t, label: per === 'm' ? TH_M[m] : per === 'w' ? dstr(t) : `${wd(t)} ${new Date(t).getUTCDate()}`, title: per === 'm' ? TH_M[m] : per === 'w' ? `สัปดาห์ที่สิ้นสุด ${dlong(t)}` : dlong(t) }; })
     .filter(x => x.t + DAY - TZ >= c.joined).slice(-6);
   const up = Math.max(0, ...all.map(x => x.v)), dn = Math.max(0, ...all.map(x => -x.v)), tot = up + dn || 1, zero = dn / tot * 100;
-  return `<div class="mbars">${all.map(x => { const h = Math.abs(x.v) / tot * 100; return `<div class="mb ${x.v >= 0 ? 'pos' : 'neg'} ${x.now ? 'now' : ''}" title="${x.title}${x.now ? ' (ถึงวันนี้)' : ''}: ${signed(x.v)} บาท"><span class="mv num">${sgn(x.v)}${kb(Math.abs(Math.round(x.v)))}</span><span class="mc">${dn ? `<s style="bottom:${zero}%"></s>` : ''}<i style="${x.v >= 0 ? `bottom:${zero}%` : `top:${100 - zero}%`};height:${h}%"></i></span><span class="ml">${x.label}${x.now ? ' *' : ''}</span></div>`; }).join('')}</div><div class="xs muted" style="margin-top:8px">* ${per === 'm' ? 'เดือนนี้ถึงวันนี้' : per === 'w' ? 'สัปดาห์นี้ถึงวันนี้' : 'วันนี้ คิดจากราคาปิดล่าสุด'}</div>`;
+  return `<div class="mbars">${all.map(x => { const h = Math.abs(x.v) / tot * 100; return `<div class="mb ${x.v >= 0 ? 'pos' : 'neg'} ${x.now ? 'now' : ''}" title="${x.title}${x.now ? ' (ถึงวันนี้)' : ''}: ${signed(x.v)} บาท"><span class="mv num">${sgn(x.v)}${kb(Math.abs(Math.round(x.v)))}</span><span class="mc">${dn ? `<s style="bottom:${zero}%"></s>` : ''}<i style="${x.v >= 0 ? `bottom:${zero}%` : `top:${100 - zero}%`};height:${h}%"></i></span><span class="ml">${x.label}${x.now ? ' *' : ''}</span></div>`; }).join('')}</div><div class="xs muted" style="margin-top:8px">* ${per === 'm' ? 'เดือนนี้ถึงวันนี้' : per === 'w' ? 'สัปดาห์นี้ถึงวันนี้' : 'วันนี้'}</div>`;
 }
 // where profit stands on an open-ended path: the bar's end moves up as profit grows (1 ล้าน is the refund condition, not a limit)
 const PATH_ENDS = [1e6, 2e6, 4e6, 6e6, 8e6, 1e7, 2e7, 4e7, 6e7, 8e7, 1e8];
@@ -3769,7 +3771,7 @@ function calView(me) {
     const dd = new Date(d.x).getUTCDate(), key = ymd(d.x);
     if (d.off) return `<span class="cd off" style="--i:${n++}"><span class="cdn">${dd}</span><span class="n">${HOLIDAYS.includes(new Date(d.x).toISOString().slice(0, 10)) ? 'ตลาดปิด' : ''}</span></span>`;
     const a = (.1 + Math.abs(d.v) / big * .42).toFixed(2), today = d.i === T;
-    return `<button class="cd ${d.v > 0 ? 'pos' : d.v < 0 ? 'neg' : ''} ${today ? 'today' : ''}" style="--a:${a};--i:${n++}" data-cald="${key}" title="${dlong(d.x)} · ${signed(Math.round(d.v))} บาท${nTr[key] ? ` · บันทึก ${nTr[key]} รายการ` : ''}${today ? ' · ถึงราคาปิดล่าสุด' : ''}"><span class="cdn">${dd}${today ? '<em>วันนี้</em>' : ''}</span><b class="num">${d.v ? amt(d.v) : '0'}</b><span class="n">${nTr[key] ? `${nTr[key]} รายการ` : ''}</span></button>`;
+    return `<button class="cd ${d.v > 0 ? 'pos' : d.v < 0 ? 'neg' : ''} ${today ? 'today' : ''}" style="--a:${a};--i:${n++}" data-cald="${key}" title="${dlong(d.x)} · ${signed(Math.round(d.v))} บาท${nTr[key] ? ` · บันทึก ${nTr[key]} รายการ` : ''}${today ? ' · ถึงตอนนี้' : ''}"><span class="cdn">${dd}${today ? '<em>วันนี้</em>' : ''}</span><b class="num">${d.v ? amt(d.v) : '0'}</b><span class="n">${nTr[key] ? `${nTr[key]} รายการ` : ''}</span></button>`;
   };
   return `<div class="calw"><div class="cal-h"><div class="cal-nav"><button class="ibtn" data-cal="-1" ${k <= bd.min ? 'disabled' : ''} aria-label="เดือนก่อน">${ic('back', 16)}</button><b class="mn">${TH_MF[m]} ${y + 543}</b><button class="ibtn" data-cal="1" ${k >= bd.max ? 'disabled' : ''} aria-label="เดือนถัดไป">${ic('chev', 16)}</button></div>
       <div class="cal-s"><span class="tag ${tot >= 0 ? 'ok' : 'dn'} num">ทั้งเดือน ${signed(Math.round(tot))}</span><span class="tag line num">กำไร ${ups} วัน · ขาดทุน ${dns} วัน</span>${best && best.v > 0 ? `<span class="tag line num opt">ดีที่สุด ${dstr(best.x)} <b class="up">${amt(best.v)}</b></span>` : ''}${worst && worst.v < 0 ? `<span class="tag line num opt">แย่ที่สุด ${dstr(worst.x)} <b class="dn">${amt(worst.v)}</b></span>` : ''}</div></div>
@@ -3833,13 +3835,12 @@ const asOfTxt = () => STOCK_DATA.asOf ? dstr(Date.parse(STOCK_DATA.asOf + 'T10:0
 // one holding with value, weight, result and the money at risk down to its stop (all in baht)
 // one holding per line, like a broker app's portfolio; tap it for the detail with Buy / Sell
 function holdLine(p, b) {
-  const r = p.cost ? p.upl / p.cost : 0, gap = p.sl ? (p.last - p.sl) / p.last : null, i = stock(p.sym), ch = p.mk === 'th' && i?.prior ? (p.last - i.prior) / i.prior : null;
+  const gap = p.sl ? (p.avg - p.sl) / p.avg : null;
   return `<button class="ot-r" data-pos="${esc(p.key)}" title="ดูรายละเอียด ${esc(p.sym)}"><span class="jm">${slogo(p.sym, 30)}<span style="min-width:0"><b>${esc(p.sym)}</b>${p.plan ? '' : ' <span class="tag pu">นอกแผน</span>'}<span class="t2"><span class="dk">${p.mk !== 'th' ? mkName(p) : esc(sname(p.sym) || 'หุ้นไทย')}</span><span class="mo num">${fmt(p.qty)} ${unitOf(p)} · Avg ${px(p.avg)}</span></span></span></span>
     <span class="r num c-qty">${fmt(p.qty)}<span class="t2">${unitOf(p)}</span></span><span class="r num c-avg">${px(p.avg)}</span>
-    <span class="r num c-last"><b>${px(p.last)}</b>${ch != null ? `<span class="t2 ${ch > 0 ? 'up' : ch < 0 ? 'dn' : ''}">${pct(ch, 2)}</span>` : ''}</span>
     <span class="r num c-mv">${baht(p.v)}</span><span class="r num c-w">${fmt(p.w * 100, 1)}%</span>
-    <span class="r num c-upl ${p.upl >= 0 ? 'up' : 'dn'}"><b>${signed(p.upl)}</b><span class="t2 mo6 ${p.upl >= 0 ? 'up' : 'dn'}">${pct(r, 2)}</span></span><span class="r num c-pc ${r >= 0 ? 'up' : 'dn'}">${pct(r, 2)}</span>
-    <span class="r num c-sl" title="${gap == null ? 'ไม่มี Stop Loss' : `Stop Loss ${px(p.sl)} · ห่าง ${fmt(gap * 100, 1)}% · ขาดทุน ฿${baht(p.risk)} (${fmt(p.risk / b.total * 100, 2)}% ของพอร์ต) หากถึง Stop Loss`}">${gap == null ? '<span class="tag warn">ไม่มี SL</span>' : `${px(p.sl)}<span class="t2">เสี่ยง ฿${kb(p.risk)}</span>`}</span></button>`;
+    <span class="r num c-sl" title="${gap == null ? 'ไม่มี Stop Loss' : `Stop Loss ${px(p.sl)} · ต่ำกว่าต้นทุน ${fmt(gap * 100, 1)}%`}">${gap == null ? '<span class="tag warn">ไม่มี SL</span>' : px(p.sl)}</span>
+    <span class="r num c-rk" title="ขาดทุนจากต้นทุนหากราคาลงถึง Stop Loss">${p.risk == null ? '—' : `฿${kb(p.risk)}<span class="t2">${fmt(p.risk / b.total * 100, 2)}%</span>`}</span></button>`;
 }
 function closedLine(p) {
   const r = p.realized / p.bought;
@@ -3851,16 +3852,15 @@ function closedLine(p) {
 function posModal(key) {
   const me = ME(), p = positions(me.id).find(x => x.key === key); if (!p) return;
   const op = planOf(p.plan), i = stock(p.sym), b = portBook(me), u = unitOf(p), open = p.qty > 0;
-  const ch = p.mk === 'th' && i?.prior ? (p.last - i.prior) / i.prior : null, r = p.cost ? p.upl / p.cost : 0;
   const fills = execsOf(me.id).filter(e => (e.plan || 'off:' + e.sym) === key && e.rec.at <= now());
   const cell = (k, v, cls = '') => `<div><span>${k}</span><b class="num ${cls}">${v}</b></div>`;
-  const grid = open ? [cell('จำนวน', `${fmt(p.qty)} ${u}`), cell(tm('avg', 'ต้นทุนเฉลี่ย'), px(p.avg)), cell(tm('mv', 'มูลค่าตลาด'), '฿' + baht(p.v)), cell(tm('upl', 'Unrealized P/L'), `${signed(p.upl)} <span class="xs">${pct(r, 2)}</span>`, p.upl >= 0 ? 'up' : 'dn'),
-      cell('ต้นทุนรวม', '฿' + baht(p.cost)), cell('สัดส่วนในพอร์ต', fmt(p.v / b.total * 100, 1) + '%'), cell(tm('sl', 'Stop Loss'), p.sl ? px(p.sl) : '—', p.sl && p.last <= p.sl ? 'dn' : ''), cell(tm('rpl', 'Realized P/L'), p.realized ? signed(p.realized) : '—', p.realized > 0 ? 'up' : p.realized < 0 ? 'dn' : '')]
+  const grid = open ? [cell('จำนวน', `${fmt(p.qty)} ${u}`), cell(tm('avg', 'ต้นทุนเฉลี่ย'), px(p.avg)), cell('ต้นทุนรวม', '฿' + baht(p.cost)), cell('สัดส่วนในพอร์ต', fmt(p.v / b.total * 100, 1) + '%'),
+      cell(tm('sl', 'Stop Loss'), p.sl ? px(p.sl) : '—'), cell('เสี่ยงถึง SL', p.risk == null ? '—' : '฿' + baht(Math.round(p.risk)), p.risk ? 'dn' : ''), cell(tm('tp', 'TP1 / TP2'), p.tp1 ? `${px(p.tp1)} / ${px(p.tp2)}` : '—'), cell(tm('rpl', 'Realized P/L'), p.realized ? signed(p.realized) : '—', p.realized > 0 ? 'up' : p.realized < 0 ? 'dn' : '')]
     : [cell('มูลค่าซื้อ', '฿' + baht(p.bought)), cell(tm('rpl', 'Realized P/L'), signed(p.realized), p.realized >= 0 ? 'up' : 'dn'), cell('ผลตอบแทน', pct(p.realized / p.bought), p.realized >= 0 ? 'up' : 'dn'), cell('ระยะที่ถือ', `${Math.max(1, Math.round((p.lastAt - p.first) / DAY))} วัน`)];
   const rows = fills.slice().reverse().slice(0, 3).map(e => `<button class="ot-r" data-ex="${esc(e.id)}"><span class="num">${dstr(e.at)}<span class="t2">${tstr(e.at)}</span></span><span class="c">${sideTag(e)}</span><span class="r num">${fmt(e.qty)}</span><span class="r num c-px">${px(e.px)}</span><span class="r">${verTag(e, 1)}</span></button>`).join('');
   openModal(mhead(`${slogo(p.sym, 30)}${esc(p.sym)} <span class="muted sm" style="font-weight:400">${esc(sname(p.sym) || mkName(p))}</span>${p.plan ? '' : '<span class="tag pu">นอกแผน</span>'}${open ? '' : '<span class="tag">ปิดสถานะแล้ว</span>'}`,
     op ? `แผนของ${planBy(op)} ${dstr(op.at)} · Entry ${px(op.lo)}–${px(op.hi)} · SL ${px(p.sl ?? op.sl)} · TP ${px(op.tp1)}/${px(op.tp2)}` : 'ซื้อนอกแผน ไม่มีคำแนะนำจากโค้ช') + `<div class="mbd pdx">
-    <div class="pdx-q"><span class="num ${ch > 0 ? 'up' : ch < 0 ? 'dn' : ''}">${px(p.last)}</span>${ch != null ? `<span class="tag ${ch >= 0 ? 'ok' : 'dn'} num">${pct(ch, 2)}</span>` : ''}<span class="xs muted">ราคาปิดล่าสุด${p.mk === 'th' && STOCK_DATA.asOf ? ' ณ ' + asOfTxt() : ''}</span><span class="sp"></span>${p.mk === 'th' && i ? `<button class="lnk xs" data-stock2="${esc(p.sym)}">ข้อมูลบริษัท</button>` : ''}</div>
+    ${p.mk === 'th' && i ? `<div class="pdx-q"><span class="xs muted">ดูราคาล่าสุดในแอปซื้อขายของคุณ</span><span class="sp"></span><button class="lnk xs" data-stock2="${esc(p.sym)}">ข้อมูลบริษัท</button></div>` : ''}
     <div class="pdx-g">${grid.join('')}</div>
     <div class="otw pdt"><div class="ot-h"><span>วันที่</span><span class="c">B/S</span><span class="r">จำนวน</span><span class="r c-px">ราคา</span><span class="r">สถานะ</span></div>${rows}</div>
   </div><div class="mft"><button class="btn ghost sm" data-act="posall" data-sym="${esc(p.sym)}">ดูรายการทั้งหมด (${fills.length})</button><span class="sp"></span>${open ? `<button class="btn buy" data-act="kbuy" data-key="${esc(key)}">${ic('plus', 16)} ซื้อเพิ่ม</button><button class="btn sell" data-act="ksell" data-key="${esc(key)}">${ic('minus', 16)} บันทึกขาย</button>` : ''}</div>`, 'mid');
@@ -3869,24 +3869,23 @@ function portView() {
   const me = ME(), b = portBook(me), ps = pnlSum(me), v = eqNow(me), st = settle(me);
   const snaps = S.snaps.filter(s => s.cl === me.id).sort((a, b) => b.at - a.at);
   const closed = positions(me.id).filter(p => p.qty === 0 && p.bought > 0).sort((a, b) => b.lastAt - a.lastAt);
-  const cost = b.ps.reduce((s, p) => s + p.cost, 0), ur = cost ? ps.unreal / cost : 0, tone = n => n > 0 ? 'up' : n < 0 ? 'dn' : '';
+  const tone = n => n > 0 ? 'up' : n < 0 ? 'dn' : '', x = lastSnap(me);
   return `<div class="vh"><h1>พอร์ต</h1><div class="capb" title="ทุนเริ่มต้น ฿${baht(me.cap)}${capOf(me) !== me.cap ? ` · เพิ่มแล้ว ${signed(capOf(me) - me.cap)}` : ''}"><span class="k">ทุน</span><b class="num">฿${baht(capOf(me))}</b><button class="btn sm" data-act="addcap">${ic('plus', 15)} เพิ่มทุน</button></div><span class="sp"></span><button class="btn ghost sm snapb" data-act="snap">${ic('wallet', 15)}<span> รายงานยอดพอร์ต</span></button></div>
   <section class="pnl acct">
-    <div class="main"><div class="k">ยอดพอร์ตตามบันทึก <button class="lnk" data-act="recinfo" aria-label="ที่มาของยอดพอร์ต" title="ที่มาของยอดพอร์ต">${ic('info', 13)}</button></div><div class="v num gold">฿${baht(v)}</div><div class="s">ทุน ฿${baht(capOf(me))}</div></div>
-    <div class="opt"><div class="k">${tm('mv', 'มูลค่าหุ้น')}</div><div class="v num">฿${baht(b.inv)}</div><div class="s">ลงทุน ${fmt(b.inv / b.total * 100, 1)}% · ${b.ps.length} ตัว</div></div>
-    <div class="opt"><div class="k">เงินสด</div><div class="v num">฿${baht(b.cash)}</div><div class="s">สำรองตามแผน ฿${kb(me.tp.cash)}</div></div>
-    <div><div class="k">${tm('upl', 'Unrealized P/L')}</div><div class="v num ${tone(ps.unreal)}">${signed(ps.unreal)}</div><div class="s ${tone(ps.unreal)}">${pct(ur, 2)} จากต้นทุน</div></div>
-    <div class="opt"><div class="k">${tm('rpl', 'Realized P/L')}</div><div class="v num ${tone(ps.realized)}">${signed(ps.realized)}</div><div class="s">${tm('win')} ${ps.wins}/${ps.closed} ตัว</div></div>
-    <div><div class="k">กำไรสะสม</div><div class="v num ${tone(ps.total)}">${signed(ps.total)}</div><div class="s">${pct(retPct(me))} จากเงินทุน</div></div>
+    <div class="main"><div class="k">ยอดพอร์ตที่รายงานล่าสุด <button class="lnk" data-act="recinfo" aria-label="ที่มาของตัวเลข" title="ที่มาของตัวเลข">${ic('info', 13)}</button></div><div class="v num gold">${x ? '฿' + baht(x.val) : '—'}</div><div class="s">${x ? `จากแอปซื้อขาย · ${dstr(S.days[x.day])}` : 'ยังไม่มีรายงานวันศุกร์'}</div></div>
+    <div class="opt"><div class="k">หุ้นที่ถือ (ต้นทุน)</div><div class="v num">฿${baht(b.inv)}</div><div class="s">${fmt(b.inv / b.total * 100, 1)}% ของพอร์ตตามบันทึก · ${b.ps.length} ตัว</div></div>
+    <div class="opt"><div class="k">เงินสดตามบันทึก</div><div class="v num">฿${baht(b.cash)}</div><div class="s">สำรองตามแผน ฿${kb(me.tp.cash)}</div></div>
+    <div><div class="k">${tm('rpl', 'กำไรที่ขายแล้ว')}</div><div class="v num ${tone(ps.realized)}">${signed(ps.realized)}</div><div class="s">${pct(retPct(me))} จากเงินทุน</div></div>
+    <div><div class="k">${tm('win')}</div><div class="v num">${ps.closed ? Math.round(ps.rate * 100) + '%' : '—'}</div><div class="s">กำไร ${ps.wins} จาก ${ps.closed} ตัวที่ปิดแล้ว</div></div>
   </section>
-  <section class="pnl pmain" data-pt="พอร์ต"><div class="ph"><div class="seg xsg" role="tablist"><button class="${pTab === 'hold' ? 'on' : ''}" data-ptab="hold">พอร์ต <span class="n">${b.ps.length}</span></button><button class="${pTab === 'closed' ? 'on' : ''}" data-ptab="closed">ปิดสถานะแล้ว <span class="n">${closed.length}</span></button></div><span class="sub">${pTab === 'hold' ? `ราคาปิด ณ ${asOfTxt()} · แตะเพื่อดูรายละเอียด ซื้อเพิ่ม หรือบันทึกขาย` : `${tm('win')} ${ps.wins}/${ps.closed} ตัว · ${tm('rpl')} <b class="${ps.realized >= 0 ? 'up' : 'dn'} num">${signed(ps.realized)}</b>`}</span><div class="pgn" data-pgn="${pTab === 'hold' ? 'ph' : 'pcl'}"></div></div>
-    <div class="pb flush">${pTab === 'hold' ? (b.ps.length ? `<div class="otw phold"><div class="ot-h"><span>หุ้น</span><span class="r c-qty">จำนวน</span><span class="r c-avg">${tm('avg', 'Avg')}</span><span class="r c-last">ราคาปิด</span><span class="r c-mv">${tm('mv', 'มูลค่าตลาด')}</span><span class="r c-w">สัดส่วน</span><span class="r c-upl">${tm('upl', 'U.P/L')}</span><span class="r c-pc">%U.P/L</span><span class="r c-sl">${tm('sl', 'Stop Loss')}</span></div><div class="list tight" data-pg="ph">${b.ps.map(p => holdLine(p, b)).join('')}</div></div>` : '<div class="empty">ยังไม่มีสินทรัพย์ที่ถือครอง</div>')
+  <section class="pnl pmain" data-pt="พอร์ต"><div class="ph"><div class="seg xsg" role="tablist"><button class="${pTab === 'hold' ? 'on' : ''}" data-ptab="hold">พอร์ต <span class="n">${b.ps.length}</span></button><button class="${pTab === 'closed' ? 'on' : ''}" data-ptab="closed">ปิดสถานะแล้ว <span class="n">${closed.length}</span></button></div><span class="sub">${pTab === 'hold' ? 'ตามต้นทุน · แตะเพื่อดูรายละเอียด ซื้อเพิ่ม หรือบันทึกขาย' : `${tm('win')} ${ps.wins}/${ps.closed} ตัว · ${tm('rpl')} <b class="${ps.realized >= 0 ? 'up' : 'dn'} num">${signed(ps.realized)}</b>`}</span><div class="pgn" data-pgn="${pTab === 'hold' ? 'ph' : 'pcl'}"></div></div>
+    <div class="pb flush">${pTab === 'hold' ? (b.ps.length ? `<div class="otw phold"><div class="ot-h"><span>หุ้น</span><span class="r c-qty">จำนวน</span><span class="r c-avg">${tm('avg', 'Avg')}</span><span class="r c-mv">ต้นทุนรวม</span><span class="r c-w">สัดส่วน</span><span class="r c-sl">${tm('sl', 'Stop Loss')}</span><span class="r c-rk">เสี่ยงถึง SL</span></div><div class="list tight" data-pg="ph">${b.ps.map(p => holdLine(p, b)).join('')}</div></div>` : '<div class="empty">ยังไม่มีสินทรัพย์ที่ถือครอง</div>')
       : closed.length ? `<div class="otw pclosed"><div class="ot-h"><span>หุ้น</span><span class="c-per">ช่วงที่ถือ</span><span class="r c-buy">มูลค่าซื้อ</span><span class="r">${tm('rpl', 'Realized P/L')}</span><span class="r">%</span></div><div class="list tight" data-pg="pcl">${closed.map(closedLine).join('')}</div></div>` : '<div class="empty">ยังไม่มีรายการที่ปิดสถานะ</div>'}</div></section>
   <section class="pnl palloc" data-pt="สัดส่วน"><div class="ph"><h3>สัดส่วนการลงทุน</h3><button class="lnk xs" data-act="tp">แผนเทรด</button><span class="sp"></span>${allocSeg()}</div>
     <div class="pb" style="display:flex;align-items:center">${allocView(me, narrow() ? 128 : 150)}</div>
     <div class="pfoot">${heatView(me)}${concLine(me)}</div></section>
   <section class="pnl phist" data-pt="ประวัติ"><div class="ph"><h3>ประวัติ</h3><span class="sp"></span>${histSeg()}<div class="pgn" data-pgn="hist" style="margin-left:6px"></div></div>
-    ${HIST_TAB === 'rep' ? `<div class="pb" style="display:flex;flex-direction:column;gap:8px">${weekStrip(me)}${snaps.length ? `<div class="list tight" data-pg="hist">${snaps.map(s => { const c = me.eq[s.day], df = (s.val - c) / c, fri = new Date(S.days[s.day]).getUTCDay() === 5; return `<div class="srow"><span>${wd(S.days[s.day])} ${dstr(S.days[s.day])}${fri ? '' : ' <span class="tag line">ส่งล่วงหน้า</span>'}<span class="xs muted num" style="display:block">รายงาน ${baht(s.val)} · ตามบันทึก ${baht(c)}</span></span><span class="tag ${Math.abs(df) <= .02 ? 'ok' : 'warn'} num" title="ส่วนต่างระหว่างยอดที่รายงานกับบันทึกการซื้อขาย">ต่างจากบันทึก ${pct(df, 2)}</span></div>`; }).join('')}</div>` : ''}</div>` : HIST_TAB === 'stmt' ? `<div class="pb">${stmtDue(me).length ? `<div class="list tight" data-pg="hist">${stmtRows(me)}</div>` : '<div class="empty">ยังไม่ถึงกำหนดส่ง Statement</div>'}</div>` : `
+    ${HIST_TAB === 'rep' ? `<div class="pb" style="display:flex;flex-direction:column;gap:8px">${weekStrip(me)}${snaps.length ? `<div class="list tight" data-pg="hist">${snaps.map(s => { const fri = new Date(S.days[s.day]).getUTCDay() === 5; return `<div class="srow"><span>${wd(S.days[s.day])} ${dstr(S.days[s.day])}${fri ? '' : ' <span class="tag line">ส่งล่วงหน้า</span>'}<span class="xs muted num" style="display:block">ส่ง ${dt(s.at)}</span></span><b class="num">฿${baht(s.val)}</b></div>`; }).join('')}</div>` : ''}</div>` : HIST_TAB === 'stmt' ? `<div class="pb">${stmtDue(me).length ? `<div class="list tight" data-pg="hist">${stmtRows(me)}</div>` : '<div class="empty">ยังไม่ถึงกำหนดส่ง Statement</div>'}</div>` : `
     <div class="pb"><div class="list tight" data-pg="hist">${me.flows.filter(f => f.pend || f.rej).slice().reverse().map(f => `<div class="frow"><span><span class="tag ${f.amt > 0 ? 'ok' : 'dn'}">${f.amt > 0 ? 'ฝาก' : 'ถอน'}</span> <b class="num">${baht(Math.abs(f.amt))}</b><span class="xs muted" style="display:block">${dt(f.at)}</span></span>${f.pend ? '<span class="tag blue">รอ CS ตรวจ</span>' : '<span class="tag dn">ไม่อนุมัติ</span>'}</div>`).join('')}${capLog(me).map(capRow).join('')}</div></div>`}</section>`;
 }
 
@@ -3957,9 +3956,8 @@ function snapModal() {
   const getSlip = wireSlip(box, upd, () => ({ sym: 'PORT', side: 'buy', px: 0, qty: 0, at: now() }));
   box.addEventListener('input', upd); upd();
   $('#save', box).addEventListener('click', () => {
-    const v = Math.round(num(box, 'fval')), sl = getSlip(), day = me.eq.length - 1;
+    const v = Math.round(num(box, 'fval')), sl = getSlip(), day = T_();
     S.snaps = S.snaps.filter(s => !(s.cl === me.id && s.day === day));
-    me.eq[day] = Math.round(eqNow(me));
     S.snaps.push({ id: nid('s'), cl: me.id, day, at: now(), val: v, img: sl.img || null });
     pushFeed({ by: 'client', who: me.id, cl: me.id, coach: me.coach, kind: 'snap', text: `${cname(me)} รายงานยอดพอร์ต ${baht(v)} บาท` });
     if (!save()) return;
@@ -3971,12 +3969,12 @@ function slipModal(id) {
   openModal(mhead(`${slogo(e.sym, 28)}${verbEx(e)} ${esc(e.sym)} · ${fmt(e.qty)} ${unitOf(e)} @ ${px(e.px)}`, `${dt(e.at)} · บันทึกโดย${e.rec.by === FEATURED ? 'คุณ' : byName(e.rec.by)}`) + `<div class="mbd" style="display:flex;justify-content:center"><div style="width:min(300px,100%);height:min(430px,70dvh)">${slipImg(e, ME())}</div></div>`);
 }
 function recInfo() {
-  const me = ME(), x = lastSnap(me), pv = posValue(me.id), v = eqNow(me), ps = pnlSum(me);
-  openModal(mhead('ยอดพอร์ตและกำไรตามบันทึก', 'คำนวณจากรายการซื้อขายที่บันทึกพร้อมภาพหลักฐาน') + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px">
-    <div class="pstrip"><div><span>ยอดพอร์ตตามบันทึก</span><b class="num gold">฿${baht(v)}</b></div><div><span>· มูลค่าสินทรัพย์ × ราคาปิดล่าสุด</span><b class="num">฿${baht(pv)}</b></div><div><span>· เงินสดคงเหลือ</span><b class="num">฿${baht(v - pv)}</b></div>
-      <div><span>กำไรสะสม (Realized + Unrealized)</span><b class="num ${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</b></div><div><span>ยอดที่คุณรายงานล่าสุด${x ? ` (${dlong(S.days[x.day])})` : ''}</span><b class="num">฿${baht(repVal(me))}</b></div></div>
-    <div class="note-box g">${ic('info', 16)}<span>โปรแกรมยึด<b>บันทึกการซื้อขาย</b>ที่คุณบันทึกพร้อมภาพหลักฐานและโค้ชตรวจแล้วเป็นหลัก ส่วน<b>ยอดที่รายงานทุกวันศุกร์</b>ใช้ตรวจว่าทุกรายการถูกบันทึกครบ หากต่างกันเกิน 2% ทีม CS จะติดต่อเพื่อตรวจสอบ</span></div>
-    <div class="xs muted">ราคาอ้างอิงราคาปิดล่าสุด ไม่รวมค่าธรรมเนียมการซื้อขายและภาษี · สินทรัพย์ต่างประเทศคิดเป็นบาทตามอัตราแลกเปลี่ยนที่บันทึก</div></div>`, 'sm');
+  const me = ME(), x = lastSnap(me), b = portBook(me), ps = pnlSum(me);
+  openModal(mhead('ที่มาของตัวเลข', 'ระบบไม่เชื่อมกับบัญชีซื้อขาย และไม่ใช้ราคาหุ้นแบบเรียลไทม์') + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px">
+    <div class="pstrip"><div><span>ยอดพอร์ตที่คุณรายงานล่าสุด${x ? ` (${dlong(S.days[x.day])})` : ''}</span><b class="num gold">${x ? '฿' + baht(x.val) : '—'}</b></div><div><span>· ตามบันทึก: ทุน + กำไรที่ขายแล้ว</span><b class="num">฿${baht(b.total)}</b></div><div><span>· หุ้นที่ถืออยู่ (ตามต้นทุน)</span><b class="num">฿${baht(b.inv)}</b></div>
+      <div><span>กำไรที่ขายแล้ว (Realized)</span><b class="num ${ps.realized >= 0 ? 'up' : 'dn'}">${signed(ps.realized)}</b></div></div>
+    <div class="note-box g">${ic('info', 16)}<span><b>กำไรสะสม</b>นับจากรายการที่ขายแล้วและหัวหน้าโค้ชตรวจกับภาพแล้ว หุ้นที่ยังถือนับตามต้นทุนจนกว่าจะขาย ส่วน<b>ยอดพอร์ตวันศุกร์</b>คือมูลค่าจริงจากแอปซื้อขายที่คุณรายงานพร้อมภาพ</span></div>
+    <div class="xs muted">ไม่รวมค่าธรรมเนียมการซื้อขายและภาษี · สินทรัพย์ต่างประเทศคิดเป็นบาทตามอัตราแลกเปลี่ยนที่บันทึก</div></div>`, 'sm');
 }
 // the client's own trading plan; a new version from the coach waits for the client to confirm it
 function tpModal() {
@@ -4037,7 +4035,7 @@ function termsModal() {
     <table class="tbl"><thead><tr><th>กำไรเมื่อจบโปรแกรม</th><th class="r">ค่าเรียนที่ได้คืน</th></tr></thead><tbody>${rows.map(([a, b]) => `<tr><td>${a}</td><td class="r">${b}</td></tr>`).join('')}
       <tr class="me"><td><b>ของคุณ ณ วันนี้ <span class="num ${st.pr >= 0 ? 'up' : 'dn'}">${signed(st.pr)}</span></b></td><td class="r num"><b class="gold">${st.extra > 0 ? `ไม่มีเงินคืน · ส่วนเกิน ${signed(st.extra)}` : '฿' + baht(st.refund)}</b></td></tr></tbody></table>
     <div class="note-box y">${ic('flag', 16)}<span><b>คะแนนตามกติกา:</b> เริ่ม 100 คะแนน หักตามความหนักของเรื่องที่ไม่เป็นไปตามแผน (รายละเอียดใน “กติกาของคอร์ส”) · ต่ำกว่า ${PT_TALK} โค้ชนัดคุย · ต่ำกว่า ${PT_REVIEW} พิจารณาสิทธิ์คืนค่าเรียน · ของคุณตอนนี้ <b>${points(ME().id).score}/100</b></span></div>
-    <div class="xs muted">กำไรคำนวณจากบันทึกการซื้อขาย (Realized + Unrealized ณ ราคาปิด) ไม่รวมเงินฝาก/ถอน · ตัวเลขวันนี้เป็นการประมาณการ ยอดจริงคำนวณ ณ วันจบโปรแกรม</div></div>`, 'sm');
+    <div class="xs muted">กำไรคำนวณจากรายการที่ขายแล้ว (Realized) ไม่รวมเงินฝาก/ถอน · ตัวเลขวันนี้เป็นการประมาณการ ยอดจริงคำนวณ ณ วันจบโปรแกรม</div></div>`, 'sm');
 }
 
 /* ---------- community: the cohort's leaderboard, levels, what members achieved, and badges.
@@ -4173,13 +4171,13 @@ function commView() {
   <section class="pnl cside" data-pt="อันดับ · เหรียญ"><div class="ph"><div class="seg xsg">${[['me', 'ของฉัน'], ['lead', 'ทำเนียบ'], ['feed', 'กิจกรรม']].map(([k, l]) => `<button class="${cTab === k ? 'on' : ''}" data-ctab="${k}">${l}</button>`).join('')}</div><span class="sp"></span>${cTab === 'me' ? `<button class="ibtn sm" data-act="commset" aria-label="ตั้งค่าการแสดงผลในคอมมูนิตี้" title="ตั้งค่าการแสดงผลในคอมมูนิตี้">${ic('sliders', 15)}</button>` : `<div class="pgn" data-pgn="${cTab === 'lead' ? 'lb' : 'fd'}"></div>`}</div>
     ${body}</section>`;
 }
-// LIVE ranking board in the hall: the top 5 with their characters' faces, my row, and the metric to rank by;
+// ranking board in the hall: the top 5 with their characters' faces, my row, and the metric to rank by;
 // pointing at a row puts a spotlight on that member in the room, clicking opens their card
 function rankBoard(b, mine) {
   const open = lbOpen ?? innerWidth >= 1000;
   const row = (x, i) => `<button class="wr ${x.c.id === FEATURED ? 'me' : ''} ${x.rank <= 3 ? 'r' + x.rank : ''}" style="--i:${i}" data-wf="${esc(x.c.id)}" title="ดู ${esc(commName(x.c))} ในห้อง"><span class="wk num">${x.rank}</span><canvas data-head="${esc(x.c.id)}" aria-hidden="true"></canvas><span class="wn"><b>${esc(commName(x.c))}</b>${tierTag(tierOf(profit(x.c)))}</span><span class="wv num"><b class="${lbTone(x)}">${lbVal(x)}</b>${mvTag(x.move)}</span></button>`;
-  if (!open) return `<div class="wlb min"><button class="wmini" data-act="wlb">${ic('trophy', 14)} ทำเนียบ LIVE · คุณอันดับ <b class="num">#${mine ? mine.rank : '—'}</b>${ic('plus', 13)}</button></div>`;
-  return `<div class="wlb"><div class="wlh"><span class="live"><i></i>LIVE</span><b>${ic('trophy', 14)} ทำเนียบรุ่น</b><span class="sp"></span><button class="wx" data-act="wlb" aria-label="ย่อกระดานอันดับ" title="ย่อ">${ic('minus', 14)}</button></div>
+  if (!open) return `<div class="wlb min"><button class="wmini" data-act="wlb">${ic('trophy', 14)} ทำเนียบรุ่น · คุณอันดับ <b class="num">#${mine ? mine.rank : '—'}</b>${ic('plus', 13)}</button></div>`;
+  return `<div class="wlb"><div class="wlh"><b>${ic('trophy', 14)} ทำเนียบรุ่น</b><span class="sp"></span><button class="wx" data-act="wlb" aria-label="ย่อกระดานอันดับ" title="ย่อ">${ic('minus', 14)}</button></div>
     <div class="wls">${Object.entries(LB_M).map(([k, l]) => `<button class="${lbM === k ? 'on' : ''}" data-wlm="${k}">${l}</button>`).join('')}</div>
     <div class="wll">${b.slice(0, 5).map(row).join('')}${mine && mine.rank > 5 ? `<div class="wsep">• • •</div>${row(mine, 6)}` : ''}</div>
     <button class="wfoot" data-ctab="lead">ดูทำเนียบทั้งหมด ${b.length} คน${ic('chev', 12)}</button></div>`;
@@ -4216,14 +4214,13 @@ function commSet() {
 }
 
 /* ---------- ตาราง Coaching: the month, laid out like the institute's class calendar ---------- */
-// on a day: the client's Coaching / monthly Review (from the attendance records once past), the cohort's Mentor before
-// the market opens and the head coach's War Room (demo schedule), the Friday port report and the Statement due on
-// the 5th, and market holidays (CLOSE, nothing else that day)
+// on a day: the client's Coaching / monthly Review (from the attendance records once past), the Friday port report
+// and the Statement due on the 5th, and market holidays (CLOSE, nothing else that day)
 const SCH = {
-  coach: ['Coaching', 'Coaching กับโค้ช'], review: ['Review', 'Review ประจำเดือน'], mentor: ['Mentor', 'Mentor ก่อนตลาดเปิด'],
-  war: ['War Room', 'War Room ระหว่างตลาดเปิด'], snap: ['ส่งยอดพอร์ต', 'รายงานยอดพอร์ตประจำสัปดาห์'], stmt: ['ส่ง Statement', 'ส่ง Statement รายเดือน'], close: ['CLOSE', 'วันหยุดตลาดหลักทรัพย์'],
+  coach: ['Coaching', 'Coaching กับโค้ช'], review: ['Review', 'Review ประจำเดือน'], 
+  snap: ['ส่งยอดพอร์ต', 'รายงานยอดพอร์ตประจำสัปดาห์'], stmt: ['ส่ง Statement', 'ส่ง Statement รายเดือน'], close: ['CLOSE', 'วันหยุดตลาดหลักทรัพย์'],
 };
-const SCH_F = [['all', 'ทั้งหมด'], ['mine', 'Coaching และ Review'], ['mentor', 'Mentor'], ['war', 'War Room'], ['due', 'กำหนดส่ง'], ['close', 'วันหยุดตลาด']];
+const SCH_F = [['all', 'ทั้งหมด'], ['mine', 'Coaching และ Review'], ['due', 'กำหนดส่ง'], ['close', 'วันหยุดตลาด']];
 let schM = 0, schSel = '', schF = 'all';
 const schPass = k => schF === 'all' || (schF === 'mine' ? k === 'coach' || k === 'review' : schF === 'due' ? k === 'snap' || k === 'stmt' : k === schF);
 // d0 = the date at 00:00 UTC (like S.days); times are Thai time
@@ -4239,8 +4236,6 @@ function schDay(d0) {
     }
   }
   if (w === 0 || w === 6) return out;
-  out.push({ k: 'mentor', at: at(9, 30), who: ['head', me.coach] });
-  if (w === 3) out.push({ k: 'war', at: at(14), who: ['head'] });
   if (w === 2) {
     const ss = sessOf(me.id).find(x => dayOf(x.at) === d0);
     if (ss) out.push({ k: ss.kind === 'review' ? 'review' : 'coach', at: ss.at, who: [ss.coach], st: ss.att ? 'ok' : 'miss', note: ss.note });
@@ -4588,10 +4583,10 @@ function worldBg() {
   WORLD.bgKey = key;
   return bg;
 }
-// the TVs: an index line that keeps moving, stock boards whose cells change, and a ticker of the cohort's stocks
+// the TVs: the cohort's profit week by week (from the records), plain boards, and a ticker of the cohort's top returns
 const RND = Array.from({ length: 997 }, (_, i) => hsh('rnd' + i));
 function boardTV(ctx, x0, y0, w, h, t, seed) {
-  const cols = 6, rows = 7, cw = (w - 8) / cols, chh = (h - 9) / rows, tick = Math.floor(t * 1.6);
+  const cols = 6, rows = 7, cw = (w - 8) / cols, chh = (h - 9) / rows, tick = 0;   // still: no live prices
   for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
     const k = RND[(seed.charCodeAt(0) * 131 + r * 17 + c * 7 + ((r * 7 + c * 3 + tick) % 4 === 0 ? tick * 29 : 0)) % RND.length];
     ctx.fillStyle = r === 0 ? '#2b5fd9' : k < .38 ? '#18c27a' : k < .7 ? '#e6475a' : k < .86 ? '#e8c547' : '#cfd6e2';
@@ -4599,30 +4594,32 @@ function boardTV(ctx, x0, y0, w, h, t, seed) {
   }
   ctx.globalAlpha = 1;
 }
+// the cohort's total profit (what has been sold) at each Friday close, for the big screen
+const cohortSeries = () => { const fr = S.days.map((t, i) => i).filter(i => new Date(S.days[i]).getUTCDay() === 5 && i < T_()); return [...fr.map(i => S.clients.reduce((s, c) => s + profitAtDay(c, i), 0)), S.clients.reduce((s, c) => s + profit(c), 0)]; };
 function worldScreen(ctx, L, t, off) {
   const H = ROOM.wall, u = x => x * L.tw / 2, ub = y => (ROOM.h - y) * L.tw / 2, v = z => (H - z) * L.zU, dpr = WORLD.dpr;
   ctx.save(); wallA(ctx, L, dpr, off);
-  const x0 = u(1.15) + 3, x1 = u(5.25) - 3, y0 = v(2.32) + 3, y1 = v(.9) - 3, n = 48, val = i => Math.sin((i + t * 1.4) * .23) * .35 + Math.sin((i + t * 1.4) * .071) * .45 + Math.sin((i + t * 1.4) * .5) * .12;
+  const x0 = u(1.15) + 3, x1 = u(5.25) - 3, y0 = v(2.32) + 3, y1 = v(.9) - 3, cs = WORLD.cohort || (WORLD.cohort = cohortSeries()), n = cs.length, lo = Math.min(0, ...cs), hi = Math.max(1, ...cs), val = i => (cs[i] - lo) / (hi - lo || 1) * 2 - 1;
   ctx.save(); ctx.beginPath(); ctx.rect(x0, y0, x1 - x0, y1 - y0); ctx.clip();
   ctx.strokeStyle = 'rgba(255,255,255,.07)'; ctx.lineWidth = 1;
   for (let k = 1; k < 4; k++) { const y = y0 + (y1 - y0) * k / 4; ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke(); }
-  const pts = Array.from({ length: n }, (_, i) => [x0 + (x1 - x0) * i / (n - 1), y0 + 12 + (y1 - y0 - 18) * (.5 - val(i) / 2)]), up = val(n - 1) >= val(n - 8);
+  const pts = Array.from({ length: n }, (_, i) => [x0 + (x1 - x0) * i / Math.max(1, n - 1), y0 + 12 + (y1 - y0 - 18) * (.5 - val(i) / 2)]), up = cs[n - 1] >= (cs[n - 2] ?? 0);
   const ag = ctx.createLinearGradient(0, y0, 0, y1); ag.addColorStop(0, up ? 'rgba(61,220,151,.35)' : 'rgba(255,107,125,.35)'); ag.addColorStop(1, 'rgba(0,0,0,0)');
   ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.lineTo(x1, y1); ctx.lineTo(x0, y1); ctx.closePath(); ctx.fillStyle = ag; ctx.fill();
   ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.strokeStyle = up ? '#3ddc97' : '#ff6b7d'; ctx.lineWidth = 1.8; ctx.stroke();
   const fs = Math.max(8, L.tw * .16);
   ctx.font = `800 ${fs}px "Leelawadee UI",Tahoma,sans-serif`; ctx.fillStyle = '#e9e2cf'; ctx.textAlign = 'left';
-  ctx.fillText('SET INDEX', x0 + 6, y0 + fs + 2); ctx.fillStyle = up ? '#3ddc97' : '#ff6b7d'; ctx.fillText(`${fmt(1386 + val(n - 1) * 24, 2)} ${up ? '▲' : '▼'}`, x0 + 6 + fs * 5.2, y0 + fs + 2);
+  ctx.fillText('กำไรรวมของรุ่น', x0 + 6, y0 + fs + 2); ctx.fillStyle = up ? '#3ddc97' : '#ff6b7d'; ctx.fillText(`${signed(Math.round(cs[n - 1] || 0))}`, x0 + 6 + fs * 6.4, y0 + fs + 2);
   ctx.restore();
   boardTV(ctx, u(5.75) + 2, v(2.28) + 2, u(2.95) - 4, v(1.12) - v(2.28) - 4, t, 'a');
   // ticker along the top of the right wall
   const ty0 = v(2.68), ty1 = v(2.48), tx0 = u(.3), tx1 = u(9.6);
   ctx.fillStyle = '#05080f'; ctx.fillRect(tx0, ty0, tx1 - tx0, ty1 - ty0); ctx.beginPath(); ctx.rect(tx0, ty0, tx1 - tx0, ty1 - ty0); ctx.clip();
-  const items = WORLD.tick || (WORLD.tick = Object.entries(STOCK_DATA.list).slice(0, 18).map(([sy, x]) => [sy, x.last, x.prior ? (x.last - x.prior) / x.prior : 0]));
+  const items = WORLD.tick || (WORLD.tick = board('ret', 'all').slice(0, 12).map(x => [`#${x.rank} ${commName(x.c)}`, x.v]));
   ctx.font = `700 ${Math.max(8, (ty1 - ty0) * .72)}px "Leelawadee UI",Tahoma,sans-serif`;
-  const seg = WORLD.tickS || (WORLD.tickS = items.map(([sy, l, c]) => `${sy} ${fmt(l, 2)} ${c >= 0 ? '▲' : '▼'}${fmt(Math.abs(c) * 100, 2)}%`)), fk = ctx.font, wseg = WORLD.tickW && WORLD.tickF === fk ? WORLD.tickW : (WORLD.tickF = fk, WORLD.tickW = seg.map(x => ctx.measureText(x + '     ').width)), tot = wseg.reduce((a, b) => a + b, 0) || 1;
+  const seg = WORLD.tickS || (WORLD.tickS = items.map(([nm, r]) => `${nm} ${r >= 0 ? '▲' : '▼'}${fmt(Math.abs(r) * 100, 2)}%   `)), fk = ctx.font, wseg = WORLD.tickW && WORLD.tickF === fk ? WORLD.tickW : (WORLD.tickF = fk, WORLD.tickW = seg.map(x => ctx.measureText(x + '     ').width)), tot = wseg.reduce((a, b) => a + b, 0) || 1;
   let x = tx0 - (t * 22) % tot;
-  for (let rep = 0; rep < 3 && x < tx1; rep++) seg.forEach((txt, i) => { if (x < tx1 && x + wseg[i] > tx0) { ctx.fillStyle = items[i][2] >= 0 ? '#3ddc97' : '#ff6b7d'; ctx.fillText(txt, x, ty1 - (ty1 - ty0) * .22); } x += wseg[i]; });
+  for (let rep = 0; rep < 3 && x < tx1; rep++) seg.forEach((txt, i) => { if (x < tx1 && x + wseg[i] > tx0) { ctx.fillStyle = items[i][1] >= 0 ? '#3ddc97' : '#ff6b7d'; ctx.fillText(txt, x, ty1 - (ty1 - ty0) * .22); } x += wseg[i]; });
   ctx.restore();
   ctx.save(); wallB(ctx, L, dpr, off);
   [[1.5, 3.6, 'b'], [4, 6.1, 'c']].forEach(([y0b, y1b, sd]) => boardTV(ctx, ub(y1b) + 2, v(2.22) + 2, ub(y0b) - ub(y1b) - 4, v(1.12) - v(2.22) - 4, t + 3, sd));
@@ -4957,7 +4954,7 @@ document.addEventListener('click', e => {
   if (act === 'menu') { menu = menu === a.dataset.m ? null : a.dataset.m; return render(); }
   if (act === 'mockslip') return;
   if (act === 'jdate') { const i = $('#j' + a.dataset.k); try { i.showPicker(); } catch { i.focus(); } return; }
-  if (act !== 'linkline' && act !== 'fx') menu = null;
+  if (act !== 'fx') menu = null;
   if (act === 'fx') { const off = document.documentElement.dataset.fx !== 'off'; document.documentElement.dataset.fx = off ? 'off' : 'on'; try { localStorage.setItem('p1m-fx', off ? 'off' : 'on'); } catch {} shown = null; return render(); }
   if (act === 'glogin') return googleChooser([{ name: 'ณัฐธิดา ก.', email: 'natthida.demo@gmail.com', color: '#c2185b' }, { name: 'Natthida K.', email: 'natthida.home@gmail.com', color: '#00796b' }], acc => {
     // only e-mails CS registered may enter (the server checks the verified Google e-mail)
@@ -4966,7 +4963,6 @@ document.addEventListener('click', e => {
     pushFeed({ by: 'client', who: FEATURED, cl: FEATURED, coach: ME().coach, kind: 'login', text: `${cname(ME())} เข้าสู่ระบบ` });
     save(); closeModal(); render();
   }, 'ปั้นพอร์ต 1 ล้าน');
-  if (act === 'linkline') { ME().line = !ME().line; save(); return render(); }
   if (act === 'startapp') { if (!agree) return; ME().ob = true; ME().consent = now(); if (!ME().tp.ok) ME().tp.ok = now(); save(); go('home'); return toast(`${ic('check', 18)}<div><b>เข้าสู่ระบบแล้ว</b><div class="muted sm">กำไรสะสมตามบันทึก ${signed(profit(ME()))} บาท</div></div>`, 'ok'); }
   if (act === 'logout') { pushFeed({ by: 'client', who: FEATURED, cl: FEATURED, kind: 'logout', text: `${cname(ME())} ออกจากระบบ` }); save(); sessionStorage.removeItem('p1m-fe'); return render(); }
   if (act === 'reset') { resetData(); sessionStorage.removeItem('p1m-fe'); agree = false; view = 'home'; jFrom = jTo = jSym = ''; render(); return toast('รีเซ็ตข้อมูลตัวอย่างแล้ว'); }
@@ -4994,8 +4990,8 @@ document.addEventListener('click', e => {
   if (act === 'tp') { render(); return tpModal(); }
   if (act === 'stmt') { render(); return stmtModal(); }
   if (act === 'rules') { render(); return rulesModal(); }
-  if (act === 'cs') { render(); return toast(`${ic('phone', 18)}<div><b>ติดต่อ CS</b><div class="muted sm">ระบบจริงจะเปิดแชต LINE กับทีม CS</div></div>`); }
-  if (act === 'line') { render(); return toast(`${ic('chat', 18)}<div><b>เปิด LINE</b><div class="muted sm">ระบบจริงจะเปิดห้องแชตกับ${coach(ME().coach).name}</div></div>`); }
+  if (act === 'cs') { const u = safeLink(S.cs?.lineUrl); if (u) return window.open(u, '_blank', 'noopener'); render(); return toast(`${ic('phone', 18)}<div><b>ติดต่อทีม CS</b><div class="muted sm">${S.cs?.phone ? `โทร ${esc(S.cs.phone)}` : 'ยังไม่ได้ตั้งช่องทางติดต่อ CS'}</div></div>`); }
+  if (act === 'line') { const co = coach(ME().coach), u = safeLink(co?.lineUrl); if (u) return window.open(u, '_blank', 'noopener'); render(); return toast(`${ic('chat', 18)}<div><b>ติดต่อ${esc(co.name)}</b><div class="muted sm">${co.phone ? `โทร ${esc(co.phone)}` : 'ยังไม่ได้ตั้งลิงก์ LINE ของโค้ช'}</div></div>`); }
 });
 document.addEventListener('change', e => {
   if (e.target.id === 'agree') { agree = e.target.checked; $('#startBtn').disabled = !agree; return; }

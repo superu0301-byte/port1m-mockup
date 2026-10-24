@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-jSvUjBVPxLuGkt7p03mqEuWYBtJi8KUxNQDAAlLDQoQ=' 'sha256-yB0LDHC1P0fQdd1F2AljZMeaSYuY6Casa0/z69/0IHM='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-pmQj8Vmq/BWhHkYqM0j3FqJQqWjqZ5Me1ckkgVb7fWw=' 'sha256-Eo478M3bfMZ54CQHZ4xUJNMEpGqhiDYHXGNx6CVyW9g='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>หลังบ้าน · ปั้นพอร์ต 1 ล้าน (ต้นแบบ)</title>
@@ -970,7 +970,7 @@ button.ot-r:hover,.ot-r.click:hover{background:linear-gradient(90deg,rgba(235,19
 @media (max-width:1180px){.prf-rules{grid-template-columns:repeat(2,minmax(0,1fr))}.c-prof{grid-template-columns:minmax(240px,290px) minmax(0,1fr)}}
 @media (max-height:760px){.prf-l .pb{gap:9px}.prf-d>div{padding:5px 12px}.mkc{padding:10px 12px;gap:5px}.prr{padding:7px 11px}.prr b{font-size:17px}.prf-b{gap:9px}}
 @media (max-height:680px){.prf-lev,.mkc-y,.mkc-s{display:none}}
-@media (max-width:900px) and (max-height:700px){.mkc-s{display:none}.mkc{padding:8px 11px;gap:4px}.mkc-t>div{padding:2px 0}.mkc-t>div.w{display:none}.prf-b{gap:6px}}
+@media (max-width:900px) and (max-height:700px){.mkc-s{display:none}.mkc{padding:8px 11px;gap:3px}.mkc-t>div{padding:2px 0}.mkc-t>div.w{display:none}.prf-b{gap:6px;padding-top:4px}.prf-r .ph{min-height:0;padding-top:8px;padding-bottom:4px}.prf-r .ph .btn{padding-top:4px;padding-bottom:4px}}
 @media (max-height:700px) and (min-width:901px){.prf-rules{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.prr{padding:7px 10px}.prr .xs{display:none}.prr b{font-size:16px}}
 @media (max-height:760px){.mkc-t>div{padding:3px 0}.prf-d>div{font-size:12.5px;padding:5px 12px}.mkc-y,.prf-lev{display:none}.prf-id .av{width:40px;height:40px}}
 /* phones: the market cards slide sideways */
@@ -1273,6 +1273,8 @@ const TH_M = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 
 const TH_D = ['อา.', 'จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.'];
 const TH_DAY = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
 const pad = n => String(n).padStart(2, '0');
+// only https links to LINE (a coach's or CS's LINE profile / official account)
+const safeLink = u => typeof u === 'string' && /^https:\/\/(line\.me|lin\.ee)\//.test(u) ? u : '';
 // image data (data: URL) as a short blob: link, so pages that repeat a picture don't copy its bytes into the HTML each time
 function blobOf(d) {
   try { const b = atob(d.slice(d.indexOf(',') + 1)), u = new Uint8Array(b.length); for (let i = 0; i < b.length; i++) u[i] = b.charCodeAt(i); return URL.createObjectURL(new Blob([u], { type: d.slice(5, d.indexOf(';')) })); }
@@ -1704,7 +1706,7 @@ function validState(s) {
   for (const e of s.execs) if (e.slip && e.slip.img && !safeImg(e.slip.img)) e.slip = null;
   for (const x of [...s.snaps, ...s.stmts]) if (x.img && !safeImg(x.img)) x.img = null;
   for (const c of s.clients) if (!c.tp || typeof c.tp.alloc !== 'object') return false;
-  for (const c of s.clients) { if (!isArr(c.eq) || !isArr(c.flows)) return false; for (const f of c.flows) if (f.img && !safeImg(f.img)) f.img = null; }
+  for (const c of s.clients) { if (!isArr(c.flows)) return false; for (const f of c.flows) if (f.img && !safeImg(f.img)) f.img = null; }
   return true;
 }
 // render() runs on every click; recompute alerts and scores only when data or the demo minute changed
@@ -1758,8 +1760,9 @@ function capLog(c) {
 const CAP_KIND = { start: ['gold', 'ทุนเริ่มต้น'], cap: ['ok', 'เพิ่มทุน'], dep: ['ok', 'ฝากเงิน'], wd: ['dn', 'ถอนเงิน'] };
 const netFlowAt = (c, at) => c.flows.reduce((s, f) => s + (f.pend || f.rej || f.at > at ? 0 : f.amt), 0);
 const execsOf = clId => memo('ex:' + clId, () => S.execs.filter(e => e.cl === clId).sort((a, b) => a.at - b.at));
-// The records are the main reference ("ยึดบันทึกเป็นหลัก"): port value = cash + holdings at the
-// latest close, both worked out from the trades the coach recorded.
+// The records are the main reference ("ยึดบันทึกเป็นหลัก"). There are no live prices: holdings count at what they cost,
+// so the port by the records = capital + deposits/withdrawals + the profit of what has been sold (realized), and
+// "profit" means realized profit. The figure from the broker app is the one the client reports every Friday.
 const cashOf = c => c.cap + netFlow(c) + execsOf(c.id).reduce((s, e) => s + (e.side === 'buy' ? -1 : 1) * e.qty * e.px * (e.k || 1), 0);
 const eqNow = c => memo('eq:' + c.id, () => cashOf(c) + posValue(c.id));
 const profit = c => eqNow(c) - c.cap - netFlow(c);
@@ -1884,15 +1887,28 @@ const untilTx = ms => ms >= DAY ? `อีก ${Math.floor(ms / DAY)} วัน $
 // weekly reports are still collected, as a check that every trade was recorded
 const snapsOf = c => memo('snaps:' + c.id, () => S.snaps.filter(x => x.cl === c.id).sort((a, b) => a.day - b.day || a.at - b.at));
 const lastSnap = c => snapsOf(c).slice(-1)[0] || null;
-const snapDiff = x => { const b = client(x.cl)?.eq[x.day]; return b ? (x.val - b) / b : 0; };
-const snapOk = x => Math.abs(snapDiff(x)) <= .02;
+// realized profit up to a time (average cost, the same way positions() counts it)
+const realizedAt = (c, t) => memo(`ra:${c.id}:${t}`, () => {
+  const m = {}; let r = 0;
+  for (const e of execsOf(c.id)) {
+    if (e.at > t) break;
+    const key = e.plan || 'off:' + e.sym, k = e.k || 1, p = m[key] || (m[key] = { q: 0, cost: 0 });
+    if (e.side === 'buy') { p.q += e.qty; p.cost += e.px * e.qty * k; }
+    else { const q = Math.min(e.qty, p.q), avg = p.q ? p.cost / p.q : e.px * k; r += (e.px * k - avg) * q; p.cost -= avg * q; p.q -= q; }
+  }
+  return r;
+});
+// the port by the records and the profit at the close of trading day i
+const dayEnd = i => S.days[i] + DAY - TZ;
+const eqAt = (c, i) => c.cap + netFlowAt(c, dayEnd(i)) + realizedAt(c, dayEnd(i));
+const profitAtDay = (c, i) => i < 0 ? 0 : realizedAt(c, dayEnd(i));
 const repVal = c => lastSnap(c)?.val ?? c.cap;
 const repRet = c => { const x = lastSnap(c); if (!x) return 0; const base = c.cap + netFlowAt(c, x.at); return (x.val - base) / base; };
 // weekly port value from the records for charts, with the reported figure on each tooltip
 function repSeries(c) {
   const fr = S.days.map((t, i) => [t, i]).filter(([t, i]) => new Date(t).getUTCDay() === 5 && i < T_());
-  const pts = [{ t: S.days[0], v: c.cap, tip: 'ทุนเริ่มต้น' }, ...fr.map(([t, i]) => { const x = snapsOf(c).find(s => s.day === i); return { t, v: c.eq[i], warn: x && !snapOk(x), tip: x ? (snapOk(x) ? 'ตามบันทึก · ยอดที่ลูกค้ารายงานตรงกัน' : `ตามบันทึก · ยอดที่รายงานต่าง ${pct(snapDiff(x))}`) : 'ตามบันทึก · ไม่มีรายงานสัปดาห์นี้' }; })];
-  pts.push({ t: S.days[T_()], v: eqNow(c), est: true, tip: 'วันนี้ · ราคาปิดล่าสุด' });
+  const pts = [{ t: S.days[0], v: c.cap, tip: 'ทุนเริ่มต้น' }, ...fr.map(([t, i]) => { const x = snapsOf(c).find(s => s.day === i); return { t, v: eqAt(c, i), tip: x ? `ตามรายการที่ขายแล้ว · ลูกค้ารายงานยอดพอร์ต ฿${baht(x.val)}` : 'ตามรายการที่ขายแล้ว · ไม่มีรายงานสัปดาห์นี้' }; })];
+  pts.push({ t: S.days[T_()], v: eqNow(c), est: true, tip: 'วันนี้ · ตามรายการที่ขายแล้ว' });
   return pts;
 }
 // the same weeks as profit (deposits and withdrawals taken out), measured against the 1,000,000 goal
@@ -1904,13 +1920,13 @@ function plSeries(c, per) {
   for (let i = 0; i < T; i++) {
     const d = new Date(S.days[i]), nx = new Date(S.days[i + 1]);
     if (per === 'm' && nx.getUTCMonth() === d.getUTCMonth()) continue;
-    pts.push({ t: S.days[i], v: c.eq[i] - c.cap - netFlowAt(c, S.days[i] + DAY - TZ), tip: per === 'm' ? `สิ้นเดือน${TH_M[d.getUTCMonth()]} · ตามบันทึก` : 'ปิดวัน · ตามบันทึก' });
+    pts.push({ t: S.days[i], v: profitAtDay(c, i), tip: per === 'm' ? `สิ้นเดือน${TH_M[d.getUTCMonth()]} · ตามรายการที่ขายแล้ว` : 'ปิดวัน · ตามรายการที่ขายแล้ว' });
   }
-  pts.push({ t: S.days[T], v: profit(c), est: true, tip: 'วันนี้ · ราคาปิดล่าสุด' });
+  pts.push({ t: S.days[T], v: profit(c), est: true, tip: 'วันนี้ · ตามรายการที่ขายแล้ว' });
   return pts;
 }
 const lastFriday = () => { for (let i = T_() - 1; i >= 0; i--) if (new Date(S.days[i]).getUTCDay() === 5) return i; return 0; };
-function drawdown(c) { const v = [...c.eq.slice(0, -1), eqNow(c)]; let pk = 0, dd = 0; for (const x of v) { pk = Math.max(pk, x); dd = Math.max(dd, (pk - x) / pk); } const hi = Math.max(...v); return { max: dd, now: (hi - eqNow(c)) / hi }; }
+function drawdown(c) { const v = [...Array.from({ length: T_() }, (_, i) => eqAt(c, i)), eqNow(c)]; let pk = 0, dd = 0; for (const x of v) { pk = Math.max(pk, x); dd = Math.max(dd, (pk - x) / pk); } const hi = Math.max(...v); return { max: dd, now: (hi - eqNow(c)) / hi }; }
 
 // the coach's plan for a stock: Entry, Stop Loss (moved up over time), targets
 const planSL = id => { const p = planOf(id); return p ? slAt(p, now()) : null; };
@@ -2093,8 +2109,9 @@ function positions(clId) {
       p.lastAt = e.at; p.lastPx = e.px;
     }
     return Object.values(m).map(p => {
-      const op = planOf(p.plan), last = S.prices[p.sym] ?? p.lastPx, v = p.qty * last * p.k;
-      return { ...p, avg: p.qty ? p.cpx / p.qty : 0, last, v, upl: p.qty ? v - p.cost : 0, sl: op ? planSL(op.id) : null, tp1: op?.tp1, tp2: op?.tp2 };
+      // no live price: a holding is valued at its cost (avg), so there is no unrealized result
+      const op = planOf(p.plan), avg = p.qty ? p.cpx / p.qty : 0;
+      return { ...p, avg, last: avg, v: p.qty ? p.cost : 0, upl: 0, sl: op ? planSL(op.id) : null, tp1: op?.tp1, tp2: op?.tp2 };
     });
   });
 }
@@ -2241,16 +2258,11 @@ function alerts(at) {
         const p = planOf(m.plan);
         out.push({ k: `miss:${m.id}`, sev: m.kind === 'nocut' ? 'high' : 'mid', aud: 'coach', type: 'miss', cl: c.id, coach: c.coach, at: m.at, sym: p?.sym, title: `${MISS[m.kind]}: ${p?.sym || ''}`, detail: `บันทึกเมื่อ ${dstr(m.at)} · ${m.note}` });
       }
-      for (const p of openPos(c.id)) {
-        if (!p.sl || p.last > p.sl || S.misses.some(m => m.cl === c.id && m.plan === p.plan && m.kind === 'nocut')) continue;
-        out.push({ k: `sl:${p.key}:${c.id}`, sev: 'high', aud: 'coach', type: 'sl', cl: c.id, coach: c.coach, at: tnow, sym: p.sym, title: `${p.sym} หลุด Stop Loss แต่ยังถืออยู่`, detail: `ราคาปิด ${px(p.last)} · Stop Loss ${px(p.sl)} · Unrealized ${signed(p.upl)} บาท` });
-      }
       for (const f of c.flows) if (f.pend) out.push({ k: `flow:${f.id}`, sev: 'mid', aud: 'cs', type: 'flow', cl: c.id, coach: c.coach, at: f.at, flow: f.id, title: `แจ้ง${f.amt > 0 ? 'ฝาก' : 'ถอน'}เงิน ${baht(Math.abs(f.amt))} บาท รอการอนุมัติ`, detail: 'ตรวจสอบหลักฐานการโอนก่อนนับเข้าพอร์ต' });
       const seen = c.seen || c.joined;
       if (tnow - seen > 72 * HR) out.push({ k: `idle:${c.id}:${seen}`, sev: tnow - seen > 5 * DAY ? 'high' : 'mid', aud: 'cs', type: 'idle', cl: c.id, coach: c.coach, at: seen, title: c.seen ? `ไม่ได้เข้าใช้งาน ${Math.floor((tnow - seen) / DAY)} วัน` : `ยังไม่เคยเข้าใช้งาน (${Math.floor((tnow - seen) / DAY)} วัน)`, detail: c.seen ? 'ควรโทรติดตาม และแนะนำให้ส่งภาพหลักฐานผ่านระบบ' : 'ช่วยลูกค้าเข้าสู่ระบบครั้งแรกด้วย Gmail ที่ลงทะเบียนไว้' });
       const sn = S.snaps.find(s => s.cl === c.id && s.day === lf);
       if (!sn && S.days[lf] + 17 * HR - TZ > c.joined) out.push({ k: `nosnap:${c.id}:${lf}`, sev: 'mid', aud: 'cs', type: 'nosnap', cl: c.id, coach: c.coach, at: S.days[lf] + 17 * HR, title: `ยังไม่รายงานยอดพอร์ตวันศุกร์ที่ ${dstr(S.days[lf])}`, detail: 'ใช้ตรวจว่าบันทึกการซื้อขายครบถ้วน · ส่งภาพหน้าพอร์ตทุกวันศุกร์หลังตลาดปิด' });
-      else if (sn && !snapOk(sn)) out.push({ k: `diff:${c.id}:${sn.id}`, sev: 'mid', aud: 'cs', type: 'diff', cl: c.id, coach: c.coach, at: sn.at, title: `ยอดพอร์ตที่รายงานต่างจากบันทึก ${pct(snapDiff(sn))}`, detail: `รายงาน ${baht(sn.val)} · ตามบันทึก ${baht(c.eq[sn.day])} · อาจมีรายการซื้อขายที่โค้ชยังไม่ได้บันทึก` });
       const bk = portBook(c);
       if (bk.heat > HEAT_LIMIT) out.push({ k: `heat:${c.id}:${dayKey(tnow)}`, sev: 'mid', aud: 'coach', type: 'heat', cl: c.id, coach: c.coach, at: tnow, title: `Portfolio Heat ${fmt(bk.heat * 100, 1)}% เกินเกณฑ์ 6%`, detail: `หากทุกตัวถึง Stop Loss จะขาดทุน ฿${baht(bk.risk)} · ควรลด Position Size หรือเลื่อน Stop Loss` });
       const d = discipline(c.id, at);
@@ -2333,25 +2345,20 @@ const sname = s => stock(s)?.short || '';
 const symTag = (s, size = 26) => `<span class="sy" title="${esc(stock(s)?.th || s)}">${slogo(s, size)}<b>${esc(s)}</b></span>`;
 // same, as a button that opens the company card (only where the parent isn't clickable)
 const symBtn = (s, size = 26, cls = '') => `<button class="sy ${cls}" data-stock="${esc(s)}" title="ข้อมูลหุ้น ${esc(stock(s)?.th || s)}">${slogo(s, size)}<b>${esc(s)}</b></button>`;
-const lastPx = s => S.prices[s] ?? stock(s)?.last;
-// one-line company strip for forms: logo, name, sector, last price
+// one-line company strip for forms: logo, name, sector
 function stockLine(s) {
-  const i = stock(s), last = lastPx(s);
+  const i = stock(s);
   if (!i) return `<div class="sline">${slogo(s, 36)}<div style="min-width:0"><b>${esc(s)}</b><div class="xs muted">ไม่มีข้อมูลบริษัทในระบบ ตรวจชื่อย่อหุ้นอีกครั้ง</div></div></div>`;
-  const ch = i.prior ? (last - i.prior) / i.prior : 0;
-  return `<div class="sline">${slogo(s, 36)}<div style="min-width:0"><b>${esc(s)}</b> <span class="xs muted">${esc(i.sectorTh)}</span><div class="xs muted ell">${esc(i.th)}</div></div><div class="r num"><b>${px(last)}</b><span class="xs ${ch >= 0 ? 'up' : 'dn'}">${pct(ch, 2)}</span></div></div>`;
+  return `<div class="sline">${slogo(s, 36)}<div style="min-width:0"><b>${esc(s)}</b> <span class="xs muted">${esc(i.sectorTh)}</span><div class="xs muted ell">${esc(i.th)}</div></div></div>`;
 }
 function stockModal(s) {
   const i = stock(s);
   if (!i) return toast(`${ic('info', 18)}<div><b>${esc(s)}</b><div class="muted sm">ยังไม่มีข้อมูลบริษัทนี้ในระบบ</div></div>`);
-  const last = lastPx(s), ch = i.prior ? (last - i.prior) / i.prior : 0, pos = Math.max(0, Math.min(1, (last - i.lo52) / ((i.hi52 - i.lo52) || 1)));
   const asOf = STOCK_DATA.asOf ? dstr(Date.parse(STOCK_DATA.asOf + 'T10:00:00Z')) + ' ' + (+STOCK_DATA.asOf.slice(0, 4) + 543) : '';
   openModal(`<div class="stm">
     <div class="stm-h">${slogo(s, 64)}<div style="min-width:0"><div class="row" style="gap:8px"><h3>${esc(s)}</h3><span class="tag gold">${esc(i.sectorTh)}</span>${i.sign ? `<span class="tag">${esc(i.sign)}</span>` : ''}</div><div class="ink2 ell">${esc(i.th)}</div><div class="xs muted ell">${esc(i.en)}</div></div><button class="x" data-act="close" aria-label="ปิด">${ic('x', 18)}</button></div>
-    <div class="stm-p"><span class="num ${ch > 0 ? 'up' : ch < 0 ? 'dn' : ''}">${px(last)}</span><span class="tag ${ch >= 0 ? 'ok' : 'dn'} num">${sgn(last - i.prior)}${px(Math.abs(last - i.prior))} (${pct(ch, 2)})</span><span class="xs muted">ราคาปิด ณ ${asOf} · ราคาปิดวันทำการก่อนหน้า ${px(i.prior)} บาท</span></div>
-    <div class="stm-r"><div class="row xs muted" style="justify-content:space-between"><span>ต่ำสุด 52 สัปดาห์ <b class="num ink2">${px(i.lo52)}</b></span><span>สูงสุด 52 สัปดาห์ <b class="num ink2">${px(i.hi52)}</b></span></div><div class="r52"><i style="left:${pos * 100}%"></i></div></div>
     <div class="stm-k"><div><span>P/E</span><b class="num">${i.pe ? fmt(i.pe, 2) + ' เท่า' : '—'}</b></div><div><span>อัตราเงินปันผลตอบแทน</span><b class="num">${i.dy ? fmt(i.dy, 2) + '%' : '—'}</b></div><div><span>มูลค่าหลักทรัพย์ตามราคาตลาด</span><b class="num">${fmt(i.mcap)} ล้านบาท</b></div></div>
-    <p class="xs muted" style="margin:0">${ic('info', 13)} แหล่งข้อมูล: ตลาดหลักทรัพย์แห่งประเทศไทย (SET) ณ วันที่ ${asOf} · ระบบจริงจะแสดงราคาล่าสุดจากผู้ให้บริการข้อมูลที่ได้รับอนุญาต</p>
+    <p class="xs muted" style="margin:0">${ic('info', 13)} ข้อมูลบริษัท: ตลาดหลักทรัพย์แห่งประเทศไทย (SET) ณ วันที่ ${asOf} · ระบบไม่แสดงราคาหุ้น ดูราคาในแอปซื้อขายของคุณ</p>
   </div>`, 'sm');
 }
 document.addEventListener('click', e => { const b = e.target.closest('[data-stock]'); if (b && !b.closest('.mbox')) stockModal(b.dataset.stock); });
@@ -2677,8 +2684,8 @@ function keyModal({ who, cls, cl, plan, edit, done, side: side0, pos, sym: sym0,
     $b('#kqtyl').textContent = `จำนวน (${u})`; $b('#kqty').step = mk === 'th' ? 100 : 1;
     const half = x.held ? (mk === 'th' ? Math.max(100, lot(x.held.qty / 2)) : Math.max(1, Math.floor(x.held.qty / 2))) : 0;
     $b('#kpq').innerHTML = x.pq ? `<button type="button" data-q="${x.pq}" title="ใส่จำนวนตามที่โค้ชแนะนำ">ตามแผน ${fmt(x.pq)}</button>` : x.held ? `<button type="button" data-q="${x.held.qty}">ทั้งหมด ${fmt(x.held.qty)}</button>${half < x.held.qty ? `<button type="button" data-q="${half}">ครึ่งหนึ่ง ${fmt(half)}</button>` : ''}` : '';
-    const si = x.sym && validSym(x.sym) ? stock(x.sym) : null, lp = x.sym && validSym(x.sym) ? lastPx(x.sym) : null, ch = si?.prior && lp ? (lp - si.prior) / si.prior : null;
-    $b('#kq').innerHTML = x.sym && lp ? `${slogo(x.sym, 18)}<b>${esc(x.sym)}</b>${si?.short ? `<span class="ell">${esc(si.short)}</span>` : ''}<span>ราคาปิด <b class="num">${px(lp)}</b>${ch != null ? ` <span class="num ${ch >= 0 ? 'up' : 'dn'}">${pct(ch, 2)}</span>` : ''}</span>${x.held ? `<span>· ถือ ${fmt(x.held.qty)} ทุน ${px(x.held.avg)}</span>` : ''}` : '';
+    const si = x.sym && validSym(x.sym) ? stock(x.sym) : null;
+    $b('#kq').innerHTML = x.sym && si ? `${slogo(x.sym, 18)}<b>${esc(x.sym)}</b>${si?.short ? `<span class="ell">${esc(si.short)}</span>` : ''}${x.held ? `<span>· ถือ ${fmt(x.held.qty)} ทุน ${px(x.held.avg)}</span>` : ''}` : '';
     const amt = validPx(x.px) && validQty(x.qty) ? x.px * x.qty * (mk === 'th' ? 1 : validK(x.k) ? x.k : 0) : 0;
     $b('#kamt').innerHTML = amt ? `มูลค่า <b>฿${baht(amt)}</b>${side === 'sell' && x.held ? ` · <span class="${x.px >= x.held.avg ? 'up' : 'dn'}">${signed((x.px - x.held.avg) * x.qty * (mk === 'th' ? 1 : x.k))}</span>` : ''}` : '';
     $b('#save').className = `btn ${side}`;
@@ -2721,7 +2728,7 @@ function keyModal({ who, cls, cl, plan, edit, done, side: side0, pos, sym: sym0,
     const x = cur(), d = +st.dataset.d, inp = $b('#' + st.dataset.stp);
     if (st.dataset.stp === 'kpx') {
       let v = parseFloat(inp.value);
-      if (!validPx(v)) v = x.p ? (side === 'buy' ? x.p.hi : x.p.tp1) : x.held ? x.held.last : lastPx(x.sym) || 0;
+      if (!validPx(v)) v = x.p ? (side === 'buy' ? x.p.hi : x.p.tp1) : x.held ? x.held.avg : 0;
       else { const t = mk === 'th' ? tick(d > 0 ? v : v - 1e-9) : v >= 1000 ? 10 : v >= 100 ? .1 : .01; v = Math.round((v + d * t) * 100) / 100; }
       if (validPx(v)) inp.value = mk === 'th' ? rt(v) : v;
     } else {
@@ -2756,7 +2763,6 @@ function keyModal({ who, cls, cl, plan, edit, done, side: side0, pos, sym: sym0,
     $('#cfmw')?.remove();
     upd(); if ($b('#save').disabled) return;
     const x = cur(), off = side === 'buy' && !x.p, t = now();
-    if (!Object.hasOwn(S.prices, x.sym)) S.prices[x.sym] = x.px;
     const f = { plan: x.p?.id || null, sym: x.sym, side, px: x.px, qty: x.qty, at: x.at, slip: slip.img ? { img: slip.img } : { m: 1 } };
     if (mk !== 'th') Object.assign(f, { mk, k: x.k });
     if (side === 'buy' && x.p) Object.assign(f, { pq: x.pq, reason: x.off });
@@ -3140,7 +3146,7 @@ function groupRow(g, compact) {
 function flagsOf(c) {
   const al = alerts().filter(a => a.cl === c.id), f = [], pn = pendOf(c.id).length, fx = fixOf(c.id).length, sc = points(c.id).score;
   if (sc < 85) f.push(`<span class="tag ${sc < PT_TALK ? 'dn' : 'warn'}" title="คะแนนตามกติกา ${sc}/100">คะแนน ${sc}</span>`);
-  if (al.some(a => a.type === 'sl' || (a.type === 'miss' && a.sev === 'high'))) f.push('<span class="tag dn">หลุด Stop Loss</span>');
+  if (al.some(a => a.type === 'miss' && a.sev === 'high')) f.push('<span class="tag dn">ไม่ตัดขาดทุน</span>');
   const dev = al.filter(a => a.type === 'dev' || a.type === 'miss').length;
   if (dev) f.push(`<span class="tag warn">ไม่ตรงแผน ${dev}</span>`);
   if (al.some(a => a.type === 'off')) f.push('<span class="tag pu">นอกแผน</span>');
@@ -3218,7 +3224,6 @@ function planCell(p, c) {
   {
     const fills = execsOf(c.id).filter(e => e.plan === p.id), dev = fills.some(e => !allOk(checks(e))) || S.misses.some(m => m.cl === c.id && m.plan === p.id), r = (pos.realized + pos.upl) / pos.bought;
     if (fills.some(e => e.ver === 'pend' || e.ver === 'fix')) [k, icn, sub] = ['pend', 'clock', fills.some(e => e.ver === 'fix') ? 'รอแก้ไข' : 'รอตรวจ'];
-    else if (pos.qty && pos.sl && pos.last <= pos.sl) [k, icn, sub] = ['exp', 'x', 'หลุด SL'];
     else if (dev) [k, icn, sub] = ['bad', 'alert', pct(r)];
     else [k, icn, sub] = ['ok', 'check', pct(r)];
     if (!pos.qty && k !== 'exp' && k !== 'pend') sub = pct(r);
@@ -3351,7 +3356,7 @@ function bulkModal() {
 function verFixModal(id) {
   const e = execOf(id); if (!e || !canSee(e.cl) || e.ver !== 'pend' || !isHead()) return;
   const quick = ['จำนวนหรือราคาที่บันทึกไม่ตรงกับภาพ โปรดตรวจสอบและแก้ไข', 'ภาพไม่ชัด มองไม่เห็นราคาที่ Matched และเวลา โปรดแนบภาพหน้าสถานะคำสั่ง (Order Status) ใหม่', 'ภาพนี้เป็นหน้าส่งคำสั่ง ยังไม่ใช่รายการที่ Matched โปรดแนบภาพหลังซื้อขายสำเร็จ', 'เลือกแผนไม่ถูกต้อง โปรดเลือกแผนให้ตรงกับหุ้นที่ซื้อ'];
-  const box = openModal(mhead(`ขอให้แก้ไขรายการ · ${esc(cname(client(e.cl)))}`, `${verbEx(e)} ${esc(e.sym)} ${fmt(e.qty)} @ ${px(e.px)} · ลูกค้าจะเห็นข้อความนี้และได้รับแจ้งเตือนผ่าน LINE`) + `<div class="mbd"><div class="radio">${quick.map((r, i) => `<label><input type="radio" name="r" value="${esc(r)}" ${i ? '' : 'checked'}> ${esc(r)}</label>`).join('')}</div>
+  const box = openModal(mhead(`ขอให้แก้ไขรายการ · ${esc(cname(client(e.cl)))}`, `${verbEx(e)} ${esc(e.sym)} ${fmt(e.qty)} @ ${px(e.px)} · ลูกค้าจะเห็นข้อความนี้ในรายการของตัวเอง`) + `<div class="mbd"><div class="radio">${quick.map((r, i) => `<label><input type="radio" name="r" value="${esc(r)}" ${i ? '' : 'checked'}> ${esc(r)}</label>`).join('')}</div>
     <div class="field" style="margin-top:10px"><label for="fx">รายละเอียดเพิ่มเติม <span class="muted">(ไม่บังคับ)</span></label><input id="fx" maxlength="200" placeholder="เช่น ในภาพซื้อ 1,500 หุ้น"></div></div>
     <div class="mft"><button class="btn ghost" data-act="close">ยกเลิก</button><button class="btn" id="save">${ic('send', 16)} ส่งให้ลูกค้าแก้ไข</button></div>`);
   $('#save', box).addEventListener('click', () => {
@@ -3359,7 +3364,7 @@ function verFixModal(id) {
     Object.assign(e, { ver: 'fix', fix: { at: now(), by: ME().id, note } });
     pushFeed({ by: 'head', who: ME().id, coach: client(e.cl).coach, cl: e.cl, kind: 'vfix', text: `${ME().name} ขอให้แก้ไขรายการ${verbEx(e)} ${e.sym}` });
     if (!save()) return;
-    closeModal(); recNext(e.id); toast(`${ic('send', 18)}<div><b>ส่งให้ลูกค้าแก้ไขแล้ว</b><div class="muted sm">${esc(client(e.cl).name)} จะได้รับแจ้งเตือนผ่าน LINE</div></div>`);
+    closeModal(); recNext(e.id); toast(`${ic('send', 18)}<div><b>ส่งให้ลูกค้าแก้ไขแล้ว</b><div class="muted sm">${esc(client(e.cl).name)} จะเห็นรายการนี้ในหน้าของตัวเอง</div></div>`);
   });
 }
 // the coach writes down when a client did not follow the plan (after a call): evidence for the record
@@ -3383,12 +3388,12 @@ function planModal(mode, id) {
   const me = ME(), p = id && planOf(id);
   if (mode !== 'new' && (!p || !planLive(p))) return;
   if (mode === 'sl') {
-    const box = openModal(mhead(`เลื่อน Stop Loss · ${esc(p.sym)}`, `Stop Loss ปัจจุบัน ${px(planSL(p.id))} · Entry ${px(p.hi)} · ลูกค้าที่ถือหุ้นตัวนี้จะเห็นค่าใหม่ในหน้าพอร์ต · โค้ชประจำตัวช่วยแจ้งลูกค้า`) + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px"><div class="fgrid"><div class="field"><label for="nsl">Stop Loss ใหม่</label><input id="nsl" type="number" step="0.01" value="${p.hi}"></div><div class="field"><label>ราคาปิดล่าสุด</label><input value="${px(lastPx(p.sym))}" disabled></div></div>
+    const box = openModal(mhead(`เลื่อน Stop Loss · ${esc(p.sym)}`, `Stop Loss ปัจจุบัน ${px(planSL(p.id))} · Entry ${px(p.hi)} · ลูกค้าที่ถือหุ้นตัวนี้จะเห็นค่าใหม่ในหน้าพอร์ต · โค้ชประจำตัวช่วยแจ้งลูกค้า`) + `<div class="mbd" style="display:flex;flex-direction:column;gap:12px"><div class="fgrid"><div class="field"><label for="nsl">Stop Loss ใหม่</label><input id="nsl" type="number" step="0.01" value="${p.hi}"></div><div class="field"><label>Stop Loss ปัจจุบัน</label><input value="${px(planSL(p.id))}" disabled></div></div>
       <div class="field"><label for="pn">เหตุผล</label><input id="pn" maxlength="300" value="ราคายืนเหนือราคาเข้าซื้อได้แล้ว เลื่อน Stop Loss ขึ้นมาที่ราคาเข้าซื้อ (Breakeven)"></div><div class="xs muted">โค้ชประจำตัวจะโทรแจ้งลูกค้าให้แก้ Stop Order ในแอปด้วย</div></div>
       <div class="mft"><span class="ferr" id="err"></span><span class="sp"></span><button class="btn ghost" data-act="close">ยกเลิก</button><button class="btn" id="save">บันทึก</button></div>`);
     $('#save', box).addEventListener('click', () => {
       const v = parseFloat($('#nsl', box).value);
-      if (!validPx(v) || v >= lastPx(p.sym)) { $('#err', box).textContent = 'Stop Loss ใหม่ต้องต่ำกว่าราคาล่าสุด'; return; }
+      if (!validPx(v) || v >= p.tp2) { $('#err', box).textContent = 'Stop Loss ใหม่ต้องเป็นราคาที่ถูกต้องและต่ำกว่า TP2'; return; }
       p.sls.push({ at: now(), sl: v, note: clean($('#pn', box).value, 300) || 'เลื่อน Stop Loss' });
       pushFeed({ by: 'head', who: me.id, kind: 'plan', text: `${me.name} เลื่อน Stop Loss ${p.sym} เป็น ${px(v)}` });
       if (!save()) return; closeModal(); render(); toast(`${ic('check', 18)}<div><b>เลื่อน Stop Loss แล้ว</b><div class="muted sm">${esc(p.sym)} → ${px(v)}</div></div>`, 'ok');
@@ -3408,7 +3413,7 @@ function planModal(mode, id) {
   }
   const box = openModal(mhead('บันทึกแผนใหม่', 'แผนจากหัวหน้าโค้ชถึงลูกค้าทุกคนที่เทรดตลาดนี้ ใช้เทียบกับรายการที่ลูกค้าซื้อขายจริง · ลูกค้าเลือกแผนนี้ได้ตอนบันทึกรายการซื้อ') + `<div class="mbd" style="display:flex;flex-direction:column;gap:11px">
     <div class="fgrid"><div class="field"><label for="pmk">ตลาด</label><select id="pmk">${Object.entries(MARKETS).map(([k, [l]]) => `<option value="${k}">${l}</option>`).join('')}</select></div><div class="field" id="fpk" hidden><label for="pk" id="pkl"></label><input id="pk" type="number" step="0.01" min="0"></div></div>
-    <div class="fgrid"><div class="field"><label for="sym" class="row" style="gap:6px;min-width:0">หุ้น / สินทรัพย์ <span class="muted ell" id="symnm" style="font-weight:400"></span></label><input id="sym" list="syms" maxlength="15" autocomplete="off" placeholder="เช่น PTT" style="text-transform:uppercase"><datalist id="syms">${Object.keys(SYMS).map(s => `<option value="${s}">${esc(sname(s))}</option>`).join('')}</datalist><div class="hint" id="lastpx">พิมพ์ชื่อย่อหุ้นเพื่อดูราคาปิดล่าสุด</div></div>
+    <div class="fgrid"><div class="field"><label for="sym" class="row" style="gap:6px;min-width:0">หุ้น / สินทรัพย์ <span class="muted ell" id="symnm" style="font-weight:400"></span></label><input id="sym" list="syms" maxlength="15" autocomplete="off" placeholder="เช่น PTT" style="text-transform:uppercase"><datalist id="syms">${Object.keys(SYMS).map(s => `<option value="${s}">${esc(sname(s))}</option>`).join('')}</datalist><div class="hint" id="lastpx">ใส่ราคาตามที่วิเคราะห์ (ระบบไม่แสดงราคาหุ้น)</div></div>
       <div class="field"><label for="lo">${tm('entry', 'ราคาเข้าซื้อ · Entry')} (ต่ำสุด – สูงสุด)</label><div class="row" style="gap:6px"><input id="lo" type="number" step="0.01" min="0"><span class="muted">–</span><input id="hi" type="number" step="0.01" min="0" aria-label="ราคาซื้อสูงสุด"></div></div></div>
     <div class="f3"><div class="field"><label for="sl">${tm('sl', 'Stop Loss')}</label><input id="sl" type="number" step="0.01" min="0"></div><div class="field"><label for="tp1">${tm('tp', 'TP1')}</label><input id="tp1" type="number" step="0.01" min="0"></div><div class="field"><label for="tp2">TP2</label><input id="tp2" type="number" step="0.01" min="0"></div></div>
     <div class="lad" id="lad"></div>
@@ -3427,15 +3432,14 @@ function planModal(mode, id) {
     $('#risk', box).innerHTML = `<span>${tm('r', 'Risk ต่อพอร์ต')} <b class="num ${risk * o.size > 1.5 ? 'dn' : ''}">${risk ? fmt(risk * o.size, 2) + '%' : '—'}</b></span><span>${tm('rr')} <b class="num">${risk && validPx(o.tp1) ? '1 : ' + fmt((o.tp1 - o.hi) / (o.hi - o.sl), 1) : '—'}</b></span>`;
     const cls = S.clients, okc = cls.filter(c => c.mks.includes(o.mk)), pp = { ...o, mk: o.mk === 'th' ? undefined : o.mk, k: o.mk === 'th' ? 1 : o.k };
     $('#psz', box).innerHTML = !e ? `<span class="muted">แจ้งลูกค้า <b class="ink2">${okc.length} ราย</b> ขนาดสถานะคำนวณจากพอร์ตของแต่ละคน (เก็บเป็นหลักฐาน) เช่น</span> ${okc.slice(0, 4).map(c => `${esc(c.name)} <b class="num">${fmt(planQty(c, pp))}</b> ${MARKETS[o.mk][1]}`).join(' · ')}${cls.length > okc.length ? ` · <span class="muted">ไม่แจ้ง ${cls.length - okc.length} ราย (ไม่ได้เทรด${MARKETS[o.mk][0]})</span>` : ''}` : '';
-    $('#lad', box).innerHTML = !e ? `${miniLadder({ ...o, tp2 }, lastPx(o.sym))}<div class="lad-k xs num"><span class="dn">SL ${px(o.sl)} (${pct((o.sl - o.hi) / o.hi)})</span><span class="gold">Entry ${px(o.lo)}–${px(o.hi)}</span><span class="up">TP1 ${px(o.tp1)} (${pct((o.tp1 - o.hi) / o.hi)})</span><span class="up">TP2 ${px(tp2)} (${pct((tp2 - o.hi) / o.hi)})</span></div>` : '<div class="xs muted">กรอก Entry, Stop Loss และ TP เพื่อดูภาพรวมของแผน</div>';
+    $('#lad', box).innerHTML = !e ? `${miniLadder({ ...o, tp2 }, null)}<div class="lad-k xs num"><span class="dn">SL ${px(o.sl)} (${pct((o.sl - o.hi) / o.hi)})</span><span class="gold">Entry ${px(o.lo)}–${px(o.hi)}</span><span class="up">TP1 ${px(o.tp1)} (${pct((o.tp1 - o.hi) / o.hi)})</span><span class="up">TP2 ${px(tp2)} (${pct((tp2 - o.hi) / o.hi)})</span></div>` : '<div class="xs muted">กรอก Entry, Stop Loss และ TP เพื่อดูภาพรวมของแผน</div>';
     $('#err', box).textContent = touched ? e : ''; $('#save', box).disabled = !!e;
   };
   $('#sym', box).addEventListener('input', () => {
-    const s = $('#sym', box).value.trim().toUpperCase(), p0 = validSym(s) ? lastPx(s) : null;
-    $('#symnm', box).textContent = p0 ? sname(s) : '';
-    $('#lastpx', box).innerHTML = p0 ? `${slogo(s, 18)}ล่าสุด <b class="num">${px(p0)}</b> · <button type="button" class="lnk" id="autofill">ใส่ค่าตั้งต้น</button>` : validSym(s) || !s ? 'พิมพ์ชื่อย่อหุ้นเพื่อดูราคาปิดล่าสุด' : '<span class="dn">ชื่อหุ้นไม่ถูกต้อง</span>';
+    const s = $('#sym', box).value.trim().toUpperCase();
+    $('#symnm', box).textContent = validSym(s) && stock(s) ? sname(s) : '';
+    $('#lastpx', box).innerHTML = validSym(s) || !s ? 'ใส่ราคาตามที่วิเคราะห์ (ระบบไม่แสดงราคาหุ้น)' : '<span class="dn">ชื่อหุ้นไม่ถูกต้อง</span>';
   });
-  box.addEventListener('click', ev => { if (ev.target.id !== 'autofill') return; const p0 = lastPx($('#sym', box).value.trim().toUpperCase()), hi = rt(p0 * 1.004); $('#lo', box).value = rt(p0 * .99); $('#hi', box).value = hi; $('#sl', box).value = rt(hi * .955); $('#tp1', box).value = rt(hi * 1.07); $('#tp2', box).value = rt(hi * 1.12); touched = true; upd(); });
   box.addEventListener('input', () => { touched = true; upd(); });
   $('#save', box).addEventListener('click', () => {
     const o = cur(); touched = true; if (errors(o)) return upd();
@@ -3486,23 +3490,23 @@ function clientView() {
   const tab = { prof: clProfile, ov: clOverview, trd: clTrades, plan: clPlan, port: clPort, notes: clNotes }[clTab](c);
   return `<section class="pnl chd">${avatar(c, 'lg')}<div style="min-width:0;flex:1 1 180px"><h2 class="ell">${esc(cname(c))} ${ptBadge(points(c.id).score)}</h2><div class="muted sm ell">${co.name} · ${c.term} เดือน ${TYPE[c.type]} · เดือนที่ ${progMonth(c)} · ${c.mks.map(m => MARKETS[m][0]).join(', ')} · ${esc(c.phone)} · ${esc(c.broker)} xxxx-${esc(c.acct)}${c.ob ? ` · เข้าใช้งาน ${seenTxt(c)}` : ' · <span class="warn">ยังไม่เคยเข้าใช้งาน</span>'}</div></div>
     <span class="sp"></span><div class="seg">${CL_TABS.map(([k, l, sl]) => `<button class="${clTab === k ? 'on' : ''}" data-ctab="${k}"><span class="lgx">${l}</span><span class="shx">${sl}</span>${k === 'notes' && notes ? `<span class="n">${notes}</span>` : ''}</button>`).join('')}</div>
-    <button class="btn soft sm" data-act="line1" data-id="${esc(c.id)}">${ic('chat', 15)} LINE</button><button class="btn ghost sm evb" data-act="evid" data-id="${esc(c.id)}" title="แฟ้มหลักฐานของลูกค้า · พิมพ์หรือบันทึกเป็น PDF">${ic('book', 15)}<span> แฟ้มหลักฐาน</span></button>${isCS() ? `<button class="btn ghost sm" data-act="recoach" data-id="${esc(c.id)}">${ic('users', 15)} เปลี่ยนโค้ช</button>` : ''}</section>
+    <a class="btn soft sm" href="tel:${esc(String(c.phone).replace(/[^0-9+]/g, ''))}">${ic('phone', 15)} โทร</a><button class="btn ghost sm evb" data-act="evid" data-id="${esc(c.id)}" title="แฟ้มหลักฐานของลูกค้า · พิมพ์หรือบันทึกเป็น PDF">${ic('book', 15)}<span> แฟ้มหลักฐาน</span></button>${isCS() ? `<button class="btn ghost sm" data-act="recoach" data-id="${esc(c.id)}">${ic('users', 15)} เปลี่ยนโค้ช</button>` : ''}</section>
   <div class="sub vgrid c-${clTab === 'trd' ? 'ord' : clTab}" data-v="cl-${clTab}">${tab}</div>`;
 }
 function clOverview(c) {
   const d = discipline(c.id), v = eqNow(c), ps = pnlSum(c), dd = drawdown(c), al = alerts().filter(a => a.cl === c.id), hold = openPos(c.id), x = lastSnap(c), st = settle(c);
   return `<div class="kstrip k6" data-pt="สรุป">
-    ${kpi('trophy', 'กำไรสะสมตามบันทึก', signed(ps.total), `${pct(retPct(c))} · Realized ${signed(ps.realized)}`, ps.total >= 0 ? 'up' : 'dn')}
-    ${kpi('wallet', 'ยอดพอร์ตตามบันทึก', '฿' + baht(v), x ? `รายงาน ${dstr(S.days[x.day])} ${snapOk(x) ? 'ตรงกัน' : 'ต่าง ' + pct(snapDiff(x))}` : 'ยังไม่มีรายงานวันศุกร์', 'gold')}
+    ${kpi('trophy', 'กำไรที่ขายแล้ว', signed(ps.total), `${pct(retPct(c))} จากเงินทุน · ${ps.closed} ตัวที่ปิด`, ps.total >= 0 ? 'up' : 'dn')}
+    ${kpi('wallet', 'ยอดพอร์ตที่รายงานล่าสุด', x ? '฿' + baht(x.val) : '—', x ? `จากแอปซื้อขาย · ${dstr(S.days[x.day])}` : 'ยังไม่มีรายงานวันศุกร์', 'gold')}
     <div class="kpi" title="ตรงแผน ${Math.round(d.acc * 100)}% · ขายตามแผน ${Math.round(d.exit * 100)}% · นอกแผน ${d.off} ครั้ง · หลักฐาน ${Math.round(d.proof * 100)}%"><div class="k">${ic('target', 14)} คะแนนวินัย</div><div class="v num ${scoreTone(d.score)}">${d.score} <span class="xs">${scoreWord(d.score)}</span></div><div class="dist" style="margin:4px 0 0">${[d.acc, d.exit, Math.max(0, 1 - d.off / 3), d.proof].map(x => `<i style="flex:1;background:var(--${x >= .9 ? 'up' : x >= .75 ? 'warn' : 'dn'});opacity:${.35 + x * .65}"></i>`).join('')}</div><div class="s">ตรงแผน · ขายตามแผน · นอกแผน · หลักฐาน</div></div>
     ${kpi('check', 'รายการ 30 วัน', `${d.n}`, `ไม่ตรงแผน ${d.devN} · ไม่ทำตามแผน ${d.miss} · นอกแผน ${d.off}`)}
     ${kpi('alert', 'ลดลงจากจุดสูงสุด', pct(-dd.now), `สูงสุด ${pct(-dd.max)}`, dd.now > .1 ? 'dn' : '')}
     ${kpi('trophy', 'คืนค่าเรียน (ถ้าจบวันนี้)', st.extra > 0 ? 'ไม่มี' : '฿' + baht(st.refund), st.extra > 0 ? `กำไรเกิน 1 ล้าน ${signed(st.extra)}` : `ทำได้ ${fmt(st.pct * 100, 1)}% ของเงื่อนไข 1 ล้าน`, st.extra > 0 ? 'up' : '')}
   </div>
-  <section class="pnl" data-pt="กราฟ"><div class="ph"><h3>กำไรสะสมรายสัปดาห์ตามบันทึก</h3><span class="sub">จุดสีส้ม = ยอดที่ลูกค้ารายงานต่างจากบันทึก</span></div><div class="pb" style="display:flex;flex-direction:column">${chartBox('cl', profitSeries(c), { kind: 'pl', refs: [{ v: GOAL, label: '1 ล้าน', always: 1 }, { v: 0, label: '', c: 'var(--mut)', always: 1 }] })}</div></section>
+  <section class="pnl" data-pt="กราฟ"><div class="ph"><h3>กำไรสะสมรายสัปดาห์</h3><span class="sub">ตามรายการที่ขายแล้ว</span></div><div class="pb" style="display:flex;flex-direction:column">${chartBox('cl', profitSeries(c), { kind: 'pl', refs: [{ v: GOAL, label: '1 ล้าน', always: 1 }, { v: 0, label: '', c: 'var(--mut)', always: 1 }] })}</div></section>
   ${pnl({ t: 'เรื่องที่ต้องเคลียร์', sub: `${al.length} เรื่อง`, key: 'cal', pt: 'เรื่องค้าง', rows: al.map(a => alertRow(a)).join(''), cls: 'tight', empty: `${ic('check', 24)}ไม่มีเรื่องค้าง` })}
-  ${pnl({ t: 'สินทรัพย์ที่ถือครอง', sub: `${hold.length} รายการ`, key: 'cps', pt: 'สินทรัพย์', cls: 'tight', empty: 'ไม่มีสินทรัพย์ที่ถือครอง', tcls: 'cps', th: `<div class="ot-h"><span>หุ้น</span><span class="r">จำนวน</span><span class="r c-avg">${tm('avg', 'Avg')}</span><span class="r c-last">ราคาปิด</span><span class="r">${tm('upl', 'U.P/L')}</span></div>`,
-    rows: hold.map(p => { const pl = p.upl; return `<div class="ot-r"><span class="jm">${slogo(p.sym, 20)}<span style="min-width:0"><b>${esc(p.sym)}</b><span class="t2">${!p.plan ? '<span class="pu">นอกแผน</span>' : p.sl && p.last <= p.sl ? '<span class="dn">หลุด Stop Loss</span>' : `SL ${p.sl ? px(p.sl) : '—'}`}</span></span></span><span class="r num">${fmt(p.qty)}<span class="t2">${unitOf(p)}</span></span><span class="r num c-avg">${px(p.avg)}</span><span class="r num c-last">${px(p.last)}</span><span class="r num ${pl >= 0 ? 'up' : 'dn'}"><b>${signed(pl)}</b></span></div>`; }).join('') })}`;
+  ${pnl({ t: 'สินทรัพย์ที่ถือครอง', sub: `${hold.length} รายการ`, key: 'cps', pt: 'สินทรัพย์', cls: 'tight', empty: 'ไม่มีสินทรัพย์ที่ถือครอง', tcls: 'cps', th: `<div class="ot-h"><span>หุ้น</span><span class="r">จำนวน</span><span class="r c-avg">${tm('avg', 'Avg')}</span><span class="r c-last">ต้นทุน</span><span class="r">เสี่ยงถึง SL</span></div>`,
+    rows: hold.map(p => { return `<div class="ot-r"><span class="jm">${slogo(p.sym, 20)}<span style="min-width:0"><b>${esc(p.sym)}</b><span class="t2">${!p.plan ? '<span class="pu">นอกแผน</span>' : `SL ${p.sl ? px(p.sl) : '—'}`}</span></span></span><span class="r num">${fmt(p.qty)}<span class="t2">${unitOf(p)}</span></span><span class="r num c-avg">${px(p.avg)}</span><span class="r num c-last">${kb(p.v)}</span><span class="r num ${p.risk ? 'dn' : ''}">${p.risk == null ? '—' : kb(p.risk)}</span></div>`; }).join('') })}`;
 }
 // the client's profile: who they are and their program on the left; on the right the trading plan designed for them —
 // how the money is split across the markets they trade (หุ้นไทย, Block Trade, TFEX...), each market's approach and what
@@ -3514,7 +3518,7 @@ function clProfile(c) {
   return `<section class="pnl prf-l" data-pt="ข้อมูลลูกค้า"><div class="ph"><h3>ข้อมูลลูกค้า</h3><span class="sub">${TYPE[c.type]} Trader</span></div><div class="pb">
       <div class="prf-id">${avatar(c, 'lg')}<div style="min-width:0"><b class="ell">${esc(c.name)} ${esc(c.last || '')}</b><span class="xs muted">เดือนที่ ${progMonth(c)} จาก ${c.term} · วินัย <b class="${scoreTone(d.score)}">${d.score}</b> · ${ptBadge(sc)}</span></div></div>
       <div class="tpd prf-d">
-        ${info('โทรศัพท์', `${esc(c.phone)} · ${c.line ? '<span class="up">LINE เชื่อมแล้ว</span>' : '<span class="warn">ยังไม่เชื่อม LINE</span>'}`)}${info('อีเมล', esc(c.email), c.email)}
+        ${info('โทรศัพท์', `<a href="tel:${esc(String(c.phone).replace(/[^0-9+]/g, ''))}">${esc(c.phone)}</a>`)}${info('อีเมล', esc(c.email), c.email)}
         ${info('บัญชีซื้อขาย', `${esc(c.broker)} · xxxx-${esc(c.acct)}`)}
         ${info('โปรแกรม', `${c.term} เดือน · ${dstr(c.joined)} ${String(tz(c.joined).getUTCFullYear() + 543).slice(2)} – ${dstr(end)} ${String(tz(end).getUTCFullYear() + 543).slice(2)}`)}
         ${info('ค่าเรียน', c.paid ? `฿${baht(c.paid.amt)} <span class="muted">ชำระ ${dstr(c.paid.at)}</span>` : '<span class="warn">ยังไม่ชำระ</span>')}
@@ -3551,8 +3555,10 @@ function openDoc(bar, no, doc, onPrint) {
    At TP1 the plan sells half and moves the stop to Entry, so the rest ends at TP2, at that stop, or wherever it is now. */
 function planR(p) {
   const e = (p.lo + p.hi) / 2, risk = e - p.sl; if (!(risk > 0)) return null;
-  const tp1 = (p.sls || []).some(x => x.at <= now() && String(x.note || '').startsWith('ราคาถึง TP1')), live = planLive(p), last = lastPx(p.sym) ?? e;
-  const exit = live ? last : p.end.why === 'tp2' ? p.tp2 : p.end.why === 'sl' ? slAt(p, p.end.at) : last, r = x => (x - e) / risk;
+  const tp1 = (p.sls || []).some(x => x.at <= now() && String(x.note || '').startsWith('ราคาถึง TP1')), live = planLive(p);
+  if (live) return null;   // no live price: a plan's result is known once it is closed
+  if (p.end.why !== 'tp2' && p.end.why !== 'sl') return null;   // closed by the coach: no price to measure it by
+  const exit = p.end.why === 'tp2' ? p.tp2 : slAt(p, p.end.at), r = x => (x - e) / risk;
   return tp1 ? .5 * r(p.tp1) + .5 * r(exit) : r(exit);
 }
 // the clients a plan was told to: how many bought, how many stayed on the plan in every record, what they made on it
@@ -3634,7 +3640,7 @@ function execReport() {
     ${docSec('5', 'ผลงานของแผนการเทรด', `<div class="dsum">${card('แผนทั้งหมด', pf.st.length, `เปิดอยู่ ${pf.live} · ปิดในสัปดาห์นี้ ${closedWk.length}`)}${card('อัตราชนะ', `${Math.round(pf.win * 100)}%`, `${pf.wins}/${pf.closed} แผนที่ปิดแล้ว`)}${card('R เฉลี่ยต่อแผน', rTxt(pf.avgR), 'เทียบกับความเสี่ยงของแผน', pf.avgR >= 0 ? 'dok' : 'dbad')}${card('ลูกค้าทำตามแผนครบ', `${pf.bought ? Math.round(pf.followed / pf.bought * 100) : 0}%`, `ซื้อตามแผน ${pf.told ? Math.round(pf.bought / pf.told * 100) : 0}% ของครั้งที่แนะนำ`)}</div>
       ${closedWk.length ? docTbl(['แผนที่ปิดในสัปดาห์นี้', 'ผล', 'R', 'ลูกค้าซื้อ', 'กำไรของลูกค้า'], closedWk.map(x => `<tr><td><b>${esc(x.p.sym)}</b> <span class="dmut">${x.p.coach ? coach(x.p.coach).name : ''}</span></td><td>${PRES[x.res][1]}</td><td class="${x.r >= 0 ? 'dok' : 'dbad'}">${rTxt(x.r)}</td><td>${x.bought}/${x.told}</td><td class="${x.pl >= 0 ? 'dok' : 'dbad'}">${signed(Math.round(x.pl))}</td></tr>`), '') : ''}`)}
     ${docSec('6', 'งานในสัปดาห์', docKV([['รายการที่ลูกค้าบันทึก', `${wk.length} รายการ · ตรวจแล้ว ${wk.filter(e => e.ver === 'ok').length}`], ['รอหัวหน้าโค้ชตรวจ', `${pq.length} รายการ${pq.length ? ` · รอนานสุด ${ageTx(n - Math.min(...pq.map(e => e.rec.at)))}` : ''}`], ['รอลูกค้าแก้ไข', `${fx.length} รายการ`], ['เรื่องค้างทั้งหมด', `${al.filter(a => a.aud !== 'cs').length} เรื่อง`]]))}
-    <footer class="dft"><p>รายงานนี้สร้างจากข้อมูลในระบบ ณ เวลาที่ออกเอกสาร ตัวเลขกำไรเป็นไปตามรายการที่บันทึกและราคาปิดล่าสุด</p>
+    <footer class="dft"><p>รายงานนี้สร้างจากข้อมูลในระบบ ณ เวลาที่ออกเอกสาร ตัวเลขกำไรนับจากรายการที่ขายแล้ว (ไม่ใช้ราคาหุ้นแบบเรียลไทม์)</p>
       <div class="dsig"><div><span></span>ผู้จัดทำ · ${esc(ME().name)}</div><div><span></span>ผู้บริหาร</div></div></footer></article>`;
   openDoc(`รายงานผู้บริหาร · สัปดาห์ ${wkTxt}`, no, doc, () => pushFeed({ by: roleOf(), who: ME().id, kind: 'exrep', text: `${ME().name} พิมพ์รายงานผู้บริหาร (${no})` }));
 }
@@ -3656,7 +3662,7 @@ function evidenceModal(id) {
   const doc = `<article class="doc">
     <header class="dhd"><img src="${LOGO}" alt="Super Trader Republic"><div><b>แฟ้มหลักฐานผู้เรียน</b><span>โปรแกรมปั้นพอร์ต 1 ล้าน · Super Trader Republic</span></div><div class="dno"><span>เลขที่เอกสาร</span><b>${no}</b><span>ออกเมื่อ ${dd(n)} ${tstr(n)} น.</span><span>โดย ${esc(me.name)}</span></div></header>
     ${sec('1', 'ข้อมูลผู้เรียนและโปรแกรม', kv([
-      ['ชื่อ–นามสกุล', `${esc(c.name)} ${esc(c.last || '')} <span class="dmut">(${esc(c.id.toUpperCase())})</span>`], ['ติดต่อ', `${esc(c.phone)} · ${esc(c.email)} · LINE ${c.line ? 'เชื่อมแล้ว' : 'ยังไม่เชื่อม'}`],
+      ['ชื่อ–นามสกุล', `${esc(c.name)} ${esc(c.last || '')} <span class="dmut">(${esc(c.id.toUpperCase())})</span>`], ['ติดต่อ', `${esc(c.phone)} · ${esc(c.email)}`],
       ['บัญชีซื้อขาย', `${esc(c.broker)} · xxxx-${esc(c.acct)}`], ['ประเภท / ตลาด', `${TYPE[c.type]} Trader · ${c.mks.map(m => MARKETS[m][0]).join(', ')}`],
       ['โปรแกรม', `${c.term} เดือน · ${dd(c.joined)} – ${dd(end)} · โค้ชผู้ดูแล ${esc(co.name)}`], ['ค่าเรียน', c.paid ? `฿${baht(c.paid.amt)} ชำระเมื่อ ${dd(c.paid.at)}` : 'ยังไม่ชำระ'],
       ['เงินทุนในโปรแกรม', `฿${baht(base)} (เริ่มต้น ฿${baht(c.cap)})`]]))}
@@ -3672,7 +3678,7 @@ function evidenceModal(id) {
     ${sec('6', 'คะแนนตามกติกาและสิ่งที่ไม่เป็นไปตามแผน', tbl(['วันที่', 'รายการ', 'คะแนน', 'คงเหลือ', 'การติดตาม'], pts.events.map(ev => { const x = ev.x, done = x && doneOf(x);
       return `<tr><td>${dd(ev.at)}</td><td>${x ? `${x.sym && !x.why.includes(x.sym) ? `<b>${esc(x.sym)}</b> ` : ''}${esc(x.why)}` : '<span class="dmut">สัปดาห์ที่ไม่ถูกหักคะแนน</span>'}</td><td class="${ev.chg < 0 ? 'dbad' : 'dok'}">${ev.chg > 0 ? '+' : ev.chg < 0 ? '−' : ''}${Math.abs(ev.chg)}</td><td>${ev.after}</td><td>${!x ? '—' : done ? `คุยแล้ว ${dd(done.at)} · ${esc(staffName(done.by))}${done.note ? `<br><span class="dmut">${esc(done.note)}</span>` : ''}` : x.ex || x.miss ? '<span class="dpend">ยังไม่ได้เคลียร์</span>' : '—'}</td></tr>`; }), 'ไม่ถูกหักคะแนน'), `เริ่ม 100 · ตอนนี้ ${pts.score}/100 · ต่ำกว่า ${PT_TALK} โค้ชนัดคุย · ต่ำกว่า ${PT_REVIEW} พิจารณาสิทธิ์คืนค่าเรียน`)}
     ${sec('7', 'การเข้าร่วม Coaching', tbl(['วันที่', 'ประเภท', 'ผล', 'หมายเหตุ'], sessOf(c.id).slice().reverse().map(x => `<tr><td>${dd(x.at)} ${tstr(x.at)}</td><td>${x.kind === 'review' ? 'Review ประจำเดือน' : 'Coaching'}</td><td>${x.att ? '<span class="dok">เข้าร่วม</span>' : '<span class="dbad">ไม่ได้เข้าร่วม</span>'}</td><td>${esc(x.note || '')}</td></tr>`), 'ยังไม่มีนัด'), `${a.n}/${a.t} นัด · ${Math.round(a.rate * 100)}%`)}
-    ${sec('8', 'รายงานยอดพอร์ตและ Statement', tbl(['วันที่', 'ประเภท', 'ยอดที่รายงาน', 'เทียบกับบันทึก'], [...snapsOf(c).map(x => ({ t: x.at, h: `<tr><td>${dd(x.at)}</td><td>ยอดพอร์ตวันศุกร์</td><td>฿${baht(x.val)}</td><td>${snapOk(x) ? '<span class="dok">ตรงกัน</span>' : `<span class="dbad">ต่าง ${pct(snapDiff(x))}</span>`}</td></tr>` })),
+    ${sec('8', 'รายงานยอดพอร์ตและ Statement', tbl(['วันที่', 'ประเภท', 'ยอดที่รายงาน', 'หลักฐาน'], [...snapsOf(c).map(x => ({ t: x.at, h: `<tr><td>${dd(x.at)}</td><td>ยอดพอร์ตวันศุกร์</td><td>฿${baht(x.val)}</td><td>${x.img ? 'แนบภาพแล้ว' : '<span class="dmut">ไม่มีภาพ</span>'}</td></tr>` })),
       ...S.stmts.filter(x => x.cl === c.id).map(x => ({ t: x.at, h: `<tr><td>${dd(x.at)}</td><td>Statement ${ymName(x.ym)}</td><td>฿${baht(x.val)}</td><td class="dmut">จากโบรกเกอร์</td></tr>` }))].sort((x, y) => x.t - y.t).map(x => x.h), 'ยังไม่มีรายงาน'))}
     ${sec('9', 'บันทึกของทีมงาน', tbl(['วันที่', 'โดย', 'บันทึก'], S.notes.filter(x => x.cl === c.id).sort((x, y) => x.at - y.at).map(x => `<tr><td>${dd(x.at)} ${tstr(x.at)}</td><td>${x.role === 'cs' ? 'ทีม CS' : esc(staffName(x.by))}</td><td>${esc(x.text)}</td></tr>`), 'ไม่มีบันทึก'))}
     <footer class="dft"><p>เอกสารนี้สร้างจากข้อมูลในระบบ ณ เวลาที่ออกเอกสาร รายการที่ยืนยันแล้วและแผนที่ส่งแล้วแก้ไขหรือลบไม่ได้ ภาพหลักฐานเก็บคู่กับแต่ละรายการ</p>
@@ -3761,7 +3767,6 @@ function onBehalfModal(id, kind) {
     } else {
       const day = T_();
       S.snaps = S.snaps.filter(x => !(x.cl === c.id && x.day === day));
-      c.eq[day] = Math.round(eqNow(c));
       S.snaps.push({ id: nid('s'), cl: c.id, day, at: now(), val: v, img: slip.img || null, by: ME().id });
       pushFeed({ by: 'coach', who: ME().id, coach: ME().id, cl: c.id, kind: 'snap', text: `${ME().name} รายงานยอดพอร์ต ${baht(v)} บาท แทน${c.name}` });
     }
@@ -3787,7 +3792,7 @@ function clPort(c) {
   return `<section class="pnl palloc" data-pt="สัดส่วนและความเสี่ยง"><div class="ph"><h3>สัดส่วนและความเสี่ยง</h3><span class="sp"></span>${allocSeg()}</div>
     <div class="pb" style="display:flex;align-items:center">${allocView(c, narrow() ? 120 : 140)}</div>
     <div class="pfoot">${heatView(c)}${concLine(c)}</div></section>
-  ${pnl({ pre: weekStrip(c), t: 'ยอดพอร์ตที่ลูกค้ารายงาน', sub: 'ทุกวันศุกร์ เทียบกับบันทึก', key: 'csn', pt: 'ยอดที่รายงาน', cls: 'tight', empty: 'ยังไม่มีรายงาน', tcls: 'csn', th: '<div class="ot-h"><span>วันศุกร์</span><span class="r">ยอดที่รายงาน</span><span class="r c-rec">ตามบันทึก</span><span class="r">ต่าง</span></div>', head: isCoach() ? `<button class="btn ghost sm" data-act="behalf" data-k="snap" data-id="${esc(c.id)}" style="margin-left:auto">${ic('plus', 15)} รายงานแทน</button>` : '', rows: snaps.map(s => { const df = (s.val - c.eq[s.day]) / c.eq[s.day]; return `<div class="ot-r"><span class="num">${wd(S.days[s.day])} ${dstr(S.days[s.day])}<span class="t2">ส่ง ${dt(s.at)}</span></span><span class="r num">${baht(s.val)}</span><span class="r num c-rec">${baht(c.eq[s.day])}</span><span class="r"><span class="tag ${Math.abs(df) > .02 ? 'warn' : 'ok'} num">${pct(df, 2)}</span></span></div>`; }).join('') })}
+  ${pnl({ pre: weekStrip(c), t: 'ยอดพอร์ตที่ลูกค้ารายงาน', sub: 'ทุกวันศุกร์ จากแอปซื้อขาย', key: 'csn', pt: 'ยอดที่รายงาน', cls: 'tight', empty: 'ยังไม่มีรายงาน', tcls: 'csn', th: '<div class="ot-h"><span>วันศุกร์</span><span class="r">ยอดที่รายงาน</span><span class="r c-rec">เปลี่ยนจากครั้งก่อน</span><span class="r">ภาพ</span></div>', head: isCoach() ? `<button class="btn ghost sm" data-act="behalf" data-k="snap" data-id="${esc(c.id)}" style="margin-left:auto">${ic('plus', 15)} รายงานแทน</button>` : '', rows: snaps.map((s, i) => { const pv = snaps[i + 1], df = pv ? (s.val - pv.val) / pv.val : null; return `<div class="ot-r"><span class="num">${wd(S.days[s.day])} ${dstr(S.days[s.day])}<span class="t2">ส่ง ${dt(s.at)}</span></span><span class="r num">${baht(s.val)}</span><span class="r num c-rec ${df == null ? '' : df >= 0 ? 'up' : 'dn'}">${df == null ? '—' : pct(df, 2)}</span><span class="r">${s.img ? '<span class="tag ok">แนบแล้ว</span>' : '<span class="tag">—</span>'}</span></div>`; }).join('') })}
   <div class="stk" data-pt="Statement · ฝาก/ถอน">${pnl({ t: 'Statement ประจำเดือน', sub: 'ส่งภายในวันที่ 5', key: 'cst', cls: 'tight', empty: 'ยังไม่ถึงกำหนดส่ง', head: isCoach() ? `<button class="btn ghost sm" data-act="behalf" data-k="stmt" data-id="${esc(c.id)}" style="margin-left:auto">${ic('plus', 15)} ส่งแทน</button>` : '', rows: stmtRows(c) })}
   ${pnl({ t: `ทุน <span class="gold num">฿${baht(capOf(c))}</span>`, sub: 'เพิ่มทุน · ฝาก / ถอน', key: 'cfl', cls: 'tight', empty: 'ยังไม่มีรายการ', rows: c.flows.slice().reverse().map(f => `<div class="hr2"><span><span class="tag ${f.cap ? 'gold' : f.amt > 0 ? 'ok' : 'dn'}">${f.cap ? 'เพิ่มทุน' : f.amt > 0 ? 'ฝาก' : 'ถอน'}</span> <b class="num">${baht(Math.abs(f.amt))}</b></span>${f.cap ? '<span class="tag ok">ลูกค้าเพิ่ม · มีผลทันที</span>' : f.pend ? (isCS() ? `<button class="btn sm" data-act="flowrev" data-c="${esc(c.id)}" data-f="${esc(f.id)}">ตรวจหลักฐาน</button>` : '<span class="tag blue">รอ CS</span>') : f.rej ? '<span class="tag dn">ไม่อนุมัติ</span>' : '<span class="tag ok">อนุมัติแล้ว</span>'}<span class="xs muted">${dt(f.at)}${f.rej ? ' · ' + esc(f.rej.why) : ''}</span></div>`).join('') })}</div>`;
 }
@@ -3938,7 +3943,7 @@ function allClientsView() {
     <select id="fcoach" style="width:auto;border-radius:999px" aria-label="กรองตามโค้ช"><option value="">โค้ชทุกคน</option>${S.coaches.map(co => `<option value="${co.id}" ${fCoach === co.id ? 'selected' : ''}>${co.name}</option>`).join('')}</select>
     <div class="chips">${[['all', 'ทั้งหมด'], ['open', 'มีเรื่องค้าง'], ['low', 'วินัยต่ำกว่า 75'], ['mile', 'กำไรถึง 1 ล้าน']].map(([k, l]) => `<button class="chip ${fStat === k ? 'on' : ''}" data-fs="${k}">${l}</button>`).join('')}</div>
     <span class="sp"></span><select id="sort" style="width:auto;border-radius:999px" aria-label="เรียงลำดับ">${[['score', 'วินัยต่ำสุดก่อน'], ['ret', 'กำไรสูงสุด'], ['refund', 'คืนค่าเรียนมากสุด'], ['name', 'รหัสลูกค้า']].map(([k, l]) => `<option value="${k}" ${sortBy === k ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
-  ${body || `<section class="pnl"><div class="ph"><h3>ลูกค้า</h3><span class="sub">แสดง ${list.length} จาก ${S.clients.length} ราย</span><div class="pgn" data-pgn="all"></div></div><div class="pb">${list.length ? `<table class="tbl"><thead><tr><th>ลูกค้า</th><th>โค้ช</th><th class="opt">โปรแกรม</th><th class="r">ทุน</th><th class="r">กำไรสะสม</th><th class="c-grw" title="กำไรสะสม ณ ราคาปิดทุกวันศุกร์ตั้งแต่เริ่มโปรแกรม จนถึงวันนี้">การเติบโต</th><th class="c-1m">เงื่อนไข 1 ล้าน</th><th class="r">คืนค่าเรียน</th><th class="r">วินัย</th><th>เรื่องค้าง</th><th class="opt">เข้าใช้งาน</th></tr></thead><tbody data-pg="all">
+  ${body || `<section class="pnl"><div class="ph"><h3>ลูกค้า</h3><span class="sub">แสดง ${list.length} จาก ${S.clients.length} ราย</span><div class="pgn" data-pgn="all"></div></div><div class="pb">${list.length ? `<table class="tbl"><thead><tr><th>ลูกค้า</th><th>โค้ช</th><th class="opt">โปรแกรม</th><th class="r">ทุน</th><th class="r">กำไรสะสม</th><th class="c-grw" title="กำไรที่ขายแล้ว สะสมทุกวันศุกร์ตั้งแต่เริ่มโปรแกรม จนถึงวันนี้">การเติบโต</th><th class="c-1m">เงื่อนไข 1 ล้าน</th><th class="r">คืนค่าเรียน</th><th class="r">วินัย</th><th>เรื่องค้าง</th><th class="opt">เข้าใช้งาน</th></tr></thead><tbody data-pg="all">
     ${list.map(c => { const d = discipline(c.id), st = settle(c), pr = st.pr, fl = flagsOf(c); return `<tr class="click" data-act="open" data-id="${esc(c.id)}"><td><div class="row" style="gap:8px">${avatar(c, 'sm')}<div style="min-width:0"><b>${esc(cname(c))}</b><div class="xs muted">${esc(c.email)}</div></div></div></td><td class="nw">${coach(c.coach).name}</td>
       <td class="opt xs nw">${c.term} เดือน<div class="muted">${TYPE[c.type]}</div></td><td class="r num" title="ทุนเริ่มต้น ${baht(c.cap)}">${baht(capOf(c))}</td><td class="r num ${pr >= 0 ? 'up' : 'dn'}"><b>${signed(pr)}</b><div class="xs">${pct(retPct(c))}</div></td><td class="c-grw" title="กำไรสะสมรายสัปดาห์ตั้งแต่เริ่มโปรแกรม ${dstr(c.joined)} ถึงวันนี้">${growth(c)}</td><td class="c-1m" style="min-width:100px"><div class="bar" style="height:6px"><i style="width:${st.pct * 100}%"></i></div><div class="xs muted num">${fmt(st.pct * 100, 1)}%</div></td>
       <td class="r num">${st.extra > 0 ? '<span class="tag ok">ถึง 1 ล้าน</span>' : baht(st.refund)}</td><td class="r"><span class="tag ${scoreTone(d.score)} num">${d.score}</span></td><td><div class="flags">${fl.slice(0, 2).join('') || '<span class="muted xs">—</span>'}${fl.length > 2 ? `<span class="tag">+${fl.length - 2}</span>` : ''}</div></td><td class="xs muted opt nw">${seenTxt(c)}</td></tr>`; }).join('')}</tbody></table>` : '<div class="empty">ไม่พบลูกค้าตามเงื่อนไข</div>'}</div></section>`}`;
@@ -4228,7 +4233,6 @@ document.addEventListener('click', e => {
     PG.cno = 0; return render();
   }
   if (act === 'note') return noteModal(id);
-  if (act === 'line1') return toast(`${ic('chat', 18)}<div><b>เปิดแชต LINE</b><div class="muted sm">ระบบจริงจะเปิดห้องแชตกับ${esc(client(id)?.name || '')}ใน LINE OA</div></div>`);
   if (act === 'addcl') return addClientModal();
   if (act === 'recoach') return recoachModal(id);
   if (act === 'coachf') { if (!isCS()) return; fCoach = id; fStat = 'all'; PG.all = 0; return go('clients'); }
