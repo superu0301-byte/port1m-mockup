@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-Tc2l6+SPF+IT+8hIJcI1ldEQb1OKOZaCctlq6YDlqHw=' 'sha256-sO911YeSKxQlUzBM+O4dQ4RIIO7zETkfaFEngOvekD0='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-+TWrdrXK/tnVDHF5/pNX/gu3oQhdUrsSfMA1P3IpYCU=' 'sha256-KJLUkB2icmeevMjCfDczBvBS+0fDVMdYimSjgfaUXDQ='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>ปั้นพอร์ต 1 ล้าน · Trading Journal (ต้นแบบ)</title>
@@ -885,7 +885,7 @@ aside.side:before{content:"";position:absolute;left:22px;right:22px;top:0;height
 aside.side{padding:14px 8px 10px;gap:10px;align-items:center;margin:10px 0 10px 10px;border-radius:22px}
 .sb-brand{padding:0 0 10px;align-items:center;width:100%}
 .sb-brand img{height:auto;width:58px}
-.sb-prog,.sb-key .kt,.sb-grp,.sb-nav .l,.sb-st,.sb-coach .ct,.sb-coach .ibtn{display:none}
+.sb-prog,.sb-key .kt,.sb-grp,.sb-nav .l,.sb-nav kbd,.sb-st,.sb-coach .ct,.sb-coach .ibtn{display:none}
 .sb-key{width:52px;height:52px;padding:0;justify-content:center;border-radius:50%}
 .sb-key .ki{background:none}
 .sb-nav{align-items:center;gap:4px}
@@ -952,6 +952,14 @@ aside.side>*{position:relative;z-index:1}
 :root[data-fx=on] .guil{animation:fx-spin 260s linear infinite;will-change:transform}
 :root[data-fx=on] .seal .m-tk{transform-box:fill-box;transform-origin:center;animation:fx-spin 120s linear infinite}
 :root[data-fx=on] .enter .hero .big .gtxt{background-image:linear-gradient(100deg,transparent 42%,rgba(255,250,236,.95) 50%,transparent 58%),var(--gtxt);background-size:260% 100%,100% 100%;background-repeat:no-repeat;animation:fx-shine 2.4s cubic-bezier(.4,0,.2,1) 1.1s both}
+/* corner marks like a photo mount or a certificate (the element sets --cm colour, --cl length, --cw width, --ci inset) */
+.cmk{--cm:rgba(201,169,110,.7);--cl:14px;--cw:1.5px;--ci:6px}
+:root[data-theme=light] .cmk{--cm:rgba(148,115,58,.7)}
+.cmk:before{content:"";position:absolute;inset:var(--ci);z-index:2;pointer-events:none;background:linear-gradient(var(--cm),var(--cm)) 0 0/var(--cl) var(--cw),linear-gradient(var(--cm),var(--cm)) 0 0/var(--cw) var(--cl),linear-gradient(var(--cm),var(--cm)) 100% 0/var(--cl) var(--cw),linear-gradient(var(--cm),var(--cm)) 100% 0/var(--cw) var(--cl),linear-gradient(var(--cm),var(--cm)) 0 100%/var(--cl) var(--cw),linear-gradient(var(--cm),var(--cm)) 0 100%/var(--cw) var(--cl),linear-gradient(var(--cm),var(--cm)) 100% 100%/var(--cl) var(--cw),linear-gradient(var(--cm),var(--cm)) 100% 100%/var(--cw) var(--cl);background-repeat:no-repeat}
+/* a line of light that passes once over a picture when it is shown */
+.scan{position:absolute;left:0;right:0;top:0;height:34%;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(201,169,110,.1) 70%,rgba(239,220,178,.42) 97%,transparent);transform:translateY(-105%);opacity:0}
+@keyframes fx-scan{0%{transform:translateY(-105%);opacity:1}88%{opacity:1}100%{transform:translateY(300%);opacity:0}}
+:root[data-fx=on] .scan{animation:fx-scan 1.5s cubic-bezier(.45,0,.25,1) .25s both}
 
 
 /* ===== shell: a dark private-client sidebar beside the page; the page carries its own title bar ===== */
@@ -1067,7 +1075,14 @@ button.cd:hover{transform:translateY(-1px);border-color:var(--goldln)}
 /* the trading hall */
 .wbox{position:relative;flex:1;min-height:0;overflow:hidden;border-radius:inherit}
 .wbox>canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none}
-.whud{position:absolute;left:12px;top:10px;right:300px;display:flex;flex-wrap:wrap;gap:6px;pointer-events:none}
+.whud{position:absolute;left:12px;top:10px;right:300px;display:flex;flex-wrap:wrap;gap:6px;pointer-events:none}.whud>*{flex:none}
+.wrooms{position:absolute;left:12px;top:44px;max-width:calc(100% - 24px);display:flex;gap:4px;padding:3px;border-radius:12px;background:rgba(10,10,12,.72);border:1px solid rgba(201,169,110,.28);overflow-x:auto;scrollbar-width:none;z-index:2}
+.wrooms::-webkit-scrollbar{display:none}
+.wrooms button{flex:none;display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:9px;font-size:12.5px;font-weight:700;color:#cfc7b2;white-space:nowrap;transition:background .15s,color .15s}
+.wrooms button:hover{color:#f5f0e3;background:rgba(255,255,255,.06)}
+.wrooms button.on{color:#16120a;background:linear-gradient(180deg,#e3cc9c,#c9a96e)}
+.wrooms b{font-size:11px;min-width:16px;padding:0 5px;border-radius:7px;background:rgba(255,255,255,.08);text-align:center}.wrooms button.on b{background:rgba(0,0,0,.14)}
+.wbox>canvas{cursor:grab}
 .wh1,.chip2{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:12px;white-space:nowrap;background:rgba(6,9,18,.66);color:#efe8d6;border:1px solid rgba(201,169,110,.25)}
 .wh1{font-weight:800;color:#f3d991;letter-spacing:.04em}.chip2.g{color:#f3d991;font-weight:700}.whud .chip2.mob{display:none}
 .wact{position:absolute;right:12px;top:10px;display:flex;gap:6px}
@@ -1502,6 +1517,10 @@ button.kpi>span{display:block}
 .tk-rows{display:flex;flex-direction:column;gap:7px;min-width:0}
 .tk-pic{position:relative;display:block;width:118px;height:164px;padding:0;border-radius:14px;overflow:hidden;border:1px solid var(--line2);background:rgba(var(--wt),.03);box-shadow:0 14px 28px -18px rgba(0,0,0,.7)}
 .tk-pic .slip{width:100%;height:100%;border-radius:0;object-fit:cover}
+/* the picture in a mount, like the head coach sees it: corner marks, a lift, a line of light on opening */
+.tk-pic.cmk{--cl:11px;--ci:4px;padding:8px 8px 30px;background:radial-gradient(120% 70% at 50% 0%,rgba(201,169,110,.13),transparent 65%),rgba(var(--wt),.03)}
+.tk-pic.cmk .slip{object-fit:contain;border-radius:5px;filter:drop-shadow(0 10px 14px rgba(0,0,0,.45))}
+.tk-pic .zm{z-index:3}
 .tk-pic .zm{position:absolute;left:6px;right:6px;bottom:6px;display:flex;align-items:center;justify-content:center;gap:4px;padding:4px 6px;border-radius:9px;background:rgba(6,10,24,.72);color:#fff;font-size:11px;font-weight:600}
 .tk-pic.none{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--mut)}
 .tk-ck{display:flex;flex-direction:column;gap:7px;flex:none}
@@ -1563,8 +1582,64 @@ button.kpi>span{display:block}
 .cnote{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--gold2);padding-left:2px}.cnote .ic{flex:none;margin-top:2px}
 
 /* portfolio */
-.v-port{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1.05fr) minmax(0,1fr)}
-.v-port .pmain{grid-area:3/1/5/2}.v-port .palloc{grid-area:3/2}.v-port .phist{grid-area:4/2}
+.v-port{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1.05fr) minmax(0,1fr)}
+.v-port .pstate{grid-area:1/1/2/3}.v-port .pmain{grid-area:2/1/4/2}.v-port .palloc{grid-area:2/2}.v-port .phist{grid-area:3/2}
+/* the statement: the reported value, how the port is split, the numbers that matter */
+.pstate{position:relative;overflow:hidden;padding:18px 26px 16px;border-radius:22px;outline:1px solid rgba(201,169,110,.14);outline-offset:-8px;gap:12px;background:radial-gradient(620px 240px at 0% 0%,rgba(201,169,110,.12),transparent 70%),var(--panelfx)}
+.pstate .guil{right:-200px;width:560px;height:560px;margin-top:-280px}
+.pstate>*{position:relative;z-index:1}
+.ps-top{display:flex;align-items:flex-start;gap:20px;min-width:0}
+.ps-l{min-width:0;flex:1}
+.ps-k{display:flex;align-items:center;gap:10px;font-size:12.5px;color:var(--mut);white-space:nowrap}
+.ps-k .eyebrow{font-size:10px;color:var(--gold);font-weight:800;letter-spacing:.28em;padding:3px 9px;border:1px solid var(--goldln);border-radius:4px}
+.ps-v{display:flex;align-items:baseline;gap:14px;margin-top:6px;min-width:0}
+.ps-v b{font-family:var(--disp);font-size:46px;font-weight:700;line-height:1.05;color:var(--gold2);white-space:nowrap}
+:root[data-theme=light] .ps-v b{color:var(--gold)}
+.ps-s{font-size:12.5px;color:var(--mut);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ps-r{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex:none}
+.ps-mix{display:flex;flex-direction:column;gap:6px}
+.ps-bar{display:flex;height:10px;border-radius:99px;overflow:hidden;background:rgba(var(--wt),.06)}
+.ps-bar i{display:block;height:100%}
+.ps-bar .iv{background:linear-gradient(90deg,#a8864d,#e3cc9c)}
+.ps-bar .cs{flex:1;background:repeating-linear-gradient(135deg,rgba(var(--wt),.07) 0 6px,rgba(var(--wt),.03) 6px 12px)}
+.ps-lg{display:flex;align-items:center;gap:18px;font-size:12.5px;color:var(--ink2);white-space:nowrap;min-width:0;overflow:hidden}
+.ps-lg i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:6px;vertical-align:-.5px}
+.ps-lg i.iv{background:var(--gold)}.ps-lg i.cs{background:rgba(var(--wt),.25)}
+.ps-lg b{font-family:var(--disp)}
+.ps-stats{display:flex;align-items:stretch;padding-top:12px;border-top:1px solid var(--line)}
+.ps-stats>div{display:flex;flex-direction:column;gap:1px;padding:0 24px;border-left:1px solid var(--line2);min-width:0;flex:1}
+.ps-stats>div:first-child{padding-left:0;border-left:none}
+.ps-stats span{font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ps-stats b{font-family:var(--disp);font-size:21px;font-weight:700;white-space:nowrap;line-height:1.3}
+.ps-stats small{font-size:11.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ps-stats b.ok{color:var(--up)}
+.snapb.due{border-color:var(--goldln);color:var(--gold2)}
+/* holdings as ledger cards */
+.hlist{display:flex;flex-direction:column;gap:6px;padding:6px 12px 12px;container-type:inline-size}
+.hl{display:grid;grid-template-columns:38px minmax(96px,1fr) minmax(86px,.8fr) minmax(130px,1.25fr) minmax(92px,.85fr) minmax(112px,1fr) 16px;column-gap:14px;align-items:center;width:100%;min-height:62px;padding:8px 14px;border-radius:16px;border:1px solid var(--line);background:rgba(var(--wt),.025);color:var(--ink);text-align:left;transition:background .15s,border-color .15s}
+.hl:hover{background:rgba(var(--wt),.055);border-color:var(--goldln)}
+.hl.cl{grid-template-columns:38px minmax(96px,1.1fr) minmax(130px,1.1fr) minmax(96px,.9fr) minmax(100px,.9fr) 16px}
+.hl>span{display:flex;flex-direction:column;gap:2px;min-width:0}
+.hl b{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hl-n b{font-size:15px;letter-spacing:.02em}
+.hl small{font-size:11.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.hl .u{font-size:12px;color:var(--mut)}
+.hl-q{flex-direction:row!important;flex-wrap:wrap;align-items:baseline;column-gap:4px!important}.hl-q small{flex-basis:100%}
+.hl-v,.hl-sl,.hl-pl{align-items:flex-end;text-align:right}
+.hl-v b{font-family:var(--disp);font-size:15.5px}
+.hl-pl b{font-family:var(--disp);font-size:16px;padding:1px 9px;border-radius:8px}.hl-pl b.up{background:var(--upbg)}.hl-pl b.dn{background:var(--dnbg)}
+.hl-wb{display:block;height:6px;border-radius:99px;background:rgba(var(--wt),.07);overflow:hidden}
+.hl-wb i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#a8864d,#e3cc9c)}
+.hl-wb.over i{background:linear-gradient(90deg,color-mix(in srgb,var(--warn) 60%,transparent),var(--warn))}
+.hl-c{color:var(--mut)}
+:root[data-theme=light] .hl{background:rgba(255,255,255,.72)}:root[data-theme=light] .hl:hover{background:#fff}
+@container (max-width:690px){.hl{grid-template-columns:38px minmax(96px,1fr) minmax(86px,.8fr) minmax(92px,.85fr) minmax(112px,1fr) 16px}.hl-w{display:none!important}}
+@container (max-width:600px){.hl{grid-template-columns:34px minmax(90px,1fr) minmax(80px,.8fr) minmax(104px,1fr) 14px;column-gap:10px;padding:7px 10px}.hl-sl{display:none!important}.hl.cl{grid-template-columns:34px minmax(90px,1fr) minmax(90px,.9fr) minmax(90px,.9fr) 14px}.hl.cl .hl-v{display:none!important}.hl>.slg{--s:34px!important}}
+@container (max-width:420px){.hl{grid-template-columns:30px minmax(80px,1fr) minmax(98px,1fr);column-gap:9px}.hl-q,.hl-c{display:none!important}.hl.cl{grid-template-columns:30px minmax(80px,1fr) minmax(90px,1fr)}.hl.cl .hl-p{display:none!important}.hl>.slg{--s:30px!important}}
+@media (max-height:760px){.pstate{padding:14px 24px 12px;gap:9px}.ps-v b{font-size:38px}.ps-stats{padding-top:9px}.ps-stats b{font-size:19px}.hl{min-height:56px;padding-top:6px;padding-bottom:6px}}
+@media (max-height:680px){.ps-s{display:none}.ps-v b{font-size:32px}.ps-stats small{display:none}}
+@media (max-width:1280px){.ps-stats>div{padding:0 16px}.ps-stats .o1:nth-child(2){display:none}}
+@media (max-width:1100px){.ps-stats .o1{display:none!important}}
 .pmain .ph .seg{flex:none}
 .phold{--cols:minmax(120px,1.4fr) minmax(60px,.7fr) minmax(60px,.7fr) minmax(86px,1fr) 56px minmax(66px,.8fr) minmax(84px,1fr);container-type:inline-size}
 .pclosed{--cols:minmax(120px,1.3fr) minmax(120px,1.2fr) minmax(90px,1fr) minmax(96px,1fr) 70px;container-type:inline-size}
@@ -1639,7 +1714,7 @@ button.kpi>span{display:block}
 }
 @media (max-width:900px) and (min-width:761px){
   .kstrip{grid-template-columns:repeat(3,minmax(0,1fr))}.kstrip .opt{display:none}.pmain .ph .sub{display:none}.acct{grid-template-columns:repeat(3,minmax(0,1fr))}.acct>div:nth-child(4){border-left:none}.acct>div:nth-child(n+4){border-top:1px solid var(--line)}
-  .v-port{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1.4fr) minmax(0,1fr)}.v-port .pmain{grid-area:3/1/4/3}.v-port .palloc{grid-area:4/1}.v-port .phist{grid-area:4/2}.palloc .ph .lnk{display:none}
+  .v-port{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1.4fr) minmax(0,1fr)}.v-port .pmain{grid-area:2/1/3/3}.v-port .palloc{grid-area:3/1}.v-port .phist{grid-area:3/2}.ps-stats .o2{display:none}.palloc .ph .lnk{display:none}
   .v-journal{grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1.1fr) minmax(0,1fr)}.v-journal.deal{grid-template-rows:auto minmax(0,1fr)}.ed-info .clamp{-webkit-line-clamp:2}.ed-info{gap:8px}.jf .in.sym input{width:110px}
 }
 @media (max-width:900px){.hin .mkt{display:none}}
@@ -1674,7 +1749,7 @@ button.kpi>span{display:block}
   .calw{padding:0 10px 10px;gap:8px}.cal-s{display:none}.cal{grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}.cal .wk{display:none}.cd{padding:4px 6px;border-radius:9px}.cd b{font-size:12.5px}.cd .n{display:none}.cal .wd{font-size:11px}
   .lb-tb{padding:0 12px 8px}.pd .v{font-size:14px}.pd.p1 .v{font-size:15px}.pd small{display:none}.tcard{padding:10px 12px}.mdls{grid-template-columns:repeat(6,minmax(0,1fr))}.mdl span{display:none}.bdl{grid-template-columns:1fr 1fr;gap:6px}.bdi{padding:6px 8px;gap:8px}.bdi .bdd{display:none}.bdi .mdl i{width:32px;height:32px}.bdi b{font-size:13px}
   .cd{padding:3px 5px;gap:0;line-height:1.25}.cd .cdn{font-size:10.5px}
-  .whud{right:12px;top:52px}.whud .chip2:not(.g){display:none}.whud .chip2.mob{display:inline-flex}.wlb{left:10px;right:10px;bottom:44px;width:auto}.wlb.min{right:auto}.wleg{left:10px;right:10px}.wleg{font-size:10px;gap:2px 7px;padding:3px 8px}.avg{grid-template-columns:1fr;gap:8px}.avp{flex-direction:row;justify-content:center;padding:6px}.avp canvas{width:80px;height:100px}.avo{gap:7px}.avr small{margin-bottom:2px}.swc{width:24px;height:24px}.sws{gap:6px}.mmc{width:96px;height:120px}
+  .wrooms{top:auto;bottom:10px;left:10px;right:10px;max-width:none}.whud{right:12px;top:52px}.whud .chip2:not(.g){display:none}.whud .chip2.mob{display:inline-flex}.wlb{left:10px;right:10px;bottom:44px;width:auto}.wlb.min{right:auto}.wleg{display:none}.avg{grid-template-columns:1fr;gap:8px}.avp{flex-direction:row;justify-content:center;padding:6px}.avp canvas{width:80px;height:100px}.avo{gap:7px}.avr small{margin-bottom:2px}.swc{width:24px;height:24px}.sws{gap:6px}.mmc{width:96px;height:120px}
   .v-home>*{flex:none}.v-home .hero{flex:1 1 0;min-height:210px}.v-home .qact{display:flex;order:3}.jlist{flex:1 1 0}
   .hx{flex-direction:column;gap:8px;padding:12px 16px 2px}.big{font-size:34px;margin:0 0 6px}.meta .tag.ok:not(.num):not(.mob),.meta .tag.warn:not(.mob){display:none}.meta .mob{display:inline-flex}.meta .tag{font-size:12px;padding:2px 9px}
   .hk{grid-template-columns:1fr 1fr;width:100%}.hk>*:nth-child(n+3){display:none}.hk>*{border-bottom:none;padding:6px 12px}.hk b{font-size:16px}
@@ -1686,7 +1761,9 @@ button.kpi>span{display:block}
   .jf{flex:1 1 0}.jf .dw{flex:1 1 0}.jf .in{width:100%;padding:0 8px;gap:5px}.jf .in>span{overflow:hidden;text-overflow:ellipsis}.jf .in.sym{flex:1 1 0}.jf .in.sym input{width:100%;font-size:16px}.jf>.muted,.jf .lnk,.jf .dw .ic{display:none}
   .jlist .ot-r .side{min-width:34px;padding:1px 4px;font-size:11px}.jlist .ot-r .tag{padding:2px 6px;font-size:11px}.jm{gap:8px}.ot-r .jm .slg{--s:24px!important}
   .jlist .ph .sub,.jlist .ph .tag.blue,.pmain .ph .sub{display:none}
-  .capb{padding-left:10px;gap:7px}.capb b{font-size:17px}.capb .btn{padding:5px 9px}.v-port .snapb span{display:none}.v-port .vh{flex-wrap:nowrap}
+  .capb{padding-left:10px;gap:7px}.capb b{font-size:17px}.capb .btn{padding:5px 9px}.v-port .snapb span{display:none}
+  .pstate{padding:12px 14px;gap:9px;border-radius:16px;outline-offset:-5px}.pstate .guil,.ps-k span:not(.eyebrow),.ps-s,.ps-lg .muted{display:none}.ps-top{flex-direction:column;gap:8px}.ps-r{flex-direction:row;align-items:center;align-self:stretch}.ps-r .snapb{margin-left:auto}.ps-v b{font-size:30px}.ps-v{gap:8px}
+  .ps-stats{padding-top:8px}.ps-stats>div{padding:0 10px}.ps-stats .o1,.ps-stats .o2{display:none}.ps-stats b{font-size:17px}.ps-stats small{display:none}.hlist{padding:4px 8px 10px}
   .acct{grid-template-columns:repeat(3,minmax(0,1fr))}.acct .opt{display:none}.acct>div{padding:7px 10px}.acct .v,.acct .main .v{font-size:15.5px}.acct .k{font-size:11.5px}.acct .s{font-size:11px}.pfoot{padding:8px 14px 10px}
   .mgrid{grid-template-columns:1fr;gap:10px}.mside{order:-1}
   .ed{grid-template-columns:110px minmax(0,1fr)}
@@ -3235,7 +3312,9 @@ function fitPagers(root = document) {
     // a totals row under the list (Deal Summary) stays on screen too
     const tail = () => { let h = 0; for (let n = box.nextElementSibling; n; n = n.nextElementSibling) h += n.getBoundingClientRect().height; return h; };
     const limit = () => area.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(area).paddingBottom) || 0) - tail();
-    const gap = parseFloat(getComputedStyle(box).rowGap) || 0;
+    const bs = getComputedStyle(box), gap = parseFloat(bs.rowGap) || 0;
+    // a grid of cards: a page holds whole rows of the grid
+    const cols = bs.display.includes('grid') ? Math.max(1, bs.gridTemplateColumns.split(' ').filter(Boolean).length) : 1;
     const nav = document.querySelector(`[data-pgn="${key}"]`);
     const setNav = () => { if (nav) nav.innerHTML = n > 1 ? `<button data-pgp="${key}" ${p ? '' : 'disabled'} aria-label="หน้าก่อน">${ic('back', 15)}</button><span class="num">${p + 1}/${n}</span><button data-pgx="${key}" ${p < n - 1 ? '' : 'disabled'} aria-label="หน้าถัดไป">${ic('chev', 15)}</button>` : ''; };
     let pages, n, p, slack = 0;
@@ -3245,10 +3324,10 @@ function fitPagers(root = document) {
       const avail = limit() - box.getBoundingClientRect().top - slack;
       pages = [];
       let cur = [], used = 0;
-      for (const r of rows) {
-        const h = r.getBoundingClientRect().height;
+      for (let i = 0; i < rows.length; i += cols) {
+        const grp = rows.slice(i, i + cols), h = Math.max(...grp.map(r => r.getBoundingClientRect().height));
         if (cur.length && used + h > avail + .5) { pages.push(cur); cur = []; used = 0; }
-        cur.push(r); used += h + gap;
+        cur.push(...grp); used += h + gap;
       }
       if (cur.length) pages.push(cur);
       n = Math.max(1, pages.length); p = Math.max(0, Math.min(PG[key] || 0, n - 1));
@@ -4406,7 +4485,7 @@ function execDetail(id, inModal) {
   const hero = `<div class="tk-hero ${sell ? 'sell' : 'buy'}"><div class="tk-top">${slogo(e.sym, 46)}<div class="tk-id"><span class="tk-verb">${verbEx(e)}</span><b>${esc(e.sym)}</b><span class="t2">${esc(sub)} · ${dt(e.at)} น.</span></div><span class="sp"></span>${verTag(e)}</div>
     <div class="tk-num"><span><b class="num">${fmt(e.qty)}</b> ${u}</span><span class="at">@</span><b class="num">${px(e.px)}</b>${m && sell ? `<span class="tk-pl ${m.pl >= 0 ? 'up' : 'dn'} num">${signed(m.pl)}<small>${pct(m.r, 1)}</small></span>` : `<span class="tk-val"><small>มูลค่า</small><b class="num">฿${baht(e.qty * e.px * (e.k || 1))}</b></span>`}</div>
     <div class="tk-tags">${tags.join('')}</div></div>`;
-  const pic = e.slip ? `<button class="tk-pic" data-act="slip" data-id="${esc(e.id)}" title="ดูภาพเต็ม">${slipImg(e, me)}<span class="zm">${ic('search', 12)}ดูภาพเต็ม</span></button>` : `<span class="tk-pic none">${ic('image', 22)}<small>ไม่มีภาพ</small></span>`;
+  const pic = e.slip ? `<button class="tk-pic cmk" data-act="slip" data-id="${esc(e.id)}" title="ดูภาพเต็ม">${slipImg(e, me)}<i class="scan" aria-hidden="true"></i><span class="zm">${ic('search', 12)}ดูภาพเต็ม</span></button>` : `<span class="tk-pic none">${ic('image', 22)}<small>ไม่มีภาพ</small></span>`;
   const ck = tkChecks(e), more = (m && sell ? recSec('จับคู่กับรายการซื้อ', matchBox(e)) : '') + recSec('บันทึกเพิ่มเติม', recNotes(e, coach(me.coach).name));
   const body = `<div class="tk">${hero}${fix}${tkJourney(e)}<section class="tk-ck">${ck.head}<div class="tk-ev">${pic}<div class="tk-rows">${ck.rows}</div></div>${ck.note}</section>${more ? `<div class="tk-more">${more}</div>` : ''}</div>`;
   return inModal ? mhead('รายละเอียดรายการ', `${verbEx(e)} ${esc(e.sym)} · ${dt(e.at)} น.`) + `<div class="mbd tkm">${body}</div>` : body;
@@ -4429,18 +4508,23 @@ const asOfTxt = () => STOCK_DATA.asOf ? dstr(Date.parse(STOCK_DATA.asOf + 'T10:0
 // one holding with value, weight, result and the money at risk down to its stop (all in baht)
 // one holding per line, like a broker app's portfolio; tap it for the detail with Buy / Sell
 function holdLine(p, b) {
-  const gap = p.sl ? (p.avg - p.sl) / p.avg : null;
-  return `<button class="ot-r" data-pos="${esc(p.key)}" title="ดูรายละเอียด ${esc(p.sym)}"><span class="jm">${slogo(p.sym, 30)}<span style="min-width:0"><b>${esc(p.sym)}</b>${p.plan ? '' : ' <span class="tag pu">นอกแผน</span>'}<span class="t2"><span class="dk">${p.mk !== 'th' ? mkName(p) : esc(sname(p.sym) || 'หุ้นไทย')}</span><span class="mo num">${fmt(p.qty)} ${unitOf(p)} · Avg ${px(p.avg)}</span></span></span></span>
-    <span class="r num c-qty">${fmt(p.qty)}<span class="t2">${unitOf(p)}</span></span><span class="r num c-avg">${px(p.avg)}</span>
-    <span class="r num c-mv">${baht(p.v)}</span><span class="r num c-w">${fmt(p.w * 100, 1)}%</span>
-    <span class="r num c-sl" title="${gap == null ? 'ไม่มี Stop Loss' : `Stop Loss ${px(p.sl)} · ต่ำกว่าต้นทุน ${fmt(gap * 100, 1)}%`}">${gap == null ? '<span class="tag warn">ไม่มี SL</span>' : px(p.sl)}</span>
-    <span class="r num c-rk" title="ขาดทุนจากต้นทุนหากราคาลงถึง Stop Loss">${p.risk == null ? '—' : `฿${kb(p.risk)}<span class="t2">${fmt(p.risk / b.total * 100, 2)}%</span>`}</span></button>`;
+  const gap = p.sl ? (p.avg - p.sl) / p.avg : null, mx = ME().tp?.maxPos || .15, over = p.w > mx * 1.02;
+  return `<button class="hl" data-pos="${esc(p.key)}" title="ดูรายละเอียด ${esc(p.sym)}">${slogo(p.sym, 38)}
+    <span class="hl-n"><b>${esc(p.sym)}${p.plan ? '' : ' <span class="tag pu">นอกแผน</span>'}</b><small>${p.mk !== 'th' ? mkName(p) : esc(sname(p.sym) || 'หุ้นไทย')}</small></span>
+    <span class="hl-q num"><b>${fmt(p.qty)}</b> <span class="u">${unitOf(p)}</span><small>${tm('avg', 'Avg')} ${px(p.avg)}</small></span>
+    <span class="hl-w"><span class="hl-wb ${over ? 'over' : ''}"><i style="width:${Math.min(100, p.w / mx * 100).toFixed(1)}%"></i></span><small><b class="num ${over ? 'warn' : ''}">${fmt(p.w * 100, 1)}%</b> ของพอร์ต · แผน ≤ ${fmt(mx * 100)}%</small></span>
+    <span class="hl-sl num">${gap == null ? '<span class="tag warn">ไม่มี SL</span>' : `<b>${px(p.sl)}</b><small>${tm('sl', 'SL')} · ${gap > 0 ? `ใต้ทุน ${fmt(gap * 100, 1)}%` : `<span class="up">ล็อกกำไร +${fmt(-gap * 100, 1)}%</span>`}</small>`}</span>
+    <span class="hl-v num"><b>฿${baht(p.v)}</b><small>${p.risk == null ? 'ต้นทุนรวม' : `เสี่ยงถึง SL ฿${kb(p.risk)} · ${fmt(p.risk / b.total * 100, 2)}%`}</small></span>
+    <span class="hl-c">${ic('chev', 16)}</span></button>`;
 }
 function closedLine(p) {
-  const r = p.realized / p.bought;
-  return `<button class="ot-r" data-pos="${esc(p.key)}" title="ดูรายละเอียด ${esc(p.sym)}"><span class="jm">${slogo(p.sym, 30)}<span style="min-width:0"><b>${esc(p.sym)}</b>${p.plan ? '' : ' <span class="tag pu">นอกแผน</span>'}<span class="t2">${esc(sname(p.sym) || mkName(p))}</span></span></span>
-    <span class="num c-per">${dstr(p.first)} – ${dstr(p.lastAt)}<span class="t2">ถือ ${Math.max(1, Math.round((p.lastAt - p.first) / DAY))} วัน</span></span>
-    <span class="r num c-buy">${baht(p.bought)}</span><span class="r num ${p.realized >= 0 ? 'up' : 'dn'}"><b>${signed(p.realized)}</b></span><span class="r num ${r >= 0 ? 'up' : 'dn'}">${pct(r)}</span></button>`;
+  const r = p.realized / p.bought, t = p.realized >= 0 ? 'up' : 'dn';
+  return `<button class="hl cl" data-pos="${esc(p.key)}" title="ดูรายละเอียด ${esc(p.sym)}">${slogo(p.sym, 38)}
+    <span class="hl-n"><b>${esc(p.sym)}${p.plan ? '' : ' <span class="tag pu">นอกแผน</span>'}</b><small>${esc(sname(p.sym) || mkName(p))}</small></span>
+    <span class="hl-p num"><b>${dstr(p.first)} – ${dstr(p.lastAt)}</b><small>ถือ ${Math.max(1, Math.round((p.lastAt - p.first) / DAY))} วัน</small></span>
+    <span class="hl-v num"><b>฿${baht(p.bought)}</b><small>มูลค่าซื้อ</small></span>
+    <span class="hl-pl num"><b class="${t}">${signed(p.realized)}</b><small class="${t}">${pct(r)}</small></span>
+    <span class="hl-c">${ic('chev', 16)}</span></button>`;
 }
 // one holding (open or closed): its numbers, its trades, and Buy / Sell like a broker app
 function posModal(key) {
@@ -4464,20 +4548,30 @@ function portView() {
   const snaps = S.snaps.filter(s => s.cl === me.id).sort((a, b) => b.at - a.at);
   const closed = positions(me.id).filter(p => p.qty === 0 && p.bought > 0).sort((a, b) => b.lastAt - a.lastAt);
   const tone = n => n > 0 ? 'up' : n < 0 ? 'dn' : '', x = lastSnap(me);
-  return `<div class="vh"><h1>พอร์ต</h1><div class="capb" title="ทุนเริ่มต้น ฿${baht(me.cap)}${capOf(me) !== me.cap ? ` · เพิ่มแล้ว ${signed(capOf(me) - me.cap)}` : ''}"><span class="k">ทุน</span><b class="num">฿${baht(capOf(me))}</b><button class="btn sm" data-act="addcap">${ic('plus', 15)} เพิ่มทุน</button></div><span class="sp"></span><button class="btn ghost sm snapb" data-act="snap">${ic('wallet', 15)}<span> รายงานยอดพอร์ต</span></button></div>
-  <section class="pnl acct">
-    <div class="main"><div class="k">ยอดพอร์ตที่รายงานล่าสุด <button class="lnk" data-act="recinfo" aria-label="ที่มาของตัวเลข" title="ที่มาของตัวเลข">${ic('info', 13)}</button></div><div class="v num gold">${x ? '฿' + baht(x.val) : '—'}</div><div class="s">${x ? `จากแอปซื้อขาย · ${dstr(S.days[x.day])}` : 'ยังไม่มีรายงานวันศุกร์'}</div></div>
-    <div class="opt"><div class="k">หุ้นที่ถือ (ต้นทุน)</div><div class="v num">฿${baht(b.inv)}</div><div class="s">${fmt(b.inv / b.total * 100, 1)}% ของพอร์ตตามบันทึก · ${b.ps.length} ตัว</div></div>
-    <div class="opt"><div class="k">เงินสดตามบันทึก</div><div class="v num">฿${baht(b.cash)}</div><div class="s">สำรองตามแผน ฿${kb(me.tp.cash)}</div></div>
-    <div><div class="k">${tm('rpl', 'กำไรที่ขายแล้ว')}</div><div class="v num ${tone(ps.realized)}">${signed(ps.realized)}</div><div class="s">${pct(retPct(me))} จากเงินทุน</div></div>
-    <div><div class="k">${tm('win')}</div><div class="v num">${ps.closed ? Math.round(ps.rate * 100) + '%' : '—'}</div><div class="s">กำไร ${ps.wins} จาก ${ps.closed} ตัวที่ปิดแล้ว</div></div>
+  const inv = b.total ? b.inv / b.total : 0, cap = capOf(me), rr = x ? x.val / cap - 1 : null, ht = heatTone(b.heat);
+  return `<section class="pnl pstate">${guilloche()}
+    <div class="ps-top"><div class="ps-l">
+        <div class="ps-k"><span class="eyebrow">PORTFOLIO</span><span>ยอดพอร์ตที่รายงานล่าสุด</span><button class="lnk" data-act="recinfo" aria-label="ที่มาของตัวเลข" title="ที่มาของตัวเลข">${ic('info', 13)}</button></div>
+        <div class="ps-v"><b class="num">${x ? '฿' + baht(x.val) : '—'}</b>${x ? `<span class="tag ${rr >= 0 ? 'ok' : 'dn'} num" title="ยอดที่รายงานเทียบกับทุน">${pct(rr)} เทียบกับทุน</span>` : ''}</div>
+        <div class="ps-s">${x ? `จากแอปซื้อขาย · ${wd(S.days[x.day])} ${dstr(S.days[x.day])} · ส่ง ${dt(x.at)} น.` : 'ยังไม่มีรายงานวันศุกร์ · ส่งภาพหน้าพอร์ตหลังตลาดปิดวันศุกร์'}</div></div>
+      <div class="ps-r"><div class="capb" title="ทุนเริ่มต้น ฿${baht(me.cap)}${cap !== me.cap ? ` · เพิ่มแล้ว ${signed(cap - me.cap)}` : ''}"><span class="k">ทุน</span><b class="num">฿${baht(cap)}</b><button class="btn sm" data-act="addcap">${ic('plus', 15)} เพิ่มทุน</button></div>
+        <button class="btn ghost sm snapb ${snapDue() ? 'due' : ''}" data-act="snap">${ic('wallet', 15)}<span> รายงานยอดพอร์ต</span></button></div></div>
+    <div class="ps-mix" title="ตามรายการที่บันทึก · หุ้นนับตามต้นทุน"><div class="ps-bar"><i class="iv" style="width:${(inv * 100).toFixed(1)}%"></i><i class="cs"></i></div>
+      <div class="ps-lg"><span><i class="iv"></i>หุ้นที่ถือ <b class="num">${fmt(inv * 100, 1)}%</b></span><span><i class="cs"></i>เงินสด <b class="num">${fmt((1 - inv) * 100, 1)}%</b></span><span class="muted">ตามบันทึก · รวม ฿${baht(b.total)}</span></div></div>
+    <div class="ps-stats">
+      <div class="o1"><span>หุ้นที่ถือ (ต้นทุน)</span><b class="num">฿${baht(b.inv)}</b><small>${b.ps.length} ตัว</small></div>
+      <div class="o1"><span>เงินสดตามบันทึก</span><b class="num">฿${baht(b.cash)}</b><small>สำรองตามแผน ฿${kb(me.tp.cash)}</small></div>
+      <div><span>${tm('rpl', 'กำไรที่ขายแล้ว')}</span><b class="num ${tone(ps.realized)}">${signed(ps.realized)}</b><small>${pct(retPct(me))} จากเงินทุน</small></div>
+      <div><span>${tm('win')}</span><b class="num">${ps.closed ? Math.round(ps.rate * 100) + '%' : '—'}</b><small>กำไร ${ps.wins} จาก ${ps.closed} ตัว</small></div>
+      <div class="o2"><span>${tm('heat')}</span><b class="num ${ht}">${fmt(b.heat * 100, 1)}%</b><small>หากทุกตัวถึง SL · เกณฑ์ ≤ 6%</small></div>
+    </div>
   </section>
-  <section class="pnl pmain" data-pt="พอร์ต"><div class="ph"><div class="seg xsg" role="tablist"><button class="${pTab === 'hold' ? 'on' : ''}" data-ptab="hold">พอร์ต <span class="n">${b.ps.length}</span></button><button class="${pTab === 'closed' ? 'on' : ''}" data-ptab="closed">ปิดสถานะแล้ว <span class="n">${closed.length}</span></button></div><span class="sub">${pTab === 'hold' ? 'ตามต้นทุน · แตะเพื่อดูรายละเอียด ซื้อเพิ่ม หรือบันทึกขาย' : `${tm('win')} ${ps.wins}/${ps.closed} ตัว · ${tm('rpl')} <b class="${ps.realized >= 0 ? 'up' : 'dn'} num">${signed(ps.realized)}</b>`}</span><div class="pgn" data-pgn="${pTab === 'hold' ? 'ph' : 'pcl'}"></div></div>
-    <div class="pb flush">${pTab === 'hold' ? (b.ps.length ? `<div class="otw phold"><div class="ot-h"><span>หุ้น</span><span class="r c-qty">จำนวน</span><span class="r c-avg">${tm('avg', 'Avg')}</span><span class="r c-mv">ต้นทุนรวม</span><span class="r c-w">สัดส่วน</span><span class="r c-sl">${tm('sl', 'Stop Loss')}</span><span class="r c-rk">เสี่ยงถึง SL</span></div><div class="list tight" data-pg="ph">${b.ps.map(p => holdLine(p, b)).join('')}</div></div>` : '<div class="empty">ยังไม่มีสินทรัพย์ที่ถือครอง</div>')
-      : closed.length ? `<div class="otw pclosed"><div class="ot-h"><span>หุ้น</span><span class="c-per">ช่วงที่ถือ</span><span class="r c-buy">มูลค่าซื้อ</span><span class="r">${tm('rpl', 'Realized P/L')}</span><span class="r">%</span></div><div class="list tight" data-pg="pcl">${closed.map(closedLine).join('')}</div></div>` : '<div class="empty">ยังไม่มีรายการที่ปิดสถานะ</div>'}</div></section>
+  <section class="pnl pmain" data-pt="พอร์ต"><div class="ph"><div class="seg xsg jtabs" role="tablist"><button class="${pTab === 'hold' ? 'on' : ''}" data-ptab="hold"><span class="lf">สินทรัพย์ที่ถือครอง</span><span class="ls">ถือครอง</span> <span class="n">${b.ps.length}</span></button><button class="${pTab === 'closed' ? 'on' : ''}" data-ptab="closed"><span class="lf">ปิดสถานะแล้ว</span><span class="ls">ปิดแล้ว</span> <span class="n">${closed.length}</span></button></div><span class="sub">${pTab === 'hold' ? 'ตามต้นทุน · แตะเพื่อดูรายละเอียด ซื้อเพิ่ม หรือบันทึกขาย' : `${tm('win')} ${ps.wins}/${ps.closed} ตัว · ${tm('rpl')} <b class="${ps.realized >= 0 ? 'up' : 'dn'} num">${signed(ps.realized)}</b>`}</span><div class="pgn" data-pgn="${pTab === 'hold' ? 'ph' : 'pcl'}"></div></div>
+    <div class="pb flush">${pTab === 'hold' ? (b.ps.length ? `<div class="hlist" data-pg="ph">${b.ps.map(p => holdLine(p, b)).join('')}</div>` : '<div class="empty">ยังไม่มีสินทรัพย์ที่ถือครอง</div>')
+      : closed.length ? `<div class="hlist" data-pg="pcl">${closed.map(closedLine).join('')}</div>` : '<div class="empty">ยังไม่มีรายการที่ปิดสถานะ</div>'}</div></section>
   <section class="pnl palloc" data-pt="สัดส่วน"><div class="ph"><h3>สัดส่วนการลงทุน</h3><button class="lnk xs" data-act="tp">แผนเทรด</button><span class="sp"></span>${allocSeg()}</div>
     <div class="pb" style="display:flex;align-items:center">${allocView(me, narrow() ? 128 : 150)}</div>
-    <div class="pfoot">${heatView(me)}${concLine(me)}</div></section>
+    <div class="pfoot">${concLine(me)}${b.noStop.length ? `<div class="xs warn">${ic('alert', 12)} ไม่มี Stop Loss: ${b.noStop.map(q => esc(q.sym)).join(', ')}</div>` : ''}</div></section>
   <section class="pnl phist" data-pt="ประวัติ"><div class="ph"><h3>ประวัติ</h3><span class="sp"></span>${histSeg()}<div class="pgn" data-pgn="hist" style="margin-left:6px"></div></div>
     ${HIST_TAB === 'rep' ? `<div class="pb" style="display:flex;flex-direction:column;gap:8px">${weekStrip(me)}${snaps.length ? `<div class="list tight" data-pg="hist">${snaps.map(s => { const fri = new Date(S.days[s.day]).getUTCDay() === 5; return `<div class="srow"><span>${wd(S.days[s.day])} ${dstr(S.days[s.day])}${fri ? '' : ' <span class="tag line">ส่งล่วงหน้า</span>'}<span class="xs muted num" style="display:block">ส่ง ${dt(s.at)}</span></span><b class="num">฿${baht(s.val)}</b></div>`; }).join('')}</div>` : ''}</div>` : HIST_TAB === 'stmt' ? `<div class="pb">${stmtDue(me).length ? `<div class="list tight" data-pg="hist">${stmtRows(me)}</div>` : '<div class="empty">ยังไม่ถึงกำหนดส่ง Statement</div>'}</div>` : `
     <div class="pb"><div class="list tight" data-pg="hist">${me.flows.filter(f => f.pend || f.rej).slice().reverse().map(f => `<div class="frow"><span><span class="tag ${f.amt > 0 ? 'ok' : 'dn'}">${f.amt > 0 ? 'ฝาก' : 'ถอน'}</span> <b class="num">${baht(Math.abs(f.amt))}</b><span class="xs muted" style="display:block">${dt(f.at)}</span></span>${f.pend ? '<span class="tag blue">รอ CS ตรวจ</span>' : '<span class="tag dn">ไม่อนุมัติ</span>'}</div>`).join('')}${capLog(me).map(capRow).join('')}</div></div>`}</section>`;
@@ -4715,8 +4809,9 @@ function commView() {
       <div class="mdls">${bd.map(medal).join('')}</div>
       <div class="cme-x"><div class="srow"><span>${esc(ch.name)}</span><b class="num ${ch.me ? 'up' : 'warn'}">${ch.me ? 'ยังทำได้' : 'พลาดแล้ว'} · ${ch.n}/${ch.tot}</b></div></div>
     </div>`;
-  return `<section class="pnl wpnl" data-pt="สถาบัน"><div class="wbox"><canvas id="world" role="img" aria-label="ห้องเทรดสถาบัน Super Trader: ตัวละครของสมาชิกในรุ่น ${hall.length} คน พร้อมชื่อและยศ"></canvas>
-      <div class="whud"><span class="wh1">${ic('users', 13)} สถาบัน SUPER TRADER</span><span class="chip2">${hall.length} คนในห้อง</span><span class="chip2 g">กำไรรวมของรุ่น ฿${fmt(tot / 1e6, 2)} ล้าน</span><span class="chip2 mob">ลากซ้าย–ขวาเพื่อดูทั้งห้อง</span></div>
+  return `<section class="pnl wpnl" data-pt="สถาบัน"><div class="wbox"><canvas id="world" role="img" aria-label="สถาบัน Super Trader: ล็อบบี้ ห้องเรียนใหญ่ ห้องเรียนเล็ก ห้องประชุม ห้องทำงานโค้ช และห้องอาหาร พร้อมตัวละครของสมาชิกในรุ่น ${hall.length} คน"></canvas>
+      <div class="wrooms" role="tablist" aria-label="ไปที่ห้อง">${[['all', 'ทั้งสถาบัน'], ...ROOMS.map(r => [r.k, r.n])].map(([k, n]) => `<button data-wroom="${k}" class="${(WORLD.room || 'all') === k ? 'on' : ''}">${n}<b class="num" data-wrc="${k}"></b></button>`).join('')}</div>
+      <div class="whud"><span class="wh1">${ic('users', 13)} สถาบัน SUPER TRADER</span><span class="chip2">${hall.length} คนในสถาบัน</span><span class="chip2 g">กำไรรวมของรุ่น ฿${fmt(tot / 1e6, 2)} ล้าน</span><span class="chip2 mob">ลากเพื่อเดินดูสถาบัน</span></div>
       ${rankBoard(b, mine)}
       <div class="wact"><button class="btn sm" data-act="avatar" title="แต่งตัวละครของคุณ">${ic('user', 15)}<span> แต่งตัวละคร</span></button><button class="btn ghost sm wnm" data-act="wnames" title="${showNames ? 'ซ่อนชื่อ ให้เห็นห้องชัดขึ้น' : 'แสดงชื่อทุกคนในห้อง'}">${ic('users', 15)}<span> ${showNames ? 'ซ่อนชื่อ' : 'แสดงชื่อทุกคน'}</span></button></div>
       <div class="wleg"><b>ยศ</b>${TIERS.map(([k, n]) => `<span><i style="background:${TCOL[k]}"></i>${n}</span>`).join('')}</div>
@@ -4727,7 +4822,7 @@ function commView() {
 // ranking board in the hall: the top 5 with their characters' faces, my row, and the metric to rank by;
 // pointing at a row puts a spotlight on that member in the room, clicking opens their card
 function rankBoard(b, mine) {
-  const open = lbOpen ?? innerWidth >= 1000;
+  const open = lbOpen ?? innerWidth >= 1700;
   const row = (x, i) => `<button class="wr ${x.c.id === FEATURED ? 'me' : ''} ${x.rank <= 3 ? 'r' + x.rank : ''}" style="--i:${i}" data-wf="${esc(x.c.id)}" title="ดู ${esc(commName(x.c))} ในห้อง"><span class="wk num">${x.rank}</span><canvas data-head="${esc(x.c.id)}" aria-hidden="true"></canvas><span class="wn"><b>${esc(commName(x.c))}</b>${tierTag(tierFor(x.c))}</span><span class="wv num"><b class="${lbTone(x)}">${lbVal(x)}</b>${mvTag(x.move)}</span></button>`;
   if (!open) return `<div class="wlb min"><button class="wmini" data-act="wlb">${ic('trophy', 14)} ทำเนียบรุ่น · คุณอันดับ <b class="num">#${mine ? mine.rank : '—'}</b>${ic('plus', 13)}</button></div>`;
   return `<div class="wlb"><div class="wlh"><b>${ic('trophy', 14)} ทำเนียบรุ่น</b><span class="sp"></span><button class="wx" data-act="wlb" aria-label="ย่อกระดานอันดับ" title="ย่อ">${ic('minus', 14)}</button></div>
@@ -4922,38 +5017,111 @@ cmdItems = () => !signedIn() || !ME().ob ? [] : [
   ...stockItems(),
 ];
 
-/* ===== สถาบัน Super Trader: the cohort as characters walking around an isometric trading hall.
-   One canvas. The room (floor, walls, logo, banners) is drawn once and reused; the people, the big screen, the ticker
-   and the 1M coin are drawn about 30 times a second. The loop stops when the page changes, and with effects switched
-   off it draws one still frame. Each member has a look (S.avatars: the client chooses theirs; the others get a steady
-   random look), their name and their level (ยศ) above the head; the top 3 by return stand on the Hall of Fame podium. ===== */
+/* ===== สถาบัน Super Trader: the cohort as characters on an isometric floor of the institute. Along the back wall, behind
+   glass: the coaches' office, the meeting room, the big and the small classroom. In front, the open lobby: reception under
+   the lit logo, the laptop table, the Hall of Fame, the 1M Club, two tables, the dining corner, the sofas and the entrance.
+   Members sit in class, meet, eat, work at the laptops and walk about; the coaches work at their desks.
+   Speed: the floors, the outer walls, rugs and shadows are drawn once at a fixed scale and stamped through a camera (moving
+   or zooming only scales that one picture); each frame draws only the furniture, glass and people on screen, sorted back to
+   front. Characters are drawn once per pose and stamped. The loop stops when the page changes; with effects switched off
+   it draws one still frame. ===== */
 // names: off = only me, the top 3, and whoever is pointed at or picked on the ranking board (the rest show a diamond in their level's colour)
 let showNames = false, cTab = 'me', lbOpen = null;
 
-/* ---------- the room plan (tiles), after the real institute: x runs right-down, y left-down; the walls stand on y = 0
-   and x = 0. A trading floor of long white desks with blue chairs, laptops and wall TVs in front of a blue back wall;
-   glass meeting rooms with black frames; the lobby with the lit logo on dark wood, a black counter with a warm light
-   strip, café tables and gold globe lamps; plus the Hall of Fame podium and the 1M Club monument. ---------- */
-const ROOM = { w: 16, h: 11, wall: 2.75 };
-const DESK_ROWS = [2.3, 4.6, 6.9], DESK_X = [1.9, 2.9, 3.9, 4.9, 5.9, 6.9];
-const PROPS = [
-  { x: 11.7, y: 1.3, k: 'pod', n: 2, h: .55, w: 1.05 }, { x: 12.9, y: 1.3, k: 'pod', n: 1, h: .85, w: 1.05 }, { x: 14.1, y: 1.3, k: 'pod', n: 3, h: .38, w: 1.05 },
-  { x: 12.2, y: 6.3, k: 'mon', h: .38, w: 1.3 },
-  ...DESK_ROWS.flatMap(y => DESK_X.map((x, i) => ({ x, y, k: 'desk', h: .4, w: 1, d: .72, lap: i !== 1 && i !== 4 }))),
-  ...DESK_ROWS.flatMap(y => DESK_X.map(x => ({ x, y: y + .62, k: 'chair', h: .2, w: .46, d: .44 }))),
-  ...DESK_ROWS.flatMap(y => DESK_X.map(x => ({ x, y: y + .8, k: 'chairb', h: .3, w: .42, d: .07, nb: 1 }))),
-  { x: 1.45, y: 9.05, k: 'counter', h: .55, w: .62, d: 1 }, { x: 1.45, y: 10.05, k: 'counter', h: .55, w: .62, d: 1 },
-  { x: 7.7, y: 9.7, k: 'table', h: .45, w: .62 }, { x: 9.7, y: 9.7, k: 'table', h: .45, w: .62 },
-  ...[[7.7, 10.4], [9.7, 10.4], [7.7, 9], [9.7, 9]].map(([x, y]) => ({ x, y, k: 'cchair', h: .24, w: .4 })),
-  { x: .7, y: .7, k: 'plant', h: .38, w: .55 }, { x: 15.3, y: .8, k: 'plant', h: .38, w: .55 }, { x: 15.3, y: 10.3, k: 'plant', h: .38, w: .55 }, { x: 3.5, y: 10.4, k: 'plant', h: .38, w: .55 }, { x: 9.9, y: 3.4, k: 'plant', h: .38, w: .55 },
+/* ---------- the floor plan, in tiles: x runs right-down, y left-down; the outer walls stand on y = 0 and x = 0 ---------- */
+const ROOM = { w: 36, h: 19, wall: 2.75 };
+const KZ = .6, ISO_Q = .6, GLASS_H = 1.75;
+// the lobby is everything outside the rooms; the dining corner is part of it (no walls), with its own floor
+const ROOMS = [
+  { k: 'lobby', n: 'ล็อบบี้', x0: 0, y0: 8, x1: 36, y1: 19, f: 'marble', cam: { x0: 0, y0: 6, x1: 24, y1: 19 }, lab: [11, 13.2] },
+  { k: 'big', n: 'ห้องเรียนใหญ่', x0: 15, y0: 0, x1: 28, y1: 8, f: 'carpet' },
+  { k: 'small', n: 'ห้องเรียนเล็ก', x0: 28, y0: 0, x1: 36, y1: 8, f: 'teal' },
+  { k: 'meet', n: 'ห้องประชุม', x0: 9, y0: 0, x1: 15, y1: 6, f: 'slate' },
+  { k: 'coach', n: 'ห้องทำงานโค้ช', x0: 0, y0: 0, x1: 9, y1: 8, f: 'wood' },
+  { k: 'dine', n: 'โซนอาหาร', x0: 30, y0: 8, x1: 36, y1: 15, f: 'oak', open: 1 },
 ];
-// gold globe lamps hanging over the lobby and the café
-const LAMPS = [[2.6, 9.1, 2.2], [3.1, 9.7, 1.95], [3.6, 9.2, 2.35], [8.3, 9.3, 2.15], [8.8, 9.9, 1.95], [9.2, 9.3, 2.3]];
-// colours of the room by day (light theme) and in the evening (dark theme)
+const roomAt = (x, y) => ROOMS.find((r, i) => i && x >= r.x0 && x < r.x1 && y >= r.y0 && y < r.y1) || ROOMS[0];
+// glass walls between rooms: along x = at (spanning y) or along y = at (spanning x), with door openings
+const WALLS = [
+  { a: 'x', at: 9, s0: 0, s1: 8, doors: [] },                  // the coaches' office | the meeting room
+  { a: 'y', at: 8, s0: 0, s1: 9, doors: [[3.4, 5.6]] },         // the coaches' office, its front
+  { a: 'y', at: 6, s0: 9, s1: 15, doors: [[11.2, 12.8]] },      // the meeting room, its front
+  { a: 'x', at: 15, s0: 0, s1: 8, doors: [] },                  // the meeting room | the big classroom
+  { a: 'y', at: 8, s0: 15, s1: 28, doors: [[20.4, 22.6]] },     // the big classroom, its front (the door opens on the aisle)
+  { a: 'x', at: 28, s0: 0, s1: 8, doors: [] },                  // the big | the small classroom
+  { a: 'y', at: 8, s0: 28, s1: 36, doors: [[31.2, 32.8]] },     // the small classroom, its front
+];
+// the walls in pieces of at most one tile (each is sorted with the people around it), and the tile edges they close
+const WPIECES = [], VB = new Set(), HB = new Set();
+for (const w of WALLS) {
+  const open = (a, b) => w.doors.some(([d0, d1]) => a < d1 && b > d0);
+  for (let t = w.s0; t < w.s1; t++) {
+    let a = t, b = t + 1;
+    for (const [d0, d1] of w.doors) { if (a < d1 && b > d0) { if (a < d0) WPIECES.push({ w, s0: a, s1: d0 }); a = Math.max(a, d1); } }
+    if (a < b) WPIECES.push({ w, s0: a, s1: b });
+    if (!open(t + .45, t + .55)) (w.a === 'x' ? VB : HB).add(w.a === 'x' ? `${w.at}:${t}` : `${t}:${w.at}`);
+  }
+}
+WPIECES.forEach(p => { p.d = (p.w.a === 'x' ? p.w.at + (p.s0 + p.s1) / 2 : (p.s0 + p.s1) / 2 + p.w.at) - .02; });
+
+/* ---------- furniture ---------- */
+// a row of desks with their chairs (a chair is a seat when it says which room it is in)
+const deskRow = (xs, y, room, o = {}) => xs.flatMap((x, i) => [
+  { x, y, k: 'desk', h: .4, w: o.w || 1, d: .72, lap: o.mon ? false : (o.lap ? o.lap(i) : i % 4 !== 1), mon: !!o.mon },
+  { x, y: y + .62, k: 'chair', h: .2, w: .46, d: .44, seat: room, chair: o.chair },
+  { x, y: y + .8, k: 'chairb', h: .3, w: .42, d: .07, nb: 1, chair: o.chair }]);
+// a table with chairs: the near ones are seats (their backs to us), the far ones stay empty; a paper at each place
+const tableSet = (x, y, w, xs, room) => [{ x, y, k: 'mtable', h: .42, w, d: 1.1, px: xs },
+  ...xs.flatMap(cx => [{ x: cx, y: y + .86, k: 'chair', h: .2, w: .46, d: .44, seat: room, chair: 'exec' }, { x: cx, y: y + 1.04, k: 'chairb', h: .34, w: .42, d: .07, nb: 1, chair: 'exec' }, { x: cx, y: y - .9, k: 'chairf', h: .2, w: .46, d: .44, chair: 'exec' }])];
+// a wooden chair facing left-up, to a table that runs along y; its back (in front of whoever sits) is a piece of its own
+const sideSeat = (x, y, room) => [{ x, y, k: 'cchair', h: .24, w: .42, seat: room }, { x: x + .17, y, k: 'cback', h: .26, w: .42, z: .24, nb: 1 }];
+const BIG_X = [16, 17, 18, 19, 20, 23, 24, 25, 26, 27];
+const SMALL_X = [28.8, 29.8, 30.7, 32.3, 33.3, 34.3, 35.3];
+const COACH_X = [1.4, 2.5, 3.6, 4.7, 5.8];
+const LAP_O = [-1.575, -.525, .525, 1.575], DINE_Y = [9.04, 10.12, 11.2, 12.28, 13.36];
+const PROPS = [
+  // the coaches' office: two rows of five, monitors
+  ...[2.0, 5.1].flatMap(y => deskRow(COACH_X, y, 'coachdesk', { mon: true, chair: 'coach' })),
+  { x: 8.4, y: .7, k: 'plant', h: .38, w: .55 }, { x: 8.4, y: 7.3, k: 'plant', h: .38, w: .55 }, { x: 8.1, y: 4, k: 'sofa', h: .3, w: .8, d: 1.9, rot: 1 },
+  // the meeting room: a long table under the screen on the wall
+  ...tableSet(12, 2.8, 3.8, [10.55, 11.55, 12.45, 13.45], 'meet'),
+  { x: 9.5, y: .5, k: 'plant', h: .32, w: .45 }, { x: 14.5, y: .5, k: 'plant', h: .32, w: .45 },
+  // the big classroom: three rows of ten facing the screens on the back wall, an aisle down the middle
+  ...[1.9, 4.2, 6.5].flatMap(y => deskRow(BIG_X, y, 'big')),
+  { x: 15.45, y: .55, k: 'plant', h: .32, w: .45 }, { x: 27.55, y: .55, k: 'plant', h: .32, w: .45 },
+  // the small classroom: two rows of seven facing the whiteboard
+  ...[2.2, 4.6].flatMap(y => deskRow(SMALL_X, y, 'small', { lap: () => true })),
+  { x: 28.5, y: 7.45, k: 'plant', h: .32, w: .45 }, { x: 35.5, y: 7.4, k: 'plant', h: .38, w: .55 },
+  // the lobby: reception under the lit logo, the laptop table, the Hall of Fame and its podium, the 1M Club, two tables
+  { x: 2.3, y: 14.4, k: 'counter', h: .55, w: .7, d: 4.4 },
+  { x: 6.4, y: 10.6, k: 'ltable', h: .42, w: 1.1, d: 4.2 },
+  ...LAP_O.flatMap(o => sideSeat(7.3, 10.6 + o, 'lobby')),
+  { x: 12, y: 9.2, k: 'plaque', h: 1.3, w: 4, d: .14 },
+  { x: 10.8, y: 10.2, k: 'pod', n: 2, h: .55, w: 1.05 }, { x: 12, y: 10.2, k: 'pod', n: 1, h: .85, w: 1.05 }, { x: 13.2, y: 10.2, k: 'pod', n: 3, h: .38, w: 1.05 },
+  { x: 12.6, y: 14.6, k: 'mon', h: .38, w: 1.3 },
+  ...tableSet(18.4, 12.2, 2.6, [17.85, 18.95], 'lobby'), ...tableSet(23.8, 12.2, 2.6, [23.25, 24.35], 'lobby'),
+  // the dining corner: a long table (places on its right, empty chairs on its left), a coffee bar
+  { x: 33, y: 11.2, k: 'dtable', h: .46, w: 1.2, d: 5.4 },
+  ...DINE_Y.flatMap(y => [...sideSeat(33.95, y, 'dine'), { x: 32.05, y, k: 'cchair', h: .24, w: .42, bk: 'mx' }]),
+  { x: 35.4, y: 11.2, k: 'bar', h: .6, w: .62, d: 3 },
+  // the sofas along the front, the plants, the entrance gate
+  ...[17.4, 22.2, 27].flatMap(x => [{ x, y: 18, k: 'sofa', h: .3, w: 2.6, d: .8 }, { x, y: 16.75, k: 'ctable', h: .28, w: 1.2, d: .55 }]),
+  { x: .6, y: 8.6, k: 'plant', h: .38, w: .55 }, { x: .6, y: 18.4, k: 'plant', h: .38, w: .55 }, { x: 9.6, y: 6.6, k: 'plant', h: .32, w: .45 }, { x: 14.4, y: 6.6, k: 'plant', h: .32, w: .45 },
+  { x: 14.6, y: 18.4, k: 'plant', h: .38, w: .55 }, { x: 29.6, y: 18.4, k: 'plant', h: .38, w: .55 }, { x: 35.4, y: 18.4, k: 'plant', h: .38, w: .55 }, { x: 35.4, y: 8.6, k: 'plant', h: .32, w: .45 },
+  { x: 9, y: 18.94, k: 'gate', h: 1.9, w: 3.4, d: .1, nb: 1 },
+];
+// seats on the sofas
+[17.4, 22.2, 27].forEach(x => [x - .6, x + .6].forEach(sx => PROPS.push({ x: sx, y: 17.85, k: 'spot', seat: 'lobby', nb: 1, z: .32 })));
+// gold globe lamps over reception, the tables, the dining table and the sofas
+const LAMPS = [[2.4, 13.2, 2.2], [2.4, 15.6, 2], [6.4, 9.6, 2.25], [6.4, 11.6, 2.05], [18.4, 12.2, 2.3], [23.8, 12.2, 2.15], [33, 9.8, 2.2], [33, 12.6, 2.05], [17.4, 16.4, 2.35], [22.2, 16.4, 2.2], [27, 16.4, 2.35]];
+// colours of each room's floor and the walls, by day (light theme) and in the evening (dark theme)
 const PAL = dk => dk
-  ? { fa: '#262c38', fb: '#222833', seam: 'rgba(255,255,255,.05)', shine: 'rgba(255,236,200,.05)', pool: 'rgba(255,226,170,.09)', wa0: '#2e3648', wa1: '#222938', wb0: '#29303f', wb1: '#1d2230', base: '#141922', panel: 'rgba(255,255,255,.04)', desk: ['#d9dee6', '#b6bfcb', '#a3adba'], glass: 'rgba(120,165,215,.18)', frame: '#0b0d12', blue: ['#1d3f86', '#16336d'] }
-  : { fa: '#e1e4e8', fb: '#d8dce1', seam: 'rgba(90,100,120,.11)', shine: 'rgba(255,255,255,.4)', pool: 'rgba(255,255,255,.45)', wa0: '#ffffff', wa1: '#eef0f3', wb0: '#f8f9fb', wb1: '#e3e6ea', base: '#c8cdd5', panel: 'rgba(120,130,150,.07)', desk: ['#ffffff', '#e2e6eb', '#d0d6dd'], glass: 'rgba(160,200,235,.28)', frame: '#15171c', blue: ['#2a5bc4', '#204aa3'] };
-// walkable tiles: the hall minus everything that stands on the floor
+  ? { wa0: '#2b2f38', wa1: '#1f232b', wb0: '#272b33', wb1: '#1b1e25', base: '#121419', panel: 'rgba(255,255,255,.035)', desk: ['#d9dee6', '#b6bfcb', '#a3adba'], glass: 'rgba(140,180,225,.09)', glassE: 'rgba(190,215,240,.22)', frame: '#0b0d12',
+      marble: ['#2c2b29', '#262523'], carpet: ['#1b2440', '#18203a'], teal: ['#16302f', '#132a29'], slate: ['#232327', '#1f1f23'], wood: ['#3a2a1d', '#33251a'], oak: ['#3d2e20', '#36281c'], vein: 'rgba(230,210,170,.06)', inlay: 'rgba(201,169,110,.32)', pool: 'rgba(255,226,170,.08)', label: 'rgba(201,169,110,.55)', shadow: 'rgba(0,0,0,.32)' }
+  : { wa0: '#ffffff', wa1: '#eef0f3', wb0: '#f8f9fb', wb1: '#e3e6ea', base: '#c8cdd5', panel: 'rgba(120,130,150,.07)', desk: ['#ffffff', '#e2e6eb', '#d0d6dd'], glass: 'rgba(160,200,235,.2)', glassE: 'rgba(120,160,200,.45)', frame: '#15171c',
+      marble: ['#efece6', '#e7e3dc'], carpet: ['#cdd6e6', '#c5cfe1'], teal: ['#cfe0dd', '#c6d9d6'], slate: ['#d8d8dc', '#d0d0d5'], wood: ['#d8bd98', '#cfb38d'], oak: ['#dcc4a0', '#d3ba95'], vein: 'rgba(120,100,70,.07)', inlay: 'rgba(160,120,50,.38)', pool: 'rgba(255,255,255,.4)', label: 'rgba(150,115,50,.55)', shadow: 'rgba(40,30,15,.16)' };
+
+/* ---------- walking: tiles, the edges closed by walls, routes ---------- */
 const WALK = (() => {
   const ok = [];
   for (let i = 0; i < ROOM.w; i++) for (let j = 0; j < ROOM.h; j++) {
@@ -4963,15 +5131,22 @@ const WALK = (() => {
   return ok;
 })();
 const walkable = (i, j) => i >= 0 && j >= 0 && i < ROOM.w && j < ROOM.h && WALK[i * ROOM.h + j];
-// shortest way between two tiles (8 directions, no cutting corners)
+// one step to a neighbour tile is allowed when no wall stands on the edge between them
+const step1 = (i, j, di, dj) => {
+  if (!walkable(i + di, j + dj)) return false;
+  if (di) return !VB.has(`${di > 0 ? i + 1 : i}:${j}`);
+  return !HB.has(`${i}:${dj > 0 ? j + 1 : j}`);
+};
+const canStep = (i, j, di, dj) => !di || !dj ? step1(i, j, di, dj) : step1(i, j, di, 0) && step1(i + di, j, 0, dj) && step1(i, j, 0, dj) && step1(i, j + dj, di, 0);
+// shortest way between two tiles (8 directions, no cutting corners, through doors)
 function route(i0, j0, i1, j1) {
   const key = (i, j) => i * ROOM.h + j, prev = new Map([[key(i0, j0), null]]), q = [[i0, j0]];
-  while (q.length) {
-    const [i, j] = q.shift();
+  for (let h = 0; h < q.length; h++) {
+    const [i, j] = q[h];
     if (i === i1 && j === j1) break;
     for (const [di, dj] of [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]]) {
       const ni = i + di, nj = j + dj;
-      if (!walkable(ni, nj) || prev.has(key(ni, nj)) || (di && dj && (!walkable(i + di, j) || !walkable(i, j + dj)))) continue;
+      if (prev.has(key(ni, nj)) || !canStep(i, j, di, dj)) continue;
       prev.set(key(ni, nj), [i, j]); q.push([ni, nj]);
     }
   }
@@ -4980,21 +5155,44 @@ function route(i0, j0, i1, j1) {
   return path.slice(1);
 }
 const WCELLS = WALK.map((ok, k) => ok ? [Math.floor(k / ROOM.h), k % ROOM.h] : null).filter(Boolean);
+// places to stand around in (lobby, corridor, dining room, the aisles of the classrooms), more of them in the lobby
+const SPOTS = WCELLS.filter(([i, j]) => { const r = roomAt(i + .5, j + .5).k; return r !== 'coach' && r !== 'meet'; });
+// every seat, with the free tile next to it people walk to before they sit
+const SEATS = PROPS.filter(p => p.seat).map(p => {
+  const sx = p.x, sy = p.k === 'spot' ? p.y : p.y + .02;
+  let near = null, best = 9;
+  for (const [i, j] of WCELLS) { const d = Math.hypot(i + .5 - sx, j + .5 - sy) + (j + .5 < sy ? .4 : 0); if (d < best) { best = d; near = [i, j]; } }
+  return { x: sx, y: sy, z: p.z ?? .27, room: p.seat, near, occ: null, face: p.k === 'spot' ? 'b' : 'b' };
+});
+const freeSeat = (room, id) => { const fs = SEATS.filter(s => (room ? s.room === room : s.room !== 'coachdesk') && !s.occ && s.near); return fs.length ? fs[Math.floor(hsh(id + now() + Math.random()) * fs.length) % fs.length] : null; };
 
-/* ---------- the world: canvas, layout, the people and the loop ---------- */
-const WORLD = { cv: null, raf: 0, last: 0, t0: performance.now(), pos: {}, people: [], key: '', bg: null, bgKey: '', L: null, hover: null, logo: null, tw: {} };
-const ISO_Q = .6;   // how deep the floor looks against its width (0.5 = classic isometric; a little more = a steeper camera)
-function worldLayout(W, H) {
-  const g = ROOM.w + ROOM.h, kz = .6, q = ISO_Q, per = g * q / 2 + ROOM.wall * kz;
-  const fit = Math.max(18, Math.min((W - 24) * 2 / g, (H - 40) / per));
-  const tw = W < 620 ? Math.min(fit * 2.2, Math.max(fit, (H - 120) / per)) : fit;   // phones: zoom in to fill the height
-  const zU = tw * kz, total = per * tw, WW = Math.max(W, g * tw / 2 + 24);
-  return { W, H, WW, tw, zU, q, s: tw / 52, ox: WW / 2 - (ROOM.w - ROOM.h) * tw / 4, oy: Math.max(34, (H - total) / 2 + 20) + ROOM.wall * zU };
+/* ---------- the camera: a centre (in unit screen coordinates) and a zoom (pixels per tile) ---------- */
+const WORLD = { cv: null, raf: 0, last: 0, t0: performance.now(), pos: {}, people: [], key: '', bg: null, bgKey: '', L: null, hover: null, logo: null, tw: {}, cam: null, room: null };
+const UNIT = (x, y, z = 0) => [(x - y) / 2, (x + y) * ISO_Q / 2 - z * KZ];
+// the box a room takes on screen at zoom 1 (with the outer wall above it when it stands against one)
+function roomBox(r) {
+  const pts = [[r.x0, r.y0], [r.x1, r.y0], [r.x1, r.y1], [r.x0, r.y1]].map(([x, y]) => UNIT(x, y));
+  if (r.y0 === 0 || r.x0 === 0) pts.push(UNIT(r.x0, r.y0, ROOM.wall), UNIT(r.y0 === 0 ? r.x1 : r.x0, r.y0, ROOM.wall), UNIT(r.x0, r.x0 === 0 ? r.y1 : r.y0, ROOM.wall));
+  const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]);
+  return { x0: Math.min(...xs), x1: Math.max(...xs), y0: Math.min(...ys), y1: Math.max(...ys) };
 }
-// how far the view is scrolled into the room (0 when it all fits)
-const worldOff = L => { const spare = (L.WW - L.W) / 2; WORLD.panX = Math.max(-spare, Math.min(spare, WORLD.panX || 0)); return spare - WORLD.panX; };
+const ALLBOX = (b => ({ ...b, y1: b.y1 + .5 * KZ }))(roomBox({ x0: 0, y0: 0, x1: ROOM.w, y1: ROOM.h }));
+const phoneish = () => innerWidth < 760 || matchMedia('(pointer: coarse)').matches;
+const ZMAX = () => phoneish() ? 64 : 82;
+// where the camera goes for a room: the whole room in view (phones: its height, then drag sideways)
+function camFor(k, W, H) {
+  const r = k === 'all' ? null : ROOMS.find(x => x.k === k), b = r ? roomBox(r.cam || r) : ALLBOX, bw = b.x1 - b.x0, bh = b.y1 - b.y0;
+  let z = Math.min((W - 28) / bw, (H - (W < 620 ? 120 : 70)) / bh);
+  if (W < 620 && r) z = Math.min((H - 140) / bh, ((W - 20) / bw) * 2.2);
+  z = Math.max(14, Math.min(ZMAX(), z));
+  return { x: (b.x0 + b.x1) / 2, y: (b.y0 + b.y1) / 2 - (W < 620 ? 6 : 10) / z, z };
+}
+const camClamp = c => { const m = 2; c.x = Math.max(ALLBOX.x0 - m, Math.min(ALLBOX.x1 + m, c.x)); c.y = Math.max(ALLBOX.y0 - m, Math.min(ALLBOX.y1 + m, c.y)); c.z = Math.max(12, Math.min(ZMAX() * 1.15, c.z)); return c; };
+function worldLayout(W, H) {
+  const c = WORLD.cam, tw = c.z;
+  return { W, H, tw, zU: tw * KZ, q: ISO_Q, s: tw / 52, ox: W / 2 - c.x * tw, oy: H / 2 - c.y * tw };
+}
 const WP = (L, x, y, z = 0) => [L.ox + (x - y) * L.tw / 2, L.oy + (x + y) * L.tw * L.q / 2 - z * L.zU];
-// a circle of radius r tiles on the floor, as an ellipse on screen
 const floorEllipse = (L, r) => [r * L.tw * .7071, r * L.tw * L.q * .7071];
 function isoBox(ctx, L, cx, cy, w, d, h, top, left, right, z0 = 0) {
   const x0 = cx - w / 2, x1 = cx + w / 2, y0 = cy - d / 2, y1 = cy + d / 2, p = (x, y, z) => WP(L, x, y, z);
@@ -5003,18 +5201,33 @@ function isoBox(ctx, L, cx, cy, w, d, h, top, left, right, z0 = 0) {
   poly(ctx, [p(x0, y0, z0 + h), p(x1, y0, z0 + h), p(x1, y1, z0 + h), p(x0, y1, z0 + h)], top);
 }
 const darkRoom = () => document.documentElement.dataset.theme !== 'light';
-// who is in the hall: everyone who joined the community, the top 3 by return on the podium
+// move the camera to a room (or the whole institute); it glides there
+function worldGo(k) {
+  WORLD.room = k; if (!WORLD.cv) return;
+  WORLD.camT = camFor(k, WORLD.cv.clientWidth, WORLD.cv.clientHeight);
+  $$('.wrooms [data-wroom]').forEach(b => b.classList.toggle('on', b.dataset.wroom === k));
+  if (!WORLD.raf) { if (document.documentElement.dataset.fx === 'off') { WORLD.cam = { ...WORLD.camT }; worldFrame(performance.now()); } else WORLD.raf = requestAnimationFrame(worldLoop); }
+}
+
+/* ---------- who is in the institute: the members (the top 3 on the podium) and the ten coaches at their desks ---------- */
 function worldPeople() {
-  const b = board('ret', 'all'), key = b.map(x => x.c.id + JSON.stringify(avatarOf(x.c)) + tierFor(x.c)).join('|');
+  const b = board('ret', 'all'), key = b.map(x => x.c.id + JSON.stringify(avatarOf(x.c)) + tierFor(x.c)).join('|') + '|' + S.coaches.map(c => c.id).join(',');
   if (key === WORLD.key) return WORLD.people;
-  const recent = new Set(commFeed().filter(f => now() - f.at < 3 * DAY).map(f => f.c.id)), seats = PROPS.filter(pr => pr.k === 'chair');
-  let si = 0;
-  WORLD.people = b.map((x, i) => {
-    const seat = i >= 3 && x.c.id !== FEATURED && si < seats.length && hsh('sit:' + x.c.id) < .55 ? seats[si++] : null;
-    const t = tierFor(x.c), p = WORLD.pos[x.c.id] || (WORLD.pos[x.c.id] = (() => { const [ci, cj] = WCELLS[Math.floor(hsh('spawn' + x.c.id) * WCELLS.length)]; return { x: ci + .5, y: cj + .5, path: [], idle: hsh('idle' + x.c.id) * 3, phase: 0, face: 'f', wave: 0 }; })());
-    return { c: x.c, id: x.c.id, a: avatarOf(x.c), t, tk: TIERS[t][0], rank: x.rank, v: x.v, me: x.c.id === FEATURED, top: i < 3 ? i + 1 : 0, cheer: recent.has(x.c.id), seed: hsh('seed' + x.c.id) * 6, seat, p };
+  const recent = new Set(commFeed().filter(f => now() - f.at < 3 * DAY).map(f => f.c.id));
+  SEATS.forEach(s => { if (!WORLD.pos[s.occ]) s.occ = null; });
+  const members = b.map((x, i) => {
+    const t = tierFor(x.c), top = i < 3 ? i + 1 : 0, p = WORLD.pos[x.c.id] || (WORLD.pos[x.c.id] = (() => {
+      // a first place: most members already sit somewhere, the rest stand around
+      const seat = !top && hsh('sit:' + x.c.id) < .62 ? freeSeat(null, x.c.id) : null;
+      if (seat) { seat.occ = x.c.id; return { x: seat.x, y: seat.y, z: seat.z, path: [], mode: 'sit', seat, until: 8 + hsh('stay' + x.c.id) * 50, phase: 0, face: 'b' }; }
+      const [ci, cj] = SPOTS[Math.floor(hsh('spawn' + x.c.id) * SPOTS.length)];
+      return { x: ci + .5, y: cj + .5, z: 0, path: [], mode: 'stand', until: hsh('idle' + x.c.id) * 4, phase: 0, face: 'f' };
+    })());
+    return { c: x.c, id: x.c.id, a: avatarOf(x.c), t, tk: TIERS[t][0], rank: x.rank, v: x.v, me: x.c.id === FEATURED, top, cheer: recent.has(x.c.id), seed: hsh('seed' + x.c.id) * 6, p };
   });
-  WORLD.key = key; SPR.m.clear();
+  const cseats = SEATS.filter(s => s.room === 'coachdesk');
+  const coaches = S.coaches.slice(0, cseats.length).map((co, i) => { const s = cseats[i]; return { c: null, coach: co, id: 'co:' + co.id, a: staffLook(co.id), t: 0, tk: 'rookie', seed: i, p: { x: s.x, y: s.y, z: s.z, path: [], mode: 'fixed', face: 'b' } }; });
+  WORLD.people = [...members, ...coaches]; WORLD.key = key; SPR.m.clear();
   return WORLD.people;
 }
 function worldMount(root) {
@@ -5023,22 +5236,37 @@ function worldMount(root) {
   WORLD.cv = cv; WORLD.hover = null;
   if (!WORLD.logo) { WORLD.logo = new Image(); WORLD.logo.onload = () => { WORLD.bgKey = ''; if (WORLD.cv && document.documentElement.dataset.fx === 'off') worldFrame(performance.now()); }; WORLD.logo.src = LOGO; }
   worldPeople();
-  // point at someone to see who they are, tap or click them for their card, drag to look around (phones)
-  cv.addEventListener('pointerdown', e => { WORLD.drag = { x: e.clientX, pan: WORLD.panX || 0, moved: false }; try { cv.setPointerCapture(e.pointerId); } catch { } });
+  const k = WORLD.room || (phoneish() ? 'lobby' : 'all');
+  WORLD.room = k; WORLD.camT = camFor(k, cv.clientWidth, cv.clientHeight); if (!WORLD.cam) WORLD.cam = { ...WORLD.camT };
+  $$('.wrooms [data-wroom]', root).forEach(b => b.classList.toggle('on', b.dataset.wroom === k));
+  // drag to walk around, the wheel to zoom, point at someone to see who they are, tap or click them for their card
+  cv.addEventListener('pointerdown', e => { WORLD.drag = { x: e.clientX, y: e.clientY, cx: WORLD.cam.x, cy: WORLD.cam.y, moved: false }; try { cv.setPointerCapture(e.pointerId); } catch { } });
   cv.addEventListener('pointermove', e => {
     const d = WORLD.drag;
-    if (d && e.buttons) { const dx = e.clientX - d.x; if (Math.abs(dx) > 6) d.moved = true; if (d.moved && WORLD.L && WORLD.L.WW > WORLD.L.W) { WORLD.panX = d.pan + dx; const tip = $('.wtip'); if (tip) tip.hidden = true; if (!WORLD.raf) worldFrame(performance.now()); return; } }
+    if (d && e.buttons) {
+      const dx = e.clientX - d.x, dy = e.clientY - d.y;
+      if (Math.hypot(dx, dy) > 6) d.moved = true;
+      if (d.moved) { WORLD.cam = camClamp({ ...WORLD.cam, x: d.cx - dx / WORLD.cam.z, y: d.cy - dy / WORLD.cam.z }); WORLD.camT = null; const tip = $('.wtip'); if (tip) tip.hidden = true; if (!WORLD.raf) worldFrame(performance.now()); return; }
+    }
     worldPointer(e);
   });
-  cv.addEventListener('pointerup', e => { const d = WORLD.drag; WORLD.drag = null; if (d && d.moved) return; worldPointer(e); const h = WORLD.people.find(x => x.id === WORLD.hover); if (h) memberModal(h.c); });
+  cv.addEventListener('pointerup', () => { const d = WORLD.drag; WORLD.drag = null; if (d && d.moved) return; const h = WORLD.people.find(x => x.id === WORLD.hover); if (h && h.c) memberModal(h.c); });
   cv.addEventListener('pointerleave', () => { WORLD.drag = null; WORLD.hover = null; const tip = $('.wtip'); if (tip) tip.hidden = true; cv.style.cursor = ''; });
+  cv.addEventListener('wheel', e => {
+    e.preventDefault();
+    const r = cv.getBoundingClientRect(), mx = e.clientX - r.left - r.width / 2, my = e.clientY - r.top - r.height / 2, c = WORLD.cam, z2 = Math.max(12, Math.min(ZMAX() * 1.15, c.z * Math.exp(-e.deltaY * .0016)));
+    WORLD.cam = camClamp({ x: c.x + mx / c.z - mx / z2, y: c.y + my / c.z - my / z2, z: z2 }); WORLD.camT = null;
+    if (!WORLD.raf) worldFrame(performance.now());
+  }, { passive: false });
   const wb = $('.wlb', root);
   if (wb) {
     $$('canvas[data-head]', wb).forEach(c2 => { const c = client(c2.dataset.head); if (c) headThumb(c2, c); });
     wb.addEventListener('mouseover', e => { const r = e.target.closest('[data-wf]'); const f = r ? r.dataset.wf : null; if (f !== WORLD.focus) { WORLD.focus = f; if (!WORLD.raf) worldFrame(performance.now()); } });
     wb.addEventListener('mouseleave', () => { WORLD.focus = null; if (!WORLD.raf) worldFrame(performance.now()); });
-    wb.addEventListener('click', e => { const r = e.target.closest('[data-wf]'); if (!r) return; const c = client(r.dataset.wf); if (!c) return; WORLD.focus = c.id; memberModal(c); });
+    wb.addEventListener('click', e => { const r = e.target.closest('[data-wf]'); if (!r) return; const c = client(r.dataset.wf); if (!c) return; WORLD.focus = c.id; const pp = WORLD.people.find(x => x.id === c.id); if (pp) { WORLD.room = null; $$('.wrooms [data-wroom]').forEach(b => b.classList.remove('on')); const [ux, uy] = UNIT(pp.p.x, pp.p.y); WORLD.camT = { x: ux, y: uy - 30 / Math.max(WORLD.cam.z, 50), z: Math.max(WORLD.cam.z, phoneish() ? 48 : 64) }; if (!WORLD.raf && document.documentElement.dataset.fx !== 'off') WORLD.raf = requestAnimationFrame(worldLoop); } memberModal(c); });
   }
+  const rb = $('.wrooms', root);
+  if (rb) rb.addEventListener('click', e => { const b = e.target.closest('[data-wroom]'); if (b) worldGo(b.dataset.wroom); });
   WORLD.focus = null;
   worldFrame(performance.now(), true);
   if (document.documentElement.dataset.fx !== 'off' && !WORLD.raf) WORLD.raf = requestAnimationFrame(worldLoop);
@@ -5046,93 +5274,154 @@ function worldMount(root) {
 function worldStop() { if (WORLD.raf) cancelAnimationFrame(WORLD.raf); WORLD.raf = 0; WORLD.cv = null; }
 function worldLoop(t) {
   WORLD.raf = 0;
-  if (!WORLD.cv || !WORLD.cv.isConnected || view !== 'comm' || document.documentElement.dataset.fx === 'off') return;
+  if (!WORLD.cv || !WORLD.cv.isConnected || view !== 'comm') return;
+  if (document.documentElement.dataset.fx === 'off') { if (WORLD.camT) { WORLD.cam = { ...WORLD.camT }; WORLD.camT = null; worldFrame(t); } return; }
   if (t - WORLD.last >= worldInterval()) worldFrame(t);
   WORLD.raf = requestAnimationFrame(worldLoop);
 }
-// how often to draw: 30 a second on computers, 24 on phones; fewer if frames take long on this device
+// how often to draw: 30 a second on computers, 24 on phones; fewer if frames take long on this device (the camera glides at full speed)
 const PERF = { ema: 0 };
-const phoneish = () => innerWidth < 760 || matchMedia('(pointer: coarse)').matches;
-const worldInterval = () => PERF.ema > 20 ? 83 : PERF.ema > 11 ? 50 : phoneish() || (navigator.hardwareConcurrency || 8) <= 4 ? 41 : 32;
+const worldInterval = () => WORLD.camT ? 16 : PERF.ema > 20 ? 83 : PERF.ema > 11 ? 50 : phoneish() || (navigator.hardwareConcurrency || 8) <= 4 ? 41 : 32;
 // size the canvas to its box (sharp on high-density screens: at most 2x, 1.5x on phones)
 function worldSize() {
   const cv = WORLD.cv, w = cv.clientWidth, h = cv.clientHeight, dpr = Math.min(phoneish() ? 1.5 : 2, devicePixelRatio || 1);
   if (!w || !h) return false;
-  if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr) || !WORLD.L || WORLD.L.W !== w || WORLD.L.H !== h) {
-    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); WORLD.L = worldLayout(w, h); WORLD.dpr = dpr; WORLD.bgKey = '';
+  if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr) || WORLD.dpr !== dpr) {
+    cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); WORLD.dpr = dpr;
+    if (WORLD.room) { WORLD.camT = camFor(WORLD.room, w, h); if (!WORLD.raf) WORLD.cam = { ...WORLD.camT }; }
   }
+  WORLD.L = worldLayout(w, h);
   return true;
 }
-// the room itself, drawn once into its own canvas
-const wallA = (ctx, L, dpr, off = 0) => { const [ax, ay] = WP(L, 0, 0, ROOM.wall); ctx.setTransform(dpr, dpr * L.q, 0, dpr, dpr * (ax - off), dpr * ay); };          // along x, text reads left to right
-const wallB = (ctx, L, dpr, off = 0) => { const [bx, by] = WP(L, 0, ROOM.h, ROOM.wall); ctx.setTransform(dpr, -dpr * L.q, 0, dpr, dpr * (bx - off), dpr * by); };  // along y, from the front corner back
+
+/* ---------- the still part: floors, outer walls, rugs and shadows, drawn once at a fixed zoom (BGZ) ---------- */
+const BGZ = () => phoneish() ? 64 : 82;
+const wallA = (ctx, L, dpr) => { const [ax, ay] = WP(L, 0, 0, ROOM.wall); ctx.setTransform(dpr, dpr * L.q, 0, dpr, dpr * ax, dpr * ay); };          // along x, text reads left to right
+const wallB = (ctx, L, dpr) => { const [bx, by] = WP(L, 0, ROOM.h, ROOM.wall); ctx.setTransform(dpr, -dpr * L.q, 0, dpr, dpr * bx, dpr * by); };  // along y, from the front corner back
+// text laid on the floor (along x), size in tiles
+function floorText(ctx, L, dpr, x, y, txt, size, color, font = '700') {
+  const [ox, oy] = WP(L, x, y), k = 100;
+  ctx.save(); ctx.setTransform(dpr * L.tw / 2 / k, dpr * L.tw * L.q / 2 / k, -dpr * L.tw / 2 / k, dpr * L.tw * L.q / 2 / k, dpr * ox, dpr * oy);
+  ctx.font = `${font} ${size * k}px "Leelawadee UI","Noto Sans Thai",Tahoma,sans-serif`; ctx.fillStyle = color; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(txt, 0, 0); ctx.restore();
+}
+// windows onto the city in a wall's own frame (a..b along it, top..bot down it): the sky, towers with lit windows, the frames
+function cityWindows(ctx, L, a, b, top, bot, dk, frame, panes) {
+  const sky = ctx.createLinearGradient(0, top, 0, bot); if (dk) { sky.addColorStop(0, '#0c1630'); sky.addColorStop(1, '#3a2c3c'); } else { sky.addColorStop(0, '#9cc4ec'); sky.addColorStop(1, '#e8f1fa'); }
+  ctx.fillStyle = sky; ctx.fillRect(a, top, b - a, bot - top);
+  const n = Math.max(8, Math.round((b - a) / (L.tw * .14))), k0 = Math.round(b) % 89, bw = (b - a) / n;
+  for (let k = 0; k < n; k++) {
+    const bx = a + k * bw, bh2 = (.25 + RND[(k * 7 + k0) % RND.length] * .9) * L.zU;
+    ctx.fillStyle = dk ? '#0a0d18' : '#7f95ad'; ctx.fillRect(bx, bot - bh2, bw - 1, bh2);
+    if (dk) { ctx.fillStyle = 'rgba(255,214,140,.5)'; for (let w2 = 0; w2 < 3; w2++) if (RND[(k * 13 + w2 + k0) % RND.length] > .55) ctx.fillRect(bx + 2, bot - bh2 + 4 + w2 * 6, 2, 2); }
+  }
+  ctx.fillStyle = frame; for (let i = 0; i <= panes; i++) ctx.fillRect(a + (b - a) * i / panes - 1.5, top, 3, bot - top);
+  ctx.fillRect(a, top - 1, b - a, 3); ctx.fillRect(a, bot - 2, b - a, 3);
+}
 function worldBg() {
-  const L = WORLD.L, dpr = WORLD.dpr, dk = darkRoom(), C = PAL(dk), key = `${L.W}x${L.H}@${dpr}:${dk}:${!!(WORLD.logo && WORLD.logo.complete)}`;
+  const dk = darkRoom(), C = PAL(dk), Z = BGZ(), dpr = Math.min(WORLD.dpr || 1, phoneish() ? 1.25 : 1.5), key = `${Z}@${dpr}:${dk}:${!!(WORLD.logo && WORLD.logo.complete)}`;
   if (WORLD.bgKey === key && WORLD.bg) return WORLD.bg;
+  const pad = 30, bw = (ALLBOX.x1 - ALLBOX.x0) * Z + pad * 2, bh = (ALLBOX.y1 - ALLBOX.y0) * Z + pad * 2;
   const bg = WORLD.bg || (WORLD.bg = document.createElement('canvas'));
-  bg.width = Math.round(L.WW * dpr); bg.height = WORLD.cv.height;
-  const ctx = bg.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, L.WW, L.H);
+  bg.width = Math.round(bw * dpr); bg.height = Math.round(bh * dpr);
+  // the still layer has its own layout: zoom Z, the whole floor in view
+  const L = { W: bw, H: bh, tw: Z, zU: Z * KZ, q: ISO_Q, s: Z / 52, ox: pad - ALLBOX.x0 * Z, oy: pad - ALLBOX.y0 * Z };
+  WORLD.bgL = { ...L, dpr };
+  const ctx = bg.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, bw, bh);
   const p = (x, y, z) => WP(L, x, y, z), H = ROOM.wall, u = x => x * L.tw / 2, ub = y => (ROOM.h - y) * L.tw / 2, v = z => (H - z) * L.zU;
-  // walls
+  // outer walls
   const wa = ctx.createLinearGradient(0, p(0, 0, H)[1], 0, p(0, 0, 0)[1]); wa.addColorStop(0, C.wa0); wa.addColorStop(1, C.wa1);
   poly(ctx, [p(0, 0, 0), p(ROOM.w, 0, 0), p(ROOM.w, 0, H), p(0, 0, H)], wa);
   const wb = ctx.createLinearGradient(0, p(0, 0, H)[1], 0, p(0, ROOM.h, 0)[1]); wb.addColorStop(0, C.wb0); wb.addColorStop(1, C.wb1);
   poly(ctx, [p(0, 0, 0), p(0, ROOM.h, 0), p(0, ROOM.h, H), p(0, 0, H)], wb);
-  // right wall: acoustic panels, then glass meeting rooms with black frames and the Hall of Fame plaque on top
+  // the back wall (along x): the coaches' windows, the meeting room's screen, the big classroom's panels, screens and ticker, the small classroom's whiteboard
   ctx.save(); wallA(ctx, L, dpr);
-  ctx.fillStyle = C.panel; for (let x = .4; x < 9.4; x += 1.1) ctx.fillRect(u(x), v(2.62), u(.95), v(.18) - v(2.62));
-  const gx0 = u(9.8), gx1 = u(ROOM.w);
-  ctx.fillStyle = C.glass; ctx.fillRect(gx0, v(H), gx1 - gx0, v(0) - v(H));
-  ctx.fillStyle = dk ? 'rgba(255,255,255,.06)' : 'rgba(255,255,255,.55)'; for (let k = 0; k < 4; k++) ctx.fillRect(gx0 + (gx1 - gx0) * (.08 + k * .24), v(.9), (gx1 - gx0) * .16, v(.62) - v(.9));
-  ctx.fillStyle = dk ? 'rgba(255,240,200,.08)' : 'rgba(255,255,255,.6)'; for (let k = 0; k < 6; k++) ctx.fillRect(gx0 + (gx1 - gx0) * (k / 6 + .02), v(2.35), (gx1 - gx0) / 6 - 8, 3);
-  ctx.fillStyle = C.frame;
-  for (let x = 9.8; x <= ROOM.w + .01; x += 1.24) ctx.fillRect(u(x) - 2, v(H), 4, v(0) - v(H));
-  ctx.fillRect(gx0, v(H), gx1 - gx0, v(2.05) - v(H)); ctx.fillRect(gx0, v(.06) - 4, gx1 - gx0, 4); ctx.fillRect(gx0, v(1.02), gx1 - gx0, 3);
-  ctx.fillStyle = 'rgba(255,255,255,.14)'; for (let x = 10; x < ROOM.w; x += 1.24) { ctx.beginPath(); ctx.moveTo(u(x + .25), v(2.0)); ctx.lineTo(u(x + .55), v(2.0)); ctx.lineTo(u(x + .2), v(.1)); ctx.lineTo(u(x - .1), v(.1)); ctx.closePath(); ctx.fill(); }
-  ctx.fillStyle = '#e8bf62'; ctx.font = `800 ${Math.max(9, L.tw * .22)}px Georgia,serif`; ctx.textAlign = 'center'; ctx.fillText('★ HALL OF FAME ★', u(12.9), v(2.32));
-  ctx.font = `600 ${Math.max(7.5, L.tw * .13)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.fillStyle = 'rgba(243,217,145,.85)'; ctx.fillText('ผลตอบแทนสูงสุดของรุ่น', u(12.9), v(2.13));
-  // the big screen and a board TV (their pictures move: see worldScreen)
-  ctx.fillStyle = '#05080f'; rr(u(1.15), v(2.32), u(4.1), v(.9) - v(2.32), 5, ctx); ctx.fill(); ctx.strokeStyle = '#111'; ctx.lineWidth = 3; ctx.stroke();
-  ctx.fillStyle = '#05080f'; rr(u(5.75), v(2.28), u(2.95), v(1.12) - v(2.28), 4, ctx); ctx.fill(); ctx.stroke();
+  cityWindows(ctx, L, u(.4), u(8.6), v(2.4), v(.45), dk, C.frame, 5);
+  ctx.fillStyle = '#0a0c11'; rr(u(9.8), v(2.25), u(4.4), v(.85) - v(2.25), 4, ctx); ctx.fill();
+  ctx.fillStyle = C.panel; for (let x = 15.4; x < 27.5; x += 1.1) ctx.fillRect(u(x), v(2.62), u(.95), v(.18) - v(2.62));
+  ctx.fillStyle = '#05080f'; rr(u(15.8), v(2.32), u(5.2), v(.9) - v(2.32), 5, ctx); ctx.fill(); rr(u(21.6), v(2.28), u(3.2), v(1.12) - v(2.28), 4, ctx); ctx.fill(); rr(u(25.3), v(2.28), u(2.2), v(1.12) - v(2.28), 4, ctx); ctx.fill();
+  ctx.fillRect(u(15.3), v(2.68), u(12.4), v(2.48) - v(2.68));
+  // the whiteboard: a chart with its stop line, the lesson written on top
+  ctx.fillStyle = '#9aa3ad'; rr(u(28.8), v(2.25), u(6.4), v(.78) - v(2.25), 4, ctx); ctx.fill();
+  ctx.fillStyle = dk ? '#e6e9ee' : '#ffffff'; rr(u(28.8) + 3, v(2.25) + 3, u(6.4) - 6, v(.78) - v(2.25) - 6, 3, ctx); ctx.fill();
+  ctx.strokeStyle = '#2b5fd9'; ctx.lineWidth = 1.6; ctx.beginPath(); [[.5, 1.05], [1.4, 1.45], [2.3, 1.2], [3.3, 1.7], [4.3, 1.4], [5.6, 1.9]].forEach(([dx, z], i) => i ? ctx.lineTo(u(28.8 + dx), v(z)) : ctx.moveTo(u(28.8 + dx), v(z))); ctx.stroke();
+  ctx.strokeStyle = '#e6475a'; ctx.setLineDash([5, 4]); ctx.beginPath(); ctx.moveTo(u(29.2), v(1)); ctx.lineTo(u(34.8), v(1)); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle = '#1b2440'; ctx.font = `800 ${Math.max(6, L.tw * .12)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.textAlign = 'left'; ctx.fillText('Entry · Stop Loss · Position Size', u(29.15), v(2.02));
+  ctx.fillStyle = '#9aa3ad'; ctx.fillRect(u(29.4), v(.78), u(5.2), 4);
+  ctx.textAlign = 'center'; ctx.font = `800 ${Math.max(8, L.tw * .14)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.fillStyle = dk ? 'rgba(243,217,145,.75)' : 'rgba(120,90,40,.8)';
+  ctx.fillText('ห้องทำงานโค้ช · COACHES', u(4.5), v(2.56)); ctx.fillText('ห้องประชุม · MEETING', u(12), v(2.45)); ctx.fillText('ห้องเรียนเล็ก · CLASSROOM', u(32), v(2.45));
   ctx.restore();
-  // left wall: the blue wall with two board TVs, then the lobby's dark wood with the lit logo
+  // the left wall (along y): the coaches' windows round the corner; the lobby's dark wood with the lit logo over reception
   ctx.save(); wallB(ctx, L, dpr);
-  ctx.fillStyle = C.blue[0]; ctx.fillRect(ub(6.6), v(2.45), ub(1) - ub(6.6), v(.18) - v(2.45));
-  ctx.fillStyle = C.blue[1]; ctx.fillRect(ub(6.6), v(.5), ub(1) - ub(6.6), v(.18) - v(.5));
-  ctx.fillStyle = '#05080f'; [[1.5, 3.6], [4, 6.1]].forEach(([y0, y1]) => { rr(ub(y1), v(2.22), ub(y0) - ub(y1), v(1.12) - v(2.22), 4, ctx); ctx.fill(); });
-  const wd = ctx.createLinearGradient(ub(11), 0, ub(7.7), 0); wd.addColorStop(0, '#3b2416'); wd.addColorStop(.5, '#5a3a24'); wd.addColorStop(1, '#3a2315');
-  ctx.fillStyle = wd; ctx.fillRect(ub(11), v(H), ub(7.7) - ub(11), v(0) - v(H));
-  ctx.fillStyle = 'rgba(0,0,0,.18)'; for (let k = 0; k < 14; k++) ctx.fillRect(ub(11) + (ub(7.7) - ub(11)) * k / 14, v(H), 2, v(0) - v(H));
-  const lx = (ub(10.6) + ub(8.1)) / 2, ly = v(1.72), glow = ctx.createRadialGradient(lx, ly, 4, lx, ly, (ub(8.1) - ub(10.6)) * .75);
-  glow.addColorStop(0, 'rgba(255,214,140,.45)'); glow.addColorStop(1, 'rgba(255,214,140,0)'); ctx.fillStyle = glow; ctx.fillRect(ub(11), v(H), ub(7.7) - ub(11), v(0) - v(H));
-  if (WORLD.logo && WORLD.logo.complete && WORLD.logo.naturalWidth) { const lw = ub(8.15) - ub(10.55), lh = Math.min(lw * WORLD.logo.naturalHeight / WORLD.logo.naturalWidth, v(1.05) - v(2.35)); ctx.drawImage(WORLD.logo, ub(10.55), v(2.35), lw, lh); }
-  ctx.fillStyle = '#f3d991'; ctx.font = `800 ${Math.max(8, L.tw * .16)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.textAlign = 'center';
-  ctx.fillText('สถาบัน SUPER TRADER', lx, v(.72)); ctx.font = `600 ${Math.max(7, L.tw * .12)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.fillStyle = 'rgba(243,217,145,.8)'; ctx.fillText('ห้องเทรดรุ่น ROAD TO 1M', lx, v(.5));
+  cityWindows(ctx, L, ub(7.6), ub(.4), v(2.4), v(.45), dk, C.frame, 4);
+  const wd = ctx.createLinearGradient(ub(18.7), 0, ub(8.3), 0); wd.addColorStop(0, '#3b2416'); wd.addColorStop(.5, '#5a3a24'); wd.addColorStop(1, '#3a2315');
+  ctx.fillStyle = wd; ctx.fillRect(ub(18.7), v(H), ub(8.3) - ub(18.7), v(0) - v(H));
+  ctx.fillStyle = 'rgba(0,0,0,.18)'; for (let k = 0; k < 32; k++) ctx.fillRect(ub(18.7) + (ub(8.3) - ub(18.7)) * k / 32, v(H), 2, v(0) - v(H));
+  const lx = (ub(17) + ub(11.8)) / 2, ly = v(1.7), glow = ctx.createRadialGradient(lx, ly, 4, lx, ly, (ub(11.8) - ub(17)) * .75);
+  glow.addColorStop(0, 'rgba(255,214,140,.45)'); glow.addColorStop(1, 'rgba(255,214,140,0)'); ctx.fillStyle = glow; ctx.fillRect(ub(18.7), v(H), ub(8.3) - ub(18.7), v(0) - v(H));
+  if (WORLD.logo && WORLD.logo.complete && WORLD.logo.naturalWidth) { const lw = ub(12.1) - ub(16.7), lh = Math.min(lw * WORLD.logo.naturalHeight / WORLD.logo.naturalWidth, v(1.05) - v(2.4)); ctx.drawImage(WORLD.logo, ub(16.7), v(2.4), lw, lh); }
+  ctx.fillStyle = '#f3d991'; ctx.font = `800 ${Math.max(9, L.tw * .2)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.textAlign = 'center';
+  ctx.fillText('สถาบัน SUPER TRADER', lx, v(.74)); ctx.font = `600 ${Math.max(7, L.tw * .13)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.fillStyle = 'rgba(243,217,145,.8)'; ctx.fillText('ROAD TO 1M · ปั้นพอร์ต 1 ล้าน', lx, v(.5));
   ctx.restore();
+  // the floor is a slab: its front faces along the open edges and a gold trim, like a cut-away model of the building
+  const T = .5, sf = ctx.createLinearGradient(0, p(0, ROOM.h)[1], 0, p(0, ROOM.h, -T)[1]); sf.addColorStop(0, dk ? '#2a2620' : '#d9d2c4'); sf.addColorStop(1, dk ? '#0e0d0b' : '#b4aa98');
+  poly(ctx, [p(0, ROOM.h, 0), p(ROOM.w, ROOM.h, 0), p(ROOM.w, ROOM.h, -T), p(0, ROOM.h, -T)], sf);
+  const sr = ctx.createLinearGradient(0, p(ROOM.w, 0)[1], 0, p(ROOM.w, 0, -T)[1]); sr.addColorStop(0, dk ? '#221f1a' : '#cfc7b8'); sr.addColorStop(1, dk ? '#0a0908' : '#a69c8a');
+  poly(ctx, [p(ROOM.w, 0, 0), p(ROOM.w, ROOM.h, 0), p(ROOM.w, ROOM.h, -T), p(ROOM.w, 0, -T)], sr);
+  ctx.strokeStyle = dk ? 'rgba(201,169,110,.75)' : 'rgba(150,115,50,.7)'; ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(...p(0, ROOM.h)); ctx.lineTo(...p(ROOM.w, ROOM.h)); ctx.lineTo(...p(ROOM.w, 0)); ctx.stroke();
+  ctx.lineWidth = .8; ctx.beginPath(); ctx.moveTo(...p(0, ROOM.h, -T * .55)); ctx.lineTo(...p(ROOM.w, ROOM.h, -T * .55)); ctx.lineTo(...p(ROOM.w, 0, -T * .55)); ctx.stroke();
+  // the entrance: a carpeted ramp down from the floor, gold edges
+  { const rp = [p(7.4, ROOM.h, 0), p(10.6, ROOM.h, 0), p(10.6, ROOM.h + 2, -T), p(7.4, ROOM.h + 2, -T)];
+    poly(ctx, [p(10.6, ROOM.h, 0), p(10.6, ROOM.h, -T), p(10.6, ROOM.h + 2, -T)], dk ? '#141210' : '#a69c8a');
+    poly(ctx, rp, dk ? '#5a1a24' : '#9a2a38');
+    ctx.strokeStyle = dk ? 'rgba(201,169,110,.85)' : 'rgba(150,115,50,.8)'; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(...rp[0]); ctx.lineTo(...rp[3]); ctx.moveTo(...rp[1]); ctx.lineTo(...rp[2]); ctx.stroke(); }
   // skirting and the line where walls meet the ceiling
-  poly(ctx, [p(0, 0, 0), p(9.8, 0, 0), p(9.8, 0, .12), p(0, 0, .12)], C.base);
-  poly(ctx, [p(0, 0, 0), p(0, 7.7, 0), p(0, 7.7, .12), p(0, 0, .12)], C.base);
+  poly(ctx, [p(0, 0, 0), p(ROOM.w, 0, 0), p(ROOM.w, 0, .12), p(0, 0, .12)], C.base);
+  poly(ctx, [p(0, 0, 0), p(0, ROOM.h, 0), p(0, ROOM.h, .12), p(0, 0, .12)], C.base);
   ctx.strokeStyle = dk ? 'rgba(201,169,110,.55)' : 'rgba(150,160,175,.7)'; ctx.lineWidth = 1.4;
   ctx.beginPath(); ctx.moveTo(...p(0, ROOM.h, H)); ctx.lineTo(...p(0, 0, H)); ctx.lineTo(...p(ROOM.w, 0, H)); ctx.stroke();
-  // polished grey floor, big tiles, a little shine, and pools of light from the ceiling
-  for (let i = 0; i < ROOM.w; i += 2) for (let j = 0; j < ROOM.h; j += 2) poly(ctx, [p(i, j), p(Math.min(ROOM.w, i + 2), j), p(Math.min(ROOM.w, i + 2), Math.min(ROOM.h, j + 2)), p(i, Math.min(ROOM.h, j + 2))], (i + j) % 4 ? C.fa : C.fb);
-  ctx.strokeStyle = C.seam; ctx.lineWidth = 1;
-  for (let i = 0; i <= ROOM.w; i += 2) { ctx.beginPath(); ctx.moveTo(...p(i, 0)); ctx.lineTo(...p(i, ROOM.h)); ctx.stroke(); }
-  for (let j = 0; j <= ROOM.h; j += 2) { ctx.beginPath(); ctx.moveTo(...p(0, j)); ctx.lineTo(...p(ROOM.w, j)); ctx.stroke(); }
-  [[3, 3.5], [6, 3.5], [3, 6], [6, 6], [11, 4], [13, 8], [8.5, 9.6], [3, 9.6]].forEach(([x, y]) => {
-    const [cx, cy] = p(x, y), g = ctx.createRadialGradient(cx, cy, 2, cx, cy, L.tw * 1.3); g.addColorStop(0, C.pool); g.addColorStop(1, 'rgba(255,255,255,0)');
-    ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(cx, cy, L.tw * 1.3, L.tw * 1.3 * L.q, 0, 0, Math.PI * 2); ctx.fill();
+  // floors: marble with veins all through (the lobby) and a gold inlay round it, then each room's own floor
+  const room = (r, f) => { ctx.save(); ctx.beginPath(); [p(r.x0, r.y0), p(r.x1, r.y0), p(r.x1, r.y1), p(r.x0, r.y1)].forEach((q, i) => i ? ctx.lineTo(...q) : ctx.moveTo(...q)); ctx.closePath(); ctx.clip(); f(r); ctx.restore(); };
+  const tiles = (r, cols, n) => { for (let i = r.x0; i < r.x1; i += n) for (let j = r.y0; j < r.y1; j += n) poly(ctx, [p(i, j), p(Math.min(r.x1, i + n), j), p(Math.min(r.x1, i + n), Math.min(r.y1, j + n)), p(i, Math.min(r.y1, j + n))], cols[((i - r.x0) / n + (j - r.y0) / n) % 2 ? 1 : 0]); };
+  const planks = (r, cols) => { for (let j = r.y0; j < r.y1; j += .5) for (let i = r.x0 + ((j * 2) % 2) * .8; i < r.x1; i += 1.6) poly(ctx, [p(i, j), p(Math.min(r.x1, i + 1.6), j), p(Math.min(r.x1, i + 1.6), j + .5), p(i, j + .5)], cols[Math.floor(i * 3 + j * 7) % 2]); ctx.strokeStyle = 'rgba(0,0,0,.12)'; ctx.lineWidth = .8; for (let j = r.y0; j <= r.y1; j += .5) { ctx.beginPath(); ctx.moveTo(...p(r.x0, j)); ctx.lineTo(...p(r.x1, j)); ctx.stroke(); } };
+  const rect = (x0, y0, x1, y1) => [p(x0, y0), p(x1, y0), p(x1, y1), p(x0, y1)], outline = (pts, col, lw) => { ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.beginPath(); pts.forEach((q, i) => i ? ctx.lineTo(...q) : ctx.moveTo(...q)); ctx.closePath(); ctx.stroke(); };
+  room({ x0: 0, y0: 0, x1: ROOM.w, y1: ROOM.h }, r2 => {
+    tiles(r2, C.marble, 2);
+    ctx.strokeStyle = C.vein; ctx.lineWidth = 1.2;
+    for (let k = 0; k < 40; k++) { const x = RND[k * 3] * r2.x1, y = 6 + RND[k * 3 + 1] * (r2.y1 - 6); ctx.beginPath(); ctx.moveTo(...p(x, y)); ctx.quadraticCurveTo(...p(x + .8, y + .5 * RND[k * 3 + 2]), ...p(x + 1.7, y + .2)); ctx.stroke(); }
   });
-  ctx.strokeStyle = C.shine; ctx.lineWidth = L.tw * .5;
-  [[1, 9], [6, 2], [12, 3]].forEach(([x, y]) => { ctx.beginPath(); ctx.moveTo(...p(x, y)); ctx.lineTo(...p(x + 2.5, y + .2)); ctx.stroke(); });
-  // the Hall of Fame carpet, and the rug of the 1M Club
-  poly(ctx, [p(10.8, .45), p(15, .45), p(15, 2.3), p(10.8, 2.3)], dk ? 'rgba(122,31,43,.8)' : 'rgba(150,35,48,.75)');
-  ctx.strokeStyle = 'rgba(201,169,110,.8)'; ctx.lineWidth = 1.2; ctx.beginPath(); [p(10.9, .55), p(14.9, .55), p(14.9, 2.2), p(10.9, 2.2)].forEach((q, i) => i ? ctx.lineTo(...q) : ctx.moveTo(...q)); ctx.closePath(); ctx.stroke();
-  const [mx, my] = p(12.2, 6.3);
-  const rg = ctx.createRadialGradient(mx, my, 2, mx, my, 1.9 * L.tw * .72); rg.addColorStop(0, 'rgba(201,169,110,.38)'); rg.addColorStop(1, 'rgba(201,169,110,0)');
-  ctx.fillStyle = rg; ctx.beginPath(); ctx.ellipse(mx, my, ...floorEllipse(L, 1.9), 0, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = 'rgba(200,150,50,.7)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.ellipse(mx, my, ...floorEllipse(L, 1.45), 0, 0, Math.PI * 2); ctx.stroke();
-  drawLamps(ctx, L, 0);
+  outline([p(.5, 8.5), p(29.5, 8.5), p(29.5, 15.5), p(35.5, 15.5), p(35.5, 18.5), p(.5, 18.5)], C.inlay, 1.4);
+  ROOMS.slice(1).forEach(r => room(r, r2 => {
+    if (r2.f === 'wood' || r2.f === 'oak') planks(r2, C[r2.f]);
+    else { tiles(r2, C[r2.f], 1); ctx.fillStyle = dk ? 'rgba(255,255,255,.025)' : 'rgba(255,255,255,.25)'; for (let i = r2.x0 + .5; i < r2.x1; i += 1) for (let j = r2.y0 + .5; j < r2.y1; j += 1) { const [cx, cy] = p(i, j); ctx.fillRect(cx - 1, cy - .5, 2, 1); } }
+  }));
+  ctx.strokeStyle = C.inlay; ctx.lineWidth = 1.4; ctx.beginPath(); ctx.moveTo(...p(30, 8)); ctx.lineTo(...p(30, 15)); ctx.lineTo(...p(36, 15)); ctx.stroke();
+  // pools of light, the walls' shadow on the floor
+  [[4.5, 4], [12, 3], [18.5, 4], [24.5, 4], [32, 4], [5.5, 11], [12, 12], [18.4, 12.5], [23.8, 12.5], [33, 11.2], [3, 14.4], [17.4, 17], [22.2, 17], [27, 17], [9, 17]].forEach(([x, y]) => {
+    const [cx, cy] = p(x, y), g = ctx.createRadialGradient(cx, cy, 2, cx, cy, L.tw * 1.6); g.addColorStop(0, C.pool); g.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.ellipse(cx, cy, L.tw * 1.6, L.tw * 1.6 * L.q, 0, 0, Math.PI * 2); ctx.fill();
+  });
+  { const [a0, a1] = [p(0, 0), p(ROOM.w, 0)], [b0, b1] = [p(0, .6), p(ROOM.w, .6)]; const g = ctx.createLinearGradient(a0[0], a0[1], b0[0], b0[1]); g.addColorStop(0, C.shadow); g.addColorStop(1, 'rgba(0,0,0,0)'); poly(ctx, [a0, a1, b1, b0], g); }
+  { const [a0, a1] = [p(0, 0), p(0, ROOM.h)], [b0, b1] = [p(.6, 0), p(.6, ROOM.h)]; const g = ctx.createLinearGradient(a0[0], a0[1], b0[0], b0[1]); g.addColorStop(0, C.shadow); g.addColorStop(1, 'rgba(0,0,0,0)'); poly(ctx, [a0, a1, b1, b0], g); }
+  // the Hall of Fame carpet, the 1M Club rug, rugs under the tables and the sofas, the welcome mat
+  poly(ctx, rect(9.9, 9.45, 14.1, 11.15), dk ? 'rgba(122,31,43,.85)' : 'rgba(150,35,48,.75)'); outline(rect(10, 9.55, 14, 11.05), 'rgba(201,169,110,.8)', 1.2);
+  const [mx, my] = p(12.6, 14.6);
+  const rg = ctx.createRadialGradient(mx, my, 2, mx, my, 2.1 * L.tw * .72); rg.addColorStop(0, 'rgba(201,169,110,.4)'); rg.addColorStop(1, 'rgba(201,169,110,0)');
+  ctx.fillStyle = rg; ctx.beginPath(); ctx.ellipse(mx, my, ...floorEllipse(L, 2.1), 0, 0, Math.PI * 2); ctx.fill();
+  ctx.strokeStyle = 'rgba(200,150,50,.7)'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.ellipse(mx, my, ...floorEllipse(L, 1.55), 0, 0, Math.PI * 2); ctx.stroke();
+  const rug = dk ? 'rgba(201,169,110,.08)' : 'rgba(150,110,50,.08)', rugE = dk ? 'rgba(201,169,110,.3)' : 'rgba(150,110,50,.3)';
+  [18.4, 23.8].forEach(x => { poly(ctx, rect(x - 1.9, 10.7, x + 1.9, 13.7), rug); outline(rect(x - 1.8, 10.8, x + 1.8, 13.6), rugE, 1); });
+  [17.4, 22.2, 27].forEach(x => { poly(ctx, rect(x - 1.8, 16.1, x + 1.8, 18.75), rug); outline(rect(x - 1.7, 16.2, x + 1.7, 18.65), rugE, 1); });
+  poly(ctx, rect(7.4, 18.1, 10.6, 19), dk ? 'rgba(201,169,110,.18)' : 'rgba(150,110,50,.16)');
+  floorText(ctx, L, dpr, 7.6, 18.55, 'ยินดีต้อนรับ · WELCOME', .26, C.label);
+  // shadows under the furniture (long pieces cast a long shadow)
+  PROPS.forEach(pr => {
+    if (pr.k === 'spot' || pr.k === 'chairb' || pr.k === 'cback' || pr.k === 'gate') return;
+    const w = pr.w || .6, d = pr.d || pr.w || .6;
+    if (Math.max(w, d) > 1.6) { poly(ctx, rect(pr.x - w / 2 + .1, pr.y - d / 2 + .14, pr.x + w / 2 + .1, pr.y + d / 2 + .14), C.shadow); return; }
+    const [cx, cy] = p(pr.x + .05, pr.y + .08), rw = Math.max(w, d) * .62; ctx.fillStyle = C.shadow; ctx.beginPath(); ctx.ellipse(cx, cy, rw * L.tw * .62, rw * L.tw * L.q * .62, 0, 0, Math.PI * 2); ctx.fill();
+  });
+  // the room names on the floor, inside each room by its door
+  [['ห้องทำงานโค้ช', .4, 7.5], ['ห้องประชุม', 9.4, 5.5], ['ห้องเรียนใหญ่', 15.4, 7.6], ['ห้องเรียนเล็ก', 29.1, 7.55], ['โซนอาหาร', 30.3, 14.6], ['ล็อบบี้', 3, 17.9]].forEach(([n, x, y]) => floorText(ctx, L, dpr, x, y, n, .36, C.label, '800'));
   WORLD.bgKey = key;
   return bg;
 }
@@ -5149,10 +5438,8 @@ function boardTV(ctx, x0, y0, w, h, t, seed) {
 }
 // the cohort's total profit (what has been sold) at each Friday close, for the big screen
 const cohortSeries = () => { if (S.cohort?.series?.length) return S.cohort.series; const fr = S.days.map((t, i) => i).filter(i => new Date(S.days[i]).getUTCDay() === 5 && i < T_()); return [...fr.map(i => S.clients.reduce((s, c) => s + profitAtDay(c, i), 0)), S.clients.reduce((s, c) => s + profit(c), 0)]; };
-function worldScreen(ctx, L, t, off) {
-  const H = ROOM.wall, u = x => x * L.tw / 2, ub = y => (ROOM.h - y) * L.tw / 2, v = z => (H - z) * L.zU, dpr = WORLD.dpr;
-  ctx.save(); wallA(ctx, L, dpr, off);
-  const x0 = u(1.15) + 3, x1 = u(5.25) - 3, y0 = v(2.32) + 3, y1 = v(.9) - 3, cs = WORLD.cohort || (WORLD.cohort = cohortSeries()), n = cs.length, lo = Math.min(0, ...cs), hi = Math.max(1, ...cs), val = i => (cs[i] - lo) / (hi - lo || 1) * 2 - 1;
+function chartOn(ctx, x0, y0, x1, y1, cs, title, fs) {
+  const n = cs.length, lo = Math.min(0, ...cs), hi = Math.max(1, ...cs), val = i => (cs[i] - lo) / (hi - lo || 1) * 2 - 1;
   ctx.save(); ctx.beginPath(); ctx.rect(x0, y0, x1 - x0, y1 - y0); ctx.clip();
   ctx.strokeStyle = 'rgba(255,255,255,.07)'; ctx.lineWidth = 1;
   for (let k = 1; k < 4; k++) { const y = y0 + (y1 - y0) * k / 4; ctx.beginPath(); ctx.moveTo(x0, y); ctx.lineTo(x1, y); ctx.stroke(); }
@@ -5160,33 +5447,39 @@ function worldScreen(ctx, L, t, off) {
   const ag = ctx.createLinearGradient(0, y0, 0, y1); ag.addColorStop(0, up ? 'rgba(61,220,151,.35)' : 'rgba(255,107,125,.35)'); ag.addColorStop(1, 'rgba(0,0,0,0)');
   ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.lineTo(x1, y1); ctx.lineTo(x0, y1); ctx.closePath(); ctx.fillStyle = ag; ctx.fill();
   ctx.beginPath(); pts.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)); ctx.strokeStyle = up ? '#3ddc97' : '#ff6b7d'; ctx.lineWidth = 1.8; ctx.stroke();
-  const fs = Math.max(8, L.tw * .16);
   ctx.font = `800 ${fs}px "Leelawadee UI",Tahoma,sans-serif`; ctx.fillStyle = '#e9e2cf'; ctx.textAlign = 'left';
-  ctx.fillText('กำไรรวมของรุ่น', x0 + 6, y0 + fs + 2); ctx.fillStyle = up ? '#3ddc97' : '#ff6b7d'; ctx.fillText(`${signed(Math.round(cs[n - 1] || 0))}`, x0 + 6 + fs * 6.4, y0 + fs + 2);
+  ctx.fillText(title, x0 + 6, y0 + fs + 2); ctx.fillStyle = up ? '#3ddc97' : '#ff6b7d'; ctx.fillText(`${signed(Math.round(cs[n - 1] || 0))}`, x0 + 6 + fs * (title.length * .62 + .8), y0 + fs + 2);
   ctx.restore();
-  boardTV(ctx, u(5.75) + 2, v(2.28) + 2, u(2.95) - 4, v(1.12) - v(2.28) - 4, t, 'a');
-  // ticker along the top of the right wall
-  const ty0 = v(2.68), ty1 = v(2.48), tx0 = u(.3), tx1 = u(9.6);
-  ctx.fillStyle = '#05080f'; ctx.fillRect(tx0, ty0, tx1 - tx0, ty1 - ty0); ctx.beginPath(); ctx.rect(tx0, ty0, tx1 - tx0, ty1 - ty0); ctx.clip();
+}
+// the screens on the back wall (drawn every frame, only when that part of the wall is on screen)
+function worldScreen(ctx, L, t) {
+  const H = ROOM.wall, u = x => x * L.tw / 2, v = z => (H - z) * L.zU, dpr = WORLD.dpr;
+  const [ax, ay] = WP(L, 9.8, 0, H), [ex, ey] = WP(L, 27.7, 0, 0);
+  if (ex < 0 || ax > L.W || ey < 0 || ay > L.H) return;
+  const fs = Math.max(7, L.tw * .16), cs = WORLD.cohort || (WORLD.cohort = cohortSeries());
+  ctx.save(); wallA(ctx, L, dpr);
+  chartOn(ctx, u(15.8) + 3, v(2.32) + 3, u(21) - 3, v(.9) - 3, cs, 'กำไรรวมของรุ่น', fs);
+  boardTV(ctx, u(21.6) + 2, v(2.28) + 2, u(3.2) - 4, v(1.12) - v(2.28) - 4, t, 'a'); boardTV(ctx, u(25.3) + 2, v(2.28) + 2, u(2.2) - 4, v(1.12) - v(2.28) - 4, t, 'd');
+  chartOn(ctx, u(9.8) + 3, v(2.25) + 3, u(14.2) - 3, v(.85) - 3, cs.slice(-6), 'ประชุมแผนสัปดาห์นี้', fs * .9);
+  // the ticker along the top of the big classroom's wall
+  const ty0 = v(2.68), ty1 = v(2.48), tx0 = u(15.3), tx1 = u(27.7);
+  ctx.beginPath(); ctx.rect(tx0, ty0, tx1 - tx0, ty1 - ty0); ctx.clip();
   const items = WORLD.tick || (WORLD.tick = board('ret', 'all').slice(0, 12).map(x => [`#${x.rank} ${commName(x.c)}`, x.v]));
-  ctx.font = `700 ${Math.max(8, (ty1 - ty0) * .72)}px "Leelawadee UI",Tahoma,sans-serif`;
+  ctx.font = `700 ${Math.max(7, (ty1 - ty0) * .72)}px "Leelawadee UI",Tahoma,sans-serif`;
   const seg = WORLD.tickS || (WORLD.tickS = items.map(([nm, r]) => `${nm} ${r >= 0 ? '▲' : '▼'}${fmt(Math.abs(r) * 100, 2)}%   `)), fk = ctx.font, wseg = WORLD.tickW && WORLD.tickF === fk ? WORLD.tickW : (WORLD.tickF = fk, WORLD.tickW = seg.map(x => ctx.measureText(x + '     ').width)), tot = wseg.reduce((a, b) => a + b, 0) || 1;
   let x = tx0 - (t * 22) % tot;
   for (let rep = 0; rep < 3 && x < tx1; rep++) seg.forEach((txt, i) => { if (x < tx1 && x + wseg[i] > tx0) { ctx.fillStyle = items[i][1] >= 0 ? '#3ddc97' : '#ff6b7d'; ctx.fillText(txt, x, ty1 - (ty1 - ty0) * .22); } x += wseg[i]; });
   ctx.restore();
-  ctx.save(); wallB(ctx, L, dpr, off);
-  [[1.5, 3.6, 'b'], [4, 6.1, 'c']].forEach(([y0b, y1b, sd]) => boardTV(ctx, ub(y1b) + 2, v(2.22) + 2, ub(y0b) - ub(y1b) - 4, v(1.12) - v(2.22) - 4, t + 3, sd));
-  ctx.restore();
 }
 // things standing on the floor
-const CHAIR = ['#3d72db', '#2a57b5', '#204897'];
+const CHAIRS = { std: ['#3d72db', '#2a57b5', '#204897'], exec: ['#2b2b30', '#1c1c20', '#141417'], coach: ['#8a6a3a', '#6e5430', '#5a4426'] };
 function drawProp(ctx, L, pr, t, dk) {
-  const C = PAL(dk);
+  const C = PAL(dk), ch = CHAIRS[pr.chair || 'std'];
   if (pr.k === 'pod') {
     const c = pr.n === 1 ? ['#f6dc9a', '#d4a043', '#b8862f'] : pr.n === 2 ? ['#eef1f6', '#b9c1ce', '#9aa4b4'] : ['#f2c9a2', '#c07f45', '#9e6334'];
     isoBox(ctx, L, pr.x, pr.y, pr.w, pr.w, pr.h, c[0], c[1], c[2]);
     const [nx, ny] = WP(L, pr.x - .1, pr.y + pr.w / 2, pr.h / 2);
-    ctx.fillStyle = 'rgba(40,25,5,.75)'; ctx.font = `800 ${Math.max(9, L.tw * .26)}px Georgia,serif`; ctx.textAlign = 'center'; ctx.fillText(pr.n, nx, ny + L.tw * .08);
+    ctx.fillStyle = 'rgba(40,25,5,.75)'; ctx.font = `800 ${Math.max(8, L.tw * .26)}px Georgia,serif`; ctx.textAlign = 'center'; ctx.fillText(pr.n, nx, ny + L.tw * .08);
   } else if (pr.k === 'desk') {
     isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, pr.h, C.desk[0], C.desk[1], C.desk[2]);
     if (pr.lap) {
@@ -5196,27 +5489,87 @@ function drawProp(ctx, L, pr, t, dk) {
       const [a1, b1] = q(-.15, .19), [a2, b2] = q(.15, .05);
       ctx.strokeStyle = (Math.round(pr.x * 3 + pr.y) % 3) ? '#3ddc97' : '#ff6b7d'; ctx.lineWidth = 1.1; ctx.beginPath(); ctx.moveTo(a1, b1); ctx.lineTo((a1 + a2) / 2, (b1 + b2) / 2 + Math.sin(t * 2 + pr.x * 3 + pr.y) * 1.4); ctx.lineTo(a2, b2); ctx.stroke();
     }
+    if (pr.mon) {
+      isoBox(ctx, L, pr.x, pr.y - .18, .06, .06, .14, '#2a2d33', '#1c1e22', '#141619', pr.h);
+      const q = (dx, dz) => WP(L, pr.x + dx, pr.y - .2, pr.h + .12 + dz);
+      poly(ctx, [q(-.3, 0), q(.3, 0), q(.3, .3), q(-.3, .3)], '#111318');
+      poly(ctx, [q(-.27, .03), q(.27, .03), q(.27, .27), q(-.27, .27)], dk ? '#1b3a6b' : '#2f5fb0');
+      const [a1, b1] = q(-.22, .2), [a2, b2] = q(.22, .09); ctx.strokeStyle = '#7fe0b4'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(a1, b1); ctx.lineTo((a1 + a2) / 2, (b1 + b2) / 2 + Math.sin(t * 1.6 + pr.x) * 1.2); ctx.lineTo(a2, b2); ctx.stroke();
+    }
   } else if (pr.k === 'chair') {
     isoBox(ctx, L, pr.x, pr.y, .07, .07, .2, '#3a3d44', '#24262b', '#1b1d21');
-    isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, .07, CHAIR[0], CHAIR[1], CHAIR[2], .2);
+    isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, .07, ch[0], ch[1], ch[2], .2);
+  } else if (pr.k === 'chairf') {   // a chair on the far side of a table, its back towards the wall
+    isoBox(ctx, L, pr.x, pr.y, .07, .07, .2, '#3a3d44', '#24262b', '#1b1d21');
+    isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, .07, ch[0], ch[1], ch[2], .2);
+    isoBox(ctx, L, pr.x, pr.y - .2, pr.w * .9, .07, .34, ch[0], ch[1], ch[2], .27);
   } else if (pr.k === 'chairb') {
-    isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, pr.h, CHAIR[0], CHAIR[1], CHAIR[2], .27);
-  } else if (pr.k === 'counter') {
+    isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, pr.h, ch[0], ch[1], ch[2], .27);
+  } else if (pr.k === 'mtable') {
+    isoBox(ctx, L, pr.x - pr.w / 2 + .3, pr.y, .12, .12, pr.h, '#2a2a2e', '#18181b', '#111113'); isoBox(ctx, L, pr.x + pr.w / 2 - .3, pr.y, .12, .12, pr.h, '#2a2a2e', '#18181b', '#111113');
+    isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, .07, dk ? '#4a3626' : '#6b4a32', dk ? '#3a2a1d' : '#563b28', dk ? '#2e2117' : '#48311f', pr.h - .07);
+    for (const px of pr.px || []) { const [a, b] = WP(L, px, pr.y + .1, pr.h); ctx.fillStyle = 'rgba(255,255,255,.75)'; ctx.fillRect(a - 4, b - 2, 8, 4); }
+  } else if (pr.k === 'counter' || pr.k === 'bar') {
     isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, pr.h, '#2b2c31', '#141518', '#0d0e10');
     const x1 = pr.x + pr.w / 2, y0 = pr.y - pr.d / 2, y1 = pr.y + pr.d / 2, [a, b] = WP(L, x1, y0, .05), [c, d] = WP(L, x1, y1, .05);
     ctx.lineCap = 'round'; ctx.strokeStyle = 'rgba(255,200,110,.35)'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(a, b); ctx.lineTo(c, d); ctx.stroke();
     ctx.strokeStyle = '#ffd690'; ctx.lineWidth = 1.6; ctx.stroke(); ctx.lineCap = 'butt';
+    if (pr.k === 'bar') { for (let k = 0; k < 3; k++) { const [cx, cy] = WP(L, pr.x, pr.y - .8 + k * .8, pr.h); ctx.fillStyle = ['#c9a96e', '#e9e2cf', '#8a5a34'][k]; ctx.beginPath(); ctx.ellipse(cx, cy - 3, L.tw * .07, L.tw * .05, 0, 0, Math.PI * 2); ctx.fill(); } }
   } else if (pr.k === 'table') {
     isoBox(ctx, L, pr.x, pr.y, .07, .07, pr.h, '#2a2a2e', '#18181b', '#111113');
-    const [cx, cy] = WP(L, pr.x, pr.y, pr.h);
-    ctx.fillStyle = '#1d1a18'; ctx.beginPath(); ctx.ellipse(cx, cy + 2, ...floorEllipse(L, .33), 0, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#3b2c22'; ctx.beginPath(); ctx.ellipse(cx, cy, ...floorEllipse(L, .33), 0, 0, Math.PI * 2); ctx.fill();
-  } else if (pr.k === 'cchair') {
+    const [cx, cy] = WP(L, pr.x, pr.y, pr.h), r2 = pr.w / 2;
+    ctx.fillStyle = dk ? '#1d1a18' : '#9a8a78'; ctx.beginPath(); ctx.ellipse(cx, cy + 2, ...floorEllipse(L, r2), 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = dk ? '#3b2c22' : '#f3ece2'; ctx.beginPath(); ctx.ellipse(cx, cy, ...floorEllipse(L, r2), 0, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,.8)'; ctx.beginPath(); ctx.ellipse(cx - L.tw * .08, cy, L.tw * .06, L.tw * .04, 0, 0, Math.PI * 2); ctx.fill();
+  } else if (pr.k === 'cchair') {   // a wooden chair; one with its back on the far side (left-up) draws the back first
+    if (pr.bk === 'mx') isoBox(ctx, L, pr.x - .16, pr.y, .06, pr.w, .26, '#9a5f3a', '#7a4b2e', '#633c24', pr.h);
     isoBox(ctx, L, pr.x, pr.y, pr.w, pr.w, pr.h, '#9a5f3a', '#7a4b2e', '#633c24');
-    isoBox(ctx, L, pr.x, pr.y + (pr.y > 9.7 ? .16 : -.16), pr.w, .06, .26, '#9a5f3a', '#7a4b2e', '#633c24', pr.h);
+  } else if (pr.k === 'cback') {
+    isoBox(ctx, L, pr.x, pr.y, .06, pr.w, pr.h, '#9a5f3a', '#7a4b2e', '#633c24', pr.z);
+  } else if (pr.k === 'ltable') {   // the laptop table: legs, a wooden top, laptops facing the places on its right
+    const tp = dk ? ['#4a3a2a', '#3a2d20', '#2e2318'] : ['#d9c3a0', '#bfa680', '#a88f6a'];
+    [-1, 1].forEach(e => isoBox(ctx, L, pr.x, pr.y + e * (pr.d / 2 - .3), .5, .1, pr.h - .06, '#2a2a2e', '#18181b', '#111113'));
+    isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, .06, tp[0], tp[1], tp[2], pr.h - .06);
+    for (const o of LAP_O) {
+      const cy = pr.y + o, q = (dy, dz) => WP(L, pr.x - .04, cy + dy, pr.h + .02 + dz);
+      isoBox(ctx, L, pr.x + .12, cy, .26, .38, .02, '#9aa2ad', '#7d8590', '#6b727c', pr.h);
+      poly(ctx, [q(-.19, 0), q(.19, 0), q(.19, .24), q(-.19, .24)], '#20242c');
+      const [a1, b1] = q(.15, .05), [a2, b2] = q(-.15, .19);
+      ctx.strokeStyle = (Math.round(cy * 3) % 3) ? '#3ddc97' : '#ff6b7d'; ctx.lineWidth = 1.1; ctx.beginPath(); ctx.moveTo(a1, b1); ctx.lineTo((a1 + a2) / 2, (b1 + b2) / 2 + Math.sin(t * 2 + cy * 3) * 1.4); ctx.lineTo(a2, b2); ctx.stroke();
+    }
+  } else if (pr.k === 'dtable') {   // the long dining table: a gold runner down the middle, a plate at each place
+    const tp = dk ? ['#3b2c22', '#2c2119', '#231a13'] : ['#f3ece2', '#d8cdbd', '#c4b7a4'];
+    [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([ex, ey]) => isoBox(ctx, L, pr.x + ex * (pr.w / 2 - .12), pr.y + ey * (pr.d / 2 - .15), .08, .08, pr.h - .06, '#2a2a2e', '#18181b', '#111113'));
+    isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, .06, tp[0], tp[1], tp[2], pr.h - .06);
+    poly(ctx, [WP(L, pr.x - .13, pr.y - pr.d / 2 + .2, pr.h), WP(L, pr.x + .13, pr.y - pr.d / 2 + .2, pr.h), WP(L, pr.x + .13, pr.y + pr.d / 2 - .2, pr.h), WP(L, pr.x - .13, pr.y + pr.d / 2 - .2, pr.h)], 'rgba(201,169,110,.55)');
+    ctx.fillStyle = 'rgba(255,255,255,.85)';
+    for (const y of DINE_Y) for (const e of [-1, 1]) { const [cx, cy] = WP(L, pr.x + e * .36, y, pr.h); ctx.beginPath(); ctx.ellipse(cx, cy, L.tw * .1, L.tw * .06, 0, 0, Math.PI * 2); ctx.fill(); }
+  } else if (pr.k === 'gate') {   // the entrance on the open front: two posts and a beam with the sign
+    const x0 = pr.x - pr.w / 2, x1 = pr.x + pr.w / 2, gc = dk ? ['#3a3226', '#221d16', '#17130e'] : ['#2b2c31', '#141518', '#0d0e10'];
+    isoBox(ctx, L, x0, pr.y, .14, .14, pr.h, gc[0], gc[1], gc[2]); isoBox(ctx, L, x1, pr.y, .14, .14, pr.h, gc[0], gc[1], gc[2]);
+    isoBox(ctx, L, pr.x, pr.y, pr.w + .14, .14, .3, gc[0], gc[1], gc[2], pr.h);
+    const [a, b] = WP(L, x0, pr.y + .07, pr.h + .02), [c, d] = WP(L, x1, pr.y + .07, pr.h + .02);
+    ctx.lineCap = 'round'; ctx.strokeStyle = 'rgba(255,200,110,.35)'; ctx.lineWidth = 5; ctx.beginPath(); ctx.moveTo(a, b); ctx.lineTo(c, d); ctx.stroke(); ctx.strokeStyle = '#ffd690'; ctx.lineWidth = 1.4; ctx.stroke(); ctx.lineCap = 'butt';
+    const [tx, ty] = WP(L, pr.x, pr.y + .07, pr.h + .15);
+    ctx.save(); ctx.translate(tx, ty); ctx.transform(1, L.q, 0, 1, 0, 0); ctx.fillStyle = '#f3d991'; ctx.font = `800 ${Math.max(6.5, L.tw * .15)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('ทางเข้า · ENTRANCE', 0, 0); ctx.restore();
+  } else if (pr.k === 'sofa') {
+    const w = pr.w, d = pr.d, col = dk ? ['#3a3550', '#2a2640', '#221f34'] : ['#d9d2c4', '#bfb6a5', '#a99f8d'];
+    isoBox(ctx, L, pr.x, pr.y, w, d, pr.h, col[0], col[1], col[2]);
+    if (pr.rot) isoBox(ctx, L, pr.x + .3, pr.y, .2, d, .32, col[0], col[1], col[2], pr.h);
+    else isoBox(ctx, L, pr.x, pr.y + .3, w, .2, .32, col[0], col[1], col[2], pr.h);
+  } else if (pr.k === 'ctable') {
+    isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, pr.h, dk ? '#1c1c20' : '#f5f1ea', dk ? '#121215' : '#ddd5c8', dk ? '#0c0c0e' : '#c9c0b1');
+  } else if (pr.k === 'plaque') {   // the Hall of Fame: a standing slab on a gold plinth, behind the podium
+    isoBox(ctx, L, pr.x, pr.y, pr.w + .2, pr.d + .2, .1, '#e3c27a', '#b48a3c', '#94702e');
+    isoBox(ctx, L, pr.x, pr.y, pr.w, pr.d, pr.h, dk ? '#3a1820' : '#7a2230', dk ? '#20131a' : '#5a1a24', dk ? '#170d12' : '#4a141d', .1);
+    const p2 = (x, z) => WP(L, x, pr.y + pr.d / 2, z), x0 = pr.x - pr.w / 2, x1 = pr.x + pr.w / 2;
+    poly(ctx, [p2(x0 + .08, .18), p2(x1 - .08, .18), p2(x1 - .08, pr.h + .02), p2(x0 + .08, pr.h + .02)], dk ? '#4a1e28' : '#8a2a3a');
+    const [tx, ty] = p2(pr.x, pr.h * .78), [sx, sy] = p2(pr.x, pr.h * .5);
+    ctx.save(); ctx.translate(tx, ty); ctx.transform(1, L.q, 0, 1, 0, 0); ctx.fillStyle = '#e8bf62'; ctx.font = `800 ${Math.max(8, L.tw * .22)}px Georgia,serif`; ctx.textAlign = 'center'; ctx.fillText('★ HALL OF FAME ★', 0, 0); ctx.restore();
+    ctx.save(); ctx.translate(sx, sy); ctx.transform(1, L.q, 0, 1, 0, 0); ctx.fillStyle = 'rgba(243,217,145,.85)'; ctx.font = `600 ${Math.max(6.5, L.tw * .13)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.textAlign = 'center'; ctx.fillText('ผลตอบแทนสูงสุดของรุ่น', 0, 0); ctx.restore();
   } else if (pr.k === 'plant') {
     isoBox(ctx, L, pr.x, pr.y, pr.w, pr.w, pr.h, dk ? '#3a3e46' : '#e9e4da', dk ? '#2a2d33' : '#cfc8bb', dk ? '#202328' : '#bdb5a7');
-    const [px, py] = WP(L, pr.x, pr.y, pr.h + .55), r = L.tw * .3;
+    const [px, py] = WP(L, pr.x, pr.y, pr.h + .55), r = L.tw * .3 * (pr.w / .55);
     ctx.fillStyle = '#1f6b45'; dot(ctx, px, py, r); ctx.fillStyle = '#2f8a5a'; dot(ctx, px - r * .45, py - r * .3, r * .7); ctx.fillStyle = '#3fa96d'; dot(ctx, px + r * .35, py - r * .55, r * .55);
   } else if (pr.k === 'mon') {
     isoBox(ctx, L, pr.x, pr.y, pr.w, pr.w, pr.h, dk ? '#2b3554' : '#fffaf0', dk ? '#1b2440' : '#e6d6b6', dk ? '#141c34' : '#d6c39e');
@@ -5227,54 +5580,87 @@ function drawProp(ctx, L, pr, t, dk) {
     if (Math.abs(sx) > .35) { ctx.fillStyle = '#5a3c06'; ctx.font = `900 ${r * .7}px Georgia,serif`; ctx.textAlign = 'center'; ctx.fillText('1M', 0, r * .25); }
     ctx.restore();
     const [lx, ly] = WP(L, pr.x - .1, pr.y + pr.w / 2, pr.h / 2);
-    ctx.fillStyle = dk ? '#c9a96e' : '#8a5f12'; ctx.font = `800 ${Math.max(8, L.tw * .15)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.textAlign = 'center'; ctx.fillText('1M CLUB', lx, ly + 3);
+    ctx.fillStyle = dk ? '#c9a96e' : '#8a5f12'; ctx.font = `800 ${Math.max(7, L.tw * .15)}px "Leelawadee UI",Tahoma,sans-serif`; ctx.textAlign = 'center'; ctx.fillText('1M CLUB', lx, ly + 3);
   }
 }
+// a piece of glass wall: a dark base, the glass, a frame along the top, posts at its ends, a streak of light
+function drawWallPiece(ctx, L, pc, dk) {
+  const w = pc.w, C = PAL(dk), P = (s, z) => w.a === 'x' ? WP(L, w.at, s, z) : WP(L, s, w.at, z);
+  poly(ctx, [P(pc.s0, 0), P(pc.s1, 0), P(pc.s1, .22), P(pc.s0, .22)], dk ? '#15171d' : '#b9bfc8');
+  poly(ctx, [P(pc.s0, .22), P(pc.s1, .22), P(pc.s1, GLASS_H), P(pc.s0, GLASS_H)], C.glass);
+  ctx.strokeStyle = C.glassE; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(...P(pc.s0 + (pc.s1 - pc.s0) * .2, GLASS_H - .1)); ctx.lineTo(...P(pc.s0 + (pc.s1 - pc.s0) * .45, .35)); ctx.stroke();
+  ctx.strokeStyle = C.frame; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(...P(pc.s0, GLASS_H)); ctx.lineTo(...P(pc.s1, GLASS_H)); ctx.stroke();
+  ctx.lineWidth = 1.6; ctx.beginPath(); ctx.moveTo(...P(pc.s0, 0)); ctx.lineTo(...P(pc.s0, GLASS_H)); ctx.moveTo(...P(pc.s1, 0)); ctx.lineTo(...P(pc.s1, GLASS_H)); ctx.stroke();
+}
 // the gold globe lamps, drawn over everything on the floor
-function drawLamps(ctx, L, t) {
+function drawLamps(ctx, L) {
   for (const [x, y, z] of LAMPS) {
     const [cx, cy] = WP(L, x, y, z), r = L.tw * .13;
-    ctx.strokeStyle = 'rgba(60,45,20,.6)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(cx, cy - r); ctx.lineTo(cx, Math.max(0, cy - L.zU * 1.6)); ctx.stroke();
+    if (cx < -40 || cx > L.W + 40 || cy < -40 || cy > L.H + 40) continue;
+    ctx.strokeStyle = 'rgba(60,45,20,.6)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(cx, cy - r); ctx.lineTo(cx, cy - L.zU * 1.2); ctx.stroke();
     const gl = ctx.createRadialGradient(cx, cy, r * .5, cx, cy, r * 3.2); gl.addColorStop(0, 'rgba(255,214,140,.35)'); gl.addColorStop(1, 'rgba(255,214,140,0)');
     ctx.fillStyle = gl; dot(ctx, cx, cy, r * 3.2);
     const g = ctx.createRadialGradient(cx - r * .35, cy - r * .35, 1, cx, cy, r); g.addColorStop(0, '#fff6dc'); g.addColorStop(.55, '#f1c766'); g.addColorStop(1, '#b8862f');
     ctx.fillStyle = g; dot(ctx, cx, cy, r);
   }
 }
-// move one person a step: idle a while, then walk a route to a free tile; the top 3 stay on the podium
+/* ---------- what people do: sit a while (class, a meeting, a meal, the sofa), stand around, walk to the next place ---------- */
 function worldStep(pp, dt, t) {
   const p = pp.p;
-  if (pp.seat) { p.x = pp.seat.x; p.y = pp.seat.y + .02; p.z = .27; p.face = 'b'; p.walk = false; p.wave = false; p.jump = 0; p.path = []; return; }
-  if (pp.top) { const pod = PROPS.find(x => x.k === 'pod' && x.n === pp.top); p.x = pod.x; p.y = pod.y; p.z = pod.h; p.face = 'f'; p.walk = false; p.wave = Math.sin(t * .7 + pp.top) > .55; return; }
-  p.z = 0;
-  if (!p.path.length) {
-    p.walk = false; p.idle -= dt;
-    p.wave = pp.cheer && Math.sin(t * .9 + pp.seed) > .7; p.jump = pp.cheer && p.wave ? Math.abs(Math.sin(t * 7)) * 5 : 0;
-    if (p.idle <= 0) {
-      const [ti, tj] = WCELLS[Math.floor(Math.random() * WCELLS.length)];
-      p.path = route(Math.floor(p.x), Math.floor(p.y), ti, tj).slice(0, 14);
-      p.idle = 1.5 + Math.random() * 4.5;
-    }
+  if (p.mode === 'fixed') { p.walk = false; p.wave = false; p.jump = 0; return; }
+  if (pp.top) { const pod = PROPS.find(x => x.k === 'pod' && x.n === pp.top); if (p.seat) { p.seat.occ = null; p.seat = null; } p.x = pod.x; p.y = pod.y; p.z = pod.h; p.face = 'f'; p.walk = false; p.mode = 'pod'; p.wave = Math.sin(t * .7 + pp.top) > .55; return; }
+  if (p.mode === 'sit') {
+    p.walk = false; p.wave = false; p.jump = 0; p.until -= dt;
+    if (p.until > 0) return;
+    // stand up: back to the tile beside the seat, then go on
+    const s = p.seat; p.mode = 'slide'; p.from = [p.x, p.y, p.z]; p.to = [s.near[0] + .5, s.near[1] + .5, 0]; p.k = 0; p.next = 'stand'; s.occ = null; p.seat = null; p.until = 0;
     return;
   }
+  if (p.mode === 'slide') {
+    p.k = Math.min(1, p.k + dt / .55); const e = p.k * p.k * (3 - 2 * p.k);
+    p.x = p.from[0] + (p.to[0] - p.from[0]) * e; p.y = p.from[1] + (p.to[1] - p.from[1]) * e; p.z = p.from[2] + (p.to[2] - p.from[2]) * e;
+    p.walk = true; p.phase = (p.phase || 0) + dt * 7; p.face = 'b';
+    if (p.k >= 1) { p.mode = p.next; p.walk = false; if (p.mode === 'sit') p.face = 'b'; }
+    return;
+  }
+  if (p.mode === 'stand') {
+    p.walk = false; p.until -= dt;
+    p.wave = pp.cheer && Math.sin(t * .9 + pp.seed) > .7; p.jump = pp.cheer && p.wave ? Math.abs(Math.sin(t * 7)) * 5 : 0;
+    if (p.until > 0) return;
+    // where next: a free seat somewhere (class, the meeting room, a meal, the sofa), or a place to stand
+    const r = Math.random(), want = r < .32 ? 'big' : r < .44 ? 'small' : r < .5 ? 'meet' : r < .6 ? 'dine' : r < .76 ? 'lobby' : null;
+    const seat = want ? freeSeat(want, pp.id) : null;
+    let ti, tj;
+    if (seat) { [ti, tj] = seat.near; seat.occ = pp.id; p.seat = seat; } else[ti, tj] = SPOTS[Math.floor(Math.random() * SPOTS.length)];
+    p.path = route(Math.floor(p.x), Math.floor(p.y), ti, tj); p.mode = 'walk';
+    if (!p.path.length && !(Math.floor(p.x) === ti && Math.floor(p.y) === tj)) { if (seat) { seat.occ = null; p.seat = null; } p.mode = 'stand'; p.until = 1 + Math.random() * 2; }
+    return;
+  }
+  // walking
   p.wave = false; p.jump = 0;
-  const nx = p.path[0], dx = nx.x - p.x, dy = nx.y - p.y, dist = Math.hypot(dx, dy), sp = (1.05 + pp.seed * .06) * dt;
+  if (!p.path.length) {
+    if (p.seat) { const s = p.seat; p.mode = 'slide'; p.from = [p.x, p.y, 0]; p.to = [s.x, s.y, s.z]; p.k = 0; p.next = 'sit'; p.until = 20 + Math.random() * 55; }
+    else { p.mode = 'stand'; p.until = 2 + Math.random() * 6; }
+    return;
+  }
+  const nx = p.path[0], dx = nx.x - p.x, dy = nx.y - p.y, dist = Math.hypot(dx, dy), sp = (1.15 + pp.seed * .06) * dt;
   if (dist <= sp) { p.x = nx.x; p.y = nx.y; p.path.shift(); } else { p.x += dx / dist * sp; p.y += dy / dist * sp; }
   p.walk = true; p.phase = (p.phase || 0) + dt * 9;
   const sx = dx - dy, sy = dx + dy;
   p.face = Math.abs(sy) > Math.abs(sx) * 1.4 && sy < 0 ? 'b' : sx < -.05 ? 'l' : sx > .05 ? 'r' : 'f';
 }
-/* ---------- sprites: each person is drawn once per pose into a small picture, then stamped every frame ---------- */
-const SPR = { m: new Map(), key: '' };
+/* ---------- sprites: each person is drawn once per pose into a small picture, then stamped every frame.
+   The pictures are made at the zoom the camera rests at; while it glides, the same pictures are scaled ---------- */
+const SPR = { m: new Map(), key: '', s: 1 };
 const SPR_BOX = { x: -19, y: -66, w: 38, h: 78 };   // around the feet, in the character's own units
 function sprite(pp, pose, s, dpr) {
-  const gk = `${s.toFixed(3)}@${dpr}`;
-  if (SPR.key !== gk) { SPR.m.clear(); SPR.key = gk; }
-  const key = pp.id + '|' + pose; let c = SPR.m.get(key);
+  const want = Math.max(.45, Math.min(1.8, Math.round(s * 5) / 5)), gk = `${(WORLD.camT ? SPR.s : want).toFixed(2)}@${dpr}`;
+  if (SPR.key !== gk) { SPR.m.clear(); SPR.key = gk; SPR.s = WORLD.camT ? SPR.s : want; }
+  const ss = SPR.s, key = pp.id + '|' + pose; let c = SPR.m.get(key);
   if (c) return c;
-  c = document.createElement('canvas'); c.width = Math.ceil(SPR_BOX.w * s * dpr); c.height = Math.ceil(SPR_BOX.h * s * dpr);
+  c = document.createElement('canvas'); c.width = Math.ceil(SPR_BOX.w * ss * dpr); c.height = Math.ceil(SPR_BOX.h * ss * dpr);
   const g = c.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const kind = pose[0], k = +pose[1] || 0, o = { x: -SPR_BOX.x * s, y: -SPR_BOX.y * s, s, t: 0, seed: 0, noDyn: true, ring: pp.t >= 2 && !pp.seat };
+  const kind = pose[0], k = +pose[1] || 0, o = { x: -SPR_BOX.x * ss, y: -SPR_BOX.y * ss, s: ss, t: 0, seed: 0, noDyn: true, ring: pp.t >= 2 && kind !== 's' };
   if (kind === 's') Object.assign(o, { sit: true, face: 'b' });
   else if (kind === 'w') Object.assign(o, { face: 'f', wave: true, waveA: k ? -.35 : .35 });
   else if (kind === 'i') Object.assign(o, { face: pose[1] });
@@ -5284,85 +5670,102 @@ function sprite(pp, pose, s, dpr) {
   return c;
 }
 function drawPerson(ctx, pp, x, y, s, t, dpr) {
-  const p = pp.p;
+  const p = pp.p, seated = p.mode === 'sit' || p.mode === 'fixed';
   if (pp.me) { const k = Math.sin(t * 4); ctx.strokeStyle = 'rgba(61,220,151,.95)'; ctx.lineWidth = 1.8 * s; ctx.beginPath(); ctx.ellipse(x, y, (14 + k * 1.6) * s, (6.5 + k * .7) * s, 0, 0, Math.PI * 2); ctx.stroke(); }
   let pose, mirror = p.face === 'l';
-  if (pp.seat) { pose = 'sb'; mirror = false; }
+  if (seated) { pose = 'sb'; mirror = false; }
   else if (p.wave) { pose = Math.sin(t * 11) > 0 ? 'w0' : 'w1'; mirror = false; }
   else if (p.walk) pose = (p.face === 'l' ? 'r' : p.face) + (((Math.floor((p.phase || 0) / (Math.PI / 2)) % 4) + 4) % 4);
   else pose = 'i' + (p.face === 'l' ? 'r' : p.face || 'f');
-  const sp = sprite(pp, pose, s, dpr), yo = p.walk || pp.seat ? 0 : Math.sin(t * 2.2 + pp.seed) * .45 * s - (p.jump || 0) * s;
+  const sp = sprite(pp, pose, s, dpr), yo = p.walk || seated ? 0 : Math.sin(t * 2.2 + pp.seed) * .45 * s - (p.jump || 0) * s;
   const bx = SPR_BOX.x * s, by = SPR_BOX.y * s, bw = SPR_BOX.w * s, bh = SPR_BOX.h * s;
   if (mirror) { ctx.save(); ctx.translate(x, 0); ctx.scale(-1, 1); ctx.drawImage(sp, bx, y + by + yo, bw, bh); ctx.restore(); }
   else ctx.drawImage(sp, x + bx, y + by + yo, bw, bh);
   if (pp.tk === 'dia') {   // the floating diamond turns and bobs
-    const a = pp.a, top = (a.acc === 2 || a.hair === 4 || a.hair === 1 ? -48 : -45) + (pp.seat ? 9.5 : 0), cy = y + yo + (top - 5 + Math.sin(t * 3) * 1.6) * s, w = 4.2 * Math.cos(t * 2.2) * s;
+    const a = pp.a, top = (a.acc === 2 || a.hair === 4 || a.hair === 1 ? -48 : -45) + (seated ? 9.5 : 0), cy = y + yo + (top - 5 + Math.sin(t * 3) * 1.6) * s, w = 4.2 * Math.cos(t * 2.2) * s;
     poly(ctx, [[x, cy - 5 * s], [x + w, cy - s], [x, cy + 5 * s], [x - w, cy - s]], '#cfe2ff');
     poly(ctx, [[x, cy - s], [x + w, cy - s], [x, cy + 5 * s]], '#6f9ef5');
   }
 }
-// the room with its moving screens, refreshed about 8 times a second (the people move every frame)
-function worldRoom(t) {
-  const bg = worldBg(), L = WORLD.L, dpr = WORLD.dpr, rm = WORLD.room || (WORLD.room = document.createElement('canvas'));
-  if (rm.width !== bg.width || rm.height !== bg.height) { rm.width = bg.width; rm.height = bg.height; WORLD.roomAt = -9; }
-  if (WORLD.roomBg !== WORLD.bgKey || t - WORLD.roomAt > .12 || t < WORLD.roomAt) {
-    const g = rm.getContext('2d'); g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, rm.width, rm.height); g.drawImage(bg, 0, 0);
-    g.setTransform(dpr, 0, 0, dpr, 0, 0); worldScreen(g, L, t, 0);
-    WORLD.roomAt = t; WORLD.roomBg = WORLD.bgKey;
-  }
-  return rm;
-}
 function worldFrame(now2, first) {
-  if (!WORLD.cv || !WORLD.cv.isConnected || !WORLD.cv.offsetParent || !worldSize()) return;
-  const t1 = performance.now(), t = (now2 - WORLD.t0) / 1000, dt = Math.min(.1, first ? 0 : (now2 - (WORLD.last || now2)) / 1000), L = WORLD.L, ctx = WORLD.cv.getContext('2d'), dk = darkRoom(), people = worldPeople();
+  if (!WORLD.cv || !WORLD.cv.isConnected || !WORLD.cv.offsetParent) return;
+  const t1 = performance.now(), t = (now2 - WORLD.t0) / 1000, dt = Math.min(.1, first ? 0 : (now2 - (WORLD.last || now2)) / 1000);
+  // the camera glides towards where it was sent
+  if (WORLD.camT) { const c = WORLD.cam, g = WORLD.camT, k = first ? 1 : 1 - Math.exp(-dt * 7); WORLD.cam = { x: c.x + (g.x - c.x) * k, y: c.y + (g.y - c.y) * k, z: c.z + (g.z - c.z) * k }; if (Math.abs(g.z - WORLD.cam.z) < .05 && Math.abs(g.x - WORLD.cam.x) < .002 && Math.abs(g.y - WORLD.cam.y) < .002) { WORLD.cam = { ...g }; WORLD.camT = null; } }
+  if (!worldSize()) return;
+  const L = WORLD.L, ctx = WORLD.cv.getContext('2d'), dk = darkRoom(), people = worldPeople(), dpr = WORLD.dpr, s = L.s;
   WORLD.last = now2;
-  const off = worldOff(L), dpr = WORLD.dpr, room = worldRoom(t), s = L.s;
+  // the still layer, through the camera
+  const bg = worldBg(), B = WORLD.bgL, k = L.tw / B.tw, bx = L.ox - B.ox * k, by = L.oy - B.oy * k;
   ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, WORLD.cv.width, WORLD.cv.height);
-  ctx.drawImage(room, Math.round(off * dpr), 0, WORLD.cv.width, WORLD.cv.height, 0, 0, WORLD.cv.width, WORLD.cv.height);
-  ctx.setTransform(dpr, 0, 0, dpr, -off * dpr, 0);
+  ctx.imageSmoothingQuality = 'high';
+  ctx.drawImage(bg, bx * dpr, by * dpr, B.W * k * dpr, B.H * k * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  worldScreen(ctx, L, t);
   people.forEach(pp => worldStep(pp, dt, t));
-  const items = PROPS.map(pr => ({ d: pr.x + pr.y, pr })).concat(people.map(pp => ({ d: pp.p.x + pp.p.y + (pp.top ? .6 : 0), pp })));
+  // everything on the floor that is on screen, back to front
+  const items = [], inView = (x, y, m = 90) => x > -m && x < L.W + m && y > -m * 1.5 && y < L.H + m;
+  for (const pr of PROPS) { if (pr.k === 'spot') continue; const [px, py] = WP(L, pr.x, pr.y); if (inView(px, py, 60 + (pr.w || 1) * L.tw)) items.push({ d: pr.x + pr.y, pr }); }
+  for (const pc of WPIECES) { const [px, py] = pc.w.a === 'x' ? WP(L, pc.w.at, pc.s0) : WP(L, pc.s0, pc.w.at); if (inView(px, py, 40 + L.tw)) items.push({ d: pc.d, pc }); }
+  for (const pp of people) { const [px, py] = WP(L, pp.p.x, pp.p.y, pp.p.z || 0); if (inView(px, py)) items.push({ d: pp.p.x + pp.p.y + (pp.top ? .6 : 0) + (pp.p.mode === 'sit' || pp.p.mode === 'fixed' ? .05 : 0), pp, px, py }); else pp.box = null; }
   items.sort((a, b) => a.d - b.d);
-  const vx0 = off - 50, vx1 = off + L.W + 50;
   for (const it of items) {
-    if (it.pr) { const [px] = WP(L, it.pr.x, it.pr.y); if (px > vx0 - 40 && px < vx1 + 40) drawProp(ctx, L, it.pr, t, dk); continue; }
-    const pp = it.pp, p = pp.p, [x, y] = WP(L, p.x, p.y, p.z || 0);
-    if (x < vx0 || x > vx1) { pp.box = null; continue; }
+    if (it.pr) { drawProp(ctx, L, it.pr, t, dk); continue; }
+    if (it.pc) { drawWallPiece(ctx, L, it.pc, dk); continue; }
+    const pp = it.pp, x = it.px, y = it.py, sat = pp.p.mode === 'sit' || pp.p.mode === 'fixed';
     drawPerson(ctx, pp, x, y, s, t, dpr);
-    pp.box = pp.seat ? [x - 12 * s, y - 40 * s, x + 12 * s, y + 6 * s] : [x - 12 * s, y - 50 * s, x + 12 * s, y + 4 * s];
+    pp.box = sat ? [x - 12 * s, y - 40 * s, x + 12 * s, y + 6 * s] : [x - 12 * s, y - 50 * s, x + 12 * s, y + 4 * s];
     if (WORLD.hover === pp.id) { ctx.strokeStyle = 'rgba(201,169,110,.9)'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.ellipse(x, y, 15 * s, 6.6 * s, 0, 0, Math.PI * 2); ctx.stroke(); }
   }
+  drawLamps(ctx, L);
   const fp = WORLD.focus && people.find(x => x.id === WORLD.focus);
   if (fp) {
-    const [fx, fy] = WP(L, fp.p.x, fp.p.y, fp.p.z || 0), cy = fy - 26 * s, k = .5 + Math.sin(t * 4) * .08;
+    const [fx, fy] = WP(L, fp.p.x, fp.p.y, fp.p.z || 0), cy = fy - 26 * s, kk = .5 + Math.sin(t * 4) * .08;
     const dim = ctx.createRadialGradient(fx, cy, 14 * s, fx, cy, 110 * s); dim.addColorStop(0, 'rgba(4,6,12,0)'); dim.addColorStop(1, 'rgba(4,6,12,.55)');
-    ctx.fillStyle = dim; ctx.fillRect(off, 0, L.W, L.H);
-    const beam = ctx.createLinearGradient(0, 0, 0, fy); beam.addColorStop(0, 'rgba(255,236,190,0)'); beam.addColorStop(1, `rgba(255,236,190,${(.32 * k).toFixed(3)})`);
+    ctx.fillStyle = dim; ctx.fillRect(0, 0, L.W, L.H);
+    const beam = ctx.createLinearGradient(0, 0, 0, fy); beam.addColorStop(0, 'rgba(255,236,190,0)'); beam.addColorStop(1, `rgba(255,236,190,${(.32 * kk).toFixed(3)})`);
     poly(ctx, [[fx - 8 * s, 0], [fx + 8 * s, 0], [fx + 26 * s, fy], [fx - 26 * s, fy]], beam);
     ctx.strokeStyle = 'rgba(255,214,120,.95)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.ellipse(fx, fy, 22 * s, 22 * s * L.q * 1.2, 0, 0, Math.PI * 2); ctx.stroke();
     drawPerson(ctx, fp, fx, fy, s, t, dpr);
   }
+  // room names floating above the rooms when the whole institute is in view
+  if (L.tw < 44) {
+    ctx.font = `800 ${Math.max(10, Math.min(13, L.tw * .32))}px "Leelawadee UI",Tahoma,sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    for (const r of ROOMS) {
+      const [lx, ly] = r.lab || [(r.x0 + r.x1) / 2, (r.y0 + r.y1) / 2], [x, y] = WP(L, lx, ly, 2.1), n = people.filter(pp => roomAt(pp.p.x, pp.p.y) === r).length, txt = `${r.n} · ${n}`;
+      const w = (WORLD.tw[txt] || (WORLD.tw[txt] = ctx.measureText(txt).width)) + 16;
+      ctx.fillStyle = 'rgba(10,10,12,.72)'; rr(x - w / 2, y - 10, w, 20, 10, ctx); ctx.fill(); ctx.strokeStyle = 'rgba(201,169,110,.55)'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.fillStyle = '#f3d991'; ctx.fillText(txt, x, y + .5);
+    }
+    ctx.textBaseline = 'alphabetic';
+  }
   // names and levels above heads: me, the one pointed at and the top 3 always show theirs (with the level spelled out);
   // the others show a diamond in their level's colour and their name, front-most first, wherever it does not cover another tag
-  const fs = Math.max(9.5, Math.min(12, L.tw * .19)), narrowW = L.W < 620, h = fs + 7;
+  const fs = Math.max(9.5, Math.min(12, L.tw * .19)), narrowW = L.W < 620, h = fs + 7, small = L.tw < 40;
   ctx.font = `700 ${fs}px "Leelawadee UI",Tahoma,sans-serif`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
   const tags = [];
   for (const pp of people) {
+    if (!pp.box) continue;
+    const sat = pp.p.mode === 'sit' || pp.p.mode === 'fixed';
+    if (pp.coach) { if (showNames && !small) { const [x, y] = WP(L, pp.p.x, pp.p.y, pp.p.z || 0), nm = pp.coach.name, w = (WORLD.tw[nm + fs] || (WORLD.tw[nm + fs] = ctx.measureText(nm).width)) + 12; tags.push({ pp, big: false, x, nm, lvl: '', wl: 0, w, lx: x - w / 2, ly: y - 47 * s - h, pri: -1, d: pp.p.x + pp.p.y, coach: 1 }); } continue; }
     const big = pp.me || pp.top || WORLD.hover === pp.id || WORLD.focus === pp.id;
-    if (!big && (!showNames || narrowW)) { const [x, y] = WP(L, pp.p.x, pp.p.y, pp.p.z || 0), ty = y - (pp.seat ? 47 : 56) * s; ctx.fillStyle = 'rgba(6,9,18,.55)'; poly(ctx, [[x, ty - 5], [x + 5, ty], [x, ty + 5], [x - 5, ty]], 'rgba(6,9,18,.55)'); poly(ctx, [[x, ty - 3.6], [x + 3.6, ty], [x, ty + 3.6], [x - 3.6, ty]], TCOL[pp.tk]); continue; }
+    if (!big && (!showNames || narrowW || small)) { if (small) continue; const [x, y] = WP(L, pp.p.x, pp.p.y, pp.p.z || 0), ty = y - (sat ? 47 : 56) * s; poly(ctx, [[x, ty - 5], [x + 5, ty], [x, ty + 5], [x - 5, ty]], 'rgba(6,9,18,.55)'); poly(ctx, [[x, ty - 3.6], [x + 3.6, ty], [x, ty + 3.6], [x - 3.6, ty]], TCOL[pp.tk]); continue; }
     const p = pp.p, [x, y] = WP(L, p.x, p.y, p.z || 0), name = commName(pp.c), nm = name.length > 14 ? name.slice(0, 13) + '…' : name;
     const lvl = big ? (pp.top ? `#${pp.top} ${TIERS[pp.t][1]}` : TIERS[pp.t][1]) : '';
     const wn = WORLD.tw[nm + fs] || (WORLD.tw[nm + fs] = ctx.measureText(nm).width), wl = lvl ? (WORLD.tw[lvl + fs] || (WORLD.tw[lvl + fs] = ctx.measureText(lvl).width)) + 10 : 9, w = wn + wl + 12;
-    const ly = y - (pp.tk === 'black' || pp.tk === 'dia' || pp.tk === 'plat' ? 62 : 54) * s + (pp.seat ? 9 * s : 0) - h - (pp.me ? 4 + Math.abs(Math.sin(t * 3)) * 3 : 0);
+    const ly = y - (pp.tk === 'black' || pp.tk === 'dia' || pp.tk === 'plat' ? 62 : 54) * s + (sat ? 9 * s : 0) - h - (pp.me ? 4 + Math.abs(Math.sin(t * 3)) * 3 : 0);
     tags.push({ pp, big, x, nm, lvl, wl, w, lx: x - w / 2, ly, pri: WORLD.focus === pp.id ? 4 : pp.me ? 3 : WORLD.hover === pp.id ? 2 : pp.top ? 1 : 0, d: p.x + p.y });
   }
   tags.sort((a2, b2) => b2.pri - a2.pri || b2.d - a2.d);
-  const placed = [], hit = (g) => placed.some(o => g.lx < o.lx + o.w + 3 && o.lx < g.lx + g.w + 3 && g.ly < o.ly + h + 2 && o.ly < g.ly + h + 2);
-  tags.forEach(g => { if (g.big || !hit(g)) { placed.push(g); g.on = 1; } });
+  const placed = [], hit = g => placed.some(o => g.lx < o.lx + o.w + 3 && o.lx < g.lx + g.w + 3 && g.ly < o.ly + h + 2 && o.ly < g.ly + h + 2);
+  // the tags that always show slide sideways off one another (the top 3 stand close together on the podium)
+  const over = g => placed.find(o => g.lx < o.lx + o.w + 3 && o.lx < g.lx + g.w + 3 && g.ly < o.ly + h + 2 && o.ly < g.ly + h + 2);
+  tags.forEach(g => { if (g.big) { for (let i = 0, o; i < 3 && (o = over(g)); i++) g.lx = g.x < o.lx + o.w / 2 ? o.lx - g.w - 4 : o.lx + o.w + 4; } if (g.big || !hit(g)) { placed.push(g); g.on = 1; } });
   placed.slice().reverse().forEach(g => {
     const pp = g.pp;
     ctx.globalAlpha = g.big ? 1 : .9;
-    ctx.fillStyle = 'rgba(6,9,18,.8)'; rr(g.lx, g.ly, g.w, h, h / 2, ctx); ctx.fill();
+    ctx.fillStyle = g.coach ? 'rgba(40,30,12,.85)' : 'rgba(6,9,18,.8)'; rr(g.lx, g.ly, g.w, h, h / 2, ctx); ctx.fill();
+    if (g.coach) { ctx.fillStyle = '#f3d991'; ctx.fillText(g.nm, g.lx + 6, g.ly + h / 2 + .5); ctx.globalAlpha = 1; return; }
     ctx.fillStyle = TCOL[pp.tk];
     if (g.lvl) { rr(g.lx, g.ly, g.wl, h, h / 2, ctx); ctx.fill(); ctx.fillStyle = '#16120a'; ctx.fillText(g.lvl, g.lx + 5, g.ly + h / 2 + .5); }
     else { ctx.save(); ctx.translate(g.lx + 6.5, g.ly + h / 2); ctx.rotate(Math.PI / 4); ctx.fillRect(-2.6, -2.6, 5.2, 5.2); ctx.restore(); }
@@ -5371,21 +5774,23 @@ function worldFrame(now2, first) {
     ctx.globalAlpha = 1;
   });
   ctx.textBaseline = 'alphabetic';
+  // how many are in each room, on the room buttons (once a second)
+  if (!WORLD.cntAt || now2 - WORLD.cntAt > 1000) { WORLD.cntAt = now2; $$('.wrooms [data-wrc]').forEach(el => { const k2 = el.dataset.wrc; el.textContent = k2 === 'all' ? people.filter(pp => pp.c).length : people.filter(pp => roomAt(pp.p.x, pp.p.y).k === k2).length; }); }
   PERF.ema = PERF.ema ? PERF.ema * .9 + (performance.now() - t1) * .1 : performance.now() - t1;
 }
 // pointing at someone shows who they are; clicking opens their card
 function worldPointer(e) {
   const cv = WORLD.cv; if (!cv) return;
-  const r = cv.getBoundingClientRect(), off = WORLD.L ? worldOff(WORLD.L) : 0, x = e.clientX - r.left + off, y = e.clientY - r.top;
+  const r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
   let hit = null;
-  for (const pp of WORLD.people) { const b = pp.box; if (b && x >= b[0] && x <= b[2] && y >= b[1] && y <= b[3] && (!hit || pp.p.x + pp.p.y > hit.p.x + hit.p.y)) hit = pp; }
-  const was = WORLD.hover; WORLD.hover = hit ? hit.id : null; cv.style.cursor = hit ? 'pointer' : '';
+  for (const pp of WORLD.people) { if (!pp.c) continue; const b = pp.box; if (b && x >= b[0] && x <= b[2] && y >= b[1] && y <= b[3] && (!hit || pp.p.x + pp.p.y > hit.p.x + hit.p.y)) hit = pp; }
+  const was = WORLD.hover; WORLD.hover = hit ? hit.id : null; cv.style.cursor = hit ? 'pointer' : WORLD.drag ? 'grabbing' : 'grab';
   const tip = $('.wtip');
   if (!tip) return;
   if (!hit) { tip.hidden = true; return; }
   const pr = commPref(hit.c), bd = badgesOf(hit.c);
-  if (was !== hit.id || tip.hidden) tip.innerHTML = `<b>${esc(commName(hit.c))}</b> ${you(hit.c)}<div class="row" style="gap:6px;margin-top:3px">${tierTag(hit.t)}<span class="xs muted">อันดับ #${hit.rank}</span></div><div class="xs" style="margin-top:3px">ผลตอบแทน <b class="${hit.v >= 0 ? 'up' : 'dn'} num">${pct(hit.v)}</b>${pr.amt ? ` · <span class="num">${signed(Math.round(profit(hit.c)))}</span> บาท` : ''}</div><div class="xs muted">เหรียญ ${bd.filter(x => x.ok).length}/${bd.length} · แตะเพื่อดูโปรไฟล์</div>`;
-  tip.hidden = false; tip.style.left = `${Math.max(90, Math.min(r.width - 90, (hit.box[0] + hit.box[2]) / 2 - off))}px`; tip.style.top = `${Math.max(70, hit.box[1] - 8)}px`;
+  if (was !== hit.id || tip.hidden) tip.innerHTML = `<b>${esc(commName(hit.c))}</b> ${you(hit.c)}<div class="row" style="gap:6px;margin-top:3px">${tierTag(hit.t)}<span class="xs muted">อันดับ #${hit.rank} · ${roomAt(hit.p.x, hit.p.y).n}</span></div><div class="xs" style="margin-top:3px">ผลตอบแทน <b class="${hit.v >= 0 ? 'up' : 'dn'} num">${pct(hit.v)}</b>${pr.amt ? ` · <span class="num">${signed(Math.round(profit(hit.c)))}</span> บาท` : ''}</div><div class="xs muted">เหรียญ ${bd.filter(x => x.ok).length}/${bd.length} · แตะเพื่อดูโปรไฟล์</div>`;
+  tip.hidden = false; tip.style.left = `${Math.max(90, Math.min(r.width - 90, (hit.box[0] + hit.box[2]) / 2))}px`; tip.style.top = `${Math.max(70, hit.box[1] - 8)}px`;
 }
 
 // head and shoulders of a member's character, for the ranking board
@@ -5542,7 +5947,7 @@ document.addEventListener('click', e => {
   if (act === 'tiers') { render(); return tierModal(); }
   if (act === 'avatar') { render(); return avatarModal(); }
   if (act === 'wnames') { showNames = !showNames; return render(); }
-  if (act === 'wlb') { lbOpen = !(lbOpen ?? innerWidth >= 1000); return render(); }
+  if (act === 'wlb') { lbOpen = !(lbOpen ?? innerWidth >= 1700); return render(); }
   if (act === 'tierreal') { tierDemo = null; return render(); }
   if (act === 'tp') { render(); return tpModal(); }
   if (act === 'stmt') { render(); return stmtModal(); }

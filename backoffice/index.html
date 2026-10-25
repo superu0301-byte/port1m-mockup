@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-Tc2l6+SPF+IT+8hIJcI1ldEQb1OKOZaCctlq6YDlqHw=' 'sha256-bKSrI4YGayDorEbnaIQgqtGctSrhl0G9xrVeGfGTO2w='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-YtXeF+9jHrm9fDrDepObyENTccyQxU5iBHrVP0OPFMU=' 'sha256-+TWrdrXK/tnVDHF5/pNX/gu3oQhdUrsSfMA1P3IpYCU=' 'sha256-w3wWhiLZXon5Ju8Vhlbbn7+VUaARTersRuaFEfacgXA='; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="theme-color" content="#05080f">
 <script>try{var t=localStorage.getItem('p1m-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t;document.documentElement.dataset.fx=localStorage.getItem('p1m-fx')==='off'?'off':'on'}catch(e){document.documentElement.dataset.fx='on'}</script>
 <title>หลังบ้าน · ปั้นพอร์ต 1 ล้าน (ต้นแบบ)</title>
@@ -889,7 +889,7 @@ aside.side:before{content:"";position:absolute;left:22px;right:22px;top:0;height
 aside.side{padding:14px 8px 10px;gap:10px;align-items:center;margin:10px 0 10px 10px;border-radius:22px}
 .sb-brand{padding:0 0 10px;align-items:center;width:100%}
 .sb-brand img{height:auto;width:58px}
-.sb-prog,.sb-key .kt,.sb-grp,.sb-nav .l,.sb-st,.sb-coach .ct,.sb-coach .ibtn{display:none}
+.sb-prog,.sb-key .kt,.sb-grp,.sb-nav .l,.sb-nav kbd,.sb-st,.sb-coach .ct,.sb-coach .ibtn{display:none}
 .sb-key{width:52px;height:52px;padding:0;justify-content:center;border-radius:50%}
 .sb-key .ki{background:none}
 .sb-nav{align-items:center;gap:4px}
@@ -956,6 +956,14 @@ aside.side>*{position:relative;z-index:1}
 :root[data-fx=on] .guil{animation:fx-spin 260s linear infinite;will-change:transform}
 :root[data-fx=on] .seal .m-tk{transform-box:fill-box;transform-origin:center;animation:fx-spin 120s linear infinite}
 :root[data-fx=on] .enter .hero .big .gtxt{background-image:linear-gradient(100deg,transparent 42%,rgba(255,250,236,.95) 50%,transparent 58%),var(--gtxt);background-size:260% 100%,100% 100%;background-repeat:no-repeat;animation:fx-shine 2.4s cubic-bezier(.4,0,.2,1) 1.1s both}
+/* corner marks like a photo mount or a certificate (the element sets --cm colour, --cl length, --cw width, --ci inset) */
+.cmk{--cm:rgba(201,169,110,.7);--cl:14px;--cw:1.5px;--ci:6px}
+:root[data-theme=light] .cmk{--cm:rgba(148,115,58,.7)}
+.cmk:before{content:"";position:absolute;inset:var(--ci);z-index:2;pointer-events:none;background:linear-gradient(var(--cm),var(--cm)) 0 0/var(--cl) var(--cw),linear-gradient(var(--cm),var(--cm)) 0 0/var(--cw) var(--cl),linear-gradient(var(--cm),var(--cm)) 100% 0/var(--cl) var(--cw),linear-gradient(var(--cm),var(--cm)) 100% 0/var(--cw) var(--cl),linear-gradient(var(--cm),var(--cm)) 0 100%/var(--cl) var(--cw),linear-gradient(var(--cm),var(--cm)) 0 100%/var(--cw) var(--cl),linear-gradient(var(--cm),var(--cm)) 100% 100%/var(--cl) var(--cw),linear-gradient(var(--cm),var(--cm)) 100% 100%/var(--cw) var(--cl);background-repeat:no-repeat}
+/* a line of light that passes once over a picture when it is shown */
+.scan{position:absolute;left:0;right:0;top:0;height:34%;z-index:1;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(201,169,110,.1) 70%,rgba(239,220,178,.42) 97%,transparent);transform:translateY(-105%);opacity:0}
+@keyframes fx-scan{0%{transform:translateY(-105%);opacity:1}88%{opacity:1}100%{transform:translateY(300%);opacity:0}}
+:root[data-fx=on] .scan{animation:fx-scan 1.5s cubic-bezier(.45,0,.25,1) .25s both}
 
 
 .shell{height:100%;display:grid;grid-template-columns:232px minmax(0,1fr);overflow:hidden}
@@ -1431,6 +1439,183 @@ aside.side>*{position:relative;z-index:1}
 @media (max-width:900px){.shell>aside.side{display:none}.shell>.sbar{display:flex}.shell{grid-template-columns:1fr}.top{height:56px}}
 /* ===== Private Bank (back office) ===== */
 .sbar{background:var(--sbar)}
+
+/* ===== the back office, finished like the client site (25 ต.ค.): certificate corners on the panels, statement strips,
+   ring gauges, cards that catch the light, the evidence picture in a mount. Motion only moves light or fades things in,
+   and all of it follows the in-app effects switch. ===== */
+/* panels: small gold corner marks like a certificate, the title in the serif */
+.view .pnl:before{--cm:rgba(201,169,110,.5);content:"";position:absolute;inset:5px;z-index:3;pointer-events:none;opacity:.6;background:linear-gradient(var(--cm),var(--cm)) 0 0/10px 1px,linear-gradient(var(--cm),var(--cm)) 0 0/1px 10px,linear-gradient(var(--cm),var(--cm)) 100% 0/10px 1px,linear-gradient(var(--cm),var(--cm)) 100% 0/1px 10px,linear-gradient(var(--cm),var(--cm)) 0 100%/10px 1px,linear-gradient(var(--cm),var(--cm)) 0 100%/1px 10px,linear-gradient(var(--cm),var(--cm)) 100% 100%/10px 1px,linear-gradient(var(--cm),var(--cm)) 100% 100%/1px 10px;background-repeat:no-repeat}
+:root[data-theme=light] .view .pnl:before{--cm:rgba(148,115,58,.5)}
+.view .pnl>.ph h3,.coc-id b,.stc-id b,.hs-n b{font-family:var(--disp);letter-spacing:.005em}
+.vh .chip.on{background:linear-gradient(180deg,rgba(227,204,156,.2),rgba(201,169,110,.07));box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+.tbl tbody tr.click:hover td:first-child,.ot-r:hover{box-shadow:inset 2px 0 0 var(--goldln)}
+.ot-r.on{box-shadow:inset 3px 0 0 var(--gold)}
+/* a ring gauge (0–100) with the value in the middle */
+.rg{position:relative;display:inline-grid;place-items:center;width:var(--sz);height:var(--sz);flex:none}
+.rg svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
+.rg circle{fill:none;stroke-width:3}.rg .tr{stroke:rgba(var(--wt),.09)}.rg .arc{stroke:var(--gold);stroke-linecap:round}
+.rg.ok .arc{stroke:var(--up)}.rg.dn .arc{stroke:var(--dn)}
+.rg b{position:relative;font-family:var(--disp);font-weight:700;font-size:calc(var(--sz) * .36);line-height:1}.rg.dn b{color:var(--dn)}
+.rgw{display:inline-flex;vertical-align:middle}
+/* the head coach's overview: the cohort as one statement strip */
+.vh.hstate{flex-wrap:nowrap;gap:16px;padding:9px 14px;border:1px solid var(--line2);border-radius:var(--r);background:linear-gradient(90deg,rgba(201,169,110,.09),transparent 55%),var(--surf);position:relative;overflow:hidden;box-shadow:inset 0 1px 0 var(--hi)}
+.hs-n{display:flex;align-items:baseline;gap:8px;flex:none;padding-right:16px;border-right:1px solid var(--line2)}
+.hs-n b{font-size:30px;line-height:1;font-weight:700;color:var(--gold2)}.hs-n small{font-size:12.5px;color:var(--mut)}
+.hs-m{display:flex;flex-direction:column;gap:6px;min-width:0;flex:0 1 560px}
+.hseg{display:flex;gap:3px;height:7px;border-radius:7px;overflow:hidden}.hseg i{display:block;height:100%}.hseg .red{background:var(--dn)}.hseg .amber{background:var(--warn)}.hseg .ok{background:var(--up)}
+.hstate .hsum{flex-wrap:nowrap;white-space:nowrap;overflow:hidden;font-size:13px}
+.hstate>.btn,.hstate>.lnk,.hstate>.tag{flex:none}
+/* a coach's card: the number engraved behind, a ring for the average discipline, a column per client with its score,
+   the three groups as one bar */
+.coc>*:not(.coc-no){position:relative;z-index:1}
+.coc-no{position:absolute;right:12px;top:2px;z-index:0;font:700 58px/1 var(--disp);color:rgba(201,169,110,.075);letter-spacing:-.02em;pointer-events:none}
+.coc-h{padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.07)}
+.coc-k{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:center}
+.coc-g{display:flex;align-items:center;gap:9px;flex-direction:row!important}.coc-g>span:last-child{display:flex;flex-direction:column;gap:1px}.coc-g .dlt{margin-left:0;font-size:11.5px;vertical-align:0}
+.coc .rg b{font-size:18px;color:#fff}.coc .rg .tr{stroke:rgba(255,255,255,.08)}.coc .rg.ok .arc{stroke:var(--gr)}.coc .rg.warn .arc{stroke:#c9a96e}.coc .rg.dn .arc{stroke:var(--rd)}.coc .rg.dn b{color:#f0909c}
+.coc-n b{font-family:var(--disp)}
+.coc-b{padding-top:13px}
+.coc-b i{background-image:linear-gradient(180deg,rgba(255,255,255,.2),transparent 70%);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.coc-b i:after{content:attr(data-v);position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);font-size:9.5px;font-weight:700;color:#a59d8f;font-variant-numeric:tabular-nums}
+.coc-s{flex-direction:column!important;gap:7px;padding-top:9px}
+.coc-seg{display:flex;gap:2px;height:6px;border-radius:6px;overflow:hidden}.coc-seg i{display:block;height:100%}.coc-seg .red{background:var(--rd)}.coc-seg .amber{background:var(--am)}.coc-seg .ok{background:var(--gr)}
+.coc-lg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px}
+.coc-lg>span{display:grid;grid-template-columns:7px minmax(0,1fr);column-gap:5px;align-items:center;min-width:0}
+.coc-lg i{width:7px;height:7px;border-radius:50%;background:var(--gr)}.coc-lg .red i{background:var(--rd)}.coc-lg .amber i{background:var(--am)}
+.coc-lg .l{font-size:10.5px;color:#a59d8f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.coc-lg b{grid-column:2;font:700 15px/1.2 var(--disp);color:#fff}
+:root[data-theme=light] .coc-h{border-bottom-color:rgba(60,45,20,.09)}
+:root[data-theme=light] .coc-no{color:rgba(148,115,58,.1)}
+:root[data-theme=light] .coc .rg b,:root[data-theme=light] .coc-lg b{color:#1d1b18}:root[data-theme=light] .coc .rg .tr{stroke:rgba(60,45,20,.09)}:root[data-theme=light] .coc .rg.warn .arc{stroke:#a8843a}
+:root[data-theme=light] .coc-lg .l,:root[data-theme=light] .coc-b i:after{color:#7b8093}
+@media (max-height:760px){.coc-b{padding-top:0}.coc-b i:after{display:none}.coc-h{padding-bottom:7px}.coc .rg{--sz:42px!important}.coc .rg b{font-size:15px}
+  .coc-lg .l{display:none}.coc-lg>span{display:flex;gap:5px}.coc-lg b{font-size:14px}.coc-s{gap:5px;padding-top:7px}
+  .vh.hstate{padding:6px 12px}.hs-n b{font-size:24px}.hs-m{gap:4px}}
+/* phones: the count and the buttons on one line, the bar and its legend under them */
+@media (max-width:900px){.vh.hstate{flex-wrap:wrap;gap:8px 10px;padding:8px 10px}.hs-n{order:1;padding-right:0;border-right:0}.hs-n small{display:none}.hstate>.sp{order:2}.hstate>.btn,.hstate>.lnk,.hstate>.tag{order:3}.hs-m{order:4;flex:1 1 100%}.hstate .hsum .opt{display:none}}
+@media (max-width:560px){.hstate>.btn .l{display:none}.hstate>.btn{padding-left:9px;padding-right:9px}}
+@media (max-width:1180px){.coc-no{font-size:46px}}
+/* checking a record: the picture in a mount with corner marks; a line of light passes over it when it opens */
+.vd-slip .mount{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:14px;border-radius:12px;border:1px solid var(--line);background:radial-gradient(120% 70% at 50% 0%,rgba(201,169,110,.09),transparent 65%),rgba(var(--wt),.025);overflow:hidden}
+.vd-slip .mount .slip{flex:none;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 16px 22px rgba(0,0,0,.45))}
+.vd-slip .mount .empty{margin:auto}
+.vd-slip .cap{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--mut);letter-spacing:.04em}.vd-slip .cap:before,.vd-slip .cap:after{content:"";flex:1;height:1px;background:var(--goldline)}
+.vd-info{container-type:inline-size}
+.vd-act{flex-wrap:nowrap}.vd-act>.btn{flex:1 1 0;min-width:0;justify-content:center}
+@container (max-width:560px){.vd-act .lgx{display:none}.vd-act .shx{display:inline}}
+.v-record .vd>.vd-info>.rd{border-radius:12px}
+/* the plans: each client's head in a ring of how often they followed the plan; who bought, as pips */
+.rav{--c:var(--up);display:inline-grid;place-items:center;padding:2.5px;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p) * 1%),rgba(var(--wt),.1) 0)}
+.rav.warn{--c:var(--gold)}.rav.dn{--c:var(--dn)}.rav .av{box-shadow:0 0 0 2px var(--bg2)}
+.pips{display:flex;gap:3px;justify-content:center;margin-top:5px}.pips i{width:6px;height:6px;border-radius:50%;background:rgba(var(--wt),.13)}.pips i.on{background:var(--gold)}.pips.full i.on{background:var(--up)}
+.mx tbody tr:hover td{background:rgba(var(--wt),.022)}
+@keyframes fx-pulse{0%,100%{box-shadow:inset 0 0 0 1px rgba(147,171,214,.4),0 0 0 0 rgba(147,171,214,.32)}60%{box-shadow:inset 0 0 0 1px rgba(147,171,214,.55),0 0 0 6px rgba(147,171,214,0)}}
+:root[data-fx=on] .cell.pend .d{animation:fx-pulse 2.4s ease-out infinite}
+/* the team: a card for each person */
+.stg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;align-content:start}
+.stc{position:relative;display:grid;grid-template-columns:52px minmax(0,1fr) auto;grid-template-areas:"f id a" "f e e" "k k k";column-gap:12px;row-gap:3px;align-items:center;padding:14px 14px 12px;border-radius:14px;border:1px solid var(--line2);background:linear-gradient(160deg,rgba(201,169,110,.08),transparent 45%),var(--surf);overflow:hidden;min-width:0}
+.stc:before{content:"";position:absolute;left:0;right:0;top:0;height:1.5px;background:var(--goldline)}
+.stc.r-head{border-color:var(--goldln)}.stc.r-head:before{background:linear-gradient(90deg,transparent,#c9a96e 30%,#efdcb2 50%,#c9a96e 70%,transparent)}
+.stc-f{grid-area:f;position:relative;width:52px;height:52px;border-radius:50%;box-shadow:0 0 0 1.5px var(--goldln),0 0 0 5px rgba(201,169,110,.07)}
+.stc-f img{width:100%;height:100%;border-radius:50%;display:block}
+.stc-f b{position:absolute;right:-5px;bottom:-3px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;display:grid;place-items:center;font-size:11px;background:var(--goldfx);color:#17120a;box-shadow:0 0 0 2px var(--bg2)}
+.stc-f.mono{display:grid;place-items:center;font:700 18px/1 var(--disp);color:var(--gold2);background:var(--avbg)}
+.stc-id{grid-area:id;display:flex;align-items:center;gap:8px;min-width:0}.stc-id b{font-size:16.5px}.stc-id .tag{flex:none}
+.stc-a{grid-area:a;display:flex;gap:6px}
+.stc-e{grid-area:e;display:flex;flex-direction:column;gap:2px;font-size:12.5px;color:var(--mut);min-width:0}
+.stc-c{display:flex;gap:12px;font-size:12px;color:var(--ink2)}.stc-c svg{vertical-align:-2px}.stc-c a{color:var(--gold)}
+.stc-k{grid-area:k;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.35fr);margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.stc-k>span{display:flex;flex-direction:column;gap:1px;min-width:0}.stc-k>span+span{padding-left:10px;border-left:1px solid var(--line)}
+.stc-k small{font-size:11px;color:var(--mut)}.stc-k b{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.stc-k .lvd{width:7px;height:7px;margin-right:5px;vertical-align:1px}.lvd.off{background:var(--mut)}
+:root[data-theme=light] .stc{background:linear-gradient(160deg,rgba(148,115,58,.07),transparent 45%),#fffdfa;box-shadow:var(--sh1)}
+@media (max-width:900px){.stg{grid-template-columns:minmax(0,1fr);gap:8px}.stc{padding:11px 12px 10px;grid-template-columns:44px minmax(0,1fr) auto}.stc-f{width:44px;height:44px}.stc-k{margin-top:6px;padding-top:7px}}
+/* all clients: the strip of figures (each one filters), the book, the preview */
+.v-clients.cs{grid-template-rows:auto auto minmax(0,1fr)}
+.v-clients.cs:has(.cpvp){grid-template-columns:minmax(0,1fr) minmax(360px,.62fr)}
+.clt{flex-wrap:nowrap}.clt .kbh{margin:0;white-space:nowrap}
+.clstrip{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,1.15fr);gap:10px}
+.cst{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-width:0;padding:10px 14px 9px;border-radius:var(--r);border:1px solid var(--line2);background:var(--surf);text-align:left;overflow:hidden;box-shadow:inset 0 1px 0 var(--hi);transition:border-color .15s,transform .15s}
+.cst:before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--gold);opacity:.6}
+.cst.warn:before{background:var(--warn)}.cst.dn:before{background:var(--dn)}.cst.ok:before{background:var(--up)}.cst.info:before{background:var(--goldline);opacity:1}
+.cst small{font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.cst>b{font:700 26px/1.15 var(--disp);color:var(--ink)}.cst.info>b{color:var(--gold2)}
+.cst>span{font-size:11.5px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+button.cst:hover{border-color:var(--goldln);transform:translateY(-1px)}
+.cst.on{border-color:var(--goldln);background:linear-gradient(180deg,rgba(201,169,110,.15),rgba(201,169,110,.03) 70%),var(--surf);box-shadow:inset 0 0 0 1px rgba(201,169,110,.22)}
+.cst.on:after{content:"";position:absolute;right:13px;top:13px;width:7px;height:7px;transform:rotate(45deg);background:var(--gold)}
+.cll{--cols:34px minmax(150px,1.5fr) 104px minmax(96px,.9fr) minmax(90px,.8fr) 44px 40px;container-type:inline-size}
+.clr{position:relative;min-height:54px}
+.clr:before{content:"";position:absolute;left:0;top:9px;bottom:9px;width:3px;border-radius:0 3px 3px 0;background:var(--up);opacity:.85}.clr.red:before{background:var(--dn)}.clr.amber:before{background:var(--warn)}
+.clr .grw{width:96px;height:30px}
+.clr-p b{display:block;font-family:var(--disp);font-size:14.5px}
+.mbar{display:block;height:5px;border-radius:5px;background:rgba(var(--wt),.08);overflow:hidden;margin-bottom:3px}.mbar i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,#a8864d,#e3cc9c)}
+.nf{display:inline-grid;place-items:center;min-width:24px;height:22px;padding:0 6px;border-radius:7px;font-size:12px;color:var(--warn);background:var(--warnbg);box-shadow:inset 0 0 0 1px rgba(219,168,90,.25)}
+@container (max-width:700px){.cll .c-g{display:none}.cll .ot-h,.cll .ot-r{--cols:34px minmax(140px,1.5fr) minmax(92px,.9fr) minmax(84px,.8fr) 44px 40px}}
+@container (max-width:540px){.cll .c-m{display:none}.cll .ot-h,.cll .ot-r{--cols:34px minmax(120px,1.5fr) minmax(90px,1fr) 44px 40px}}
+.cpvp{position:relative}
+.cpv-h{gap:12px;min-height:64px}.cpv-av{display:inline-grid;place-items:center;padding:2.5px;border-radius:50%;background:var(--up)}.cpv-av.red{background:var(--dn)}.cpv-av.amber{background:var(--warn)}.cpv-av .av{box-shadow:0 0 0 2px var(--bg2)}
+.cpv-id{display:flex;flex-direction:column;min-width:0}.cpv-id h3{font-family:var(--disp);font-size:18px}.cpv-id .sub{font-size:12.5px}
+.cpv{display:flex;flex-direction:column;gap:12px;min-height:0}
+.cpv>*{flex:none}
+.cpv-hero{display:flex;flex-direction:column;gap:1px}.cpv-hero small,.cpv-rk small,.cpv-is>small{font-size:12px;color:var(--mut)}
+.cpv-hero .big{font-size:32px;line-height:1.15}
+.cpv-sub{font-size:12px;color:var(--mut)}
+.cpv-ch{position:relative;flex:1 1 auto!important;min-height:60px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:16px}
+.cpv-ch .grw{width:100%;height:auto;max-height:100%;aspect-ratio:420/92}
+.cpv-ax{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;font-size:11px;color:var(--mut)}
+.cpv-road{display:flex;flex-direction:column;gap:6px}.cpv-rk{display:flex;justify-content:space-between;align-items:baseline}.cpv-rk b{font:700 16px var(--disp);color:var(--gold2)}
+.road{position:relative;height:8px;border-radius:8px;background:rgba(var(--wt),.08);margin:2px 0 16px}
+.road>i{position:absolute;left:0;top:0;bottom:0;border-radius:8px;background:linear-gradient(90deg,#8f7140,#c9a96e 60%,#efdcb2)}
+.road s{position:absolute;top:-3px;bottom:-3px;width:1.5px;margin-left:-.75px;background:var(--line2);text-decoration:none}.road s.on{background:rgba(255,244,214,.7)}
+.road s:last-of-type{margin-left:-1.5px}
+.road u{position:absolute;top:calc(100% + 3px);left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--mut);text-decoration:none;white-space:nowrap}.road s:last-of-type u{left:auto;right:0;transform:none}.road s.on u{color:var(--gold2)}
+.road em{position:absolute;top:50%;width:12px;height:12px;margin:-6px 0 0 -6px;transform:rotate(45deg);border-radius:2px;background:#efdcb2;box-shadow:0 0 0 3px var(--bg2),0 0 0 4px rgba(201,169,110,.5)}
+.cpv-rings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.cpv-rings>span{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0}.cpv-rings>span+span{border-left:1px solid var(--line)}.cpv-rings small{font-size:11.5px;color:var(--mut);white-space:nowrap}
+.cpv-rings .rg b{font-size:19px}.cpv-rings .rg b i{font-style:normal;font-size:.6em;margin-left:1px}
+.cpv-is{display:flex;flex-direction:column;gap:6px}.cpv-is>small b{color:var(--warn)}.cpv-is .flags{max-height:52px;overflow:hidden}
+.cpv-ft{display:flex;align-items:center;gap:10px;padding-top:10px;border-top:1px solid var(--line)}
+:root[data-theme=light] .road em{background:#c9a96e;box-shadow:0 0 0 3px #fffdfa,0 0 0 4px rgba(148,115,58,.5)}
+:root[data-theme=light] .road>i{background:linear-gradient(90deg,#94733a,#c9a96e)}
+@media (max-height:760px){.clstrip{gap:8px}.cst{padding:7px 12px 6px}.cst>b{font-size:21px}.cpv{gap:9px}.cpv-hero .big{font-size:26px}.cpv-rings{padding:7px 0}.cpv-rings .rg{--sz:44px!important}.cpv-rings .rg b{font-size:15px}.cpv-is .flags{max-height:24px}.cpv-ch{padding-bottom:14px}}
+@media (max-height:680px){.cpv-is,.cpv-hero .cpv-sub,.cpv-road .cpv-sub{display:none}.cst>span{display:none}.cpv-ch{min-height:40px}.cpv-rings .rg{--sz:38px!important}.cpv-rings .rg b{font-size:13px}.cpv-h{min-height:52px}.cpv-ft{padding-top:7px}}
+@media (max-width:1280px){.clstrip{grid-template-columns:repeat(5,minmax(0,1fr))}.cst{padding-left:12px;padding-right:12px}}
+@media (max-width:1100px) and (min-width:901px){.v-clients.cs:has(.cpvp){grid-template-columns:minmax(0,1fr) 330px}.cst>b{font-size:21px}.cpv-hero .big{font-size:26px}}
+/* phones: the figures slide sideways above the book */
+@media (max-width:900px){.clstrip{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:8px}.clstrip::-webkit-scrollbar{display:none}.cst{flex:0 0 140px;scroll-snap-align:start;padding:8px 12px}.cst>b{font-size:20px}.cst.info{flex-basis:170px}.clt{flex-wrap:wrap}.clt .opt{display:none}.clt #sort{flex:1}}
+/* the preview comes in each time another client is picked */
+:root[data-fx=on] .cpv>*,:root[data-fx=on] .cpv-h{animation:fx-rowin .45s cubic-bezier(.2,.8,.2,1) backwards}
+:root[data-fx=on] .cpv>:nth-child(2){animation-delay:.04s}:root[data-fx=on] .cpv>:nth-child(3){animation-delay:.08s}:root[data-fx=on] .cpv>:nth-child(4){animation-delay:.12s}:root[data-fx=on] .cpv>:nth-child(5){animation-delay:.16s}:root[data-fx=on] .cpv>:nth-child(6){animation-delay:.2s}
+:root[data-fx=on] .cpv .rg .arc{animation:fx-arc 1.2s cubic-bezier(.2,.8,.2,1) .2s backwards}
+:root[data-fx=on] .cpv .road>i{transform-origin:0 50%;animation:fx-growx 1s cubic-bezier(.2,.8,.2,1) .15s backwards}
+:root[data-fx=on] .cpv .grw{animation:fx-clipx 1.3s cubic-bezier(.35,.7,.2,1) .1s backwards}
+/* cards catch the light when pointed at */
+.coc:after,.stc:after{content:"";position:absolute;top:0;bottom:0;left:0;width:42%;z-index:2;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,244,214,.06) 40%,rgba(255,244,214,.13) 50%,rgba(255,244,214,.06) 60%,transparent);transform:translateX(-130%) skewX(-12deg)}
+:root[data-fx=on] .coc:hover:after,:root[data-fx=on] .coc:focus-visible:after,:root[data-fx=on] .stc:hover:after{transform:translateX(330%) skewX(-12deg);transition:transform .95s cubic-bezier(.3,.6,.2,1)}
+:root[data-theme=light] .coc:after,:root[data-theme=light] .stc:after{background:linear-gradient(100deg,transparent,rgba(255,255,255,.4) 45%,rgba(255,255,255,.75) 50%,rgba(255,255,255,.4) 55%,transparent)}
+/* a page opening: its rows and cards come in one after another, the strip's bar fills, the ring arcs draw, the client columns rise */
+@keyframes fx-rowin{from{opacity:0;transform:translateY(7px)}}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(-n+16){animation:fx-rowin .5s cubic-bezier(.2,.8,.2,1) backwards}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(2){animation-delay:0.035s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(3){animation-delay:0.070s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(4){animation-delay:0.105s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(5){animation-delay:0.140s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(6){animation-delay:0.175s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(7){animation-delay:0.210s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(8){animation-delay:0.245s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(9){animation-delay:0.280s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(10){animation-delay:0.315s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(11){animation-delay:0.350s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(12){animation-delay:0.385s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(13){animation-delay:0.420s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(14){animation-delay:0.455s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(15){animation-delay:0.490s}
+:root[data-fx=on] .enter :is(.ot-r,.tbl tbody tr,.hrow,.al,.crow,.coc,.stc,.dsr,.arow2,.cor):nth-child(16){animation-delay:0.525s}
+:root[data-fx=on] .enter .hseg,:root[data-fx=on] .enter .coc-seg{animation:fx-clipx 1.2s cubic-bezier(.2,.8,.2,1) .2s backwards}
+:root[data-fx=on] .enter .rg .arc{animation:fx-arc 1.3s cubic-bezier(.2,.8,.2,1) .3s backwards}
+:root[data-fx=on] .enter .coc-b i{transform-origin:50% 100%;animation:fx-growy .9s cubic-bezier(.2,.8,.2,1) .35s backwards}
+:root[data-fx=on] .enter .vh.hstate:after{content:"";position:absolute;top:0;bottom:0;left:0;width:30%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,244,214,.1),transparent);animation:fx-sweep 1.6s cubic-bezier(.4,0,.2,1) .5s both}
+@keyframes fx-sweep{from{transform:translateX(-120%)}to{transform:translateX(420%)}}
 </style>
 </head>
 <body>
@@ -2828,7 +3013,9 @@ function fitPagers(root = document) {
     // a totals row under the list (Deal Summary) stays on screen too
     const tail = () => { let h = 0; for (let n = box.nextElementSibling; n; n = n.nextElementSibling) h += n.getBoundingClientRect().height; return h; };
     const limit = () => area.getBoundingClientRect().bottom - (parseFloat(getComputedStyle(area).paddingBottom) || 0) - tail();
-    const gap = parseFloat(getComputedStyle(box).rowGap) || 0;
+    const bs = getComputedStyle(box), gap = parseFloat(bs.rowGap) || 0;
+    // a grid of cards: a page holds whole rows of the grid
+    const cols = bs.display.includes('grid') ? Math.max(1, bs.gridTemplateColumns.split(' ').filter(Boolean).length) : 1;
     const nav = document.querySelector(`[data-pgn="${key}"]`);
     const setNav = () => { if (nav) nav.innerHTML = n > 1 ? `<button data-pgp="${key}" ${p ? '' : 'disabled'} aria-label="หน้าก่อน">${ic('back', 15)}</button><span class="num">${p + 1}/${n}</span><button data-pgx="${key}" ${p < n - 1 ? '' : 'disabled'} aria-label="หน้าถัดไป">${ic('chev', 15)}</button>` : ''; };
     let pages, n, p, slack = 0;
@@ -2838,10 +3025,10 @@ function fitPagers(root = document) {
       const avail = limit() - box.getBoundingClientRect().top - slack;
       pages = [];
       let cur = [], used = 0;
-      for (const r of rows) {
-        const h = r.getBoundingClientRect().height;
+      for (let i = 0; i < rows.length; i += cols) {
+        const grp = rows.slice(i, i + cols), h = Math.max(...grp.map(r => r.getBoundingClientRect().height));
         if (cur.length && used + h > avail + .5) { pages.push(cur); cur = []; used = 0; }
-        cur.push(r); used += h + gap;
+        cur.push(...grp); used += h + gap;
       }
       if (cur.length) pages.push(cur);
       n = Math.max(1, pages.length); p = Math.max(0, Math.min(PG[key] || 0, n - 1));
@@ -3471,6 +3658,9 @@ const pnl = ({ t, sub = '', key, rows, cls = '', pt, empty = 'ไม่มีร
   if (th && rows) return `${top}<div class="pb flush" style="display:flex;flex-direction:column">${pre ? `<div class="pre">${pre}</div>` : ''}<div class="otw ${tcls}">${th}<div class="list tight" data-pg="${key}">${rows}</div></div></div></section>`;
   return `${top}<div class="pb" ${pre ? 'style="display:flex;flex-direction:column;gap:8px"' : ''}>${pre}${rows ? `<div class="list ${cls}" data-pg="${key}" ${gap != null ? `style="gap:${gap}px"` : ''}>${rows}</div>` : `<div class="empty">${empty}</div>`}</div></section>`;
 };
+// a small ring gauge (0–100) with the value inside; its arc draws in when the page opens
+const ringG = (v, sz = 44, tone = '', label = v) => { const r = sz / 2 - 3, C = 2 * Math.PI * r, f = Math.max(0, Math.min(100, v)) / 100;
+  return `<span class="rg ${tone}" style="--sz:${sz}px"><svg viewBox="0 0 ${sz} ${sz}" aria-hidden="true"><circle class="tr" cx="${sz / 2}" cy="${sz / 2}" r="${r}"/><circle class="arc" cx="${sz / 2}" cy="${sz / 2}" r="${r}" style="stroke-dasharray:${C.toFixed(1)};stroke-dashoffset:${(C * (1 - f)).toFixed(1)};--arc:${C.toFixed(1)}"/></svg><b class="num">${label}</b></span>`; };
 const kpi = (icn, k, v, s, cls = '') => `<div class="kpi"><div class="k">${ic(icn, 14)} ${k}</div><div class="v num ${cls}">${v}</div><div class="s">${s}</div></div>`;
 const planLine = p => `Entry ${px(p.lo)}–${px(p.hi)} · SL ${px(planSL(p.id))} · TP ${px(p.tp1)}/${px(p.tp2)} · ${p.size}% ของพอร์ต`;
 function alertRow(a, withCoach) {
@@ -3518,7 +3708,7 @@ function flagsOf(c) {
 }
 function clientRow(c) {
   const d = discipline(c.id), ps = pnlSum(c), fl = flagsOf(c).length;
-  return `<button class="crow" data-act="open" data-id="${esc(c.id)}">${avatar(c, 'sm')}<span class="cn"><b class="ell"><span class="lvd ${concern(c).lv}" title="${LV_N[concern(c).lv]}"></span>${esc(cname(c))}</b><span class="xs muted num" title="กำไรสะสมตามบันทึก">กำไร <span class="${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</span> · ${pct(retPct(c))}${fl ? ` · <span class="warn">${fl} เรื่อง</span>` : ''}</span></span><span title="การเติบโต: กำไรสะสมรายสัปดาห์ตั้งแต่เริ่มโปรแกรม">${growth(c, 76, 30)}</span><span class="tag ${scoreTone(d.score)} num" title="คะแนนวินัย">${d.score}</span></button>`;
+  return `<button class="crow" data-act="open" data-id="${esc(c.id)}">${avatar(c, 'sm')}<span class="cn"><b class="ell"><span class="lvd ${concern(c).lv}" title="${LV_N[concern(c).lv]}"></span>${esc(cname(c))}</b><span class="xs muted num" title="กำไรสะสมตามบันทึก">กำไร <span class="${ps.total >= 0 ? 'up' : 'dn'}">${signed(ps.total)}</span> · ${pct(retPct(c))}${fl ? ` · <span class="warn">${fl} เรื่อง</span>` : ''}</span></span><span title="การเติบโต: กำไรสะสมรายสัปดาห์ตั้งแต่เริ่มโปรแกรม">${growth(c, 76, 30)}</span><span class="rgw" title="คะแนนวินัย ${d.score}">${ringG(d.score, 32, scoreTone(d.score))}</span></button>`;
 }
 // sparkline that stretches to fill its box (no text, so stretching is fine)
 function sparkFill(vals) {
@@ -3589,13 +3779,13 @@ function plansView() {
   const co = coach(planCoach()), cl = S.clients.filter(c => c.coach === co.id), ps = myPlans(), live = ps.filter(planLive).length;
   const legend = `<span class="lgd"><span><i style="background:var(--up)"></i>ตรงแผน</span><span><i style="background:var(--warn)"></i>ไม่ตรงแผน</span><span><i style="background:var(--dn)"></i>หลุด Stop Loss</span><span><i style="background:var(--blue)"></i>รอตรวจ</span></span>`;
   return `${isHead() ? '<div class="vh pvh"><div class="seg" role="tablist"><button class="on" data-pview="mx">การทำตามแผน</button><button data-pview="perf">ผลงานของแผน</button></div></div>' : ''}<section class="pnl"><div class="ph">${isCoach() ? '' : `<select id="pcoach" class="pcsel" aria-label="เลือกโค้ช">${S.coaches.map(x => `<option value="${x.id}" ${x.id === co.id ? 'selected' : ''}>${x.name}</option>`).join('')}</select>`}<h3>${isCoach() ? 'แผนสำหรับลูกค้าของคุณ' : `ลูกค้าของ${co.name}`} · เปิดอยู่ ${live} จาก ${ps.length} แผน</h3><span class="sub">${legend}</span>${isHead() ? `<button class="btn ghost sm" data-act="plannew" style="margin-left:auto">${ic('plus', 15)} บันทึกแผนใหม่</button>` : ''}<div class="pgn" data-pgn="mx"></div></div>
-    <div class="pb">${ps.length ? `<table class="mx"><thead><tr><th>แผน</th>${cl.map(c => { const d = discipline(c.id); return `<th><span class="colh" data-act="open" data-id="${esc(c.id)}">${avatar(c, 'sm')}<span>${esc(c.name)}</span><small>ตรงแผน ${Math.round(d.acc * 100)}%</small></span></th>`; }).join('')}<th class="opt">ซื้อ</th></tr></thead><tbody data-pg="mx">
+    <div class="pb">${ps.length ? `<table class="mx"><thead><tr><th>แผน</th>${cl.map(c => { const d = discipline(c.id); return `<th><span class="colh" data-act="open" data-id="${esc(c.id)}"><span class="rav ${d.acc >= .9 ? 'ok' : d.acc >= .75 ? 'warn' : 'dn'}" style="--p:${Math.round(d.acc * 100)}">${avatar(c, 'sm')}</span><span>${esc(c.name)}</span><small>ตรงแผน ${Math.round(d.acc * 100)}%</small></span></th>`; }).join('')}<th class="opt">ซื้อ</th></tr></thead><tbody data-pg="mx">
     ${ps.map(p => {
       const lv = planLive(p), bought = cl.filter(c => positions(c.id).some(x => x.plan === p.id)).length;
       const st = lv ? '<span class="tag blue">เปิดอยู่</span>' : p.end.why === 'tp2' ? '<span class="tag ok">ปิด · ถึง TP2</span>' : p.end.why === 'sl' ? '<span class="tag dn">ปิด · หลุด SL</span>' : '<span class="tag">ปิดแผน</span>';
       return `<tr class="${lv ? 'live' : ''}"><td><div class="oh">${slogo(p.sym, 32)}<div style="min-width:0"><b>${esc(p.sym)}</b> ${st}${lv && isHead() ? ` <button class="lnk xs" data-act="plansl" data-id="${esc(p.id)}">เลื่อน SL</button> · <button class="lnk xs" data-act="planend" data-id="${esc(p.id)}">ปิดแผน</button>` : ''}<div class="os ell" title="${esc(p.note || '')}">${dt(p.at)} · ${planLine(p)}</div></div></div></td>
         ${cl.map(c => `<td>${planCell(p, c)}</td>`).join('')}
-        <td class="opt"><b class="num">${bought}/${cl.length}</b><div class="bar ${bought === cl.length ? 'up' : ''}" style="width:52px;margin:3px auto 0;height:5px"><i style="width:${cl.length ? bought / cl.length * 100 : 0}%"></i></div></td></tr>`;
+        <td class="opt"><b class="num">${bought}/${cl.length}</b><span class="pips ${bought === cl.length ? 'full' : ''}" aria-hidden="true">${cl.map((c, i) => `<i class="${i < bought ? 'on' : ''}"></i>`).join('')}</span></td></tr>`;
     }).join('')}</tbody></table>` : `<div class="empty">ยังไม่มีแผน${isHead() ? `<div style="margin-top:10px"><button class="btn sm" data-act="plannew">${ic('plus', 15)} บันทึกแผนแรก</button></div>` : ''}</div>`}</div></section>`;
 }
 // one client on one plan: every record with its proof and check, notes of what was not followed
@@ -3644,7 +3834,7 @@ function exDetail(e) {
     : e.ver === 'ok' && !ok ? (cleared ? `<div class="rnote"><b class="up">${ic('check', 13)} เคลียร์แล้ว</b><span>${dstr(cleared.at)}${cleared.note ? ' · ' + esc(cleared.note) : ''}</span></div>` : `<div class="vd-act"><span class="vd-mt">${slipThumb(e, c)}</span><button class="btn soft sm" data-act="call" data-k="dev:${esc(e.id)}">${ic('phone', 14)} บันทึกผลการคุยกับลูกค้า</button></div>`) : '';
   const m = matchOf(e), pair = m && e.side === 'sell' ? recSec('จับคู่กับรายการซื้อ', matchBox(e)) : '';
   return `<div class="ph">${symBtn(e.sym, 22)}${sideTag(e)}<h3 class="ell">${esc(cname(c))}</h3><span class="sub">${coach(c.coach).name}</span><span style="margin-left:auto" class="row">${verTag(e)}</span></div>
-    <div class="pb"><div class="vd"><div class="vd-slip">${slipImg(e, c) || '<div class="empty">ไม่มีภาพหลักฐาน</div>'}<div class="xs muted" style="text-align:center">ภาพที่แนบมากับรายการ</div></div>
+    <div class="pb"><div class="vd"><div class="vd-slip"><div class="mount cmk">${slipImg(e, c) || '<div class="empty">ไม่มีภาพหลักฐาน</div>'}<i class="scan" aria-hidden="true"></i></div><div class="cap">ภาพที่แนบมากับรายการ</div></div>
       <div class="vd-info"><div class="rd">${recTrack(e)}${recFacts(e)}${recSec('เทียบกับแผน', recCheck(e))}${pair}${recSec('บันทึกเพิ่มเติม', recNotes(e, coach(c.coach).name))}</div>${acts}</div></div></div>`;
 }
 // coach keys a trade for a client (from a picture sent on LINE); confirmed at once
@@ -4208,19 +4398,18 @@ function coachCards(all) {
   const card = x => {
     const avg = x.dNow, worst = x.cnt.red ? 'red' : x.cnt.amber ? 'amber' : 'ok';
     return `<button class="coc w-${worst}" data-hco="${x.co.id}" aria-label="${esc(x.co.name)} · ลูกค้า ${x.n} ราย · ${LV.map(([k, l]) => `${l} ${x.cnt[k]}`).join(' · ')} · ดูรายชื่อลูกค้า">
-      <span class="coc-h"><img class="coc-av" src="${staffFace(x.co.id, 96)}" alt=""><span class="coc-id"><b>${esc(x.co.name)}</b><small>ดูแลลูกค้า ${x.n} ราย</small></span>${ic('chev', 16)}</span>
-      <span class="coc-m ell" title="ตลาดที่ลูกค้าของโค้ชเทรด">${x.mks.join(' · ') || '—'}</span>
-      <span class="coc-k"><span><small>ลูกค้าปกติ</small><b class="num">${x.cnt.ok}<em>/${x.n}</em></b></span><span><small>วินัยเฉลี่ย</small><b class="num ${avg >= 90 ? 'up' : avg >= 75 ? '' : 'dn'}">${avg}${dlt(x.dDelta)}</b></span></span>
-      <span class="coc-c"><small>ลูกค้ารายคน · คะแนนวินัย</small><span class="coc-b">${x.mine.map(y => { const d = discipline(y.c.id).score; return `<i class="${y.lv}" style="--h:${Math.max(8, d)}%" title="${esc(cname(y.c))} · ${LV_N[y.lv]} · วินัย ${d}"></i>`; }).join('')}</span></span>
-      <span class="coc-s">${LV.map(([k, l]) => `<span class="coc-sr ${k}"><i></i><span>${l}</span><span class="cbar"><i style="width:${x.n ? x.cnt[k] / x.n * 100 : 0}%"></i></span><b class="num">${x.cnt[k]}</b></span>`).join('')}</span>
+      <span class="coc-no" aria-hidden="true">${String(x.co.no).padStart(2, '0')}</span>
+      <span class="coc-h"><img class="coc-av" src="${staffFace(x.co.id, 96)}" alt=""><span class="coc-id"><b>${esc(x.co.name)}</b><small class="ell" title="ตลาดที่ลูกค้าของโค้ชเทรด">ดูแล ${x.n} ราย · ${x.mks.join(' · ') || '—'}</small></span>${ic('chev', 16)}</span>
+      <span class="coc-k"><span class="coc-g">${ringG(avg, 50, scoreTone(avg))}<span><small>วินัยเฉลี่ย</small>${dlt(x.dDelta)}</span></span><span class="coc-n"><small>ลูกค้าปกติ</small><b class="num">${x.cnt.ok}<em>/${x.n}</em></b></span></span>
+      <span class="coc-c"><small>ลูกค้ารายคน · คะแนนวินัย</small><span class="coc-b">${x.mine.map(y => { const d = discipline(y.c.id).score; return `<i class="${y.lv}" style="--h:${Math.max(8, d)}%" data-v="${d}" title="${esc(cname(y.c))} · ${LV_N[y.lv]} · วินัย ${d}"></i>`; }).join('')}</span></span>
+      <span class="coc-s"><span class="coc-seg">${LV.map(([k]) => x.cnt[k] ? `<i class="${k}" style="flex:${x.cnt[k]}"></i>` : '').join('')}</span><span class="coc-lg">${LV.map(([k, l]) => `<span class="${k}" title="${l} ${x.cnt[k]} ราย"><i></i><span class="l">${l}</span><b class="num">${x.cnt[k]}</b></span>`).join('')}</span></span>
       <span class="coc-f">${fol(x)}</span></button>`;
   };
   const stack = x => `<span class="cstk" aria-hidden="true">${LV.map(([k]) => x.cnt[k] ? `<i class="${k}" style="flex:${x.cnt[k]}"></i>` : '').join('')}</span>`;
   const row = x => `<button class="cor" data-hco="${x.co.id}"><img class="cor-f" src="${staffFace(x.co.id, 96)}" alt=""><span class="cor-n"><b>${esc(x.co.name)}</b><span class="xs muted ell">ดูแล ${x.n} ราย · วินัย ${x.dNow}${x.dDelta ? ` (${x.dDelta > 0 ? '▲' : '▼'}${Math.abs(x.dDelta)})` : ''} · ${x.open ? `ค้าง ${x.open} เรื่อง` : 'ไม่มีเรื่องค้าง'}</span></span>
       <span class="cor-s">${stack(x)}<span class="xs num">${LV.map(([k, , t]) => `<span class="${t}">● ${x.cnt[k]}</span>`).join(' ')}</span></span>${ic('chev', 16)}</button>`;
-  const head = `<div class="vh"><span class="hsum"><span>ลูกค้า <b class="num">${all.length}</b> ราย</span>${LV.map(([k, l]) => `<span class="hs ${k}"><i></i>${l} <b class="num">${tot[k]}</b></span>`).join('')}</span>
-    <span class="muted sm opt" title="สถานะจัดจากคะแนนตามกติกา คะแนนวินัย เรื่องที่ยังไม่เคลียร์ และการขาดทุน">เลือกโค้ชเพื่อดูรายชื่อลูกค้า</span><span class="sp"></span>
-    <button class="btn soft sm" data-act="exrep">${ic('book', 14)} รายงานผู้บริหาร</button><button class="lnk sm" data-hco="all">ดูลูกค้าทุกคน</button><button class="tag blue" data-go="record">${ic('inbox', 12)}รอตรวจ ${pendQ().length}</button></div>`;
+  const head = `<div class="vh hstate"><span class="hs-n"><b class="num">${all.length}</b><small>ลูกค้าในรุ่น</small></span><span class="hs-m"><span class="hseg" aria-hidden="true">${LV.map(([k]) => tot[k] ? `<i class="${k}" style="flex:${tot[k]}"></i>` : '').join('')}</span><span class="hsum">${LV.map(([k, l]) => `<span class="hs ${k}"><i></i>${l} <b class="num">${tot[k]}</b></span>`).join('')}<span class="muted opt" title="สถานะจัดจากคะแนนตามกติกา คะแนนวินัย เรื่องที่ยังไม่เคลียร์ และการขาดทุน">· เลือกโค้ชเพื่อดูรายชื่อลูกค้า</span></span></span><span class="sp"></span>
+    <button class="btn soft sm" data-act="exrep" title="รายงานผู้บริหาร">${ic('book', 14)}<span class="l"> รายงานผู้บริหาร</span></button><button class="lnk sm" data-hco="all">ดูลูกค้าทุกคน</button><button class="tag blue" data-go="record">${ic('inbox', 12)}รอตรวจ ${pendQ().length}</button></div>`;
   if (narrow()) return head + `<section class="pnl corl"><div class="ph"><h3>โค้ชทั้งหมด</h3><span class="sub">แตะเพื่อดูรายชื่อลูกค้า</span><div class="pgn" data-pgn="hco"></div></div><div class="pb"><div class="list tight" data-pg="hco">${cs.map(row).join('')}</div></div></section>`;
   return head + `<div class="cocg">${cs.map(card).join('')}</div>`;
 }
@@ -4283,24 +4472,62 @@ function tasksView() {
   ${pnl({ t: 'ลูกค้าที่ต้องติดต่อ', sub: 'จัดกลุ่มตามลูกค้า ติดต่อครั้งเดียวครบทุกเรื่อง · ระบบสร้างรายการจากข้อมูลโดยอัตโนมัติ', key: 'tk', cls: 'tight', rows: groups.map(g => groupRow(g)).join(''), empty: `${ic('check', 26)}ไม่มีงานในหมวดนี้` })}`;
 }
 
-/* ---------- CS: all clients ---------- */
+/* ---------- CS and the head coach: all clients — a strip of figures that are also the filters, the book of clients,
+   and a preview of the one picked (phones: the book only, a tap opens the client) ---------- */
+let selAll = null, allIds = [];
+const CL_F = { all: () => true, open: (c, al) => al.some(a => a.cl === c.id), low: c => discipline(c.id).score < 75, mile: c => profit(c) >= GOAL };
 function allClientsView() {
-  const al = alerts();
-  let list = S.clients.filter(c => (!fCoach || c.coach === fCoach) && (!q || (cname(c) + ' ' + c.email).toLowerCase().includes(q.toLowerCase())));
-  if (fStat === 'low') list = list.filter(c => discipline(c.id).score < 75);
-  if (fStat === 'open') list = list.filter(c => al.some(a => a.cl === c.id));
-  if (fStat === 'mile') list = list.filter(c => profit(c) >= GOAL);
+  const al = alerts(), wide = !narrow();
+  const base = S.clients.filter(c => (!fCoach || c.coach === fCoach) && (!q || (cname(c) + ' ' + c.email).toLowerCase().includes(q.toLowerCase())));
+  const list = base.filter(c => (CL_F[fStat] || CL_F.all)(c, al));
   const SORT = { score: (a, b) => discipline(a.id).score - discipline(b.id).score, ret: (a, b) => profit(b) - profit(a), refund: (a, b) => settle(b).refund - settle(a).refund, name: (a, b) => a.id.localeCompare(b.id, undefined, { numeric: true }) };
   list.sort(SORT[sortBy] || SORT.score);
-  const body = narrow() ? pnl({ t: 'ลูกค้า', sub: `${list.length} จาก ${S.clients.length} คน`, key: 'all', cls: 'tight', rows: list.map(clientRow).join(''), empty: 'ไม่พบลูกค้าตามเงื่อนไข' }) : null;
-  return `<div class="vh"><div class="tsearch">${ic('search', 16)}<input id="q" value="${esc(q)}" maxlength="60" placeholder="ค้นหาชื่อหรืออีเมล" aria-label="ค้นหาลูกค้า"></div>
+  allIds = list.map(c => c.id);
+  if (!list.some(c => c.id === selAll)) selAll = list[0]?.id || null;
+  const sts = base.map(settle), prof = sts.reduce((t, x) => t + x.pr, 0), low = base.filter(CL_F.low), openCl = base.filter(c => CL_F.open(c, al));
+  const avgLow = low.length ? Math.round(low.reduce((t, c) => t + discipline(c.id).score, 0) / low.length) : 0;
+  const tile = (k, label, n, sub, tone) => `<button class="cst ${tone} ${fStat === k ? 'on' : ''}" data-fs="${k}" aria-pressed="${fStat === k}"><small>${label}</small><b class="num">${n}</b><span>${sub}</span></button>`;
+  const strip = `<div class="clstrip" role="group" aria-label="กรองลูกค้า">
+    ${tile('all', fCoach ? `ลูกค้าของ${coach(fCoach).name}` : 'ลูกค้าทั้งหมด', base.length, `กำไรรวม <b class="${prof >= 0 ? 'up' : 'dn'}">${signed(prof)}</b>`, '')}
+    ${tile('open', 'มีเรื่องค้าง', openCl.length, `${al.filter(a => openCl.some(c => c.id === a.cl)).length} เรื่องที่ยังไม่เคลียร์`, 'warn')}
+    ${tile('low', 'วินัยต่ำกว่า 75', low.length, low.length ? `วินัยเฉลี่ยของกลุ่มนี้ ${avgLow}` : 'ทุกคนผ่านเกณฑ์', 'dn')}
+    ${tile('mile', 'กำไรถึง 1 ล้าน', base.filter(CL_F.mile).length, `กำไร 500K ขึ้นไป ${base.filter(c => profit(c) >= 500000).length} ราย`, 'ok')}
+    <div class="cst info"><small>ค่าเรียนที่ต้องคืน ถ้าจบวันนี้</small><b class="num">฿${kb(sts.reduce((t, x) => t + x.refund, 0))}</b><span>คืนเต็ม ${sts.filter(x => x.pr <= 0).length} ราย · ถึง 1 ล้าน ${sts.filter(x => x.extra > 0).length} ราย</span></div></div>`;
+  const tools = `<div class="vh clt"><div class="tsearch">${ic('search', 16)}<input id="q" value="${esc(q)}" maxlength="60" placeholder="ค้นหาชื่อหรืออีเมล" aria-label="ค้นหาลูกค้า"></div>
     <select id="fcoach" style="width:auto;border-radius:999px" aria-label="กรองตามโค้ช"><option value="">โค้ชทุกคน</option>${S.coaches.map(co => `<option value="${co.id}" ${fCoach === co.id ? 'selected' : ''}>${co.name}</option>`).join('')}</select>
-    <div class="chips">${[['all', 'ทั้งหมด'], ['open', 'มีเรื่องค้าง'], ['low', 'วินัยต่ำกว่า 75'], ['mile', 'กำไรถึง 1 ล้าน']].map(([k, l]) => `<button class="chip ${fStat === k ? 'on' : ''}" data-fs="${k}">${l}</button>`).join('')}</div>
-    <span class="sp"></span><select id="sort" style="width:auto;border-radius:999px" aria-label="เรียงลำดับ">${[['score', 'วินัยต่ำสุดก่อน'], ['ret', 'กำไรสูงสุด'], ['refund', 'คืนค่าเรียนมากสุด'], ['name', 'รหัสลูกค้า']].map(([k, l]) => `<option value="${k}" ${sortBy === k ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
-  ${body || `<section class="pnl"><div class="ph"><h3>ลูกค้า</h3><span class="sub">แสดง ${list.length} จาก ${S.clients.length} ราย</span><div class="pgn" data-pgn="all"></div></div><div class="pb">${list.length ? `<table class="tbl"><thead><tr><th>ลูกค้า</th><th>โค้ช</th><th class="opt">โปรแกรม</th><th class="r">ทุน</th><th class="r">กำไรสะสม</th><th class="c-grw" title="กำไรที่ขายแล้ว สะสมทุกวันศุกร์ตั้งแต่เริ่มโปรแกรม จนถึงวันนี้">การเติบโต</th><th class="c-1m">เงื่อนไข 1 ล้าน</th><th class="r">คืนค่าเรียน</th><th class="r">วินัย</th><th>เรื่องค้าง</th><th class="opt">เข้าใช้งาน</th></tr></thead><tbody data-pg="all">
-    ${list.map(c => { const d = discipline(c.id), st = settle(c), pr = st.pr, fl = flagsOf(c); return `<tr class="click" data-act="open" data-id="${esc(c.id)}"><td><div class="row" style="gap:8px">${avatar(c, 'sm')}<div style="min-width:0"><b>${esc(cname(c))}</b><div class="xs muted">${esc(c.email)}</div></div></div></td><td class="nw">${coach(c.coach).name}</td>
-      <td class="opt xs nw">${c.term} เดือน<div class="muted">${TYPE[c.type]}</div></td><td class="r num" title="ทุนเริ่มต้น ${baht(c.cap)}">${baht(capOf(c))}</td><td class="r num ${pr >= 0 ? 'up' : 'dn'}"><b>${signed(pr)}</b><div class="xs">${pct(retPct(c))}</div></td><td class="c-grw" title="กำไรสะสมรายสัปดาห์ตั้งแต่เริ่มโปรแกรม ${dstr(c.joined)} ถึงวันนี้">${growth(c)}</td><td class="c-1m" style="min-width:100px"><div class="bar" style="height:6px"><i style="width:${st.pct * 100}%"></i></div><div class="xs muted num">${fmt(st.pct * 100, 1)}%</div></td>
-      <td class="r num">${st.extra > 0 ? '<span class="tag ok">ถึง 1 ล้าน</span>' : baht(st.refund)}</td><td class="r"><span class="tag ${scoreTone(d.score)} num">${d.score}</span></td><td><div class="flags">${fl.slice(0, 2).join('') || '<span class="muted xs">—</span>'}${fl.length > 2 ? `<span class="tag">+${fl.length - 2}</span>` : ''}</div></td><td class="xs muted opt nw">${seenTxt(c)}</td></tr>`; }).join('')}</tbody></table>` : '<div class="empty">ไม่พบลูกค้าตามเงื่อนไข</div>'}</div></section>`}`;
+    <span class="muted sm opt">แสดง <b class="num ink2">${list.length}</b> จาก ${S.clients.length} ราย</span><span class="sp"></span>${wide ? '<span class="xs muted kbh opt">คีย์ลัด <kbd>↑</kbd><kbd>↓</kbd> เลือก · <kbd>Enter</kbd> เปิด</span>' : ''}
+    <select id="sort" style="width:auto;border-radius:999px" aria-label="เรียงลำดับ">${[['score', 'วินัยต่ำสุดก่อน'], ['ret', 'กำไรสูงสุด'], ['refund', 'คืนค่าเรียนมากสุด'], ['name', 'รหัสลูกค้า']].map(([k, l]) => `<option value="${k}" ${sortBy === k ? 'selected' : ''}>${l}</option>`).join('')}</select></div>`;
+  if (!wide) return tools + strip + pnl({ t: 'ลูกค้า', sub: `${list.length} จาก ${S.clients.length} คน`, key: 'all', cls: 'tight', rows: list.map(clientRow).join(''), empty: 'ไม่พบลูกค้าตามเงื่อนไข' });
+  // one line per client: status (the rail), who, growth, profit, the 1M condition, discipline, open issues
+  const row = c => {
+    const d = discipline(c.id), st = settle(c), lv = concern(c).lv, nf = flagsOf(c).length;
+    return `<button class="ot-r clr ${lv} ${c.id === selAll ? 'on' : ''}" data-csel="${esc(c.id)}" title="${esc(cname(c))} · ${LV_N[lv]} · ดับเบิลคลิกเพื่อเปิดหน้าลูกค้า">${avatar(c, 'sm')}
+      <span class="clr-n"><b class="ell" style="display:block">${esc(cname(c))}</b><span class="t2">${coach(c.coach).name} · ${c.term} เดือน ${TYPE[c.type]}</span></span>
+      <span class="c-g">${growth(c, 96, 30)}</span>
+      <span class="r num clr-p"><b class="${st.pr >= 0 ? 'up' : 'dn'}">${signed(st.pr)}</b><span class="t2">${pct(retPct(c))}</span></span>
+      <span class="c-m">${st.extra > 0 ? '<span class="tag ok">ถึง 1 ล้าน</span>' : `<span class="mbar"><i style="width:${Math.min(100, st.pct * 100)}%"></i></span><span class="t2 num">${fmt(st.pct * 100, 1)}%</span>`}</span>
+      <span class="c">${ringG(d.score, 32, scoreTone(d.score))}</span>
+      <span class="c">${nf ? `<b class="nf num" title="เรื่องค้าง ${nf} เรื่อง">${nf}</b>` : '<span class="muted">—</span>'}</span></button>`;
+  };
+  const th = '<div class="ot-h"><span></span><span>ลูกค้า · โค้ช · โปรแกรม</span><span class="c-g">การเติบโต</span><span class="r">กำไรสะสม</span><span class="c-m">เงื่อนไข 1 ล้าน</span><span class="c">วินัย</span><span class="c">ค้าง</span></div>';
+  return `${tools}${strip}${pnl({ t: 'ลูกค้า', sub: `เรียง${{ score: 'วินัยต่ำสุดก่อน', ret: 'กำไรสูงสุดก่อน', refund: 'คืนค่าเรียนมากสุดก่อน', name: 'ตามรหัสลูกค้า' }[sortBy] || 'วินัยต่ำสุดก่อน'}`, key: 'all', pt: 'ลูกค้า', th, tcls: 'cll', rows: list.map(row).join(''), empty: 'ไม่พบลูกค้าตามเงื่อนไข' })}
+  <section class="pnl cpvp" data-pt="รายละเอียด">${selAll ? clPreview(client(selAll)) : '<div class="empty" style="margin:auto">ไม่พบลูกค้าตามเงื่อนไข</div>'}</section>`;
+}
+// the client picked in the book, as a statement: profit, growth since joining, the road to 1M, three rings, open issues
+function clPreview(c) {
+  const d = discipline(c.id), st = settle(c), lv = concern(c).lv, fl = flagsOf(c), pt = points(c.id).score, co = coach(c.coach), p1 = Math.min(1, st.pct);
+  const acc = Math.round(d.acc * 100), tone = v => v >= 90 ? 'ok' : v >= 75 ? 'warn' : 'dn';
+  return `<div class="ph cpv-h"><span class="cpv-av ${lv}">${avatar(c)}</span><span class="cpv-id"><h3 class="ell">${esc(cname(c))}</h3><span class="sub ell">${esc(c.email)}</span></span><span class="sp"></span><span class="tag ${LV.find(x => x[0] === lv)[2]}">${LV_N[lv]}</span></div>
+  <div class="pb cpv">
+    <div class="cpv-hero"><small>กำไรสะสม · ตามบันทึก</small><b class="big num ${st.pr >= 0 ? 'up' : 'dn'}">${signed(st.pr)}</b><span class="cpv-sub ell">${pct(retPct(c))} จากทุน ${baht(capOf(c))} · ${co.name} · ${c.term} เดือน ${TYPE[c.type]}</span></div>
+    <div class="cpv-ch" title="กำไรสะสมรายสัปดาห์ตั้งแต่เริ่มโปรแกรม ${dstr(c.joined)} ถึงวันนี้">${growth(c, 420, 92)}<span class="cpv-ax"><span>เริ่ม ${dstr(c.joined)}</span><span>วันนี้</span></span></div>
+    <div class="cpv-road"><div class="cpv-rk"><small>เงื่อนไขคืนค่าเรียน · กำไร 1 ล้าน</small><b class="num">${fmt(p1 * 100, 1)}%</b></div>
+      <div class="road"><i style="width:${p1 * 100}%"></i>${[[.25, '250K'], [.5, '500K'], [1, '1 ล้าน']].map(([p, l]) => `<s class="${p1 >= p ? 'on' : ''}" style="left:${p * 100}%"><u>${l}</u></s>`).join('')}<em style="left:${p1 * 100}%"></em></div>
+      <span class="cpv-sub">${st.extra > 0 ? `ถึง 1 ล้านแล้ว · กำไรส่วนเกิน ${baht(st.extra)} บาท` : `ถ้าจบวันนี้ คืนค่าเรียน ฿${baht(st.refund)}`}</span></div>
+    <div class="cpv-rings"><span>${ringG(d.score, 54, scoreTone(d.score))}<small>วินัย</small></span><span>${ringG(acc, 54, tone(acc), `${acc}<i>%</i>`)}<small>ตรงแผน</small></span><span>${ringG(pt, 54, pt >= 85 ? 'ok' : pt >= PT_TALK ? 'warn' : 'dn')}<small>คะแนนตามกติกา</small></span></div>
+    <div class="cpv-is"><small>เรื่องค้าง${fl.length ? ` <b class="num">${fl.length}</b>` : ''}</small><div class="flags">${fl.join('') || `<span class="up xs">${ic('check', 13)} ไม่มีเรื่องค้าง</span>`}</div></div>
+    <div class="cpv-ft"><span class="xs muted ell">เข้าใช้งาน ${seenTxt(c)}</span><span class="sp"></span><button class="btn sm" data-act="open" data-id="${esc(c.id)}">เปิดหน้าลูกค้า ${ic('chev', 15)}</button></div>
+  </div>`;
 }
 
 /* ---------- CS: applicants for the next intake (port 5,000,000+, interview, at most 50 seats) ---------- */
@@ -4382,8 +4609,15 @@ function teamView() {
       : [{ ...S.head, role: 'หัวหน้าโค้ช', cnt: all }, { ...S.cs, role: 'CS', cnt: all }, ...S.coaches.map(co => ({ ...co, role: 'โค้ช', cnt: `${S.clients.filter(c => c.coach === co.id).length}/5` }))];
     const canEd = s => isHead() || (isCS() && (s.rk || ROLE_K[s.role]) !== 'head');
     const canRm = s => LIVEMODE && (isHead() || isCS()) && s.rk === 'cs' && s.email !== LIVE.info.staff?.email && S.staff.filter(x => x.role === 'cs').length > 1;
-    body = `<section class="pnl"><div class="ph"><h3>ทีมงาน</h3><span class="sub">${LIVEMODE ? 'เข้าสู่ระบบด้วยบัญชี Google ของอีเมลที่ลงทะเบียนไว้' : 'เข้าสู่ระบบด้วย Google · บังคับใช้การยืนยันตัวตน 2 ขั้นตอน'}</span>${isCS() || isHead() ? `<button class="btn ghost sm" data-act="addstaff" style="margin-left:auto">${ic('plus', 15)} เพิ่มทีมงาน</button>` : ''}<div class="pgn" data-pgn="st"></div></div><div class="pb"><table class="tbl"><thead><tr><th>ชื่อ</th><th class="opt">อีเมล Google</th><th>บทบาท</th><th class="r">ลูกค้า</th><th class="opt">สถานะ</th><th class="opt">เข้าระบบล่าสุด</th></tr></thead><tbody data-pg="st">
-      ${staff.map(s => `<tr><td><div class="row" style="gap:8px"><span class="av ${s.role === 'CS' ? '' : 'gold'} sm">${s.role === 'CS' ? 'CS' : s.role === 'หัวหน้าโค้ช' ? 'H' : s.no}</span><b>${esc(s.name)}</b></div></td><td class="muted opt">${esc(s.email)}</td><td><span class="tag ${s.role === 'CS' ? 'blue' : 'gold'}">${s.role}</span></td><td class="r num">${s.cnt}</td><td class="opt">${s.seen || !LIVEMODE ? '<span class="tag ok">ใช้งาน</span>' : '<span class="tag">ยังไม่เคยเข้า</span>'}</td><td class="xs muted opt">${s.seen ? when(s.seen, n) : '—'}${canEd(s) ? ` <button class="ibtn sm" data-act="edstaff" data-em="${esc(s.email)}" aria-label="แก้ไขข้อมูล ${esc(s.name)}" title="แก้ไขชื่อ เบอร์โทร ลิงก์ LINE">${ic('edit', 14)}</button>` : ''}${canRm(s) ? ` <button class="ibtn sm" data-act="rmstaff" data-em="${esc(s.email)}" aria-label="นำออกจากทีมงาน" title="นำออกจากทีมงาน">${ic('minus', 14)}</button>` : ''}</td></tr>`).join('')}</tbody></table></div></section>`;
+    const card = s => {
+      const rk = s.rk || ROLE_K[s.role] || 'coach', on = s.seen || !LIVEMODE, ln = s.lineUrl && safeLink(s.lineUrl);
+      const face = rk === 'coach' ? `<span class="stc-f"><img src="${staffFace(s.id, 96)}" alt=""><b class="num">${s.no}</b></span>` : `<span class="stc-f mono">${rk === 'cs' ? 'CS' : 'H'}</span>`;
+      const acts = `${canEd(s) ? `<button class="ibtn sm" data-act="edstaff" data-em="${esc(s.email)}" aria-label="แก้ไขข้อมูล ${esc(s.name)}" title="แก้ไขชื่อ เบอร์โทร ลิงก์ LINE">${ic('edit', 14)}</button>` : ''}${canRm(s) ? `<button class="ibtn sm" data-act="rmstaff" data-em="${esc(s.email)}" aria-label="นำออกจากทีมงาน" title="นำออกจากทีมงาน">${ic('minus', 14)}</button>` : ''}`;
+      return `<div class="stc r-${rk}">${face}<span class="stc-id"><b class="ell">${esc(s.name)}</b>${s.name.includes(s.role) ? '' : `<span class="tag ${rk === 'cs' ? 'blue' : 'gold'}">${s.role}</span>`}</span>${acts ? `<span class="stc-a">${acts}</span>` : ''}
+        <span class="stc-e"><span class="ell" title="${esc(s.email)}">${esc(s.email)}</span>${s.phone || ln ? `<span class="stc-c">${s.phone ? `<span class="num">${ic('phone', 12)} ${esc(s.phone)}</span>` : ''}${ln ? `<a href="${esc(ln)}" target="_blank" rel="noopener noreferrer">${ic('chat', 12)} LINE</a>` : ''}</span>` : ''}</span>
+        <span class="stc-k"><span><small>ลูกค้า</small><b class="num">${s.cnt}</b></span><span><small>สถานะ</small><b class="${on ? 'up' : 'muted'}"><i class="lvd ${on ? '' : 'off'}"></i>${on ? 'ใช้งาน' : 'ยังไม่เคยเข้า'}</b></span><span><small>เข้าระบบล่าสุด</small><b>${s.seen ? when(s.seen, n) : '—'}</b></span></span></div>`;
+    };
+    body = `<section class="pnl"><div class="ph"><h3>ทีมงาน</h3><span class="sub">${LIVEMODE ? 'เข้าสู่ระบบด้วยบัญชี Google ของอีเมลที่ลงทะเบียนไว้' : 'เข้าสู่ระบบด้วย Google · บังคับใช้การยืนยันตัวตน 2 ขั้นตอน'}</span>${isCS() || isHead() ? `<button class="btn ghost sm" data-act="addstaff" style="margin-left:auto">${ic('plus', 15)} เพิ่มทีมงาน</button>` : ''}<div class="pgn" data-pgn="st"></div></div><div class="pb"><div class="stg" data-pg="st">${staff.map(card).join('')}</div></div></section>`;
   } else if (teamTab === 'perm') {
     const P = [['ดูข้อมูลลูกค้า', 'ของตัวเอง', 'ลูกค้าของตัวเอง 5 ราย', 'ทั้ง 50 ราย', 'ทั้ง 50 ราย'], ['บันทึกรายการซื้อขายพร้อมแนบภาพ', '✓', 'บันทึกให้ลูกค้าได้', 'ดูได้', '—'], ['ตรวจรายการกับภาพ / ขอให้ลูกค้าแก้ไข', '—', 'ดูได้', '✓', 'ดูได้'], ['แผนเทรดเฉพาะบุคคล', 'ยืนยัน', 'ดูได้', 'จัดทำ / ปรับ', 'ดูได้'], ['บันทึกแผน เลื่อน Stop Loss ปิดแผน', '—', 'ดูได้', '✓', 'ดูได้'], ['บันทึกนัด Coaching / การไม่ทำตามแผน / เคลียร์กับลูกค้า', '—', '✓', 'ดูได้', 'ติดตามเมื่อค้างเกิน 2 วัน'], ['รายงานยอดพอร์ต / Statement / แจ้งฝาก-ถอน', '✓', 'ส่งแทนลูกค้าได้', 'ดูได้', 'ตรวจและอนุมัติ'], ['บันทึกทีมงาน', '—', '✓', '✓', '✓'], ['คัดเลือกผู้สมัคร นัดสัมภาษณ์', '—', 'สัมภาษณ์ตามที่ได้รับมอบหมาย', '—', '✓'], ['เพิ่มลูกค้า จับคู่/เปลี่ยนโค้ช', '—', '—', '—', '✓'], ['เพิ่ม/ปิดบัญชีทีมงาน', '—', '—', '—', '✓'], ['ดูรายงานรวมและประวัติการใช้งาน', '—', 'เฉพาะของตัวเอง', '✓', '✓']];
     body = `<section class="pnl"><div class="ph"><h3>สิทธิ์ตามบทบาท</h3><span class="sub">ระบบจริงตรวจสอบสิทธิ์ที่เซิร์ฟเวอร์ทุกครั้งที่อ่านหรือแก้ไขข้อมูล ไม่ได้อาศัยเพียงการซ่อนเมนู</span><div class="pgn" data-pgn="pm"></div></div><div class="pb"><table class="tbl perm"><thead><tr><th>การใช้งาน</th><th>ลูกค้า</th><th>โค้ช</th><th>หัวหน้าโค้ช</th><th>CS</th></tr></thead><tbody data-pg="pm">
@@ -4630,6 +4864,7 @@ document.addEventListener('click', e => {
   const rt = e.target.closest('[data-rtri]'); if (rt) { rTri = ['ok', 'dev'].includes(rt.dataset.rtri) ? rt.dataset.rtri : 'all'; selEx = null; PG.vq = 0; return render(); }
   const tf = e.target.closest('[data-tf]'); if (tf) { tFilter = tf.dataset.tf; PG.tk = 0; return render(); }
   const fs = e.target.closest('[data-fs]'); if (fs) { fStat = fs.dataset.fs; PG.all = 0; return render(); }
+  const cpk = e.target.closest('[data-csel]'); if (cpk) { selAll = cpk.dataset.csel; return render(); }
   const ct = e.target.closest('[data-ctab]'); if (ct) { clTab = ct.dataset.ctab; return render(); }
   const tt = e.target.closest('[data-ttab]'); if (tt) { teamTab = tt.dataset.ttab; return render(); }
   const pt = e.target.closest('[data-ptk]'); if (pt) { PT[pt.dataset.ptk] = pt.dataset.ptv; return render(); }
@@ -4712,6 +4947,16 @@ document.addEventListener('keydown', e => {
   } else if (k === 'KeyY' && ex?.ver === 'pend') { e.preventDefault(); verifyEx(selEx); }
   else if (k === 'KeyN' && ex?.ver === 'pend') { e.preventDefault(); verFixModal(selEx); }
 });
+// the book of clients by keyboard: ↑↓ or J/K pick, Enter opens the one picked
+document.addEventListener('keydown', e => {
+  if (view !== 'clients' || !seeAll() || narrow() || $('#modal').innerHTML || menu || e.ctrlKey || e.metaKey || e.altKey || e.target.closest?.('input,textarea,select,[contenteditable]')) return;
+  const k = e.code, i = allIds.indexOf(selAll);
+  if (['ArrowDown', 'ArrowUp', 'KeyJ', 'KeyK'].includes(k)) {
+    const j = Math.max(0, Math.min(allIds.length - 1, i + (k === 'ArrowDown' || k === 'KeyJ' ? 1 : -1)));
+    if (allIds[j] && allIds[j] !== selAll) { e.preventDefault(); selAll = allIds[j]; render(); pageOf('all', `[data-csel="${CSS.escape(selAll)}"]`); }
+  } else if (e.key === 'Enter' && selAll && (!e.target.closest?.('button,a') || e.target.closest('[data-csel]'))) { e.preventDefault(); openClient(selAll); }
+});
+document.addEventListener('dblclick', e => { const r = e.target.closest?.('[data-csel]'); if (r) openClient(r.dataset.csel); });
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter' && e.target.id === 'newnote') { e.preventDefault(); $('[data-act=addnote]')?.click(); }
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches?.('.ccard')) { e.preventDefault(); e.target.click(); }
