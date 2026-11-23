@@ -1,0 +1,3 @@
+# Super Elite Club: for members only, no page is listed in search results
+User-agent: *
+Disallow: /backoffice/
